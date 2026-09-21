@@ -102,14 +102,14 @@ h1 {
 #python {
     color: #ffd866;
     position: absolute;
-    right: 30%;
+    right: 20%;
 }
 
 /* ---------- HTML ---------- */
 
 #html {
     position: absolute;
-    right: 60%;
+    right: 55%;
     color: #ff7b72;
 }
 
@@ -117,6 +117,6 @@ h1 {
 
 #css {
     position: absolute;
-    right: 6%;
+    right: -3%;
     color: #79c0ff;
 }
