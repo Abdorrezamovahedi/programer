@@ -1,0 +1,991 @@
+<!doctype html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- فونت لاله زار -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
+    rel="stylesheet"
+  >
+
+  <title>آموزش Python</title>
+
+
+  <style>
+
+    /* =========================
+       تنظیمات کلی
+    ========================= */
+
+    * {
+      box-sizing: border-box;
+      font-family: "Lalezar", cursive;
+    }
+
+    body {
+      margin: 0;
+      background-color: #111827;
+      color: #eeeeee;
+    }
+
+
+    /* =========================
+       هدر
+    ========================= */
+
+    header {
+      width: 100%;
+      background-color: #0b0f14;
+      border-bottom: 2px solid #30363d;
+      padding: 18px 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      color: #00ff66;
+      font-size: 32px;
+
+      text-shadow:
+        0 0 8px rgba(0, 255, 102, 0.5);
+    }
+
+    nav a {
+      color: #cccccc;
+      text-decoration: none;
+      margin-right: 25px;
+      font-size: 20px;
+
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ff66;
+    }
+
+
+    /* =========================
+       عنوان
+    ========================= */
+
+    .hero {
+      text-align: center;
+      padding: 45px 20px 30px;
+
+      background:
+        linear-gradient(
+          rgba(13, 17, 23, 0.9),
+          rgba(17, 24, 39, 0.9)
+        );
+    }
+
+    .hero h1 {
+      margin: 0;
+
+      font-size: 55px;
+
+      color: #00ff66;
+
+      text-shadow:
+        0 0 10px rgba(0, 255, 102, 0.4),
+        0 0 30px rgba(0, 255, 102, 0.15);
+
+      animation: upDown 1.5s ease-in-out infinite;
+    }
+
+    .hero p {
+      color: #9ca3af;
+      font-size: 22px;
+      margin-top: 10px;
+    }
+
+    @keyframes upDown {
+
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(5px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =========================
+       خط
+    ========================= */
+
+    hr {
+      border: none;
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #00ff66,
+          transparent
+        );
+
+      margin: 0;
+    }
+
+
+    /* =========================
+       ساختار اصلی
+    ========================= */
+
+    .container {
+      width: 90%;
+      max-width: 1250px;
+
+      margin: 35px auto;
+
+      display: grid;
+
+      grid-template-columns: 280px 1fr;
+
+      gap: 25px;
+    }
+
+
+    /* =========================
+       منوی کناری
+    ========================= */
+
+    .sidebar {
+      background-color: #161b22;
+
+      border: 1px solid #30363d;
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      height: fit-content;
+
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar h2 {
+      margin-top: 0;
+
+      color: #00ff66;
+
+      border-bottom: 1px solid #30363d;
+
+      padding-bottom: 12px;
+    }
+
+    .pythons {
+      display: block;
+
+      padding: 10px 14px;
+
+      margin: 7px 0;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-size: 21px;
+
+      color: #d1d5db;
+
+      border: 1px solid transparent;
+
+      transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .pythons:hover {
+      background-color: #1f2937;
+
+      border-color: #00ff66;
+
+      color: #ffffff;
+
+      transform: translateX(-6px);
+    }
+
+
+    #py1 {
+      color: #c084fc;
+    }
+
+    #py2 {
+      color: #00e5c3;
+    }
+
+    #py3 {
+      color: #ff9d00;
+    }
+
+    #py4 {
+      color: #58a6ff;
+    }
+
+    #py5 {
+      color: #f778ba;
+    }
+
+    #py6 {
+      color: #facc15;
+    }
+
+
+    /* =========================
+       محتوای اصلی
+    ========================= */
+
+    .content {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 20px;
+    }
+
+
+    .card {
+      background-color: #161b22;
+
+      border: 1px solid #30363d;
+
+      border-radius: 12px;
+
+      padding: 25px;
+
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h2 {
+      margin-top: 0;
+
+      color: #00ff66;
+
+      font-size: 30px;
+    }
+
+    .card p {
+      color: #c9d1d9;
+
+      font-size: 19px;
+
+      line-height: 2;
+    }
+
+
+    /* =========================
+       کارت های کوچک
+    ========================= */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+    }
+
+    .mini-card {
+      background-color: #0d1117;
+
+      border: 1px solid #30363d;
+
+      border-radius: 10px;
+
+      padding: 20px;
+
+      transition: 0.3s;
+    }
+
+    .mini-card:hover {
+      transform: translateY(-5px);
+
+      border-color: #00ff66;
+
+      box-shadow:
+        0 5px 20px rgba(0, 255, 102, 0.12);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+
+      color: #58a6ff;
+
+      font-size: 23px;
+    }
+
+    .mini-card p {
+      font-size: 16px;
+      color: #9ca3af;
+    }
+
+
+    /* =========================
+       کد پایتون
+    ========================= */
+
+    .code-box {
+      direction: ltr;
+
+      text-align: left;
+
+      background-color: #0b0f14;
+
+      border: 1px solid #30363d;
+
+      border-radius: 10px;
+
+      padding: 20px;
+
+      overflow-x: auto;
+
+      box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .code-box code {
+      font-family: Consolas, monospace;
+
+      color: #00ff66;
+
+      font-size: 17px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================
+       فوتر
+    ========================= */
+
+    footer {
+      margin-top: 50px;
+
+      padding: 25px;
+
+      text-align: center;
+
+      background-color: #0b0f14;
+
+      border-top: 1px solid #30363d;
+
+      color: #777;
+    }
+
+
+    /* =========================
+       موبایل
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      header {
+        flex-direction: column;
+
+        gap: 10px;
+
+        padding: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       هدر
+  ========================= -->
+
+  <header>
+
+    <div class="logo">
+      PYTHON
+    </div>
+
+    <nav>
+
+      <a href="/index.html">خانه</a>
+
+      <a href="#">آموزش‌ها</a>
+
+      <a href="#">تمرین‌ها</a>
+
+      <a href="#">درباره</a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       بخش عنوان
+  ========================= -->
+
+  <section class="hero">
+
+    <h1>
+      👇 آموزش برنامه نویسی Python 👇
+    </h1>
+
+    <p>
+      از صفر شروع کن و قدم به قدم برنامه نویسی یاد بگیر.
+    </p>
+
+  </section>
+
+
+  <hr>
+
+
+  <!-- =========================
+       محتوای سایت
+  ========================= -->
+
+  <main class="container">
+
+
+    <!-- منوی سمت راست -->
+
+    <aside class="sidebar">
+
+      <h2>
+        📚 فهرست آموزش
+      </h2>
+
+      <a href="#" id="py1" class="pythons">
+        🏠 خانه
+      </a>
+
+      <a href="#" id="py2" class="pythons">
+        📖 مقدمه Python
+      </a>
+
+      <a href="#" id="py3" class="pythons">
+        🚀 شروع کار
+      </a>
+
+      <a href="#" id="py4" class="pythons">
+        🧱 ساختار نوشتاری
+      </a>
+
+      <a href="#" id="py5" class="pythons">
+        ⌨️ دستورات
+      </a>
+
+      <a href="#" id="py6" class="pythons">
+        🔢 خروجی
+      </a>
+
+      <a href="#" class="pythons">
+        🔄 چاپ اعداد
+      </a>
+
+      <a href="#" class="pythons">
+        🔁 توضیحات
+      </a>
+
+      <a href="#" class="pythons">
+        🧩 متقیر ها
+      </a>
+
+      <a href="#" class="pythons">
+        📦 نام متقیر
+      </a>
+      <a href="#" class="pythons">
+        ! اختصاص چند مقدار
+      </a>
+      <a href="#" class="pythons">
+        ! نمایش متقیر ها
+      </a>
+      <a href="#" class="pythons">
+        ! متقیر های سراسری
+      </a>
+      <a href="#" class="pythons">
+        ! تمرین متقیر ها 
+      </a>
+      <a href="#" class="pythons">
+        ! انواع داده
+      </a>
+      <a href="#" class="pythons">
+        ! اعداد
+      </a>
+      <a href="#" class="pythons">
+        ! تبدیل نوع داده
+      </a>
+      <a href="#" class="pythons">
+        ! رشته ها
+      </a>
+      <a href="#" class="pythons">
+        ! برش رشته
+      </a>
+      <a href="#" class="pythons">
+        ! تغیر رشته
+      </a>
+      <a href="#" class="pythons">
+        ! ترکیب رشته
+      </a>
+      <a href="#" class="pythons">
+        ! قاب بندی رشته ها
+      </a>
+      <a href="#" class="pythons">
+        ! کاراکتر فرار
+      </a>
+      <a href="#" class="pythons">
+        ! متد های رشته
+      </a>
+      <a href="#" class="pythons">
+        ! تمرین رشته ها
+      </a>
+      <a href="#" class="pythons">
+        ! بولین ها
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر ها
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های حسابی
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های انتسابی
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های مقایسه ای
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های منطقی
+      </a>
+      <a href="#" class="pythons">
+        ! عمل گر های هویتی
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های عضویت
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های بیتی
+      </a>
+      <a href="#" class="pythons">
+        ! اولویت عملگر ها
+      </a>
+      <a href="#" class="pythons">
+        ! لیست ها
+      </a>
+      <a href="#" class="pythons">
+        ! دسترسی به ایتم ها
+      </a>
+      <a href="#" class="pythons">
+        ! تقیر ایتم ها
+      </a>
+      <a href="#" class="pythons">
+        ! افزودن ایتم
+      </a>
+      <a href="#" class="pythons">
+        ! حذف ایتم
+      </a>
+      <a href="#" class="pythons">
+        ! حلقه روی لیست
+      </a>
+      <a href="#" class="pythons">
+        ! درک لیست
+      </a>
+      <a href="#" class="pythons">
+        ! مرطب سازی لیست
+      </a>
+      <a href="#" class="pythons">
+        ! کپی لیست
+      </a>
+      <a href="#" class="pythons">
+        ! اقدام لیست ها
+      </a>
+      <a href="#" class="pythons">
+        ! متد های لیست
+      </a>
+      <a href="#" class="pythons">
+        ! تمرین لیست ها
+      </a>
+      <a href="#" class="pythons">
+        ! تاپل ها
+      </a>
+      <a href="#" class="pythons">
+        ! به روز رسانی تاپل ها
+      </a>
+      <a href="#" class="pythons">
+        ! باز کردن تاپل ها 
+      </a>
+      <a href="#" class="pythons">
+        ! حلقه تاپل ها
+      </a>
+      <a href="#" class="pythons">
+        ! اقدام تاپل ها 
+      </a>
+      <a href="#" class="pythons">
+        ! متد های تاپل
+      </a>
+      <a href="#" class="pythons">
+        ! متد های تاپل 
+      </a>
+      <a href="#" class="pythons">
+        ! مجموعه ها 
+      </a>
+      <a href="#" class="pythons">
+        ! دسترسی به مجموعه
+      </a>
+      <a href="#" class="pythons">
+        ! افزودن به مجنوعه
+      </a>
+      <a href="#" class="pythons">
+        ! حلقه مجموعه ها 
+      </a>
+      <a href="#" class="pythons">
+        ! اغدام مجموعه ها 
+      </a>
+      <a href="#" class="pythons">
+        ! فرزون ست
+      </a>
+      <a href="#" class="pythons">
+        ! متد های مجموعه
+      </a>
+      <a href="#" class="pythons">
+        ! تمرین مجموعه
+      </a>
+      <a href="#" class="pythons">
+        ! دیکشنری
+      </a>
+      <a href="#" class="pythons">
+        ! دسترسی به ایتم ها 
+      </a>
+      <a href="#" class="pythons">
+        ! تقیر ایتم ها 
+      </a>
+      <a href="#" class="pythons">
+        ! افزودن ایتم ها 
+      </a>
+      <a href="#" class="pythons">
+        ! حذف ایتم ها 
+      </a>
+      <a href="#" class="pythons">
+        !  حلقه دیکشنری ها
+      </a>
+      <a href="#" class="pythons">
+        ! کپی دیکشنری
+      </a>
+      <a href="#" class="pythons">
+        ! تو در تو
+      </a>
+      <a href="#" class="pythons">
+        ! متد های دیکشنری
+      </a>
+      <a href="#" class="pythons">
+        ! تمرین دیکشنری
+      </a>
+      <a href="#" class="pythons">
+        ! if
+      </a>
+      <a href="#" class="pythons">
+        ! elif
+      </a>
+      <a href="#" class="pythons">
+        ! else
+      </a>
+      <a href="#" class="pythons">
+        ! شرط کوتاه
+      </a>
+      <a href="#" class="pythons">
+        ! عملگر های منطقی
+      </a>
+      <a href="#" class="pythons">
+        ! شرط تو در تو 
+      </a>
+      <a href="#" class="pythons">
+        ! pass
+      </a>
+      <a href="#" class="pythons">
+        ! match
+      </a>حلقه
+      <a href="#" class="pythons">
+        ! توابع
+      </a>
+      <a href="#" class="pythons">
+        ! آرگومان
+      </a>
+      <a href="#" class="pythons">
+        ! args
+      </a>
+      <a href="#" class="pythons">
+        ! حوزه دسترسی
+      </a>
+      <a href="#" class="pythons">
+        ! دکوراتور
+      </a>
+      <a href="#" class="pythons">
+        ! لامبدا
+      </a>
+      <a href="#" class="pythons">
+        ! بازگشت
+      </a>
+      <a href="#" class="pythons">
+        ! جنریتور
+      </a>
+      <a href="#" class="pythons">
+        ! بازه
+      </a>
+      <a href="#" class="pythons">
+        ! آرایه
+      </a>
+      <a href="#" class="pythons">
+        ! ایتریتورها
+      </a>
+      <a href="#" class="pythons">
+        ! ماژول ها 
+      </a>
+      <a href="#" class="pythons">
+        ! تاریخ ها 
+      </a>
+      <a href="#" class="pythons">
+        ! ریاضی
+      </a>
+      <a href="#" class="pythons">
+        ! جیسون 
+      </a>
+      <a href="#" class="pythons">
+        ! عبارت منظم
+      </a>
+      <a href="#" class="pythons">
+        ! مدیر بسته ها
+      </a>
+      <a href="#" class="pythons">
+        ! try   except
+      </a>
+      <a href="#" class="pythons">
+        ! قاب بندی رشته
+      </a>
+      <a href="#" class="pythons">
+        ! none
+      </a>
+      <a href="#" class="pythons">
+        ! ورودی کاربر
+      </a>
+      <a href="#" class="pythons">
+        ! محیط مجازی
+      </a>
+      <a href="#" class="pythons">
+        ! شی گرایی
+      </a>
+      <a href="#" class="pythons">
+        ! کلاس ها 
+      </a>
+      <a href="#" class="pythons">
+        ! متد
+      </a>
+      <a href="#" class="pythons">
+        ! پارامتر
+      </a>
+      <a href="#" class="pythons">
+        ! خصوصیات کلاس
+      </a>
+      <a href="#" class="pythons">
+        ! متد های کلاس
+      </a>
+      <a href="#" class="pythons">
+        ! وراثت
+      </a>
+      <a href="#" class="pythons">
+        ! چندریختی
+      </a>
+      <a href="#" class="pythons">
+        ! کپسوله سازی
+      </a>
+      <a href="#" class="pythons">
+        ! کلاس های داخلی
+      </a>
+      <a href="#" class="pythons">
+        ! کار بافایل
+      </a>
+      <a href="#" class="pythons">
+        ! خواندن فایل
+      </a>
+      <a href="#" class="pythons">
+        ! نوشتن/ایجاد فایل
+      </a>
+      <a href="#" class="pythons">
+        ! حذف فایل
+      </a>
+      <a href="#" class="pythons">
+        ! اموزش
+      </a>
+      <a href="#" class="pythons">
+
+    </aside>
+
+
+    <!-- محتوای اصلی -->
+
+    <section class="content">
+
+
+      <div class="card">
+
+        <h2>
+          🐍 Python چیست؟
+        </h2>
+
+        <p>
+          پایتون یک زبان برنامه‌نویسی قدرتمند و نسبتاً ساده است
+          که برای ساخت برنامه‌ها، سایت‌ها، هوش مصنوعی،
+          تحلیل داده و بسیاری از پروژه‌های دیگر استفاده می‌شود.
+        </p>
+
+      </div>
+
+
+      <div class="cards">
+
+
+        <div class="mini-card">
+
+          <h3>
+            🟢 ساده
+          </h3>
+
+          <p>
+            ساختار Python برای شروع برنامه‌نویسی مناسب است.
+          </p>
+
+        </div>
+
+
+        <div class="mini-card">
+
+          <h3>
+            ⚡ قدرتمند
+          </h3>
+
+          <p>
+            با Python می‌توان پروژه‌های بسیار بزرگ ساخت.
+          </p>
+
+        </div>
+
+
+        <div class="mini-card">
+
+          <h3>
+            🤖 هوش مصنوعی
+          </h3>
+
+          <p>
+            Python یکی از زبان‌های محبوب حوزه هوش مصنوعی است.
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>
+          💻 اولین کد Python
+        </h2>
+
+        <div class="code-box">
+
+          <code>
+
+            print("Hello World!")<br>
+
+            name = "Abdorreza"<br>
+
+            print(name)
+
+          </code>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>
+          📌 مسیر یادگیری
+        </h2>
+
+        <p>
+          ابتدا با متغیرها و انواع داده آشنا شو،
+          سپس شرط‌ها، حلقه‌ها و توابع را یاد بگیر.
+          بعد از آن می‌توانی سراغ پروژه‌های واقعی بروی.
+        </p>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       فوتر
+  ========================= -->
+
+  <footer>
+
+    آموزش Python | ساخته شده برای یادگیری برنامه نویسی
+
+  </footer>
+
+
+</body>
+
+</html>

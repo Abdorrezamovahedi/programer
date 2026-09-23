@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آموزش پایتون | lists-methods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+  <header>
+    <div class="logo">مدرسه برنامه‌نویسان <span>خاص</span></div>
+    <nav>
+      <a href="../../index.html">خانه</a>
+      <a href="python.html">پایتون</a>
+      <a href="../../index.html">همه زبان‌ها</a>
+    </nav>
+  </header>
+  <main class="container">
+    <aside class="sidebar">
+      <h2>فهرست مطالب</h2>
+      <div class="sidebar-section">
+        <h3>شروع</h3>
+        <a href="python.html" class="side-link">خانه</a>
+        <a href="intro.html" class="side-link">پایتون چیست؟</a>
+        <a href="getstarted.html" class="side-link">شروع کار و نصب</a>
+        <a href="syntax.html" class="side-link">ساختار نوشتاری</a>
+        <a href="output.html" class="side-link">خروجی با print</a>
+        <a href="comments.html" class="side-link">توضیحات (کامنت)</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>متغیرها</h3>
+        <a href="variables.html" class="side-link">متغیرها</a>
+        <a href="variable-names.html" class="side-link">نام‌گذاری متغیر</a>
+        <a href="multiple-values.html" class="side-link">چند مقدار همزمان</a>
+        <a href="output-variables.html" class="side-link">نمایش متغیر</a>
+        <a href="global-variables.html" class="side-link">متغیر سراسری</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>انواع داده</h3>
+        <a href="data-types.html" class="side-link">انواع داده</a>
+        <a href="numbers.html" class="side-link">اعداد</a>
+        <a href="casting.html" class="side-link">تبدیل نوع</a>
+        <a href="strings.html" class="side-link">رشته‌ها</a>
+        <a href="string-slicing.html" class="side-link">برش رشته</a>
+        <a href="string-modify.html" class="side-link">تغییر رشته</a>
+        <a href="string-concat.html" class="side-link">ترکیب رشته</a>
+        <a href="string-format.html" class="side-link">قالب‌بندی رشته</a>
+        <a href="string-escape.html" class="side-link">کاراکتر فرار</a>
+        <a href="string-methods.html" class="side-link">متدهای رشته</a>
+        <a href="booleans.html" class="side-link">بولین</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>عملگرها</h3>
+        <a href="operators.html" class="side-link">معرفی عملگرها</a>
+        <a href="operators-arithmetic.html" class="side-link">عملگرهای حسابی</a>
+        <a href="operators-assignment.html" class="side-link">عملگرهای انتساب</a>
+        <a href="operators-comparison.html" class="side-link">عملگرهای مقایسه</a>
+        <a href="operators-logical.html" class="side-link">عملگرهای منطقی</a>
+        <a href="operators-identity.html" class="side-link">عملگرهای هویتی</a>
+        <a href="operators-membership.html" class="side-link">عملگرهای عضویت</a>
+        <a href="operators-bitwise.html" class="side-link">عملگرهای بیتی</a>
+        <a href="operators-precedence.html" class="side-link">اولویت عملگرها</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>لیست‌ها</h3>
+        <a href="lists.html" class="side-link">لیست‌ها</a>
+        <a href="lists-access.html" class="side-link">دسترسی به آیتم</a>
+        <a href="lists-change.html" class="side-link">تغییر آیتم</a>
+        <a href="lists-add.html" class="side-link">افزودن آیتم</a>
+        <a href="lists-remove.html" class="side-link">حذف آیتم</a>
+        <a href="lists-loop.html" class="side-link">حلقه روی لیست</a>
+        <a href="lists-comprehension.html" class="side-link">درک لیست</a>
+        <a href="lists-sort.html" class="side-link">مرتب‌سازی</a>
+        <a href="lists-copy.html" class="side-link">کپی لیست</a>
+        <a href="lists-join.html" class="side-link">ادغام لیست</a>
+        <a href="lists-methods.html" class="side-link active">متدهای لیست</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>تاپل و مجموعه</h3>
+        <a href="tuples.html" class="side-link">تاپل‌ها</a>
+        <a href="tuples-access.html" class="side-link">دسترسی به تاپل</a>
+        <a href="tuples-update.html" class="side-link">به‌روزرسانی تاپل</a>
+        <a href="tuples-unpack.html" class="side-link">باز کردن تاپل</a>
+        <a href="sets.html" class="side-link">مجموعه‌ها</a>
+        <a href="sets-access.html" class="side-link">دسترسی به مجموعه</a>
+        <a href="sets-add.html" class="side-link">افزودن به مجموعه</a>
+        <a href="sets-methods.html" class="side-link">متدهای مجموعه</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>دیکشنری</h3>
+        <a href="dictionaries.html" class="side-link">دیکشنری</a>
+        <a href="dict-access.html" class="side-link">دسترسی به دیکشنری</a>
+        <a href="dict-change.html" class="side-link">تغییر دیکشنری</a>
+        <a href="dict-add.html" class="side-link">افزودن به دیکشنری</a>
+        <a href="dict-remove.html" class="side-link">حذف از دیکشنری</a>
+        <a href="dict-loop.html" class="side-link">حلقه روی دیکشنری</a>
+        <a href="dict-copy.html" class="side-link">کپی دیکشنری</a>
+        <a href="dict-nested.html" class="side-link">دیکشنری تودرتو</a>
+        <a href="dict-methods.html" class="side-link">متدهای دیکشنری</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>شرط و حلقه</h3>
+        <a href="if-else.html" class="side-link">if و else</a>
+        <a href="elif.html" class="side-link">elif</a>
+        <a href="if-nested.html" class="side-link">شرط تودرتو</a>
+        <a href="match.html" class="side-link">دستور match</a>
+        <a href="while.html" class="side-link">حلقه while</a>
+        <a href="for.html" class="side-link">حلقه for</a>
+        <a href="break-continue.html" class="side-link">break و continue</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>توابع</h3>
+        <a href="functions.html" class="side-link">توابع</a>
+        <a href="arguments.html" class="side-link">آرگومان‌ها</a>
+        <a href="args-kwargs.html" class="side-link">*args و **kwargs</a>
+        <a href="return.html" class="side-link">مقدار بازگشتی</a>
+        <a href="lambda.html" class="side-link">لامبدا</a>
+        <a href="recursion.html" class="side-link">بازگشت</a>
+        <a href="scope.html" class="side-link">حوزه دسترسی</a>
+        <a href="decorators.html" class="side-link">دکوراتور</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>شی‌گرایی</h3>
+        <a href="oop.html" class="side-link">شی‌گرایی چیست؟</a>
+        <a href="classes.html" class="side-link">کلاس و شی</a>
+        <a href="init.html" class="side-link">متد __init__</a>
+        <a href="self.html" class="side-link">پارامتر self</a>
+        <a href="inheritance.html" class="side-link">وراثت</a>
+        <a href="polymorphism.html" class="side-link">چندریختی</a>
+        <a href="encapsulation.html" class="side-link">کپسوله‌سازی</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>فایل و خطا</h3>
+        <a href="files.html" class="side-link">کار با فایل</a>
+        <a href="file-read.html" class="side-link">خواندن فایل</a>
+        <a href="file-write.html" class="side-link">نوشتن فایل</a>
+        <a href="try-except.html" class="side-link">try و except</a>
+        <a href="modules.html" class="side-link">ماژول‌ها</a>
+        <a href="dates.html" class="side-link">تاریخ و زمان</a>
+        <a href="math.html" class="side-link">ریاضی</a>
+        <a href="json.html" class="side-link">JSON</a>
+        <a href="regex.html" class="side-link">عبارت منظم</a>
+        <a href="pip.html" class="side-link">مدیر بسته pip</a>
+        <a href="user-input.html" class="side-link">ورودی کاربر</a>
+        <a href="none.html" class="side-link">None</a>
+      </div>
+    </aside>
+    <section class="content">
+      <div class="card">
+    <h1>متدهای لیست</h1>
+    <h2>خلاصه متدها</h2>
+    <p>append، clear، copy، count، extend، index، insert، pop، remove، reverse، sort</p>
+    <div class="code-box"><code>nums = [3, 1, 4, 1, 5]
+print(nums.count(1))
+print(nums.index(4))
+nums.reverse()
+print(nums)</code></div>
+        <div class="nav-lessons"><a href="lists-join.html">← درس قبلی</a><a href="tuples.html">درس بعدی →</a></div>
+      </div>
+    </section>
+  </main>
+  <footer>مدرسه برنامه‌نویسان خاص · آموزش پایتون · محتوا بر اساس ساختار W3Schools · زبان ساده</footer>
+</body>
+</html>

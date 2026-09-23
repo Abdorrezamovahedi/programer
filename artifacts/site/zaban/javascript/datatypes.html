@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>انواع داده | آموزش JavaScript</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Vazirmatn", system-ui, sans-serif; background: #0f1419; color: #e6edf3; line-height: 1.75; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+header { background: #0d1117; border-bottom: 1px solid #21262d; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.logo { color: #58a6ff; font-size: 20px; font-weight: 700; }
+.logo span { color: #8b949e; font-weight: 400; font-size: 12px; margin-right: 6px; }
+nav a { color: #8b949e; font-size: 13px; padding: 6px 12px; border-radius: 6px; margin-right: 4px; }
+nav a:hover { color: #e6edf3; background: #161b22; }
+.container { width: 94%; max-width: 1280px; margin: 28px auto; display: grid; grid-template-columns: 260px 1fr; gap: 24px; }
+.sidebar { background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 16px 12px; position: sticky; top: 70px; max-height: calc(100vh - 90px); overflow-y: auto; }
+.sidebar h2 { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; padding: 0 8px; }
+.sidebar-section { margin-bottom: 16px; }
+.sidebar-section h3 { font-size: 11px; color: #58a6ff; margin: 10px 0 4px; padding: 0 8px; font-weight: 600; }
+.side-link { display: block; padding: 6px 10px; border-radius: 6px; font-size: 13px; color: #c9d1d9; margin: 1px 0; }
+.side-link:hover, .side-link.active { background: #1f6feb22; color: #58a6ff; }
+.content { display: flex; flex-direction: column; gap: 18px; }
+.card { background: #0d1117; border: 1px solid #21262d; border-radius: 12px; padding: 24px 28px; }
+.card h1 { font-size: 26px; font-weight: 700; color: #e6edf3; margin-bottom: 12px; }
+.card h2 { font-size: 18px; font-weight: 600; color: #e6edf3; margin: 22px 0 10px; padding-top: 12px; border-top: 1px solid #21262d; }
+.card h2:first-of-type { border-top: none; padding-top: 0; margin-top: 8px; }
+.card p, .card li { color: #8b949e; font-size: 15px; margin-bottom: 10px; }
+.card ul, .card ol { padding-right: 22px; margin-bottom: 12px; }
+.card li { margin-bottom: 6px; }
+.code-box { direction: ltr; text-align: left; background: #010409; border: 1px solid #21262d; border-radius: 8px; padding: 16px 18px; overflow-x: auto; margin: 12px 0 16px; }
+.code-box code { font-family: "SF Mono", Consolas, monospace; color: #7ee787; font-size: 14px; line-height: 1.65; white-space: pre; }
+.note { background: #1f6feb15; border: 1px solid #388bfd44; border-radius: 8px; padding: 12px 16px; margin: 14px 0; color: #79b8ff; font-size: 14px; }
+.nav-lessons { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; }
+.nav-lessons a { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 10px 16px; color: #58a6ff; font-size: 13px; font-weight: 500; }
+.nav-lessons a:hover { border-color: #58a6ff; }
+footer { margin-top: 40px; padding: 22px; text-align: center; background: #0d1117; border-top: 1px solid #21262d; color: #6e7681; font-size: 13px; }
+@media (max-width: 900px) { .container { grid-template-columns: 1fr; } .sidebar { position: static; max-height: none; } }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">مدرسه برنامه‌نویسان <span>خاص</span></div>
+    <nav>
+      <a href="../../index.html">خانه</a>
+      <a href="javascript.html">JavaScript</a>
+      <a href="../../index.html">زبان‌ها</a>
+    </nav>
+  </header>
+  <main class="container">
+    <aside class="sidebar">
+      <h2>فهرست مطالب</h2>
+      <div class="sidebar-section">
+        <h3>مقدمه</h3>
+        <a href="javascript.html" class="side-link">خانه</a>
+        <a href="intro.html" class="side-link">مقدمه JS</a>
+        <a href="where.html" class="side-link">کجا بنویسیم</a>
+        <a href="output.html" class="side-link">خروجی</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>متغیرها</h3>
+        <a href="variables.html" class="side-link">متغیرها</a>
+        <a href="datatypes.html" class="side-link active">انواع داده</a>
+        <a href="strings.html" class="side-link">رشته‌ها</a>
+        <a href="arrays.html" class="side-link">آرایه‌ها</a>
+        <a href="objects.html" class="side-link">اشیا</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>عملگر و شرط</h3>
+        <a href="operators.html" class="side-link">عملگرها</a>
+        <a href="ifelse.html" class="side-link">if / else</a>
+        <a href="switch.html" class="side-link">سوئیچ</a>
+        <a href="loops.html" class="side-link">حلقه‌ها</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>توابع</h3>
+        <a href="functions.html" class="side-link">توابع</a>
+        <a href="arrow.html" class="side-link">فلش فانکشن</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>DOM</h3>
+        <a href="dom.html" class="side-link">DOM</a>
+        <a href="events.html" class="side-link">رویدادها</a>
+      </div>
+      <div class="sidebar-section">
+        <h3>پیشرفته</h3>
+        <a href="async.html" class="side-link">آسنکرون</a>
+        <a href="json.html" class="side-link">JSON</a>
+      </div>
+    </aside>
+    <section class="content">
+      <div class="card">
+
+    <h1>انواع داده</h1>
+    <div class="code-box"><code>let length = 16;          // Number
+let lastName = "Johnson"; // String
+let x = true;             // Boolean
+let y = null;             // Null
+let z;                    // Undefined
+let arr = [1, 2, 3];      // Array
+let obj = {a: 1};         // Object</code></div>
+  
+        <div class="nav-lessons"><a href="variables.html">← درس قبلی</a><a href="strings.html">درس بعدی →</a></div>
+      </div>
+    </section>
+  </main>
+  <footer>مدرسه برنامه‌نویسان خاص · آموزش JavaScript بر اساس ساختار W3Schools</footer>
+</body>
+</html>

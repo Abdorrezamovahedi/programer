@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدرسه برنامه‌نویسان — آموزش کامل</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Vazirmatn,system-ui,sans-serif;background:#0f1419;color:#e6edf3;line-height:1.95;font-size:15px}
+a{text-decoration:none;color:inherit}
+header{background:#0d1117;border-bottom:1px solid #21262d;padding:12px 16px;position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.logo{color:#58a6ff;font-weight:700;font-size:17px}
+.logo span{color:#8b949e;font-size:11px;margin-right:4px;font-weight:400}
+nav a{color:#8b949e;font-size:13px;padding:6px 12px;border-radius:6px}
+nav a.active,nav a:hover{color:#e6edf3;background:#161b22}
+.wrap{max-width:980px;margin:0 auto;padding:14px}
+.hero{text-align:center;padding:24px 10px}
+.hero h1{font-size:22px;margin-bottom:8px}
+.hero p{color:#8b949e;font-size:14px}
+.langs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin:16px 0 24px}
+.lang{background:#0d1117;border:1px solid #21262d;border-radius:12px;padding:18px 10px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+.lang:hover{border-color:#388bfd;background:#161b22}
+.lang .ic{font-size:30px;display:block;margin-bottom:6px}
+.lang b{font-size:15px;display:block}
+.lang small{color:#8b949e;font-size:12px}
+.layout{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:800px){.layout{grid-template-columns:250px 1fr}}
+.side{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:12px;max-height:80vh;overflow:auto}
+.side h3{font-size:12px;color:#58a6ff;margin:8px 0 6px;padding:0 6px}
+.side a{display:block;padding:6px 10px;border-radius:6px;font-size:12.5px;color:#c9d1d9;margin-bottom:2px}
+.side a.on,.side a:hover{background:#1f6feb22;color:#58a6ff}
+.card{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:22px 18px;overflow:hidden;max-width:100%}
+.card h2{font-size:20px;margin-bottom:16px;color:#e6edf3}
+.card h3{font-size:16px;color:#79b8ff;margin:22px 0 10px}
+.card p{color:#b1bac4;margin-bottom:12px;font-size:14.5px}
+.code{direction:ltr;text-align:left;background:#010409;border:1px solid #21262d;border-radius:8px;padding:14px 16px;overflow-x:auto !important;overflow-y:hidden;max-width:100% !important;width:100% !important;min-width:0;margin:14px 0;font-family:Consolas,"Courier New",monospace;color:#7ee787;font-size:13.5px;line-height:1.75;white-space:pre;word-wrap:normal;word-break:keep-all;display:block;box-sizing:border-box}
+.exp{background:#161b22;border-right:3px solid #58a6ff;padding:14px 16px;margin:12px 0;border-radius:0 8px 8px 0;color:#8b949e;font-size:14px;line-height:1.9}
+.note{background:#1f6feb15;border:1px solid #388bfd44;border-radius:8px;padding:12px 14px;margin:14px 0;color:#79b8ff;font-size:14px}
+.good{background:#3fb95015;border:1px solid #3fb95044;border-radius:8px;padding:12px 14px;margin:14px 0;color:#56d364;font-size:14px}
+.navbtn{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+.navbtn button{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:10px 16px;color:#58a6ff;font-size:13px;cursor:pointer;font-family:inherit}
+.navbtn button:hover{background:#1f6feb22}
+footer{text-align:center;padding:18px;color:#6e7681;font-size:12px;border-top:1px solid #21262d;margin-top:20px}
+@media(max-width:600px){
+  .hero h1{font-size:18px}
+  .card{padding:16px 12px}
+  .code{font-size:12.5px;padding:12px}
+  .side{max-height:40vh}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">مدرسه برنامه‌نویسان <span>آموزش مستقیم و کامل</span></div>
+<nav><a href="#" id="btnHome" class="active">خانه</a></nav>
+</header>
+<div class="wrap">
+<div id="homeBlock">
+<div class="hero">
+<h1>پایتون · HTML · CSS · JavaScript · PHP</h1>
+<p>هر درس دقیقاً این شکل است: چیست و کارایی · کاربرد واقعی · مثال · توضیح خط‌به‌خط</p>
+</div>
+<div class="langs" id="langGrid"></div>
+</div>
+<div id="lessonArea" style="display:none">
+<div class="layout">
+<aside class="side" id="sideMenu"></aside>
+<article class="card" id="lessonCard"></article>
+</div>
+</div>
+</div>
+<footer>توضیح مفید · مثال واقعی · بدون حاشیه · مناسب موبایل و کامپیوتر</footer>
+<script>
+const LANGS = [
+  {id:"python", name:"Python", fa:"پایتون", icon:"🐍"},
+  {id:"html", name:"HTML", fa:"اچ‌تی‌ام‌ال", icon:"📄"},
+  {id:"css", name:"CSS", fa:"سی‌اس‌اس", icon:"🎨"},
+  {id:"javascript", name:"JavaScript", fa:"جاوااسکریپت", icon:"⚡"},
+  {id:"php", name:"PHP", fa:"پی‌اچ‌پی", icon:"🐘"}
+];
+
+const LESSONS = {
+python: [
+{t:"خانه (HOME)",
+h:`<h2>خانه پایتون</h2>
+<p><strong>صفحه خانه چیست و چه کارایی‌هایی دارد؟</strong> نقطه شروع یادگیری پایتون در این مدرسه است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر دوره آموزشی یک صفحه شروع دارد تا کاربر بداند از کجا شروع کند.</p>
+<div class="code">print("به آموزش پایتون خوش آمدید")</div>
+<div class="exp">
+خط ۱: این فقط یک پیام خوش‌آمد ساده است.
+</div>`},
+
+{t:"مقدمه (Intro)",
+h:`<h2>مقدمه پایتون</h2>
+<p><strong>پایتون چیست و چه کارایی‌هایی دارد؟</strong> یک زبان برنامه‌نویسی ساده، خوانا و قدرتمند است که برای وب، داده، هوش مصنوعی، اتوماسیون و خیلی کارهای دیگر استفاده می‌شود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت سایت، تحلیل داده، یادگیری ماشین، اسکریپت‌های روزمره، ربات و تقریباً هر چیزی که فکرش را بکنی.</p>
+<div class="code">print("Hello, Python!")</div>
+<div class="exp">
+خط ۱: اولین برنامه تقریباً همه برنامه‌نویس‌ها همین است.
+</div>`},
+
+{t:"شروع کار (Get Started)",
+h:`<h2>شروع کار با پایتون</h2>
+<p><strong>چگونه شروع کنیم و چه کارایی‌هایی دارد؟</strong> پایتون را نصب کن، یک فایل با پسوند .py بساز و اجرا کن.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر پروژه‌ای با نصب و اجرای اولین کد شروع می‌شود.</p>
+<div class="code"># فایل myfirst.py
+print("اولین برنامه من")</div>
+<div class="exp">
+خط ۱: این فایل را ذخیره و با دستور python myfirst.py اجرا کن.
+</div>`},
+
+{t:"ساختار نوشتاری (Syntax)",
+h:`<h2>ساختار نوشتاری پایتون</h2>
+<p><strong>سینتکس چیست و چه کارایی‌هایی دارد؟</strong> قوانین نوشتن کد در پایتون. مهم‌ترین قانون تورفتگی (فاصله اول خط) است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> بدون رعایت سینتکس کد اجرا نمی‌شود.</p>
+<div class="code">if 5 > 2:
+    print("پنج بزرگ‌تر است")
+# تورفتگی اجباری است</div>
+<div class="exp">
+خط ۱: خط دوم باید فاصله داشته باشد وگرنه خطا می‌دهد.
+</div>`},
+
+{t:"دستورات (Statements)",
+h:`<h2>دستورات</h2>
+<p><strong>دستور چیست و چه کارایی‌هایی دارد؟</strong> هر خط کدی که کاری انجام می‌دهد یک دستور است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تمام برنامه‌ها از دستورات ساخته شده‌اند.</p>
+<div class="code">x = 5
+print(x)
+x = x + 1
+print(x)</div>
+<div class="exp">
+خط ۱: هر خط یک دستور جدا است و از بالا به پایین اجرا می‌شود.
+</div>`},
+
+{t:"خروجی (Output)",
+h:`<h2>خروجی با print</h2>
+<p><strong>خروجی چیست و چه کارایی‌هایی دارد؟</strong> نشان دادن نتیجه کار برنامه روی صفحه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> دیدن نتیجه، دیباگ، پیام به کاربر.</p>
+<div class="code">print("سلام")
+print(10 + 5)
+print("سن:", 20, sep=" ")</div>
+<div class="exp">
+خط ۱: print هر چیزی را نشان می‌دهد. می‌توانی چند تا مقدار با هم بفرستی.
+</div>`},
+
+{t:"چاپ اعداد (Print Numbers)",
+h:`<h2>چاپ اعداد</h2>
+<p><strong>چاپ اعداد چیست و چه کارایی‌هایی دارد؟</strong> نمایش اعداد صحیح و اعشاری روی صفحه با دستور print.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نشان دادن نتیجه محاسبه، امتیاز بازی، قیمت، تعداد و هر عددی که کاربر باید ببیند.</p>
+<p>مثال:</p>
+<div class="code">print(42)
+print(3.14)
+print(10 + 20)
+print(2 ** 3)
+print(10 / 3)
+print(10 // 3)</div>
+<div class="exp">
+خط ۱: عدد صحیح ۴۲ را مستقیم چاپ می‌کند.<br>
+خط ۲: عدد اعشاری ۳.۱۴ را چاپ می‌کند.<br>
+خط ۳: اول جمع ۱۰ و ۲۰ را حساب می‌کند (۳۰) بعد نتیجه را چاپ می‌کند.<br>
+خط ۴: ۲ به توان ۳ را حساب می‌کند (۸) و چاپ می‌کند.<br>
+خط ۵: تقسیم معمولی ۱۰ بر ۳ را انجام می‌دهد و اعشار را نگه می‌دارد.<br>
+خط ۶: تقسیم صحیح انجام می‌دهد و فقط قسمت صحیح را چاپ می‌کند (۳).
+</div>`},
+
+{t:"توضیحات (Comments)",
+h:`<h2>توضیحات (کامنت)</h2>
+<p><strong>کامنت چیست و چه کارایی‌هایی دارد؟</strong> متنی که پایتون نادیده می‌گیرد و فقط برای انسان است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> توضیح دادن کد برای خودت یا دیگران.</p>
+<div class="code"># این یک کامنت تک‌خطی است
+print("سلام")  # کامنت کنار کد
+"""
+این
+کامنت
+چندخطی است
+"""</div>
+<div class="exp">
+خط ۱: # برای یک خط. سه نقل‌قول برای چند خط.
+</div>`},
+
+{t:"متغیرها (Variables)",
+h:`<h2>متغیرها</h2>
+<p><strong>متغیر چیست و چه کارایی‌هایی دارد؟</strong> جعبه‌ای با اسم است که یک مقدار داخلش می‌گذاری تا بعداً استفاده کنی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ذخیره نام کاربر، قیمت محصول، امتیاز بازی، هر داده‌ای که چند بار لازم داری.</p>
+<p>مثال:</p>
+<div class="code">name = "سارا"
+age = 18
+print(name)
+print(age)
+age = 19
+print(age)</div>
+<div class="exp">
+خط ۱: جعبه‌ای به اسم name می‌سازد و متن «سارا» را داخلش می‌گذارد.<br>
+خط ۲: جعبه‌ای به اسم age می‌سازد و عدد ۱۸ را داخلش می‌گذارد.<br>
+خط ۳: محتویات جعبه name را چاپ می‌کند (سارا).<br>
+خط ۴: محتویات جعبه age را چاپ می‌کند (۱۸).<br>
+خط ۵: مقدار داخل جعبه age را عوض می‌کند و ۱۹ می‌گذارد.<br>
+خط ۶: حالا محتویات جدید age را چاپ می‌کند (۱۹).
+</div>`},
+
+{t:"نام متغیرها (Variable Names)",
+h:`<h2>نام متغیرها</h2>
+<p><strong>قوانین نام‌گذاری چیست و چه کارایی‌هایی دارد؟</strong> اسم متغیر باید با حرف یا _ شروع شود و فاصله نداشته باشد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> خوانایی کد و جلوگیری از خطا.</p>
+<div class="code">my_name = "علی"
+total_price = 1500
+# 2name = "اشتباه"  # خطا
+# my-name = "اشتباه"  # خطا</div>
+<div class="exp">
+خط ۱: حروف کوچک و _ رایج‌ترین سبک در پایتون است (snake_case).
+</div>`},
+
+{t:"اختصاص چند مقدار",
+h:`<h2>اختصاص چند مقدار</h2>
+<p><strong>این قابلیت چیست و چه کارایی‌هایی دارد؟</strong> می‌توانی به چند متغیر در یک خط مقدار بدهی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کد کوتاه‌تر و خواناتر.</p>
+<div class="code">x, y, z = 1, 2, 3
+print(x, y, z)
+a = b = c = 0
+print(a, b, c)</div>
+<div class="exp">
+خط ۱: تعداد متغیر و مقدار باید برابر باشد. یا همه یک مقدار بگیرند.
+</div>`},
+
+{t:"نمایش متغیرها",
+h:`<h2>نمایش متغیرها</h2>
+<p><strong>چگونه متغیر را نمایش دهیم و چه کارایی‌هایی دارد؟</strong> با print و روش‌های مختلف فرمت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> پیام‌های کاربر و گزارش.</p>
+<div class="code">name = "علی"
+age = 20
+print("نام:", name)
+print(f"سن: {age}")
+print("نام: {} سن: {}".format(name, age))</div>
+<div class="exp">
+خط ۱: f-string بهترین و خواناترین روش است.
+</div>`},
+
+{t:"متغیرهای سراسری",
+h:`<h2>متغیرهای سراسری (Global)</h2>
+<p><strong>متغیر سراسری چیست و چه کارایی‌هایی دارد؟</strong> متغیری که بیرون تابع تعریف شده و همه جا در دسترس است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تنظیمات مشترک، شمارنده‌های کلی.</p>
+<div class="code">x = 10
+def show():
+    print(x)
+show()
+def change():
+    global x
+    x = 20
+change()
+print(x)</div>
+<div class="exp">
+خط ۱: برای تغییر متغیر سراسری داخل تابع باید global بنویسی.
+</div>`},
+
+{t:"انواع داده (Data Types)",
+h:`<h2>انواع داده</h2>
+<p><strong>نوع داده چیست و چه کارایی‌هایی دارد؟</strong> مشخص می‌کند مقدار عدد است یا متن یا لیست و چه کارهایی مجاز است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جلوگیری از خطا و دانستن قابلیت‌های هر مقدار.</p>
+<div class="code">print(type(10))
+print(type(3.14))
+print(type("سلام"))
+print(type(True))
+print(type([1,2]))
+print(type({"a":1}))</div>
+<div class="exp">
+خط ۱: type نوع را به تو نشان می‌دهد.
+</div>`},
+
+{t:"اعداد (Numbers)",
+h:`<h2>اعداد</h2>
+<p><strong>اعداد در پایتون چیست و چه کارایی‌هایی دارد؟</strong> int برای صحیح، float برای اعشار، complex برای مختلط.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> محاسبات مالی، علمی، امتیاز و شمارش.</p>
+<div class="code">x = 10
+y = 3.14
+z = 2 + 3j
+print(x + y)
+print(type(z))</div>
+<div class="exp">
+خط ۱: می‌توانی بین int و float جمع بزنی.
+</div>`},
+
+{t:"تبدیل نوع (Casting)",
+h:`<h2>تبدیل نوع داده</h2>
+<p><strong>Casting چیست و چه کارایی‌هایی دارد؟</strong> تغییر نوع یک مقدار به نوع دیگر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> وقتی ورودی کاربر متن است و می‌خواهی حساب کنی.</p>
+<div class="code">a = int("25")
+b = float("3.14")
+c = str(100)
+print(a + 5)
+print("شماره " + c)</div>
+<div class="exp">
+خط ۱: int، float و str رایج‌ترین تبدیل‌ها هستند.
+</div>`},
+
+{t:"رشته‌ها (Strings)",
+h:`<h2>رشته‌ها</h2>
+<p><strong>رشته چیست و چه کارایی‌هایی دارد؟</strong> هر متنی که بین گیومه " یا ' نوشته شود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نام کاربر، پیام‌ها، آدرس، عنوان، هر چیزی که متن باشد.</p>
+<p>مثال:</p>
+<div class="code">s = "پایتون"
+print(s)
+print(len(s))
+print(s[0])
+print(s[-1])
+print(s[0:3])</div>
+<div class="exp">
+خط ۱: متغیری به اسم s می‌سازد و متن «پایتون» را داخلش می‌گذارد.<br>
+خط ۲: کل متن را چاپ می‌کند → پایتون.<br>
+خط ۳: تعداد نویسه‌های متن را حساب و چاپ می‌کند → ۶.<br>
+خط ۴: اولین نویسه (ایندکس ۰) را چاپ می‌کند → پ.<br>
+خط ۵: آخرین نویسه (ایندکس -۱) را چاپ می‌کند → ن.<br>
+خط ۶: از ایندکس ۰ تا قبل از ۳ را برش می‌زند و چاپ می‌کند → پای.
+</div>`},
+
+{t:"برش رشته (Slicing)",
+h:`<h2>برش رشته</h2>
+<p><strong>برش رشته چیست و چه کارایی‌هایی دارد؟</strong> برداشتن بخشی از متن بدون تغییر اصل آن.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> گرفتن نام کوچک از نام کامل، جدا کردن پسوند فایل، برداشتن بخشی از پیام.</p>
+<p>مثال:</p>
+<div class="code">s = "HelloWorld"
+print(s[0:5])
+print(s[5:])
+print(s[:5])
+print(s[::-1])
+print(s[::2])</div>
+<div class="exp">
+خط ۱: متن HelloWorld را در s می‌گذارد.<br>
+خط ۲: از ایندکس ۰ تا قبل از ۵ را برمی‌دارد → Hello.<br>
+خط ۳: از ایندکس ۵ تا آخر را برمی‌دارد → World.<br>
+خط ۴: از اول تا قبل از ۵ را برمی‌دارد (همان Hello).<br>
+خط ۵: کل متن را از آخر به اول برعکس می‌کند → dlroWolleH.<br>
+خط ۶: از اول تا آخر با گام ۲ (یکی در میان) برمی‌دارد → Hlool.
+</div>`},
+
+{t:"تغییر رشته (Modify Strings)",
+h:`<h2>تغییر رشته</h2>
+<p><strong>متدهای تغییر چیست و چه کارایی‌هایی دارد؟</strong> upper، lower، strip، replace و غیره.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تمیز کردن ورودی کاربر، یکدست کردن متن.</p>
+<div class="code">s = "  Hello  "
+print(s.strip())
+print(s.upper())
+print(s.lower())
+print(s.replace("Hello", "Hi"))</div>
+<div class="exp">
+خط ۱: strip فاصله‌ها را برمی‌دارد. replace جایگزین می‌کند.
+</div>`},
+
+{t:"ترکیب رشته‌ها",
+h:`<h2>ترکیب رشته‌ها</h2>
+<p><strong>ترکیب چیست و چه کارایی‌هایی دارد؟</strong> چسباندن چند متن به هم.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت پیام کامل از قطعات.</p>
+<div class="code">a = "سلام"
+b = "دنیا"
+print(a + " " + b)
+print(f"{a} {b}")
+print(" ".join([a, b]))</div>
+<div class="exp">
+خط ۱: + یا f-string یا join.
+</div>`},
+
+{t:"قالب‌بندی رشته",
+h:`<h2>قالب‌بندی رشته</h2>
+<p><strong>قالب‌بندی چیست و چه کارایی‌هایی دارد؟</strong> قرار دادن متغیر وسط متن به شکل تمیز.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> گزارش‌ها و پیام‌های کاربر.</p>
+<div class="code">name = "علی"
+age = 20
+print(f"نام: {name}, سن: {age}")
+print("نام: {}, سن: {}".format(name, age))
+print("نام: %s, سن: %d" % (name, age))</div>
+<div class="exp">
+خط ۱: f-string مدرن‌ترین و خواناترین است.
+</div>`},
+
+{t:"کاراکتر فرار",
+h:`<h2>کاراکتر فرار (Escape)</h2>
+<p><strong>کاراکتر فرار چیست و چه کارایی‌هایی دارد؟</strong> برای نوشتن علامت‌های خاص داخل رشته.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نقل‌قول داخل متن، خط جدید، تب.</p>
+<div class="code">print("او گفت: \"سلام\"")
+print("خط اول\nخط دوم")
+print("ستون1\tستون2")</div>
+<div class="exp">
+خط ۱: \" نقل‌قول، \n خط جدید، \t تب.
+</div>`},
+
+{t:"متدهای رشته",
+h:`<h2>متدهای رشته</h2>
+<p><strong>متدهای رشته چه کارایی‌هایی دارند؟</strong> کارهای رایج روی متن: جستجو، شمارش، بررسی شروع و پایان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> اعتبارسنجی ورودی، جستجو در متن.</p>
+<div class="code">s = "Hello Python"
+print(s.find("Python"))
+print(s.count("o"))
+print(s.startswith("He"))
+print(s.endswith("on"))
+print(s.split())</div>
+<div class="exp">
+خط ۱: find موقعیت، count تعداد، startswith/endswith بررسی، split جدا کردن.
+</div>`},
+
+{t:"بولین‌ها (Booleans)",
+h:`<h2>بولین‌ها</h2>
+<p><strong>بولین چیست و چه کارایی‌هایی دارد؟</strong> فقط دو مقدار True یا False.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> شرط‌ها، چک کردن وضعیت.</p>
+<div class="code">print(10 > 5)
+print(10 == 5)
+x = True
+if x:
+    print("درست است")</div>
+<div class="exp">
+خط ۱: نتیجه مقایسه‌ها همیشه بولین است.
+</div>`},
+
+{t:"عملگرهای حسابی",
+h:`<h2>عملگرهای حسابی</h2>
+<p><strong>عملگرهای حسابی چه کارایی‌هایی دارند؟</strong> جمع، تفریق، ضرب، تقسیم و غیره.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر محاسبه‌ای.</p>
+<div class="code">print(10 + 3)
+print(10 - 3)
+print(10 * 3)
+print(10 / 3)
+print(10 // 3)
+print(10 % 3)
+print(10 ** 3)</div>
+<div class="exp">
+خط ۱: // تقسیم صحیح، % باقی‌مانده، ** توان.
+</div>`},
+
+{t:"عملگرهای انتسابی",
+h:`<h2>عملگرهای انتسابی</h2>
+<p><strong>عملگر انتساب چیست و چه کارایی‌هایی دارد؟</strong> مقدار دادن و همزمان محاسبه کردن.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کوتاه‌نویسی کد.</p>
+<div class="code">x = 10
+x += 5
+print(x)
+x *= 2
+print(x)</div>
+<div class="exp">
+خط ۱: x += 5 یعنی x = x + 5.
+</div>`},
+
+{t:"عملگرهای مقایسه‌ای",
+h:`<h2>عملگرهای مقایسه‌ای</h2>
+<p><strong>عملگر مقایسه چیست و چه کارایی‌هایی دارد؟</strong> مقایسه دو مقدار و برگرداندن True یا False.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> شرط if و حلقه‌ها.</p>
+<div class="code">print(5 == 5)
+print(5 != 3)
+print(5 > 3)
+print(5 < 3)
+print(5 >= 5)
+print(5 <= 4)</div>
+<div class="exp">
+خط ۱: == برابر، != نابرابر، > < >= <= بزرگ‌تر و کوچک‌تر.
+</div>`},
+
+{t:"عملگرهای منطقی",
+h:`<h2>عملگرهای منطقی</h2>
+<p><strong>عملگر منطقی چیست و چه کارایی‌هایی دارد؟</strong> ترکیب چند شرط.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> شرط‌های پیچیده.</p>
+<div class="code">print(True and False)
+print(True or False)
+print(not True)
+age = 20
+print(age > 18 and age < 60)</div>
+<div class="exp">
+خط ۱: and هر دو، or یکی، not برعکس.
+</div>`},
+
+{t:"لیست‌ها (Lists)",
+h:`<h2>لیست‌ها</h2>
+<p><strong>لیست چیست و چه کارایی‌هایی دارد؟</strong> جعبه‌ای که چند مقدار را پشت‌سرهم و مرتب نگه می‌دارد و می‌توانی بعداً کم و زیادشان کنی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سبد خرید، لیست نمرات، نام دوستان، نتایج جستجو.</p>
+<p>مثال:</p>
+<div class="code">nums = [10, 20, 30]
+print(nums[0])
+print(nums[-1])
+print(len(nums))
+nums[1] = 25
+print(nums)</div>
+<div class="exp">
+خط ۱: لیستی به اسم nums با سه عدد می‌سازد.<br>
+خط ۲: عضو شماره ۰ (اولین عضو) را چاپ می‌کند → ۱۰.<br>
+خط ۳: عضو شماره -۱ (آخرین عضو) را چاپ می‌کند → ۳۰.<br>
+خط ۴: تعداد اعضای لیست را چاپ می‌کند → ۳.<br>
+خط ۵: عضو شماره ۱ را از ۲۰ به ۲۵ تغییر می‌دهد.<br>
+خط ۶: کل لیست را بعد از تغییر چاپ می‌کند → [10, 25, 30].
+</div>`},
+
+{t:"دسترسی به آیتم‌های لیست",
+h:`<h2>دسترسی به آیتم‌های لیست</h2>
+<p><strong>دسترسی چیست و چه کارایی‌هایی دارد؟</strong> خواندن عضو با ایندکس یا برش.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> گرفتن اولین یا آخرین عضو، بخشی از لیست.</p>
+<div class="code">a = [10, 20, 30, 40, 50]
+print(a[1])
+print(a[1:4])
+print(a[:3])
+print(a[3:])</div>
+<div class="exp">
+خط ۱: [شروع:پایان] پایان شامل نمی‌شود.
+</div>`},
+
+{t:"تغییر آیتم‌های لیست",
+h:`<h2>تغییر آیتم‌های لیست</h2>
+<p><strong>تغییر چیست و چه کارایی‌هایی دارد؟</strong> عوض کردن مقدار یک یا چند عضو.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> به‌روزرسانی داده.</p>
+<div class="code">a = [10, 20, 30]
+a[1] = 25
+print(a)
+a[0:2] = [1, 2]
+print(a)</div>
+<div class="exp">
+خط ۱: با ایندکس مستقیم عوض کن. می‌توانی چند تا را با هم عوض کنی.
+</div>`},
+
+{t:"افزودن آیتم به لیست",
+h:`<h2>افزودن آیتم به لیست</h2>
+<p><strong>افزودن آیتم چیست و چه کارایی‌هایی دارد؟</strong> اضافه کردن عضو جدید به لیست موجود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> اضافه کردن کالا به سبد خرید، اضافه کردن کار به لیست کارها.</p>
+<p>مثال:</p>
+<div class="code">a = [10, 20]
+a.append(30)
+print(a)
+a.insert(1, 15)
+print(a)
+a.extend([40, 50])
+print(a)</div>
+<div class="exp">
+خط ۱: لیستی با دو عضو می‌سازد.<br>
+خط ۲: عدد ۳۰ را به انتهای لیست اضافه می‌کند.<br>
+خط ۳: لیست جدید را چاپ می‌کند → [10, 20, 30].<br>
+خط ۴: عدد ۱۵ را در موقعیت ۱ (بین ۱۰ و ۲۰) قرار می‌دهد.<br>
+خط ۵: لیست را چاپ می‌کند → [10, 15, 20, 30].<br>
+خط ۶: دو عدد ۴۰ و ۵۰ را به انتهای لیست اضافه می‌کند.<br>
+خط ۷: لیست نهایی را چاپ می‌کند → [10, 15, 20, 30, 40, 50].
+</div>`},
+
+{t:"حذف آیتم از لیست",
+h:`<h2>حذف آیتم از لیست</h2>
+<p><strong>حذف آیتم چیست و چه کارایی‌هایی دارد؟</strong> پاک کردن یک یا چند عضو از لیست.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> حذف کالا از سبد خرید، پاک کردن نمره اشتباه.</p>
+<p>مثال:</p>
+<div class="code">a = [10, 20, 30, 20]
+a.remove(20)
+print(a)
+last = a.pop()
+print(last)
+print(a)
+del a[0]
+print(a)
+a.clear()
+print(a)</div>
+<div class="exp">
+خط ۱: لیستی با چهار عضو می‌سازد (دو تا ۲۰ دارد).<br>
+خط ۲: اولین مقدار ۲۰ را پیدا و حذف می‌کند.<br>
+خط ۳: لیست را چاپ می‌کند → [10, 30, 20].<br>
+خط ۴: آخرین عضو را حذف می‌کند و مقدارش را در last می‌ریزد.<br>
+خط ۵: مقدار حذف‌شده را چاپ می‌کند → ۲۰.<br>
+خط ۶: لیست باقی‌مانده را چاپ می‌کند → [10, 30].<br>
+خط ۷: عضو شماره ۰ را کاملاً پاک می‌کند.<br>
+خط ۸: لیست را چاپ می‌کند → [30].<br>
+خط ۹: همه اعضای باقی‌مانده را پاک می‌کند.<br>
+خط ۱۰: لیست خالی را چاپ می‌کند → [].
+</div>`},
+
+{t:"حلقه روی لیست",
+h:`<h2>حلقه روی لیست</h2>
+<p><strong>حلقه روی لیست چیست و چه کارایی‌هایی دارد؟</strong> پیمایش همه اعضا یکی‌یکی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> چاپ همه نمرات، پردازش همه آیتم‌ها.</p>
+<div class="code">a = [10, 20, 30]
+for x in a:
+    print(x)
+for i in range(len(a)):
+    print(i, a[i])</div>
+<div class="exp">
+خط ۱: روش اول ساده‌تر است. روش دوم وقتی ایندکس هم لازم داری.
+</div>`},
+
+{t:"درک لیست (List Comprehension)",
+h:`<h2>درک لیست</h2>
+<p><strong>List Comprehension چیست و چه کارایی‌هایی دارد؟</strong> ساخت لیست جدید در یک خط.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تبدیل یا فیلتر سریع لیست.</p>
+<div class="code">print([x*x for x in range(5)])
+print([x for x in range(10) if x%2==0])</div>
+<div class="exp">
+خط ۱: [عبارت for متغیر in منبع if شرط]
+</div>`},
+
+{t:"مرتب‌سازی لیست",
+h:`<h2>مرتب‌سازی لیست</h2>
+<p><strong>مرتب‌سازی چیست و چه کارایی‌هایی دارد؟</strong> چیدن اعضا از کوچک به بزرگ یا برعکس.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> رتبه‌بندی، نمایش مرتب نتایج.</p>
+<div class="code">a = [3, 1, 4, 1, 5]
+a.sort()
+print(a)
+a.sort(reverse=True)
+print(a)
+print(sorted([5, 2, 8]))</div>
+<div class="exp">
+خط ۱: sort خود لیست را عوض می‌کند. sorted لیست جدید می‌دهد.
+</div>`},
+
+{t:"کپی لیست",
+h:`<h2>کپی لیست</h2>
+<p><strong>کپی چیست و چه کارایی‌هایی دارد؟</strong> ساخت نسخه مستقل از لیست.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> وقتی نمی‌خواهی تغییر یکی روی دیگری اثر بگذارد.</p>
+<div class="code">a = [1, 2, 3]
+b = a.copy()
+c = list(a)
+d = a[:]
+b[0] = 99
+print(a, b)</div>
+<div class="exp">
+خط ۱: اگر فقط b = a بنویسی هر دو به یک لیست اشاره می‌کنند.
+</div>`},
+
+{t:"ادغام لیست‌ها",
+h:`<h2>ادغام لیست‌ها</h2>
+<p><strong>ادغام چیست و چه کارایی‌هایی دارد؟</strong> چسباندن دو یا چند لیست به هم.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ترکیب نتایج از منابع مختلف.</p>
+<div class="code">a = [1, 2]
+b = [3, 4]
+print(a + b)
+a.extend(b)
+print(a)</div>
+<div class="exp">
+خط ۱: + لیست جدید می‌سازد. extend به خود لیست اضافه می‌کند.
+</div>`},
+
+{t:"متدهای لیست",
+h:`<h2>متدهای لیست</h2>
+<p><strong>متدهای لیست چه کارایی‌هایی دارند؟</strong> مجموعه‌ای از کارهای رایج روی لیست.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> مدیریت کامل لیست‌ها.</p>
+<div class="code">a = [3, 1, 4, 1]
+print(a.count(1))
+print(a.index(4))
+a.reverse()
+print(a)</div>
+<div class="exp">
+خط ۱: count تعداد، index موقعیت، reverse برعکس.
+</div>`},
+
+{t:"تاپل‌ها (Tuples)",
+h:`<h2>تاپل‌ها</h2>
+<p><strong>تاپل چیست و چه کارایی‌هایی دارد؟</strong> مثل لیست اما غیرقابل تغییر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> داده‌های ثابت، مختصات، کلید دیکشنری.</p>
+<div class="code">t = (10, 20, 30)
+print(t[0])
+print(len(t))</div>
+<div class="exp">
+خط ۱: با پرانتز ساخته می‌شود و بعد از ساخت عوض نمی‌شود.
+</div>`},
+
+{t:"باز کردن تاپل",
+h:`<h2>باز کردن تاپل (Unpack)</h2>
+<p><strong>Unpack چیست و چه کارایی‌هایی دارد؟</strong> دادن اعضای تاپل به چند متغیر جدا.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> خوانایی بهتر وقتی تعداد اعضا مشخص است.</p>
+<div class="code">t = (10, 20, 30)
+x, y, z = t
+print(x, y, z)</div>
+<div class="exp">
+خط ۱: تعداد متغیرها باید با تعداد اعضا برابر باشد.
+</div>`},
+
+{t:"مجموعه‌ها (Sets)",
+h:`<h2>مجموعه‌ها (Sets)</h2>
+<p><strong>set چیست و چه کارایی‌هایی دارد؟</strong> مجموعه‌ای بدون تکرار و بدون ترتیب.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> حذف تکراری‌ها، اشتراک و اجتماع.</p>
+<div class="code">s = {1, 2, 2, 3}
+print(s)
+s.add(4)
+print(1 in s)</div>
+<div class="exp">
+خط ۱: تکراری‌ها خودکار حذف می‌شوند.
+</div>`},
+
+{t:"دیکشنری‌ها",
+h:`<h2>دیکشنری‌ها</h2>
+<p><strong>دیکشنری چیست و چه کارایی‌هایی دارد؟</strong> جفت کلید-مقدار.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> اطلاعات کاربر، تنظیمات، داده JSON.</p>
+<div class="code">user = {"name": "مینا", "age": 22}
+print(user["name"])
+print(user.get("city", "نامشخص"))
+user["city"] = "تهران"</div>
+<div class="exp">
+خط ۱: با کلید می‌خوانی و می‌نویسی. get امن‌تر است.
+</div>`},
+
+{t:"if / elif / else",
+h:`<h2>شرط if / elif / else</h2>
+<p><strong>شرط چیست و چه کارایی‌هایی دارد؟</strong> ابزار تصمیم‌گیری: اگر شرطی درست بود یک کار انجام بده، وگرنه کار دیگر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> چک کردن نمره قبولی، سن ورود، موجودی انبار، درست بودن رمز.</p>
+<p>مثال:</p>
+<div class="code">score = 14
+if score >= 10:
+    print("قبول")
+elif score >= 7:
+    print("مشروط")
+else:
+    print("مردود")</div>
+<div class="exp">
+خط ۱: متغیر score را با مقدار ۱۴ می‌سازد.<br>
+خط ۲: چک می‌کند آیا score بزرگ‌تر یا مساوی ۱۰ است.<br>
+خط ۳: چون ۱۴ >= ۱۰ درست است، «قبول» را چاپ می‌کند و بقیه را رد می‌کند.<br>
+خط ۴: این خط فقط وقتی اجرا می‌شود که شرط قبلی غلط باشد و score >= ۷ باشد.<br>
+خط ۵: اگر شرط خط ۴ هم درست باشد «مشروط» چاپ می‌شود.<br>
+خط ۶ و ۷: اگر هیچ‌کدام از شرط‌های بالا درست نباشد، «مردود» چاپ می‌شود.
+</div>`},
+
+{t:"حلقه while",
+h:`<h2>حلقه while</h2>
+<p><strong>while چیست و چه کارایی‌هایی دارد؟</strong> تکرار تا وقتی شرط درست است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> بازی حدس عدد، منتظر ورودی درست.</p>
+<div class="code">i = 0
+while i < 3:
+    print(i)
+    i += 1</div>
+<div class="exp">
+خط ۱: حتماً شرط را داخل حلقه تغییر بده وگرنه نامتناهی می‌شود.
+</div>`},
+
+{t:"حلقه for",
+h:`<h2>حلقه for</h2>
+<p><strong>for چیست و چه کارایی‌هایی دارد؟</strong> تکرار روی اعضای یک مجموعه یا range.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> پردازش لیست، تکرار تعداد مشخص.</p>
+<div class="code">for i in range(3):
+    print(i)
+for c in "سلام":
+    print(c)</div>
+<div class="exp">
+خط ۱: range(3) یعنی ۰ و ۱ و ۲.
+</div>`},
+
+{t:"توابع (Functions)",
+h:`<h2>توابع</h2>
+<p><strong>تابع چیست و چه کارایی‌هایی دارد؟</strong> یک تکه کد با اسم مشخص. یک‌بار می‌نویسی و هر جا لازم شد صدا می‌زنی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جلوگیری از کپی‌پیست کد، محاسبه تکراری، سازمان‌دهی برنامه.</p>
+<p>مثال:</p>
+<div class="code">def add(a, b):
+    return a + b
+
+print(add(3, 4))
+
+def greet(name="مهمان"):
+    print("سلام", name)
+
+greet()
+greet("سارا")</div>
+<div class="exp">
+خط ۱: تابعی به اسم add تعریف می‌کند که دو ورودی a و b می‌گیرد.<br>
+خط ۲: جمع a و b را حساب می‌کند و با return برمی‌گرداند.<br>
+خط ۴: تابع add را با اعداد ۳ و ۴ صدا می‌زند و نتیجه (۷) را چاپ می‌کند.<br>
+خط ۶: تابعی به اسم greet تعریف می‌کند. اگر name داده نشود، پیش‌فرض «مهمان» استفاده می‌شود.<br>
+خط ۷: پیام سلام را همراه با name چاپ می‌کند.<br>
+خط ۹: greet را بدون آرگومان صدا می‌زند → سلام مهمان.<br>
+خط ۱۰: greet را با «سارا» صدا می‌زند → سلام سارا.
+</div>`},
+
+{t:"*args و **kwargs",
+h:`<h2>*args و **kwargs</h2>
+<p><strong>این‌ها چیستند و چه کارایی‌هایی دارند؟</strong> گرفتن تعداد دلخواه آرگومان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> توابع انعطاف‌پذیر.</p>
+<div class="code">def total(*nums):
+    return sum(nums)
+print(total(1, 2, 3))
+def info(**data):
+    print(data)
+info(name="علی", age=20)</div>
+<div class="exp">
+خط ۱: *args تاپل، **kwargs دیکشنری می‌سازد.
+</div>`},
+
+{t:"لامبدا (Lambda)",
+h:`<h2>لامبدا</h2>
+<p><strong>لامبدا چیست و چه کارایی‌هایی دارد؟</strong> تابع یک‌خطی بدون اسم.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> توابع کوچک موقت، مرتب‌سازی سفارشی.</p>
+<div class="code">f = lambda x: x * 2
+print(f(5))
+print(sorted([3,1,2], key=lambda x: -x))</div>
+<div class="exp">
+خط ۱: بعد از lambda پارامتر و بعد : عبارت.
+</div>`},
+
+{t:"ماژول‌ها (Modules)",
+h:`<h2>ماژول‌ها</h2>
+<p><strong>ماژول چیست و چه کارایی‌هایی دارد؟</strong> فایل آماده که توابع مفید دارد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> استفاده از کدهای نوشته‌شده دیگران یا خودت.</p>
+<div class="code">import math
+print(math.sqrt(16))
+from random import randint
+print(randint(1, 6))</div>
+<div class="exp">
+خط ۱: import کل ماژول. from ... import فقط بخش خاص.
+</div>`},
+
+{t:"تاریخ‌ها (Dates)",
+h:`<h2>تاریخ و زمان</h2>
+<p><strong>کار با تاریخ چیست و چه کارایی‌هایی دارد؟</strong> گرفتن تاریخ امروز، فرمت کردن، محاسبه اختلاف.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> گزارش‌ها، مهلت‌ها، لاگ.</p>
+<div class="code">from datetime import date, datetime, timedelta
+print(date.today())
+print(datetime.now().strftime("%Y-%m-%d %H:%M"))
+print(date.today() + timedelta(days=7))</div>
+<div class="exp">
+خط ۱: strftime فرمت دلخواه. timedelta اختلاف روز.
+</div>`},
+
+{t:"JSON",
+h:`<h2>JSON</h2>
+<p><strong>JSON چیست و چه کارایی‌هایی دارد؟</strong> فرمت متنی برای تبادل داده.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> API، ذخیره تنظیمات، ارتباط با جاوااسکریپت.</p>
+<div class="code">import json
+data = {"name": "علی", "age": 20}
+s = json.dumps(data, ensure_ascii=False)
+print(s)
+print(json.loads(s))</div>
+<div class="exp">
+خط ۱: dumps به متن، loads به دیکشنری.
+</div>`},
+
+{t:"try...except",
+h:`<h2>مدیریت خطا</h2>
+<p><strong>try/except چیست و چه کارایی‌هایی دارد؟</strong> جلوگیری از کرش برنامه وقتی خطا رخ می‌دهد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ورودی کاربر، فایل، تقسیم بر صفر.</p>
+<div class="code">try:
+    n = int(input("عدد: "))
+    print(10 / n)
+except ValueError:
+    print("عدد معتبر نیست")
+except ZeroDivisionError:
+    print("تقسیم بر صفر")</div>
+<div class="exp">
+خط ۱: هر نوع خطا را جداگانه بگیر.
+</div>`},
+
+{t:"ورودی کاربر",
+h:`<h2>ورودی کاربر</h2>
+<p><strong>input چیست و چه کارایی‌هایی دارد؟</strong> گرفتن متن از کاربر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر برنامه‌ای که با انسان تعامل دارد.</p>
+<div class="code">name = input("اسمت؟ ")
+print("سلام", name)
+age = int(input("سنت؟ "))
+print(age + 1)</div>
+<div class="exp">
+خط ۱: input همیشه رشته برمی‌گرداند. برای عدد تبدیل کن.
+</div>`},
+
+{t:"شیءگرایی (OOP)",
+h:`<h2>شیءگرایی پایه</h2>
+<p><strong>OOP چیست و چه کارایی‌هایی دارد؟</strong> مدل کردن چیزهای واقعی با کلاس و شیء.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> برنامه‌های بزرگ و منظم.</p>
+<div class="code">class Person:
+    def __init__(self, name):
+        self.name = name
+    def hello(self):
+        print("سلام", self.name)
+p = Person("علی")
+p.hello()</div>
+<div class="exp">
+خط ۱: __init__ سازنده. self خود شیء.
+</div>`},
+
+{t:"وراثت",
+h:`<h2>وراثت</h2>
+<p><strong>وراثت چیست و چه کارایی‌هایی دارد؟</strong> کلاس جدید از کلاس قبلی ویژگی بگیرد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جلوگیری از تکرار کد در کلاس‌های مشابه.</p>
+<div class="code">class Animal:
+    def speak(self):
+        print("...")
+class Dog(Animal):
+    def speak(self):
+        print("هاپ")
+Dog().speak()</div>
+<div class="exp">
+خط ۱: کلاس فرزند می‌تواند متد را بازنویسی کند.
+</div>`},
+
+{t:"کار با فایل",
+h:`<h2>کار با فایل</h2>
+<p><strong>فایل چیست و چه کارایی‌هایی دارد؟</strong> خواندن و نوشتن داده روی دیسک.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ذخیره دائمی اطلاعات.</p>
+<div class="code">with open("note.txt", "w", encoding="utf-8") as f:
+    f.write("سلام\n")
+with open("note.txt", "r", encoding="utf-8") as f:
+    print(f.read())</div>
+<div class="exp">
+خط ۱: with فایل را خودکار می‌بندد. encoding برای فارسی.
+</div>`},
+
+{t:"خواندن فایل",
+h:`<h2>خواندن فایل</h2>
+<p><strong>خواندن فایل چیست و چه کارایی‌هایی دارد؟</strong> آوردن محتوای فایل به برنامه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> خواندن تنظیمات، لاگ، داده.</p>
+<div class="code">with open("note.txt", "r", encoding="utf-8") as f:
+    content = f.read()
+    print(content)
+with open("note.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.strip())</div>
+<div class="exp">
+خط ۱: read کل فایل. حلقه خط‌به‌خط برای فایل‌های بزرگ بهتر است.
+</div>`},
+
+{t:"نوشتن فایل",
+h:`<h2>نوشتن و ایجاد فایل</h2>
+<p><strong>نوشتن فایل چیست و چه کارایی‌هایی دارد؟</strong> ذخیره متن داخل فایل.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ذخیره گزارش، لاگ، خروجی برنامه.</p>
+<div class="code">with open("out.txt", "w", encoding="utf-8") as f:
+    f.write("خط یک\n")
+    f.write("خط دو\n")
+with open("out.txt", "a", encoding="utf-8") as f:
+    f.write("خط اضافه\n")</div>
+<div class="exp">
+خط ۱: w از صفر می‌نویسد. a به انتها اضافه می‌کند.
+</div>`}
+],
+
+html: [
+{t:"خانه (HOME)",
+h:`<h2>خانه (HOME)</h2>
+<p><strong>صفحه خانه چیست و چه کارایی‌هایی دارد؟</strong> نقطه شروع سایت آموزشی است. از اینجا زبان را انتخاب می‌کنی و وارد درس‌ها می‌شوی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر سایت آموزشی یا فروشگاهی یک صفحه اصلی دارد که کاربر را راهنمایی می‌کند.</p>
+<p>مثال:</p>
+<div class="code">&lt;!-- این صفحه اصلی سایت است --&gt;
+&lt;h1&gt;خوش آمدید&lt;/h1&gt;
+&lt;p&gt;یک زبان را انتخاب کنید.&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: عنوان اصلی و توضیح کوتاه کاربر را راهنمایی می‌کند.
+</div>`},
+
+{t:"مقدمه (Introduction)",
+h:`<h2>مقدمه HTML</h2>
+<p><strong>HTML چیست و چه کارایی‌هایی دارد؟</strong> زبان نشانه‌گذاری برای ساخت اسکلت و محتوای صفحات وب است. به مرورگر می‌گوید هر بخش چه معنایی دارد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر صفحه‌ای که در اینترنت می‌بینی از HTML ساخته شده.</p>
+<p>مثال:</p>
+<div class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;&lt;title&gt;صفحه من&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;سلام&lt;/h1&gt;&lt;/body&gt;
+&lt;/html&gt;</div>
+<div class="exp">
+خط ۱: DOCTYPE نوع سند را مشخص می‌کند. html ریشه است. head تنظیمات، body محتوا.
+</div>`},
+
+{t:"ویرایشگرها (Editors)",
+h:`<h2>ویرایشگرهای HTML</h2>
+<p><strong>ویرایشگر چیست و چه کارایی‌هایی دارد؟</strong> برنامه‌ای که با آن کد HTML را می‌نویسی و ذخیره می‌کنی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نوشتن و ویرایش هر صفحه وب. پیشنهاد: VS Code یا حتی Notepad ساده.</p>
+<p>مثال:</p>
+<div class="code">&lt;!-- فایل را با پسوند .html ذخیره کن --&gt;
+&lt;h1&gt;اولین صفحه&lt;/h1&gt;</div>
+<div class="exp">
+خط ۱: هر ویرایشگر متنی کار می‌کند. مهم این است که فایل را با پسوند html ذخیره کنی.
+</div>`},
+
+{t:"پایه‌ها (Basic)",
+h:`<h2>پایه‌های HTML</h2>
+<p><strong>پایه HTML چیست و چه کارایی‌هایی دارد؟</strong> حداقل ساختار لازم برای یک صفحه معتبر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نقطه شروع هر پروژه وب.</p>
+<p>مثال:</p>
+<div class="code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;عنوان&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  محتوا
+&lt;/body&gt;
+&lt;/html&gt;</div>
+<div class="exp">
+خط ۱: DOCTYPE، html، head، body چهار بخش اصلی هستند. charset برای فارسی مهم است.
+</div>`},
+
+{t:"المان‌ها (Elements)",
+h:`<h2>المان‌ها (Elements)</h2>
+<p><strong>المان چیست و چه کارایی‌هایی دارد؟</strong> هر تگ باز و بسته به همراه محتوای بین آن‌ها یک المان است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت تمام بخش‌های صفحه.</p>
+<p>مثال:</p>
+<div class="code">&lt;p&gt;این یک پاراگراف است.&lt;/p&gt;
+&lt;h1&gt;عنوان&lt;/h1&gt;
+&lt;br&gt;  &lt;!-- المان بدون محتوا --&gt;</div>
+<div class="exp">
+خط ۱: اکثر المان‌ها تگ باز و بسته دارند. بعضی مثل br خودبسته هستند.
+</div>`},
+
+{t:"ویژگی‌ها (Attributes)",
+h:`<h2>ویژگی‌ها (Attributes)</h2>
+<p><strong>ویژگی چیست و چه کارایی‌هایی دارد؟</strong> اطلاعات اضافی که داخل تگ باز نوشته می‌شود و رفتار المان را تغییر می‌دهد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> لینک دادن، تنظیم عرض تصویر، دادن کلاس و شناسه.</p>
+<p>مثال:</p>
+<div class="code">&lt;a href="https://example.com"&gt;لینک&lt;/a&gt;
+&lt;img src="pic.jpg" alt="توضیح" width="200"&gt;
+&lt;p class="note" id="intro"&gt;متن&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: href مقصد لینک، src مسیر تصویر، alt توضیح جایگزین، class و id برای استایل و اسکریپت.
+</div>`},
+
+{t:"سرفصل‌ها (Headings)",
+h:`<h2>سرفصل‌ها (Headings)</h2>
+<p><strong>سرفصل چیست و چه کارایی‌هایی دارد؟</strong> تگ‌های h1 تا h6 برای عنوان‌های صفحه با سطح اهمیت مختلف.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساختار خوانا، سئو و دسترسی‌پذیری.</p>
+<p>مثال:</p>
+<div class="code">&lt;h1&gt;عنوان اصلی&lt;/h1&gt;
+&lt;h2&gt;بخش&lt;/h2&gt;
+&lt;h3&gt;زیربخش&lt;/h3&gt;</div>
+<div class="exp">
+خط ۱: معمولاً یک h1 در صفحه کافی است. سطح‌ها را پرش نکن.
+</div>`},
+
+{t:"پاراگراف‌ها (Paragraphs)",
+h:`<h2>پاراگراف‌ها</h2>
+<p><strong>پاراگراف چیست و چه کارایی‌هایی دارد؟</strong> تگ p برای نوشتن بندهای متنی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر متن معمولی در صفحه.</p>
+<p>مثال:</p>
+<div class="code">&lt;p&gt;این یک پاراگراف است.&lt;/p&gt;
+&lt;p&gt;پاراگراف دوم.&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: مرورگر بین پاراگراف‌ها فاصله می‌گذارد.
+</div>`},
+
+{t:"استایل‌ها (Styles)",
+h:`<h2>استایل‌های درون‌خطی</h2>
+<p><strong>استایل درون‌خطی چیست و چه کارایی‌هایی دارد؟</strong> ویژگی style برای دادن ظاهر مستقیم به یک المان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تست سریع یا استایل‌های خیلی خاص. بهتر است بیشتر از CSS جدا استفاده کنی.</p>
+<p>مثال:</p>
+<div class="code">&lt;p style="color:red; font-size:18px;"&gt;متن قرمز&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: ویژگی‌های CSS را با ; از هم جدا کن.
+</div>`},
+
+{t:"قالب‌بندی متن (Formatting)",
+h:`<h2>قالب‌بندی متن</h2>
+<p><strong>قالب‌بندی چیست و چه کارایی‌هایی دارد؟</strong> تگ‌هایی برای پررنگ، مورب، زیرخط و غیره.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تأکید روی کلمات مهم.</p>
+<p>مثال:</p>
+<div class="code">&lt;b&gt;پررنگ&lt;/b&gt; &lt;strong&gt;مهم&lt;/strong&gt;
+&lt;i&gt;مورب&lt;/i&gt; &lt;em&gt;تأکید&lt;/em&gt;
+&lt;u&gt;زیرخط&lt;/u&gt; &lt;mark&gt;هایلایت&lt;/mark&gt;
+&lt;small&gt;کوچک&lt;/small&gt; &lt;del&gt;حذف‌شده&lt;/del&gt;</div>
+<div class="exp">
+خط ۱: strong و em معنایی‌تر از b و i هستند و برای دسترسی بهترند.
+</div>`},
+
+{t:"نقل قول‌ها (Quotations)",
+h:`<h2>نقل قول‌ها</h2>
+<p><strong>نقل قول چیست و چه کارایی‌هایی دارد؟</strong> تگ‌هایی برای نقل قول کوتاه و بلند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نقل قول از دیگران، نظرات.</p>
+<p>مثال:</p>
+<div class="code">&lt;blockquote&gt;نقل قول بلند&lt;/blockquote&gt;
+&lt;q&gt;نقل قول کوتاه&lt;/q&gt;
+&lt;cite&gt;منبع&lt;/cite&gt;</div>
+<div class="exp">
+خط ۱: blockquote معمولاً تورفتگی دارد. q داخل متن می‌آید.
+</div>`},
+
+{t:"توضیحات (Comments)",
+h:`<h2>توضیحات (Comments)</h2>
+<p><strong>کامنت چیست و چه کارایی‌هایی دارد؟</strong> متنی که مرورگر نادیده می‌گیرد و فقط برای برنامه‌نویس است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> یادداشت‌گذاری کد، غیرفعال کردن موقت بخشی از کد.</p>
+<p>مثال:</p>
+<div class="code">&lt;!-- این یک توضیح است --&gt;
+&lt;p&gt;این دیده می‌شود&lt;/p&gt;
+&lt;!-- &lt;p&gt;این دیده نمی‌شود&lt;/p&gt; --&gt;</div>
+<div class="exp">
+خط ۱: بین &lt;!-- و --&gt; نوشته می‌شود.
+</div>`},
+
+{t:"رنگ‌ها (Colors)",
+h:`<h2>رنگ‌ها در HTML</h2>
+<p><strong>رنگ چیست و چه کارایی‌هایی دارد؟</strong> می‌توانی با نام، RGB، HEX یا HSL رنگ بدهی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ظاهر متن، پس‌زمینه، دکمه‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;p style="color:red;"&gt;نام رنگ&lt;/p&gt;
+&lt;p style="color:#ff0000;"&gt;HEX&lt;/p&gt;
+&lt;p style="color:rgb(255,0,0);"&gt;RGB&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: نام‌های رایج مثل red، blue وجود دارد. HEX و RGB دقیق‌ترند.
+</div>`},
+
+{t:"مدل RGB",
+h:`<h2>مدل RGB</h2>
+<p><strong>RGB چیست و چه کارایی‌هایی دارد؟</strong> ترکیب قرمز، سبز و آبی با اعداد ۰ تا ۲۵۵.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تعریف دقیق رنگ‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;p style="color:rgb(255,0,0);"&gt;قرمز&lt;/p&gt;
+&lt;p style="color:rgba(0,0,0,0.5);"&gt;مشکی نیمه‌شفاف&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: rgba چهارمی شفافیت (۰ تا ۱) است.
+</div>`},
+
+{t:"مدل HEX",
+h:`<h2>مدل HEX</h2>
+<p><strong>HEX چیست و چه کارایی‌هایی دارد؟</strong> رنگ با کد شش‌رقمی هگزادسیمال.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> رایج‌ترین روش در CSS و طراحی وب.</p>
+<p>مثال:</p>
+<div class="code">&lt;p style="color:#ff0000;"&gt;قرمز&lt;/p&gt;
+&lt;p style="color:#00ff00;"&gt;سبز&lt;/p&gt;
+&lt;p style="color:#0000ff;"&gt;آبی&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: #rrggbb — هر دو رقم یک کانال رنگی است.
+</div>`},
+
+{t:"مدل HSL",
+h:`<h2>مدل HSL</h2>
+<p><strong>HSL چیست و چه کارایی‌هایی دارد؟</strong> رنگ بر اساس فام (Hue)، اشباع (Saturation) و روشنایی (Lightness).</p>
+<p><strong>کجا به درد می‌خورد؟</strong> وقتی می‌خواهی رنگ‌های هماهنگ بسازی.</p>
+<p>مثال:</p>
+<div class="code">&lt;p style="color:hsl(0,100%,50%);"&gt;قرمز&lt;/p&gt;
+&lt;p style="color:hsl(120,100%,50%);"&gt;سبز&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: Hue از ۰ تا ۳۶۰ درجه، Saturation و Lightness درصد.
+</div>`},
+
+{t:"استفاده از CSS",
+h:`<h2>استفاده از CSS در HTML</h2>
+<p><strong>CSS در HTML چیست و چه کارایی‌هایی دارد؟</strong> سه روش: درون‌خطی، داخلی و خارجی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> زیبا کردن صفحه به شکل منظم.</p>
+<p>مثال:</p>
+<div class="code">&lt;!-- داخلی --&gt;
+&lt;style&gt;p { color: blue; }&lt;/style&gt;
+&lt;!-- خارجی --&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</div>
+<div class="exp">
+خط ۱: روش خارجی بهترین است چون کد را جدا نگه می‌دارد.
+</div>`},
+
+{t:"لینک‌ها (Links)",
+h:`<h2>لینک‌ها</h2>
+<p><strong>لینک چیست و چه کارایی‌هایی دارد؟</strong> تگ a برای رفتن به صفحه یا بخش دیگر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> منو، دکمه‌های ناوبری، لینک به منابع خارجی.</p>
+<p>مثال:</p>
+<div class="code">&lt;a href="https://example.com"&gt;سایت خارجی&lt;/a&gt;
+&lt;a href="page.html"&gt;صفحه داخلی&lt;/a&gt;
+&lt;a href="#section"&gt;بخش همین صفحه&lt;/a&gt;</div>
+<div class="exp">
+خط ۱: href مقصد است. # برای پرش به id داخل صفحه.
+</div>`},
+
+{t:"رنگ لینک‌ها",
+h:`<h2>رنگ لینک‌ها</h2>
+<p><strong>رنگ لینک چیست و چه کارایی‌هایی دارد؟</strong> لینک‌ها حالت‌های مختلف دارند: عادی، هاور، بازدیدشده.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> طراحی یکدست منوها.</p>
+<p>مثال:</p>
+<div class="code">&lt;style&gt;
+a { color: blue; }
+a:hover { color: red; }
+a:visited { color: purple; }
+&lt;/style&gt;</div>
+<div class="exp">
+خط ۱: :hover وقتی ماوس روی لینک است. :visited بعد از کلیک.
+</div>`},
+
+{t:"نشانه لینک (Bookmarks)",
+h:`<h2>نشانه‌های لینک (Bookmarks)</h2>
+<p><strong>Bookmark چیست و چه کارایی‌هایی دارد؟</strong> پرش به بخش خاصی از همان صفحه با استفاده از id.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> فهرست مطالب، دکمه‌های «برو بالا».</p>
+<p>مثال:</p>
+<div class="code">&lt;a href="#contact"&gt;تماس&lt;/a&gt;
+...
+&lt;h2 id="contact"&gt;تماس با ما&lt;/h2&gt;</div>
+<div class="exp">
+خط ۱: href با # و id هدف باید یکی باشد.
+</div>`},
+
+{t:"تصاویر (Images)",
+h:`<h2>تصاویر</h2>
+<p><strong>تصویر چیست و چه کارایی‌هایی دارد؟</strong> تگ img برای نمایش عکس.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> لوگو، محصول، گالری، بنر.</p>
+<p>مثال:</p>
+<div class="code">&lt;img src="photo.jpg" alt="توضیح عکس" width="300" height="200" loading="lazy"&gt;</div>
+<div class="exp">
+خط ۱: src مسیر فایل. alt ضروری است. loading="lazy" برای سرعت بهتر.
+</div>`},
+
+{t:"نقشه تصویر (Image Map)",
+h:`<h2>نقشه تصویر</h2>
+<p><strong>Image Map چیست و چه کارایی‌هایی دارد؟</strong> تعریف مناطق کلیک‌پذیر روی یک تصویر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نقشه‌های تعاملی، منوهای تصویری.</p>
+<p>مثال:</p>
+<div class="code">&lt;img src="map.jpg" usemap="#map1"&gt;
+&lt;map name="map1"&gt;
+  &lt;area shape="rect" coords="0,0,100,100" href="page1.html"&gt;
+&lt;/map&gt;</div>
+<div class="exp">
+خط ۱: usemap به map وصل می‌شود. area مناطق را تعریف می‌کند.
+</div>`},
+
+{t:"تصویر پس‌زمینه",
+h:`<h2>تصویر پس‌زمینه</h2>
+<p><strong>پس‌زمینه تصویری چیست و چه کارایی‌هایی دارد؟</strong> قرار دادن عکس پشت محتوا با CSS.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هدرهای زیبا، بخش‌های برجسته صفحه.</p>
+<p>مثال:</p>
+<div class="code">&lt;div style="background-image:url(bg.jpg); background-size:cover;"&gt;
+  محتوا
+&lt;/div&gt;</div>
+<div class="exp">
+خط ۱: background-size:cover تصویر را کامل پوشش می‌دهد.
+</div>`},
+
+{t:"المان Picture",
+h:`<h2>المان picture</h2>
+<p><strong>picture چیست و چه کارایی‌هایی دارد؟</strong> انتخاب تصویر مناسب بر اساس اندازه صفحه یا فرمت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سایت‌های ریسپانسیو و بهینه‌سازی سرعت.</p>
+<p>مثال:</p>
+<div class="code">&lt;picture&gt;
+  &lt;source media="(min-width:800px)" srcset="large.jpg"&gt;
+  &lt;img src="small.jpg" alt="توضیح"&gt;
+&lt;/picture&gt;</div>
+<div class="exp">
+خط ۱: source شرایط را مشخص می‌کند. img به‌عنوان جایگزین نهایی است.
+</div>`},
+
+{t:"فاوآیکون (Favicon)",
+h:`<h2>فاوآیکون</h2>
+<p><strong>Favicon چیست و چه کارایی‌هایی دارد؟</strong> آیکون کوچک کنار عنوان تب مرورگر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هویت بصری سایت.</p>
+<p>مثال:</p>
+<div class="code">&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;</div>
+<div class="exp">
+خط ۱: در head قرار می‌گیرد.
+</div>`},
+
+{t:"عنوان صفحه (Page Title)",
+h:`<h2>عنوان صفحه</h2>
+<p><strong>title چیست و چه کارایی‌هایی دارد؟</strong> متنی که در تب مرورگر و نتایج جستجو نشان داده می‌شود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سئو و شناسایی صفحه.</p>
+<p>مثال:</p>
+<div class="code">&lt;head&gt;
+  &lt;title&gt;عنوان صفحه من&lt;/title&gt;
+&lt;/head&gt;</div>
+<div class="exp">
+خط ۱: فقط یک title در هر صفحه.
+</div>`},
+
+{t:"جداول (Tables)",
+h:`<h2>جداول</h2>
+<p><strong>جدول چیست و چه کارایی‌هایی دارد؟</strong> نمایش داده‌های ردیف و ستون.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> قیمت‌ها، نمرات، مقایسه ویژگی‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;سن&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;علی&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+<div class="exp">
+خط ۱: tr ردیف، th عنوان، td داده.
+</div>`},
+
+{t:"مرزهای جدول",
+h:`<h2>مرزهای جدول</h2>
+<p><strong>مرز جدول چیست و چه کارایی‌هایی دارد؟</strong> خط دور سلول‌ها و جدول.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> خوانایی بهتر جدول.</p>
+<p>مثال:</p>
+<div class="code">&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;td&gt;سلول&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- بهتر با CSS --&gt;
+&lt;style&gt;table, th, td { border: 1px solid #333; }&lt;/style&gt;</div>
+<div class="exp">
+خط ۱: ویژگی border قدیمی است. CSS کنترل بیشتری می‌دهد.
+</div>`},
+
+{t:"اندازه‌های جدول",
+h:`<h2>اندازه‌های جدول</h2>
+<p><strong>اندازه جدول چیست و چه کارایی‌هایی دارد؟</strong> تعیین عرض و ارتفاع جدول و سلول‌ها.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> چیدمان مرتب داده‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;table style="width:100%;"&gt;
+  &lt;tr&gt;&lt;td style="width:30%;"&gt;کم&lt;/td&gt;&lt;td&gt;بیشتر&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+<div class="exp">
+خط ۱: درصد برای ریسپانسیو بودن بهتر است.
+</div>`},
+
+{t:"سربرگ‌های جدول",
+h:`<h2>سربرگ‌های جدول</h2>
+<p><strong>سربرگ جدول چیست و چه کارایی‌هایی دارد؟</strong> استفاده از th و thead برای عنوان ستون‌ها.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جداول حرفه‌ای و دسترسی‌پذیر.</p>
+<p>مثال:</p>
+<div class="code">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;قیمت&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;کتاب&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</div>
+<div class="exp">
+خط ۱: thead و tbody ساختار را واضح‌تر می‌کنند.
+</div>`},
+
+{t:"فاصله جدول (Padding & Spacing)",
+h:`<h2>فاصله داخلی و بیرونی جدول</h2>
+<p><strong>این فاصله‌ها چیستند و چه کارایی‌هایی دارند؟</strong> cellpadding داخل سلول، cellspacing بین سلول‌ها (قدیمی). امروز با CSS انجام می‌شود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> خوانایی و زیبایی جدول.</p>
+<p>مثال:</p>
+<div class="code">&lt;style&gt;
+td { padding: 12px; }
+table { border-spacing: 0; border-collapse: collapse; }
+&lt;/style&gt;</div>
+<div class="exp">
+خط ۱: padding فاصله داخل. border-collapse مرزها را یکی می‌کند.
+</div>`},
+
+{t:"ادغام سلول‌ها",
+h:`<h2>ادغام سلول‌ها (Colspan & Rowspan)</h2>
+<p><strong>ادغام چیست و چه کارایی‌هایی دارد؟</strong> یکی کردن چند سلول افقی یا عمودی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جداول پیچیده با عنوان‌های مشترک.</p>
+<p>مثال:</p>
+<div class="code">&lt;td colspan="2"&gt;دو ستون&lt;/td&gt;
+&lt;td rowspan="2"&gt;دو ردیف&lt;/td&gt;</div>
+<div class="exp">
+خط ۱: colspan افقی، rowspan عمودی.
+</div>`},
+
+{t:"استایل‌دهی جدول",
+h:`<h2>استایل‌دهی جدول</h2>
+<p><strong>استایل جدول چیست و چه کارایی‌هایی دارد؟</strong> زیبا کردن جدول با CSS.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جداول حرفه‌ای در سایت‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;style&gt;
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid #444; padding: 10px; }
+th { background: #1f6feb; color: white; }
+tr:nth-child(even) { background: #161b22; }
+&lt;/style&gt;</div>
+<div class="exp">
+خط ۱: nth-child ردیف‌های زوج را متفاوت می‌کند.
+</div>`},
+
+{t:"گروه ستون‌ها (Colgroup)",
+h:`<h2>گروه ستون‌ها</h2>
+<p><strong>colgroup چیست و چه کارایی‌هایی دارد؟</strong> تعریف ویژگی برای گروهی از ستون‌ها.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> وقتی چند ستون استایل یکسان دارند.</p>
+<p>مثال:</p>
+<div class="code">&lt;table&gt;
+  &lt;colgroup&gt;
+    &lt;col span="2" style="background:#222;"&gt;
+  &lt;/colgroup&gt;
+  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+<div class="exp">
+خط ۱: span تعداد ستون‌هایی که تحت تأثیر قرار می‌گیرند.
+</div>`},
+
+{t:"فهرست‌ها (Lists)",
+h:`<h2>فهرست‌ها</h2>
+<p><strong>فهرست چیست و چه کارایی‌هایی دارد؟</strong> نمایش آیتم‌ها به صورت لیست.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> منو، مراحل، ویژگی‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;ul&gt;&lt;li&gt;آیتم&lt;/li&gt;&lt;/ul&gt;
+&lt;ol&gt;&lt;li&gt;قدم&lt;/li&gt;&lt;/ol&gt;</div>
+<div class="exp">
+خط ۱: ul بدون شماره، ol با شماره.
+</div>`},
+
+{t:"فهرست نامرتب",
+h:`<h2>فهرست نامرتب (ul)</h2>
+<p><strong>ul چیست و چه کارایی‌هایی دارد؟</strong> لیست با علامت گلوله.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ویژگی‌های محصول، منوهای ساده.</p>
+<p>مثال:</p>
+<div class="code">&lt;ul&gt;
+  &lt;li&gt;اول&lt;/li&gt;
+  &lt;li&gt;دوم&lt;/li&gt;
+&lt;/ul&gt;</div>
+<div class="exp">
+خط ۱: هر آیتم باید li باشد.
+</div>`},
+
+{t:"فهرست مرتب",
+h:`<h2>فهرست مرتب (ol)</h2>
+<p><strong>ol چیست و چه کارایی‌هایی دارد؟</strong> لیست شماره‌دار.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> مراحل کار، رتبه‌بندی.</p>
+<p>مثال:</p>
+<div class="code">&lt;ol&gt;
+  &lt;li&gt;قدم اول&lt;/li&gt;
+  &lt;li&gt;قدم دوم&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol type="A"&gt;&lt;li&gt;آیتم&lt;/li&gt;&lt;/ol&gt;</div>
+<div class="exp">
+خط ۱: type می‌تواند 1، A، a، I، i باشد.
+</div>`},
+
+{t:"سایر فهرست‌ها",
+h:`<h2>سایر فهرست‌ها</h2>
+<p><strong>فهرست تعریف چیست و چه کارایی‌هایی دارد؟</strong> dl برای اصطلاح و توضیح آن.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> واژه‌نامه، سوال و جواب.</p>
+<p>مثال:</p>
+<div class="code">&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;زبان نشانه‌گذاری&lt;/dd&gt;
+&lt;/dl&gt;</div>
+<div class="exp">
+خط ۱: dt عنوان، dd توضیح.
+</div>`},
+
+{t:"بلوک و درون‌خطی",
+h:`<h2>بلوک و درون‌خطی</h2>
+<p><strong>تفاوت چیست و چه کارایی‌هایی دارد؟</strong> المان‌های block تمام عرض را می‌گیرند و به خط بعد می‌روند. inline در همان خط می‌مانند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> چیدمان صحیح صفحه.</p>
+<p>مثال:</p>
+<div class="code">&lt;div&gt;بلوک&lt;/div&gt;&lt;div&gt;بلوک بعدی&lt;/div&gt;
+&lt;span&gt;درون‌خطی&lt;/span&gt; &lt;span&gt;کنار هم&lt;/span&gt;</div>
+<div class="exp">
+خط ۱: div بلوک، span درون‌خطی است.
+</div>`},
+
+{t:"المان div",
+h:`<h2>المان div</h2>
+<p><strong>div چیست و چه کارایی‌هایی دارد؟</strong> ظرف عمومی بدون معنی خاص برای گروه‌بندی محتوا.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت بخش‌ها، کارت‌ها، چیدمان با CSS.</p>
+<p>مثال:</p>
+<div class="code">&lt;div class="card"&gt;
+  &lt;h3&gt;عنوان&lt;/h3&gt;
+  &lt;p&gt;محتوا&lt;/p&gt;
+&lt;/div&gt;</div>
+<div class="exp">
+خط ۱: تقریباً همیشه با class یا id استفاده می‌شود.
+</div>`},
+
+{t:"کلاس‌ها (Classes)",
+h:`<h2>کلاس‌ها</h2>
+<p><strong>class چیست و چه کارایی‌هایی دارد؟</strong> نام‌گذاری گروهی عناصر برای استایل یا اسکریپت مشترک.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> استایل دادن به چندین عنصر مشابه.</p>
+<p>مثال:</p>
+<div class="code">&lt;p class="note"&gt;نکته&lt;/p&gt;
+&lt;p class="note important"&gt;نکته مهم&lt;/p&gt;</div>
+<div class="exp">
+خط ۱: یک عنصر می‌تواند چند class داشته باشد.
+</div>`},
+
+{t:"شناسه‌ها (Id)",
+h:`<h2>شناسه‌ها (Id)</h2>
+<p><strong>id چیست و چه کارایی‌هایی دارد؟</strong> نام یکتا برای یک عنصر خاص.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> پرش لینک، انتخاب با جاوااسکریپت، استایل خاص.</p>
+<p>مثال:</p>
+<div class="code">&lt;h2 id="about"&gt;درباره ما&lt;/h2&gt;
+&lt;a href="#about"&gt;برو به درباره&lt;/a&gt;</div>
+<div class="exp">
+خط ۱: id در صفحه باید یکتا باشد.
+</div>`},
+
+{t:"فریم‌ها (Iframes)",
+h:`<h2>iframe</h2>
+<p><strong>iframe چیست و چه کارایی‌هایی دارد؟</strong> نمایش صفحه دیگر داخل صفحه فعلی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ویدیو یوتیوب، نقشه گوگل، فرم‌های خارجی.</p>
+<p>مثال:</p>
+<div class="code">&lt;iframe src="https://example.com" width="600" height="400" title="مثال"&gt;&lt;/iframe&gt;</div>
+<div class="exp">
+خط ۱: title برای دسترسی‌پذیری مهم است.
+</div>`},
+
+{t:"جاوااسکریپت در HTML",
+h:`<h2>جاوااسکریپت در HTML</h2>
+<p><strong>چگونه JS اضافه می‌شود و چه کارایی‌هایی دارد؟</strong> با تگ script می‌توانی کد جاوااسکریپت بنویسی یا فایل خارجی بیاوری.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تعامل‌پذیری صفحه.</p>
+<p>مثال:</p>
+<div class="code">&lt;script&gt;
+  alert("سلام");
+&lt;/script&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;</div>
+<div class="exp">
+خط ۱: بهتر است script را آخر body بگذاری تا صفحه زودتر لود شود.
+</div>`},
+
+{t:"مسیر فایل‌ها",
+h:`<h2>مسیر فایل‌ها</h2>
+<p><strong>مسیر چیست و چه کارایی‌هایی دارد؟</strong> آدرس فایل تصویر، سی‌اس‌اس یا صفحه دیگر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> لینک دادن صحیح به منابع.</p>
+<p>مثال:</p>
+<div class="code">&lt;img src="images/pic.jpg"&gt;  &lt;!-- نسبی --&gt;
+&lt;img src="/images/pic.jpg"&gt; &lt;!-- از ریشه --&gt;
+&lt;img src="https://site.com/pic.jpg"&gt; &lt;!-- مطلق --&gt;</div>
+<div class="exp">
+خط ۱: مسیر نسبی از محل فایل فعلی حساب می‌شود.
+</div>`},
+
+{t:"بخش head",
+h:`<h2>بخش head</h2>
+<p><strong>head چیست و چه کارایی‌هایی دارد؟</strong> محل قرارگیری تنظیمات صفحه که دیده نمی‌شوند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> عنوان، فونت، استایل، متا تگ‌ها.</p>
+<p>مثال:</p>
+<div class="code">&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;عنوان&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</div>
+<div class="exp">
+خط ۱: charset و viewport تقریباً همیشه لازم‌اند.
+</div>`},
+
+{t:"چیدمان (Layout)",
+h:`<h2>چیدمان صفحه</h2>
+<p><strong>چیدمان چیست و چه کارایی‌هایی دارد؟</strong> ساختاربندی صفحه با header، nav، main، footer و غیره.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سایت‌های استاندارد و حرفه‌ای.</p>
+<p>مثال:</p>
+<div class="code">&lt;header&gt;...&lt;/header&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;</div>
+<div class="exp">
+خط ۱: این تگ‌ها معنایی هستند و به سئو و دسترسی کمک می‌کنند.
+</div>`},
+
+{t:"طراحی واکنش‌گرا",
+h:`<h2>طراحی واکنش‌گرا</h2>
+<p><strong>واکنش‌گرا چیست و چه کارایی‌هایی دارد؟</strong> صفحه روی موبایل و دسکتاپ خوب دیده شود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> همه سایت‌های امروزی.</p>
+<p>مثال:</p>
+<div class="code">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;style&gt;
+@media (max-width: 600px) {
+  .col { width: 100%; }
+}
+&lt;/style&gt;</div>
+<div class="exp">
+خط ۱: viewport ضروری است. media query ظاهر را بر اساس عرض عوض می‌کند.
+</div>`},
+
+{t:"کدهای رایانه‌ای",
+h:`<h2>نمایش کد</h2>
+<p><strong>تگ‌های کد چیستند و چه کارایی‌هایی دارند؟</strong> نمایش کد برنامه‌نویسی در صفحه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> آموزش‌ها، مستندات.</p>
+<p>مثال:</p>
+<div class="code">&lt;code&gt;print("سلام")&lt;/code&gt;
+&lt;pre&gt;کد
+چندخطی&lt;/pre&gt;
+&lt;kbd&gt;Ctrl&lt;/kbd&gt;</div>
+<div class="exp">
+خط ۱: code برای کد کوتاه، pre فاصله‌ها را حفظ می‌کند، kbd کلید صفحه کلید.
+</div>`},
+
+{t:"المان‌های معنایی",
+h:`<h2>المان‌های معنایی</h2>
+<p><strong>المان معنایی چیست و چه کارایی‌هایی دارد؟</strong> تگ‌هایی که معنی بخش را مشخص می‌کنند نه فقط ظاهر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سئو، دسترسی‌پذیری، کد تمیز.</p>
+<p>مثال:</p>
+<div class="code">&lt;article&gt;مطلب&lt;/article&gt;
+&lt;section&gt;بخش&lt;/section&gt;
+&lt;aside&gt;نوار کناری&lt;/aside&gt;
+&lt;nav&gt;منو&lt;/nav&gt;</div>
+<div class="exp">
+خط ۱: به‌جای div از این‌ها استفاده کن تا معنی واضح باشد.
+</div>`},
+
+{t:"فرم‌ها (Forms)",
+h:`<h2>فرم‌ها</h2>
+<p><strong>فرم چیست و چه کارایی‌هایی دارد؟</strong> ابزاری برای گرفتن اطلاعات از کاربر و ارسال به سرور.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ورود، ثبت‌نام، جستجو، تماس.</p>
+<p>مثال:</p>
+<div class="code">&lt;form action="/send" method="post"&gt;
+  &lt;label for="name"&gt;نام&lt;/label&gt;
+  &lt;input id="name" name="name" type="text" required&gt;
+  &lt;button type="submit"&gt;ارسال&lt;/button&gt;
+&lt;/form&gt;</div>
+<div class="exp">
+خط ۱: action مقصد، method روش ارسال، name برای داده، required اجباری.
+</div>`},
+
+{t:"ویژگی‌های فرم",
+h:`<h2>ویژگی‌های فرم</h2>
+<p><strong>ویژگی‌های فرم چه کارایی‌هایی دارند؟</strong> action، method، enctype و غیره رفتار فرم را کنترل می‌کنند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> فرم‌های واقعی که به سرور می‌فرستند.</p>
+<p>مثال:</p>
+<div class="code">&lt;form action="/upload" method="post" enctype="multipart/form-data"&gt;
+  &lt;input type="file" name="photo"&gt;
+&lt;/form&gt;</div>
+<div class="exp">
+خط ۱: enctype برای آپلود فایل لازم است.
+</div>`},
+
+{t:"المان‌های فرم",
+h:`<h2>المان‌های فرم</h2>
+<p><strong>المان‌های فرم چه کارایی‌هایی دارند؟</strong> input، textarea، select، button و غیره.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت فرم‌های کامل.</p>
+<p>مثال:</p>
+<div class="code">&lt;input type="text"&gt;
+&lt;textarea rows="4"&gt;&lt;/textarea&gt;
+&lt;select&gt;&lt;option&gt;گزینه&lt;/option&gt;&lt;/select&gt;
+&lt;button type="submit"&gt;ارسال&lt;/button&gt;</div>
+<div class="exp">
+خط ۱: هر کدام کاربرد خاص خود را دارد.
+</div>`},
+
+{t:"انواع ورودی (Input Types)",
+h:`<h2>انواع ورودی</h2>
+<p><strong>انواع input چه کارایی‌هایی دارند؟</strong> type مختلف رفتار و صفحه‌کلید مناسب فراهم می‌کند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> فرم‌های کاربرپسند و اعتبارسنجی اولیه.</p>
+<p>مثال:</p>
+<div class="code">&lt;input type="text"&gt;
+&lt;input type="email"&gt;
+&lt;input type="password"&gt;
+&lt;input type="number"&gt;
+&lt;input type="date"&gt;
+&lt;input type="checkbox"&gt;
+&lt;input type="radio" name="g"&gt;
+&lt;input type="file"&gt;
+&lt;input type="color"&gt;
+&lt;input type="range"&gt;</div>
+<div class="exp">
+خط ۱: email و number اعتبارسنجی داخلی دارند.
+</div>`},
+
+{t:"ویژگی‌های ورودی",
+h:`<h2>ویژگی‌های ورودی</h2>
+<p><strong>ویژگی‌های input چه کارایی‌هایی دارند؟</strong> placeholder، required، disabled، readonly، maxlength و غیره.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کنترل رفتار فیلدها.</p>
+<p>مثال:</p>
+<div class="code">&lt;input type="text" placeholder="نام خود را بنویسید" required maxlength="50"&gt;
+&lt;input type="text" disabled&gt;
+&lt;input type="text" readonly value="ثابت"&gt;</div>
+<div class="exp">
+خط ۱: placeholder راهنماست. required اجباری. disabled غیرفعال. readonly فقط خواندنی.
+</div>`},
+
+{t:"ویدیو (Video)",
+h:`<h2>ویدیو</h2>
+<p><strong>تگ video چیست و چه کارایی‌هایی دارد؟</strong> پخش ویدیو مستقیم در صفحه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> آموزش‌ها، معرفی محصول، پس‌زمینه.</p>
+<p>مثال:</p>
+<div class="code">&lt;video src="movie.mp4" controls width="400"&gt;
+  مرورگر شما ویدیو را پشتیبانی نمی‌کند.
+&lt;/video&gt;</div>
+<div class="exp">
+خط ۱: controls دکمه‌های پخش را نشان می‌دهد.
+</div>`},
+
+{t:"صدا (Audio)",
+h:`<h2>صدا</h2>
+<p><strong>تگ audio چیست و چه کارایی‌هایی دارد؟</strong> پخش فایل صوتی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> پادکست، موسیقی پس‌زمینه، تلفظ کلمات.</p>
+<p>مثال:</p>
+<div class="code">&lt;audio src="sound.mp3" controls&gt;
+  پشتیبانی نمی‌شود.
+&lt;/audio&gt;</div>
+<div class="exp">
+خط ۱: مشابه video ولی برای صدا.
+</div>`},
+
+{t:"یوتیوب",
+h:`<h2>جاسازی یوتیوب</h2>
+<p><strong>چگونه ویدیو یوتیوب قرار می‌دهیم؟</strong> با iframe از کد امبد یوتیوب.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نمایش ویدیو بدون آپلود روی سرور خودت.</p>
+<p>مثال:</p>
+<div class="code">&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube" allowfullscreen&gt;&lt;/iframe&gt;</div>
+<div class="exp">
+خط ۱: VIDEO_ID را از آدرس ویدیو بردار.
+</div>`},
+
+{t:"بوم نقاشی (Canvas)",
+h:`<h2>Canvas</h2>
+<p><strong>canvas چیست و چه کارایی‌هایی دارد؟</strong> محوطه‌ای برای رسم اشکال و انیمیشن با جاوااسکریپت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نمودارها، بازی‌های ساده، ویرایش تصویر.</p>
+<p>مثال:</p>
+<div class="code">&lt;canvas id="c" width="200" height="100"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+const ctx = document.getElementById("c").getContext("2d");
+ctx.fillStyle = "blue";
+ctx.fillRect(10, 10, 50, 50);
+&lt;/script&gt;</div>
+<div class="exp">
+خط ۱: با جاوااسکریپت روی آن رسم می‌کنی.
+</div>`},
+
+{t:"بردارهای گرافیکی (SVG)",
+h:`<h2>SVG</h2>
+<p><strong>SVG چیست و چه کارایی‌هایی دارد؟</strong> تصاویر برداری که با کد ساخته می‌شوند و کیفیت‌شان کم نمی‌شود.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> آیکون‌ها، لوگوها، نمودارهای مقیاس‌پذیر.</p>
+<p>مثال:</p>
+<div class="code">&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" fill="blue" /&gt;
+&lt;/svg&gt;</div>
+<div class="exp">
+خط ۱: با تگ‌های svg اشکال را تعریف می‌کنی.
+</div>`},
+
+{t:"ذخیره‌سازی وب (Web Storage)",
+h:`<h2>Web Storage</h2>
+<p><strong>Web Storage چیست و چه کارایی‌هایی دارد؟</strong> ذخیره داده در مرورگر کاربر (localStorage و sessionStorage).</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ذخیره تنظیمات، تم، پیش‌نویس فرم.</p>
+<p>مثال:</p>
+<div class="code">&lt;script&gt;
+localStorage.setItem("name", "علی");
+console.log(localStorage.getItem("name"));
+&lt;/script&gt;</div>
+<div class="exp">
+خط ۱: localStorage بعد از بستن مرورگر هم می‌ماند. sessionStorage فقط تا بسته شدن تب.
+</div>`},
+
+{t:"تگ‌های مهم دیگر",
+h:`<h2>چند تگ مهم دیگر</h2>
+<p><strong>این تگ‌ها چه کارایی‌هایی دارند؟</strong> مجموعه‌ای از تگ‌های پرکاربرد که باید بشناسی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت صفحات کامل و استاندارد.</p>
+<p>مثال:</p>
+<div class="code">&lt;header&gt;سرصفحه&lt;/header&gt;
+&lt;footer&gt;پاورقی&lt;/footer&gt;
+&lt;main&gt;محتوای اصلی&lt;/main&gt;
+&lt;nav&gt;منو&lt;/nav&gt;
+&lt;article&gt;مقاله&lt;/article&gt;
+&lt;section&gt;بخش&lt;/section&gt;
+&lt;aside&gt;کناری&lt;/aside&gt;
+&lt;figure&gt;&lt;img src="x.jpg" alt=""&gt;&lt;figcaption&gt;توضیح&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;time datetime="2026-01-01"&gt;۱ فروردین&lt;/time&gt;
+&lt;mark&gt;هایلایت&lt;/mark&gt;
+&lt;details&gt;&lt;summary&gt;بیشتر&lt;/summary&gt;متن&lt;/details&gt;</div>
+<div class="exp">
+خط ۱: هر کدام معنی مشخصی دارند و بهتر از div خالی هستند.
+</div>`}
+],
+
+css: [
+{t:"خانه (HOME)",
+h:`<h2>خانه CSS</h2>
+<p><strong>صفحه خانه چیست و چه کارایی‌هایی دارد؟</strong> نقطه شروع یادگیری CSS است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ورود به درس‌ها.</p>
+<div class="code">/* خوش آمدید به CSS */</div>
+<div class="exp">
+خط ۱: این یک کامنت است و هیچ اثری روی ظاهر صفحه ندارد.
+</div>`},
+
+{t:"معرفی (Introduction)",
+h:`<h2>معرفی CSS</h2>
+<p><strong>CSS چیست و چه کارایی‌هایی دارد؟</strong> زبانی برای کنترل ظاهر صفحات HTML (رنگ، فونت، فاصله، چیدمان).</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر سایتی که ظاهر مرتب دارد.</p>
+<div class="code">p {
+  color: blue;
+  font-size: 18px;
+}</div>
+<div class="exp">
+خط ۱: انتخاب‌گر p یعنی همه پاراگراف‌ها را هدف بگیر.<br>
+خط ۲: رنگ متن را آبی کن.<br>
+خط ۳: اندازه فونت را ۱۸ پیکسل کن.<br>
+خط ۴: آکولاد بسته شدن قوانین است.
+</div>`},
+
+{t:"نحو نگارش (Syntax)",
+h:`<h2>نحو نگارش CSS</h2>
+<p><strong>سینتکس چیست و چه کارایی‌هایی دارد؟</strong> قوانین نوشتن کد CSS.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> بدون آن استایل اعمال نمی‌شود.</p>
+<div class="code">h1 {
+  color: red;
+  text-align: center;
+}</div>
+<div class="exp">
+خط ۱: انتخاب‌گر h1 همه عنوان‌های اصلی را انتخاب می‌کند.<br>
+خط ۲: ویژگی color با مقدار red رنگ را قرمز می‌کند.<br>
+خط ۳: text-align با مقدار center متن را وسط‌چین می‌کند.<br>
+خط ۴: آکولاد بسته شدن بلوک است.
+</div>`},
+
+{t:"انتخاب‌گرها (Selectors)",
+h:`<h2>انتخاب‌گرها</h2>
+<p><strong>انتخاب‌گر چیست و چه کارایی‌هایی دارد؟</strong> مشخص می‌کند کدام عناصر استایل بگیرند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هدف‌گیری دقیق عناصر.</p>
+<div class="code">p { color: black; }
+.note { color: blue; }
+#main { color: green; }
+div p { color: gray; }
+* { box-sizing: border-box; }</div>
+<div class="exp">
+خط ۱: همه تگ‌های p را مشکی می‌کند.<br>
+خط ۲: همه عناصری که class="note" دارند را آبی می‌کند.<br>
+خط ۳: عنصری که id="main" دارد را سبز می‌کند.<br>
+خط ۴: همه pهایی که داخل div هستند را خاکستری می‌کند.<br>
+خط ۵: همه عناصر صفحه را با box-sizing تنظیم می‌کند.
+</div>`},
+
+{t:"نحوه استفاده (How To)",
+h:`<h2>نحوه استفاده از CSS</h2>
+<p><strong>سه روش استفاده چیست و چه کارایی‌هایی دارد؟</strong> درون‌خطی، داخلی و خارجی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سازمان‌دهی استایل‌ها.</p>
+<div class="code">&lt;p style="color:red;"&gt;درون‌خطی&lt;/p&gt;
+&lt;style&gt;
+  p { color: blue; }
+&lt;/style&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</div>
+<div class="exp">
+خط ۱: استایل را مستقیم روی تگ نوشته‌ایم (روش ضعیف).<br>
+خط ۲ تا ۴: استایل داخلی داخل تگ style.<br>
+خط ۵: فایل خارجی CSS را به صفحه وصل می‌کند (بهترین روش).
+</div>`},
+
+{t:"توضیحات (Comments)",
+h:`<h2>توضیحات در CSS</h2>
+<p><strong>کامنت چیست و چه کارایی‌هایی دارد؟</strong> متنی که مرورگر نادیده می‌گیرد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> توضیح دادن کد برای خودت یا دیگران.</p>
+<div class="code">/* این یک کامنت است */
+p {
+  color: red; /* کامنت کنار کد */
+}</div>
+<div class="exp">
+خط ۱: کامنت چندخطی یا تک‌خطی با /* */ نوشته می‌شود.<br>
+خط ۲: انتخاب‌گر p.<br>
+خط ۳: رنگ قرمز + یک کامنت در همان خط.<br>
+خط ۴: بسته شدن بلوک.
+</div>`},
+
+{t:"رنگ‌ها (Colors)",
+h:`<h2>رنگ‌ها</h2>
+<p><strong>رنگ چیست و چه کارایی‌هایی دارد؟</strong> تعیین رنگ متن، پس‌زمینه و حاشیه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ظاهر و خوانایی سایت.</p>
+<div class="code">h1 { color: red; }
+p { color: #00ff00; }
+span { color: rgb(0, 0, 255); }
+div { color: hsl(120, 100%, 50%); }</div>
+<div class="exp">
+خط ۱: با نام رنگ (red).<br>
+خط ۲: با کد HEX سبز.<br>
+خط ۳: با RGB آبی.<br>
+خط ۴: با HSL سبز روشن.
+</div>`},
+
+{t:"رنگ‌های RGB",
+h:`<h2>رنگ‌های RGB</h2>
+<p><strong>RGB چیست و چه کارایی‌هایی دارد؟</strong> ترکیب قرمز سبز آبی با اعداد ۰ تا ۲۵۵.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تعریف دقیق رنگ.</p>
+<div class="code">p { color: rgb(255, 0, 0); }
+div { background: rgba(0, 0, 0, 0.5); }</div>
+<div class="exp">
+خط ۱: قرمز کامل (۲۵۵ قرمز، ۰ سبز، ۰ آبی).<br>
+خط ۲: مشکی با ۵۰٪ شفافیت (عدد چهارم شفافیت است).
+</div>`},
+
+{t:"رنگ‌های HEX",
+h:`<h2>رنگ‌های HEX</h2>
+<p><strong>HEX چیست و چه کارایی‌هایی دارد؟</strong> رنگ با کد شش‌رقمی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> رایج‌ترین روش در وب.</p>
+<div class="code">h1 { color: #ff0000; }
+p { color: #0f0; }
+.box { background: #0000ff; }</div>
+<div class="exp">
+خط ۱: #ff0000 قرمز کامل.<br>
+خط ۲: #0f0 شکل کوتاه #00ff00 (سبز).<br>
+خط ۳: #0000ff آبی کامل.
+</div>`},
+
+{t:"رنگ‌های HSL",
+h:`<h2>رنگ‌های HSL</h2>
+<p><strong>HSL چیست و چه کارایی‌هایی دارد؟</strong> رنگ بر اساس فام، اشباع و روشنایی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ساخت رنگ‌های هماهنگ.</p>
+<div class="code">p { color: hsl(0, 100%, 50%); }
+div { background: hsla(240, 100%, 50%, 0.3); }</div>
+<div class="exp">
+خط ۱: فام ۰ (قرمز)، اشباع ۱۰۰٪، روشنایی ۵۰٪.<br>
+خط ۲: آبی با ۳۰٪ شفافیت.
+</div>`},
+
+{t:"پس‌زمینه (Backgrounds)",
+h:`<h2>پس‌زمینه</h2>
+<p><strong>پس‌زمینه چیست و چه کارایی‌هایی دارد؟</strong> رنگ یا تصویر پشت محتوا.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> طراحی بخش‌های صفحه.</p>
+<div class="code">body {
+  background-color: #0f1419;
+}
+.hero {
+  background-image: url(bg.jpg);
+  background-size: cover;
+  background-position: center;
+}</div>
+<div class="exp">
+خط ۲: رنگ پس‌زمینه کل صفحه را تیره می‌کند.<br>
+خط ۵: تصویر را به عنوان پس‌زمینه قرار می‌دهد.<br>
+خط ۶: تصویر را طوری تنظیم می‌کند که کل محوطه را بپوشاند.<br>
+خط ۷: تصویر را در مرکز قرار می‌دهد.
+</div>`},
+
+{t:"تصویر پس‌زمینه",
+h:`<h2>تصویر پس‌زمینه</h2>
+<p><strong>background-image چیست و چه کارایی‌هایی دارد؟</strong> قرار دادن عکس پشت المان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هدر، بنر، بخش‌های تزئینی.</p>
+<div class="code">.header {
+  background-image: url("header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}</div>
+<div class="exp">
+خط ۲: مسیر تصویر را مشخص می‌کند.<br>
+خط ۳: جلوی تکرار تصویر را می‌گیرد.<br>
+خط ۴: تصویر را کامل پوشش می‌دهد.
+</div>`},
+
+{t:"حاشیه‌ها (Borders)",
+h:`<h2>حاشیه‌ها</h2>
+<p><strong>حاشیه چیست و چه کارایی‌هایی دارد؟</strong> خط دور المان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جدا کردن بخش‌ها و دکمه‌ها.</p>
+<div class="code">.box {
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+.card {
+  border-top: 3px solid blue;
+  border-bottom: 1px dashed gray;
+}</div>
+<div class="exp">
+خط ۲: حاشیه ۲ پیکسلی توپر خاکستری دور کل المان.<br>
+خط ۳: گوشه‌ها را ۸ پیکسل گرد می‌کند.<br>
+خط ۶: فقط حاشیه بالا را ۳ پیکسل آبی می‌کند.<br>
+خط ۷: حاشیه پایین را ۱ پیکسل خط‌چین خاکستری می‌کند.
+</div>`},
+
+{t:"حاشیه داخلی (Padding)",
+h:`<h2>حاشیه داخلی (Padding)</h2>
+<p><strong>Padding چیست و چه کارایی‌هایی دارد؟</strong> فاصله بین محتوا و حاشیه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تنفس دادن به متن داخل دکمه و کارت.</p>
+<div class="code">.btn {
+  padding: 12px 24px;
+}
+.card {
+  padding: 20px;
+}
+.box {
+  padding-top: 10px;
+  padding-left: 15px;
+}</div>
+<div class="exp">
+خط ۲: بالا/پایین ۱۲ و چپ/راست ۲۴ پیکسل فاصله داخلی.<br>
+خط ۵: از همه طرف ۲۰ پیکسل فاصله.<br>
+خط ۸: فقط از بالا ۱۰ پیکسل.<br>
+خط ۹: فقط از چپ ۱۵ پیکسل.
+</div>`},
+
+{t:"مدل جعبه‌ای (Box Model)",
+h:`<h2>مدل جعبه‌ای</h2>
+<p><strong>Box Model چیست و چه کارایی‌هایی دارد؟</strong> ساختار هر المان: محتوا + padding + border + margin.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کنترل دقیق اندازه و فاصله.</p>
+<div class="code">.box {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+  margin: 10px;
+  box-sizing: border-box;
+}</div>
+<div class="exp">
+خط ۲: عرض محتوا ۲۰۰ پیکسل.<br>
+خط ۳: فاصله داخلی ۲۰ پیکسل از همه طرف.<br>
+خط ۴: حاشیه ۵ پیکسلی مشکی.<br>
+خط ۵: فاصله بیرونی ۱۰ پیکسل.<br>
+خط ۶: باعث می‌شود width شامل padding و border هم محاسبه شود.
+</div>`},
+
+{t:"متن (Text)",
+h:`<h2>متن</h2>
+<p><strong>ویژگی‌های متن چیست و چه کارایی‌هایی دارد؟</strong> کنترل ظاهر نوشته‌ها.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> خوانایی و زیبایی متن.</p>
+<div class="code">p {
+  color: #e6edf3;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.8;
+}</div>
+<div class="exp">
+خط ۲: رنگ متن را روشن می‌کند.<br>
+خط ۳: متن را وسط‌چین می‌کند.<br>
+خط ۴: زیر متن خط می‌کشد.<br>
+خط ۵: همه حروف را بزرگ می‌کند.<br>
+خط ۶: فاصله بین حروف را کمی زیاد می‌کند.<br>
+خط ۷: فاصله بین خطوط را ۱.۸ برابر می‌کند.
+</div>`},
+
+{t:"فونت‌ها (Fonts)",
+h:`<h2>فونت‌ها</h2>
+<p><strong>فونت چیست و چه کارایی‌هایی دارد؟</strong> تعیین نوع، اندازه و ضخامت نوشته.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هویت بصری و خوانایی.</p>
+<div class="code">body {
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.8;
+}</div>
+<div class="exp">
+خط ۲: اول Vazirmatn، اگر نبود Tahoma، در نهایت sans-serif.<br>
+خط ۳: اندازه پایه ۱۶ پیکسل.<br>
+خط ۴: ضخامت معمولی.<br>
+خط ۵: حالت عادی (نه مورب).<br>
+خط ۶: فاصله خطوط ۱.۸ برابر.
+</div>`},
+
+{t:"لینک‌ها (Links)",
+h:`<h2>استایل لینک‌ها</h2>
+<p><strong>استایل لینک چیست و چه کارایی‌هایی دارد؟</strong> ظاهر لینک در حالت‌های مختلف.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> منوها و لینک‌های متنی.</p>
+<div class="code">a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+a:hover {
+  color: #79b8ff;
+  text-decoration: underline;
+}
+a:visited {
+  color: #a371f7;
+}</div>
+<div class="exp">
+خط ۲: رنگ عادی لینک.<br>
+خط ۳: خط زیر را برمی‌دارد.<br>
+خط ۵: وقتی ماوس روی لینک است رنگ روشن‌تر می‌شود.<br>
+خط ۶: در حالت هاور خط زیر ظاهر می‌شود.<br>
+خط ۸: بعد از بازدید رنگ بنفش‌مانند می‌شود.
+</div>`},
+
+{t:"نمایش (Display)",
+h:`<h2>Display</h2>
+<p><strong>Display چیست و چه کارایی‌هایی دارد؟</strong> نحوه قرارگیری المان در صفحه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کنترل چیدمان.</p>
+<div class="code">.block { display: block; }
+.inline { display: inline; }
+.flex { display: flex; }
+.grid { display: grid; }
+.none { display: none; }</div>
+<div class="exp">
+خط ۱: المان تمام عرض را می‌گیرد و به خط بعد می‌رود.<br>
+خط ۲: المان در همان خط می‌ماند.<br>
+خط ۳: فرزندان را به صورت فلکس می‌چیند.<br>
+خط ۴: فرزندان را به صورت شبکه می‌چیند.<br>
+خط ۵: المان را کاملاً مخفی و از جریان صفحه خارج می‌کند.
+</div>`},
+
+{t:"موقعیت‌دهی (Position)",
+h:`<h2>Position</h2>
+<p><strong>Position چیست و چه کارایی‌هایی دارد؟</strong> تعیین جای المان نسبت به دیگران.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> منوی چسبان، پاپ‌آپ، لایه‌بندی.</p>
+<div class="code">.relative { position: relative; top: 10px; }
+.absolute { position: absolute; top: 0; left: 0; }
+.fixed { position: fixed; bottom: 20px; right: 20px; }
+.sticky { position: sticky; top: 0; }</div>
+<div class="exp">
+خط ۱: نسبت به جای اصلی خودش ۱۰ پیکسل پایین‌تر می‌آید.<br>
+خط ۲: نسبت به نزدیک‌ترین والد relative در گوشه بالا چپ قرار می‌گیرد.<br>
+خط ۳: نسبت به پنجره مرورگر ثابت می‌ماند (حتی با اسکرول).<br>
+خط ۴: تا وقتی اسکرول به آن نرسیده عادی است، بعد می‌چسبد.
+</div>`},
+
+{t:"فلکس‌باکس (Flexbox)",
+h:`<h2>فلکس‌باکس</h2>
+<p><strong>Flexbox چیست و چه کارایی‌هایی دارد؟</strong> چیدن عناصر در ردیف یا ستون با کنترل آسان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> منو، کارت‌ها، وسط‌چین کردن.</p>
+<div class="code">.row {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}</div>
+<div class="exp">
+خط ۲: فرزندان را به حالت فلکس درمی‌آورد.<br>
+خط ۳: فاصله ۱۶ پیکسل بین فرزندان ایجاد می‌کند.<br>
+خط ۴: در محور اصلی آن‌ها را با فاصله مساوی پخش می‌کند.<br>
+خط ۵: در محور عمود وسط‌چین می‌کند.<br>
+خط ۶: اگر جا نبود به خط بعد می‌روند.
+</div>`},
+
+{t:"شبکه (Grid)",
+h:`<h2>شبکه (Grid)</h2>
+<p><strong>Grid چیست و چه کارایی‌هایی دارد؟</strong> چیدمان دوبعدی ردیف و ستون.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> گالری، داشبورد، صفحه‌آرایی پیچیده.</p>
+<div class="code">.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-template-rows: auto;
+}</div>
+<div class="exp">
+خط ۲: حالت گرید را فعال می‌کند.<br>
+خط ۳: سه ستون مساوی می‌سازد.<br>
+خط ۴: فاصله ۲۰ پیکسل بین خانه‌ها.<br>
+خط ۵: ارتفاع ردیف‌ها را خودکار تنظیم می‌کند.
+</div>`},
+
+{t:"پرس‌وجوهای رسانه‌ای",
+h:`<h2>Media Queries</h2>
+<p><strong>Media Query چیست و چه کارایی‌هایی دارد؟</strong> اعمال استایل مختلف بر اساس عرض صفحه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سایت واکنش‌گرا.</p>
+<div class="code">.col { width: 100%; }
+@media (min-width: 768px) {
+  .col { width: 50%; }
+}
+@media (min-width: 1024px) {
+  .col { width: 33.33%; }
+}</div>
+<div class="exp">
+خط ۱: روی موبایل ستون تمام عرض باشد.<br>
+خط ۲: از عرض ۷۶۸ پیکسل به بالا این قوانین اجرا شود.<br>
+خط ۳: عرض را ۵۰٪ می‌کند (دو ستونه).<br>
+خط ۵: از عرض ۱۰۲۴ پیکسل به بالا.<br>
+خط ۶: عرض را حدود ۳۳٪ می‌کند (سه ستونه).
+</div>`},
+
+{t:"متغیرها (Variables)",
+h:`<h2>متغیرهای CSS</h2>
+<p><strong>متغیر CSS چیست و چه کارایی‌هایی دارد؟</strong> ذخیره مقدار در یک جا و استفاده همه‌جا.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تغییر تم و یکدست بودن رنگ‌ها.</p>
+<div class="code">:root {
+  --primary: #58a6ff;
+  --radius: 8px;
+  --gap: 16px;
+}
+.btn {
+  background: var(--primary);
+  border-radius: var(--radius);
+  margin: var(--gap);
+}</div>
+<div class="exp">
+خط ۲: متغیر رنگ اصلی را تعریف می‌کند.<br>
+خط ۳: متغیر شعاع گوشه را تعریف می‌کند.<br>
+خط ۴: متغیر فاصله را تعریف می‌کند.<br>
+خط ۷: از متغیر رنگ برای پس‌زمینه استفاده می‌کند.<br>
+خط ۸: از متغیر شعاع استفاده می‌کند.<br>
+خط ۹: از متغیر فاصله استفاده می‌کند.
+</div>`},
+
+{t:"انتقال‌ها (Transitions)",
+h:`<h2>انتقال‌ها</h2>
+<p><strong>Transition چیست و چه کارایی‌هایی دارد؟</strong> تغییر نرم بین دو حالت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هاور دکمه‌ها و انیمیشن‌های ساده.</p>
+<div class="code">button {
+  background: #238636;
+  transition: background 0.3s, transform 0.2s;
+}
+button:hover {
+  background: #2ea043;
+  transform: scale(1.05);
+}</div>
+<div class="exp">
+خط ۲: رنگ اولیه دکمه.<br>
+خط ۳: تغییر رنگ در ۰.۳ ثانیه و تغییر مقیاس در ۰.۲ ثانیه نرم انجام شود.<br>
+خط ۵: در حالت هاور رنگ روشن‌تر شود.<br>
+خط ۶: دکمه کمی بزرگ‌تر شود.
+</div>`},
+
+{t:"انیمیشن‌ها (Animations)",
+h:`<h2>انیمیشن‌ها</h2>
+<p><strong>Animation چیست و چه کارایی‌هایی دارد؟</strong> حرکت یا تغییر مداوم المان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> لودینگ و افکت‌های بصری.</p>
+<div class="code">@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.box {
+  animation: fadeIn 1s ease-in forwards;
+}</div>
+<div class="exp">
+خط ۱: یک انیمیشن به اسم fadeIn تعریف می‌کند.<br>
+خط ۲: از حالت کاملاً شفاف شروع می‌کند.<br>
+خط ۳: به حالت کاملاً可见 تمام می‌کند.<br>
+خط ۶: انیمیشن را به مدت ۱ ثانیه با شتاب ease-in اجرا می‌کند و در حالت نهایی نگه می‌دارد.
+</div>`},
+
+{t:"سایه جعبه (Box Shadow)",
+h:`<h2>سایه جعبه</h2>
+<p><strong>box-shadow چیست و چه کارایی‌هایی دارد؟</strong> ایجاد سایه دور المان.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> برجسته کردن کارت‌ها و دکمه‌ها.</p>
+<div class="code">.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.btn {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}</div>
+<div class="exp">
+خط ۲: سایه با جابجایی افقی ۰، عمودی ۴ پیکسل، تاری ۴۱۲ پیکسل و شفافیت ۳۰٪.<br>
+خط ۵: سایه‌ای ملایم‌تر برای دکمه.
+</div>`},
+
+{t:"اندازه جعبه (Box Sizing)",
+h:`<h2>Box Sizing</h2>
+<p><strong>box-sizing چیست و چه کارایی‌هایی دارد؟</strong> مشخص می‌کند width شامل padding و border باشد یا نه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> محاسبات اندازه راحت‌تر.</p>
+<div class="code">* {
+  box-sizing: border-box;
+}
+.box {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+}</div>
+<div class="exp">
+خط ۲: برای همه عناصر، width شامل padding و border هم حساب شود.<br>
+خط ۵: عرض نهایی ۲۰۰ پیکسل می‌ماند (حتی با padding و border).
+</div>`}
+],
+
+javascript: [
+{t:"خانه (HOME)",
+h:`<h2>خانه جاوااسکریپت</h2>
+<p><strong>صفحه خانه چیست و چه کارایی‌هایی دارد؟</strong> نقطه شروع یادگیری جاوااسکریپت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ورود به درس‌ها.</p>
+<div class="code">console.log("خوش آمدید");</div>
+<div class="exp">
+خط ۱: پیام را در کنسول مرورگر چاپ می‌کند.
+</div>`},
+
+{t:"معرفی (Introduction)",
+h:`<h2>معرفی جاوااسکریپت</h2>
+<p><strong>جاوااسکریپت چیست و چه کارایی‌هایی دارد؟</strong> زبان برنامه‌نویسی مرورگر برای اضافه کردن تعامل به صفحه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> دکمه‌ها، فرم‌ها، انیمیشن، ارتباط با سرور.</p>
+<div class="code">console.log("Hello JS");
+alert("سلام کاربر");</div>
+<div class="exp">
+خط ۱: متن را در کنسول (F12) نشان می‌دهد.<br>
+خط ۲: یک پنجره پیام به کاربر نشان می‌دهد.
+</div>`},
+
+{t:"کجا قرار دهیم",
+h:`<h2>کجا کد را بگذاریم</h2>
+<p><strong>محل قرارگیری چیست و چه کارایی‌هایی دارد؟</strong> داخل HTML یا فایل جدا.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> سازمان‌دهی و سرعت لود.</p>
+<div class="code">&lt;script&gt;
+  console.log("داخل صفحه");
+&lt;/script&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;</div>
+<div class="exp">
+خط ۱: تگ باز script.<br>
+خط ۲: کد را مستقیم می‌نویسد.<br>
+خط ۳: تگ بسته script.<br>
+خط ۴: فایل خارجی را لود می‌کند (روش بهتر).
+</div>`},
+
+{t:"خروجی (Output)",
+h:`<h2>خروجی</h2>
+<p><strong>خروجی چیست و چه کارایی‌هایی دارد؟</strong> نشان دادن نتیجه به کاربر یا برنامه‌نویس.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> دیباگ و تعامل.</p>
+<div class="code">console.log("کنسول");
+document.write("صفحه");
+alert("پیام");
+console.error("خطا");</div>
+<div class="exp">
+خط ۱: در کنسول مرورگر می‌نویسد.<br>
+خط ۲: مستقیم داخل صفحه می‌نویسد.<br>
+خط ۳: پنجره هشدار نشان می‌دهد.<br>
+خط ۴: پیام خطا را در کنسول قرمز نشان می‌دهد.
+</div>`},
+
+{t:"متغیرها (Variables)",
+h:`<h2>متغیرها</h2>
+<p><strong>متغیر چیست و چه کارایی‌هایی دارد؟</strong> جعبه‌ای برای نگه داشتن مقدار.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ذخیره داده موقت.</p>
+<div class="code">let x = 5;
+const name = "علی";
+var old = 10;
+x = 10;
+console.log(x, name);</div>
+<div class="exp">
+خط ۱: متغیر قابل تغییر x با مقدار ۵ می‌سازد.<br>
+خط ۲: ثابت name با مقدار «علی» می‌سازد.<br>
+خط ۳: روش قدیمی var (کمتر استفاده کن).<br>
+خط ۴: مقدار x را به ۱۰ تغییر می‌دهد.<br>
+خط ۵: هر دو مقدار را در کنسول چاپ می‌کند.
+</div>`},
+
+{t:"Let و Const",
+h:`<h2>Let و Const</h2>
+<p><strong>تفاوت let و const چیست و چه کارایی‌هایی دارد؟</strong> let قابل تغییر، const ثابت است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نوشتن کد امن‌تر.</p>
+<div class="code">let count = 0;
+count = 1;
+const PI = 3.14;
+// PI = 3;  // خطا می‌دهد
+console.log(count, PI);</div>
+<div class="exp">
+خط ۱: متغیر قابل تغییر می‌سازد.<br>
+خط ۲: مقدار آن را عوض می‌کند.<br>
+خط ۳: ثابت می‌سازد.<br>
+خط ۴: اگر این خط را از کامنت دربیاوری خطا می‌دهد.<br>
+خط ۵: هر دو را چاپ می‌کند.
+</div>`},
+
+{t:"انواع داده (Types)",
+h:`<h2>انواع داده</h2>
+<p><strong>نوع داده چیست و چه کارایی‌هایی دارد؟</strong> مشخص می‌کند مقدار چیست.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> دانستن رفتار هر مقدار.</p>
+<div class="code">console.log(typeof 10);
+console.log(typeof "سلام");
+console.log(typeof true);
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(typeof {});</div>
+<div class="exp">
+خط ۱: نوع عدد → number.<br>
+خط ۲: نوع متن → string.<br>
+خط ۳: نوع بولین → boolean.<br>
+خط ۴: نوع null → object (رفتار عجیب JS).<br>
+خط ۵: نوع undefined → undefined.<br>
+خط ۶: نوع شیء → object.
+</div>`},
+
+{t:"عملگرهای حسابی",
+h:`<h2>عملگرهای حسابی</h2>
+<p><strong>عملگر حسابی چیست و چه کارایی‌هایی دارد؟</strong> انجام محاسبه.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر محاسبه‌ای.</p>
+<div class="code">console.log(10 + 3);
+console.log(10 - 3);
+console.log(10 * 3);
+console.log(10 / 3);
+console.log(10 % 3);
+console.log(10 ** 3);</div>
+<div class="exp">
+خط ۱: جمع → ۱۳.<br>
+خط ۲: تفریق → ۷.<br>
+خط ۳: ضرب → ۳۰.<br>
+خط ۴: تقسیم → ۳.۳۳۳.<br>
+خط ۵: باقی‌مانده → ۱.<br>
+خط ۶: توان → ۱۰۰۰.
+</div>`},
+
+{t:"شرط if / else",
+h:`<h2>شرط if / else</h2>
+<p><strong>if چیست و چه کارایی‌هایی دارد؟</strong> اجرای کد فقط وقتی شرط درست باشد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تصمیم‌گیری.</p>
+<div class="code">let age = 20;
+if (age >= 18) {
+  console.log("مجاز");
+} else {
+  console.log("غیرمجاز");
+}</div>
+<div class="exp">
+خط ۱: متغیر age را با ۲۰ می‌سازد.<br>
+خط ۲: چک می‌کند آیا age >= ۱۸ است.<br>
+خط ۳: چون درست است «مجاز» را چاپ می‌کند.<br>
+خط ۴: بخش else.<br>
+خط ۵: فقط وقتی شرط غلط باشد اجرا می‌شود.
+</div>`},
+
+{t:"حلقه for",
+h:`<h2>حلقه for</h2>
+<p><strong>for چیست و چه کارایی‌هایی دارد؟</strong> تکرار کد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> پیمایش لیست و تکرار کار.</p>
+<div class="code">for (let i = 0; i < 3; i++) {
+  console.log(i);
+}
+const arr = [10, 20, 30];
+for (const n of arr) {
+  console.log(n);
+}</div>
+<div class="exp">
+خط ۱: از ۰ شروع کن، تا وقتی کمتر از ۳ است ادامه بده، هر دور یکی اضافه کن.<br>
+خط ۲: مقدار i را چاپ کن.<br>
+خط ۴: آرایه‌ای با سه عدد می‌سازد.<br>
+خط ۵: روی هر عضو آرایه حلقه می‌زند.<br>
+خط ۶: عضو فعلی را چاپ می‌کند.
+</div>`},
+
+{t:"توابع (Functions)",
+h:`<h2>توابع</h2>
+<p><strong>تابع چیست و چه کارایی‌هایی دارد؟</strong> تکه کد قابل فراخوانی.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> جلوگیری از تکرار کد.</p>
+<div class="code">function add(a, b) {
+  return a + b;
+}
+console.log(add(3, 4));
+const mul = (a, b) => a * b;
+console.log(mul(3, 4));</div>
+<div class="exp">
+خط ۱: تابع add را تعریف می‌کند.<br>
+خط ۲: جمع را برمی‌گرداند.<br>
+خط ۴: تابع را صدا می‌زند و نتیجه را چاپ می‌کند → ۷.<br>
+خط ۵: تابع فلش برای ضرب می‌سازد.<br>
+خط ۶: آن را صدا می‌زند → ۱۲.
+</div>`},
+
+{t:"آرایه‌ها (Arrays)",
+h:`<h2>آرایه‌ها</h2>
+<p><strong>آرایه چیست و چه کارایی‌هایی دارد؟</strong> لیستی مرتب از مقادیر.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نگهداری لیست آیتم‌ها.</p>
+<div class="code">const a = [10, 20, 30];
+console.log(a[0]);
+a.push(40);
+console.log(a.length);
+console.log(a.includes(20));
+console.log(a.indexOf(30));</div>
+<div class="exp">
+خط ۱: آرایه‌ای با سه عدد می‌سازد.<br>
+خط ۲: اولین عضو را چاپ می‌کند → ۱۰.<br>
+خط ۳: ۴۰ را به انتها اضافه می‌کند.<br>
+خط ۴: تعداد اعضا را چاپ می‌کند → ۴.<br>
+خط ۵: چک می‌کند آیا ۲۰ هست → true.<br>
+خط ۶: موقعیت عدد ۳۰ را برمی‌گرداند → ۲.
+</div>`},
+
+{t:"اشیا (Objects)",
+h:`<h2>اشیا</h2>
+<p><strong>شیء چیست و چه کارایی‌هایی دارد؟</strong> مجموعه‌ای از جفت کلید-مقدار.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> مدل کردن کاربر، محصول و غیره.</p>
+<div class="code">const user = {
+  name: "سارا",
+  age: 22
+};
+console.log(user.name);
+user.city = "تهران";
+console.log(user);</div>
+<div class="exp">
+خط ۱ تا ۴: شیئی با دو ویژگی می‌سازد.<br>
+خط ۵: مقدار name را چاپ می‌کند → سارا.<br>
+خط ۶: ویژگی city را اضافه می‌کند.<br>
+خط ۷: کل شیء را چاپ می‌کند.
+</div>`},
+
+{t:"DOM انتخاب",
+h:`<h2>انتخاب عنصر DOM</h2>
+<p><strong>انتخاب DOM چیست و چه کارایی‌هایی دارد؟</strong> پیدا کردن عناصر صفحه برای کار با آن‌ها.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> تغییر متن، استایل، رویداد.</p>
+<div class="code">const btn = document.querySelector("#ok");
+const all = document.querySelectorAll(".item");
+const byId = document.getElementById("ok");</div>
+<div class="exp">
+خط ۱: اولین عنصری که id آن ok است را پیدا می‌کند.<br>
+خط ۲: همه عناصری که class="item" دارند را به صورت لیست برمی‌گرداند.<br>
+خط ۳: عنصری که id آن ok است را پیدا می‌کند (روش قدیمی‌تر).
+</div>`},
+
+{t:"رویداد کلیک",
+h:`<h2>رویداد کلیک</h2>
+<p><strong>رویداد چیست و چه کارایی‌هایی دارد؟</strong> واکنش به کار کاربر مثل کلیک.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> دکمه‌ها و تعامل صفحه.</p>
+<div class="code">const btn = document.querySelector("#ok");
+btn.addEventListener("click", () => {
+  alert("کلیک شد");
+});</div>
+<div class="exp">
+خط ۱: دکمه را پیدا می‌کند.<br>
+خط ۲: روی رویداد click یک تابع قرار می‌دهد.<br>
+خط ۳: وقتی کلیک شد پیام نشان می‌دهد.
+</div>`},
+
+{t:"تغییر DOM",
+h:`<h2>تغییر متن و استایل</h2>
+<p><strong>تغییر DOM چیست و چه کارایی‌هایی دارد؟</strong> عوض کردن محتوای صفحه با جاوااسکریپت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> پیام موفقیت، تغییر تم.</p>
+<div class="code">const el = document.querySelector("#msg");
+el.textContent = "متن جدید";
+el.style.color = "green";
+el.classList.add("active");
+el.classList.toggle("hidden");</div>
+<div class="exp">
+خط ۱: عنصر را پیدا می‌کند.<br>
+خط ۲: متن داخل آن را عوض می‌کند.<br>
+خط ۳: رنگ متن را سبز می‌کند.<br>
+خط ۴: کلاس active را اضافه می‌کند.<br>
+خط ۵: اگر کلاس hidden باشد برمی‌دارد، اگر نباشد اضافه می‌کند.
+</div>`},
+
+{t:"localStorage",
+h:`<h2>localStorage</h2>
+<p><strong>localStorage چیست و چه کارایی‌هایی دارد؟</strong> ذخیره داده در مرورگر که بعد از بستن هم می‌ماند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> ذخیره تنظیمات کاربر.</p>
+<div class="code">localStorage.setItem("name", "علی");
+const n = localStorage.getItem("name");
+console.log(n);
+localStorage.removeItem("name");
+localStorage.clear();</div>
+<div class="exp">
+خط ۱: مقدار را با کلید name ذخیره می‌کند.<br>
+خط ۲: مقدار را می‌خواند.<br>
+خط ۳: آن را چاپ می‌کند.<br>
+خط ۴: فقط کلید name را پاک می‌کند.<br>
+خط ۵: همه چیز ذخیره‌شده را پاک می‌کند.
+</div>`},
+
+{t:"fetch",
+h:`<h2>fetch</h2>
+<p><strong>fetch چیست و چه کارایی‌هایی دارد؟</strong> ارسال درخواست به سرور.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> گرفتن داده از API.</p>
+<div class="code">fetch("https://api.example.com/data")
+  .then(r => r.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));</div>
+<div class="exp">
+خط ۱: درخواست را می‌فرستد.<br>
+خط ۲: پاسخ را به JSON تبدیل می‌کند.<br>
+خط ۳: داده نهایی را چاپ می‌کند.<br>
+خط ۴: اگر خطا رخ داد آن را چاپ می‌کند.
+</div>`},
+
+{t:"async/await",
+h:`<h2>async/await</h2>
+<p><strong>async/await چیست و چه کارایی‌هایی دارد؟</strong> نوشتن کد غیرهمزمان به شکل خوانا.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کار با API.</p>
+<div class="code">async function load() {
+  try {
+    const r = await fetch(url);
+    const data = await r.json();
+    console.log(data);
+  } catch (e) {
+    console.error(e);
+  }
+}</div>
+<div class="exp">
+خط ۱: تابع را async تعریف می‌کند.<br>
+خط ۳: منتظر می‌ماند تا fetch تمام شود.<br>
+خط ۴: منتظر می‌ماند تا JSON آماده شود.<br>
+خط ۵: داده را چاپ می‌کند.<br>
+خط ۶ و ۷: خطا را می‌گیرد و چاپ می‌کند.
+</div>`}
+],
+
+php: [
+{t:"echo و متغیر",
+h:`<h2>echo و متغیر</h2>
+<p><strong>PHP چیست و چه کارایی‌هایی دارد؟</strong> زبانی که روی سرور اجرا می‌شود و می‌تواند HTML تولید کند یا با دیتابیس حرف بزند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> صفحات پویا، فرم‌ها، ورود کاربر، هر چیزی که سمت سرور نیاز به منطق دارد.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+echo "سلام";
+$name = "علی";
+echo $name;
+echo "سلام " . $name;
+?&gt;</div>
+<div class="exp">
+خط 1: کد PHP بین &lt;?php و ?&gt; نوشته می‌شود.<br>
+خط 2: متغیر با $ شروع می‌شود.<br>
+خط 3: echo چاپ می‌کند. . برای چسباندن متن‌هاست.
+</div>`},
+
+{t:"آرایه",
+h:`<h2>آرایه</h2>
+<p><strong>آرایه در PHP چیست و چه کارایی‌هایی دارد؟</strong> لیستی از مقادیر. می‌تواند عددی یا انجمنی (با کلید متنی) باشد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> لیست محصولات، نتایج کوئری دیتابیس، داده‌های فرم.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+$a = [1, 2, 3];
+foreach ($a as $v) {
+  echo $v . " ";
+}
+
+$user = ["name" => "مینا", "age" => 22];
+echo $user["name"];
+?&gt;</div>
+<div class="exp">
+خط 1: foreach هر عضو را یکی‌یکی می‌آورد.<br>
+خط 2: آرایه انجمنی با => کلید و مقدار را جفت می‌کند.
+</div>`},
+
+{t:"شرط و حلقه",
+h:`<h2>شرط و حلقه</h2>
+<p><strong>این‌ها چیستند و چه کارایی‌هایی دارند؟</strong> if برای تصمیم‌گیری سمت سرور، for و while برای تکرار.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> چک کردن ورود کاربر، سطح دسترسی، اعتبارسنجی داده.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+$age = 20;
+if ($age >= 18) {
+  echo "مجاز";
+} else {
+  echo "غیرمجاز";
+}
+
+for ($i = 0; $i < 3; $i++) {
+  echo $i;
+}
+?&gt;</div>
+<div class="exp">
+خط ۱: سینتکس شبیه زبان‌های دیگر است. شرط داخل پرانتز و بدنه داخل آکولاد.
+</div>`},
+
+{t:"تابع",
+h:`<h2>تابع</h2>
+<p><strong>تابع چیست و چه کارایی‌هایی دارد؟</strong> تکه کد قابل فراخوانی برای جلوگیری از تکرار.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کارهای تکراری مثل اعتبارسنجی، فرمت کردن خروجی.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+function greet($name = "مهمان") {
+  return "سلام " . $name;
+}
+echo greet("سارا");
+?&gt;</div>
+<div class="exp">
+خط 1: تابع با function تعریف می‌شود و با return نتیجه برمی‌گرداند.<br>
+خط 2: مقدار پیش‌فرض وقتی آرگومان ندهی استفاده می‌شود.
+</div>`},
+
+{t:"فرم POST",
+h:`<h2>فرم POST و امنیت</h2>
+<p><strong>این چیست و چه کارایی‌هایی دارد؟</strong> گرفتن داده‌های فرم که با method=post ارسال شده و نمایش امن آن‌ها.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر فرمی که به سرور می‌فرستد: ورود، ثبت‌نام، تماس.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+$n = $_POST["name"] ?? "";
+echo htmlspecialchars($n);
+?&gt;</div>
+<div class="exp">
+خط 1: $_POST آرایه‌ای از داده‌های فرم است.<br>
+خط 2: ?? مقدار پیش‌فرض می‌دهد اگر کلید نباشد.<br>
+خط 3: htmlspecialchars جلوی تزریق HTML و اسکریپت را می‌گیرد (خیلی مهم برای امنیت).
+</div>`},
+
+{t:"Session",
+h:`<h2>Session</h2>
+<p><strong>Session چیست و چه کارایی‌هایی دارد؟</strong> ذخیره داده کاربر بین صفحات مختلف.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> نگه داشتن وضعیت ورود کاربر، سبد خرید.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+session_start();
+$_SESSION["user"] = "علی";
+echo $_SESSION["user"];
+?&gt;</div>
+<div class="exp">
+خط 1: قبل از هر خروجی session_start لازم است.<br>
+خط 2: داده‌ها در $_SESSION ذخیره می‌شوند.
+</div>`},
+
+{t:"کلاس",
+h:`<h2>کلاس در PHP</h2>
+<p><strong>کلاس چیست و چه کارایی‌هایی دارد؟</strong> قالب ساخت شیء مثل پایتون و جاوااسکریپت.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> مدل کردن موجودیت‌ها در برنامه‌های بزرگ‌تر.</p>
+<p>مثال کوچک:</p>
+<div class="code">&lt;?php
+class Person {
+  public $name;
+  public function __construct($name) {
+    $this->name = $name;
+  }
+  public function hello() {
+    echo "سلام " . $this->name;
+  }
+}
+$p = new Person("علی");
+$p->hello();
+?&gt;</div>
+<div class="exp">
+خط 1: new نمونه می‌سازد.<br>
+خط 2: $this داخل کلاس به خود شیء اشاره می‌کند.<br>
+خط 3: __construct سازنده است.
+</div>`}
+]
+};
+
+let currentLang = null, currentIdx = 0;
+const grid = document.getElementById("langGrid");
+LANGS.forEach(L => {
+  const d = document.createElement("div");
+  d.className = "lang";
+  d.innerHTML = `<span class="ic">${L.icon}</span><b>${L.name}</b><small>${L.fa} · ${LESSONS[L.id].length} درس</small>`;
+  d.onclick = () => openLang(L.id);
+  grid.appendChild(d);
+});
+document.getElementById("btnHome").onclick = e => {
+  e.preventDefault();
+  currentLang = null;
+  document.getElementById("homeBlock").style.display = "block";
+  document.getElementById("lessonArea").style.display = "none";
+  document.getElementById("btnHome").classList.add("active");
+};
+function openLang(id) {
+  currentLang = id;
+  currentIdx = 0;
+  document.getElementById("homeBlock").style.display = "none";
+  document.getElementById("lessonArea").style.display = "block";
+  document.getElementById("btnHome").classList.remove("active");
+  renderSide();
+  renderLesson();
+}
+function renderSide() {
+  const list = LESSONS[currentLang] || [];
+  const side = document.getElementById("sideMenu");
+  side.innerHTML = "<h3>درس‌ها (" + list.length + ")</h3>";
+  list.forEach((les, i) => {
+    const a = document.createElement("a");
+    a.href = "#";
+    a.textContent = (i + 1) + ". " + les.t;
+    if (i === currentIdx) a.className = "on";
+    a.onclick = e => { e.preventDefault(); currentIdx = i; renderSide(); renderLesson(); };
+    side.appendChild(a);
+  });
+}
+function renderLesson() {
+  const list = LESSONS[currentLang] || [];
+  const les = list[currentIdx];
+  const card = document.getElementById("lessonCard");
+  if (!les) { card.innerHTML = "<p>—</p>"; return; }
+  let nav = '<div class="navbtn">';
+  nav += currentIdx > 0 ? '<button type="button" id="prevBtn">← قبلی</button>' : '<span></span>';
+  nav += currentIdx < list.length - 1 ? '<button type="button" id="nextBtn">بعدی →</button>' : '';
+  nav += '</div>';
+  card.innerHTML = les.h + nav;
+  const p = document.getElementById("prevBtn"), n = document.getElementById("nextBtn");
+  if (p) p.onclick = () => { currentIdx--; renderSide(); renderLesson(); };
+  if (n) n.onclick = () => { currentIdx++; renderSide(); renderLesson(); };
+}
+</script>
+</body>
+</html>
