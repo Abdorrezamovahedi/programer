@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ادغام مجموعه ها (Join Sets) — پایتون | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="درس ادغام مجموعه ها (Join Sets) در پایتون با مثال و توضیح خط‌به‌خط.">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/python.css">
+<link rel="stylesheet" href="088-ادغام-مجموعه-ها-Join-Sets.css">
+</head>
+<body>
+<header>
+<div class="logo">مدرسه برنامه‌نویسان <span>پایتون</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../python.html">لیست درس‌ها</a>
+</nav>
+</header>
+<div class="wrap">
+<div class="layout">
+<aside class="side" id="sideMenu">
+<h3>جستجوی درس</h3>
+<input type="search" id="lessonSearch" class="search-box" placeholder="جستجو در درس‌ها..." autocomplete="off">
+<h3>درس‌ها (254)</h3>
+<a href="001-خانه-HOME.html" data-title="خانه (HOME)">1. خانه (HOME)</a>
+<a href="002-مقدمه-Intro.html" data-title="مقدمه (Intro)">2. مقدمه (Intro)</a>
+<a href="003-شروع-کار-Get-Started.html" data-title="شروع کار (Get Started)">3. شروع کار (Get Started)</a>
+<a href="004-ساختار-نوشتاری-Syntax.html" data-title="ساختار نوشتاری (Syntax)">4. ساختار نوشتاری (Syntax)</a>
+<a href="005-دستورات-Statements.html" data-title="دستورات (Statements)">5. دستورات (Statements)</a>
+<a href="006-خروجی-Output.html" data-title="خروجی (Output)">6. خروجی (Output)</a>
+<a href="007-چاپ-اعداد-Print-Numbers.html" data-title="چاپ اعداد (Print Numbers)">7. چاپ اعداد (Print Numbers)</a>
+<a href="008-توضیحات-Comments.html" data-title="توضیحات (Comments)">8. توضیحات (Comments)</a>
+<a href="009-متغیرها-Variables.html" data-title="متغیرها (Variables)">9. متغیرها (Variables)</a>
+<a href="010-آزمون-متغیرها.html" data-title="آزمون (متغیرها)">10. آزمون (متغیرها)</a>
+<a href="011-نام-متغیرها-Variable-Names.html" data-title="نام متغیرها (Variable Names)">11. نام متغیرها (Variable Names)</a>
+<a href="012-اختصاص-چند-مقدار-Assign-Multiple-Values.html" data-title="اختصاص چند مقدار (Assign Multiple Values)">12. اختصاص چند مقدار (Assign Multiple Values)</a>
+<a href="013-نمایش-متغیرها-Output-Variables.html" data-title="نمایش متغیرها (Output Variables)">13. نمایش متغیرها (Output Variables)</a>
+<a href="014-متغیرهای-سراسری-Global-Variables.html" data-title="متغیرهای سراسری (Global Variables)">14. متغیرهای سراسری (Global Variables)</a>
+<a href="015-تمرین-متغیرها-Variable-Exercises.html" data-title="تمرین متغیرها (Variable Exercises)">15. تمرین متغیرها (Variable Exercises)</a>
+<a href="016-نوع-داده-ها-Data-Types.html" data-title="نوع داده ها (Data Types)">16. نوع داده ها (Data Types)</a>
+<a href="017-اعداد-Numbers.html" data-title="اعداد (Numbers)">17. اعداد (Numbers)</a>
+<a href="018-تبدیل-نوع-داده-Casting.html" data-title="تبدیل نوع داده (Casting)">18. تبدیل نوع داده (Casting)</a>
+<a href="019-رشته-ها-Strings.html" data-title="رشته ها (Strings)">19. رشته ها (Strings)</a>
+<a href="020-آزمون-رشته-ها.html" data-title="آزمون (رشته ها)">20. آزمون (رشته ها)</a>
+<a href="021-برش-رشته-Slicing-Strings.html" data-title="برش رشته (Slicing Strings)">21. برش رشته (Slicing Strings)</a>
+<a href="022-آزمون-برش-رشته.html" data-title="آزمون (برش رشته)">22. آزمون (برش رشته)</a>
+<a href="023-تغییر-رشته-Modify-Strings.html" data-title="تغییر رشته (Modify Strings)">23. تغییر رشته (Modify Strings)</a>
+<a href="024-آزمون-تغییر-رشته.html" data-title="آزمون (تغییر رشته)">24. آزمون (تغییر رشته)</a>
+<a href="025-ترکیب-رشته-ها-Concatenate-Strings.html" data-title="ترکیب رشته ها (Concatenate Strings)">25. ترکیب رشته ها (Concatenate Strings)</a>
+<a href="026-آزمون-ترکیب-رشته-ها.html" data-title="آزمون (ترکیب رشته ها)">26. آزمون (ترکیب رشته ها)</a>
+<a href="027-قالب-بندی-رشته-ها-Format-Strings.html" data-title="قالب بندی رشته ها (Format Strings)">27. قالب بندی رشته ها (Format Strings)</a>
+<a href="028-آزمون-قالب-بندی-رشته-ها.html" data-title="آزمون (قالب بندی رشته ها)">28. آزمون (قالب بندی رشته ها)</a>
+<a href="029-کاراکتر-فرار-Escape-Characters.html" data-title="کاراکتر فرار (Escape Characters)">29. کاراکتر فرار (Escape Characters)</a>
+<a href="030-متدهای-رشته-String-Methods.html" data-title="متدهای رشته (String Methods)">30. متدهای رشته (String Methods)</a>
+<a href="031-تمرین-رشته-ها-String-Exercises.html" data-title="تمرین رشته ها (String Exercises)">31. تمرین رشته ها (String Exercises)</a>
+<a href="032-بولین-ها-Booleans.html" data-title="بولین ها (Booleans)">32. بولین ها (Booleans)</a>
+<a href="033-عملگرها-Operators.html" data-title="عملگرها (Operators)">33. عملگرها (Operators)</a>
+<a href="034-عملگرهای-حسابی-Arithmetic-Operators.html" data-title="عملگرهای حسابی (Arithmetic Operators)">34. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="035-عملگرهای-انتسابی-Assignment-Operators.html" data-title="عملگرهای انتسابی (Assignment Operators)">35. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="036-عملگرهای-مقایسه-ای-Comparison-Operators.html" data-title="عملگرهای مقایسه ای (Comparison Operators)">36. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="037-عملگرهای-منطقی-Logical-Operators.html" data-title="عملگرهای منطقی (Logical Operators)">37. عملگرهای منطقی (Logical Operators)</a>
+<a href="038-عملگرهای-هویتی-Identity-Operators.html" data-title="عملگرهای هویتی (Identity Operators)">38. عملگرهای هویتی (Identity Operators)</a>
+<a href="039-عملگرهای-عضویت-Membership-Operators.html" data-title="عملگرهای عضویت (Membership Operators)">39. عملگرهای عضویت (Membership Operators)</a>
+<a href="040-عملگرهای-بیتی-Bitwise-Operators.html" data-title="عملگرهای بیتی (Bitwise Operators)">40. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="041-اولویت-عملگرها-Operator-Precedence.html" data-title="اولویت عملگرها (Operator Precedence)">41. اولویت عملگرها (Operator Precedence)</a>
+<a href="042-لیست-ها-Lists.html" data-title="لیست ها (Lists)">42. لیست ها (Lists)</a>
+<a href="043-آزمون-لیست-ها.html" data-title="آزمون (لیست ها)">43. آزمون (لیست ها)</a>
+<a href="044-دسترسی-به-آیتم-ها-Access-List-Items.html" data-title="دسترسی به آیتم ها (Access List Items)">44. دسترسی به آیتم ها (Access List Items)</a>
+<a href="045-آزمون-دسترسی-به-آیتم-های-لیست.html" data-title="آزمون (دسترسی به آیتم های لیست)">45. آزمون (دسترسی به آیتم های لیست)</a>
+<a href="046-تغییر-آیتم-ها-Change-List-Items.html" data-title="تغییر آیتم ها (Change List Items)">46. تغییر آیتم ها (Change List Items)</a>
+<a href="047-آزمون-تغییر-آیتم-های-لیست.html" data-title="آزمون (تغییر آیتم های لیست)">47. آزمون (تغییر آیتم های لیست)</a>
+<a href="048-افزودن-آیتم-Add-List-Items.html" data-title="افزودن آیتم (Add List Items)">48. افزودن آیتم (Add List Items)</a>
+<a href="049-آزمون-افزودن-آیتم.html" data-title="آزمون (افزودن آیتم)">49. آزمون (افزودن آیتم)</a>
+<a href="050-حذف-آیتم-Remove-List-Items.html" data-title="حذف آیتم (Remove List Items)">50. حذف آیتم (Remove List Items)</a>
+<a href="051-آزمون-حذف-آیتم.html" data-title="آزمون (حذف آیتم)">51. آزمون (حذف آیتم)</a>
+<a href="052-حلقه-روی-لیست-Loop-Lists.html" data-title="حلقه روی لیست (Loop Lists)">52. حلقه روی لیست (Loop Lists)</a>
+<a href="053-آزمون-حلقه-روی-لیست.html" data-title="آزمون (حلقه روی لیست)">53. آزمون (حلقه روی لیست)</a>
+<a href="054-درک-لیست-List-Comprehension.html" data-title="درک لیست (List Comprehension)">54. درک لیست (List Comprehension)</a>
+<a href="055-آزمون-درک-لیست.html" data-title="آزمون (درک لیست)">55. آزمون (درک لیست)</a>
+<a href="056-مرتب-سازی-لیست-Sort-Lists.html" data-title="مرتب سازی لیست (Sort Lists)">56. مرتب سازی لیست (Sort Lists)</a>
+<a href="057-آزمون-مرتب-سازی-لیست.html" data-title="آزمون (مرتب سازی لیست)">57. آزمون (مرتب سازی لیست)</a>
+<a href="058-کپی-لیست-Copy-Lists.html" data-title="کپی لیست (Copy Lists)">58. کپی لیست (Copy Lists)</a>
+<a href="059-آزمون-کپی-لیست.html" data-title="آزمون (کپی لیست)">59. آزمون (کپی لیست)</a>
+<a href="060-ادغام-لیست-ها-Join-Lists.html" data-title="ادغام لیست ها (Join Lists)">60. ادغام لیست ها (Join Lists)</a>
+<a href="061-آزمون-ادغام-لیست-ها.html" data-title="آزمون (ادغام لیست ها)">61. آزمون (ادغام لیست ها)</a>
+<a href="062-متدهای-لیست-List-Methods.html" data-title="متدهای لیست (List Methods)">62. متدهای لیست (List Methods)</a>
+<a href="063-تمرین-لیست-ها-List-Exercises.html" data-title="تمرین لیست ها (List Exercises)">63. تمرین لیست ها (List Exercises)</a>
+<a href="064-تاپل-ها-Tuples.html" data-title="تاپل ها (Tuples)">64. تاپل ها (Tuples)</a>
+<a href="065-آزمون-تاپل-ها.html" data-title="آزمون (تاپل ها)">65. آزمون (تاپل ها)</a>
+<a href="066-دسترسی-به-تاپل-ها-Access-Tuples.html" data-title="دسترسی به تاپل ها (Access Tuples)">66. دسترسی به تاپل ها (Access Tuples)</a>
+<a href="067-آزمون-دسترسی-به-تاپل-ها.html" data-title="آزمون (دسترسی به تاپل ها)">67. آزمون (دسترسی به تاپل ها)</a>
+<a href="068-به-روزرسانی-تاپل-ها-Update-Tuples.html" data-title="به روزرسانی تاپل ها (Update Tuples)">68. به روزرسانی تاپل ها (Update Tuples)</a>
+<a href="069-آزمون-به-روزرسانی-تاپل-ها.html" data-title="آزمون (به روزرسانی تاپل ها)">69. آزمون (به روزرسانی تاپل ها)</a>
+<a href="070-باز-کردن-تاپل-ها-Unpack-Tuples.html" data-title="باز کردن تاپل ها (Unpack Tuples)">70. باز کردن تاپل ها (Unpack Tuples)</a>
+<a href="071-آزمون-باز-کردن-تاپل-ها.html" data-title="آزمون (باز کردن تاپل ها)">71. آزمون (باز کردن تاپل ها)</a>
+<a href="072-حلقه-تاپل-ها-Loop-Tuples.html" data-title="حلقه تاپل ها (Loop Tuples)">72. حلقه تاپل ها (Loop Tuples)</a>
+<a href="073-آزمون-حلقه-تاپل-ها.html" data-title="آزمون (حلقه تاپل ها)">73. آزمون (حلقه تاپل ها)</a>
+<a href="074-ادغام-تاپل-ها-Join-Tuples.html" data-title="ادغام تاپل ها (Join Tuples)">74. ادغام تاپل ها (Join Tuples)</a>
+<a href="075-آزمون-ادغام-تاپل-ها.html" data-title="آزمون (ادغام تاپل ها)">75. آزمون (ادغام تاپل ها)</a>
+<a href="076-متدهای-تاپل-Tuple-Methods.html" data-title="متدهای تاپل (Tuple Methods)">76. متدهای تاپل (Tuple Methods)</a>
+<a href="077-تمرین-تاپل-ها-Tuple-Exercises.html" data-title="تمرین تاپل ها (Tuple Exercises)">77. تمرین تاپل ها (Tuple Exercises)</a>
+<a href="078-مجموعه-ها-Sets.html" data-title="مجموعه ها (Sets)">78. مجموعه ها (Sets)</a>
+<a href="079-آزمون-مجموعه-ها.html" data-title="آزمون (مجموعه ها)">79. آزمون (مجموعه ها)</a>
+<a href="080-دسترسی-به-مجموعه-Access-Set-Items.html" data-title="دسترسی به مجموعه (Access Set Items)">80. دسترسی به مجموعه (Access Set Items)</a>
+<a href="081-آزمون-دسترسی-به-مجموعه.html" data-title="آزمون (دسترسی به مجموعه)">81. آزمون (دسترسی به مجموعه)</a>
+<a href="082-افزودن-به-مجموعه-Add-Set-Items.html" data-title="افزودن به مجموعه (Add Set Items)">82. افزودن به مجموعه (Add Set Items)</a>
+<a href="083-آزمون-افزودن-به-مجموعه.html" data-title="آزمون (افزودن به مجموعه)">83. آزمون (افزودن به مجموعه)</a>
+<a href="084-حذف-از-مجموعه-Remove-Set-Items.html" data-title="حذف از مجموعه (Remove Set Items)">84. حذف از مجموعه (Remove Set Items)</a>
+<a href="085-آزمون-حذف-از-مجموعه.html" data-title="آزمون (حذف از مجموعه)">85. آزمون (حذف از مجموعه)</a>
+<a href="086-حلقه-مجموعه-ها-Loop-Sets.html" data-title="حلقه مجموعه ها (Loop Sets)">86. حلقه مجموعه ها (Loop Sets)</a>
+<a href="087-آزمون-حلقه-مجموعه-ها.html" data-title="آزمون (حلقه مجموعه ها)">87. آزمون (حلقه مجموعه ها)</a>
+<a href="088-ادغام-مجموعه-ها-Join-Sets.html" class="on" data-title="ادغام مجموعه ها (Join Sets)">88. ادغام مجموعه ها (Join Sets)</a>
+<a href="089-آزمون-ادغام-مجموعه-ها.html" data-title="آزمون (ادغام مجموعه ها)">89. آزمون (ادغام مجموعه ها)</a>
+<a href="090-فروزن-ست-Frozenset.html" data-title="فروزن ست (Frozenset)">90. فروزن ست (Frozenset)</a>
+<a href="091-متدهای-مجموعه-Set-Methods.html" data-title="متدهای مجموعه (Set Methods)">91. متدهای مجموعه (Set Methods)</a>
+<a href="092-تمرین-مجموعه-ها-Set-Exercises.html" data-title="تمرین مجموعه ها (Set Exercises)">92. تمرین مجموعه ها (Set Exercises)</a>
+<a href="093-دیکشنری-ها-Dictionaries.html" data-title="دیکشنری ها (Dictionaries)">93. دیکشنری ها (Dictionaries)</a>
+<a href="094-آزمون-دیکشنری-ها.html" data-title="آزمون (دیکشنری ها)">94. آزمون (دیکشنری ها)</a>
+<a href="095-دسترسی-به-آیتم-های-دیکشنری-Access-Items.html" data-title="دسترسی به آیتم های دیکشنری (Access Items)">95. دسترسی به آیتم های دیکشنری (Access Items)</a>
+<a href="096-آزمون-دسترسی-دیکشنری.html" data-title="آزمون (دسترسی دیکشنری)">96. آزمون (دسترسی دیکشنری)</a>
+<a href="097-تغییر-آیتم-های-دیکشنری-Change-Items.html" data-title="تغییر آیتم های دیکشنری (Change Items)">97. تغییر آیتم های دیکشنری (Change Items)</a>
+<a href="098-آزمون-تغییر-دیکشنری.html" data-title="آزمون (تغییر دیکشنری)">98. آزمون (تغییر دیکشنری)</a>
+<a href="099-افزودن-آیتم-های-دیکشنری-Add-Items.html" data-title="افزودن آیتم های دیکشنری (Add Items)">99. افزودن آیتم های دیکشنری (Add Items)</a>
+<a href="100-آزمون-افزودن-دیکشنری.html" data-title="آزمون (افزودن دیکشنری)">100. آزمون (افزودن دیکشنری)</a>
+<a href="101-حذف-آیتم-های-دیکشنری-Remove-Items.html" data-title="حذف آیتم های دیکشنری (Remove Items)">101. حذف آیتم های دیکشنری (Remove Items)</a>
+<a href="102-آزمون-حذف-دیکشنری.html" data-title="آزمون (حذف دیکشنری)">102. آزمون (حذف دیکشنری)</a>
+<a href="103-حلقه-دیکشنری-ها-Loop-Dictionaries.html" data-title="حلقه دیکشنری ها (Loop Dictionaries)">103. حلقه دیکشنری ها (Loop Dictionaries)</a>
+<a href="104-آزمون-حلقه-دیکشنری.html" data-title="آزمون (حلقه دیکشنری)">104. آزمون (حلقه دیکشنری)</a>
+<a href="105-کپی-دیکشنری-ها-Copy-Dictionaries.html" data-title="کپی دیکشنری ها (Copy Dictionaries)">105. کپی دیکشنری ها (Copy Dictionaries)</a>
+<a href="106-آزمون-کپی-دیکشنری.html" data-title="آزمون (کپی دیکشنری)">106. آزمون (کپی دیکشنری)</a>
+<a href="107-تو-در-تو-Nested-Dictionaries.html" data-title="تو در تو (Nested Dictionaries)">107. تو در تو (Nested Dictionaries)</a>
+<a href="108-آزمون-دیکشنری-تو-در-تو.html" data-title="آزمون (دیکشنری تو در تو)">108. آزمون (دیکشنری تو در تو)</a>
+<a href="109-متدهای-دیکشنری-Dictionary-Methods.html" data-title="متدهای دیکشنری (Dictionary Methods)">109. متدهای دیکشنری (Dictionary Methods)</a>
+<a href="110-تمرین-دیکشنری-Dictionary-Exercises.html" data-title="تمرین دیکشنری (Dictionary Exercises)">110. تمرین دیکشنری (Dictionary Exercises)</a>
+<a href="111-if-elif-else.html" data-title="if / elif / else">111. if / elif / else</a>
+<a href="112-شرط-کوتاه-Shorthand-If.html" data-title="شرط کوتاه (Shorthand If)">112. شرط کوتاه (Shorthand If)</a>
+<a href="113-عملگرهای-منطقی-در-شرط.html" data-title="عملگرهای منطقی در شرط">113. عملگرهای منطقی در شرط</a>
+<a href="114-شرط-تو-در-تو-Nested-If.html" data-title="شرط تو در تو (Nested If)">114. شرط تو در تو (Nested If)</a>
+<a href="115-pass-Pass-Statement.html" data-title="pass (Pass Statement)">115. pass (Pass Statement)</a>
+<a href="116-match-Match.html" data-title="match (Match)">116. match (Match)</a>
+<a href="117-حلقه-while-While-Loops.html" data-title="حلقه while (While Loops)">117. حلقه while (While Loops)</a>
+<a href="118-حلقه-for-For-Loops.html" data-title="حلقه for (For Loops)">118. حلقه for (For Loops)</a>
+<a href="119-توابع-Functions.html" data-title="توابع (Functions)">119. توابع (Functions)</a>
+<a href="120-آرگومان-ها-Arguments.html" data-title="آرگومان ها (Arguments)">120. آرگومان ها (Arguments)</a>
+<a href="121-args-kwargs.html" data-title="*args / **kwargs">121. *args / **kwargs</a>
+<a href="122-حوزه-دسترسی-Scope.html" data-title="حوزه دسترسی (Scope)">122. حوزه دسترسی (Scope)</a>
+<a href="123-دکوراتور-ها-Decorators.html" data-title="دکوراتور ها (Decorators)">123. دکوراتور ها (Decorators)</a>
+<a href="124-لانبدا-Lambda.html" data-title="لانبدا (Lambda)">124. لانبدا (Lambda)</a>
+<a href="125-بازگشت-Recursion.html" data-title="بازگشت (Recursion)">125. بازگشت (Recursion)</a>
+<a href="126-جنریتور-ها-Generators.html" data-title="جنریتور ها (Generators)">126. جنریتور ها (Generators)</a>
+<a href="127-بازه-Range.html" data-title="بازه (Range)">127. بازه (Range)</a>
+<a href="128-آرایه-ها-Arrays.html" data-title="آرایه ها (Arrays)">128. آرایه ها (Arrays)</a>
+<a href="129-ایتریتورها-Iterators.html" data-title="ایتریتورها (Iterators)">129. ایتریتورها (Iterators)</a>
+<a href="130-ماژول-ها-Modules.html" data-title="ماژول ها (Modules)">130. ماژول ها (Modules)</a>
+<a href="131-تاریخ-ها-Dates.html" data-title="تاریخ ها (Dates)">131. تاریخ ها (Dates)</a>
+<a href="132-ریاضی-Math.html" data-title="ریاضی (Math)">132. ریاضی (Math)</a>
+<a href="133-جیسون-JSON.html" data-title="جیسون (JSON)">133. جیسون (JSON)</a>
+<a href="134-عبارات-منظم-RegEx.html" data-title="عبارات منظم (RegEx)">134. عبارات منظم (RegEx)</a>
+<a href="135-مدیر-بسته-ها-PIP.html" data-title="مدیر بسته ها (PIP)">135. مدیر بسته ها (PIP)</a>
+<a href="136-tryexcept.html" data-title="try...except">136. try...except</a>
+<a href="137-قالب-بندی-رشته-String-Formatting.html" data-title="قالب بندی رشته (String Formatting)">137. قالب بندی رشته (String Formatting)</a>
+<a href="138-None.html" data-title="None">138. None</a>
+<a href="139-ورودی-کاربر-User-Input.html" data-title="ورودی کاربر (User Input)">139. ورودی کاربر (User Input)</a>
+<a href="140-محیط-مجازی-VirtualEnv.html" data-title="محیط مجازی (VirtualEnv)">140. محیط مجازی (VirtualEnv)</a>
+<a href="141-شیءگرایی-OOP.html" data-title="شیءگرایی (OOP)">141. شیءگرایی (OOP)</a>
+<a href="142-کلاس-هااشیا-ClassesObjects.html" data-title="کلاس ها/اشیا (Classes/Objects)">142. کلاس ها/اشیا (Classes/Objects)</a>
+<a href="143-متد-init-init-Method.html" data-title="متد init (init Method)">143. متد init (init Method)</a>
+<a href="144-پارامتر-self-self-Parameter.html" data-title="پارامتر self (self Parameter)">144. پارامتر self (self Parameter)</a>
+<a href="145-خصوصیات-کلاس-Class-Properties.html" data-title="خصوصیات کلاس (Class Properties)">145. خصوصیات کلاس (Class Properties)</a>
+<a href="146-متدهای-کلاس-Class-Methods.html" data-title="متدهای کلاس (Class Methods)">146. متدهای کلاس (Class Methods)</a>
+<a href="147-وراثت-Inheritance.html" data-title="وراثت (Inheritance)">147. وراثت (Inheritance)</a>
+<a href="148-چندریختی-Polymorphism.html" data-title="چندریختی (Polymorphism)">148. چندریختی (Polymorphism)</a>
+<a href="149-کپسوله-سازی-Encapsulation.html" data-title="کپسوله سازی (Encapsulation)">149. کپسوله سازی (Encapsulation)</a>
+<a href="150-کلاس-های-داخلی-Inner-Classes.html" data-title="کلاس های داخلی (Inner Classes)">150. کلاس های داخلی (Inner Classes)</a>
+<a href="151-کار-با-فایل-File-Handling.html" data-title="کار با فایل (File Handling)">151. کار با فایل (File Handling)</a>
+<a href="152-خواندن-فایل-Read-Files.html" data-title="خواندن فایل (Read Files)">152. خواندن فایل (Read Files)</a>
+<a href="153-نوشتنایجاد-فایل-WriteCreate-Files.html" data-title="نوشتن/ایجاد فایل (Write/Create Files)">153. نوشتن/ایجاد فایل (Write/Create Files)</a>
+<a href="154-حذف-فایل-Delete-Files.html" data-title="حذف فایل (Delete Files)">154. حذف فایل (Delete Files)</a>
+<a href="155-آموزش-SciPy-SciPy-Tutorial.html" data-title="آموزش SciPy (SciPy Tutorial)">155. آموزش SciPy (SciPy Tutorial)</a>
+<a href="156-Matplotlib-مقدمه-Matplotlib-Intro.html" data-title="Matplotlib مقدمه (Matplotlib Intro)">156. Matplotlib مقدمه (Matplotlib Intro)</a>
+<a href="157-شروع-با-Matplotlib-Matplotlib-Get-Starte.html" data-title="شروع با Matplotlib (Matplotlib Get Started)">157. شروع با Matplotlib (Matplotlib Get Started)</a>
+<a href="158-Pyplot-Matplotlib-Pyplot.html" data-title="Pyplot (Matplotlib Pyplot)">158. Pyplot (Matplotlib Pyplot)</a>
+<a href="159-نمودارسازی-Matplotlib-Plotting.html" data-title="نمودارسازی (Matplotlib Plotting)">159. نمودارسازی (Matplotlib Plotting)</a>
+<a href="160-نشانگرها-Matplotlib-Markers.html" data-title="نشانگرها (Matplotlib Markers)">160. نشانگرها (Matplotlib Markers)</a>
+<a href="161-خط-Matplotlib-Line.html" data-title="خط (Matplotlib Line)">161. خط (Matplotlib Line)</a>
+<a href="162-برچسب-ها-Matplotlib-Labels.html" data-title="برچسب ها (Matplotlib Labels)">162. برچسب ها (Matplotlib Labels)</a>
+<a href="163-شبکه-Matplotlib-Grid.html" data-title="شبکه (Matplotlib Grid)">163. شبکه (Matplotlib Grid)</a>
+<a href="164-زیرنمودار-Matplotlib-Subplot.html" data-title="زیرنمودار (Matplotlib Subplot)">164. زیرنمودار (Matplotlib Subplot)</a>
+<a href="165-پراکندگی-Matplotlib-Scatter.html" data-title="پراکندگی (Matplotlib Scatter)">165. پراکندگی (Matplotlib Scatter)</a>
+<a href="166-میله-ای-Matplotlib-Bars.html" data-title="میله ای (Matplotlib Bars)">166. میله ای (Matplotlib Bars)</a>
+<a href="167-هیستوگرام-Matplotlib-Histograms.html" data-title="هیستوگرام (Matplotlib Histograms)">167. هیستوگرام (Matplotlib Histograms)</a>
+<a href="168-دایره-ای-Matplotlib-Pie-Charts.html" data-title="دایره ای (Matplotlib Pie Charts)">168. دایره ای (Matplotlib Pie Charts)</a>
+<a href="169-یادگیری-ماشین-شروع-Getting-Started.html" data-title="یادگیری ماشین: شروع (Getting Started)">169. یادگیری ماشین: شروع (Getting Started)</a>
+<a href="170-میانگینمیانهنما-Mean-Median-Mode.html" data-title="میانگین/میانه/نما (Mean Median Mode)">170. میانگین/میانه/نما (Mean Median Mode)</a>
+<a href="171-انحراف-معیار-Standard-Deviation.html" data-title="انحراف معیار (Standard Deviation)">171. انحراف معیار (Standard Deviation)</a>
+<a href="172-صدک-Percentile.html" data-title="صدک (Percentile)">172. صدک (Percentile)</a>
+<a href="173-توزیع-داده-Data-Distribution.html" data-title="توزیع داده (Data Distribution)">173. توزیع داده (Data Distribution)</a>
+<a href="174-توزیع-نرمال-Normal-Data-Distribution.html" data-title="توزیع نرمال (Normal Data Distribution)">174. توزیع نرمال (Normal Data Distribution)</a>
+<a href="175-نمودار-پراکندگی-Scatter-Plot.html" data-title="نمودار پراکندگی (Scatter Plot)">175. نمودار پراکندگی (Scatter Plot)</a>
+<a href="176-رگرسیون-خطی-Linear-Regression.html" data-title="رگرسیون خطی (Linear Regression)">176. رگرسیون خطی (Linear Regression)</a>
+<a href="177-رگرسیون-چندجمله-ای-Polynomial-Regression.html" data-title="رگرسیون چندجمله ای (Polynomial Regression)">177. رگرسیون چندجمله ای (Polynomial Regression)</a>
+<a href="178-رگرسیون-چندمتغیره-Multiple-Regression.html" data-title="رگرسیون چندمتغیره (Multiple Regression)">178. رگرسیون چندمتغیره (Multiple Regression)</a>
+<a href="179-مقیاس-بندی-Scale.html" data-title="مقیاس بندی (Scale)">179. مقیاس بندی (Scale)</a>
+<a href="180-آموزشآزمون-TrainTest.html" data-title="آموزش/آزمون (Train/Test)">180. آموزش/آزمون (Train/Test)</a>
+<a href="181-درخت-تصمیم-Decision-Tree.html" data-title="درخت تصمیم (Decision Tree)">181. درخت تصمیم (Decision Tree)</a>
+<a href="182-ماتریس-اغتشاش-Confusion-Matrix.html" data-title="ماتریس اغتشاش (Confusion Matrix)">182. ماتریس اغتشاش (Confusion Matrix)</a>
+<a href="183-خوشه-بندی-سلسله-مراتبی-Hierarchical-Clus.html" data-title="خوشه بندی سلسله مراتبی (Hierarchical Clustering)">183. خوشه بندی سلسله مراتبی (Hierarchical Clustering)</a>
+<a href="184-رگرسیون-لجستیک-Logistic-Regression.html" data-title="رگرسیون لجستیک (Logistic Regression)">184. رگرسیون لجستیک (Logistic Regression)</a>
+<a href="185-جست-وجوی-شبکه-ای-Grid-Search.html" data-title="جست وجوی شبکه ای (Grid Search)">185. جست وجوی شبکه ای (Grid Search)</a>
+<a href="186-پیش-پردازش-داده-های-دسته-ای-Categorical-.html" data-title="پیش پردازش داده های دسته ای (Categorical Data)">186. پیش پردازش داده های دسته ای (Categorical Data)</a>
+<a href="187-K-means.html" data-title="K-means">187. K-means</a>
+<a href="188-بگینگ-Bootstrap-Aggregation.html" data-title="بگینگ (Bootstrap Aggregation)">188. بگینگ (Bootstrap Aggregation)</a>
+<a href="189-اعتبارسنجی-متقابل-Cross-Validation.html" data-title="اعتبارسنجی متقابل (Cross Validation)">189. اعتبارسنجی متقابل (Cross Validation)</a>
+<a href="190-منحنی-AUC-ROC-AUC-ROC-Curve.html" data-title="منحنی AUC-ROC (AUC-ROC Curve)">190. منحنی AUC-ROC (AUC-ROC Curve)</a>
+<a href="191-KNN-K-nearest-neighbors.html" data-title="KNN (K-nearest neighbors)">191. KNN (K-nearest neighbors)</a>
+<a href="192-DSA-معرفی-Python-DSA.html" data-title="DSA: معرفی (Python DSA)">192. DSA: معرفی (Python DSA)</a>
+<a href="193-لیست-ها-و-آرایه-ها-Lists-and-Arrays.html" data-title="لیست ها و آرایه ها (Lists and Arrays)">193. لیست ها و آرایه ها (Lists and Arrays)</a>
+<a href="194-پشته-ها-Stacks.html" data-title="پشته ها (Stacks)">194. پشته ها (Stacks)</a>
+<a href="195-صف-ها-Queues.html" data-title="صف ها (Queues)">195. صف ها (Queues)</a>
+<a href="196-لیست-های-پیوندی-Linked-Lists.html" data-title="لیست های پیوندی (Linked Lists)">196. لیست های پیوندی (Linked Lists)</a>
+<a href="197-هش-تیبل-ها-Hash-Tables.html" data-title="هش تیبل ها (Hash Tables)">197. هش تیبل ها (Hash Tables)</a>
+<a href="198-درخت-ها-Trees.html" data-title="درخت ها (Trees)">198. درخت ها (Trees)</a>
+<a href="199-درخت-های-دودویی-Binary-Trees.html" data-title="درخت های دودویی (Binary Trees)">199. درخت های دودویی (Binary Trees)</a>
+<a href="200-BST-Binary-Search-Trees.html" data-title="BST (Binary Search Trees)">200. BST (Binary Search Trees)</a>
+<a href="201-درخت-های-AVL-AVL-Trees.html" data-title="درخت های AVL (AVL Trees)">201. درخت های AVL (AVL Trees)</a>
+<a href="202-گراف-ها-Graphs.html" data-title="گراف ها (Graphs)">202. گراف ها (Graphs)</a>
+<a href="203-جستجوی-خطی-Linear-Search.html" data-title="جستجوی خطی (Linear Search)">203. جستجوی خطی (Linear Search)</a>
+<a href="204-جستجوی-دودویی-Binary-Search.html" data-title="جستجوی دودویی (Binary Search)">204. جستجوی دودویی (Binary Search)</a>
+<a href="205-مرتب-سازی-حبابی-Bubble-Sort.html" data-title="مرتب سازی حبابی (Bubble Sort)">205. مرتب سازی حبابی (Bubble Sort)</a>
+<a href="206-مرتب-سازی-انتخابی-Selection-Sort.html" data-title="مرتب سازی انتخابی (Selection Sort)">206. مرتب سازی انتخابی (Selection Sort)</a>
+<a href="207-مرتب-سازی-درج-Insertion-Sort.html" data-title="مرتب سازی درج (Insertion Sort)">207. مرتب سازی درج (Insertion Sort)</a>
+<a href="208-مرتب-سازی-سریع-Quick-Sort.html" data-title="مرتب سازی سریع (Quick Sort)">208. مرتب سازی سریع (Quick Sort)</a>
+<a href="209-مرتب-سازی-شمارشی-Counting-Sort.html" data-title="مرتب سازی شمارشی (Counting Sort)">209. مرتب سازی شمارشی (Counting Sort)</a>
+<a href="210-مرتب-سازی-رادیکس-Radix-Sort.html" data-title="مرتب سازی رادیکس (Radix Sort)">210. مرتب سازی رادیکس (Radix Sort)</a>
+<a href="211-مرتب-سازی-ادغامی-Merge-Sort.html" data-title="مرتب سازی ادغامی (Merge Sort)">211. مرتب سازی ادغامی (Merge Sort)</a>
+<a href="212-MySQL-شروع-MySQL-Get-Started.html" data-title="MySQL: شروع (MySQL Get Started)">212. MySQL: شروع (MySQL Get Started)</a>
+<a href="213-ایجاد-پایگاه-داده-Create-Database.html" data-title="ایجاد پایگاه داده (Create Database)">213. ایجاد پایگاه داده (Create Database)</a>
+<a href="214-ایجاد-جدول-Create-Table.html" data-title="ایجاد جدول (Create Table)">214. ایجاد جدول (Create Table)</a>
+<a href="215-درج-رکورد-Insert.html" data-title="درج رکورد (Insert)">215. درج رکورد (Insert)</a>
+<a href="216-انتخاب-Select.html" data-title="انتخاب (Select)">216. انتخاب (Select)</a>
+<a href="217-شرط-Where.html" data-title="شرط Where">217. شرط Where</a>
+<a href="218-مرتب-سازی-Order-By.html" data-title="مرتب سازی (Order By)">218. مرتب سازی (Order By)</a>
+<a href="219-حذف-Delete.html" data-title="حذف (Delete)">219. حذف (Delete)</a>
+<a href="220-حذف-جدول-Drop-Table.html" data-title="حذف جدول (Drop Table)">220. حذف جدول (Drop Table)</a>
+<a href="221-به-روزرسانی-Update.html" data-title="به روزرسانی (Update)">221. به روزرسانی (Update)</a>
+<a href="222-Limit.html" data-title="Limit">222. Limit</a>
+<a href="223-Join.html" data-title="Join">223. Join</a>
+<a href="224-MongoDB-شروع-Get-Started.html" data-title="MongoDB: شروع (Get Started)">224. MongoDB: شروع (Get Started)</a>
+<a href="225-ایجاد-پایگاه-داده-Mongo-Create-DB.html" data-title="ایجاد پایگاه داده Mongo (Create DB)">225. ایجاد پایگاه داده Mongo (Create DB)</a>
+<a href="226-ایجاد-کالکشن-Collection.html" data-title="ایجاد کالکشن (Collection)">226. ایجاد کالکشن (Collection)</a>
+<a href="227-درج-Mongo-Insert.html" data-title="درج Mongo (Insert)">227. درج Mongo (Insert)</a>
+<a href="228-پیدا-کردن-Find.html" data-title="پیدا کردن (Find)">228. پیدا کردن (Find)</a>
+<a href="229-کوئری-Query.html" data-title="کوئری (Query)">229. کوئری (Query)</a>
+<a href="230-مرتب-سازی-Mongo-Sort.html" data-title="مرتب سازی Mongo (Sort)">230. مرتب سازی Mongo (Sort)</a>
+<a href="231-حذف-Mongo-Delete.html" data-title="حذف Mongo (Delete)">231. حذف Mongo (Delete)</a>
+<a href="232-حذف-کالکشن-Drop-Collection.html" data-title="حذف کالکشن (Drop Collection)">232. حذف کالکشن (Drop Collection)</a>
+<a href="233-به-روزرسانی-Mongo-Update.html" data-title="به روزرسانی Mongo (Update)">233. به روزرسانی Mongo (Update)</a>
+<a href="234-Limit-Mongo.html" data-title="Limit Mongo">234. Limit Mongo</a>
+<a href="235-مرجع-مرور-کلی-Overview.html" data-title="مرجع: مرور کلی (Overview)">235. مرجع: مرور کلی (Overview)</a>
+<a href="236-توابع-درون-ساخته-Built-in-Functions.html" data-title="توابع درون ساخته (Built-in Functions)">236. توابع درون ساخته (Built-in Functions)</a>
+<a href="237-مرجع-متدهای-رشته-String-Methods-Ref.html" data-title="مرجع متدهای رشته (String Methods Ref)">237. مرجع متدهای رشته (String Methods Ref)</a>
+<a href="238-مرجع-متدهای-لیست-List-Methods-Ref.html" data-title="مرجع متدهای لیست (List Methods Ref)">238. مرجع متدهای لیست (List Methods Ref)</a>
+<a href="239-مرجع-متدهای-دیکشنری-Dictionary-Methods-R.html" data-title="مرجع متدهای دیکشنری (Dictionary Methods Ref)">239. مرجع متدهای دیکشنری (Dictionary Methods Ref)</a>
+<a href="240-مرجع-متدهای-تاپل-Tuple-Methods-Ref.html" data-title="مرجع متدهای تاپل (Tuple Methods Ref)">240. مرجع متدهای تاپل (Tuple Methods Ref)</a>
+<a href="241-مرجع-متدهای-مجموعه-Set-Methods-Ref.html" data-title="مرجع متدهای مجموعه (Set Methods Ref)">241. مرجع متدهای مجموعه (Set Methods Ref)</a>
+<a href="242-متدهای-فایل-File-Methods.html" data-title="متدهای فایل (File Methods)">242. متدهای فایل (File Methods)</a>
+<a href="243-کلیدواژه-ها-Keywords.html" data-title="کلیدواژه ها (Keywords)">243. کلیدواژه ها (Keywords)</a>
+<a href="244-استثناها-Exceptions.html" data-title="استثناها (Exceptions)">244. استثناها (Exceptions)</a>
+<a href="245-واژه-نامه-Glossary.html" data-title="واژه نامه (Glossary)">245. واژه نامه (Glossary)</a>
+<a href="246-مرجع-ماژول-ها-Built-in-Modules.html" data-title="مرجع ماژول ها (Built-in Modules)">246. مرجع ماژول ها (Built-in Modules)</a>
+<a href="247-ماژول-random-Random-Module.html" data-title="ماژول random (Random Module)">247. ماژول random (Random Module)</a>
+<a href="248-ماژول-requests-Requests-Module.html" data-title="ماژول requests (Requests Module)">248. ماژول requests (Requests Module)</a>
+<a href="249-ماژول-statistics-Statistics-Module.html" data-title="ماژول statistics (Statistics Module)">249. ماژول statistics (Statistics Module)</a>
+<a href="250-ماژول-math-Math-Module.html" data-title="ماژول math (Math Module)">250. ماژول math (Math Module)</a>
+<a href="251-ماژول-cmath-cMath-Module.html" data-title="ماژول cmath (cMath Module)">251. ماژول cmath (cMath Module)</a>
+<a href="252-حذف-موارد-تکراری-لیست-Remove-List-Duplic.html" data-title="حذف موارد تکراری لیست (Remove List Duplicates)">252. حذف موارد تکراری لیست (Remove List Duplicates)</a>
+<a href="253-برعکس-کردن-رشته-Reverse-a-String.html" data-title="برعکس کردن رشته (Reverse a String)">253. برعکس کردن رشته (Reverse a String)</a>
+<a href="254-جمع-دو-عدد-Add-Two-Numbers.html" data-title="جمع دو عدد (Add Two Numbers)">254. جمع دو عدد (Add Two Numbers)</a>
+</aside>
+<article class="card">
+<h2>ادغام مجموعه ها (Join Sets)</h2>
+<p>در پایتون، «ادغام مجموعه ها» یک موضوع مشخص است. اول معنی‌اش را می‌فهمی، بعد چند مثال کوچک می‌بینی، بعد خط‌به‌خط.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر جا در برنامه به «ادغام مجموعه ها» رسیدی: از تمرین ساده تا پروژه.</p>
+<h3>مجموعه چیست</h3>
+<p>عضو تکراری ندارد و ترتیب ثابت ندارد.</p>
+<div class="codewrap"><div class="code">s = {1, 2, 2, 3}
+print(s)
+print(len(s))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> یک مجموعه (set) می‌سازد و در «s» می‌گذارد. عضو تکراری نگه داشته نمی‌شود.<br>
+<strong>خط 2:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: s. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.<br>
+<strong>خط 3:</strong> len تعداد عضو یا نویسه را می‌شمارد؛ print همان عدد را نشان می‌دهد. داخل: len(s).</div>
+<h3>افزودن و حذف</h3>
+<p>add و discard.</p>
+<div class="codewrap"><div class="code">s = {1, 2}
+s.add(3)
+s.discard(1)
+print(s)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> یک مجموعه (set) می‌سازد و در «s» می‌گذارد. عضو تکراری نگه داشته نمی‌شود.<br>
+<strong>خط 2:</strong> از «s» کار «add» را می‌خواهد. به مجموعه عضو اضافه می‌کند. ورودی داخل پرانتز: 3.<br>
+<strong>خط 3:</strong> از «s» کار «discard» را می‌خواهد. از مجموعه حذف می‌کند و اگر نبود خطا نمی‌دهد. ورودی داخل پرانتز: 1.<br>
+<strong>خط 4:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: s. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.</div>
+<h3>اجتماع و اشتراک</h3>
+<p>عملیات ریاضی مجموعه.</p>
+<div class="codewrap"><div class="code">a, b = {1, 2, 3}, {3, 4}
+print(a | b)
+print(a &amp; b)
+print(a - b)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> یک مجموعه (set) می‌سازد و در «a, b» می‌گذارد. عضو تکراری نگه داشته نمی‌شود.<br>
+<strong>خط 2:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: a | b. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.<br>
+<strong>خط 3:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: a & b. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.<br>
+<strong>خط 4:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: a - b. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.</div>
+<h3>عضویت سریع</h3>
+<p>in روی مجموعه خیلی سریع است.</p>
+<div class="codewrap"><div class="code">s = {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;}
+print(&quot;b&quot; in s)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> یک مجموعه (set) می‌سازد و در «s» می‌گذارد. عضو تکراری نگه داشته نمی‌شود.<br>
+<strong>خط 2:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: "b" in s. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.</div>
+<h3>frozenset</h3>
+<p>مجموعه قفل‌شده؛ می‌تواند کلید دیکشنری باشد.</p>
+<div class="codewrap"><div class="code">f = frozenset([1, 2, 2])
+print(f)
+# f.add(3)  # خطا</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> جعبه «f» ساخته یا به‌روز می‌شود و مقدار سمت راست داخلش می‌رود: frozenset([1, 2, 2]). علامت = یعنی بگذار داخل جعبه، نه تساوی ریاضی.<br>
+<strong>خط 2:</strong> نتیجه را روی صفحه نشان می‌دهد تا ببینی برنامه چه کرده. چیزی که چاپ می‌شود داخل پرانتز است: f. اگر چند چیز با کاما جدا شوند، کنار هم چاپ می‌شوند.<br>
+<strong>خط 3:</strong> این خط فقط توضیح است و اجرا نمی‌شود. نوشته: «f.add(3)  # خطا». کامنت برای انسان است تا هدف کد را بفهمد.</div>
+<div class="warn">کد را با فاصلهٔ درست بنویس. در پایتون تورفتگی بخشی از دستور است.</div>
+<p class="rel">اگر این درس سخت بود، درس قبلی همان زبان را یک‌بار دیگر بخوان. بعد همین «ادغام مجموعه ها» را با تغییر عدد یا متن مثال دوباره اجرا کن.</p>
+<div class="sum"><b>جمع‌بندی سریع</b><ul><li>موضوع این صفحه: ادغام مجموعه ها.</li><li>هر مثال را خودت تایپ کن.</li><li>یک عدد یا متن را عوض کن و دوباره اجرا کن.</li><li>اگر خطا دیدی، پیام آخر را از پایین بخوان.</li><li>بعد برو درس بعدی همان مسیر.</li></ul></div>
+<div class="navbtn">
+<a href="087-آزمون-حلقه-مجموعه-ها.html">← قبلی</a>
+<a href="089-آزمون-ادغام-مجموعه-ها.html">بعدی →</a>
+</div>
+</article>
+</div>
+</div>
+<div id="edBack"><div id="edBox">
+<h3>مشاهده در ادیتور</h3>
+<pre id="edCode"></pre>
+<div class="navbtn">
+<button type="button" id="edCopy">کپی</button>
+<button type="button" id="edClose">بستن</button>
+</div>
+</div></div>
+<footer>مثال زیاد · توضیح ساده · بدون حاشیه</footer>
+<script src="../js/search.js"></script>
+<script>
+document.querySelectorAll(".trybtn").forEach(function(btn){
+  btn.onclick=function(){
+    var wrap=btn.previousElementSibling;
+    var codeEl=wrap&&wrap.querySelector?wrap.querySelector(".code"):wrap;
+    document.getElementById("edCode").textContent=codeEl?codeEl.textContent:"";
+    document.getElementById("edBack").style.display="flex";
+  };
+});
+document.getElementById("edClose").onclick=function(){document.getElementById("edBack").style.display="none";};
+document.getElementById("edBack").onclick=function(e){if(e.target.id==="edBack")document.getElementById("edBack").style.display="none";};
+document.getElementById("edCopy").onclick=function(){
+  var t=document.getElementById("edCode").textContent;
+  if(navigator.clipboard)navigator.clipboard.writeText(t);
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نشانه لینک (Bookmarks) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="درس نشانه لینک (Bookmarks) در HTML با مثال و توضیح خط‌به‌خط.">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/html.css">
+<link rel="stylesheet" href="020-نشانه-لینک-Bookmarks.css">
+</head>
+<body>
+<header>
+<div class="logo">مدرسه برنامه‌نویسان <span>HTML</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../html.html">لیست درس‌ها</a>
+</nav>
+</header>
+<div class="wrap">
+<div class="layout">
+<aside class="side" id="sideMenu">
+<h3>جستجوی درس</h3>
+<input type="search" id="lessonSearch" class="search-box" placeholder="جستجو در درس‌ها..." autocomplete="off">
+<h3>درس‌ها (62)</h3>
+<a href="001-خانه-HOME.html" data-title="خانه (HOME)">1. خانه (HOME)</a>
+<a href="002-مقدمه-Introduction.html" data-title="مقدمه (Introduction)">2. مقدمه (Introduction)</a>
+<a href="003-ویرایشگرها-Editors.html" data-title="ویرایشگرها (Editors)">3. ویرایشگرها (Editors)</a>
+<a href="004-پایهها-Basic.html" data-title="پایه‌ها (Basic)">4. پایه‌ها (Basic)</a>
+<a href="005-المانها-Elements.html" data-title="المان‌ها (Elements)">5. المان‌ها (Elements)</a>
+<a href="006-ویژگیها-Attributes.html" data-title="ویژگی‌ها (Attributes)">6. ویژگی‌ها (Attributes)</a>
+<a href="007-سرفصلها-Headings.html" data-title="سرفصل‌ها (Headings)">7. سرفصل‌ها (Headings)</a>
+<a href="008-پاراگرافها-Paragraphs.html" data-title="پاراگراف‌ها (Paragraphs)">8. پاراگراف‌ها (Paragraphs)</a>
+<a href="009-استایلها-Styles.html" data-title="استایل‌ها (Styles)">9. استایل‌ها (Styles)</a>
+<a href="010-قالببندی-متن-Formatting.html" data-title="قالب‌بندی متن (Formatting)">10. قالب‌بندی متن (Formatting)</a>
+<a href="011-نقل-قولها-Quotations.html" data-title="نقل قول‌ها (Quotations)">11. نقل قول‌ها (Quotations)</a>
+<a href="012-توضیحات-Comments.html" data-title="توضیحات (Comments)">12. توضیحات (Comments)</a>
+<a href="013-رنگها-Colors.html" data-title="رنگ‌ها (Colors)">13. رنگ‌ها (Colors)</a>
+<a href="014-مدل-RGB.html" data-title="مدل RGB">14. مدل RGB</a>
+<a href="015-مدل-HEX.html" data-title="مدل HEX">15. مدل HEX</a>
+<a href="016-مدل-HSL.html" data-title="مدل HSL">16. مدل HSL</a>
+<a href="017-استفاده-از-CSS.html" data-title="استفاده از CSS">17. استفاده از CSS</a>
+<a href="018-لینکها-Links.html" data-title="لینک‌ها (Links)">18. لینک‌ها (Links)</a>
+<a href="019-رنگ-لینکها.html" data-title="رنگ لینک‌ها">19. رنگ لینک‌ها</a>
+<a href="020-نشانه-لینک-Bookmarks.html" class="on" data-title="نشانه لینک (Bookmarks)">20. نشانه لینک (Bookmarks)</a>
+<a href="021-تصاویر-Images.html" data-title="تصاویر (Images)">21. تصاویر (Images)</a>
+<a href="022-نقشه-تصویر-Image-Map.html" data-title="نقشه تصویر (Image Map)">22. نقشه تصویر (Image Map)</a>
+<a href="023-تصویر-پسزمینه.html" data-title="تصویر پس‌زمینه">23. تصویر پس‌زمینه</a>
+<a href="024-المان-Picture.html" data-title="المان Picture">24. المان Picture</a>
+<a href="025-فاوآیکون-Favicon.html" data-title="فاوآیکون (Favicon)">25. فاوآیکون (Favicon)</a>
+<a href="026-عنوان-صفحه-Page-Title.html" data-title="عنوان صفحه (Page Title)">26. عنوان صفحه (Page Title)</a>
+<a href="027-جداول-Tables.html" data-title="جداول (Tables)">27. جداول (Tables)</a>
+<a href="028-مرزهای-جدول.html" data-title="مرزهای جدول">28. مرزهای جدول</a>
+<a href="029-اندازههای-جدول.html" data-title="اندازه‌های جدول">29. اندازه‌های جدول</a>
+<a href="030-سربرگهای-جدول.html" data-title="سربرگ‌های جدول">30. سربرگ‌های جدول</a>
+<a href="031-فاصله-جدول-Padding-Spacing.html" data-title="فاصله جدول (Padding &amp; Spacing)">31. فاصله جدول (Padding &amp; Spacing)</a>
+<a href="032-ادغام-سلولها.html" data-title="ادغام سلول‌ها">32. ادغام سلول‌ها</a>
+<a href="033-استایلدهی-جدول.html" data-title="استایل‌دهی جدول">33. استایل‌دهی جدول</a>
+<a href="034-گروه-ستونها-Colgroup.html" data-title="گروه ستون‌ها (Colgroup)">34. گروه ستون‌ها (Colgroup)</a>
+<a href="035-فهرستها-Lists.html" data-title="فهرست‌ها (Lists)">35. فهرست‌ها (Lists)</a>
+<a href="036-فهرست-نامرتب.html" data-title="فهرست نامرتب">36. فهرست نامرتب</a>
+<a href="037-فهرست-مرتب.html" data-title="فهرست مرتب">37. فهرست مرتب</a>
+<a href="038-سایر-فهرستها.html" data-title="سایر فهرست‌ها">38. سایر فهرست‌ها</a>
+<a href="039-بلوک-و-درونخطی.html" data-title="بلوک و درون‌خطی">39. بلوک و درون‌خطی</a>
+<a href="040-المان-div.html" data-title="المان div">40. المان div</a>
+<a href="041-کلاسها-Classes.html" data-title="کلاس‌ها (Classes)">41. کلاس‌ها (Classes)</a>
+<a href="042-شناسهها-Id.html" data-title="شناسه‌ها (Id)">42. شناسه‌ها (Id)</a>
+<a href="043-فریمها-Iframes.html" data-title="فریم‌ها (Iframes)">43. فریم‌ها (Iframes)</a>
+<a href="044-جاوااسکریپت-در-HTML.html" data-title="جاوااسکریپت در HTML">44. جاوااسکریپت در HTML</a>
+<a href="045-مسیر-فایلها.html" data-title="مسیر فایل‌ها">45. مسیر فایل‌ها</a>
+<a href="046-بخش-head.html" data-title="بخش head">46. بخش head</a>
+<a href="047-چیدمان-Layout.html" data-title="چیدمان (Layout)">47. چیدمان (Layout)</a>
+<a href="048-طراحی-واکنشگرا.html" data-title="طراحی واکنش‌گرا">48. طراحی واکنش‌گرا</a>
+<a href="049-کدهای-رایانهای.html" data-title="کدهای رایانه‌ای">49. کدهای رایانه‌ای</a>
+<a href="050-المانهای-معنایی.html" data-title="المان‌های معنایی">50. المان‌های معنایی</a>
+<a href="051-فرمها-Forms.html" data-title="فرم‌ها (Forms)">51. فرم‌ها (Forms)</a>
+<a href="052-ویژگیهای-فرم.html" data-title="ویژگی‌های فرم">52. ویژگی‌های فرم</a>
+<a href="053-المانهای-فرم.html" data-title="المان‌های فرم">53. المان‌های فرم</a>
+<a href="054-انواع-ورودی-Input-Types.html" data-title="انواع ورودی (Input Types)">54. انواع ورودی (Input Types)</a>
+<a href="055-ویژگیهای-ورودی.html" data-title="ویژگی‌های ورودی">55. ویژگی‌های ورودی</a>
+<a href="056-ویدیو-Video.html" data-title="ویدیو (Video)">56. ویدیو (Video)</a>
+<a href="057-صدا-Audio.html" data-title="صدا (Audio)">57. صدا (Audio)</a>
+<a href="058-یوتیوب.html" data-title="یوتیوب">58. یوتیوب</a>
+<a href="059-بوم-نقاشی-Canvas.html" data-title="بوم نقاشی (Canvas)">59. بوم نقاشی (Canvas)</a>
+<a href="060-بردارهای-گرافیکی-SVG.html" data-title="بردارهای گرافیکی (SVG)">60. بردارهای گرافیکی (SVG)</a>
+<a href="061-ذخیرهسازی-وب-Web-Storage.html" data-title="ذخیره‌سازی وب (Web Storage)">61. ذخیره‌سازی وب (Web Storage)</a>
+<a href="062-تگهای-مهم-دیگر.html" data-title="تگ‌های مهم دیگر">62. تگ‌های مهم دیگر</a>
+</aside>
+<article class="card">
+<h2>نشانه لینک (Bookmarks)</h2>
+<p>در HTML، «نشانه لینک» بخشی از اسکلت صفحه است. HTML می‌گوید هر چیز چیست؛ ظاهر را CSS می‌دهد.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> صفحه وب، فرم، مقاله، تصویر، لینک.</p>
+<h3>نشانه لینک چیست</h3>
+<p>این درس درباره «نشانه لینک» در HTML است. تگ می‌گوید این قطعه چه نقشی دارد.</p>
+<div class="codewrap"><div class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;
+&lt;body&gt;
+  &lt;h1&gt;نشانه لینک&lt;/h1&gt;
+  &lt;p&gt;متن نمونه برای این درس.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> به مرورگر می‌گوید این سند HTML5 است تا با قوانین قدیمی اشتباه گرفته نشود.<br>
+<strong>خط 2:</strong> تگ «html»: ریشه کل صفحه. ویژگی‌ها: lang (زبان صفحه) = "fa"؛ dir (جهت متن؛ rtl برای فارسی) = "rtl".<br>
+<strong>خط 3:</strong> تگ «body»: هر چیزی که کاربر می‌بیند داخل body است.<br>
+<strong>خط 4:</strong> تگ «h1»: بزرگ‌ترین عنوان صفحه؛ معمولاً یکی در هر صفحه. متن داخل تگ که کاربر می‌بیند: «نشانه لینک».<br>
+<strong>خط 5:</strong> تگ «p»: یک پاراگراف متن. متن داخل تگ که کاربر می‌بیند: «متن نمونه برای این درس.».<br>
+<strong>خط 6:</strong> تگ بسته «body» یعنی جعبهٔ body تمام شد. بدون بستن، تگ بعدی ممکن است قاطی شود.<br>
+<strong>خط 7:</strong> تگ بسته «html» یعنی جعبهٔ html تمام شد. بدون بستن، تگ بعدی ممکن است قاطی شود.</div>
+<h3>مثال با چند تگ</h3>
+<p>عنوان، پاراگراف، لینک، فهرست.</p>
+<div class="codewrap"><div class="code">&lt;h2&gt;فهرست کارها&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;خواندن درس&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ex&quot;&gt;مثال&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تگ «h2»: عنوان بخش. متن داخل تگ که کاربر می‌بیند: «فهرست کارها».<br>
+<strong>خط 2:</strong> تگ «ul»: فهرست نقطه‌ای.<br>
+<strong>خط 3:</strong> تگ «li»: یک آیتم فهرست. متن داخل تگ که کاربر می‌بیند: «خواندن درس».<br>
+<strong>خط 4:</strong> تگ «li»: یک آیتم فهرست.<br>
+<strong>خط 5:</strong> تگ بسته «ul» یعنی جعبهٔ ul تمام شد. بدون بستن، تگ بعدی ممکن است قاطی شود.</div>
+<h3>ویژگی‌های رایج</h3>
+<p>class برای CSS، id برای پرش و اسکریپت.</p>
+<div class="codewrap"><div class="code">&lt;div id=&quot;box&quot; class=&quot;card&quot;&gt;محتوا&lt;/div&gt;
+&lt;p hidden&gt;مخفی&lt;/p&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تگ «div»: جعبه عمومی برای چیدمان. ویژگی‌ها: id (شناسه یکتا در صفحه) = "box"؛ class (گروه برای استایل CSS) = "card". متن داخل تگ که کاربر می‌بیند: «محتوا».<br>
+<strong>خط 2:</strong> تگ «p»: یک پاراگراف متن. ویژگی‌ها: hidden (ویژگی hidden) = بدون مقدار. متن داخل تگ که کاربر می‌بیند: «مخفی».</div>
+<h3>متن معنایی</h3>
+<p>تگ درست به معنی کمک می‌کند نه فقط ظاهر.</p>
+<div class="codewrap"><div class="code">&lt;header&gt;سرصفحه&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;مقاله&lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;پاورقی&lt;/footer&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تگ «header»: سرصفحه معنایی. متن داخل تگ که کاربر می‌بیند: «سرصفحه».<br>
+<strong>خط 2:</strong> تگ «main»: محتوای اصلی.<br>
+<strong>خط 3:</strong> تگ «article»: یک مطلب مستقل. متن داخل تگ که کاربر می‌بیند: «مقاله».<br>
+<strong>خط 4:</strong> تگ بسته «main» یعنی جعبهٔ main تمام شد. بدون بستن، تگ بعدی ممکن است قاطی شود.<br>
+<strong>خط 5:</strong> تگ «footer»: پاورقی. متن داخل تگ که کاربر می‌بیند: «پاورقی».</div>
+<h3>لیست و جدول کوچک</h3>
+<p>داده را ساخت‌یافته بگذار.</p>
+<div class="codewrap"><div class="code">&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;th&gt;نمره&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;علی&lt;/td&gt;&lt;td&gt;18&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تگ «table»: جدول.<br>
+<strong>خط 2:</strong> تگ «tr»: یک ردیف جدول.<br>
+<strong>خط 3:</strong> تگ «tr»: یک ردیف جدول.<br>
+<strong>خط 4:</strong> تگ بسته «table» یعنی جعبهٔ table تمام شد. بدون بستن، تگ بعدی ممکن است قاطی شود.</div>
+<h3>اشتباه رایج</h3>
+<p>تگ را نبند یا dir را نگذار؛ فارسی به‌هم می‌ریزد.</p>
+<div class="codewrap"><div class="code">&lt;html lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;
+&lt;body&gt;&lt;p&gt;متن راست‌چین&lt;/p&gt;&lt;/body&gt;
+&lt;/html&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تگ «html»: ریشه کل صفحه. ویژگی‌ها: lang (زبان صفحه) = "fa"؛ dir (جهت متن؛ rtl برای فارسی) = "rtl".<br>
+<strong>خط 2:</strong> تگ «body»: هر چیزی که کاربر می‌بیند داخل body است.<br>
+<strong>خط 3:</strong> تگ بسته «html» یعنی جعبهٔ html تمام شد. بدون بستن، تگ بعدی ممکن است قاطی شود.</div>
+<div class="warn">تگ‌ها را تودرتوی درست ببند. <b><i>متن</b></i> غلط است.</div>
+<p class="rel">اگر این درس سخت بود، درس قبلی همان زبان را یک‌بار دیگر بخوان. بعد همین «نشانه لینک» را با تغییر عدد یا متن مثال دوباره اجرا کن.</p>
+<div class="sum"><b>جمع‌بندی سریع</b><ul><li>HTML ساختار است؛ «نشانه لینک» یک قطعه از آن.</li><li>تگ باز معمولاً بسته هم دارد.</li><li>ویژگی مثل href و alt معنی می‌دهند.</li><li>صفحه را در مرورگر باز کن نه فقط در ذهن.</li><li>ظاهر را بعداً با CSS بده.</li></ul></div>
+<div class="navbtn">
+<a href="019-رنگ-لینکها.html">← قبلی</a>
+<a href="021-تصاویر-Images.html">بعدی →</a>
+</div>
+</article>
+</div>
+</div>
+<div id="edBack"><div id="edBox">
+<h3>مشاهده در ادیتور</h3>
+<pre id="edCode"></pre>
+<div class="navbtn">
+<button type="button" id="edCopy">کپی</button>
+<button type="button" id="edClose">بستن</button>
+</div>
+</div></div>
+<footer>مثال زیاد · توضیح ساده · بدون حاشیه</footer>
+<script src="../js/search.js"></script>
+<script>
+document.querySelectorAll(".trybtn").forEach(function(btn){
+  btn.onclick=function(){
+    var wrap=btn.previousElementSibling;
+    var codeEl=wrap&&wrap.querySelector?wrap.querySelector(".code"):wrap;
+    document.getElementById("edCode").textContent=codeEl?codeEl.textContent:"";
+    document.getElementById("edBack").style.display="flex";
+  };
+});
+document.getElementById("edClose").onclick=function(){document.getElementById("edBack").style.display="none";};
+document.getElementById("edBack").onclick=function(e){if(e.target.id==="edBack")document.getElementById("edBack").style.display="none";};
+document.getElementById("edCopy").onclick=function(){
+  var t=document.getElementById("edCode").textContent;
+  if(navigator.clipboard)navigator.clipboard.writeText(t);
+};
+</script>
+</body>
+</html>

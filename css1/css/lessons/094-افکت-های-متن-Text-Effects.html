@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>افکت های متن (Text Effects) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="درس افکت های متن (Text Effects) در CSS با مثال و توضیح خط‌به‌خط.">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" href="094-افکت-های-متن-Text-Effects.css">
+</head>
+<body>
+<header>
+<div class="logo">مدرسه برنامه‌نویسان <span>CSS</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../css.html">لیست درس‌ها</a>
+</nav>
+</header>
+<div class="wrap">
+<div class="layout">
+<aside class="side" id="sideMenu">
+<h3>جستجوی درس</h3>
+<input type="search" id="lessonSearch" class="search-box" placeholder="جستجو در درس‌ها..." autocomplete="off">
+<h3>درس‌ها (145)</h3>
+<a href="001-خانه-HOME.html" data-title="خانه (HOME)">1. خانه (HOME)</a>
+<a href="002-معرفی-Introduction.html" data-title="معرفی (Introduction)">2. معرفی (Introduction)</a>
+<a href="003-نحو-نگارش-Syntax.html" data-title="نحو نگارش (Syntax)">3. نحو نگارش (Syntax)</a>
+<a href="004-انتخاب-گرها-Selectors.html" data-title="انتخاب گرها (Selectors)">4. انتخاب گرها (Selectors)</a>
+<a href="005-نحوه-استفاده-How-To.html" data-title="نحوه استفاده (How To)">5. نحوه استفاده (How To)</a>
+<a href="006-توضیحات-Comments.html" data-title="توضیحات (Comments)">6. توضیحات (Comments)</a>
+<a href="007-خطاها-Errors.html" data-title="خطاها (Errors)">7. خطاها (Errors)</a>
+<a href="008-رنگ-ها-Colors.html" data-title="رنگ ها (Colors)">8. رنگ ها (Colors)</a>
+<a href="009-رنگ-های-RGB-RGB-Colors.html" data-title="رنگ های RGB (RGB Colors)">9. رنگ های RGB (RGB Colors)</a>
+<a href="010-رنگ-های-HEX-HEX-Colors.html" data-title="رنگ های HEX (HEX Colors)">10. رنگ های HEX (HEX Colors)</a>
+<a href="011-رنگ-های-HSL-HSL-Colors.html" data-title="رنگ های HSL (HSL Colors)">11. رنگ های HSL (HSL Colors)</a>
+<a href="012-پس-زمینه-Backgrounds.html" data-title="پس زمینه (Backgrounds)">12. پس زمینه (Backgrounds)</a>
+<a href="013-تصویر-پس-زمینه-Background-Image.html" data-title="تصویر پس زمینه (Background Image)">13. تصویر پس زمینه (Background Image)</a>
+<a href="014-تکرار-پس-زمینه-Background-Repeat.html" data-title="تکرار پس زمینه (Background Repeat)">14. تکرار پس زمینه (Background Repeat)</a>
+<a href="015-پیوست-پس-زمینه-Background-Attachment.html" data-title="پیوست پس زمینه (Background Attachment)">15. پیوست پس زمینه (Background Attachment)</a>
+<a href="016-کوتاه-نویسی-پس-زمینه-Background-Shorthan.html" data-title="کوتاه نویسی پس زمینه (Background Shorthand)">16. کوتاه نویسی پس زمینه (Background Shorthand)</a>
+<a href="017-حاشیه-ها-Borders.html" data-title="حاشیه ها (Borders)">17. حاشیه ها (Borders)</a>
+<a href="018-عرض-حاشیه-Border-Width.html" data-title="عرض حاشیه (Border Width)">18. عرض حاشیه (Border Width)</a>
+<a href="019-رنگ-حاشیه-Border-Color.html" data-title="رنگ حاشیه (Border Color)">19. رنگ حاشیه (Border Color)</a>
+<a href="020-طرف-های-حاشیه-Border-Sides.html" data-title="طرف های حاشیه (Border Sides)">20. طرف های حاشیه (Border Sides)</a>
+<a href="021-کوتاه-نویسی-حاشیه-Border-Shorthand.html" data-title="کوتاه نویسی حاشیه (Border Shorthand)">21. کوتاه نویسی حاشیه (Border Shorthand)</a>
+<a href="022-حاشیه-های-گرد-Rounded-Borders.html" data-title="حاشیه های گرد (Rounded Borders)">22. حاشیه های گرد (Rounded Borders)</a>
+<a href="023-حاشیه-بیرونی-Outline.html" data-title="حاشیه بیرونی (Outline)">23. حاشیه بیرونی (Outline)</a>
+<a href="024-عرض-حاشیه-بیرونی-Outline-Width.html" data-title="عرض حاشیه بیرونی (Outline Width)">24. عرض حاشیه بیرونی (Outline Width)</a>
+<a href="025-رنگ-حاشیه-بیرونی-Outline-Color.html" data-title="رنگ حاشیه بیرونی (Outline Color)">25. رنگ حاشیه بیرونی (Outline Color)</a>
+<a href="026-کوتاه-نویسی-حاشیه-بیرونی-Outline-Shortha.html" data-title="کوتاه نویسی حاشیه بیرونی (Outline Shorthand)">26. کوتاه نویسی حاشیه بیرونی (Outline Shorthand)</a>
+<a href="027-فاصله-حاشیه-بیرونی-Outline-Offset.html" data-title="فاصله حاشیه بیرونی (Outline Offset)">27. فاصله حاشیه بیرونی (Outline Offset)</a>
+<a href="028-حاشیه-داخلی-Padding.html" data-title="حاشیه داخلی (Padding)">28. حاشیه داخلی (Padding)</a>
+<a href="029-ارتفاع-و-عرض-HeightWidth.html" data-title="ارتفاع و عرض (Height/Width)">29. ارتفاع و عرض (Height/Width)</a>
+<a href="030-مدل-جعبه-ای-Box-Model.html" data-title="مدل جعبه ای (Box Model)">30. مدل جعبه ای (Box Model)</a>
+<a href="031-متن-Text.html" data-title="متن (Text)">31. متن (Text)</a>
+<a href="032-تراز-متن-Text-Alignment.html" data-title="تراز متن (Text Alignment)">32. تراز متن (Text Alignment)</a>
+<a href="033-تزئین-متن-Text-Decoration.html" data-title="تزئین متن (Text Decoration)">33. تزئین متن (Text Decoration)</a>
+<a href="034-تبدیل-متن-Text-Transformation.html" data-title="تبدیل متن (Text Transformation)">34. تبدیل متن (Text Transformation)</a>
+<a href="035-فاصله-متن-Text-Spacing.html" data-title="فاصله متن (Text Spacing)">35. فاصله متن (Text Spacing)</a>
+<a href="036-سایه-متن-Text-Shadow.html" data-title="سایه متن (Text Shadow)">36. سایه متن (Text Shadow)</a>
+<a href="037-فونت-ها-Fonts.html" data-title="فونت ها (Fonts)">37. فونت ها (Fonts)</a>
+<a href="038-فونت-های-وب-سیف-Web-Safe-Fonts.html" data-title="فونت های وب سیف (Web Safe Fonts)">38. فونت های وب سیف (Web Safe Fonts)</a>
+<a href="039-جایگزین-های-فونت-Font-Fallbacks.html" data-title="جایگزین های فونت (Font Fallbacks)">39. جایگزین های فونت (Font Fallbacks)</a>
+<a href="040-سبک-فونت-Font-Style.html" data-title="سبک فونت (Font Style)">40. سبک فونت (Font Style)</a>
+<a href="041-اندازه-فونت-Font-Size.html" data-title="اندازه فونت (Font Size)">41. اندازه فونت (Font Size)</a>
+<a href="042-فونت-گوگل-Google-Fonts.html" data-title="فونت گوگل (Google Fonts)">42. فونت گوگل (Google Fonts)</a>
+<a href="043-ترکیب-فونت-ها-Font-Pairings.html" data-title="ترکیب فونت ها (Font Pairings)">43. ترکیب فونت ها (Font Pairings)</a>
+<a href="044-کوتاه-نویسی-فونت-Font-Shorthand.html" data-title="کوتاه نویسی فونت (Font Shorthand)">44. کوتاه نویسی فونت (Font Shorthand)</a>
+<a href="045-آیکون-ها-Icons.html" data-title="آیکون ها (Icons)">45. آیکون ها (Icons)</a>
+<a href="046-لینک-ها-Links.html" data-title="لینک ها (Links)">46. لینک ها (Links)</a>
+<a href="047-فهرست-ها-Lists.html" data-title="فهرست ها (Lists)">47. فهرست ها (Lists)</a>
+<a href="048-جداول-Tables.html" data-title="جداول (Tables)">48. جداول (Tables)</a>
+<a href="049-اندازه-جدول-Table-Size.html" data-title="اندازه جدول (Table Size)">49. اندازه جدول (Table Size)</a>
+<a href="050-تراز-جدول-Table-Alignment.html" data-title="تراز جدول (Table Alignment)">50. تراز جدول (Table Alignment)</a>
+<a href="051-استایل-جدول-Table-Styling.html" data-title="استایل جدول (Table Styling)">51. استایل جدول (Table Styling)</a>
+<a href="052-جدول-واکنش-گرا-Responsive-Table.html" data-title="جدول واکنش گرا (Responsive Table)">52. جدول واکنش گرا (Responsive Table)</a>
+<a href="053-نمایش-Display.html" data-title="نمایش (Display)">53. نمایش (Display)</a>
+<a href="054-حداکثر-عرض-Max-width.html" data-title="حداکثر عرض (Max-width)">54. حداکثر عرض (Max-width)</a>
+<a href="055-موقعیت-دهی-Position.html" data-title="موقعیت دهی (Position)">55. موقعیت دهی (Position)</a>
+<a href="056-شاخص-Z-Z-index.html" data-title="شاخص Z (Z-index)">56. شاخص Z (Z-index)</a>
+<a href="057-سرریز-Overflow.html" data-title="سرریز (Overflow)">57. سرریز (Overflow)</a>
+<a href="058-شناور-Float.html" data-title="شناور (Float)">58. شناور (Float)</a>
+<a href="059-پاک-سازی-Clear.html" data-title="پاک سازی (Clear)">59. پاک سازی (Clear)</a>
+<a href="060-نمونه-های-شناور-Float-Examples.html" data-title="نمونه های شناور (Float Examples)">60. نمونه های شناور (Float Examples)</a>
+<a href="061-نمایش-خطی-بلوک-Inline-block.html" data-title="نمایش خطی-بلوک (Inline-block)">61. نمایش خطی-بلوک (Inline-block)</a>
+<a href="062-تراز-کردن-Align.html" data-title="تراز کردن (Align)">62. تراز کردن (Align)</a>
+<a href="063-ترکیب-کننده-ها-Combinators.html" data-title="ترکیب کننده ها (Combinators)">63. ترکیب کننده ها (Combinators)</a>
+<a href="064-شبه-کلاس-ها-Pseudo-classes.html" data-title="شبه کلاس ها (Pseudo-classes)">64. شبه کلاس ها (Pseudo-classes)</a>
+<a href="065-شفافیت-Opacity.html" data-title="شفافیت (Opacity)">65. شفافیت (Opacity)</a>
+<a href="066-نوار-ناوبری-Navigation-Bars.html" data-title="نوار ناوبری (Navigation Bars)">66. نوار ناوبری (Navigation Bars)</a>
+<a href="067-ناوبری-عمودی-Vertical-Navbar.html" data-title="ناوبری عمودی (Vertical Navbar)">67. ناوبری عمودی (Vertical Navbar)</a>
+<a href="068-ناوبری-افقی-Horizontal-Navbar.html" data-title="ناوبری افقی (Horizontal Navbar)">68. ناوبری افقی (Horizontal Navbar)</a>
+<a href="069-منوهای-کشویی-Dropdowns.html" data-title="منوهای کشویی (Dropdowns)">69. منوهای کشویی (Dropdowns)</a>
+<a href="070-گالری-تصاویر-Image-Gallery.html" data-title="گالری تصاویر (Image Gallery)">70. گالری تصاویر (Image Gallery)</a>
+<a href="071-تصاویر-اسپریت-Image-Sprites.html" data-title="تصاویر اسپریت (Image Sprites)">71. تصاویر اسپریت (Image Sprites)</a>
+<a href="072-انتخاب-گرهای-ویژگی-Attribute-Selectors.html" data-title="انتخاب گرهای ویژگی (Attribute Selectors)">72. انتخاب گرهای ویژگی (Attribute Selectors)</a>
+<a href="073-فرم-ها-Forms.html" data-title="فرم ها (Forms)">73. فرم ها (Forms)</a>
+<a href="074-شمارنده-ها-Counters.html" data-title="شمارنده ها (Counters)">74. شمارنده ها (Counters)</a>
+<a href="075-واحدها-Units.html" data-title="واحدها (Units)">75. واحدها (Units)</a>
+<a href="076-ویژگی-اختصاصی-سازی-Specificity.html" data-title="ویژگی اختصاصی سازی (Specificity)">76. ویژگی اختصاصی سازی (Specificity)</a>
+<a href="077-ویژگی-important.html" data-title="ویژگی !important">77. ویژگی !important</a>
+<a href="078-توابع-ریاضی-Math-Functions.html" data-title="توابع ریاضی (Math Functions)">78. توابع ریاضی (Math Functions)</a>
+<a href="079-بهینه-سازی-Optimization.html" data-title="بهینه سازی (Optimization)">79. بهینه سازی (Optimization)</a>
+<a href="080-دسترس-پذیری-Accessibility.html" data-title="دسترس پذیری (Accessibility)">80. دسترس پذیری (Accessibility)</a>
+<a href="081-چیدمان-وب-سایت-Website-Layout.html" data-title="چیدمان وب سایت (Website Layout)">81. چیدمان وب سایت (Website Layout)</a>
+<a href="082-گوشه-های-گرد-Rounded-Corners.html" data-title="گوشه های گرد (Rounded Corners)">82. گوشه های گرد (Rounded Corners)</a>
+<a href="083-تصاویر-حاشیه-Border-Images.html" data-title="تصاویر حاشیه (Border Images)">83. تصاویر حاشیه (Border Images)</a>
+<a href="084-پس-زمینه-های-چندگانه-Multiple-Background.html" data-title="پس زمینه های چندگانه (Multiple Backgrounds)">84. پس زمینه های چندگانه (Multiple Backgrounds)</a>
+<a href="085-اندازه-پس-زمینه-Background-Size.html" data-title="اندازه پس زمینه (Background Size)">85. اندازه پس زمینه (Background Size)</a>
+<a href="086-مبدأ-پس-زمینه-Background-Origin.html" data-title="مبدأ پس زمینه (Background Origin)">86. مبدأ پس زمینه (Background Origin)</a>
+<a href="087-برش-پس-زمینه-Background-Clip.html" data-title="برش پس زمینه (Background Clip)">87. برش پس زمینه (Background Clip)</a>
+<a href="088-کلیدواژه-های-رنگ-Color-Keywords.html" data-title="کلیدواژه های رنگ (Color Keywords)">88. کلیدواژه های رنگ (Color Keywords)</a>
+<a href="089-گرادیان-ها-Gradients.html" data-title="گرادیان ها (Gradients)">89. گرادیان ها (Gradients)</a>
+<a href="090-گرادیان-شعاعی-Radial-Gradients.html" data-title="گرادیان شعاعی (Radial Gradients)">90. گرادیان شعاعی (Radial Gradients)</a>
+<a href="091-گرادیان-مخروطی-Conic-Gradients.html" data-title="گرادیان مخروطی (Conic Gradients)">91. گرادیان مخروطی (Conic Gradients)</a>
+<a href="092-سایه-ها-Shadows.html" data-title="سایه ها (Shadows)">92. سایه ها (Shadows)</a>
+<a href="093-سایه-جعبه-Box-Shadow.html" data-title="سایه جعبه (Box Shadow)">93. سایه جعبه (Box Shadow)</a>
+<a href="094-افکت-های-متن-Text-Effects.html" class="on" data-title="افکت های متن (Text Effects)">94. افکت های متن (Text Effects)</a>
+<a href="095-فونت-های-سفارشی-Custom-Fonts.html" data-title="فونت های سفارشی (Custom Fonts)">95. فونت های سفارشی (Custom Fonts)</a>
+<a href="096-تبدیل-های-دو-بعدی-2D-Transforms.html" data-title="تبدیل های دو بعدی (2D Transforms)">96. تبدیل های دو بعدی (2D Transforms)</a>
+<a href="097-تبدیل-های-سه-بعدی-3D-Transforms.html" data-title="تبدیل های سه بعدی (3D Transforms)">97. تبدیل های سه بعدی (3D Transforms)</a>
+<a href="098-انتقال-ها-Transitions.html" data-title="انتقال ها (Transitions)">98. انتقال ها (Transitions)</a>
+<a href="099-انیمیشن-ها-Animations.html" data-title="انیمیشن ها (Animations)">99. انیمیشن ها (Animations)</a>
+<a href="100-توضیحات-راهنما-Tooltips.html" data-title="توضیحات راهنما (Tooltips)">100. توضیحات راهنما (Tooltips)</a>
+<a href="101-استایل-دهی-تصاویر-Image-Styling.html" data-title="استایل دهی تصاویر (Image Styling)">101. استایل دهی تصاویر (Image Styling)</a>
+<a href="102-مودال-تصویر-Image-Modal.html" data-title="مودال تصویر (Image Modal)">102. مودال تصویر (Image Modal)</a>
+<a href="103-تراز-مرکز-تصویر-Image-Centering.html" data-title="تراز مرکز تصویر (Image Centering)">103. تراز مرکز تصویر (Image Centering)</a>
+<a href="104-فیلترهای-تصویر-Image-Filters.html" data-title="فیلترهای تصویر (Image Filters)">104. فیلترهای تصویر (Image Filters)</a>
+<a href="105-اشکال-تصویر-Image-Shapes.html" data-title="اشکال تصویر (Image Shapes)">105. اشکال تصویر (Image Shapes)</a>
+<a href="106-ویژگی-object-fit.html" data-title="ویژگی object-fit">106. ویژگی object-fit</a>
+<a href="107-ویژگی-object-position.html" data-title="ویژگی object-position">107. ویژگی object-position</a>
+<a href="108-ماسک-گذاری-Masking.html" data-title="ماسک گذاری (Masking)">108. ماسک گذاری (Masking)</a>
+<a href="109-ماسک-گرادیان-Masking-Gradients.html" data-title="ماسک گرادیان (Masking-Gradients)">109. ماسک گرادیان (Masking-Gradients)</a>
+<a href="110-ماسک-SVG-Masking-SVG.html" data-title="ماسک SVG (Masking-SVG)">110. ماسک SVG (Masking-SVG)</a>
+<a href="111-دکمه-ها-Buttons.html" data-title="دکمه ها (Buttons)">111. دکمه ها (Buttons)</a>
+<a href="112-صفحه-بندی-Pagination.html" data-title="صفحه بندی (Pagination)">112. صفحه بندی (Pagination)</a>
+<a href="113-چند-ستونه-Multiple-Columns.html" data-title="چند ستونه (Multiple Columns)">113. چند ستونه (Multiple Columns)</a>
+<a href="114-رابط-کاربری-User-Interface.html" data-title="رابط کاربری (User Interface)">114. رابط کاربری (User Interface)</a>
+<a href="115-متغیرها-Variables.html" data-title="متغیرها (Variables)">115. متغیرها (Variables)</a>
+<a href="116-بازنویسی-متغیرها-Overriding-Variables.html" data-title="بازنویسی متغیرها (Overriding Variables)">116. بازنویسی متغیرها (Overriding Variables)</a>
+<a href="117-متغیرها-و-جاوااسکریپت-Variables-and-Java.html" data-title="متغیرها و جاوااسکریپت (Variables and JavaScript)">117. متغیرها و جاوااسکریپت (Variables and JavaScript)</a>
+<a href="118-متغیرها-در-Media-Query-Variables-in-MQ.html" data-title="متغیرها در Media Query (Variables in MQ)">118. متغیرها در Media Query (Variables in MQ)</a>
+<a href="119-ویژگی-property.html" data-title="ویژگی @property">119. ویژگی @property</a>
+<a href="120-اندازه-جعبه-Box-Sizing.html" data-title="اندازه جعبه (Box Sizing)">120. اندازه جعبه (Box Sizing)</a>
+<a href="121-پرس-وجوهای-رسانه-ای-Media-Queries.html" data-title="پرس وجوهای رسانه ای (Media Queries)">121. پرس وجوهای رسانه ای (Media Queries)</a>
+<a href="122-نمونه-های-MQ-MQ-Examples.html" data-title="نمونه های MQ (MQ Examples)">122. نمونه های MQ (MQ Examples)</a>
+<a href="123-فلکس-باکس-Flexbox-Intro.html" data-title="فلکس باکس (Flexbox Intro)">123. فلکس باکس (Flexbox Intro)</a>
+<a href="124-ظرف-فلکس-Flex-Container.html" data-title="ظرف فلکس (Flex Container)">124. ظرف فلکس (Flex Container)</a>
+<a href="125-آیتم-های-فلکس-Flex-Items.html" data-title="آیتم های فلکس (Flex Items)">125. آیتم های فلکس (Flex Items)</a>
+<a href="126-فلکس-واکنش-گرا-Flex-Responsive.html" data-title="فلکس واکنش گرا (Flex Responsive)">126. فلکس واکنش گرا (Flex Responsive)</a>
+<a href="127-شبکه-Grid-Intro.html" data-title="شبکه (Grid Intro)">127. شبکه (Grid Intro)</a>
+<a href="128-ظرف-شبکه-Grid-Container.html" data-title="ظرف شبکه (Grid Container)">128. ظرف شبکه (Grid Container)</a>
+<a href="129-ردیف-و-ستون-شبکه-Grid-Tracks.html" data-title="ردیف و ستون شبکه (Grid Tracks)">129. ردیف و ستون شبکه (Grid Tracks)</a>
+<a href="130-فاصله-شبکه-Grid-Gaps.html" data-title="فاصله شبکه (Grid Gaps)">130. فاصله شبکه (Grid Gaps)</a>
+<a href="131-تراز-شبکه-Grid-Align.html" data-title="تراز شبکه (Grid Align)">131. تراز شبکه (Grid Align)</a>
+<a href="132-آیتم-شبکه-Grid-Items.html" data-title="آیتم شبکه (Grid Items)">132. آیتم شبکه (Grid Items)</a>
+<a href="133-نام-گذاری-آیتم-Grid-Item-Named.html" data-title="نام گذاری آیتم (Grid Item Named)">133. نام گذاری آیتم (Grid Item Named)</a>
+<a href="134-تراز-آیتم-شبکه-Grid-Item-Align.html" data-title="تراز آیتم شبکه (Grid Item Align)">134. تراز آیتم شبکه (Grid Item Align)</a>
+<a href="135-ترتیب-آیتم-شبکه-Grid-Item-Order.html" data-title="ترتیب آیتم شبکه (Grid Item Order)">135. ترتیب آیتم شبکه (Grid Item Order)</a>
+<a href="136-چیدمان-12-ستونه-Grid-12-column-Layout.html" data-title="چیدمان 12 ستونه (Grid 12-column Layout)">136. چیدمان 12 ستونه (Grid 12-column Layout)</a>
+<a href="137-قانون-supports.html" data-title="قانون @supports">137. قانون @supports</a>
+<a href="138-واکنش-گرا-RWD-Intro.html" data-title="واکنش گرا (RWD Intro)">138. واکنش گرا (RWD Intro)</a>
+<a href="139-نما-Viewport.html" data-title="نما (Viewport)">139. نما (Viewport)</a>
+<a href="140-چیدمان-شبکه-واکنش-گرا-RWD-Grid-View.html" data-title="چیدمان شبکه واکنش گرا (RWD Grid View)">140. چیدمان شبکه واکنش گرا (RWD Grid View)</a>
+<a href="141-پرس-وجوهای-رسانه-ای-واکنش-گرا-RWD-Media-.html" data-title="پرس وجوهای رسانه ای واکنش گرا (RWD Media Queries)">141. پرس وجوهای رسانه ای واکنش گرا (RWD Media Queries)</a>
+<a href="142-تصاویر-واکنش-گرا-RWD-Images.html" data-title="تصاویر واکنش گرا (RWD Images)">142. تصاویر واکنش گرا (RWD Images)</a>
+<a href="143-ویدیوهای-واکنش-گرا-RWD-Videos.html" data-title="ویدیوهای واکنش گرا (RWD Videos)">143. ویدیوهای واکنش گرا (RWD Videos)</a>
+<a href="144-چارچوب-های-واکنش-گرا-RWD-Frameworks.html" data-title="چارچوب های واکنش گرا (RWD Frameworks)">144. چارچوب های واکنش گرا (RWD Frameworks)</a>
+<a href="145-قالب-های-واکنش-گرا-RWD-Templates.html" data-title="قالب های واکنش گرا (RWD Templates)">145. قالب های واکنش گرا (RWD Templates)</a>
+</aside>
+<article class="card">
+<h2>افکت های متن (Text Effects)</h2>
+<p>در CSS، «افکت های متن» ظاهر عنصر را عوض می‌کند. HTML اسکلت است؛ CSS رنگ، فاصله و چیدمان است.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> هر صفحه وب که بخواهی «افکت های متن» را رویش ببینی.</p>
+<h3>افکت های متن چیست</h3>
+<p>با «افکت های متن» ظاهر را عوض می‌کنی. قانون = انتخاب‌گر + ویژگی.</p>
+<div class="codewrap"><div class="code">/* افکت های متن */
+.box {
+  color: #e6edf3;
+  background: #161b22;
+  padding: 12px;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> توضیح CSS است و روی صفحه اثر ندارد: «افکت های متن».<br>
+<strong>خط 2:</strong> انتخاب می‌کند چه چیزی استایل بگیرد: «.box». این کلاس (نقطه یعنی class) است. آکولاد باز یعنی ویژگی‌ها از خط بعد شروع می‌شوند.<br>
+<strong>خط 3:</strong> رنگ متن را برابر «#e6edf3» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 4:</strong> پس‌زمینه را برابر «#161b22» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 5:</strong> فاصله داخلی از محتوا تا لبه را برابر «12px» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 6:</strong> آکولاد بسته: قانون این انتخاب‌گر تمام شد.</div>
+<h3>انتخاب‌گر</h3>
+<p>تگ، کلاس یا id.</p>
+<div class="codewrap"><div class="code">p { line-height: 1.8; }
+.note { color: #ffa657; }
+#main { max-width: 900px; }</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> یک قانون یا بخش CSS: «p { line-height: 1.8; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.<br>
+<strong>خط 2:</strong> یک قانون یا بخش CSS: «.note { color: #ffa657; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.<br>
+<strong>خط 3:</strong> یک قانون یا بخش CSS: «#main { max-width: 900px; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.</div>
+<h3>مثال کاربردی</h3>
+<p>یک کارت ساده.</p>
+<div class="codewrap"><div class="code">.card {
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> انتخاب می‌کند چه چیزی استایل بگیرد: «.card». این کلاس (نقطه یعنی class) است. آکولاد باز یعنی ویژگی‌ها از خط بعد شروع می‌شوند.<br>
+<strong>خط 2:</strong> خط دور جعبه را برابر «1px solid #30363d» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 3:</strong> گردی گوشه‌ها را برابر «10px» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 4:</strong> فاصله داخلی از محتوا تا لبه را برابر «16px» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 5:</strong> سایه دور جعبه را برابر «0 8px 24px rgba(0,0,0,.3)» می‌گذارد. اول نام ویژگی، بعد دو نقطه، بعد مقدار. نقطه‌ویرگول پایان این ویژگی است تا ویژگی بعدی قاطی نشود.<br>
+<strong>خط 6:</strong> آکولاد بسته: قانون این انتخاب‌گر تمام شد.</div>
+<h3>حالت‌ها</h3>
+<p>hover وقتی ماوس روی عنصر است.</p>
+<div class="codewrap"><div class="code">a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+button:focus-visible { outline: 2px solid #58a6ff; }</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> یک قانون یا بخش CSS: «a { color: #58a6ff; text-decoration: none; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.<br>
+<strong>خط 2:</strong> یک قانون یا بخش CSS: «a:hover { text-decoration: underline; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.<br>
+<strong>خط 3:</strong> یک قانون یا بخش CSS: «button:focus-visible { outline: 2px solid #58a6ff; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.</div>
+<h3>واکنش‌گرا</h3>
+<p>در عرض کم قوانین عوض شود.</p>
+<div class="codewrap"><div class="code">@media (max-width: 700px) {
+  .row { flex-direction: column; }
+  body { font-size: 14px; }
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> قانون شرطی برای اندازه صفحه. داخل پرانتز شرط است (مثلاً حداکثر عرض). فقط وقتی شرط درست باشد قوانین داخلش اعمال می‌شوند. «@media (max-width: 700px) {».<br>
+<strong>خط 2:</strong> یک قانون یا بخش CSS: «.row { flex-direction: column; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.<br>
+<strong>خط 3:</strong> یک قانون یا بخش CSS: «body { font-size: 14px; }». انتخاب‌گر می‌گوید روی چه چیزی، آکولاد ویژگی‌ها را گروه می‌کند.<br>
+<strong>خط 4:</strong> آکولاد بسته: قانون این انتخاب‌گر تمام شد.</div>
+<h3>اشتباه رایج</h3>
+<p>اگر اثر ندیدی لینک CSS یا غلط املایی ویژگی را چک کن.</p>
+<div class="codewrap"><div class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+/* نام فایل باید دقیقاً همین باشد */</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تگ «link»: معمولاً فایل CSS را وصل می‌کند. ویژگی‌ها: rel (رابطه فایل لینک‌شده) = "stylesheet"؛ href (آدرس مقصد لینک) = "style.css".<br>
+<strong>خط 2:</strong> متن داخل صفحه است و کاربر همان را می‌بیند: «/* نام فایل باید دقیقاً همین باشد */».</div>
+<div class="warn">نقطه‌ویرگول انتهای هر ویژگی را نگذار؛ قانون بعدی هم ممکن است خراب شود.</div>
+<p class="rel">اگر این درس سخت بود، درس قبلی همان زبان را یک‌بار دیگر بخوان. بعد همین «افکت های متن» را با تغییر عدد یا متن مثال دوباره اجرا کن.</p>
+<div class="sum"><b>جمع‌بندی سریع</b><ul><li>موضوع: افکت های متن.</li><li>قانون CSS روی انتخاب‌گر اعمال می‌شود.</li><li>اول روی یک جعبه کوچک امتحان کن.</li><li>در عرض موبایل هم چک کن.</li><li>اگر نشد، کش مرورگر را تازه کن.</li></ul></div>
+<div class="navbtn">
+<a href="093-سایه-جعبه-Box-Shadow.html">← قبلی</a>
+<a href="095-فونت-های-سفارشی-Custom-Fonts.html">بعدی →</a>
+</div>
+</article>
+</div>
+</div>
+<div id="edBack"><div id="edBox">
+<h3>مشاهده در ادیتور</h3>
+<pre id="edCode"></pre>
+<div class="navbtn">
+<button type="button" id="edCopy">کپی</button>
+<button type="button" id="edClose">بستن</button>
+</div>
+</div></div>
+<footer>مثال زیاد · توضیح ساده · بدون حاشیه</footer>
+<script src="../js/search.js"></script>
+<script>
+document.querySelectorAll(".trybtn").forEach(function(btn){
+  btn.onclick=function(){
+    var wrap=btn.previousElementSibling;
+    var codeEl=wrap&&wrap.querySelector?wrap.querySelector(".code"):wrap;
+    document.getElementById("edCode").textContent=codeEl?codeEl.textContent:"";
+    document.getElementById("edBack").style.display="flex";
+  };
+});
+document.getElementById("edClose").onclick=function(){document.getElementById("edBack").style.display="none";};
+document.getElementById("edBack").onclick=function(e){if(e.target.id==="edBack")document.getElementById("edBack").style.display="none";};
+document.getElementById("edCopy").onclick=function(){
+  var t=document.getElementById("edCode").textContent;
+  if(navigator.clipboard)navigator.clipboard.writeText(t);
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حالت سخت گیرانه (Strict Mode) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="درس حالت سخت گیرانه (Strict Mode) در JavaScript.">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/javascript.css">
+<link rel="stylesheet" href="091-حالت-سخت-گیرانه-Strict-Mode.css">
+</head>
+<body>
+<header>
+<div class="logo">مدرسه برنامه‌نویسان <span>JavaScript</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../javascript.html">لیست درس‌ها</a>
+</nav>
+</header>
+<div class="wrap">
+<div class="layout">
+<aside class="side" id="sideMenu">
+<h3>جستجوی درس</h3>
+<input type="search" id="lessonSearch" class="search-box" placeholder="جستجو در درس‌ها..." autocomplete="off">
+<h3>درس‌ها (222)</h3>
+<a href="001-خانه-HOME.html" data-title="خانه (HOME)">1. خانه (HOME)</a>
+<a href="002-معرفی-Introduction.html" data-title="معرفی (Introduction)">2. معرفی (Introduction)</a>
+<a href="003-کجا-قرار-دهیم-Where-To.html" data-title="کجا قرار دهیم (Where To)">3. کجا قرار دهیم (Where To)</a>
+<a href="004-خروجی-Output.html" data-title="خروجی (Output)">4. خروجی (Output)</a>
+<a href="005-ساختار-نوشتاری-Syntax.html" data-title="ساختار نوشتاری (Syntax)">5. ساختار نوشتاری (Syntax)</a>
+<a href="006-دستورات-Statements.html" data-title="دستورات (Statements)">6. دستورات (Statements)</a>
+<a href="007-توضیحات-Comments.html" data-title="توضیحات (Comments)">7. توضیحات (Comments)</a>
+<a href="008-متغیرها-Variables.html" data-title="متغیرها (Variables)">8. متغیرها (Variables)</a>
+<a href="009-Let-Let.html" data-title="Let (Let)">9. Let (Let)</a>
+<a href="010-Const-Const.html" data-title="Const (Const)">10. Const (Const)</a>
+<a href="011-انواع-داده-Types.html" data-title="انواع داده (Types)">11. انواع داده (Types)</a>
+<a href="012-عملگرها-Operators.html" data-title="عملگرها (Operators)">12. عملگرها (Operators)</a>
+<a href="013-عملگرهای-حسابی-Arithmetic.html" data-title="عملگرهای حسابی (Arithmetic)">13. عملگرهای حسابی (Arithmetic)</a>
+<a href="014-عملگرهای-انتسابی-Assignment.html" data-title="عملگرهای انتسابی (Assignment)">14. عملگرهای انتسابی (Assignment)</a>
+<a href="015-مقایسه-ها-Comparisons.html" data-title="مقایسه ها (Comparisons)">15. مقایسه ها (Comparisons)</a>
+<a href="016-شرط-ها-Conditional.html" data-title="شرط ها (Conditional)">16. شرط ها (Conditional)</a>
+<a href="017-if-If.html" data-title="if (If)">17. if (If)</a>
+<a href="018-if-else-If-Else.html" data-title="if else (If Else)">18. if else (If Else)</a>
+<a href="019-شرط-سه-تایی-Ternary.html" data-title="شرط سه تایی (Ternary)">19. شرط سه تایی (Ternary)</a>
+<a href="020-سوییچ-Switch.html" data-title="سوییچ (Switch)">20. سوییچ (Switch)</a>
+<a href="021-بولین-ها-Booleans.html" data-title="بولین ها (Booleans)">21. بولین ها (Booleans)</a>
+<a href="022-منطقی-Logical.html" data-title="منطقی (Logical)">22. منطقی (Logical)</a>
+<a href="023-حلقه-ها-Loops.html" data-title="حلقه ها (Loops)">23. حلقه ها (Loops)</a>
+<a href="024-حلقه-for-Loop-for.html" data-title="حلقه for (Loop for)">24. حلقه for (Loop for)</a>
+<a href="025-حلقه-while-Loop-while.html" data-title="حلقه while (Loop while)">25. حلقه while (Loop while)</a>
+<a href="026-break-Break.html" data-title="break (Break)">26. break (Break)</a>
+<a href="027-continue-Continue.html" data-title="continue (Continue)">27. continue (Continue)</a>
+<a href="028-رشته-ها-Strings.html" data-title="رشته ها (Strings)">28. رشته ها (Strings)</a>
+<a href="029-رشته-های-قالبی-String-Templates.html" data-title="رشته های قالبی (String Templates)">29. رشته های قالبی (String Templates)</a>
+<a href="030-جستجوی-رشته-String-Search.html" data-title="جستجوی رشته (String Search)">30. جستجوی رشته (String Search)</a>
+<a href="031-مرجع-رشته-String-Reference.html" data-title="مرجع رشته (String Reference)">31. مرجع رشته (String Reference)</a>
+<a href="032-اعداد-Numbers.html" data-title="اعداد (Numbers)">32. اعداد (Numbers)</a>
+<a href="033-متدهای-عدد-Number-Methods.html" data-title="متدهای عدد (Number Methods)">33. متدهای عدد (Number Methods)</a>
+<a href="034-ویژگی-های-عدد-Number-Properties.html" data-title="ویژگی های عدد (Number Properties)">34. ویژگی های عدد (Number Properties)</a>
+<a href="035-مرجع-عدد-Number-Reference.html" data-title="مرجع عدد (Number Reference)">35. مرجع عدد (Number Reference)</a>
+<a href="036-عملگرهای-بیتی-Bitwise.html" data-title="عملگرهای بیتی (Bitwise)">36. عملگرهای بیتی (Bitwise)</a>
+<a href="037-BigInt-BigInt.html" data-title="BigInt (BigInt)">37. BigInt (BigInt)</a>
+<a href="038-توابع-Functions.html" data-title="توابع (Functions)">38. توابع (Functions)</a>
+<a href="039-اشیا-Objects.html" data-title="اشیا (Objects)">39. اشیا (Objects)</a>
+<a href="040-ویژگی-های-شی-Object-Properties.html" data-title="ویژگی های شی (Object Properties)">40. ویژگی های شی (Object Properties)</a>
+<a href="041-متدهای-شی-Object-Methods.html" data-title="متدهای شی (Object Methods)">41. متدهای شی (Object Methods)</a>
+<a href="042-نمایش-شی-Object-Display.html" data-title="نمایش شی (Object Display)">42. نمایش شی (Object Display)</a>
+<a href="043-تاریخ-ها-Dates.html" data-title="تاریخ ها (Dates)">43. تاریخ ها (Dates)</a>
+<a href="044-قالب-های-تاریخ-Date-Formats.html" data-title="قالب های تاریخ (Date Formats)">44. قالب های تاریخ (Date Formats)</a>
+<a href="045-دریافت-تاریخ-Date-Get.html" data-title="دریافت تاریخ (Date Get)">45. دریافت تاریخ (Date Get)</a>
+<a href="046-تنظیم-تاریخ-Date-Set.html" data-title="تنظیم تاریخ (Date Set)">46. تنظیم تاریخ (Date Set)</a>
+<a href="047-مرجع-تاریخ-Date-Reference.html" data-title="مرجع تاریخ (Date Reference)">47. مرجع تاریخ (Date Reference)</a>
+<a href="048-آرایه-ها-Arrays.html" data-title="آرایه ها (Arrays)">48. آرایه ها (Arrays)</a>
+<a href="049-متدهای-آرایه-Array-Methods.html" data-title="متدهای آرایه (Array Methods)">49. متدهای آرایه (Array Methods)</a>
+<a href="050-جستجوی-آرایه-Array-Search.html" data-title="جستجوی آرایه (Array Search)">50. جستجوی آرایه (Array Search)</a>
+<a href="051-مرتب-سازی-آرایه-Array-Sort.html" data-title="مرتب سازی آرایه (Array Sort)">51. مرتب سازی آرایه (Array Sort)</a>
+<a href="052-تکرارهای-آرایه-Array-Iterations.html" data-title="تکرارهای آرایه (Array Iterations)">52. تکرارهای آرایه (Array Iterations)</a>
+<a href="053-مرجع-آرایه-Array-Reference.html" data-title="مرجع آرایه (Array Reference)">53. مرجع آرایه (Array Reference)</a>
+<a href="054-ثابت-آرایه-Array-Const.html" data-title="ثابت آرایه (Array Const)">54. ثابت آرایه (Array Const)</a>
+<a href="055-آرایه-های-نوع-دار-Typed-Arrays.html" data-title="آرایه های نوع دار (Typed Arrays)">55. آرایه های نوع دار (Typed Arrays)</a>
+<a href="056-متدهای-نوع-دار-Typed-Methods.html" data-title="متدهای نوع دار (Typed Methods)">56. متدهای نوع دار (Typed Methods)</a>
+<a href="057-مرجع-نوع-دار-Typed-Reference.html" data-title="مرجع نوع دار (Typed Reference)">57. مرجع نوع دار (Typed Reference)</a>
+<a href="058-مجموعه-ها-Sets.html" data-title="مجموعه ها (Sets)">58. مجموعه ها (Sets)</a>
+<a href="059-متدهای-مجموعه-Set-Methods.html" data-title="متدهای مجموعه (Set Methods)">59. متدهای مجموعه (Set Methods)</a>
+<a href="060-منطق-مجموعه-Set-Logic.html" data-title="منطق مجموعه (Set Logic)">60. منطق مجموعه (Set Logic)</a>
+<a href="061-WeakSet-WeakSet.html" data-title="WeakSet (WeakSet)">61. WeakSet (WeakSet)</a>
+<a href="062-مرجع-مجموعه-Set-Reference.html" data-title="مرجع مجموعه (Set Reference)">62. مرجع مجموعه (Set Reference)</a>
+<a href="063-نگاشت-ها-Maps.html" data-title="نگاشت ها (Maps)">63. نگاشت ها (Maps)</a>
+<a href="064-متدهای-نگاشت-Map-Methods.html" data-title="متدهای نگاشت (Map Methods)">64. متدهای نگاشت (Map Methods)</a>
+<a href="065-WeakMap-WeakMap.html" data-title="WeakMap (WeakMap)">65. WeakMap (WeakMap)</a>
+<a href="066-مرجع-نگاشت-Map-Reference.html" data-title="مرجع نگاشت (Map Reference)">66. مرجع نگاشت (Map Reference)</a>
+<a href="067-ریاضی-Math.html" data-title="ریاضی (Math)">67. ریاضی (Math)</a>
+<a href="068-مرجع-ریاضی-Math-Reference.html" data-title="مرجع ریاضی (Math Reference)">68. مرجع ریاضی (Math Reference)</a>
+<a href="069-تصادفی-Math-Random.html" data-title="تصادفی (Math Random)">69. تصادفی (Math Random)</a>
+<a href="070-عبارات-منظم-RegExp.html" data-title="عبارات منظم (RegExp)">70. عبارات منظم (RegExp)</a>
+<a href="071-پرچم-ها-RegExp-Flags.html" data-title="پرچم ها (RegExp Flags)">71. پرچم ها (RegExp Flags)</a>
+<a href="072-کلاس-های-کاراکتری-RegExp-Classes.html" data-title="کلاس های کاراکتری (RegExp Classes)">72. کلاس های کاراکتری (RegExp Classes)</a>
+<a href="073-متاکاراکترها-RegExp-Metachars.html" data-title="متاکاراکترها (RegExp Metachars)">73. متاکاراکترها (RegExp Metachars)</a>
+<a href="074-گزاره-ها-RegExp-Assertions.html" data-title="گزاره ها (RegExp Assertions)">74. گزاره ها (RegExp Assertions)</a>
+<a href="075-تکرارکننده-ها-RegExp-Quantifiers.html" data-title="تکرارکننده ها (RegExp Quantifiers)">75. تکرارکننده ها (RegExp Quantifiers)</a>
+<a href="076-الگوها-RegExp-Patterns.html" data-title="الگوها (RegExp Patterns)">76. الگوها (RegExp Patterns)</a>
+<a href="077-اشیای-RegExp-RegExp-Objects.html" data-title="اشیای RegExp (RegExp Objects)">77. اشیای RegExp (RegExp Objects)</a>
+<a href="078-متدهای-RegExp-RegExp-Methods.html" data-title="متدهای RegExp (RegExp Methods)">78. متدهای RegExp (RegExp Methods)</a>
+<a href="079-انواع-داده-Data-Types.html" data-title="انواع داده (Data Types)">79. انواع داده (Data Types)</a>
+<a href="080-typeof-typeof.html" data-title="typeof (typeof)">80. typeof (typeof)</a>
+<a href="081-toString-toString.html" data-title="toString() (toString())">81. toString() (toString())</a>
+<a href="082-تبدیل-نوع-Type-Conversion.html" data-title="تبدیل نوع (Type Conversion)">82. تبدیل نوع (Type Conversion)</a>
+<a href="083-خطاها-مقدمه-Errors-Intro.html" data-title="خطاها: مقدمه (Errors Intro)">83. خطاها: مقدمه (Errors Intro)</a>
+<a href="084-خطاهای-بی-صدا-Errors-Silent.html" data-title="خطاهای بی صدا (Errors Silent)">84. خطاهای بی صدا (Errors Silent)</a>
+<a href="085-دستورات-خطا-Error-Statements.html" data-title="دستورات خطا (Error Statements)">85. دستورات خطا (Error Statements)</a>
+<a href="086-شیء-خطا-Error-Object.html" data-title="شیء خطا (Error Object)">86. شیء خطا (Error Object)</a>
+<a href="087-اشکال-زدایی-Debugging.html" data-title="اشکال زدایی (Debugging)">87. اشکال زدایی (Debugging)</a>
+<a href="088-رویدادها-Events.html" data-title="رویدادها (Events)">88. رویدادها (Events)</a>
+<a href="089-دامنه-Scope.html" data-title="دامنه (Scope)">89. دامنه (Scope)</a>
+<a href="090-بالابردن-Hoisting.html" data-title="بالابردن (Hoisting)">90. بالابردن (Hoisting)</a>
+<a href="091-حالت-سخت-گیرانه-Strict-Mode.html" class="on" data-title="حالت سخت گیرانه (Strict Mode)">91. حالت سخت گیرانه (Strict Mode)</a>
+<a href="092-بلوک-های-کد-Code-Blocks.html" data-title="بلوک های کد (Code Blocks)">92. بلوک های کد (Code Blocks)</a>
+<a href="093-راهنمای-نگارش-Style-Guide.html" data-title="راهنمای نگارش (Style Guide)">93. راهنمای نگارش (Style Guide)</a>
+<a href="094-بهترین-شیوه-ها-Best-Practices.html" data-title="بهترین شیوه ها (Best Practices)">94. بهترین شیوه ها (Best Practices)</a>
+<a href="095-اشتباهات-رایج-Mistakes.html" data-title="اشتباهات رایج (Mistakes)">95. اشتباهات رایج (Mistakes)</a>
+<a href="096-کارایی-Performance.html" data-title="کارایی (Performance)">96. کارایی (Performance)</a>
+<a href="097-مرجع-کلمات-کلیدی-Keywords-Reference.html" data-title="مرجع کلمات کلیدی (Keywords Reference)">97. مرجع کلمات کلیدی (Keywords Reference)</a>
+<a href="098-کلمات-رزرو-شده-Keywords-Reserved.html" data-title="کلمات رزرو شده (Keywords Reserved)">98. کلمات رزرو شده (Keywords Reserved)</a>
+<a href="099-مرجع-عملگرها-Operator-Reference.html" data-title="مرجع عملگرها (Operator Reference)">99. مرجع عملگرها (Operator Reference)</a>
+<a href="100-اولویت-عملگرها-Operator-Precedence.html" data-title="اولویت عملگرها (Operator Precedence)">100. اولویت عملگرها (Operator Precedence)</a>
+<a href="101-حروف-UTF-8-UTF-8-Letters.html" data-title="حروف UTF-8 (UTF-8 Letters)">101. حروف UTF-8 (UTF-8 Letters)</a>
+<a href="102-نمادهای-UTF-8-UTF-8-Symbols.html" data-title="نمادهای UTF-8 (UTF-8 Symbols)">102. نمادهای UTF-8 (UTF-8 Symbols)</a>
+<a href="103-ایموجی-های-UTF-8-UTF-8-Emojis.html" data-title="ایموجی های UTF-8 (UTF-8 Emojis)">103. ایموجی های UTF-8 (UTF-8 Emojis)</a>
+<a href="104-نسخه-ها-Versions.html" data-title="نسخه ها (Versions)">104. نسخه ها (Versions)</a>
+<a href="105-2025-2025.html" data-title="2025 (2025)">105. 2025 (2025)</a>
+<a href="106-2024-2024.html" data-title="2024 (2024)">106. 2024 (2024)</a>
+<a href="107-2023-2023.html" data-title="2023 (2023)">107. 2023 (2023)</a>
+<a href="108-2022-2022.html" data-title="2022 (2022)">108. 2022 (2022)</a>
+<a href="109-2021-2021.html" data-title="2021 (2021)">109. 2021 (2021)</a>
+<a href="110-2020-2020.html" data-title="2020 (2020)">110. 2020 (2020)</a>
+<a href="111-2019-2019.html" data-title="2019 (2019)">111. 2019 (2019)</a>
+<a href="112-2018-2018.html" data-title="2018 (2018)">112. 2018 (2018)</a>
+<a href="113-2017-2017.html" data-title="2017 (2017)">113. 2017 (2017)</a>
+<a href="114-2016-2016.html" data-title="2016 (2016)">114. 2016 (2016)</a>
+<a href="115-2009-2009-ES5.html" data-title="2009 (2009 (ES5))">115. 2009 (2009 (ES5))</a>
+<a href="116-IE-Edge-IE-Edge.html" data-title="IE / Edge (IE / Edge)">116. IE / Edge (IE / Edge)</a>
+<a href="117-تاریخچه-History.html" data-title="تاریخچه (History)">117. تاریخچه (History)</a>
+<a href="118-تعریف-تابع-Function-Definitions.html" data-title="تعریف تابع (Function Definitions)">118. تعریف تابع (Function Definitions)</a>
+<a href="119-توابع-پیکانی-Function-Arrows.html" data-title="توابع پیکانی (Function Arrows)">119. توابع پیکانی (Function Arrows)</a>
+<a href="120-پارامترهای-تابع-Function-Parameters.html" data-title="پارامترهای تابع (Function Parameters)">120. پارامترهای تابع (Function Parameters)</a>
+<a href="121-فراخوانی-تابع-Function-Invocation.html" data-title="فراخوانی تابع (Function Invocation)">121. فراخوانی تابع (Function Invocation)</a>
+<a href="122-this-در-تابع-Function-this.html" data-title="this در تابع (Function this)">122. this در تابع (Function this)</a>
+<a href="123-call-Function-Call.html" data-title="call (Function Call)">123. call (Function Call)</a>
+<a href="124-apply-Function-Apply.html" data-title="apply (Function Apply)">124. apply (Function Apply)</a>
+<a href="125-bind-Function-Bind.html" data-title="bind (Function Bind)">125. bind (Function Bind)</a>
+<a href="126-Closureها-Function-Closures.html" data-title="Closureها (Function Closures)">126. Closureها (Function Closures)</a>
+<a href="127-تعریف-شی-Object-Definitions.html" data-title="تعریف شی (Object Definitions)">127. تعریف شی (Object Definitions)</a>
+<a href="128-سازنده-ها-Object-Constructors.html" data-title="سازنده ها (Object Constructors)">128. سازنده ها (Object Constructors)</a>
+<a href="129-this-شی-Object-this.html" data-title="this شی (Object this)">129. this شی (Object this)</a>
+<a href="130-ساختارشکنی-Object-Destructuring.html" data-title="ساختارشکنی (Object Destructuring)">130. ساختارشکنی (Object Destructuring)</a>
+<a href="131-پروتوتایپ-ها-Object-Prototypes.html" data-title="پروتوتایپ ها (Object Prototypes)">131. پروتوتایپ ها (Object Prototypes)</a>
+<a href="132-تکرار-روی-شی-Object-Iterations.html" data-title="تکرار روی شی (Object Iterations)">132. تکرار روی شی (Object Iterations)</a>
+<a href="133-مدیریت-ویژگی-ها-Object-Management.html" data-title="مدیریت ویژگی ها (Object Management)">133. مدیریت ویژگی ها (Object Management)</a>
+<a href="134-گیرندهگذارنده-Get-Set.html" data-title="گیرنده/گذارنده (Get / Set)">134. گیرنده/گذارنده (Get / Set)</a>
+<a href="135-محافظت-از-شی-Object-Protection.html" data-title="محافظت از شی (Object Protection)">135. محافظت از شی (Object Protection)</a>
+<a href="136-مرجع-شی-Object-Reference.html" data-title="مرجع شی (Object Reference)">136. مرجع شی (Object Reference)</a>
+<a href="137-کلاس-ها-Classes.html" data-title="کلاس ها (Classes)">137. کلاس ها (Classes)</a>
+<a href="138-وراثت-کلاس-Class-Inheritance.html" data-title="وراثت کلاس (Class Inheritance)">138. وراثت کلاس (Class Inheritance)</a>
+<a href="139-اعضای-ایستا-Class-Static.html" data-title="اعضای ایستا (Class Static)">139. اعضای ایستا (Class Static)</a>
+<a href="140-حلقه-زنی-Looping.html" data-title="حلقه زنی (Looping)">140. حلقه زنی (Looping)</a>
+<a href="141-قابل-تکرارها-Iterables.html" data-title="قابل تکرارها (Iterables)">141. قابل تکرارها (Iterables)</a>
+<a href="142-تکرارگرها-Iterators.html" data-title="تکرارگرها (Iterators)">142. تکرارگرها (Iterators)</a>
+<a href="143-مولدها-Generators.html" data-title="مولدها (Generators)">143. مولدها (Generators)</a>
+<a href="144-کنترل-جریان-Control-Flow.html" data-title="کنترل جریان (Control Flow)">144. کنترل جریان (Control Flow)</a>
+<a href="145-کالبک-ها-Callbacks.html" data-title="کالبک ها (Callbacks)">145. کالبک ها (Callbacks)</a>
+<a href="146-غیرهمزمان-Asynchronous.html" data-title="غیرهمزمان (Asynchronous)">146. غیرهمزمان (Asynchronous)</a>
+<a href="147-پرامیس-ها-Promises.html" data-title="پرامیس ها (Promises)">147. پرامیس ها (Promises)</a>
+<a href="148-AsyncAwait-AsyncAwait.html" data-title="Async/Await (Async/Await)">148. Async/Await (Async/Await)</a>
+<a href="149-ماژول-ها-استاتیک-Modules-Static.html" data-title="ماژول ها: استاتیک (Modules Static)">149. ماژول ها: استاتیک (Modules Static)</a>
+<a href="150-ماژول-ها-داینامیک-Modules-Dynamic.html" data-title="ماژول ها: داینامیک (Modules Dynamic)">150. ماژول ها: داینامیک (Modules Dynamic)</a>
+<a href="151-DOM-معرفی-DOM-Intro.html" data-title="DOM معرفی (DOM Intro)">151. DOM معرفی (DOM Intro)</a>
+<a href="152-DOM-متدها-DOM-Methods.html" data-title="DOM متدها (DOM Methods)">152. DOM متدها (DOM Methods)</a>
+<a href="153-DOM-سند-DOM-Document.html" data-title="DOM سند (DOM Document)">153. DOM سند (DOM Document)</a>
+<a href="154-DOM-عناصر-DOM-Elements.html" data-title="DOM عناصر (DOM Elements)">154. DOM عناصر (DOM Elements)</a>
+<a href="155-DOM-HTML-DOM-HTML.html" data-title="DOM HTML (DOM HTML)">155. DOM HTML (DOM HTML)</a>
+<a href="156-DOM-فرم-ها-DOM-Forms.html" data-title="DOM فرم ها (DOM Forms)">156. DOM فرم ها (DOM Forms)</a>
+<a href="157-DOM-CSS-DOM-CSS.html" data-title="DOM CSS (DOM CSS)">157. DOM CSS (DOM CSS)</a>
+<a href="158-DOM-انیمیشن-ها-DOM-Animations.html" data-title="DOM انیمیشن ها (DOM Animations)">158. DOM انیمیشن ها (DOM Animations)</a>
+<a href="159-DOM-رویدادها-DOM-Events.html" data-title="DOM رویدادها (DOM Events)">159. DOM رویدادها (DOM Events)</a>
+<a href="160-شنونده-رویداد-DOM-Event-Listener.html" data-title="شنونده رویداد (DOM Event Listener)">160. شنونده رویداد (DOM Event Listener)</a>
+<a href="161-پیمایش-DOM-DOM-Navigation.html" data-title="پیمایش DOM (DOM Navigation)">161. پیمایش DOM (DOM Navigation)</a>
+<a href="162-گره-های-DOM-DOM-Nodes.html" data-title="گره های DOM (DOM Nodes)">162. گره های DOM (DOM Nodes)</a>
+<a href="163-مجموعه-های-DOM-DOM-Collections.html" data-title="مجموعه های DOM (DOM Collections)">163. مجموعه های DOM (DOM Collections)</a>
+<a href="164-لیست-گره-های-DOM-DOM-Node-Lists.html" data-title="لیست گره های DOM (DOM Node Lists)">164. لیست گره های DOM (DOM Node Lists)</a>
+<a href="165-پنجره-Window.html" data-title="پنجره (Window)">165. پنجره (Window)</a>
+<a href="166-نمایشگر-Screen.html" data-title="نمایشگر (Screen)">166. نمایشگر (Screen)</a>
+<a href="167-Location-Location.html" data-title="Location (Location)">167. Location (Location)</a>
+<a href="168-تاریخچه-History.html" data-title="تاریخچه (History)">168. تاریخچه (History)</a>
+<a href="169-Navigator-Navigator.html" data-title="Navigator (Navigator)">169. Navigator (Navigator)</a>
+<a href="170-پنجره-های-هشدار-Popup-Alert.html" data-title="پنجره های هشدار (Popup Alert)">170. پنجره های هشدار (Popup Alert)</a>
+<a href="171-زمان-بندی-Timing.html" data-title="زمان بندی (Timing)">171. زمان بندی (Timing)</a>
+<a href="172-کوکی-ها-Cookies.html" data-title="کوکی ها (Cookies)">172. کوکی ها (Cookies)</a>
+<a href="173-مقدمه-Web-API-Web-API-Intro.html" data-title="مقدمه Web API (Web API Intro)">173. مقدمه Web API (Web API Intro)</a>
+<a href="174-Validation-API-Web-Validation-API.html" data-title="Validation API (Web Validation API)">174. Validation API (Web Validation API)</a>
+<a href="175-History-API-Web-History-API.html" data-title="History API (Web History API)">175. History API (Web History API)</a>
+<a href="176-Web-Storage-API-Web-Storage-API.html" data-title="Web Storage API (Web Storage API)">176. Web Storage API (Web Storage API)</a>
+<a href="177-Web-Worker-API-Web-Worker-API.html" data-title="Web Worker API (Web Worker API)">177. Web Worker API (Web Worker API)</a>
+<a href="178-Fetch-API-Web-Fetch-API.html" data-title="Fetch API (Web Fetch API)">178. Fetch API (Web Fetch API)</a>
+<a href="179-Geolocation-API-Web-Geolocation-API.html" data-title="Geolocation API (Web Geolocation API)">179. Geolocation API (Web Geolocation API)</a>
+<a href="180-AJAX-معرفی-AJAX-Intro.html" data-title="AJAX معرفی (AJAX Intro)">180. AJAX معرفی (AJAX Intro)</a>
+<a href="181-AJAX-درخواست-AJAX-Request.html" data-title="AJAX درخواست (AJAX Request)">181. AJAX درخواست (AJAX Request)</a>
+<a href="182-AJAX-پاسخ-AJAX-Response.html" data-title="AJAX پاسخ (AJAX Response)">182. AJAX پاسخ (AJAX Response)</a>
+<a href="183-AJAX-فایل-XML-AJAX-XML-File.html" data-title="AJAX فایل XML (AJAX XML File)">183. AJAX فایل XML (AJAX XML File)</a>
+<a href="184-AJAX-و-PHP-AJAX-PHP.html" data-title="AJAX و PHP (AJAX PHP)">184. AJAX و PHP (AJAX PHP)</a>
+<a href="185-AJAX-و-ASP-AJAX-ASP.html" data-title="AJAX و ASP (AJAX ASP)">185. AJAX و ASP (AJAX ASP)</a>
+<a href="186-AJAX-پایگاه-داده-AJAX-Database.html" data-title="AJAX پایگاه داده (AJAX Database)">186. AJAX پایگاه داده (AJAX Database)</a>
+<a href="187-AJAX-کاربردها-AJAX-Applications.html" data-title="AJAX کاربردها (AJAX Applications)">187. AJAX کاربردها (AJAX Applications)</a>
+<a href="188-AJAX-مثال-ها-AJAX-Examples.html" data-title="AJAX مثال ها (AJAX Examples)">188. AJAX مثال ها (AJAX Examples)</a>
+<a href="189-JSON-معرفی-JSON-Intro.html" data-title="JSON معرفی (JSON Intro)">189. JSON معرفی (JSON Intro)</a>
+<a href="190-JSON-نحو-JSON-Syntax.html" data-title="JSON نحو (JSON Syntax)">190. JSON نحو (JSON Syntax)</a>
+<a href="191-JSON-در-برابر-XML-JSON-vs-XML.html" data-title="JSON در برابر XML (JSON vs XML)">191. JSON در برابر XML (JSON vs XML)</a>
+<a href="192-انواع-داده-در-JSON-JSON-Data-Types.html" data-title="انواع داده در JSON (JSON Data Types)">192. انواع داده در JSON (JSON Data Types)</a>
+<a href="193-JSON-Parse-JSON-Parse.html" data-title="JSON Parse (JSON Parse)">193. JSON Parse (JSON Parse)</a>
+<a href="194-JSON-Stringify-JSON-Stringify.html" data-title="JSON Stringify (JSON Stringify)">194. JSON Stringify (JSON Stringify)</a>
+<a href="195-اشیا-در-JSON-JSON-Objects.html" data-title="اشیا در JSON (JSON Objects)">195. اشیا در JSON (JSON Objects)</a>
+<a href="196-آرایه-ها-در-JSON-JSON-Arrays.html" data-title="آرایه ها در JSON (JSON Arrays)">196. آرایه ها در JSON (JSON Arrays)</a>
+<a href="197-سرور-JSON-JSON-Server.html" data-title="سرور JSON (JSON Server)">197. سرور JSON (JSON Server)</a>
+<a href="198-JSON-و-PHP-JSON-PHP.html" data-title="JSON و PHP (JSON PHP)">198. JSON و PHP (JSON PHP)</a>
+<a href="199-JSON-و-HTML-JSON-HTML.html" data-title="JSON و HTML (JSON HTML)">199. JSON و HTML (JSON HTML)</a>
+<a href="200-JSONP-JSON-JSONP.html" data-title="JSONP (JSON JSONP)">200. JSONP (JSON JSONP)</a>
+<a href="201-jQuery-انتخابگرها-jQuery-Selectors.html" data-title="jQuery انتخابگرها (jQuery Selectors)">201. jQuery انتخابگرها (jQuery Selectors)</a>
+<a href="202-jQuery-HTML-jQuery-HTML.html" data-title="jQuery HTML (jQuery HTML)">202. jQuery HTML (jQuery HTML)</a>
+<a href="203-jQuery-CSS-jQuery-CSS.html" data-title="jQuery CSS (jQuery CSS)">203. jQuery CSS (jQuery CSS)</a>
+<a href="204-jQuery-DOM-jQuery-DOM.html" data-title="jQuery DOM (jQuery DOM)">204. jQuery DOM (jQuery DOM)</a>
+<a href="205-گرافیک-Graphics.html" data-title="گرافیک (Graphics)">205. گرافیک (Graphics)</a>
+<a href="206-Canvas-Canvas.html" data-title="Canvas (Canvas)">206. Canvas (Canvas)</a>
+<a href="207-Plotly-Plotly.html" data-title="Plotly (Plotly)">207. Plotly (Plotly)</a>
+<a href="208-Chartjs-Chartjs.html" data-title="Chart.js (Chart.js)">208. Chart.js (Chart.js)</a>
+<a href="209-Google-Chart-Google-Chart.html" data-title="Google Chart (Google Chart)">209. Google Chart (Google Chart)</a>
+<a href="210-D3js-D3js.html" data-title="D3.js (D3.js)">210. D3.js (D3.js)</a>
+<a href="211-DOM-نمونه-ها-HTML-DOM.html" data-title="DOM نمونه ها (HTML DOM)">211. DOM نمونه ها (HTML DOM)</a>
+<a href="212-ورودی-HTML-HTML-Input.html" data-title="ورودی HTML (HTML Input)">212. ورودی HTML (HTML Input)</a>
+<a href="213-اشیای-HTML-HTML-Objects.html" data-title="اشیای HTML (HTML Objects)">213. اشیای HTML (HTML Objects)</a>
+<a href="214-رویدادهای-HTML-HTML-Events.html" data-title="رویدادهای HTML (HTML Events)">214. رویدادهای HTML (HTML Events)</a>
+<a href="215-مرورگر-Browser.html" data-title="مرورگر (Browser)">215. مرورگر (Browser)</a>
+<a href="216-ویرایشگر-Editor.html" data-title="ویرایشگر (Editor)">216. ویرایشگر (Editor)</a>
+<a href="217-کوییز-Quiz.html" data-title="کوییز (Quiz)">217. کوییز (Quiz)</a>
+<a href="218-سیلابس-Syllabus.html" data-title="سیلابس (Syllabus)">218. سیلابس (Syllabus)</a>
+<a href="219-برنامه-مطالعه-Study-Plan.html" data-title="برنامه مطالعه (Study Plan)">219. برنامه مطالعه (Study Plan)</a>
+<a href="220-آمادگی-مصاحبه-Interview-Prep.html" data-title="آمادگی مصاحبه (Interview Prep)">220. آمادگی مصاحبه (Interview Prep)</a>
+<a href="221-بوت-کمپ-Bootcamp.html" data-title="بوت کمپ (Bootcamp)">221. بوت کمپ (Bootcamp)</a>
+<a href="222-گواهینامه-Certificate.html" data-title="گواهینامه (Certificate)">222. گواهینامه (Certificate)</a>
+</aside>
+<article class="card">
+<h2>حالت سخت گیرانه (Strict Mode)</h2>
+<p>در جاوااسکریپت، «حالت سخت گیرانه» بخشی از رفتار صفحه است. JS بعد از HTML/CSS اجرا می‌شود و صفحه را زنده می‌کند.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> کلیک، فرم، محاسبه، درخواست به سرور؛ هر جا به «حالت سخت گیرانه» نیاز داری.</p>
+<h3>حالت سخت گیرانه چیست</h3>
+<p>«حالت سخت گیرانه» در جاوااسکریپت یک قطعه رفتار است. با console.log ببین چه می‌شود.</p>
+<div class="codewrap"><div class="code">// حالت سخت گیرانه
+const value = 10;
+console.log(&quot;مقدار&quot;, value);
+console.log(typeof value);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> این خط کامنت است و اجرا نمی‌شود: «حالت سخت گیرانه».<br>
+<strong>خط 2:</strong> جعبه ثابت «value» را می‌سازد. const یعنی خود این اسم را نمی‌شود بعداً به چیز دیگری وصل کرد. اگر آرایه/شیء باشد، داخلش هنوز قابل تغییر است.<br>
+<strong>خط 3:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: "مقدار", value.<br>
+<strong>خط 4:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: typeof value.</div>
+<h3>مثال با شرط</h3>
+<p>مسیر برنامه را عوض کن.</p>
+<div class="codewrap"><div class="code">const n = 7;
+if (n % 2 === 0) {
+  console.log(&quot;زوج&quot;);
+} else {
+  console.log(&quot;فرد&quot;);
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> جعبه ثابت «n» را می‌سازد. const یعنی خود این اسم را نمی‌شود بعداً به چیز دیگری وصل کرد. اگر آرایه/شیء باشد، داخلش هنوز قابل تغییر است.<br>
+<strong>خط 2:</strong> شرط را چک می‌کند. اگر درست باشد بلوک بعدی اجرا می‌شود. شرط: داخل پرانتز. «if (n % 2 === 0) {».<br>
+<strong>خط 3:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: "زوج".<br>
+<strong>خط 4:</strong> شروع یا پایان بلوک کد. «} else {».<br>
+<strong>خط 5:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: "فرد".<br>
+<strong>خط 6:</strong> آکولاد شروع یا پایان یک بلوک است. دستورهای داخل یک گروه می‌شوند.</div>
+<h3>مثال با حلقه</h3>
+<p>تکرار کار.</p>
+<div class="codewrap"><div class="code">for (let i = 1; i &lt;= 3; i++) {
+  console.log(i, i * i);
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> حلقه تکرار. در for کلاسیک سه بخش است: شروع؛ شرط ادامه؛ افزایش. «for (let i = 1; i <= 3; i++) {».<br>
+<strong>خط 2:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: i, i * i.<br>
+<strong>خط 3:</strong> آکولاد شروع یا پایان یک بلوک است. دستورهای داخل یک گروه می‌شوند.</div>
+<h3>مثال با آرایه</h3>
+<p>چند مقدار.</p>
+<div class="codewrap"><div class="code">const nums = [2, 4, 6];
+const doubled = nums.map(x =&gt; x * 2);
+console.log(doubled);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> جعبه ثابت «nums» را می‌سازد. const یعنی خود این اسم را نمی‌شود بعداً به چیز دیگری وصل کرد. اگر آرایه/شیء باشد، داخلش هنوز قابل تغییر است.<br>
+<strong>خط 2:</strong> جعبه ثابت «doubled» را می‌سازد. const یعنی خود این اسم را نمی‌شود بعداً به چیز دیگری وصل کرد. اگر آرایه/شیء باشد، داخلش هنوز قابل تغییر است.<br>
+<strong>خط 3:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: doubled.</div>
+<h3>مثال با تابع</h3>
+<p>منطق را جمع کن.</p>
+<div class="codewrap"><div class="code">function sum(arr) {
+  return arr.reduce((a, b) =&gt; a + b, 0);
+}
+console.log(sum([1,2,3]));</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> تابع «sum» را تعریف می‌کند. پرانتز جای ورودی است. آکولاد باز یعنی بدنه از اینجا شروع می‌شود.<br>
+<strong>خط 2:</strong> تابع پیکانی است: سمت چپ ورودی، سمت راست بعد از => کار تابع. کوتاه‌تر از function است. «return arr.reduce((a, b) => a + b, 0);».<br>
+<strong>خط 3:</strong> آکولاد شروع یا پایان یک بلوک است. دستورهای داخل یک گروه می‌شوند.<br>
+<strong>خط 4:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: sum([1,2,3]).</div>
+<h3>اشتباه رایج</h3>
+<p>== تبدیل نوع می‌کند؛ معمولاً === بگذار.</p>
+<div class="codewrap"><div class="code">console.log(0 == &quot;0&quot;);
+console.log(0 === &quot;0&quot;);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط 1:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: 0 == "0".<br>
+<strong>خط 2:</strong> در کنسول مرورگر چاپ می‌کند تا تو ببینی چه شده. کاربر عادی سایت این را نمی‌بیند. مقدار: 0 === "0".</div>
+<div class="warn">JS داخل مرورگر است. فایل را با زنده کردن صفحه ببین؛ بعضی چیزها بدون تگ HTML معنی ندارند.</div>
+<p class="rel">اگر این درس سخت بود، درس قبلی همان زبان را یک‌بار دیگر بخوان. بعد همین «حالت سخت گیرانه» را با تغییر عدد یا متن مثال دوباره اجرا کن.</p>
+<div class="sum"><b>جمع‌بندی سریع</b><ul><li>موضوع: حالت سخت گیرانه.</li><li>با console.log خروجی را ببین.</li><li>=== برای مقایسه دقیق.</li><li>const را پیش‌فرض بگذار.</li><li>خطا را در کنسول بخوان نه حدس.</li></ul></div>
+<div class="navbtn"><a href="090-بالابردن-Hoisting.html">← قبلی</a><a href="092-بلوک-های-کد-Code-Blocks.html">بعدی →</a></div>
+</article>
+</div>
+</div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre>
+<div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer>مثال زیاد · توضیح ساده · بدون حاشیه</footer>
+<script src="../js/search.js"></script>
+<script>
+document.querySelectorAll(".trybtn").forEach(function(btn){btn.onclick=function(){var wrap=btn.previousElementSibling;var codeEl=wrap&&wrap.querySelector?wrap.querySelector(".code"):wrap;document.getElementById("edCode").textContent=codeEl?codeEl.textContent:"";document.getElementById("edBack").style.display="flex";};});
+document.getElementById("edClose").onclick=function(){document.getElementById("edBack").style.display="none";};
+document.getElementById("edBack").onclick=function(e){if(e.target.id==="edBack")document.getElementById("edBack").style.display="none";};
+document.getElementById("edCopy").onclick=function(){if(navigator.clipboard)navigator.clipboard.writeText(document.getElementById("edCode").textContent);};
+</script>
+</body>
+</html>
