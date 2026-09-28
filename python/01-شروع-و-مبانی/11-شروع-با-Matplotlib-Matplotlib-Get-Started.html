@@ -1,77 +1,128 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>شروع با Matplotlib (Matplotlib Get Started) — Python | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد">
-<link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شروع با Matplotlib (Matplotlib Get Started)", "description": "بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f1419">
+    <title>شروع با Matplotlib (Matplotlib Get Started) — Python | مدرسه برنامه‌نویسان</title>
+    <meta name="description"
+        content="بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script
+        type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شروع با Matplotlib (Matplotlib Get Started)", "description": "بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
+
 <body>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+    <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
-<header>
-<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav>
-<a href="../../index.html" class="active">خانه</a>
-<a href="../../tamrin/index.html">تمرین</a>
-</nav>
-</header>
-<main id="main-content">
-<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شروع و مبانی</a><span class="sep">/</span><span>شروع با Matplotlib (Matplotlib Get Started)</span></div><div class="layout"><aside class="side"><h3>شروع و مبانی (13)</h3>
-<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
-<a href="02-مقدمه-Intro.html">2. مقدمه (Intro)</a>
-<a href="03-شروع-کار-Get-Started.html">3. شروع کار (Get Started)</a>
-<a href="04-ساختار-نوشتاری-Syntax.html">4. ساختار نوشتاری (Syntax)</a>
-<a href="05-دستورات-Statements.html">5. دستورات (Statements)</a>
-<a href="06-خروجی-Output.html">6. خروجی (Output)</a>
-<a href="07-چاپ-اعداد-Print-Numbers.html">7. چاپ اعداد (Print Numbers)</a>
-<a href="08-توضیحات-Comments.html">8. توضیحات (Comments)</a>
-<a href="09-نمایش-متغیرها-Output-Variables.html">9. نمایش متغیرها (Output Variables)</a>
-<a href="10-Matplotlib-مقدمه-Matplotlib-Intro.html">10. Matplotlib مقدمه (Matplotlib Intro)</a>
-<a href="11-شروع-با-Matplotlib-Matplotlib-Get-Started.html" class="on">11. شروع با Matplotlib (Matplotlib Get Started)</a>
-<a href="12-MySQL-شروع-MySQL-Get-Started.html">12. MySQL: شروع (MySQL Get Started)</a>
-<a href="13-MongoDB-شروع-Get-Started.html">13. MongoDB: شروع (Get Started)</a>
-</aside>
-<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="شروع با Matplotlib (Matplotlib Get Started)" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
-<h2>شروع با Matplotlib (Matplotlib Get Started)</h2>
-<p><strong>هدف:</strong> بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد.</p>
-<div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شروع و مبانی».</div>
-<div class="good"><strong>ارتباط با قبل:</strong> list و dict پایه بودند؛ اینجا همان داده با ابزار تخصصی سریع‌تر و بزرگ‌تر پردازش می‌شود.</div>
-<h3>مفهوم</h3><p>NumPy آرایهٔ عددی سریع است؛ Pandas جدول (DataFrame)؛ مدل‌های ML از دادهٔ آموزش الگو می‌گیرند و روی دادهٔ جدید پیش‌بینی می‌کنند. بدون نصب پکیج، کد واقعی اجرا نمی‌شود.</p>
-<h3>ساختار</h3><div class="code"># pip install numpy pandas
-# import numpy as np</div>
-<h3>مثال 1: ایده بدون وابستگی اجباری</h3>
-<div class="codewrap"><div class="code"># مفهوم: میانگین دستی شبیه ایدهٔ آماری
-data = [2, 4, 4, 6]
-mean = sum(data) / len(data)
-print(mean)
-# در NumPy: np.mean(np.array(data))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>data:</strong> نمونهٔ کوچک به‌جای دیتاست بزرگ.<br>
-<strong>mean:</strong> همان ایده‌ای که کتابخانه‌ها بهینه می‌کنند.</div>
-<h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">import numpy as np  # بدون نصب</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+    <header>
+        <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای
+                انسانی</span></div>
+        <nav>
+            <a href="../../index.html" class="active">خانه</a>
+            <a href="../../tamrin/index.html">تمرین</a>
+        </nav>
+    </header>
+    <main id="main-content">
+        <div class="wrap">
+            <div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a
+                    href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شروع و مبانی</a><span
+                    class="sep">/</span><span>شروع با Matplotlib (Matplotlib Get Started)</span></div>
+            <div class="layout">
+                <aside class="side">
+                    <h3>شروع و مبانی (13)</h3>
+                    <a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+                    <a href="02-مقدمه-Intro.html">2. مقدمه (Intro)</a>
+                    <a href="03-شروع-کار-Get-Started.html">3. شروع کار (Get Started)</a>
+                    <a href="04-ساختار-نوشتاری-Syntax.html">4. ساختار نوشتاری (Syntax)</a>
+                    <a href="05-دستورات-Statements.html">5. دستورات (Statements)</a>
+                    <a href="06-خروجی-Output.html">6. خروجی (Output)</a>
+                    <a href="07-چاپ-اعداد-Print-Numbers.html">7. چاپ اعداد (Print Numbers)</a>
+                    <a href="08-توضیحات-Comments.html">8. توضیحات (Comments)</a>
+                    <a href="09-نمایش-متغیرها-Output-Variables.html">9. نمایش متغیرها (Output Variables)</a>
+                    <a href="10-Matplotlib-مقدمه-Matplotlib-Intro.html">10. Matplotlib مقدمه (Matplotlib Intro)</a>
+                    <a href="11-شروع-با-Matplotlib-Matplotlib-Get-Started.html" class="on">11. شروع با Matplotlib
+                        (Matplotlib Get Started)</a>
+                    <a href="12-MySQL-شروع-MySQL-Get-Started.html">12. MySQL: شروع (MySQL Get Started)</a>
+                    <a href="13-MongoDB-شروع-Get-Started.html">13. MongoDB: شروع (Get Started)</a>
+                </aside>
+                <article class="card"><button type="button" class="btn-pin" id="btnPinLesson"
+                        data-title="شروع با Matplotlib (Matplotlib Get Started)" data-cat="شروع و مبانی">📌 پین کردن این
+                        درس</button>
+                    <h2>شروع با Matplotlib (Matplotlib Get Started)</h2>
+                    <p><strong>هدف:</strong> بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب
+                        کتابخانه دارد.</p>
+                    <div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong>
+                        درس‌های قبلی «شروع و مبانی».</div>
+                    <div class="good"><strong>ارتباط با قبل:</strong> list و dict پایه بودند؛ اینجا همان داده با ابزار
+                        تخصصی سریع‌تر و بزرگ‌تر پردازش می‌شود.</div>
+                    <h3>مفهوم</h3>
+                    <p>NumPy آرایهٔ عددی سریع است؛ Pandas جدول (DataFrame)؛ مدل‌های ML از دادهٔ آموزش الگو می‌گیرند و
+                        روی دادهٔ جدید پیش‌بینی می‌کنند. بدون نصب پکیج، کد واقعی اجرا نمی‌شود.</p>
+                    <h3>ساختار</h3>
+                    <div class="code"># pip install numpy pandas
+                        # import numpy as np</div>
+                    <h3>مثال 1: ایده بدون وابستگی اجباری</h3>
+                    <div class="codewrap">
+                        <div class="code"># مفهوم: میانگین دستی شبیه ایدهٔ آماری
+                            data = [2, 4, 4, 6]
+                            mean = sum(data) / len(data)
+                            print(mean)
+                            # در NumPy: np.mean(np.array(data))</div>
+                    </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+                    <div class="exp"><strong>data:</strong> نمونهٔ کوچک به‌جای دیتاست بزرگ.<br>
+                        <strong>mean:</strong> همان ایده‌ای که کتابخانه‌ها بهینه می‌کنند.
+                    </div>
+                    <h3>اشتباه رایج</h3>
+                    <div class="codewrap">
+                        <div class="code">import numpy as np # بدون نصب</div>
+                    </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> پکیج روی سیستم نیست.<br><strong>چه می‌بینی؟</strong> ModuleNotFoundError<br><strong>درست:</strong> pip install numpy  (ترجیحاً داخل venv)</div>
-<div class="good"><strong>معیار تمام‌شدن:</strong> میانگین یک لیست را با خالص پایتون حساب کنی و بگویی معادلش در NumPy چیست.</div>
-<div class="sum"><b>جمع‌بندی</b><ul>
-<li>نیاز به نصب</li>
-<li>آرایه/جدول</li>
-<li>آموزش vs پیش‌بینی</li>
-<li>اول مفهوم بعد API</li>
-</ul></div>
-<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک لیست نمرات را میانگین بگیر.</li>
-<li style="margin-bottom:6px">تفاوت train و test را یک جمله بنویس.</li>
-</ol>
-<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
-<div class="navbtn" style="margin-top:22px"><a href="10-Matplotlib-مقدمه-Matplotlib-Intro.html">← Matplotlib مقدمه (Matplotlib Intro)</a><a href="12-MySQL-شروع-MySQL-Get-Started.html">MySQL: شروع (MySQL Get Started) →</a></div></article></div></div>
-</main>
-<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
-<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+                    <div class="warn"><strong>چرا اشتباه است؟</strong> پکیج روی سیستم نیست.<br><strong>چه
+                            می‌بینی؟</strong> ModuleNotFoundError<br><strong>درست:</strong> pip install numpy (ترجیحاً
+                        داخل venv)</div>
+                    <div class="good"><strong>معیار تمام‌شدن:</strong> میانگین یک لیست را با خالص پایتون حساب کنی و
+                        بگویی معادلش در NumPy چیست.</div>
+                    <div class="sum"><b>جمع‌بندی</b>
+                        <ul>
+                            <li>نیاز به نصب</li>
+                            <li>آرایه/جدول</li>
+                            <li>آموزش vs پیش‌بینی</li>
+                            <li>اول مفهوم بعد API</li>
+                        </ul>
+                    </div>
+                    <h3>گام عملی</h3>
+                    <ol style="padding-right:22px;color:#b1bac4">
+                        <li style="margin-bottom:6px">یک لیست نمرات را میانگین بگیر.</li>
+                        <li style="margin-bottom:6px">تفاوت train و test را یک جمله بنویس.</li>
+                    </ol>
+                    <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
+                        درس را از صفر حفظ نکن.</p>
+                    <div class="navbtn" style="margin-top:22px"><a href="10-Matplotlib-مقدمه-Matplotlib-Intro.html">←
+                            Matplotlib مقدمه (Matplotlib Intro)</a><a href="12-MySQL-شروع-MySQL-Get-Started.html">MySQL:
+                            شروع (MySQL Get Started) →</a></div>
+                </article>
+            </div>
+        </div>
+    </main>
+    <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge"
+            id="pinBadge">0</span></button>
+    <div class="pin-panel" id="pinPanel">
+        <header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header>
+        <div class="pin-list" id="pinList"></div>
+    </div>
+    <div id="edBack">
+        <div id="edBox">
+            <h3>مشاهده در ادیتور</h3>
+            <pre id="edCode"></pre>
+            <div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button"
+                    id="edClose">بستن</button></div>
+        </div>
+    </div>
+    <footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+    <script src="../../assets/js/app.js"></script>
+</body>
+
+</html>
