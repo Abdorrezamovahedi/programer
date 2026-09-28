@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شناور (Float) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: ویژگی مربوط به «شناور» را روی یک بخش صفحه آزمایش کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شناور (Float)", "description": "این درس: ویژگی مربوط به «شناور» را روی یک بخش صفحه آزمایش کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">چیدمان پایه</a><span class="sep">/</span><span>شناور (Float)</span></div><div class="layout"><aside class="side"><h3>چیدمان پایه (19)</h3>
+<a href="01-تراز-جدول-Table-Alignment.html">1. تراز جدول (Table Alignment)</a>
+<a href="02-نمایش-Display.html">2. نمایش (Display)</a>
+<a href="03-موقعیت-دهی-Position.html">3. موقعیت دهی (Position)</a>
+<a href="04-شاخص-Z-Z-index.html">4. شاخص Z (Z-index)</a>
+<a href="05-سرریز-Overflow.html">5. سرریز (Overflow)</a>
+<a href="06-شناور-Float.html" class="on">6. شناور (Float)</a>
+<a href="07-نمونه-های-شناور-Float-Examples.html">7. نمونه های شناور (Float Examples)</a>
+<a href="08-نمایش-خطی-بلوک-Inline-block.html">8. نمایش خطی-بلوک (Inline-block)</a>
+<a href="09-تراز-کردن-Align.html">9. تراز کردن (Align)</a>
+<a href="10-ترکیب-کننده-ها-Combinators.html">10. ترکیب کننده ها (Combinators)</a>
+<a href="11-شبه-کلاس-ها-Pseudo-classes.html">11. شبه کلاس ها (Pseudo-classes)</a>
+<a href="12-شفافیت-Opacity.html">12. شفافیت (Opacity)</a>
+<a href="13-واحدها-Units.html">13. واحدها (Units)</a>
+<a href="14-ویژگی-important.html">14. ویژگی !important</a>
+<a href="15-تراز-مرکز-تصویر-Image-Centering.html">15. تراز مرکز تصویر (Image Centering)</a>
+<a href="16-ویژگی-object-position.html">16. ویژگی object-position</a>
+<a href="17-تراز-شبکه-Grid-Align.html">17. تراز شبکه (Grid Align)</a>
+<a href="18-تراز-آیتم-شبکه-Grid-Item-Align.html">18. تراز آیتم شبکه (Grid Item Align)</a>
+<a href="19-آزمون-چیدمان-پایه.html">19. آزمون (چیدمان پایه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="شناور (Float)" data-cat="چیدمان پایه">📌 پین کردن این درس</button>
+<h2>شناور (Float)</h2>
+<p><strong>هدف این درس:</strong> ویژگی مربوط به «شناور» را روی یک بخش صفحه آزمایش کنی.</p>
+<div class="note"><strong>پوشه:</strong> چیدمان پایه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («چیدمان پایه») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>در این درس فقط «شناور» را تمرین می‌کنی. یک کلاس بساز، مقدار را عوض کن، نتیجه را در مرورگر ببین. ابزار توسعه‌دهنده (F12) بهترین دوست توست.</p>
+<h3>ساختار (Syntax)</h3><div class="code">selector { property: value; }</div>
+<h3>مثال 1: جعبهٔ آزمایش</h3>
+<div class="codewrap"><div class="code">.demo {
+  /* شناور */
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>.demo:</strong> هدف تمرین.<br>
+<strong>padding:</strong> فاصله داخلی قابل‌دیدن.<br>
+<strong>radius:</strong> گوشه گرد.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">تغییر ده ویژگی با هم</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> نمی‌فهمی کدام اثر داشته.<br><strong>چه می‌بینی؟</strong> گیج شدن<br><strong>درست:</strong> هر بار یک ویژگی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> کلاس demo را به یک عنصر بدهی و اثر را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>یک تغییر در هر آزمایش</li>
+<li>در مرورگر چک کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک ویژگی دیگر اضافه کن و F5 بزن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="05-سرریز-Overflow.html">← سرریز (Overflow)</a><a href="07-نمونه-های-شناور-Float-Examples.html">نمونه های شناور (Float Examples) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

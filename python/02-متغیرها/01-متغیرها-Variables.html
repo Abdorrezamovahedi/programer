@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متغیرها (Variables) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: متغیر بسازی، بخوانی، عوض کنی و قاعدهٔ نام‌گذاری را بدانی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "متغیرها (Variables)", "description": "این درس: متغیر بسازی، بخوانی، عوض کنی و قاعدهٔ نام‌گذاری را بدانی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>متغیرها (Variables)</span></div><div class="layout"><aside class="side"><h3>متغیرها (6)</h3>
+<a href="01-متغیرها-Variables.html" class="on">1. متغیرها (Variables)</a>
+<a href="02-آزمون-متغیرها.html">2. آزمون (متغیرها)</a>
+<a href="03-نام-متغیرها-Variable-Names.html">3. نام متغیرها (Variable Names)</a>
+<a href="04-متغیرهای-سراسری-Global-Variables.html">4. متغیرهای سراسری (Global Variables)</a>
+<a href="05-تمرین-متغیرها-Variable-Exercises.html">5. تمرین متغیرها (Variable Exercises)</a>
+<a href="06-رگرسیون-چندمتغیره-Multiple-Regression.html">6. رگرسیون چندمتغیره (Multiple Regression)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="متغیرها (Variables)" data-cat="متغیرها">📌 پین کردن این درس</button>
+<h2>متغیرها (Variables)</h2>
+<p><strong>هدف این درس:</strong> متغیر بسازی، بخوانی، عوض کنی و قاعدهٔ نام‌گذاری را بدانی.</p>
+<div class="note"><strong>پوشه:</strong> متغیرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>متغیر برچسب روی مقدار است. با = مقدار می‌دهی. بعداً با نوشتن نام، همان مقدار استفاده می‌شود. فهرست زیر همهٔ حالت‌های پایه را با کامنت نشان می‌دهد.</p>
+<h3>فهرست معرفی: متغیرها</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code"># متغیر = نامی که به یک مقدار وصل می‌شود
+age = 20              # ساخت: نام age مقدار 20 می‌گیرد (int)
+city = &quot;تهران&quot;        # ساخت: مقدار متنی (str)
+age = 21              # تغییر: همان نام، مقدار جدید
+a, b = 1, 2           # چندتایی: دو نام هم‌زمان
+user_name = &quot;علی&quot;     # نام‌گذاری: حرف یا _ ؛ فاصله ممنوع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>ساختن:</strong> اولین بار که نام = مقدار می‌نویسی.<br>
+<strong>تغییر:</strong> دوباره همان نام = مقدار دیگر.</div>
+<h3>مثال 1: ساخت، چاپ، تغییر</h3>
+<div class="codewrap"><div class="code">score = 0
+print(score)
+score = 10
+print(score)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> متغیر score با مقدار ۰ ساخته می‌شود.<br>
+<strong>خط ۲:</strong> مقدار فعلی score چاپ می‌شود → ۰.<br>
+<strong>خط ۳:</strong> مقدار score به ۱۰ عوض می‌شود.<br>
+<strong>خط ۴:</strong> حالا ۱۰ چاپ می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">1name = 5</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> نام نمی‌تواند با رقم شروع شود.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> name1 = 5</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک متغیر بسازی، چاپ کنی، عوض کنی، دوباره چاپ کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>= برای ذخیره</li>
+<li>نام را دوباره بنویس تا بخوانی</li>
+<li>نام با رقم شروع نشود</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">دو متغیر بساز و هر دو را در یک print چاپ کن.</li>
+<li style="margin-bottom:6px">نام غیرمجاز را امتحان کن و خطا را بخوان.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-آزمون-متغیرها.html">آزمون (متغیرها) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

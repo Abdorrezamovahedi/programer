@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حوزه دسترسی (Scope) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="مفهوم «حوزه دسترسی (Scope)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "حوزه دسترسی (Scope)", "description": "مفهوم «حوزه دسترسی (Scope)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">توابع</a><span class="sep">/</span><span>حوزه دسترسی (Scope)</span></div><div class="layout"><aside class="side"><h3>توابع (6)</h3>
+<a href="01-توابع-Functions.html">1. توابع (Functions)</a>
+<a href="02-args-kwargs.html">2. *args / **kwargs</a>
+<a href="03-حوزه-دسترسی-Scope.html" class="on">3. حوزه دسترسی (Scope)</a>
+<a href="04-لانبدا-Lambda.html">4. لانبدا (Lambda)</a>
+<a href="05-بازگشت-Recursion.html">5. بازگشت (Recursion)</a>
+<a href="06-توابع-درون-ساخته-Built-in-Functions.html">6. توابع درون ساخته (Built-in Functions)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="حوزه دسترسی (Scope)" data-cat="توابع">📌 پین کردن این درس</button>
+<h2>حوزه دسترسی (Scope)</h2>
+<p><strong>هدف:</strong> مفهوم «حوزه دسترسی (Scope)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی.</p>
+<div class="note"><strong>پوشه:</strong> توابع &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «توابع».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «توابع» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>این صفحه روی «حوزه دسترسی (Scope)» متمرکز است. مثال را خط‌به‌خط بخوان، بعد خودت یک مقدار را عوض کن.</p>
+<h3>مثال 1: شروع</h3>
+<div class="codewrap"><div class="code"># مبحث: حوزه دسترسی (Scope)
+value = 10
+print(value)
+print(type(value))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> کامنت موضوع؛ اجرا نمی‌شود.<br>
+<strong>خط ۲:</strong> یک مقدار نمونه در متغیر.<br>
+<strong>خط ۳:</strong> چاپ مقدار.<br>
+<strong>خط ۴:</strong> چاپ نوع تا ببینی با چه داده‌ای طرفی.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">print(undefined_name)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> نامی که تعریف نشده.<br><strong>چه می‌بینی؟</strong> NameError<br><strong>درست:</strong> اول متغیر را تعریف کن یا نام را درست بنویس.</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «حوزه دسترسی» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>موضوع: حوزه دسترسی (Scope)</li>
+<li>مثال را خودت تایپ کن.</li>
+<li>یک مقدار را عوض کن.</li>
+<li>پیام خطا را از پایین بخوان.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">مثال را با مقدار دیگری اجرا کن.</li>
+<li style="margin-bottom:6px">یک خطا بساز و اصلاح کن.</li>
+<li style="margin-bottom:6px">برو درس بعدی همین پوشه.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="02-args-kwargs.html">← *args / **kwargs</a><a href="04-لانبدا-Lambda.html">لانبدا (Lambda) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fileperms() (fileperms) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع fileperms را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "fileperms() (fileperms)", "description": "این درس: نام تابع fileperms را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">فایل‌ها</a><span class="sep">/</span><span>fileperms() (fileperms)</span></div><div class="layout"><aside class="side"><h3>فایل‌ها (35)</h3>
+<a href="01-مدیریت-فایل-File-Handling.html">1. مدیریت فایل (File Handling)</a>
+<a href="02-باز-خواندن-فایل-File-Open-Read.html">2. باز/خواندن فایل (File Open/Read)</a>
+<a href="03-ایجاد-نوشتن-فایل-File-Create-Write.html">3. ایجاد/نوشتن فایل (File Create/Write)</a>
+<a href="04-سیمپل-XML-خواندن-SimpleXML-Parser.html">4. سیمپل XML: خواندن (SimpleXML Parser)</a>
+<a href="05-مرجع-دایرکتوری-PHP-Directory.html">5. مرجع دایرکتوری (PHP Directory)</a>
+<a href="06-مرجع-فایل-سیستم-PHP-Filesystem.html">6. مرجع فایل سیستم (PHP Filesystem)</a>
+<a href="07-file-file.html">7. file() (file)</a>
+<a href="08-file-exists-file-exists.html">8. file_exists() (file_exists)</a>
+<a href="09-file-put-contents-file-put-contents.html">9. file_put_contents() (file_put_contents)</a>
+<a href="10-fileatime-fileatime.html">10. fileatime() (fileatime)</a>
+<a href="11-filectime-filectime.html">11. filectime() (filectime)</a>
+<a href="12-filegroup-filegroup.html">12. filegroup() (filegroup)</a>
+<a href="13-fileinode-fileinode.html">13. fileinode() (fileinode)</a>
+<a href="14-filemtime-filemtime.html">14. filemtime() (filemtime)</a>
+<a href="15-fileowner-fileowner.html">15. fileowner() (fileowner)</a>
+<a href="16-fileperms-fileperms.html" class="on">16. fileperms() (fileperms)</a>
+<a href="17-filesize-filesize.html">17. filesize() (filesize)</a>
+<a href="18-filetype-filetype.html">18. filetype() (filetype)</a>
+<a href="19-is-file-is-file.html">19. is_file() (is_file)</a>
+<a href="20-خواندن-INI-فایل-parse-ini-file.html">20. خواندن INI فایل (parse_ini_file)</a>
+<a href="21-readfile-readfile.html">21. readfile() (readfile)</a>
+<a href="22-set-file-buffer-set-file-buffer.html">22. set_file_buffer() (set_file_buffer)</a>
+<a href="23-tmpfile-tmpfile.html">23. tmpfile() (tmpfile)</a>
+<a href="24-حذف-پوشه-روی-FTP-ftp-rmdir.html">24. حذف پوشه روی FTP (ftp_rmdir)</a>
+<a href="25-دریافت-اندازه-فایل-FTP-ftp-size.html">25. دریافت اندازه فایل FTP (ftp_size)</a>
+<a href="26-هایلایت-فایل-highlight-file.html">26. هایلایت فایل (highlight_file)</a>
+<a href="27-set-local-infile-handler-set-local-infile-handler.html">27. set_local_infile_handler (set_local_infile_handler)</a>
+<a href="28-لود-از-فایل-simplexml-load-file.html">28. لود از فایل (simplexml_load_file)</a>
+<a href="29-md5-file-md5-file.html">29. md5_file (md5_file)</a>
+<a href="30-sha1-file-sha1-file.html">30. sha1_file (sha1_file)</a>
+<a href="31-اندازه-فایل-مدخل-zip-entry-filesize.html">31. اندازه فایل مدخل (zip_entry_filesize)</a>
+<a href="32-خواندن-مدخل-zip-entry-read.html">32. خواندن مدخل (zip_entry_read)</a>
+<a href="33-بازکردن-فایل-zip-zip-open.html">33. بازکردن فایل zip (zip_open)</a>
+<a href="34-خواندن-zip-zip-read.html">34. خواندن zip (zip_read)</a>
+<a href="35-آزمون-فایلها.html">35. آزمون (فایل‌ها)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="fileperms() (fileperms)" data-cat="فایل‌ها">📌 پین</button>
+<h2>fileperms() (fileperms)</h2>
+<p><strong>هدف این درس:</strong> نام تابع fileperms را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> فایل‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («فایل‌ها») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">fileperms(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;fileperms&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای fileperms را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="15-fileowner-fileowner.html">← قبلی</a><a href="17-filesize-filesize.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

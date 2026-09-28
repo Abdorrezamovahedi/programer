@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرجع ماژول ها (Built-in Modules) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با import از کد آماده استفاده کنی و بفهمی ماژول چیست">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "مرجع ماژول ها (Built-in Modules)", "description": "با import از کد آماده استفاده کنی و بفهمی ماژول چیست", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">ماژول و پکیج</a><span class="sep">/</span><span>مرجع ماژول ها (Built-in Modules)</span></div><div class="layout"><aside class="side"><h3>ماژول و پکیج (10)</h3>
+<a href="01-ماژول-ها-Modules.html">1. ماژول ها (Modules)</a>
+<a href="02-ریاضی-Math.html">2. ریاضی (Math)</a>
+<a href="03-جیسون-JSON.html">3. جیسون (JSON)</a>
+<a href="04-مدیر-بسته-ها-PIP.html">4. مدیر بسته ها (PIP)</a>
+<a href="05-مرجع-ماژول-ها-Built-in-Modules.html" class="on">5. مرجع ماژول ها (Built-in Modules)</a>
+<a href="06-ماژول-random-Random-Module.html">6. ماژول random (Random Module)</a>
+<a href="07-ماژول-requests-Requests-Module.html">7. ماژول requests (Requests Module)</a>
+<a href="08-ماژول-statistics-Statistics-Module.html">8. ماژول statistics (Statistics Module)</a>
+<a href="09-ماژول-math-Math-Module.html">9. ماژول math (Math Module)</a>
+<a href="10-ماژول-cmath-cMath-Module.html">10. ماژول cmath (cMath Module)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="مرجع ماژول ها (Built-in Modules)" data-cat="ماژول و پکیج">📌 پین کردن این درس</button>
+<h2>مرجع ماژول ها (Built-in Modules)</h2>
+<p><strong>هدف:</strong> با import از کد آماده استفاده کنی و بفهمی ماژول چیست.</p>
+<div class="note"><strong>پوشه:</strong> ماژول و پکیج &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «ماژول و پکیج».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> قبلاً تابع خودت می‌نوشتی؛ حالا از تابع‌های آماده‌ای استفاده می‌کنی که دیگران نوشته‌اند.</div>
+<h3>مفهوم</h3><p>ماژول فایل/کتابخانه‌ای از توابع و ثابت‌هاست. import آن را در دسترس می‌گذارد تا چرخ را از نو نسازی.</p>
+<h3>ساختار</h3><div class="code">import math
+from math import sqrt</div>
+<h3>مثال 1: math و random</h3>
+<div class="codewrap"><div class="code">import math
+import random
+print(math.sqrt(16))
+print(random.randint(1, 6))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>import math:</strong> ماژول ریاضی استاندارد.<br>
+<strong>sqrt:</strong> جذر ۱۶ = ۴.۰<br>
+<strong>randint:</strong> عدد صحیح تصادفی در بازهٔ بسته.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">print(sqrt(9))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> sqrt بدون import یا from در دسترس نیست.<br><strong>چه می‌بینی؟</strong> NameError: name &#x27;sqrt&#x27; is not defined<br><strong>درست:</strong> import math; math.sqrt(9)  یا  from math import sqrt</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> با math.ceil یک عدد اعشاری را به بالا گرد کن و با random یک تاس بینداز.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>import نام ماژول</li>
+<li>نام.تابع</li>
+<li>from ... import ...</li>
+<li>NameError یعنی import نشده</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">math.pi را چاپ کن.</li>
+<li style="margin-bottom:6px">از random.choice روی یک لیست استفاده کن.</li>
+<li style="margin-bottom:6px">عمداً بدون import صدا بزن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="04-مدیر-بسته-ها-PIP.html">← مدیر بسته ها (PIP)</a><a href="06-ماژول-random-Random-Module.html">ماژول random (Random Module) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

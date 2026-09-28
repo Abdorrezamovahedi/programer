@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>if / elif / else — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با if و elif و else یک تصمیم واقعی در برنامه بگیری">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "if / elif / else", "description": "این درس: با if و elif و else یک تصمیم واقعی در برنامه بگیری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>if / elif / else</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه (9)</h3>
+<a href="01-if-elif-else.html" class="on">1. if / elif / else</a>
+<a href="02-شرط-کوتاه-Shorthand-If.html">2. شرط کوتاه (Shorthand If)</a>
+<a href="03-شرط-تو-در-تو-Nested-If.html">3. شرط تو در تو (Nested If)</a>
+<a href="04-pass-Pass-Statement.html">4. pass (Pass Statement)</a>
+<a href="05-match-Match.html">5. match (Match)</a>
+<a href="06-حلقه-while-While-Loops.html">6. حلقه while (While Loops)</a>
+<a href="07-حلقه-for-For-Loops.html">7. حلقه for (For Loops)</a>
+<a href="08-بازه-Range.html">8. بازه (Range)</a>
+<a href="09-شرط-Where.html">9. شرط Where</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="if / elif / else" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>if / elif / else</h2>
+<p><strong>هدف این درس:</strong> با if و elif و else یک تصمیم واقعی در برنامه بگیری.</p>
+<div class="note"><strong>پوشه:</strong> شرط و حلقه &nbsp;|&nbsp; شروع این مبحث — از همین درس شروع کن</div>
+<h3>مفهوم به زبان ساده</h3><p>شرط یعنی برنامه بر اساس وضعیت، یکی از چند مسیر را برود. if اولین شرط است. اگر برقرار نبود، elif شرط بعدی را چک می‌کند. else وقتی است که هیچ‌کدام برقرار نباشد.</p>
+<h3>ساختار</h3><div class="code">if شرط:
+    دستورها
+elif شرط_دیگر:
+    دستورها
+else:
+    دستورها</div>
+<p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
+<h3>مثال 1: نمره و پیام</h3>
+<div class="codewrap"><div class="code">score = 17
+if score &gt;= 18:
+    print(&quot;عالی&quot;)
+elif score &gt;= 15:
+    print(&quot;خوب&quot;)
+elif score &gt;= 10:
+    print(&quot;قابل قبول&quot;)
+else:
+    print(&quot;نیاز به تلاش بیشتر&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> نمره ۱۷ در متغیر score.<br>
+<strong>خط ۲–۳:</strong> آیا نمره حداقل ۱۸ است؟ اینجا نه؛ وارد این شاخه نمی‌شود.<br>
+<strong>خط ۴–۵:</strong> آیا حداقل ۱۵ است؟ بله — «خوب» چاپ می‌شود و بقیه چک نمی‌شوند.<br>
+<strong>خط ۶–۹:</strong> این شاخه‌ها فقط وقتی اجرا می‌شوند که شرط‌های بالاتر برقرار نباشند.</div>
+<h3>مثال 2: ورود با سن</h3>
+<div class="codewrap"><div class="code">age = 16
+if age &gt;= 18:
+    print(&quot;ورود مجاز&quot;)
+else:
+    print(&quot;ورود فقط با همراه&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> سن ۱۶.<br>
+<strong>خط ۲–۳:</strong> شرط برقرار نیست؛ این print اجرا نمی‌شود.<br>
+<strong>خط ۴–۵:</strong> else اجرا می‌شود و پیام مناسب چاپ می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">if age &gt;= 18
+    print(&quot;ok&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> بعد از شرط باید : بیاید.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> if age &gt;= 18:</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک برنامه با حداقل یک if، یک elif و یک else بنویسی و با دو مقدار مختلف نتیجهٔ متفاوت ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>if اولین شرط</li>
+<li>elif شرط‌های بعدی</li>
+<li>else مسیر باقی‌مانده</li>
+<li>تورفتگی زیر if اجباری است</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">نمره را ۱۰ و ۱۹ بگذار و هر دو را اجرا کن.</li>
+<li style="margin-bottom:6px">عمداً : را بردار و پیام خطا را بخوان.</li>
+</ol>
+<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-شرط-کوتاه-Shorthand-If.html">شرط کوتاه (Shorthand If) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

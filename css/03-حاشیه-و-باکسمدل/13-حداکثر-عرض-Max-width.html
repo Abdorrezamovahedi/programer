@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حداکثر عرض (Max-width) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: ویژگی مربوط به «حداکثر عرض» را روی یک بخش صفحه آزمایش کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "حداکثر عرض (Max-width)", "description": "این درس: ویژگی مربوط به «حداکثر عرض» را روی یک بخش صفحه آزمایش کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">حاشیه و باکس‌مدل</a><span class="sep">/</span><span>حداکثر عرض (Max-width)</span></div><div class="layout"><aside class="side"><h3>حاشیه و باکس‌مدل (15)</h3>
+<a href="01-حاشیه-ها-Borders.html">1. حاشیه ها (Borders)</a>
+<a href="02-عرض-حاشیه-Border-Width.html">2. عرض حاشیه (Border Width)</a>
+<a href="03-طرف-های-حاشیه-Border-Sides.html">3. طرف های حاشیه (Border Sides)</a>
+<a href="04-کوتاه-نویسی-حاشیه-Border-Shorthand.html">4. کوتاه نویسی حاشیه (Border Shorthand)</a>
+<a href="05-حاشیه-های-گرد-Rounded-Borders.html">5. حاشیه های گرد (Rounded Borders)</a>
+<a href="06-حاشیه-بیرونی-Outline.html">6. حاشیه بیرونی (Outline)</a>
+<a href="07-عرض-حاشیه-بیرونی-Outline-Width.html">7. عرض حاشیه بیرونی (Outline Width)</a>
+<a href="08-کوتاه-نویسی-حاشیه-بیرونی-Outline-Shorthand.html">8. کوتاه نویسی حاشیه بیرونی (Outline Shorthand)</a>
+<a href="09-فاصله-حاشیه-بیرونی-Outline-Offset.html">9. فاصله حاشیه بیرونی (Outline Offset)</a>
+<a href="10-حاشیه-داخلی-Padding.html">10. حاشیه داخلی (Padding)</a>
+<a href="11-ارتفاع-و-عرض-Height-Width.html">11. ارتفاع و عرض (Height/Width)</a>
+<a href="12-مدل-جعبه-ای-Box-Model.html">12. مدل جعبه ای (Box Model)</a>
+<a href="13-حداکثر-عرض-Max-width.html" class="on">13. حداکثر عرض (Max-width)</a>
+<a href="14-تصاویر-حاشیه-Border-Images.html">14. تصاویر حاشیه (Border Images)</a>
+<a href="15-آزمون-حاشیه-و-باکسمدل.html">15. آزمون (حاشیه و باکس‌مدل)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="حداکثر عرض (Max-width)" data-cat="حاشیه و باکس‌مدل">📌 پین کردن این درس</button>
+<h2>حداکثر عرض (Max-width)</h2>
+<p><strong>هدف این درس:</strong> ویژگی مربوط به «حداکثر عرض» را روی یک بخش صفحه آزمایش کنی.</p>
+<div class="note"><strong>پوشه:</strong> حاشیه و باکس‌مدل &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («حاشیه و باکس‌مدل») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>در این درس فقط «حداکثر عرض» را تمرین می‌کنی. یک کلاس بساز، مقدار را عوض کن، نتیجه را در مرورگر ببین. ابزار توسعه‌دهنده (F12) بهترین دوست توست.</p>
+<h3>ساختار (Syntax)</h3><div class="code">selector { property: value; }</div>
+<h3>مثال 1: جعبهٔ آزمایش</h3>
+<div class="codewrap"><div class="code">.demo {
+  /* حداکثر عرض */
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>.demo:</strong> هدف تمرین.<br>
+<strong>padding:</strong> فاصله داخلی قابل‌دیدن.<br>
+<strong>radius:</strong> گوشه گرد.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">تغییر ده ویژگی با هم</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> نمی‌فهمی کدام اثر داشته.<br><strong>چه می‌بینی؟</strong> گیج شدن<br><strong>درست:</strong> هر بار یک ویژگی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> کلاس demo را به یک عنصر بدهی و اثر را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>یک تغییر در هر آزمایش</li>
+<li>در مرورگر چک کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک ویژگی دیگر اضافه کن و F5 بزن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="12-مدل-جعبه-ای-Box-Model.html">← مدل جعبه ای (Box Model)</a><a href="14-تصاویر-حاشیه-Border-Images.html">تصاویر حاشیه (Border Images) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استثناها (Exceptions) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="خطای قابل‌پیش‌بینی را با try/except بگیری تا برنامه نپرد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "استثناها (Exceptions)", "description": "خطای قابل‌پیش‌بینی را با try/except بگیری تا برنامه نپرد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">مدیریت خطا</a><span class="sep">/</span><span>استثناها (Exceptions)</span></div><div class="layout"><aside class="side"><h3>مدیریت خطا (2)</h3>
+<a href="01-try-except.html">1. try...except</a>
+<a href="02-استثناها-Exceptions.html" class="on">2. استثناها (Exceptions)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="استثناها (Exceptions)" data-cat="مدیریت خطا">📌 پین کردن این درس</button>
+<h2>استثناها (Exceptions)</h2>
+<p><strong>هدف:</strong> خطای قابل‌پیش‌بینی را با try/except بگیری تا برنامه نپرد.</p>
+<div class="note"><strong>پوشه:</strong> مدیریت خطا &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «مدیریت خطا».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> قبلاً خطا برنامه را می‌بست؛ حالا می‌توانی همان نقطه را کنترل کنی.</div>
+<h3>مفهوم</h3><p>try کدی را امتحان می‌کند که ممکن است خطا بدهد. except همان نوع خطا را می‌گیرد و مسیر جایگزین اجرا می‌کند.</p>
+<h3>ساختار</h3><div class="code">try:
+    ...
+except SomeError:
+    ...</div>
+<h3>مثال 1: تبدیل امن</h3>
+<div class="codewrap"><div class="code">text = &quot;abc&quot;
+try:
+    n = int(text)
+    print(n)
+except ValueError:
+    print(&quot;عدد معتبر نیست&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>try:</strong> int ممکن است ValueError بدهد.<br>
+<strong>except ValueError:</strong> فقط همین نوع را می‌گیریم؛ بقیه بالا می‌روند.<br>
+<strong>پیام:</strong> به‌جای کرش، پیام قابل‌فهم.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">try:
+    int(&quot;x&quot;)
+except:
+    pass</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> except خالی همه چیز را می‌بلعد و باگ را مخفی می‌کند.<br><strong>چه می‌بینی؟</strong> خطاهای جدی هم خاموش می‌شوند<br><strong>درست:</strong> except ValueError: و پیام یا منطق مشخص</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> ورودی فرضی غیرعددی را int کن و فقط ValueError را با پیام فارسی بگیر.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>try برای بخش خطرناک</li>
+<li>except نوع مشخص</li>
+<li>از except برهنه پرهیز کن</li>
+<li>پیام مفید بده</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">int روی &quot;3.5&quot; را با except مدیریت کن.</li>
+<li style="margin-bottom:6px">یک except جدا برای نوع دیگر اضافه کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="01-try-except.html">← try...except</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شرط کوتاه (Shorthand If) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: شکل یک‌خطی if/else را برای مقدار ساده بشناسی — نه برای منطق پیچیده">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شرط کوتاه (Shorthand If)", "description": "این درس: شکل یک‌خطی if/else را برای مقدار ساده بشناسی — نه برای منطق پیچیده", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>شرط کوتاه (Shorthand If)</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه (9)</h3>
+<a href="01-if-elif-else.html">1. if / elif / else</a>
+<a href="02-شرط-کوتاه-Shorthand-If.html" class="on">2. شرط کوتاه (Shorthand If)</a>
+<a href="03-شرط-تو-در-تو-Nested-If.html">3. شرط تو در تو (Nested If)</a>
+<a href="04-pass-Pass-Statement.html">4. pass (Pass Statement)</a>
+<a href="05-match-Match.html">5. match (Match)</a>
+<a href="06-حلقه-while-While-Loops.html">6. حلقه while (While Loops)</a>
+<a href="07-حلقه-for-For-Loops.html">7. حلقه for (For Loops)</a>
+<a href="08-بازه-Range.html">8. بازه (Range)</a>
+<a href="09-شرط-Where.html">9. شرط Where</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="شرط کوتاه (Shorthand If)" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>شرط کوتاه (Shorthand If)</h2>
+<p><strong>هدف این درس:</strong> شکل یک‌خطی if/else را برای مقدار ساده بشناسی — نه برای منطق پیچیده.</p>
+<div class="note"><strong>پوشه:</strong> شرط و حلقه</div>
+<h3>مفهوم به زبان ساده</h3><p>گاهی فقط می‌خواهی یک مقدار را بر اساس شرط انتخاب کنی. پایتون شکل کوتاهی دارد، ولی اگر منطق شلوغ شد همان if چندخطی خواناتر است.</p>
+<h3>ساختار</h3><div class="code">مقدار_اگر_درست if شرط else مقدار_اگر_نادرست</div>
+<p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
+<h3>مثال 1: برچسب زوج/فرد</h3>
+<div class="codewrap"><div class="code">n = 7
+label = &quot;زوج&quot; if n % 2 == 0 else &quot;فرد&quot;
+print(label)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> عدد ۷.<br>
+<strong>خط ۲:</strong> اگر باقی‌مانده بر ۲ صفر بود «زوج»، وگرنه «فرد» در label می‌رود.<br>
+<strong>خط ۳:</strong> چاپ: فرد.</div>
+<h3>مثال 2: حداقل سن برای پیام</h3>
+<div class="codewrap"><div class="code">age = 20
+msg = &quot;بالغ&quot; if age &gt;= 18 else &quot;نابالغ&quot;
+print(msg)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> انتخاب بین دو متن کوتاه با یک شرط.<br>
+<strong>خط ۳:</strong> چاپ: بالغ.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">print(&quot;ok&quot;) if x &gt; 0</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> شکل کوتاه وقتی else دارد کامل است؛ بدون else این فرم برای انتساب/عبارت محدود است.<br><strong>چه می‌بینی؟</strong> SyntaxError در بسیاری حالت‌ها<br><strong>درست:</strong> یا else اضافه کن یا if معمولی چندخطی بنویس</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک برچسب متنی با شرط کوتاه بسازی و چاپ کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>برای انتخاب یک مقدار ساده مناسب است</li>
+<li>منطق شلوغ را با if معمولی بنویس</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">با شرط کوتاه بگو عدد مثبت است یا نه.</li>
+</ol>
+<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
+<div class="navbtn" style="margin-top:22px"><a href="01-if-elif-else.html">← if / elif / else</a><a href="03-شرط-تو-در-تو-Nested-If.html">شرط تو در تو (Nested If) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

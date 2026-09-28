@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>localtime() (localtime) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع localtime را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "localtime() (localtime)", "description": "این درس: نام تابع localtime را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">تاریخ و زمان</a><span class="sep">/</span><span>localtime() (localtime)</span></div><div class="layout"><aside class="side"><h3>تاریخ و زمان (37)</h3>
+<a href="01-تاریخ-و-زمان-Date-and-Time.html">1. تاریخ و زمان (Date and Time)</a>
+<a href="02-تاریخ-عید-پاک-easter-date.html">2. تاریخ عید پاک (easter_date)</a>
+<a href="03-مرجع-تاریخ-PHP-Date.html">3. مرجع تاریخ (PHP Date)</a>
+<a href="04-checkdate-checkdate.html">4. checkdate() (checkdate)</a>
+<a href="05-افزودن-تاریخ-date-add.html">5. افزودن تاریخ (date_add)</a>
+<a href="06-ایجاد-تاریخ-date-create.html">6. ایجاد تاریخ (date_create)</a>
+<a href="07-تنظیم-تاریخ-date-date-set.html">7. تنظیم تاریخ (date_date_set)</a>
+<a href="08-تنظیم-منطقه-پیش-فرض-date-default-timezone-set.html">8. تنظیم منطقه پیش فرض (date_default_timezone_set)</a>
+<a href="09-تنظیم-ISO-تاریخ-date-isodate-set.html">9. تنظیم ISO تاریخ (date_isodate_set)</a>
+<a href="10-تحلیل-تاریخ-date-parse.html">10. تحلیل تاریخ (date_parse)</a>
+<a href="11-کاهش-تاریخ-date-sub.html">11. کاهش تاریخ (date_sub)</a>
+<a href="12-اطلاعات-خورشید-date-sun-info.html">12. اطلاعات خورشید (date_sun_info)</a>
+<a href="13-طلوع-خورشید-date-sunrise.html">13. طلوع خورشید (date_sunrise)</a>
+<a href="14-غروب-خورشید-date-sunset.html">14. غروب خورشید (date_sunset)</a>
+<a href="15-تنظیم-زمان-date-time-set.html">15. تنظیم زمان (date_time_set)</a>
+<a href="16-تنظیم-timestamp-date-timestamp-set.html">16. تنظیم timestamp (date_timestamp_set)</a>
+<a href="17-تنظیم-منطقه-زمانی-date-timezone-set.html">17. تنظیم منطقه زمانی (date_timezone_set)</a>
+<a href="18-gmdate-gmdate.html">18. gmdate() (gmdate)</a>
+<a href="19-gmmktime-gmmktime.html">19. gmmktime() (gmmktime)</a>
+<a href="20-gmstrftime-gmstrftime.html">20. gmstrftime() (gmstrftime)</a>
+<a href="21-idate-idate.html">21. idate() (idate)</a>
+<a href="22-localtime-localtime.html" class="on">22. localtime() (localtime)</a>
+<a href="23-microtime-microtime.html">23. microtime() (microtime)</a>
+<a href="24-mktime-mktime.html">24. mktime() (mktime)</a>
+<a href="25-strftime-strftime.html">25. strftime() (strftime)</a>
+<a href="26-strptime-strptime.html">26. strptime() (strptime)</a>
+<a href="27-strtotime-strtotime.html">27. strtotime() (strtotime)</a>
+<a href="28-time-time.html">28. time() (time)</a>
+<a href="29-فهرست-اختصارات-منطقه-timezone-abbreviations-list.html">29. فهرست اختصارات منطقه (timezone_abbreviations_list)</a>
+<a href="30-نام-منطقه-از-اختصار-timezone-name-from-abbr.html">30. نام منطقه از اختصار (timezone_name_from_abbr)</a>
+<a href="31-بازکردن-منطقه-timezone-open.html">31. بازکردن منطقه (timezone_open)</a>
+<a href="32-زمانِ-با-دقت-نانو-hrtime.html">32. زمانِ با دقت نانو (hrtime)</a>
+<a href="33-nanosleep-time-nanosleep.html">33. nanosleep (time_nanosleep)</a>
+<a href="34-خواب-تا-زمان-مشخص-time-sleep-until.html">34. خواب تا زمان مشخص (time_sleep_until)</a>
+<a href="35-مهلت-سوکت-socket-set-timeout.html">35. مهلت سوکت (socket_set_timeout)</a>
+<a href="36-مناطق-زمانی-PHP-PHP-Timezones.html">36. مناطق زمانی PHP (PHP Timezones)</a>
+<a href="37-آزمون-تاریخ-و-زمان.html">37. آزمون (تاریخ و زمان)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="localtime() (localtime)" data-cat="تاریخ و زمان">📌 پین</button>
+<h2>localtime() (localtime)</h2>
+<p><strong>هدف این درس:</strong> نام تابع localtime را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> تاریخ و زمان &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («تاریخ و زمان») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">localtime(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;localtime&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای localtime را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="21-idate-idate.html">← قبلی</a><a href="23-microtime-microtime.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

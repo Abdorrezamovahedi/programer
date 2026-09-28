@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>توضیحات (Comments) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: اولین قانون ظاهر را بنویسی و رنگ متن را عوض کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "توضیحات (Comments)", "description": "این درس: اولین قانون ظاهر را بنویسی و رنگ متن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">شروع CSS</a><span class="sep">/</span><span>توضیحات (Comments)</span></div><div class="layout"><aside class="side"><h3>شروع CSS (13)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-معرفی-Introduction.html">2. معرفی (Introduction)</a>
+<a href="03-نحو-نگارش-Syntax.html">3. نحو نگارش (Syntax)</a>
+<a href="04-انتخاب-گرها-Selectors.html">4. انتخاب گرها (Selectors)</a>
+<a href="05-نحوه-استفاده-How-To.html">5. نحوه استفاده (How To)</a>
+<a href="06-توضیحات-Comments.html" class="on">6. توضیحات (Comments)</a>
+<a href="07-خطاها-Errors.html">7. خطاها (Errors)</a>
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">8. انتخاب گرهای ویژگی (Attribute Selectors)</a>
+<a href="09-توضیحات-راهنما-Tooltips.html">9. توضیحات راهنما (Tooltips)</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">10. فلکس باکس (Flexbox Intro)</a>
+<a href="11-شبکه-Grid-Intro.html">11. شبکه (Grid Intro)</a>
+<a href="12-واکنش-گرا-RWD-Intro.html">12. واکنش گرا (RWD Intro)</a>
+<a href="13-آزمون-شروع-CSS.html">13. آزمون (شروع CSS)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="توضیحات (Comments)" data-cat="شروع CSS">📌 پین کردن این درس</button>
+<h2>توضیحات (Comments)</h2>
+<p><strong>هدف این درس:</strong> اولین قانون ظاهر را بنویسی و رنگ متن را عوض کنی.</p>
+<div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («شروع CSS») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>CSS ظاهر صفحه را کنترل می‌کند: رنگ، فاصله، فونت، چیدمان. یک قانون می‌گوید «کدام بخش» و «چه شکلی». HTML ساختار را می‌سازد؛ CSS لباس آن است.</p>
+<h3>ساختار (Syntax)</h3><div class="code">selector {
+  property: value;
+}</div>
+<h3>مثال 1: خواناتر کردن بندها</h3>
+<div class="codewrap"><div class="code">p {
+  color: #1e293b;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>p:</strong> همهٔ بندهای صفحه.<br>
+<strong>color:</strong> رنگ نوشته.<br>
+<strong>line-height:</strong> فاصلهٔ بین خط‌ها — برای خواندن فارسی مهم است.<br>
+<strong>;:</strong> پایان هر دستور داخل بلوک.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">p { color: red</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> آکولاد بسته یا نقطه‌ویرگول جا افتاده.<br><strong>چه می‌بینی؟</strong> استایل اعمال نمی‌شود یا قوانین بعدی خراب می‌شوند<br><strong>درست:</strong> p { color: red; }</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> این قانون را در صفحه بگذاری و رنگ بند را با چشم ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>هر قانون: هدف + ویژگی‌ها</li>
+<li>نقطه‌ویرگول و } را کامل بنویس</li>
+<li>اول ساده شروع کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">رنگ را عوض کن.</li>
+<li style="margin-bottom:6px">اندازهٔ فونت را بزرگ‌تر کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="05-نحوه-استفاده-How-To.html">← نحوه استفاده (How To)</a><a href="07-خطاها-Errors.html">خطاها (Errors) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

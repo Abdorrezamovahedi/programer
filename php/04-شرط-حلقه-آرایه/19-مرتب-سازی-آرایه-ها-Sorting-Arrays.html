@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرتب سازی آرایه ها (Sorting Arrays) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: آرایهٔ فهرستی و انجمنی بسازی و foreach کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "مرتب سازی آرایه ها (Sorting Arrays)", "description": "این درس: آرایهٔ فهرستی و انجمنی بسازی و foreach کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">شرط حلقه آرایه</a><span class="sep">/</span><span>مرتب سازی آرایه ها (Sorting Arrays)</span></div><div class="layout"><aside class="side"><h3>شرط حلقه آرایه (115)</h3>
+<a href="01-If-Else-Elseif-If-Else-Elseif.html">1. If/Else/Elseif (If...Else...Elseif)</a>
+<a href="02-If-Else-If-Else.html">2. If...Else (If...Else)</a>
+<a href="03-If-کوتاه-Shorthand-if.html">3. If کوتاه (Shorthand if)</a>
+<a href="04-If-تو-در-تو-Nested-if.html">4. If تو در تو (Nested if)</a>
+<a href="05-سوئیچ-Switch.html">5. سوئیچ (Switch)</a>
+<a href="06-حلقه-while-While-Loop.html">6. حلقه while (While Loop)</a>
+<a href="07-حلقه-do-while-Do-While-Loop.html">7. حلقه do...while (Do While Loop)</a>
+<a href="08-حلقه-for-For-Loop.html">8. حلقه for (For Loop)</a>
+<a href="09-حلقه-foreach-Foreach-Loop.html">9. حلقه foreach (Foreach Loop)</a>
+<a href="10-توابع-Functions.html">10. توابع (Functions)</a>
+<a href="11-آرایه-ها-Arrays.html">11. آرایه ها (Arrays)</a>
+<a href="12-آرایه-های-اندیسی-Indexed-Arrays.html">12. آرایه های اندیسی (Indexed Arrays)</a>
+<a href="13-آرایه-های-انجمنی-Associative-Arrays.html">13. آرایه های انجمنی (Associative Arrays)</a>
+<a href="14-ساخت-آرایه-ها-Create-Arrays.html">14. ساخت آرایه ها (Create Arrays)</a>
+<a href="15-دسترسی-به-آیتم-ها-Access-Array-Items.html">15. دسترسی به آیتم ها (Access Array Items)</a>
+<a href="16-به-روزرسانی-آیتم-ها-Update-Array-Items.html">16. به روزرسانی آیتم ها (Update Array Items)</a>
+<a href="17-افزودن-آیتم-ها-Add-Array-Items.html">17. افزودن آیتم ها (Add Array Items)</a>
+<a href="18-حذف-آیتم-ها-Remove-Array-Items.html">18. حذف آیتم ها (Remove Array Items)</a>
+<a href="19-مرتب-سازی-آرایه-ها-Sorting-Arrays.html" class="on">19. مرتب سازی آرایه ها (Sorting Arrays)</a>
+<a href="20-آرایه-های-چندبعدی-Multidimensional-Arrays.html">20. آرایه های چندبعدی (Multidimensional Arrays)</a>
+<a href="21-توابع-آرایه-Array-Functions.html">21. توابع آرایه (Array Functions)</a>
+<a href="22-سوپرگلوبال-ها-Superglobals.html">22. سوپرگلوبال ها (Superglobals)</a>
+<a href="23-مدیریت-فرم-Form-Handling.html">23. مدیریت فرم (Form Handling)</a>
+<a href="24-اعتبارسنجی-فرم-Form-Validation.html">24. اعتبارسنجی فرم (Form Validation)</a>
+<a href="25-فیلدهای-اجباری-فرم-Form-Required.html">25. فیلدهای اجباری فرم (Form Required)</a>
+<a href="26-اعتبارسنجی-URL-ایمیل-Form-URL-E-mail.html">26. اعتبارسنجی URL/ایمیل (Form URL/E-mail)</a>
+<a href="27-فرم-کامل-Form-Complete.html">27. فرم کامل (Form Complete)</a>
+<a href="28-توابع-کال-بک-Callback-Functions.html">28. توابع کال بک (Callback Functions)</a>
+<a href="29-سطوح-دسترسی-Access-Modifiers.html">29. سطوح دسترسی (Access Modifiers)</a>
+<a href="30-گواهینامه-Certificate.html">30. گواهینامه (Certificate)</a>
+<a href="31-مرجع-آرایه-PHP-Array.html">31. مرجع آرایه (PHP Array)</a>
+<a href="32-تابع-array-array.html">32. تابع array() (array())</a>
+<a href="33-تغییر-کوچکی-بزرگی-کلیدها-array-change-key-case.html">33. تغییر کوچکی/بزرگی کلیدها (array_change_key_case)</a>
+<a href="34-تکه-تکه-کردن-آرایه-array-chunk.html">34. تکه تکه کردن آرایه (array_chunk)</a>
+<a href="35-ستون-برداری-آرایه-array-column.html">35. ستون برداری آرایه (array_column)</a>
+<a href="36-ترکیب-آرایه-ها-array-combine.html">36. ترکیب آرایه ها (array_combine)</a>
+<a href="37-شمارش-مقادیر-array-count-values.html">37. شمارش مقادیر (array_count_values)</a>
+<a href="38-تفاضل-آرایه-array-diff.html">38. تفاضل آرایه (array_diff)</a>
+<a href="39-تفاضل-انجمنی-array-diff-assoc.html">39. تفاضل انجمنی (array_diff_assoc)</a>
+<a href="40-تفاضل-بر-اساس-کلید-array-diff-key.html">40. تفاضل بر اساس کلید (array_diff_key)</a>
+<a href="41-تفاضل-انجمنی-کاربری-array-diff-uassoc.html">41. تفاضل انجمنی کاربری (array_diff_uassoc)</a>
+<a href="42-تفاضل-کلید-کاربری-array-diff-ukey.html">42. تفاضل کلید کاربری (array_diff_ukey)</a>
+<a href="43-پُرکردن-آرایه-array-fill.html">43. پُرکردن آرایه (array_fill)</a>
+<a href="44-پرکردن-کلیدها-array-fill-keys.html">44. پرکردن کلیدها (array_fill_keys)</a>
+<a href="45-فیلترکردن-آرایه-array-filter.html">45. فیلترکردن آرایه (array_filter)</a>
+<a href="46-برعکس-کردن-کلید-مقدار-array-flip.html">46. برعکس کردن کلید/مقدار (array_flip)</a>
+<a href="47-اشتراک-آرایه-array-intersect.html">47. اشتراک آرایه (array_intersect)</a>
+<a href="48-اشتراک-انجمنی-array-intersect-assoc.html">48. اشتراک انجمنی (array_intersect_assoc)</a>
+<a href="49-اشتراک-بر-اساس-کلید-array-intersect-key.html">49. اشتراک بر اساس کلید (array_intersect_key)</a>
+<a href="50-اشتراک-انجمنی-کاربری-array-intersect-uassoc.html">50. اشتراک انجمنی کاربری (array_intersect_uassoc)</a>
+<a href="51-اشتراک-کلید-کاربری-array-intersect-ukey.html">51. اشتراک کلید کاربری (array_intersect_ukey)</a>
+<a href="52-وجود-کلید-array-key-exists.html">52. وجود کلید (array_key_exists)</a>
+<a href="53-کلیدها-array-keys.html">53. کلیدها (array_keys)</a>
+<a href="54-نگاشت-array-map.html">54. نگاشت (array_map)</a>
+<a href="55-ادغام-array-merge.html">55. ادغام (array_merge)</a>
+<a href="56-ادغام-بازگشتی-array-merge-recursive.html">56. ادغام بازگشتی (array_merge_recursive)</a>
+<a href="57-مرتب-سازی-چندگانه-array-multisort.html">57. مرتب سازی چندگانه (array_multisort)</a>
+<a href="58-پَدکردن-آرایه-array-pad.html">58. پَدکردن آرایه (array_pad)</a>
+<a href="59-پاپ-array-pop.html">59. پاپ (array_pop)</a>
+<a href="60-حاصل-ضرب-مقادیر-array-product.html">60. حاصل ضرب مقادیر (array_product)</a>
+<a href="61-پوش-array-push.html">61. پوش (array_push)</a>
+<a href="62-تصادفی-گرفتن-array-rand.html">62. تصادفی گرفتن (array_rand)</a>
+<a href="63-کاهش-array-reduce.html">63. کاهش (array_reduce)</a>
+<a href="64-جایگزینی-array-replace.html">64. جایگزینی (array_replace)</a>
+<a href="65-جایگزینی-بازگشتی-array-replace-recursive.html">65. جایگزینی بازگشتی (array_replace_recursive)</a>
+<a href="66-برعکس-کردن-array-reverse.html">66. برعکس کردن (array_reverse)</a>
+<a href="67-جستجو-array-search.html">67. جستجو (array_search)</a>
+<a href="68-شیفت-array-shift.html">68. شیفت (array_shift)</a>
+<a href="69-اسلایس-array-slice.html">69. اسلایس (array_slice)</a>
+<a href="70-برش-و-جایگزینی-array-splice.html">70. برش و جایگزینی (array_splice)</a>
+<a href="71-جمع-array-sum.html">71. جمع (array_sum)</a>
+<a href="72-تفاضل-کاربری-array-udiff.html">72. تفاضل کاربری (array_udiff)</a>
+<a href="73-تفاضل-کاربری-انجمنی-array-udiff-assoc.html">73. تفاضل کاربری انجمنی (array_udiff_assoc)</a>
+<a href="74-تفاضل-کاربری-انجمنیکلید-array-udiff-uassoc.html">74. تفاضل کاربری انجمنی+کلید (array_udiff_uassoc)</a>
+<a href="75-اشتراک-کاربری-array-uintersect.html">75. اشتراک کاربری (array_uintersect)</a>
+<a href="76-اشتراک-کاربری-انجمنی-array-uintersect-assoc.html">76. اشتراک کاربری انجمنی (array_uintersect_assoc)</a>
+<a href="77-اشتراک-کاربری-انجمنیکلید-array-uintersect-uassoc.html">77. اشتراک کاربری انجمنی+کلید (array_uintersect_uassoc)</a>
+<a href="78-یکتا-کردن-array-unique.html">78. یکتا کردن (array_unique)</a>
+<a href="79-آن-شیفت-array-unshift.html">79. آن شیفت (array_unshift)</a>
+<a href="80-مقادیر-array-values.html">80. مقادیر (array_values)</a>
+<a href="81-پیاده-روی-در-آرایه-array-walk.html">81. پیاده روی در آرایه (array_walk)</a>
+<a href="82-پیاده-روی-بازگشتی-array-walk-recursive.html">82. پیاده روی بازگشتی (array_walk_recursive)</a>
+<a href="83-وجود-در-آرایه-in-array.html">83. وجود در آرایه (in_array)</a>
+<a href="84-ایجاد-از-فرمت-date-create-from-format.html">84. ایجاد از فرمت (date_create_from_format)</a>
+<a href="85-اختلاف-تاریخ-date-diff.html">85. اختلاف تاریخ (date_diff)</a>
+<a href="86-فرمت-تاریخ-date-format.html">86. فرمت تاریخ (date_format)</a>
+<a href="87-فرمت-فاصله-date-interval-format.html">87. فرمت فاصله (date_interval_format)</a>
+<a href="88-تغییر-تاریخ-date-modify.html">88. تغییر تاریخ (date_modify)</a>
+<a href="89-تحلیل-از-فرمت-date-parse-from-format.html">89. تحلیل از فرمت (date_parse_from_format)</a>
+<a href="90-تابع-date-date.html">90. تابع date() (date)</a>
+<a href="91-فهرست-شناسه-های-منطقه-timezone-identifiers-list.html">91. فهرست شناسه های منطقه (timezone_identifiers_list)</a>
+<a href="92-آرایه-ورودی-فیلتر-filter-input-array.html">92. آرایه ورودی فیلتر (filter_input_array)</a>
+<a href="93-آرایه-مقدارها-filter-var-array.html">93. آرایه مقدارها (filter_var_array)</a>
+<a href="94-تبدیل-JSON-به-آرایه-آبجکت-json-decode.html">94. تبدیل JSON به آرایه/آبجکت (json_decode)</a>
+<a href="95-تبدیل-آرایه-آبجکت-به-JSON-json-encode.html">95. تبدیل آرایه/آبجکت به JSON (json_encode)</a>
+<a href="96-در-غیر-این-صورت-else.html">96. در غیر این صورت (else)</a>
+<a href="97-در-غیر-این-صورت-اگر-elseif.html">97. در غیر این صورت اگر (elseif)</a>
+<a href="98-پایان-for-endfor.html">98. پایان for (endfor)</a>
+<a href="99-پایان-foreach-endforeach.html">99. پایان foreach (endforeach)</a>
+<a href="100-پایان-if-endif.html">100. پایان if (endif)</a>
+<a href="101-پایان-switch-endswitch.html">101. پایان switch (endswitch)</a>
+<a href="102-پایان-while-endwhile.html">102. پایان while (endwhile)</a>
+<a href="103-تابع-پیکانی-fn.html">103. تابع پیکانی (fn)</a>
+<a href="104-برای-for.html">104. برای (for)</a>
+<a href="105-foreach-foreach.html">105. foreach (foreach)</a>
+<a href="106-تابع-function.html">106. تابع (function)</a>
+<a href="107-اگر-if.html">107. اگر (if)</a>
+<a href="108-switch-switch.html">108. switch (switch)</a>
+<a href="109-while-while.html">109. while (while)</a>
+<a href="110-fetch-array-fetch-array.html">110. fetch_array (fetch_array)</a>
+<a href="111-جایگزینی-با-آرایه-کال-بک-ها-preg-replace-callback-array.html">111. جایگزینی با آرایه کال بک ها (preg_replace_callback_array)</a>
+<a href="112-money-format-money-format.html">112. money_format (money_format)</a>
+<a href="113-number-format-number-format.html">113. number_format (number_format)</a>
+<a href="114-is-array-is-array.html">114. is_array (is_array)</a>
+<a href="115-آزمون-شرط-حلقه-آرایه.html">115. آزمون (شرط حلقه آرایه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="مرتب سازی آرایه ها (Sorting Arrays)" data-cat="شرط حلقه آرایه">📌 پین</button>
+<h2>مرتب سازی آرایه ها (Sorting Arrays)</h2>
+<p><strong>هدف این درس:</strong> آرایهٔ فهرستی و انجمنی بسازی و foreach کنی.</p>
+<div class="note"><strong>پوشه:</strong> شرط حلقه آرایه &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>آرایه چند مقدار را نگه می‌دارد. کلید می‌تواند عدد یا متن باشد.</p>
+<h3>فهرست معرفی: آرایه</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">&lt;?php
+// آرایه
+$nums = [10, 20];              // فهرستی؛ ایندکس از 0
+echo $nums[0];                 // 10
+$user = [&quot;name&quot; =&gt; &quot;سارا&quot;];    // انجمنی
+echo $user[&quot;name&quot;];
+foreach ($nums as $n) {        // گردش
+  echo $n;
+}
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: foreach</h3>
+<div class="codewrap"><div class="code">&lt;?php
+$a = [1, 2, 3];
+foreach ($a as $v) {
+  echo $v;
+}
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> سه عدد.<br>
+<strong>خط ۳–۵:</strong> هر عدد یک‌بار چاپ می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">for روی کلیدهای متنی با $i از ۰</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> کلیدها ۰،۱،۲ نیستند.<br><strong>چه می‌بینی؟</strong> Notice<br><strong>درست:</strong> foreach</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک آرایه را foreach کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>ایندکس از ۰</li>
+<li>=&gt; برای کلید متنی</li>
+<li>foreach ترجیحی</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک آرایهٔ name/age بساز.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="18-حذف-آیتم-ها-Remove-Array-Items.html">← قبلی</a><a href="20-آرایه-های-چندبعدی-Multidimensional-Arrays.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

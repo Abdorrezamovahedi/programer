@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رنگ لینک‌ها — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: لینک و تصویر با ویژگی‌های درست بسازی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "رنگ لینک‌ها", "description": "این درس: لینک و تصویر با ویژگی‌های درست بسازی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">متن و قالب‌بندی</a><span class="sep">/</span><span>رنگ لینک‌ها</span></div><div class="layout"><aside class="side"><h3>متن و قالب‌بندی (11)</h3>
+<a href="01-استایلها-Styles.html">1. استایل‌ها (Styles)</a>
+<a href="02-قالببندی-متن-Formatting.html">2. قالب‌بندی متن (Formatting)</a>
+<a href="03-نقل-قولها-Quotations.html">3. نقل قول‌ها (Quotations)</a>
+<a href="04-رنگها-Colors.html">4. رنگ‌ها (Colors)</a>
+<a href="05-مدل-RGB.html">5. مدل RGB</a>
+<a href="06-مدل-HEX.html">6. مدل HEX</a>
+<a href="07-مدل-HSL.html">7. مدل HSL</a>
+<a href="08-استفاده-از-CSS.html">8. استفاده از CSS</a>
+<a href="09-رنگ-لینکها.html" class="on">9. رنگ لینک‌ها</a>
+<a href="10-استایلدهی-جدول.html">10. استایل‌دهی جدول</a>
+<a href="11-آزمون-متن-و-قالببندی.html">11. آزمون (متن و قالب‌بندی)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="رنگ لینک‌ها" data-cat="متن و قالب‌بندی">📌 پین کردن این درس</button>
+<h2>رنگ لینک‌ها</h2>
+<p><strong>هدف این درس:</strong> لینک و تصویر با ویژگی‌های درست بسازی.</p>
+<div class="note"><strong>پوشه:</strong> متن و قالب‌بندی &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>href مقصد لینک است. src مسیر تصویر است. alt توضیح تصویر است.</p>
+<h3>فهرست معرفی: لینک و رسانه</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">&lt;!-- لینک و تصویر --&gt;
+&lt;a href=&quot;https://example.com&quot;&gt;سایت&lt;/a&gt;     &lt;!-- لینک خارجی --&gt;
+&lt;a href=&quot;about.html&quot;&gt;درباره&lt;/a&gt;            &lt;!-- صفحهٔ دیگر --&gt;
+&lt;a href=&quot;#sec&quot;&gt;برو به بخش&lt;/a&gt;              &lt;!-- پرش داخل صفحه --&gt;
+&lt;h2 id=&quot;sec&quot;&gt;بخش&lt;/h2&gt;                      &lt;!-- هدف پرش --&gt;
+&lt;img src=&quot;a.jpg&quot; alt=&quot;توضیح&quot;&gt;              &lt;!-- تصویر + متن جایگزین --&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: لینک و تصویر</h3>
+<div class="codewrap"><div class="code">&lt;a href=&quot;https://example.com&quot;&gt;مثال&lt;/a&gt;
+&lt;img src=&quot;photo.jpg&quot; alt=&quot;عکس منظره&quot; width=&quot;200&quot;&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> لینک به سایت؛ متن قابل کلیک «مثال» است.<br>
+<strong>خط ۲:</strong> تصویر با مسیر، توضیح و عرض.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;a&gt;کلیک&lt;/a&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون href مقصد ندارد.<br><strong>چه می‌بینی؟</strong> لینک بی‌اثر<br><strong>درست:</strong> &lt;a href=&quot;page.html&quot;&gt;کلیک&lt;/a&gt;</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک لینک واقعی و یک img با alt بنویسی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>href برای لینک</li>
+<li>src و alt برای تصویر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">لینک # به یک id در همان صفحه بساز.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="08-استفاده-از-CSS.html">← استفاده از CSS</a><a href="10-استایلدهی-جدول.html">استایل‌دهی جدول →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

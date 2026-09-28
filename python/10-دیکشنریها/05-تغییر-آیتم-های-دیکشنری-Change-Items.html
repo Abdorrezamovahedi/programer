@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تغییر آیتم های دیکشنری (Change Items) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="مقدار یک کلید موجود را عوض کنی و با update چند کلید را یکجا به‌روز کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تغییر آیتم های دیکشنری (Change Items)", "description": "مقدار یک کلید موجود را عوض کنی و با update چند کلید را یکجا به‌روز کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">دیکشنری‌ها</a><span class="sep">/</span><span>تغییر آیتم های دیکشنری (Change Items)</span></div><div class="layout"><aside class="side"><h3>دیکشنری‌ها (19)</h3>
+<a href="01-دیکشنری-ها-Dictionaries.html">1. دیکشنری ها (Dictionaries)</a>
+<a href="02-آزمون-دیکشنری-ها.html">2. آزمون (دیکشنری ها)</a>
+<a href="03-دسترسی-به-آیتم-های-دیکشنری-Access-Items.html">3. دسترسی به آیتم های دیکشنری (Access Items)</a>
+<a href="04-آزمون-دسترسی-دیکشنری.html">4. آزمون (دسترسی دیکشنری)</a>
+<a href="05-تغییر-آیتم-های-دیکشنری-Change-Items.html" class="on">5. تغییر آیتم های دیکشنری (Change Items)</a>
+<a href="06-آزمون-تغییر-دیکشنری.html">6. آزمون (تغییر دیکشنری)</a>
+<a href="07-افزودن-آیتم-های-دیکشنری-Add-Items.html">7. افزودن آیتم های دیکشنری (Add Items)</a>
+<a href="08-آزمون-افزودن-دیکشنری.html">8. آزمون (افزودن دیکشنری)</a>
+<a href="09-حذف-آیتم-های-دیکشنری-Remove-Items.html">9. حذف آیتم های دیکشنری (Remove Items)</a>
+<a href="10-آزمون-حذف-دیکشنری.html">10. آزمون (حذف دیکشنری)</a>
+<a href="11-حلقه-دیکشنری-ها-Loop-Dictionaries.html">11. حلقه دیکشنری ها (Loop Dictionaries)</a>
+<a href="12-آزمون-حلقه-دیکشنری.html">12. آزمون (حلقه دیکشنری)</a>
+<a href="13-کپی-دیکشنری-ها-Copy-Dictionaries.html">13. کپی دیکشنری ها (Copy Dictionaries)</a>
+<a href="14-آزمون-کپی-دیکشنری.html">14. آزمون (کپی دیکشنری)</a>
+<a href="15-تو-در-تو-Nested-Dictionaries.html">15. تو در تو (Nested Dictionaries)</a>
+<a href="16-آزمون-دیکشنری-تو-در-تو.html">16. آزمون (دیکشنری تو در تو)</a>
+<a href="17-متدهای-دیکشنری-Dictionary-Methods.html">17. متدهای دیکشنری (Dictionary Methods)</a>
+<a href="18-تمرین-دیکشنری-Dictionary-Exercises.html">18. تمرین دیکشنری (Dictionary Exercises)</a>
+<a href="19-مرجع-متدهای-دیکشنری-Dictionary-Methods-Ref.html">19. مرجع متدهای دیکشنری (Dictionary Methods Ref)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تغییر آیتم های دیکشنری (Change Items)" data-cat="دیکشنری‌ها">📌 پین کردن این درس</button>
+<h2>تغییر آیتم های دیکشنری (Change Items)</h2>
+<p><strong>هدف:</strong> مقدار یک کلید موجود را عوض کنی و با update چند کلید را یکجا به‌روز کنی.</p>
+<div class="note"><strong>پوشه:</strong> دیکشنری‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «دیکشنری‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «دیکشنری‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>اگر کلید باشد d[k]=v مقدار را عوض می‌کند؛ اگر نباشد همان کلید را می‌سازد. update از روی یک dict دیگر ادغام می‌کند.</p>
+<h3>ساختار</h3><div class="code">d[&quot;k&quot;] = v
+d.update({&quot;k&quot;: v})</div>
+<h3>مثال 1: عوض کردن و افزودن</h3>
+<div class="codewrap"><div class="code">user = {&quot;name&quot;: &quot;سارا&quot;, &quot;age&quot;: 20}
+user[&quot;age&quot;] = 21
+user[&quot;city&quot;] = &quot;تهران&quot;
+print(user)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> age از ۲۰ به ۲۱.<br>
+<strong>خط ۳:</strong> کلید جدید city اضافه می‌شود.</div>
+<h3>مثال 2: update</h3>
+<div class="codewrap"><div class="code">user = {&quot;name&quot;: &quot;سارا&quot;}
+user.update({&quot;name&quot;: &quot;سارا محمدی&quot;, &quot;age&quot;: 20})
+print(user)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> name عوض و age اضافه می‌شود.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">d = {}
+d.add(&quot;a&quot;, 1)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> dict متد add مثل set ندارد.<br><strong>چه می‌بینی؟</strong> AttributeError<br><strong>درست:</strong> d[&quot;a&quot;] = 1</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «تغییر آیتم های دیکشنری» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>انتساب به کلید موجود = تغییر.</li>
+<li>انتساب به کلید جدید = افزودن.</li>
+<li>update برای چند کلید.</li>
+<li>از add استفاده نکن؛ مال set است.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">سن را در dict عوض کن.</li>
+<li style="margin-bottom:6px">یک فیلد جدید اضافه کن.</li>
+<li style="margin-bottom:6px">با update دو فیلد را یکجا عوض کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="04-آزمون-دسترسی-دیکشنری.html">← آزمون (دسترسی دیکشنری)</a><a href="06-آزمون-تغییر-دیکشنری.html">آزمون (تغییر دیکشنری) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

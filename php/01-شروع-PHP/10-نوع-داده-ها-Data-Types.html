@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نوع داده ها (Data Types) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: همهٔ موارد «انواع داده در PHP» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "نوع داده ها (Data Types)", "description": "این درس: همهٔ موارد «انواع داده در PHP» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">شروع PHP</a><span class="sep">/</span><span>نوع داده ها (Data Types)</span></div><div class="layout"><aside class="side"><h3>شروع PHP (51)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-مقدمه-Intro.html">2. مقدمه (Intro)</a>
+<a href="03-نصب-Install.html">3. نصب (Install)</a>
+<a href="04-سینتکس-Syntax.html">4. سینتکس (Syntax)</a>
+<a href="05-توضیحات-Comments.html">5. توضیحات (Comments)</a>
+<a href="06-توضیحات-چندخطی-Multiline-Comments.html">6. توضیحات چندخطی (Multiline Comments)</a>
+<a href="07-متغیرها-Variables.html">7. متغیرها (Variables)</a>
+<a href="08-دامنه-متغیرها-Variables-Scope.html">8. دامنه متغیرها (Variables Scope)</a>
+<a href="09-اکو-پرینت-Echo-Print.html">9. اکو/پرینت (Echo / Print)</a>
+<a href="10-نوع-داده-ها-Data-Types.html" class="on">10. نوع داده ها (Data Types)</a>
+<a href="11-رشته-ها-Strings.html">11. رشته ها (Strings)</a>
+<a href="12-ویرایش-رشته-ها-Modify-Strings.html">12. ویرایش رشته ها (Modify Strings)</a>
+<a href="13-چسباندن-رشته-ها-Concatenate-Strings.html">13. چسباندن رشته ها (Concatenate Strings)</a>
+<a href="14-برش-رشته-ها-Slicing-Strings.html">14. برش رشته ها (Slicing Strings)</a>
+<a href="15-ثابت-ها-Constants.html">15. ثابت ها (Constants)</a>
+<a href="16-ثابت-های-جادویی-Magic-Constants.html">16. ثابت های جادویی (Magic Constants)</a>
+<a href="17-عملگرها-Operators.html">17. عملگرها (Operators)</a>
+<a href="18-عملگرهای-If-If-Operators.html">18. عملگرهای If (If Operators)</a>
+<a href="19-ثابت-ها-در-کلاس-Class-Constants.html">19. ثابت ها در کلاس (Class Constants)</a>
+<a href="20-مقدمه-AJAX-AJAX-Intro.html">20. مقدمه AJAX (AJAX Intro)</a>
+<a href="21-ایجاد-فاصله-از-رشته-date-interval-create-from-date-stri.html">21. ایجاد فاصله از رشته (date_interval_create_from_date_string)</a>
+<a href="22-چاپ-ردیابی-پشته-debug-print-backtrace.html">22. چاپ ردیابی پشته (debug_print_backtrace)</a>
+<a href="23-Trace-به-رشته-getTraceAsString.html">23. Trace به رشته (getTraceAsString)</a>
+<a href="24-خواندن-INI-رشته-parse-ini-string.html">24. خواندن INI رشته (parse_ini_string)</a>
+<a href="25-وجود-متغیر-filter-has-var.html">25. وجود متغیر (filter_has_var)</a>
+<a href="26-ثابت-const.html">26. ثابت (const)</a>
+<a href="27-اکو-چاپ-echo.html">27. اکو/چاپ (echo)</a>
+<a href="28-پرینت-print.html">28. پرینت (print)</a>
+<a href="29-مقدار-ثابت-constant.html">29. مقدار ثابت (constant)</a>
+<a href="30-تعریف-ثابت-define.html">30. تعریف ثابت (define)</a>
+<a href="31-هایلایت-رشته-highlight-string.html">31. هایلایت رشته (highlight_string)</a>
+<a href="32-real-escape-string-real-escape-string.html">32. real_escape_string (real_escape_string)</a>
+<a href="33-تبدیل-آدرس-IP-به-رشته-inet-ntop.html">33. تبدیل آدرس IP به رشته (inet_ntop)</a>
+<a href="34-تبدیل-رشته-به-آدرس-IP-inet-pton.html">34. تبدیل رشته به آدرس IP (inet_pton)</a>
+<a href="35-به-رشته-tostring.html">35. به رشته ( __tostring )</a>
+<a href="36-لود-از-رشته-simplexml-load-string.html">36. لود از رشته (simplexml_load_string)</a>
+<a href="37-convert-cyr-string-convert-cyr-string.html">37. convert_cyr_string (convert_cyr_string)</a>
+<a href="38-echo-رشته-echo-string.html">38. echo رشته (echo string)</a>
+<a href="39-fprintf-fprintf.html">39. fprintf (fprintf)</a>
+<a href="40-print-print.html">40. print (print)</a>
+<a href="41-printf-printf.html">41. printf (printf)</a>
+<a href="42-quoted-printable-decode-quoted-printable-decode.html">42. quoted_printable_decode (quoted_printable_decode)</a>
+<a href="43-quoted-printable-encode-quoted-printable-encode.html">43. quoted_printable_encode (quoted_printable_encode)</a>
+<a href="44-sprintf-sprintf.html">44. sprintf (sprintf)</a>
+<a href="45-vfprintf-vfprintf.html">45. vfprintf (vfprintf)</a>
+<a href="46-vprintf-vprintf.html">46. vprintf (vprintf)</a>
+<a href="47-vsprintf-vsprintf.html">47. vsprintf (vsprintf)</a>
+<a href="48-is-string-is-string.html">48. is_string (is_string)</a>
+<a href="49-print-r-print-r.html">49. print_r (print_r)</a>
+<a href="50-رشته-خطای-XML-xml-error-string.html">50. رشته خطای XML (xml_error_string)</a>
+<a href="51-آزمون-شروع-PHP.html">51. آزمون (شروع PHP)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="نوع داده ها (Data Types)" data-cat="شروع PHP">📌 پین کردن این درس</button>
+<h2>نوع داده ها (Data Types)</h2>
+<p><strong>هدف این درس:</strong> همهٔ موارد «انواع داده در PHP» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی.</p>
+<div class="note"><strong>پوشه:</strong> شروع PHP &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس، درسِ معرفی «انواع داده در PHP» است. اول فهرست کامل را می‌بینی، بعد هر مورد جداگانه با مثال کوتاه. درس‌های بعدی همین موضوع جزئی‌تر می‌شوند و دیگر کل فهرست را تکرار نمی‌کنند.</p>
+<h3>فهرست معرفی: انواع داده در PHP</h3>
+<p>قبل از جزئیات، همهٔ موارد این مبحث را یک‌جا ببین. بعد هر کدام را جداگانه با مثال می‌بینی.</p>
+<div class="sum"><b>نقشهٔ مبحث</b><ul>
+<li><strong>int</strong> — عدد صحیح.</li>
+<li><strong>float / double</strong> — عدد اعشاری.</li>
+<li><strong>string</strong> — متن.</li>
+<li><strong>bool</strong> — true یا false.</li>
+<li><strong>array</strong> — فهرست یا نقشهٔ کلید→مقدار.</li>
+<li><strong>null</strong> — بدون مقدار.</li>
+</ul></div>
+<h3>توضیح دانه‌به‌دانه با مثال</h3>
+<h4>1. int</h4>
+<p>عدد صحیح.</p>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(10);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>2. float / double</h4>
+<p>عدد اعشاری.</p>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(3.5);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>3. string</h4>
+<p>متن.</p>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(&quot;سلام&quot;);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>4. bool</h4>
+<p>true یا false.</p>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(true);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>5. array</h4>
+<p>فهرست یا نقشهٔ کلید→مقدار.</p>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump([1, 2]);
+var_dump([&quot;name&quot; =&gt; &quot;سارا&quot;]);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>6. null</h4>
+<p>بدون مقدار.</p>
+<div class="codewrap"><div class="code">&lt;?php
+$x = null;
+var_dump($x);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>مرور سریع مثال 1</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(10);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>int:</strong> عدد صحیح.</div>
+<h3>مرور سریع مثال 2</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(3.5);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>float / double:</strong> عدد اعشاری.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code"># استفاده از چیزی که هنوز در فهرست بالا نخوانده‌ای بدون برگشت به معرفی</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> ترتیب یادگیری می‌شکند و مثال‌ها گیج می‌شوند.<br><strong>چه می‌بینی؟</strong> فهم ناقص<br><strong>درست:</strong> اول همین فهرست را یک‌بار با دقت بخوان، بعد درس بعدی</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به فهرست بگویی هر مورد «انواع داده در PHP» تقریباً چه می‌کند و یک مثالش را اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>این صفحه معرفی کامل «انواع داده در PHP» است</li>
+<li>درس‌های بعدی جزئیات‌اند نه تکرار کل فهرست</li>
+<li>هر علامت/نوع را با مثال کوچک ببین</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">از فهرست ۳ مورد را خودت در محیط اجرا کن.</li>
+<li style="margin-bottom:6px">یکی را عمداً غلط بنویس و پیام را بخوان.</li>
+<li style="margin-bottom:6px">به درس بعدی همین پوشه برو.</li>
+</ol>
+<p class="rel">درس‌های بعدی همین مبحث را با تکیه بر همین فهرست بخوان؛ دیگر کل لیست تکرار نمی‌شود.</p>
+<div class="navbtn" style="margin-top:22px"><a href="09-اکو-پرینت-Echo-Print.html">← اکو/پرینت (Echo / Print)</a><a href="11-رشته-ها-Strings.html">رشته ها (Strings) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

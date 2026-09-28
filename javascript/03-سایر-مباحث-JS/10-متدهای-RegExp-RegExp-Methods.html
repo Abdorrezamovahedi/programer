@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متدهای RegExp (RegExp Methods) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با مبحث «متدهای RegExp» در حد یک آزمایش کوچک آشنا شوی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "متدهای RegExp (RegExp Methods)", "description": "این درس: با مبحث «متدهای RegExp» در حد یک آزمایش کوچک آشنا شوی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">سایر مباحث JS</a><span class="sep">/</span><span>متدهای RegExp (RegExp Methods)</span></div><div class="layout"><aside class="side"><h3>سایر مباحث JS (42)</h3>
+<a href="01-مقایسه-ها-Comparisons.html">1. مقایسه ها (Comparisons)</a>
+<a href="02-منطقی-Logical.html">2. منطقی (Logical)</a>
+<a href="03-ریاضی-Math.html">3. ریاضی (Math)</a>
+<a href="04-مرجع-ریاضی-Math-Reference.html">4. مرجع ریاضی (Math Reference)</a>
+<a href="05-عبارات-منظم-RegExp.html">5. عبارات منظم (RegExp)</a>
+<a href="06-پرچم-ها-RegExp-Flags.html">6. پرچم ها (RegExp Flags)</a>
+<a href="07-متاکاراکترها-RegExp-Metachars.html">7. متاکاراکترها (RegExp Metachars)</a>
+<a href="08-گزاره-ها-RegExp-Assertions.html">8. گزاره ها (RegExp Assertions)</a>
+<a href="09-الگوها-RegExp-Patterns.html">9. الگوها (RegExp Patterns)</a>
+<a href="10-متدهای-RegExp-RegExp-Methods.html" class="on">10. متدهای RegExp (RegExp Methods)</a>
+<a href="11-خطاهای-بی-صدا-Errors-Silent.html">11. خطاهای بی صدا (Errors Silent)</a>
+<a href="12-دامنه-Scope.html">12. دامنه (Scope)</a>
+<a href="13-بالابردن-Hoisting.html">13. بالابردن (Hoisting)</a>
+<a href="14-بلوک-های-کد-Code-Blocks.html">14. بلوک های کد (Code Blocks)</a>
+<a href="15-مرجع-کلمات-کلیدی-Keywords-Reference.html">15. مرجع کلمات کلیدی (Keywords Reference)</a>
+<a href="16-نمادهای-UTF-8-UTF-8-Symbols.html">16. نمادهای UTF-8 (UTF-8 Symbols)</a>
+<a href="17-ایموجی-های-UTF-8-UTF-8-Emojis.html">17. ایموجی های UTF-8 (UTF-8 Emojis)</a>
+<a href="18-نسخه-ها-Versions.html">18. نسخه ها (Versions)</a>
+<a href="19-2025-2025.html">19. 2025 (2025)</a>
+<a href="20-2024-2024.html">20. 2024 (2024)</a>
+<a href="21-2023-2023.html">21. 2023 (2023)</a>
+<a href="22-2022-2022.html">22. 2022 (2022)</a>
+<a href="23-2021-2021.html">23. 2021 (2021)</a>
+<a href="24-2020-2020.html">24. 2020 (2020)</a>
+<a href="25-2019-2019.html">25. 2019 (2019)</a>
+<a href="26-2018-2018.html">26. 2018 (2018)</a>
+<a href="27-2017-2017.html">27. 2017 (2017)</a>
+<a href="28-2016-2016.html">28. 2016 (2016)</a>
+<a href="29-2009-2009-ES5.html">29. 2009 (2009 (ES5))</a>
+<a href="30-IE-Edge-IE-Edge.html">30. IE / Edge (IE / Edge)</a>
+<a href="31-قابل-تکرارها-Iterables.html">31. قابل تکرارها (Iterables)</a>
+<a href="32-تکرارگرها-Iterators.html">32. تکرارگرها (Iterators)</a>
+<a href="33-مولدها-Generators.html">33. مولدها (Generators)</a>
+<a href="34-کنترل-جریان-Control-Flow.html">34. کنترل جریان (Control Flow)</a>
+<a href="35-گرافیک-Graphics.html">35. گرافیک (Graphics)</a>
+<a href="36-Canvas-Canvas.html">36. Canvas (Canvas)</a>
+<a href="37-Plotly-Plotly.html">37. Plotly (Plotly)</a>
+<a href="38-Chart-js-Chart-js.html">38. Chart.js (Chart.js)</a>
+<a href="39-Google-Chart-Google-Chart.html">39. Google Chart (Google Chart)</a>
+<a href="40-D3-js-D3-js.html">40. D3.js (D3.js)</a>
+<a href="41-ویرایشگر-Editor.html">41. ویرایشگر (Editor)</a>
+<a href="42-آزمون-سایر-مباحث-JS.html">42. آزمون (سایر مباحث JS)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="متدهای RegExp (RegExp Methods)" data-cat="سایر مباحث JS">📌 پین کردن این درس</button>
+<h2>متدهای RegExp (RegExp Methods)</h2>
+<p><strong>هدف این درس:</strong> با مبحث «متدهای RegExp» در حد یک آزمایش کوچک آشنا شوی.</p>
+<div class="note"><strong>پوشه:</strong> سایر مباحث JS &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («سایر مباحث JS») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس روی «متدهای RegExp» تمرکز دارد. کوچک شروع کن: یک دستور، یک نتیجهٔ قابل دیدن در کنسول یا صفحه. وقتی درست کار کرد، یک تغییر کوچک بده.</p>
+<h3>مثال 1: شروع امن</h3>
+<div class="codewrap"><div class="code">// متدهای RegExp
+const topic = &quot;متدهای RegExp&quot;;
+console.log(topic);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>const:</strong> موضوع را نگه می‌دارد.<br>
+<strong>log:</strong> در کنسول می‌بینی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">چند مفهوم را با هم قاطی کردن بدون تست</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> منبع خطا پیدا نمی‌شود.<br><strong>چه می‌بینی؟</strong> گیجی<br><strong>درست:</strong> هر بار یک ایده</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> مثال را اجرا کنی و خروجی را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>کوچک آزمایش کن</li>
+<li>خروجی را ببین</li>
+<li>خطا را بخوان</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک تغییر کوچک بده و دوباره اجرا کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="09-الگوها-RegExp-Patterns.html">← الگوها (RegExp Patterns)</a><a href="11-خطاهای-بی-صدا-Errors-Silent.html">خطاهای بی صدا (Errors Silent) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

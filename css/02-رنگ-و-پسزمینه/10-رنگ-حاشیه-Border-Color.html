@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رنگ حاشیه (Border Color) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: فرق padding و margin و border را در عمل ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "رنگ حاشیه (Border Color)", "description": "این درس: فرق padding و margin و border را در عمل ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">رنگ و پس‌زمینه</a><span class="sep">/</span><span>رنگ حاشیه (Border Color)</span></div><div class="layout"><aside class="side"><h3>رنگ و پس‌زمینه (17)</h3>
+<a href="01-رنگ-ها-Colors.html">1. رنگ ها (Colors)</a>
+<a href="02-رنگ-های-RGB-RGB-Colors.html">2. رنگ های RGB (RGB Colors)</a>
+<a href="03-رنگ-های-HEX-HEX-Colors.html">3. رنگ های HEX (HEX Colors)</a>
+<a href="04-رنگ-های-HSL-HSL-Colors.html">4. رنگ های HSL (HSL Colors)</a>
+<a href="05-پس-زمینه-Backgrounds.html">5. پس زمینه (Backgrounds)</a>
+<a href="06-تصویر-پس-زمینه-Background-Image.html">6. تصویر پس زمینه (Background Image)</a>
+<a href="07-تکرار-پس-زمینه-Background-Repeat.html">7. تکرار پس زمینه (Background Repeat)</a>
+<a href="08-پیوست-پس-زمینه-Background-Attachment.html">8. پیوست پس زمینه (Background Attachment)</a>
+<a href="09-کوتاه-نویسی-پس-زمینه-Background-Shorthand.html">9. کوتاه نویسی پس زمینه (Background Shorthand)</a>
+<a href="10-رنگ-حاشیه-Border-Color.html" class="on">10. رنگ حاشیه (Border Color)</a>
+<a href="11-رنگ-حاشیه-بیرونی-Outline-Color.html">11. رنگ حاشیه بیرونی (Outline Color)</a>
+<a href="12-پس-زمینه-های-چندگانه-Multiple-Backgrounds.html">12. پس زمینه های چندگانه (Multiple Backgrounds)</a>
+<a href="13-اندازه-پس-زمینه-Background-Size.html">13. اندازه پس زمینه (Background Size)</a>
+<a href="14-مبدأ-پس-زمینه-Background-Origin.html">14. مبدأ پس زمینه (Background Origin)</a>
+<a href="15-برش-پس-زمینه-Background-Clip.html">15. برش پس زمینه (Background Clip)</a>
+<a href="16-کلیدواژه-های-رنگ-Color-Keywords.html">16. کلیدواژه های رنگ (Color Keywords)</a>
+<a href="17-آزمون-رنگ-و-پسزمینه.html">17. آزمون (رنگ و پس‌زمینه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="رنگ حاشیه (Border Color)" data-cat="رنگ و پس‌زمینه">📌 پین کردن این درس</button>
+<h2>رنگ حاشیه (Border Color)</h2>
+<p><strong>هدف این درس:</strong> فرق padding و margin و border را در عمل ببینی.</p>
+<div class="note"><strong>پوشه:</strong> رنگ و پس‌زمینه &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>هر عنصر یک جعبه است: محتوا، فاصله داخلی، لبه، فاصله بیرونی.</p>
+<h3>فهرست معرفی: مدل جعبه</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">/* مدل جعبه */
+.box {
+  padding: 16px;              /* داخل لبه تا محتوا */
+  border: 1px solid #e2e8f0; /* خود لبه */
+  margin-bottom: 12px;        /* بیرون لبه تا همسایه */
+  border-radius: 8px;         /* گوشه گرد */
+  box-sizing: border-box;     /* width قابل‌پیش‌بینی‌تر */
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: دو کارت</h3>
+<div class="codewrap"><div class="code">.card {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>padding:</strong> نفس داخل کارت.<br>
+<strong>margin-bottom:</strong> فاصله با کارت بعدی.<br>
+<strong>border:</strong> لبه.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">/* فقط padding برای جدا کردن دو کارت */</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> padding داخل است.<br><strong>چه می‌بینی؟</strong> از بیرون می‌چسبند<br><strong>درست:</strong> margin بین کارت‌ها</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> دو جعبه با margin جدا از هم ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>padding داخل</li>
+<li>margin بیرون</li>
+<li>border لبه</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">در DevTools جعبه راinspect کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="09-کوتاه-نویسی-پس-زمینه-Background-Shorthand.html">← کوتاه نویسی پس زمینه (Background Shorthand)</a><a href="11-رنگ-حاشیه-بیرونی-Outline-Color.html">رنگ حاشیه بیرونی (Outline Color) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

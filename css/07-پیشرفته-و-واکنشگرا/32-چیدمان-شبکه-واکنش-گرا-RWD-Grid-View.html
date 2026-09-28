@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>چیدمان شبکه واکنش گرا (RWD Grid View) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: صفحه را به ستون‌های منظم تقسیم کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "چیدمان شبکه واکنش گرا (RWD Grid View)", "description": "این درس: صفحه را به ستون‌های منظم تقسیم کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">پیشرفته و واکنش‌گرا</a><span class="sep">/</span><span>چیدمان شبکه واکنش گرا (RWD Grid View)</span></div><div class="layout"><aside class="side"><h3>پیشرفته و واکنش‌گرا (38)</h3>
+<a href="01-جدول-واکنش-گرا-Responsive-Table.html">1. جدول واکنش گرا (Responsive Table)</a>
+<a href="02-گوشه-های-گرد-Rounded-Corners.html">2. گوشه های گرد (Rounded Corners)</a>
+<a href="03-گرادیان-ها-Gradients.html">3. گرادیان ها (Gradients)</a>
+<a href="04-گرادیان-شعاعی-Radial-Gradients.html">4. گرادیان شعاعی (Radial Gradients)</a>
+<a href="05-گرادیان-مخروطی-Conic-Gradients.html">5. گرادیان مخروطی (Conic Gradients)</a>
+<a href="06-سایه-ها-Shadows.html">6. سایه ها (Shadows)</a>
+<a href="07-سایه-جعبه-Box-Shadow.html">7. سایه جعبه (Box Shadow)</a>
+<a href="08-تبدیل-های-دو-بعدی-2D-Transforms.html">8. تبدیل های دو بعدی (2D Transforms)</a>
+<a href="09-تبدیل-های-سه-بعدی-3D-Transforms.html">9. تبدیل های سه بعدی (3D Transforms)</a>
+<a href="10-انتقال-ها-Transitions.html">10. انتقال ها (Transitions)</a>
+<a href="11-انیمیشن-ها-Animations.html">11. انیمیشن ها (Animations)</a>
+<a href="12-فیلترهای-تصویر-Image-Filters.html">12. فیلترهای تصویر (Image Filters)</a>
+<a href="13-ویژگی-object-fit.html">13. ویژگی object-fit</a>
+<a href="14-ماسک-گذاری-Masking.html">14. ماسک گذاری (Masking)</a>
+<a href="15-ماسک-گرادیان-Masking-Gradients.html">15. ماسک گرادیان (Masking-Gradients)</a>
+<a href="16-ماسک-SVG-Masking-SVG.html">16. ماسک SVG (Masking-SVG)</a>
+<a href="17-متغیرها-Variables.html">17. متغیرها (Variables)</a>
+<a href="18-بازنویسی-متغیرها-Overriding-Variables.html">18. بازنویسی متغیرها (Overriding Variables)</a>
+<a href="19-متغیرها-و-جاوااسکریپت-Variables-and-JavaScript.html">19. متغیرها و جاوااسکریپت (Variables and JavaScript)</a>
+<a href="20-متغیرها-در-Media-Query-Variables-in-MQ.html">20. متغیرها در Media Query (Variables in MQ)</a>
+<a href="21-پرس-وجوهای-رسانه-ای-Media-Queries.html">21. پرس وجوهای رسانه ای (Media Queries)</a>
+<a href="22-ظرف-فلکس-Flex-Container.html">22. ظرف فلکس (Flex Container)</a>
+<a href="23-آیتم-های-فلکس-Flex-Items.html">23. آیتم های فلکس (Flex Items)</a>
+<a href="24-فلکس-واکنش-گرا-Flex-Responsive.html">24. فلکس واکنش گرا (Flex Responsive)</a>
+<a href="25-ظرف-شبکه-Grid-Container.html">25. ظرف شبکه (Grid Container)</a>
+<a href="26-ردیف-و-ستون-شبکه-Grid-Tracks.html">26. ردیف و ستون شبکه (Grid Tracks)</a>
+<a href="27-فاصله-شبکه-Grid-Gaps.html">27. فاصله شبکه (Grid Gaps)</a>
+<a href="28-آیتم-شبکه-Grid-Items.html">28. آیتم شبکه (Grid Items)</a>
+<a href="29-نام-گذاری-آیتم-Grid-Item-Named.html">29. نام گذاری آیتم (Grid Item Named)</a>
+<a href="30-ترتیب-آیتم-شبکه-Grid-Item-Order.html">30. ترتیب آیتم شبکه (Grid Item Order)</a>
+<a href="31-چیدمان-12-ستونه-Grid-12-column-Layout.html">31. چیدمان 12 ستونه (Grid 12-column Layout)</a>
+<a href="32-چیدمان-شبکه-واکنش-گرا-RWD-Grid-View.html" class="on">32. چیدمان شبکه واکنش گرا (RWD Grid View)</a>
+<a href="33-پرس-وجوهای-رسانه-ای-واکنش-گرا-RWD-Media-Queries.html">33. پرس وجوهای رسانه ای واکنش گرا (RWD Media Queries)</a>
+<a href="34-تصاویر-واکنش-گرا-RWD-Images.html">34. تصاویر واکنش گرا (RWD Images)</a>
+<a href="35-ویدیوهای-واکنش-گرا-RWD-Videos.html">35. ویدیوهای واکنش گرا (RWD Videos)</a>
+<a href="36-چارچوب-های-واکنش-گرا-RWD-Frameworks.html">36. چارچوب های واکنش گرا (RWD Frameworks)</a>
+<a href="37-قالب-های-واکنش-گرا-RWD-Templates.html">37. قالب های واکنش گرا (RWD Templates)</a>
+<a href="38-آزمون-پیشرفته-و-واکنشگرا.html">38. آزمون (پیشرفته و واکنش‌گرا)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="چیدمان شبکه واکنش گرا (RWD Grid View)" data-cat="پیشرفته و واکنش‌گرا">📌 پین کردن این درس</button>
+<h2>چیدمان شبکه واکنش گرا (RWD Grid View)</h2>
+<p><strong>هدف این درس:</strong> صفحه را به ستون‌های منظم تقسیم کنی.</p>
+<div class="note"><strong>درس معرفی «چیدمان Flex و Grid»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>فلکس واکنش گرا (Flex Responsive)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> پیشرفته و واکنش‌گرا &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («پیشرفته و واکنش‌گرا») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>گرید برای چیدمان دوبعدی است. می‌گویی چند ستون و با چه نسبتی. در موبایل معمولاً ستون‌ها را یکی می‌کنی.</p>
+<h3>ساختار (Syntax)</h3><div class="code">display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;</div>
+<h3>مثال 1: دو ستون واکنش‌گرا</h3>
+<div class="codewrap"><div class="code">.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 600px) {
+  .layout { grid-template-columns: 1fr; }
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>1fr 1fr:</strong> دو ستون هم‌عرض.<br>
+<strong>gap:</strong> فاصله شبکه.<br>
+<strong>media:</strong> زیر ۶۰۰ پیکسل یک ستون.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">فقط کل صفحه را کوچک کردن برای موبایل</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> متن و دکمه‌ها غیرقابل استفاده می‌شوند.<br><strong>چه می‌بینی؟</strong> تجربهٔ موبایل بد<br><strong>درست:</strong> چیدمان را با media عوض کن</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> در عرض کم مرورگر، دو ستون به یک ستون تبدیل شود.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>گرید برای شبکه</li>
+<li>fr سهم انعطاف</li>
+<li>media برای موبایل</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">سه ستون برای صفحهٔ عریض تعریف کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="31-چیدمان-12-ستونه-Grid-12-column-Layout.html">← چیدمان 12 ستونه (Grid 12-column Layout)</a><a href="33-پرس-وجوهای-رسانه-ای-واکنش-گرا-RWD-Media-Queries.html">پرس وجوهای رسانه ای واکنش گرا (RWD Media Queries) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

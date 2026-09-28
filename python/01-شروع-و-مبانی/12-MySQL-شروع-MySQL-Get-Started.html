@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySQL: شروع (MySQL Get Started) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="بفهمی دیتابیس داده را پایدار نگه می‌دارد و کوئری باید پارامتریک باشد نه چسباندن رشته">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "MySQL: شروع (MySQL Get Started)", "description": "بفهمی دیتابیس داده را پایدار نگه می‌دارد و کوئری باید پارامتریک باشد نه چسباندن رشته", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شروع و مبانی</a><span class="sep">/</span><span>MySQL: شروع (MySQL Get Started)</span></div><div class="layout"><aside class="side"><h3>شروع و مبانی (13)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-مقدمه-Intro.html">2. مقدمه (Intro)</a>
+<a href="03-شروع-کار-Get-Started.html">3. شروع کار (Get Started)</a>
+<a href="04-ساختار-نوشتاری-Syntax.html">4. ساختار نوشتاری (Syntax)</a>
+<a href="05-دستورات-Statements.html">5. دستورات (Statements)</a>
+<a href="06-خروجی-Output.html">6. خروجی (Output)</a>
+<a href="07-چاپ-اعداد-Print-Numbers.html">7. چاپ اعداد (Print Numbers)</a>
+<a href="08-توضیحات-Comments.html">8. توضیحات (Comments)</a>
+<a href="09-نمایش-متغیرها-Output-Variables.html">9. نمایش متغیرها (Output Variables)</a>
+<a href="10-Matplotlib-مقدمه-Matplotlib-Intro.html">10. Matplotlib مقدمه (Matplotlib Intro)</a>
+<a href="11-شروع-با-Matplotlib-Matplotlib-Get-Started.html">11. شروع با Matplotlib (Matplotlib Get Started)</a>
+<a href="12-MySQL-شروع-MySQL-Get-Started.html" class="on">12. MySQL: شروع (MySQL Get Started)</a>
+<a href="13-MongoDB-شروع-Get-Started.html">13. MongoDB: شروع (Get Started)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="MySQL: شروع (MySQL Get Started)" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
+<h2>MySQL: شروع (MySQL Get Started)</h2>
+<p><strong>هدف:</strong> بفهمی دیتابیس داده را پایدار نگه می‌دارد و کوئری باید پارامتریک باشد نه چسباندن رشته.</p>
+<div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شروع و مبانی».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> dict و list داده را در RAM نگه می‌داشتند؛ دیتابیس بعد از بستن برنامه هم می‌ماند.</div>
+<h3>مفهوم</h3><p>فایل برای دادهٔ کوچک کافی است؛ دیتابیس برای جستجو، هم‌زمانی و یکپارچگی ساخته شده. در کد واقعی از placeholder استفاده کن نه f-string داخل SQL.</p>
+<h3>ساختار</h3><div class="code"># مفهومی
+# cursor.execute(&quot;SELECT * FROM t WHERE id = %s&quot;, (user_id,))</div>
+<h3>مثال 1: ایدهٔ پارامتریک (شبه‌کد قابل‌اجرا نیست بدون درایور)</h3>
+<div class="codewrap"><div class="code"># درست (ایده):
+# sql = &quot;SELECT name FROM users WHERE id = %s&quot;
+# cursor.execute(sql, (uid,))
+#
+# غلط و خطرناک:
+# sql = f&quot;SELECT name FROM users WHERE id = {uid}&quot;
+print(&quot;همیشه پارامتر بده، رشته را بچسبان&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>%s یا ?:</strong> جای خالی امن؛ درایور مقدار را جدا می‌فرستد.<br>
+<strong>f-string در SQL:</strong> ریسک SQL Injection.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">query = &quot;SELECT * FROM users WHERE name = &#x27;&quot; + name + &quot;&#x27;&quot;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> ورودی کاربر می‌تواند کوئری را بشکند یا داده بدزدد.<br><strong>چه می‌بینی؟</strong> آسیب‌پذیری SQL Injection<br><strong>درست:</strong> execute با پارامتر جدا</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> یک جمله بنویس که چرا f-string داخل SQL خطرناک است و شکل امن را از روی مثال بگویی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>داده پایدار</li>
+<li>کوئری پارامتریک</li>
+<li>هرگز ورودی را مستقیم بچسبان</li>
+<li>درایور رسمی</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">تفاوت فایل و DB را در دو خط بنویس.</li>
+<li style="margin-bottom:6px">یک SELECT مفهومی با placeholder بنویس.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="11-شروع-با-Matplotlib-Matplotlib-Get-Started.html">← شروع با Matplotlib (Matplotlib Get Started)</a><a href="13-MongoDB-شروع-Get-Started.html">MongoDB: شروع (Get Started) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

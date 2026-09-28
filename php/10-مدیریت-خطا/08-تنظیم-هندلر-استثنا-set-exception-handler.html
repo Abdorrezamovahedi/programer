@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تنظیم هندلر استثنا (set_exception_handler) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع set_exception_handler را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تنظیم هندلر استثنا (set_exception_handler)", "description": "این درس: نام تابع set_exception_handler را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">مدیریت خطا</a><span class="sep">/</span><span>تنظیم هندلر استثنا (set_exception_handler)</span></div><div class="layout"><aside class="side"><h3>مدیریت خطا (20)</h3>
+<a href="01-استثناها-Exceptions.html">1. استثناها (Exceptions)</a>
+<a href="02-مرجع-خطا-PHP-Error.html">2. مرجع خطا (PHP Error)</a>
+<a href="03-ثبت-خطا-error-log.html">3. ثبت خطا (error_log)</a>
+<a href="04-گزارش-خطا-error-reporting.html">4. گزارش خطا (error_reporting)</a>
+<a href="05-بازگردانی-هندلر-خطا-restore-error-handler.html">5. بازگردانی هندلر خطا (restore_error_handler)</a>
+<a href="06-بازگردانی-هندلر-استثنا-restore-exception-handler.html">6. بازگردانی هندلر استثنا (restore_exception_handler)</a>
+<a href="07-تنظیم-هندلر-خطا-set-error-handler.html">7. تنظیم هندلر خطا (set_error_handler)</a>
+<a href="08-تنظیم-هندلر-استثنا-set-exception-handler.html" class="on">8. تنظیم هندلر استثنا (set_exception_handler)</a>
+<a href="09-ایجاد-خطا-trigger-error.html">9. ایجاد خطا (trigger_error)</a>
+<a href="10-مرجع-استثنا-PHP-Exception.html">10. مرجع استثنا (PHP Exception)</a>
+<a href="11-try-try.html">11. try (try)</a>
+<a href="12-error-error.html">12. error (error)</a>
+<a href="13-فهرست-خطاها-error-list.html">13. فهرست خطاها (error_list)</a>
+<a href="14-آخرین-خطای-PCRE-preg-last-error.html">14. آخرین خطای PCRE (preg_last_error)</a>
+<a href="15-بستن-مدخل-zip-zip-entry-close.html">15. بستن مدخل zip (zip_entry_close)</a>
+<a href="16-اندازه-فشرده-مدخل-zip-entry-compressedsize.html">16. اندازه فشرده مدخل (zip_entry_compressedsize)</a>
+<a href="17-روش-فشرده-سازی-مدخل-zip-entry-compressionmethod.html">17. روش فشرده سازی مدخل (zip_entry_compressionmethod)</a>
+<a href="18-نام-مدخل-zip-entry-name.html">18. نام مدخل (zip_entry_name)</a>
+<a href="19-بازکردن-مدخل-zip-entry-open.html">19. بازکردن مدخل (zip_entry_open)</a>
+<a href="20-آزمون-مدیریت-خطا.html">20. آزمون (مدیریت خطا)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تنظیم هندلر استثنا (set_exception_handler)" data-cat="مدیریت خطا">📌 پین</button>
+<h2>تنظیم هندلر استثنا (set_exception_handler)</h2>
+<p><strong>هدف این درس:</strong> نام تابع set_exception_handler را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> مدیریت خطا &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («مدیریت خطا») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">set_exception_handler(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;set_exception_handler&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای set_exception_handler را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="07-تنظیم-هندلر-خطا-set-error-handler.html">← قبلی</a><a href="09-ایجاد-خطا-trigger-error.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

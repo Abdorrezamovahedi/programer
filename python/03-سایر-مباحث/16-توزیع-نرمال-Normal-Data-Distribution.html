@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>توزیع نرمال (Normal Data Distribution) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="مفهوم «توزیع نرمال (Normal Data Distribution)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "توزیع نرمال (Normal Data Distribution)", "description": "مفهوم «توزیع نرمال (Normal Data Distribution)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">سایر مباحث</a><span class="sep">/</span><span>توزیع نرمال (Normal Data Distribution)</span></div><div class="layout"><aside class="side"><h3>سایر مباحث (21)</h3>
+<a href="01-اختصاص-چند-مقدار-Assign-Multiple-Values.html">1. اختصاص چند مقدار (Assign Multiple Values)</a>
+<a href="02-آزمون-افزودن-آیتم.html">2. آزمون (افزودن آیتم)</a>
+<a href="03-آزمون-حذف-آیتم.html">3. آزمون (حذف آیتم)</a>
+<a href="04-آرگومان-ها-Arguments.html">4. آرگومان ها (Arguments)</a>
+<a href="05-تاریخ-ها-Dates.html">5. تاریخ ها (Dates)</a>
+<a href="06-عبارات-منظم-RegEx.html">6. عبارات منظم (RegEx)</a>
+<a href="07-None.html">7. None</a>
+<a href="08-ورودی-کاربر-User-Input.html">8. ورودی کاربر (User Input)</a>
+<a href="09-محیط-مجازی-VirtualEnv.html">9. محیط مجازی (VirtualEnv)</a>
+<a href="10-متد-init-init-Method.html">10. متد init (init Method)</a>
+<a href="11-کپسوله-سازی-Encapsulation.html">11. کپسوله سازی (Encapsulation)</a>
+<a href="12-میانگین-میانه-نما-Mean-Median-Mode.html">12. میانگین/میانه/نما (Mean Median Mode)</a>
+<a href="13-انحراف-معیار-Standard-Deviation.html">13. انحراف معیار (Standard Deviation)</a>
+<a href="14-صدک-Percentile.html">14. صدک (Percentile)</a>
+<a href="15-توزیع-داده-Data-Distribution.html">15. توزیع داده (Data Distribution)</a>
+<a href="16-توزیع-نرمال-Normal-Data-Distribution.html" class="on">16. توزیع نرمال (Normal Data Distribution)</a>
+<a href="17-نمودار-پراکندگی-Scatter-Plot.html">17. نمودار پراکندگی (Scatter Plot)</a>
+<a href="18-بگینگ-Bootstrap-Aggregation.html">18. بگینگ (Bootstrap Aggregation)</a>
+<a href="19-ایجاد-جدول-Create-Table.html">19. ایجاد جدول (Create Table)</a>
+<a href="20-حذف-جدول-Drop-Table.html">20. حذف جدول (Drop Table)</a>
+<a href="21-پیدا-کردن-Find.html">21. پیدا کردن (Find)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="توزیع نرمال (Normal Data Distribution)" data-cat="سایر مباحث">📌 پین کردن این درس</button>
+<h2>توزیع نرمال (Normal Data Distribution)</h2>
+<p><strong>هدف:</strong> مفهوم «توزیع نرمال (Normal Data Distribution)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی.</p>
+<div class="note"><strong>پوشه:</strong> سایر مباحث &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «سایر مباحث».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «سایر مباحث» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>این صفحه روی «توزیع نرمال (Normal Data Distribution)» متمرکز است. مثال را خط‌به‌خط بخوان، بعد خودت یک مقدار را عوض کن.</p>
+<h3>مثال 1: شروع</h3>
+<div class="codewrap"><div class="code"># مبحث: توزیع نرمال (Normal Data Distribution)
+value = 10
+print(value)
+print(type(value))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> کامنت موضوع؛ اجرا نمی‌شود.<br>
+<strong>خط ۲:</strong> یک مقدار نمونه در متغیر.<br>
+<strong>خط ۳:</strong> چاپ مقدار.<br>
+<strong>خط ۴:</strong> چاپ نوع تا ببینی با چه داده‌ای طرفی.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">print(undefined_name)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> نامی که تعریف نشده.<br><strong>چه می‌بینی؟</strong> NameError<br><strong>درست:</strong> اول متغیر را تعریف کن یا نام را درست بنویس.</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «توزیع نرمال» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>موضوع: توزیع نرمال (Normal Data Distribution)</li>
+<li>مثال را خودت تایپ کن.</li>
+<li>یک مقدار را عوض کن.</li>
+<li>پیام خطا را از پایین بخوان.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">مثال را با مقدار دیگری اجرا کن.</li>
+<li style="margin-bottom:6px">یک خطا بساز و اصلاح کن.</li>
+<li style="margin-bottom:6px">برو درس بعدی همین پوشه.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="15-توزیع-داده-Data-Distribution.html">← توزیع داده (Data Distribution)</a><a href="17-نمودار-پراکندگی-Scatter-Plot.html">نمودار پراکندگی (Scatter Plot) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

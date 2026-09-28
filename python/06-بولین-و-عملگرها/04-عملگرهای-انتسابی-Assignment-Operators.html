@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرهای انتسابی (Assignment Operators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: انتساب ساده و ترکیبی (+= و بقیه) را با کامنت و مثال بفهمی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرهای انتسابی (Assignment Operators)", "description": "این درس: انتساب ساده و ترکیبی (+= و بقیه) را با کامنت و مثال بفهمی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرهای انتسابی (Assignment Operators)</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html" class="on">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرهای انتسابی (Assignment Operators)" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرهای انتسابی (Assignment Operators)</h2>
+<p><strong>هدف این درس:</strong> انتساب ساده و ترکیبی (+= و بقیه) را با کامنت و مثال بفهمی.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>= فقط ذخیره می‌کند. += و مشابهاتش «حساب کن و دوباره در همان متغیر بریز».</p>
+<h3>فهرست معرفی: عملگرهای انتساب</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code"># عملگرهای انتساب — کوتاه‌نویسی تغییر متغیر
+x = 5       # =   مقدار ۵ را در x بگذار
+x += 3      # +=  همان x = x + 3 → 8
+x -= 2      # -=  همان x = x - 2
+x *= 2      # *=  همان x = x * 2
+x /= 2      # /=  همان x = x / 2
+x //= 2     # //= تقسیم صحیح و ذخیره
+x %= 3      # %=  باقی‌مانده و ذخیره
+x **= 2     # **= توان و ذخیره</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>ترتیب:</strong> سمت راست اول حساب می‌شود، بعد در چپ ذخیره می‌شود.</div>
+<h3>مثال 1: امتیاز با +=</h3>
+<div class="codewrap"><div class="code">score = 10
+score += 5
+print(score)
+score *= 2
+print(score)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> شروع از ۱۰.<br>
+<strong>خط ۲:</strong> ۵ تا اضافه → ۱۵.<br>
+<strong>خط ۳:</strong> چاپ ۱۵.<br>
+<strong>خط ۴:</strong> دو برابر → ۳۰.<br>
+<strong>خط ۵:</strong> چاپ ۳۰.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">+= 1</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> سمت چپ (نام متغیر) لازم است.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> x += 1</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> با += و *= یک شمارنده را دو مرحله عوض کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>= ذخیره</li>
+<li>+= اضافه و ذخیره</li>
+<li>همهٔ ترکیبی‌ها شکل کوتاه x = x ? n هستند</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">از ۰ با سه بار += ۱ به ۳ برس.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">← عملگرهای حسابی (Arithmetic Operators)</a><a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">عملگرهای مقایسه ای (Comparison Operators) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

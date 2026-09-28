@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ظرف فلکس (Flex Container) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: چند آیتم را با flex کنار هم بچینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ظرف فلکس (Flex Container)", "description": "این درس: چند آیتم را با flex کنار هم بچینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">پیشرفته و واکنش‌گرا</a><span class="sep">/</span><span>ظرف فلکس (Flex Container)</span></div><div class="layout"><aside class="side"><h3>پیشرفته و واکنش‌گرا (38)</h3>
+<a href="01-جدول-واکنش-گرا-Responsive-Table.html">1. جدول واکنش گرا (Responsive Table)</a>
+<a href="02-گوشه-های-گرد-Rounded-Corners.html">2. گوشه های گرد (Rounded Corners)</a>
+<a href="03-گرادیان-ها-Gradients.html">3. گرادیان ها (Gradients)</a>
+<a href="04-گرادیان-شعاعی-Radial-Gradients.html">4. گرادیان شعاعی (Radial Gradients)</a>
+<a href="05-گرادیان-مخروطی-Conic-Gradients.html">5. گرادیان مخروطی (Conic Gradients)</a>
+<a href="06-سایه-ها-Shadows.html">6. سایه ها (Shadows)</a>
+<a href="07-سایه-جعبه-Box-Shadow.html">7. سایه جعبه (Box Shadow)</a>
+<a href="08-تبدیل-های-دو-بعدی-2D-Transforms.html">8. تبدیل های دو بعدی (2D Transforms)</a>
+<a href="09-تبدیل-های-سه-بعدی-3D-Transforms.html">9. تبدیل های سه بعدی (3D Transforms)</a>
+<a href="10-انتقال-ها-Transitions.html">10. انتقال ها (Transitions)</a>
+<a href="11-انیمیشن-ها-Animations.html">11. انیمیشن ها (Animations)</a>
+<a href="12-فیلترهای-تصویر-Image-Filters.html">12. فیلترهای تصویر (Image Filters)</a>
+<a href="13-ویژگی-object-fit.html">13. ویژگی object-fit</a>
+<a href="14-ماسک-گذاری-Masking.html">14. ماسک گذاری (Masking)</a>
+<a href="15-ماسک-گرادیان-Masking-Gradients.html">15. ماسک گرادیان (Masking-Gradients)</a>
+<a href="16-ماسک-SVG-Masking-SVG.html">16. ماسک SVG (Masking-SVG)</a>
+<a href="17-متغیرها-Variables.html">17. متغیرها (Variables)</a>
+<a href="18-بازنویسی-متغیرها-Overriding-Variables.html">18. بازنویسی متغیرها (Overriding Variables)</a>
+<a href="19-متغیرها-و-جاوااسکریپت-Variables-and-JavaScript.html">19. متغیرها و جاوااسکریپت (Variables and JavaScript)</a>
+<a href="20-متغیرها-در-Media-Query-Variables-in-MQ.html">20. متغیرها در Media Query (Variables in MQ)</a>
+<a href="21-پرس-وجوهای-رسانه-ای-Media-Queries.html">21. پرس وجوهای رسانه ای (Media Queries)</a>
+<a href="22-ظرف-فلکس-Flex-Container.html" class="on">22. ظرف فلکس (Flex Container)</a>
+<a href="23-آیتم-های-فلکس-Flex-Items.html">23. آیتم های فلکس (Flex Items)</a>
+<a href="24-فلکس-واکنش-گرا-Flex-Responsive.html">24. فلکس واکنش گرا (Flex Responsive)</a>
+<a href="25-ظرف-شبکه-Grid-Container.html">25. ظرف شبکه (Grid Container)</a>
+<a href="26-ردیف-و-ستون-شبکه-Grid-Tracks.html">26. ردیف و ستون شبکه (Grid Tracks)</a>
+<a href="27-فاصله-شبکه-Grid-Gaps.html">27. فاصله شبکه (Grid Gaps)</a>
+<a href="28-آیتم-شبکه-Grid-Items.html">28. آیتم شبکه (Grid Items)</a>
+<a href="29-نام-گذاری-آیتم-Grid-Item-Named.html">29. نام گذاری آیتم (Grid Item Named)</a>
+<a href="30-ترتیب-آیتم-شبکه-Grid-Item-Order.html">30. ترتیب آیتم شبکه (Grid Item Order)</a>
+<a href="31-چیدمان-12-ستونه-Grid-12-column-Layout.html">31. چیدمان 12 ستونه (Grid 12-column Layout)</a>
+<a href="32-چیدمان-شبکه-واکنش-گرا-RWD-Grid-View.html">32. چیدمان شبکه واکنش گرا (RWD Grid View)</a>
+<a href="33-پرس-وجوهای-رسانه-ای-واکنش-گرا-RWD-Media-Queries.html">33. پرس وجوهای رسانه ای واکنش گرا (RWD Media Queries)</a>
+<a href="34-تصاویر-واکنش-گرا-RWD-Images.html">34. تصاویر واکنش گرا (RWD Images)</a>
+<a href="35-ویدیوهای-واکنش-گرا-RWD-Videos.html">35. ویدیوهای واکنش گرا (RWD Videos)</a>
+<a href="36-چارچوب-های-واکنش-گرا-RWD-Frameworks.html">36. چارچوب های واکنش گرا (RWD Frameworks)</a>
+<a href="37-قالب-های-واکنش-گرا-RWD-Templates.html">37. قالب های واکنش گرا (RWD Templates)</a>
+<a href="38-آزمون-پیشرفته-و-واکنشگرا.html">38. آزمون (پیشرفته و واکنش‌گرا)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="ظرف فلکس (Flex Container)" data-cat="پیشرفته و واکنش‌گرا">📌 پین کردن این درس</button>
+<h2>ظرف فلکس (Flex Container)</h2>
+<p><strong>هدف این درس:</strong> چند آیتم را با flex کنار هم بچینی.</p>
+<div class="note"><strong>پوشه:</strong> پیشرفته و واکنش‌گرا &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>display:flex را روی ظرف بگذار نه روی هر فرزند.</p>
+<h3>فهرست معرفی: Flexbox</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">/* Flex — روی والد */
+.row {
+  display: flex;       /* فرزندان در یک ردیف */
+  gap: 12px;           /* فاصله بین آیتم‌ها */
+  flex-wrap: wrap;     /* در عرض کم به خط بعد */
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: ردیف سه تایی</h3>
+<div class="codewrap"><div class="code">.row {
+  display: flex;
+  gap: 12px;
+}
+.row &gt; * {
+  flex: 1;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>display:flex:</strong> روی والد.<br>
+<strong>gap:</strong> فاصله یکسان.<br>
+<strong>flex: 1:</strong> فرزندان فضای مساوی بگیرند.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">display:flex روی هر فرزند</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> باید روی والد باشد.<br><strong>چه می‌بینی؟</strong> چیدمان عوض نمی‌شود<br><strong>درست:</strong> روی ظرف</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> سه جعبه در یک ردیف با gap ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>flex روی والد</li>
+<li>gap</li>
+<li>wrap برای موبایل</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">flex-direction: column را تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="21-پرس-وجوهای-رسانه-ای-Media-Queries.html">← پرس وجوهای رسانه ای (Media Queries)</a><a href="23-آیتم-های-فلکس-Flex-Items.html">آیتم های فلکس (Flex Items) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM نمونه ها (HTML DOM) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با کلیک روی دکمه متن آن را عوض کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "DOM نمونه ها (HTML DOM)", "description": "این درس: با کلیک روی دکمه متن آن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">DOM و رویداد</a><span class="sep">/</span><span>DOM نمونه ها (HTML DOM)</span></div><div class="layout"><aside class="side"><h3>DOM و رویداد (22)</h3>
+<a href="01-تصادفی-Math-Random.html">1. تصادفی (Math Random)</a>
+<a href="02-رویدادها-Events.html">2. رویدادها (Events)</a>
+<a href="03-DOM-متدها-DOM-Methods.html">3. DOM متدها (DOM Methods)</a>
+<a href="04-DOM-سند-DOM-Document.html">4. DOM سند (DOM Document)</a>
+<a href="05-DOM-عناصر-DOM-Elements.html">5. DOM عناصر (DOM Elements)</a>
+<a href="06-DOM-HTML-DOM-HTML.html">6. DOM HTML (DOM HTML)</a>
+<a href="07-DOM-CSS-DOM-CSS.html">7. DOM CSS (DOM CSS)</a>
+<a href="08-DOM-انیمیشن-ها-DOM-Animations.html">8. DOM انیمیشن ها (DOM Animations)</a>
+<a href="09-DOM-رویدادها-DOM-Events.html">9. DOM رویدادها (DOM Events)</a>
+<a href="10-شنونده-رویداد-DOM-Event-Listener.html">10. شنونده رویداد (DOM Event Listener)</a>
+<a href="11-پیمایش-DOM-DOM-Navigation.html">11. پیمایش DOM (DOM Navigation)</a>
+<a href="12-گره-های-DOM-DOM-Nodes.html">12. گره های DOM (DOM Nodes)</a>
+<a href="13-مجموعه-های-DOM-DOM-Collections.html">13. مجموعه های DOM (DOM Collections)</a>
+<a href="14-لیست-گره-های-DOM-DOM-Node-Lists.html">14. لیست گره های DOM (DOM Node Lists)</a>
+<a href="15-jQuery-انتخابگرها-jQuery-Selectors.html">15. jQuery انتخابگرها (jQuery Selectors)</a>
+<a href="16-jQuery-HTML-jQuery-HTML.html">16. jQuery HTML (jQuery HTML)</a>
+<a href="17-jQuery-CSS-jQuery-CSS.html">17. jQuery CSS (jQuery CSS)</a>
+<a href="18-jQuery-DOM-jQuery-DOM.html">18. jQuery DOM (jQuery DOM)</a>
+<a href="19-DOM-نمونه-ها-HTML-DOM.html" class="on">19. DOM نمونه ها (HTML DOM)</a>
+<a href="20-ورودی-HTML-HTML-Input.html">20. ورودی HTML (HTML Input)</a>
+<a href="21-رویدادهای-HTML-HTML-Events.html">21. رویدادهای HTML (HTML Events)</a>
+<a href="22-آزمون-DOM-و-رویداد.html">22. آزمون (DOM و رویداد)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="DOM نمونه ها (HTML DOM)" data-cat="DOM و رویداد">📌 پین کردن این درس</button>
+<h2>DOM نمونه ها (HTML DOM)</h2>
+<p><strong>هدف این درس:</strong> با کلیک روی دکمه متن آن را عوض کنی.</p>
+<div class="note"><strong>پوشه:</strong> DOM و رویداد &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>DOM همان HTML در حافظه است. اول عنصر را پیدا کن، بعد رویداد بده. اسکریپت باید بعد از وجود دکمه در صفحه اجرا شود.</p>
+<h3>فهرست معرفی: DOM و رویداد</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">// ارتباط با صفحه
+const btn = document.querySelector(&quot;#btn&quot;); // پیدا کردن عنصر
+btn.textContent = &quot;کلیک شد&quot;;                 // عوض کردن متن
+btn.addEventListener(&quot;click&quot;, () =&gt; {        // واکنش به کلیک
+  console.log(&quot;clicked&quot;);
+});</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: کلیک</h3>
+<div class="codewrap"><div class="code">const btn = document.querySelector(&quot;#btn&quot;);
+btn.addEventListener(&quot;click&quot;, () =&gt; {
+  btn.textContent = &quot;OK&quot;;
+});</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> دکمه با id=btn پیدا می‌شود.<br>
+<strong>خط ۲:</strong> شنوندهٔ کلیک.<br>
+<strong>خط ۳:</strong> متن دکمه عوض می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">اسکریپت در head قبل از دکمه</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> عنصر هنوز نیست.<br><strong>چه می‌بینی؟</strong> null<br><strong>درست:</strong> script ته body یا defer</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> دکمه‌ای که با کلیک متنش عوض شود بسازی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>querySelector</li>
+<li>addEventListener</li>
+<li>مکان script مهم است</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">با کلیک رنگ یک p را عوض کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="18-jQuery-DOM-jQuery-DOM.html">← jQuery DOM (jQuery DOM)</a><a href="20-ورودی-HTML-HTML-Input.html">ورودی HTML (HTML Input) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

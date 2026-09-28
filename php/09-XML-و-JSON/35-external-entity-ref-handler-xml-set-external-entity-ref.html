@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>external entity ref handler (xml_set_external_entity_ref_handler) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع xml_set_external_entity_ref_handler را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "external entity ref handler (xml_set_external_entity_ref_handler)", "description": "این درس: نام تابع xml_set_external_entity_ref_handler را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">XML و JSON</a><span class="sep">/</span><span>external entity ref handler (xml_set_external_entity_ref_handler)</span></div><div class="layout"><aside class="side"><h3>XML و JSON (39)</h3>
+<a href="01-JSON-JSON.html">1. JSON (JSON)</a>
+<a href="02-تجزیه-گرهای-XML-XML-Parsers.html">2. تجزیه گرهای XML (XML Parsers)</a>
+<a href="03-XML-اکسپت-XML-Expat.html">3. XML اکسپت (XML Expat)</a>
+<a href="04-DOM-در-PHP-XML-DOM.html">4. DOM در PHP (XML DOM)</a>
+<a href="05-AJAX-و-XML-AJAX-XML.html">5. AJAX و XML (AJAX XML)</a>
+<a href="06-پاک-کردن-خطاهای-libxml-libxml-clear-errors.html">6. پاک کردن خطاهای libxml (libxml_clear_errors)</a>
+<a href="07-غیرفعال-کردن-entity-loader-libxml-disable-entity-loader.html">7. غیرفعال کردن entity loader (libxml_disable_entity_loader)</a>
+<a href="08-تنظیم-loader-موجودیت-خارجی-libxml-set-external-entity-l.html">8. تنظیم loader موجودیت خارجی (libxml_set_external_entity_loader)</a>
+<a href="09-تنظیم-context-استریم-ها-libxml-set-streams-context.html">9. تنظیم context استریم ها (libxml_set_streams_context)</a>
+<a href="10-استفاده-از-خطاهای-داخلی-libxml-use-internal-errors.html">10. استفاده از خطاهای داخلی (libxml_use_internal_errors)</a>
+<a href="11-خروجی-XML-asXML.html">11. خروجی XML (asXML)</a>
+<a href="12-count-SimpleXML-count.html">12. count (SimpleXML count)</a>
+<a href="13-ذخیره-XML-saveXML.html">13. ذخیره XML (saveXML)</a>
+<a href="14-import-از-DOM-simplexml-import-dom.html">14. import از DOM (simplexml_import_dom)</a>
+<a href="15-current-SimpleXML-current.html">15. current (SimpleXML current)</a>
+<a href="16-key-SimpleXML-key.html">16. key (SimpleXML key)</a>
+<a href="17-next-SimpleXML-next.html">17. next (SimpleXML next)</a>
+<a href="18-rewind-SimpleXML-rewind.html">18. rewind (SimpleXML rewind)</a>
+<a href="19-valid-SimpleXML-valid.html">19. valid (SimpleXML valid)</a>
+<a href="20-convert-uudecode-convert-uudecode.html">20. convert_uudecode (convert_uudecode)</a>
+<a href="21-convert-uuencode-convert-uuencode.html">21. convert_uuencode (convert_uuencode)</a>
+<a href="22-html-entity-decode-html-entity-decode.html">22. html_entity_decode (html_entity_decode)</a>
+<a href="23-htmlspecialchars-decode-htmlspecialchars-decode.html">23. htmlspecialchars_decode (htmlspecialchars_decode)</a>
+<a href="24-parse-str-parse-str.html">24. parse_str (parse_str)</a>
+<a href="25-utf8-decode-utf8-decode.html">25. utf8_decode (utf8_decode)</a>
+<a href="26-utf8-encode-utf8-encode.html">26. utf8_encode (utf8_encode)</a>
+<a href="27-parse-xml-parse.html">27. parse (xml_parse)</a>
+<a href="28-parse-به-ساختار-xml-parse-into-struct.html">28. parse به ساختار (xml_parse_into_struct)</a>
+<a href="29-ساخت-parser-xml-parser-create.html">29. ساخت parser (xml_parser_create)</a>
+<a href="30-آزادسازی-parser-xml-parser-free.html">30. آزادسازی parser (xml_parser_free)</a>
+<a href="31-تنظیم-گزینه-parser-xml-parser-set-option.html">31. تنظیم گزینه parser (xml_parser_set_option)</a>
+<a href="32-handler-داده-کاراکتری-xml-set-character-data-handler.html">32. handler داده کاراکتری (xml_set_character_data_handler)</a>
+<a href="33-handler-پیش-فرض-xml-set-default-handler.html">33. handler پیش فرض (xml_set_default_handler)</a>
+<a href="34-handler-عنصر-xml-set-element-handler.html">34. handler عنصر (xml_set_element_handler)</a>
+<a href="35-external-entity-ref-handler-xml-set-external-entity-ref.html" class="on">35. external entity ref handler (xml_set_external_entity_ref_handler)</a>
+<a href="36-notation-decl-handler-xml-set-notation-decl-handler.html">36. notation decl handler (xml_set_notation_decl_handler)</a>
+<a href="37-processing-instruction-handler-xml-set-processing-instr.html">37. processing instruction handler (xml_set_processing_instruction_handler)</a>
+<a href="38-unparsed-entity-decl-handler-xml-set-unparsed-entity-de.html">38. unparsed entity decl handler (xml_set_unparsed_entity_decl_handler)</a>
+<a href="39-آزمون-XML-و-JSON.html">39. آزمون (XML و JSON)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="external entity ref handler (xml_set_external_entity_ref_handler)" data-cat="XML و JSON">📌 پین</button>
+<h2>external entity ref handler (xml_set_external_entity_ref_handler)</h2>
+<p><strong>هدف این درس:</strong> نام تابع xml_set_external_entity_ref_handler را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> XML و JSON &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («XML و JSON») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">xml_set_external_entity_ref_handler(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;xml_set_external_entity_ref_handler&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای xml_set_external_entity_ref_handler را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="34-handler-عنصر-xml-set-element-handler.html">← قبلی</a><a href="36-notation-decl-handler-xml-set-notation-decl-handler.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

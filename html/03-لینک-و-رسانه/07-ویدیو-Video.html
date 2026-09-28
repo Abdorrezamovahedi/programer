@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ویدیو (Video) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: ویدیو یا صدا را با دکمهٔ پخش در صفحه بگذاری">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ویدیو (Video)", "description": "این درس: ویدیو یا صدا را با دکمهٔ پخش در صفحه بگذاری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">لینک و رسانه</a><span class="sep">/</span><span>ویدیو (Video)</span></div><div class="layout"><aside class="side"><h3>لینک و رسانه (10)</h3>
+<a href="01-لینکها-Links.html">1. لینک‌ها (Links)</a>
+<a href="02-نشانه-لینک-Bookmarks.html">2. نشانه لینک (Bookmarks)</a>
+<a href="03-تصاویر-Images.html">3. تصاویر (Images)</a>
+<a href="04-نقشه-تصویر-Image-Map.html">4. نقشه تصویر (Image Map)</a>
+<a href="05-تصویر-پسزمینه.html">5. تصویر پس‌زمینه</a>
+<a href="06-فاوآیکون-Favicon.html">6. فاوآیکون (Favicon)</a>
+<a href="07-ویدیو-Video.html" class="on">7. ویدیو (Video)</a>
+<a href="08-صدا-Audio.html">8. صدا (Audio)</a>
+<a href="09-یوتیوب.html">9. یوتیوب</a>
+<a href="10-آزمون-لینک-و-رسانه.html">10. آزمون (لینک و رسانه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="ویدیو (Video)" data-cat="لینک و رسانه">📌 پین کردن این درس</button>
+<h2>ویدیو (Video)</h2>
+<p><strong>هدف این درس:</strong> ویدیو یا صدا را با دکمهٔ پخش در صفحه بگذاری.</p>
+<div class="note"><strong>درس معرفی «لینک و رسانه»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>آزمون (لینک و رسانه)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> لینک و رسانه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («لینک و رسانه») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>تگ video و audio رسانه را پخش می‌کنند. بدون controls کاربر دکمه‌ای برای پخش نمی‌بیند. یوتیوب معمولاً با iframe جاسازی می‌شود.</p>
+<h3>ساختار (Syntax)</h3><div class="code">&lt;video controls src=&quot;clip.mp4&quot;&gt;&lt;/video&gt;</div>
+<h3>مثال 1: ویدیو با کنترل</h3>
+<div class="codewrap"><div class="code">&lt;video controls width=&quot;400&quot;&gt;
+  &lt;source src=&quot;clip.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  مرورگر شما ویدیو را پشتیبانی نمی‌کند.
+&lt;/video&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>controls:</strong> دکمه‌های پخش و صدا را نشان می‌دهد.<br>
+<strong>source:</strong> فایل و نوع آن.<br>
+<strong>متن داخل:</strong> اگر ویدیو کار نکرد این را می‌بیند.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;video src=&quot;a.mp4&quot;&gt;&lt;/video&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون controls راه پخش واضحی نیست.<br><strong>چه می‌بینی؟</strong> ویدیو ساکت و بدون رابط<br><strong>درست:</strong> controls را اضافه کن</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک تگ video با controls بنویسی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>controls ضروری است</li>
+<li>source نوع فایل را مشخص می‌کند</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">همین الگو را برای audio امتحان کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="06-فاوآیکون-Favicon.html">← فاوآیکون (Favicon)</a><a href="08-صدا-Audio.html">صدا (Audio) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

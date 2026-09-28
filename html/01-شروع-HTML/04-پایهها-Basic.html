@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پایه‌ها (Basic) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: اولین صفحهٔ HTML معتبر را بسازی و در مرورگر باز کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "پایه‌ها (Basic)", "description": "این درس: اولین صفحهٔ HTML معتبر را بسازی و در مرورگر باز کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">شروع HTML</a><span class="sep">/</span><span>پایه‌ها (Basic)</span></div><div class="layout"><aside class="side"><h3>شروع HTML (16)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-مقدمه-Introduction.html">2. مقدمه (Introduction)</a>
+<a href="03-ویرایشگرها-Editors.html">3. ویرایشگرها (Editors)</a>
+<a href="04-پایهها-Basic.html" class="on">4. پایه‌ها (Basic)</a>
+<a href="05-المانها-Elements.html">5. المان‌ها (Elements)</a>
+<a href="06-ویژگیها-Attributes.html">6. ویژگی‌ها (Attributes)</a>
+<a href="07-سرفصلها-Headings.html">7. سرفصل‌ها (Headings)</a>
+<a href="08-پاراگرافها-Paragraphs.html">8. پاراگراف‌ها (Paragraphs)</a>
+<a href="09-توضیحات-Comments.html">9. توضیحات (Comments)</a>
+<a href="10-المان-Picture.html">10. المان Picture</a>
+<a href="11-المان-div.html">11. المان div</a>
+<a href="12-المانهای-معنایی.html">12. المان‌های معنایی</a>
+<a href="13-ویژگیهای-فرم.html">13. ویژگی‌های فرم</a>
+<a href="14-المانهای-فرم.html">14. المان‌های فرم</a>
+<a href="15-ویژگیهای-ورودی.html">15. ویژگی‌های ورودی</a>
+<a href="16-آزمون-شروع-HTML.html">16. آزمون (شروع HTML)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="پایه‌ها (Basic)" data-cat="شروع HTML">📌 پین کردن این درس</button>
+<h2>پایه‌ها (Basic)</h2>
+<p><strong>هدف این درس:</strong> اولین صفحهٔ HTML معتبر را بسازی و در مرورگر باز کنی.</p>
+<div class="note"><strong>پوشه:</strong> شروع HTML &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>HTML ساختار صفحه را توصیف می‌کند. مرورگر فایل را می‌خواند و به صفحه تبدیل می‌کند. در فهرست زیر هر بخش اسکلت با کامنت معرفی شده است.</p>
+<h3>فهرست معرفی: اسکلت HTML</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">&lt;!-- اسکلت حداقل یک صفحه HTML --&gt;
+&lt;!DOCTYPE html&gt;                    &lt;!-- اعلام HTML5 --&gt;
+&lt;html lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;         &lt;!-- زبان فارسی، راست‌به‌چپ --&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;           &lt;!-- نمایش درست حروف فارسی --&gt;
+  &lt;title&gt;صفحهٔ من&lt;/title&gt;           &lt;!-- متن روی تب مرورگر --&gt;
+&lt;/head&gt;
+&lt;body&gt;                             &lt;!-- محتوای دیده‌شده --&gt;
+  &lt;h1&gt;سلام&lt;/h1&gt;                    &lt;!-- عنوان اصلی --&gt;
+  &lt;p&gt;اولین بند من&lt;/p&gt;              &lt;!-- یک بند متن --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>DOCTYPE و html:</strong> شروع سند و ریشه.<br>
+<strong>head در برابر body:</strong> head پشت‌صحنه است؛ body آنچه کاربر می‌بیند.</div>
+<h3>مثال 1: صفحهٔ دو خطی</h3>
+<div class="codewrap"><div class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;تست&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;عنوان&lt;/h1&gt;
+  &lt;p&gt;متن&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> اعلام HTML5.<br>
+<strong>خط ۲:</strong> زبان و جهت صفحه.<br>
+<strong>خط ۴:</strong> charset برای فارسی.<br>
+<strong>خط ۵:</strong> عنوان تب.<br>
+<strong>خط ۸–۹:</strong> عنوان و بند داخل body.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;html&gt;&lt;body&gt;&lt;p&gt;سلام&lt;/html&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> تگ‌ها جفت بسته نشده‌اند.<br><strong>چه می‌بینی؟</strong> ساختار نامعتبر<br><strong>درست:</strong> هر تگ باز را به‌ترتیب ببند</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> فایل .html را ذخیره و در مرورگر «عنوان» و «متن» را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>اسکلت ثابت را حفظ کن</li>
+<li>charset برای فارسی</li>
+<li>محتوا داخل body</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">متن h1 را عوض کن و F5 بزن.</li>
+<li style="margin-bottom:6px">یک p دوم اضافه کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="03-ویرایشگرها-Editors.html">← ویرایشگرها (Editors)</a><a href="05-المانها-Elements.html">المان‌ها (Elements) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

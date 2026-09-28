@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرها (Operators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: خانواده‌های عملگر را بشناسی و بدانی درس بعدی کدام جزئیات را می‌دهد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرها (Operators)", "description": "این درس: خانواده‌های عملگر را بشناسی و بدانی درس بعدی کدام جزئیات را می‌دهد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرها (Operators)</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html" class="on">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرها (Operators)" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرها (Operators)</h2>
+<p><strong>هدف این درس:</strong> خانواده‌های عملگر را بشناسی و بدانی درس بعدی کدام جزئیات را می‌دهد.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>عملگر نماد کار روی مقدارهاست. اینجا فقط نقشه است؛ جزئیات حسابی، مقایسه‌ای و منطقی در درس‌های بعدی همین پوشه با فهرست کامل می‌آید.</p>
+<h3>فهرست معرفی: خانواده‌های عملگر</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code"># نقشهٔ خانواده‌های عملگر در پایتون
+# حسابی:   +  -  *  /  //  %  **
+# انتساب:  =  +=  -=  *=  /=  ...
+# مقایسه:  ==  !=  &gt;  &lt;  &gt;=  &lt;=
+# منطقی:   and  or  not
+# عضویت:   in  not in
+# هویت:    is  is not
+print(2 + 3)         # نمونه حسابی
+print(3 == 3)        # نمونه مقایسه
+print(True and True) # نمونه منطقی</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>مسیر:</strong> اول عملگرهای حسابی را کامل بخوان، بعد مقایسه و منطقی.</div>
+<h3>مثال 1: سه خانواده در یک نگاه</h3>
+<div class="codewrap"><div class="code">print(10 % 3)
+print(10 &gt; 3)
+print(10 &gt; 3 and 10 &gt; 20)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> حسابی % → باقی‌مانده ۱.<br>
+<strong>خط ۲:</strong> مقایسه → True.<br>
+<strong>خط ۳:</strong> منطقی and → False چون شرط دوم غلط است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">print(3 = 3)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> = انتساب است.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> print(3 == 3)</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی بگویی + و == و and هر کدام از کدام خانواده‌اند.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>چند خانواده عملگر داریم</li>
+<li>جزئیات در درس‌های بعدی پوشه</li>
+<li>== برای مقایسه</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">برو به درس عملگرهای حسابی و هفت علامت را اجرا کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="01-بولین-ها-Booleans.html">← بولین ها (Booleans)</a><a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">عملگرهای حسابی (Arithmetic Operators) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

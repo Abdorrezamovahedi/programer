@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>try...except — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: کدی که ممکن است خطا بدهد را طوری بنویسی که برنامه نترکد و پیام روشن بدهد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "try...except", "description": "این درس: کدی که ممکن است خطا بدهد را طوری بنویسی که برنامه نترکد و پیام روشن بدهد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">مدیریت خطا</a><span class="sep">/</span><span>try...except</span></div><div class="layout"><aside class="side"><h3>مدیریت خطا (2)</h3>
+<a href="01-try-except.html" class="on">1. try...except</a>
+<a href="02-استثناها-Exceptions.html">2. استثناها (Exceptions)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="try...except" data-cat="مدیریت خطا">📌 پین کردن این درس</button>
+<h2>try...except</h2>
+<p><strong>هدف این درس:</strong> کدی که ممکن است خطا بدهد را طوری بنویسی که برنامه نترکد و پیام روشن بدهد.</p>
+<div class="note"><strong>پوشه:</strong> مدیریت خطا</div>
+<h3>مفهوم به زبان ساده</h3><p>try یعنی «این کار را انجام بده». except یعنی «اگر این خطای مشخص آمد، این کار را بکن». برای یادگیری، نوع خطا را مشخص بنویس نه except خالیِ همه‌چیز.</p>
+<h3>ساختار</h3><div class="code">try:
+    کد_مشکوک
+except نوع_خطا:
+    کد_جایگزین</div>
+<p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
+<h3>مثال 1: تقسیم امن</h3>
+<div class="codewrap"><div class="code">a = 10
+b = 0
+try:
+    print(a / b)
+except ZeroDivisionError:
+    print(&quot;نمیشه بر صفر تقسیم کرد&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۳–۴:</strong> تلاش برای تقسیم؛ اینجا خطا می‌دهد.<br>
+<strong>خط ۵–۶:</strong> به‌جای ترکیدن برنامه، پیام خودت چاپ می‌شود.</div>
+<h3>مثال 2: تبدیل ورودی به عدد</h3>
+<div class="codewrap"><div class="code">text = &quot;۱۲&quot;  # یا هر متن غیرعددی برای تست
+try:
+    n = int(text)
+    print(n)
+except ValueError:
+    print(&quot;این متن را نشد به عدد صحیح تبدیل کرد&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲–۴:</strong> تلاش برای int؛ اگر متن عدد نباشد خطا می‌شود.<br>
+<strong>خط ۵–۶:</strong> ValueError را می‌گیری و پیام می‌دهی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">try:
+    print(10 / 0)
+except:
+    pass</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> except خالی همه خطاها را قورت می‌دهد و اشکال واقعی را پنهان می‌کند.<br><strong>چه می‌بینی؟</strong> دیباگ سخت می‌شود<br><strong>درست:</strong> except ZeroDivisionError: و پیام مشخص</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک تقسیم بر صفر را با پیام فارسی مدیریت کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>try تلاش</li>
+<li>except مسیر خطا</li>
+<li>نوع خطا را مشخص کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">int(&quot;abc&quot;) را با except مدیریت کن.</li>
+</ol>
+<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-استثناها-Exceptions.html">استثناها (Exceptions) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

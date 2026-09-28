@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ذخیره‌سازی وب (Web Storage) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با مبحث «ذخیره‌سازی وب» در یک صفحهٔ کوچک آشنا شوی و آن را در مرورگر ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ذخیره‌سازی وب (Web Storage)", "description": "این درس: با مبحث «ذخیره‌سازی وب» در یک صفحهٔ کوچک آشنا شوی و آن را در مرورگر ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">سایر مباحث</a><span class="sep">/</span><span>ذخیره‌سازی وب (Web Storage)</span></div><div class="layout"><aside class="side"><h3>سایر مباحث (12)</h3>
+<a href="01-عنوان-صفحه-Page-Title.html">1. عنوان صفحه (Page Title)</a>
+<a href="02-ادغام-سلولها.html">2. ادغام سلول‌ها</a>
+<a href="03-فریمها-Iframes.html">3. فریم‌ها (Iframes)</a>
+<a href="04-جاوااسکریپت-در-HTML.html">4. جاوااسکریپت در HTML</a>
+<a href="05-مسیر-فایلها.html">5. مسیر فایل‌ها</a>
+<a href="06-بخش-head.html">6. بخش head</a>
+<a href="07-کدهای-رایانهای.html">7. کدهای رایانه‌ای</a>
+<a href="08-بوم-نقاشی-Canvas.html">8. بوم نقاشی (Canvas)</a>
+<a href="09-بردارهای-گرافیکی-SVG.html">9. بردارهای گرافیکی (SVG)</a>
+<a href="10-ذخیرهسازی-وب-Web-Storage.html" class="on">10. ذخیره‌سازی وب (Web Storage)</a>
+<a href="11-تگهای-مهم-دیگر.html">11. تگ‌های مهم دیگر</a>
+<a href="12-آزمون-سایر-مباحث.html">12. آزمون (سایر مباحث)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="ذخیره‌سازی وب (Web Storage)" data-cat="سایر مباحث">📌 پین کردن این درس</button>
+<h2>ذخیره‌سازی وب (Web Storage)</h2>
+<p><strong>هدف این درس:</strong> با مبحث «ذخیره‌سازی وب» در یک صفحهٔ کوچک آشنا شوی و آن را در مرورگر ببینی.</p>
+<div class="note"><strong>پوشه:</strong> سایر مباحث &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («سایر مباحث») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>این صفحه فقط روی «ذخیره‌سازی وب» تمرکز دارد. مثال را تایپ کن، یک چیز کوچک را عوض کن، صفحه را تازه کن. یادگیری وب با دیدن نتیجه در مرورگر کامل می‌شود.</p>
+<h3>مثال 1: قالب تمرین</h3>
+<div class="codewrap"><div class="code">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;
+&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;title&gt;ذخیره‌سازی وب&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;ذخیره‌سازی وب&lt;/h1&gt;
+  &lt;p&gt;اینجا تمرین این درس را می‌نویسی.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>charset:</strong> نمایش فارسی.<br>
+<strong>h1:</strong> موضوع درس.<br>
+<strong>p:</strong> جای تمرین تو.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">ذخیره با نام اشتباه مثل page.txt</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> مرورگر باید بداند فایل HTML است.<br><strong>چه می‌بینی؟</strong> متن خام به‌جای صفحه<br><strong>درست:</strong> پسوند .html</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> صفحه را با پسوند html ذخیره و باز کنی و یک تغییر کوچک بدهی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>تایپ کن نه فقط بخوان</li>
+<li>در مرورگر تست کن</li>
+<li>یک تغییر آگاهانه بده</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک جمله به بند اضافه کن و F5 بزن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="09-بردارهای-گرافیکی-SVG.html">← بردارهای گرافیکی (SVG)</a><a href="11-تگهای-مهم-دیگر.html">تگ‌های مهم دیگر →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

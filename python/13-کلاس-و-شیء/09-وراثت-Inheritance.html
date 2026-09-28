@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وراثت (Inheritance) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="یک کلاس با __init__ و متد بسازی و یک شیء از آن بسازی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "وراثت (Inheritance)", "description": "یک کلاس با __init__ و متد بسازی و یک شیء از آن بسازی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">کلاس و شیء</a><span class="sep">/</span><span>وراثت (Inheritance)</span></div><div class="layout"><aside class="side"><h3>کلاس و شیء (11)</h3>
+<a href="01-دکوراتور-ها-Decorators.html">1. دکوراتور ها (Decorators)</a>
+<a href="02-جنریتور-ها-Generators.html">2. جنریتور ها (Generators)</a>
+<a href="03-ایتریتورها-Iterators.html">3. ایتریتورها (Iterators)</a>
+<a href="04-شیءگرایی-OOP.html">4. شیءگرایی (OOP)</a>
+<a href="05-کلاس-ها-اشیا-Classes-Objects.html">5. کلاس ها/اشیا (Classes/Objects)</a>
+<a href="06-پارامتر-self-self-Parameter.html">6. پارامتر self (self Parameter)</a>
+<a href="07-خصوصیات-کلاس-Class-Properties.html">7. خصوصیات کلاس (Class Properties)</a>
+<a href="08-متدهای-کلاس-Class-Methods.html">8. متدهای کلاس (Class Methods)</a>
+<a href="09-وراثت-Inheritance.html" class="on">9. وراثت (Inheritance)</a>
+<a href="10-چندریختی-Polymorphism.html">10. چندریختی (Polymorphism)</a>
+<a href="11-کلاس-های-داخلی-Inner-Classes.html">11. کلاس های داخلی (Inner Classes)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="وراثت (Inheritance)" data-cat="کلاس و شیء">📌 پین کردن این درس</button>
+<h2>وراثت (Inheritance)</h2>
+<p><strong>هدف:</strong> یک کلاس با __init__ و متد بسازی و یک شیء از آن بسازی.</p>
+<div class="note"><strong>پوشه:</strong> کلاس و شیء &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «کلاس و شیء».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> تابع کار را با نام جمع می‌کرد؛ کلاس داده + رفتار مرتبط را با هم جمع می‌کند.</div>
+<h3>مفهوم</h3><p>کلاس قالب است؛ شیء نمونهٔ ساخته‌شده است. __init__ موقع ساخت اجرا می‌شود. self همان شیء جاری است.</p>
+<h3>ساختار</h3><div class="code">class Name:
+    def __init__(self, ...):
+        self.x = ...
+    def method(self):
+        ...</div>
+<h3>مثال 1: کلاس ساده</h3>
+<div class="codewrap"><div class="code">class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+    def passed(self):
+        return self.score &gt;= 10
+s = Student(&quot;سارا&quot;, 18)
+print(s.name, s.passed())</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>class:</strong> قالب Student.<br>
+<strong>__init__:</strong> موقع Student(...) صدا زده می‌شود.<br>
+<strong>self.name:</strong> داده روی خود شیء ذخیره می‌شود.<br>
+<strong>passed:</strong> متد از داده‌های همان شیء استفاده می‌کند.<br>
+<strong>Student(...):</strong> یک شیء واقعی ساخته می‌شود.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">class A:
+    def __init__(self, x):
+        x = x  # نه self.x
+a = A(5)
+print(a.x)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> x محلی است؛ روی شیء ذخیره نشده.<br><strong>چه می‌بینی؟</strong> AttributeError: &#x27;A&#x27; object has no attribute &#x27;x&#x27;<br><strong>درست:</strong> self.x = x</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> کلاسی برای مستطیل با عرض و ارتفاع بساز که متد area داشته باشد و یک نمونه را چاپ کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>کلاس قالب، شیء نمونه</li>
+<li>self الزامی در متد</li>
+<li>داده را با self ذخیره کن</li>
+<li>AttributeError یعنی آن ویژگی ساخته نشده</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">Student را با دو نمره مختلف بساز.</li>
+<li style="margin-bottom:6px">عمداً self را حذف کن و خطا را ببین.</li>
+<li style="margin-bottom:6px">یک متد دیگر اضافه کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="08-متدهای-کلاس-Class-Methods.html">← متدهای کلاس (Class Methods)</a><a href="10-چندریختی-Polymorphism.html">چندریختی (Polymorphism) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

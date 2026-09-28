@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استایل‌ها (Styles) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: بفهمی ظاهر را می‌توان جدا از ساختار تنظیم کرد و یک نمونهٔ ساده ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "استایل‌ها (Styles)", "description": "این درس: بفهمی ظاهر را می‌توان جدا از ساختار تنظیم کرد و یک نمونهٔ ساده ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">متن و قالب‌بندی</a><span class="sep">/</span><span>استایل‌ها (Styles)</span></div><div class="layout"><aside class="side"><h3>متن و قالب‌بندی (11)</h3>
+<a href="01-استایلها-Styles.html" class="on">1. استایل‌ها (Styles)</a>
+<a href="02-قالببندی-متن-Formatting.html">2. قالب‌بندی متن (Formatting)</a>
+<a href="03-نقل-قولها-Quotations.html">3. نقل قول‌ها (Quotations)</a>
+<a href="04-رنگها-Colors.html">4. رنگ‌ها (Colors)</a>
+<a href="05-مدل-RGB.html">5. مدل RGB</a>
+<a href="06-مدل-HEX.html">6. مدل HEX</a>
+<a href="07-مدل-HSL.html">7. مدل HSL</a>
+<a href="08-استفاده-از-CSS.html">8. استفاده از CSS</a>
+<a href="09-رنگ-لینکها.html">9. رنگ لینک‌ها</a>
+<a href="10-استایلدهی-جدول.html">10. استایل‌دهی جدول</a>
+<a href="11-آزمون-متن-و-قالببندی.html">11. آزمون (متن و قالب‌بندی)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="استایل‌ها (Styles)" data-cat="متن و قالب‌بندی">📌 پین کردن این درس</button>
+<h2>استایل‌ها (Styles)</h2>
+<p><strong>هدف این درس:</strong> بفهمی ظاهر را می‌توان جدا از ساختار تنظیم کرد و یک نمونهٔ ساده ببینی.</p>
+<div class="note"><strong>پوشه:</strong> متن و قالب‌بندی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> هیچ پیش‌نیازی جز حوصله و تایپ کردن؛ از همین درس اول پوشه شروع کن.</div>
+<h3>مفهوم به زبان ساده</h3><p>HTML می‌گوید «این یک بند است». رنگ و اندازه کار CSS است. فعلاً یک نمونهٔ کوچک داخل صفحه کافی است؛ جزئیات کامل در بخش CSS می‌آید.</p>
+<h3>ساختار (Syntax)</h3><div class="code">&lt;style&gt;
+p { color: #333; }
+&lt;/style&gt;</div>
+<h3>مثال 1: رنگ بند</h3>
+<div class="codewrap"><div class="code">&lt;style&gt;
+  p { color: #1e293b; line-height: 1.8; }
+&lt;/style&gt;
+&lt;p&gt;این متن با استایل خواناتر است.&lt;/p&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>style:</strong> قوانین ظاهر در همین صفحه.<br>
+<strong>p { ... }:</strong> همهٔ بندها را هدف می‌گیرد.<br>
+<strong>color:</strong> رنگ متن.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;font color=&quot;red&quot;&gt;قدیمی&lt;/font&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> روش قدیمی و منسوخ است.<br><strong>چه می‌بینی؟</strong> کد تاریخ‌گذشته<br><strong>درست:</strong> از CSS استفاده کن</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> رنگ یک بند را با style عوض کنی و در مرورگر ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>ساختار HTML، ظاهر CSS</li>
+<li>یک قانون ساده کافی است برای شروع</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">اندازهٔ فونت را هم اضافه کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-قالببندی-متن-Formatting.html">قالب‌بندی متن (Formatting) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

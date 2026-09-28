@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فونت ها (Fonts) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: پشتهٔ فونت امن و وزن عنوان را درست تنظیم کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فونت ها (Fonts)", "description": "این درس: پشتهٔ فونت امن و وزن عنوان را درست تنظیم کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">متن و فونت</a><span class="sep">/</span><span>فونت ها (Fonts)</span></div><div class="layout"><aside class="side"><h3>متن و فونت (18)</h3>
+<a href="01-متن-Text.html">1. متن (Text)</a>
+<a href="02-تراز-متن-Text-Alignment.html">2. تراز متن (Text Alignment)</a>
+<a href="03-تزئین-متن-Text-Decoration.html">3. تزئین متن (Text Decoration)</a>
+<a href="04-تبدیل-متن-Text-Transformation.html">4. تبدیل متن (Text Transformation)</a>
+<a href="05-فاصله-متن-Text-Spacing.html">5. فاصله متن (Text Spacing)</a>
+<a href="06-سایه-متن-Text-Shadow.html">6. سایه متن (Text Shadow)</a>
+<a href="07-فونت-ها-Fonts.html" class="on">7. فونت ها (Fonts)</a>
+<a href="08-فونت-های-وب-سیف-Web-Safe-Fonts.html">8. فونت های وب سیف (Web Safe Fonts)</a>
+<a href="09-جایگزین-های-فونت-Font-Fallbacks.html">9. جایگزین های فونت (Font Fallbacks)</a>
+<a href="10-سبک-فونت-Font-Style.html">10. سبک فونت (Font Style)</a>
+<a href="11-اندازه-فونت-Font-Size.html">11. اندازه فونت (Font Size)</a>
+<a href="12-فونت-گوگل-Google-Fonts.html">12. فونت گوگل (Google Fonts)</a>
+<a href="13-ترکیب-فونت-ها-Font-Pairings.html">13. ترکیب فونت ها (Font Pairings)</a>
+<a href="14-کوتاه-نویسی-فونت-Font-Shorthand.html">14. کوتاه نویسی فونت (Font Shorthand)</a>
+<a href="15-آیکون-ها-Icons.html">15. آیکون ها (Icons)</a>
+<a href="16-افکت-های-متن-Text-Effects.html">16. افکت های متن (Text Effects)</a>
+<a href="17-فونت-های-سفارشی-Custom-Fonts.html">17. فونت های سفارشی (Custom Fonts)</a>
+<a href="18-آزمون-متن-و-فونت.html">18. آزمون (متن و فونت)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="فونت ها (Fonts)" data-cat="متن و فونت">📌 پین کردن این درس</button>
+<h2>فونت ها (Fonts)</h2>
+<p><strong>هدف این درس:</strong> پشتهٔ فونت امن و وزن عنوان را درست تنظیم کنی.</p>
+<div class="note"><strong>پوشه:</strong> متن و فونت &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «متن و فونت».</div>
+<h3>مفهوم به زبان ساده</h3><p>مرورگر فونت‌ها را به ترتیب لیست امتحان می‌کند. اگر اولی نبود دومی. همیشه یک خانوادهٔ عمومی مثل sans-serif در انتها بگذار. font-weight ضخامت است (۴۰۰ عادی، ۷۰۰ ضخیم).</p>
+<h3>ساختار (Syntax)</h3><div class="code">font-family: Tahoma, Arial, sans-serif;
+font-weight: 700;
+font-size: 1.25rem;</div>
+<h3>مثال 1: بدنه و عنوان</h3>
+<div class="codewrap"><div class="code">body {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 1rem;
+}
+h1 {
+  font-weight: 700;
+  font-size: 1.75rem;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>پشته:</strong> Tahoma اول؛ اگر نبود Arial؛ در نهایت sans-serif.<br>
+<strong>rem:</strong> نسبت به اندازهٔ ریشه — مقیاس‌پذیرتر از px ثابت در بعضی طراحی‌ها.<br>
+<strong>weight 700:</strong> عنوان مشخص‌تر از متن عادی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">font-family: IRANSans;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون " (دابل‌کوتیشن) و بدون fallback.<br><strong>چه می‌بینی؟</strong> ممکن است فونت نیاید<br><strong>درست:</strong> font-family: &quot;IRANSans&quot;, Tahoma, sans-serif;</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بدنه و h1 را با پشته و وزن متفاوت تنظیم کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>همیشه fallback</li>
+<li>نام چندکلمه‌ای در " (دابل‌کوتیشن)</li>
+<li>weight برای سلسله‌مراتب</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">font-style: italic روی یک " (دابل‌کوتیشن).</li>
+</ol>
+<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="06-سایه-متن-Text-Shadow.html">← سایه متن (Text Shadow)</a><a href="08-فونت-های-وب-سیف-Web-Safe-Fonts.html">فونت های وب سیف (Web Safe Fonts) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM فرم ها (DOM Forms) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با کلیک روی دکمه متن آن را عوض کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "DOM فرم ها (DOM Forms)", "description": "این درس: با کلیک روی دکمه متن آن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>DOM فرم ها (DOM Forms)</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه (16)</h3>
+<a href="01-شرط-ها-Conditional.html">1. شرط ها (Conditional)</a>
+<a href="02-if-If.html">2. if (If)</a>
+<a href="03-if-else-If-Else.html">3. if else (If Else)</a>
+<a href="04-شرط-سه-تایی-Ternary.html">4. شرط سه تایی (Ternary)</a>
+<a href="05-سوییچ-Switch.html">5. سوییچ (Switch)</a>
+<a href="06-حلقه-ها-Loops.html">6. حلقه ها (Loops)</a>
+<a href="07-حلقه-for-Loop-for.html">7. حلقه for (Loop for)</a>
+<a href="08-حلقه-while-Loop-while.html">8. حلقه while (Loop while)</a>
+<a href="09-break-Break.html">9. break (Break)</a>
+<a href="10-continue-Continue.html">10. continue (Continue)</a>
+<a href="11-تکرارکننده-ها-RegExp-Quantifiers.html">11. تکرارکننده ها (RegExp Quantifiers)</a>
+<a href="12-کارایی-Performance.html">12. کارایی (Performance)</a>
+<a href="13-حلقه-زنی-Looping.html">13. حلقه زنی (Looping)</a>
+<a href="14-DOM-فرم-ها-DOM-Forms.html" class="on">14. DOM فرم ها (DOM Forms)</a>
+<a href="15-گواهینامه-Certificate.html">15. گواهینامه (Certificate)</a>
+<a href="16-آزمون-شرط-و-حلقه.html">16. آزمون (شرط و حلقه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="DOM فرم ها (DOM Forms)" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>DOM فرم ها (DOM Forms)</h2>
+<p><strong>هدف این درس:</strong> با کلیک روی دکمه متن آن را عوض کنی.</p>
+<div class="note"><strong>پوشه:</strong> شرط و حلقه &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>DOM همان HTML در حافظه است. اول عنصر را پیدا کن، بعد رویداد بده. اسکریپت باید بعد از وجود دکمه در صفحه اجرا شود.</p>
+<h3>فهرست معرفی: DOM و رویداد</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">// ارتباط با صفحه
+const btn = document.querySelector(&quot;#btn&quot;); // پیدا کردن عنصر
+btn.textContent = &quot;کلیک شد&quot;;                 // عوض کردن متن
+btn.addEventListener(&quot;click&quot;, () =&gt; {        // واکنش به کلیک
+  console.log(&quot;clicked&quot;);
+});</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: کلیک</h3>
+<div class="codewrap"><div class="code">const btn = document.querySelector(&quot;#btn&quot;);
+btn.addEventListener(&quot;click&quot;, () =&gt; {
+  btn.textContent = &quot;OK&quot;;
+});</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> دکمه با id=btn پیدا می‌شود.<br>
+<strong>خط ۲:</strong> شنوندهٔ کلیک.<br>
+<strong>خط ۳:</strong> متن دکمه عوض می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">اسکریپت در head قبل از دکمه</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> عنصر هنوز نیست.<br><strong>چه می‌بینی؟</strong> null<br><strong>درست:</strong> script ته body یا defer</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> دکمه‌ای که با کلیک متنش عوض شود بسازی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>querySelector</li>
+<li>addEventListener</li>
+<li>مکان script مهم است</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">با کلیک رنگ یک p را عوض کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="13-حلقه-زنی-Looping.html">← حلقه زنی (Looping)</a><a href="15-گواهینامه-Certificate.html">گواهینامه (Certificate) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

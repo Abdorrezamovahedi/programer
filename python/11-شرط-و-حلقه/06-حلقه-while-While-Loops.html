@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حلقه while (While Loops) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با for یا while کار را تکرار کنی بدون کپی کردن کد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "حلقه while (While Loops)", "description": "با for یا while کار را تکرار کنی بدون کپی کردن کد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>حلقه while (While Loops)</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه (9)</h3>
+<a href="01-if-elif-else.html">1. if / elif / else</a>
+<a href="02-شرط-کوتاه-Shorthand-If.html">2. شرط کوتاه (Shorthand If)</a>
+<a href="03-شرط-تو-در-تو-Nested-If.html">3. شرط تو در تو (Nested If)</a>
+<a href="04-pass-Pass-Statement.html">4. pass (Pass Statement)</a>
+<a href="05-match-Match.html">5. match (Match)</a>
+<a href="06-حلقه-while-While-Loops.html" class="on">6. حلقه while (While Loops)</a>
+<a href="07-حلقه-for-For-Loops.html">7. حلقه for (For Loops)</a>
+<a href="08-بازه-Range.html">8. بازه (Range)</a>
+<a href="09-شرط-Where.html">9. شرط Where</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="حلقه while (While Loops)" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>حلقه while (While Loops)</h2>
+<p><strong>هدف:</strong> با for یا while کار را تکرار کنی بدون کپی کردن کد.</p>
+<div class="note"><strong>پوشه:</strong> شرط و حلقه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شرط و حلقه».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «شرط و حلقه» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>for روی اعضای یک دنباله (مثل range) می‌چرخد. while تا وقتی شرط True است تکرار می‌کند؛ باید چیزی را عوض کنی وگرنه بی‌نهایت می‌شود.</p>
+<h3>ساختار</h3><div class="code">for i in range(n):
+    ...
+while cond:
+    ...</div>
+<h3>مثال 1: for و range</h3>
+<div class="codewrap"><div class="code">for i in range(1, 4):
+    print(i, i * i)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> i برابر ۱، سپس ۲، سپس ۳ (۴ نه).<br>
+<strong>خط ۲:</strong> عدد و مربعش.</div>
+<h3>مثال 2: while با پیشروی</h3>
+<div class="codewrap"><div class="code">n = 3
+while n &gt; 0:
+    print(n)
+    n = n - 1</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> تا n مثبت است ادامه بده.<br>
+<strong>خط ۴:</strong> حتماً کم کن تا حلقه تمام شود.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">n = 5
+while n &gt; 0:
+    print(n)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> n کم نمی‌شود؛ شرط همیشه True می‌ماند.<br><strong>چه می‌بینی؟</strong> حلقهٔ بی‌نهایت<br><strong>درست:</strong> داخل حلقه n = n - 1 بگذار.</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «حلقه while» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>for برای دنبالهٔ مشخص.</li>
+<li>while وقتی پایان از قبل معلوم نیست.</li>
+<li>range پایان را شامل نمی‌شود.</li>
+<li>while باید به سمت False برود.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">۱ تا ۵ را با for چاپ کن.</li>
+<li style="margin-bottom:6px">شمارش معکوس با while.</li>
+<li style="margin-bottom:6px">عمداً while بی‌نهایت بساز (و با Ctrl+C قطع کن).</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="05-match-Match.html">← match (Match)</a><a href="07-حلقه-for-For-Loops.html">حلقه for (For Loops) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

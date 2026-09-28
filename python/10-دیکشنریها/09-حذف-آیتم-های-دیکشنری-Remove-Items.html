@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حذف آیتم های دیکشنری (Remove Items) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با pop و del و clear جفت‌ها را حذف کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "حذف آیتم های دیکشنری (Remove Items)", "description": "با pop و del و clear جفت‌ها را حذف کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">دیکشنری‌ها</a><span class="sep">/</span><span>حذف آیتم های دیکشنری (Remove Items)</span></div><div class="layout"><aside class="side"><h3>دیکشنری‌ها (19)</h3>
+<a href="01-دیکشنری-ها-Dictionaries.html">1. دیکشنری ها (Dictionaries)</a>
+<a href="02-آزمون-دیکشنری-ها.html">2. آزمون (دیکشنری ها)</a>
+<a href="03-دسترسی-به-آیتم-های-دیکشنری-Access-Items.html">3. دسترسی به آیتم های دیکشنری (Access Items)</a>
+<a href="04-آزمون-دسترسی-دیکشنری.html">4. آزمون (دسترسی دیکشنری)</a>
+<a href="05-تغییر-آیتم-های-دیکشنری-Change-Items.html">5. تغییر آیتم های دیکشنری (Change Items)</a>
+<a href="06-آزمون-تغییر-دیکشنری.html">6. آزمون (تغییر دیکشنری)</a>
+<a href="07-افزودن-آیتم-های-دیکشنری-Add-Items.html">7. افزودن آیتم های دیکشنری (Add Items)</a>
+<a href="08-آزمون-افزودن-دیکشنری.html">8. آزمون (افزودن دیکشنری)</a>
+<a href="09-حذف-آیتم-های-دیکشنری-Remove-Items.html" class="on">9. حذف آیتم های دیکشنری (Remove Items)</a>
+<a href="10-آزمون-حذف-دیکشنری.html">10. آزمون (حذف دیکشنری)</a>
+<a href="11-حلقه-دیکشنری-ها-Loop-Dictionaries.html">11. حلقه دیکشنری ها (Loop Dictionaries)</a>
+<a href="12-آزمون-حلقه-دیکشنری.html">12. آزمون (حلقه دیکشنری)</a>
+<a href="13-کپی-دیکشنری-ها-Copy-Dictionaries.html">13. کپی دیکشنری ها (Copy Dictionaries)</a>
+<a href="14-آزمون-کپی-دیکشنری.html">14. آزمون (کپی دیکشنری)</a>
+<a href="15-تو-در-تو-Nested-Dictionaries.html">15. تو در تو (Nested Dictionaries)</a>
+<a href="16-آزمون-دیکشنری-تو-در-تو.html">16. آزمون (دیکشنری تو در تو)</a>
+<a href="17-متدهای-دیکشنری-Dictionary-Methods.html">17. متدهای دیکشنری (Dictionary Methods)</a>
+<a href="18-تمرین-دیکشنری-Dictionary-Exercises.html">18. تمرین دیکشنری (Dictionary Exercises)</a>
+<a href="19-مرجع-متدهای-دیکشنری-Dictionary-Methods-Ref.html">19. مرجع متدهای دیکشنری (Dictionary Methods Ref)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="حذف آیتم های دیکشنری (Remove Items)" data-cat="دیکشنری‌ها">📌 پین کردن این درس</button>
+<h2>حذف آیتم های دیکشنری (Remove Items)</h2>
+<p><strong>هدف:</strong> با pop و del و clear جفت‌ها را حذف کنی.</p>
+<div class="note"><strong>پوشه:</strong> دیکشنری‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «دیکشنری‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «دیکشنری‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>pop کلید را حذف و مقدارش را برمی‌گرداند. del فقط حذف می‌کند. clear همه را خالی می‌کند.</p>
+<h3>ساختار</h3><div class="code">d.pop(&quot;k&quot;)
+del d[&quot;k&quot;]
+d.clear()</div>
+<h3>مثال 1: pop و del</h3>
+<div class="codewrap"><div class="code">user = {&quot;name&quot;: &quot;سارا&quot;, &quot;age&quot;: 20, &quot;city&quot;: &quot;تهران&quot;}
+age = user.pop(&quot;age&quot;)
+print(age)
+del user[&quot;city&quot;]
+print(user)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> age حذف و مقدار ۲۰ برگردانده می‌شود.<br>
+<strong>خط ۴:</strong> city بدون برگرداندن مقدار حذف می‌شود.<br>
+<strong>خط ۵:</strong> فقط name می‌ماند.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">d = {&quot;a&quot;: 1}
+d.pop(&quot;b&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> کلید b نیست و پیش‌فرض ندادی.<br><strong>چه می‌بینی؟</strong> KeyError<br><strong>درست:</strong> d.pop(&quot;b&quot;, None)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «حذف آیتم های دیکشنری» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>pop حذف + برگرداندن.</li>
+<li>del فقط حذف.</li>
+<li>pop با پیش‌فرض از KeyError جلوگیری می‌کند.</li>
+<li>clear همه را خالی می‌کند.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک کلید را با pop حذف و مقدارش را چاپ کن.</li>
+<li style="margin-bottom:6px">با del یک کلید دیگر را حذف کن.</li>
+<li style="margin-bottom:6px">pop ناموجود با پیش‌فرض را امتحان کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="08-آزمون-افزودن-دیکشنری.html">← آزمون (افزودن دیکشنری)</a><a href="10-آزمون-حذف-دیکشنری.html">آزمون (حذف دیکشنری) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

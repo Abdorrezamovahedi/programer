@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>substr_count (substr_count) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع substr_count را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "substr_count (substr_count)", "description": "این درس: نام تابع substr_count را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header><div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav></header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">توابع رشته</a><span class="sep">/</span><span>substr_count (substr_count)</span></div><div class="layout"><aside class="side"><h3>توابع رشته (20)</h3>
+<a href="01-explode-explode.html">1. explode (explode)</a>
+<a href="02-htmlspecialchars-htmlspecialchars.html">2. htmlspecialchars (htmlspecialchars)</a>
+<a href="03-implode-implode.html">3. implode (implode)</a>
+<a href="04-ltrim-ltrim.html">4. ltrim (ltrim)</a>
+<a href="05-rtrim-rtrim.html">5. rtrim (rtrim)</a>
+<a href="06-str-ireplace-str-ireplace.html">6. str_ireplace (str_ireplace)</a>
+<a href="07-str-pad-str-pad.html">7. str_pad (str_pad)</a>
+<a href="08-str-repeat-str-repeat.html">8. str_repeat (str_repeat)</a>
+<a href="09-str-replace-str-replace.html">9. str_replace (str_replace)</a>
+<a href="10-str-rot13-str-rot13.html">10. str_rot13 (str_rot13)</a>
+<a href="11-str-shuffle-str-shuffle.html">11. str_shuffle (str_shuffle)</a>
+<a href="12-str-split-str-split.html">12. str_split (str_split)</a>
+<a href="13-str-word-count-str-word-count.html">13. str_word_count (str_word_count)</a>
+<a href="14-strlen-strlen.html">14. strlen (strlen)</a>
+<a href="15-substr-substr.html">15. substr (substr)</a>
+<a href="16-substr-compare-substr-compare.html">16. substr_compare (substr_compare)</a>
+<a href="17-substr-count-substr-count.html" class="on">17. substr_count (substr_count)</a>
+<a href="18-substr-replace-substr-replace.html">18. substr_replace (substr_replace)</a>
+<a href="19-trim-trim.html">19. trim (trim)</a>
+<a href="20-آزمون-توابع-رشته.html">20. آزمون (توابع رشته)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="substr_count (substr_count)" data-cat="توابع رشته">📌 پین</button>
+<h2>substr_count (substr_count)</h2>
+<p><strong>هدف این درس:</strong> نام تابع substr_count را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> توابع رشته &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («توابع رشته») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">substr_count(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;substr_count&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای substr_count را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="16-substr-compare-substr-compare.html">← قبلی</a><a href="18-substr-replace-substr-replace.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>پین</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

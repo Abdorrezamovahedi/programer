@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تبدیل نوع (Type Conversion) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: همهٔ موارد «انواع رایج در JavaScript» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تبدیل نوع (Type Conversion)", "description": "این درس: همهٔ موارد «انواع رایج در JavaScript» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">انواع و عملگرها</a><span class="sep">/</span><span>تبدیل نوع (Type Conversion)</span></div><div class="layout"><aside class="side"><h3>انواع و عملگرها (29)</h3>
+<a href="01-انواع-داده-Types.html">1. انواع داده (Types)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic.html">3. عملگرهای حسابی (Arithmetic)</a>
+<a href="04-عملگرهای-انتسابی-Assignment.html">4. عملگرهای انتسابی (Assignment)</a>
+<a href="05-بولین-ها-Booleans.html">5. بولین ها (Booleans)</a>
+<a href="06-رشته-ها-Strings.html">6. رشته ها (Strings)</a>
+<a href="07-رشته-های-قالبی-String-Templates.html">7. رشته های قالبی (String Templates)</a>
+<a href="08-جستجوی-رشته-String-Search.html">8. جستجوی رشته (String Search)</a>
+<a href="09-مرجع-رشته-String-Reference.html">9. مرجع رشته (String Reference)</a>
+<a href="10-اعداد-Numbers.html">10. اعداد (Numbers)</a>
+<a href="11-متدهای-عدد-Number-Methods.html">11. متدهای عدد (Number Methods)</a>
+<a href="12-ویژگی-های-عدد-Number-Properties.html">12. ویژگی های عدد (Number Properties)</a>
+<a href="13-مرجع-عدد-Number-Reference.html">13. مرجع عدد (Number Reference)</a>
+<a href="14-عملگرهای-بیتی-Bitwise.html">14. عملگرهای بیتی (Bitwise)</a>
+<a href="15-BigInt-BigInt.html">15. BigInt (BigInt)</a>
+<a href="16-قالب-های-تاریخ-Date-Formats.html">16. قالب های تاریخ (Date Formats)</a>
+<a href="17-آرایه-های-نوع-دار-Typed-Arrays.html">17. آرایه های نوع دار (Typed Arrays)</a>
+<a href="18-متدهای-نوع-دار-Typed-Methods.html">18. متدهای نوع دار (Typed Methods)</a>
+<a href="19-مرجع-نوع-دار-Typed-Reference.html">19. مرجع نوع دار (Typed Reference)</a>
+<a href="20-انواع-داده-Data-Types.html">20. انواع داده (Data Types)</a>
+<a href="21-typeof-typeof.html">21. typeof (typeof)</a>
+<a href="22-toString-toString.html">22. toString() (toString())</a>
+<a href="23-تبدیل-نوع-Type-Conversion.html" class="on">23. تبدیل نوع (Type Conversion)</a>
+<a href="24-مرجع-عملگرها-Operator-Reference.html">24. مرجع عملگرها (Operator Reference)</a>
+<a href="25-اولویت-عملگرها-Operator-Precedence.html">25. اولویت عملگرها (Operator Precedence)</a>
+<a href="26-پروتوتایپ-ها-Object-Prototypes.html">26. پروتوتایپ ها (Object Prototypes)</a>
+<a href="27-انواع-داده-در-JSON-JSON-Data-Types.html">27. انواع داده در JSON (JSON Data Types)</a>
+<a href="28-JSON-Stringify-JSON-Stringify.html">28. JSON Stringify (JSON Stringify)</a>
+<a href="29-آزمون-انواع-و-عملگرها.html">29. آزمون (انواع و عملگرها)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تبدیل نوع (Type Conversion)" data-cat="انواع و عملگرها">📌 پین کردن این درس</button>
+<h2>تبدیل نوع (Type Conversion)</h2>
+<p><strong>هدف این درس:</strong> همهٔ موارد «انواع رایج در JavaScript» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی.</p>
+<div class="note"><strong>پوشه:</strong> انواع و عملگرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس، درسِ معرفی «انواع رایج در JavaScript» است. اول فهرست کامل را می‌بینی، بعد هر مورد جداگانه با مثال کوتاه. درس‌های بعدی همین موضوع جزئی‌تر می‌شوند و دیگر کل فهرست را تکرار نمی‌کنند.</p>
+<h3>فهرست معرفی: انواع رایج در JavaScript</h3>
+<p>قبل از جزئیات، همهٔ موارد این مبحث را یک‌جا ببین. بعد هر کدام را جداگانه با مثال می‌بینی.</p>
+<div class="sum"><b>نقشهٔ مبحث</b><ul>
+<li><strong>number</strong> — عدد صحیح یا اعشاری.</li>
+<li><strong>string</strong> — متن داخل " (دابل‌کوتیشن) یا `قالب`.</li>
+<li><strong>boolean</strong> — true یا false.</li>
+<li><strong>undefined</strong> — اعلام شده ولی مقدار نگرفته.</li>
+<li><strong>null</strong> — عمداً «خالی» گذاشته‌ای.</li>
+<li><strong>object</strong> — شیء یا آرایه (آرایه هم در typeof می‌گوید object).</li>
+</ul></div>
+<h3>توضیح دانه‌به‌دانه با مثال</h3>
+<h4>1. number</h4>
+<p>عدد صحیح یا اعشاری.</p>
+<div class="codewrap"><div class="code">console.log(typeof 3);
+console.log(typeof 3.14);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>2. string</h4>
+<p>متن داخل " (دابل‌کوتیشن) یا `قالب`.</p>
+<div class="codewrap"><div class="code">console.log(typeof &quot;hi&quot;);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>3. boolean</h4>
+<p>true یا false.</p>
+<div class="codewrap"><div class="code">console.log(typeof true);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>4. undefined</h4>
+<p>اعلام شده ولی مقدار نگرفته.</p>
+<div class="codewrap"><div class="code">let x;
+console.log(x);  // undefined</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>5. null</h4>
+<p>عمداً «خالی» گذاشته‌ای.</p>
+<div class="codewrap"><div class="code">let y = null;
+console.log(y);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>6. object</h4>
+<p>شیء یا آرایه (آرایه هم در typeof می‌گوید object).</p>
+<div class="codewrap"><div class="code">console.log(typeof {a:1});
+console.log(typeof [1,2]);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>مرور سریع مثال 1</h3>
+<div class="codewrap"><div class="code">console.log(typeof 3);
+console.log(typeof 3.14);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>number:</strong> عدد صحیح یا اعشاری.</div>
+<h3>مرور سریع مثال 2</h3>
+<div class="codewrap"><div class="code">console.log(typeof &quot;hi&quot;);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>string:</strong> متن داخل " (دابل‌کوتیشن) یا `قالب`.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code"># استفاده از چیزی که هنوز در فهرست بالا نخوانده‌ای بدون برگشت به معرفی</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> ترتیب یادگیری می‌شکند و مثال‌ها گیج می‌شوند.<br><strong>چه می‌بینی؟</strong> فهم ناقص<br><strong>درست:</strong> اول همین فهرست را یک‌بار با دقت بخوان، بعد درس بعدی</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به فهرست بگویی هر مورد «انواع رایج در JavaScript» تقریباً چه می‌کند و یک مثالش را اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>این صفحه معرفی کامل «انواع رایج در JavaScript» است</li>
+<li>درس‌های بعدی جزئیات‌اند نه تکرار کل فهرست</li>
+<li>هر علامت/نوع را با مثال کوچک ببین</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">از فهرست ۳ مورد را خودت در محیط اجرا کن.</li>
+<li style="margin-bottom:6px">یکی را عمداً غلط بنویس و پیام را بخوان.</li>
+<li style="margin-bottom:6px">به درس بعدی همین پوشه برو.</li>
+</ol>
+<p class="rel">درس‌های بعدی همین مبحث را با تکیه بر همین فهرست بخوان؛ دیگر کل لیست تکرار نمی‌شود.</p>
+<div class="navbtn" style="margin-top:22px"><a href="22-toString-toString.html">← toString() (toString())</a><a href="24-مرجع-عملگرها-Operator-Reference.html">مرجع عملگرها (Operator Reference) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

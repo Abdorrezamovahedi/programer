@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جنریتور ها (Generators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="ایدهٔ «جنریتور ها (Generators)» را در حد یک مثال کوچک ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "جنریتور ها (Generators)", "description": "ایدهٔ «جنریتور ها (Generators)» را در حد یک مثال کوچک ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">کلاس و شیء</a><span class="sep">/</span><span>جنریتور ها (Generators)</span></div><div class="layout"><aside class="side"><h3>کلاس و شیء (11)</h3>
+<a href="01-دکوراتور-ها-Decorators.html">1. دکوراتور ها (Decorators)</a>
+<a href="02-جنریتور-ها-Generators.html" class="on">2. جنریتور ها (Generators)</a>
+<a href="03-ایتریتورها-Iterators.html">3. ایتریتورها (Iterators)</a>
+<a href="04-شیءگرایی-OOP.html">4. شیءگرایی (OOP)</a>
+<a href="05-کلاس-ها-اشیا-Classes-Objects.html">5. کلاس ها/اشیا (Classes/Objects)</a>
+<a href="06-پارامتر-self-self-Parameter.html">6. پارامتر self (self Parameter)</a>
+<a href="07-خصوصیات-کلاس-Class-Properties.html">7. خصوصیات کلاس (Class Properties)</a>
+<a href="08-متدهای-کلاس-Class-Methods.html">8. متدهای کلاس (Class Methods)</a>
+<a href="09-وراثت-Inheritance.html">9. وراثت (Inheritance)</a>
+<a href="10-چندریختی-Polymorphism.html">10. چندریختی (Polymorphism)</a>
+<a href="11-کلاس-های-داخلی-Inner-Classes.html">11. کلاس های داخلی (Inner Classes)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="جنریتور ها (Generators)" data-cat="کلاس و شیء">📌 پین کردن این درس</button>
+<h2>جنریتور ها (Generators)</h2>
+<p><strong>هدف:</strong> ایدهٔ «جنریتور ها (Generators)» را در حد یک مثال کوچک ببینی.</p>
+<div class="note"><strong>پوشه:</strong> کلاس و شیء &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «کلاس و شیء».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> حلقه و تابع را از قبل می‌دانی؛ اینجا کنترل جریان ظریف‌تر می‌شود.</div>
+<h3>مفهوم</h3><p>این مباحث پیشرفته‌تر روی همان توابع و حلقه‌ها سوار می‌شوند. اول مثال را اجرا کن، بعد سراغ جزئیات برو.</p>
+<h3>مثال 1: مولد ساده</h3>
+<div class="codewrap"><div class="code">def count(n):
+    i = 0
+    while i &lt; n:
+        yield i
+        i += 1
+print(list(count(3)))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>yield:</strong> به‌جای return یک‌باره، مقدار را یکی‌یکی می‌دهد.<br>
+<strong>list(...):</strong> همه را یکجا می‌کشد.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">def g():
+    yield 1
+print(g())</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> خود تابع مولد یک iterator است نه لیست مقادیر.<br><strong>چه می‌بینی؟</strong> چاپ شیء generator<br><strong>درست:</strong> print(list(g())) یا next(g())</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> یک generator سه مقداری بساز و list کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>yield به جای return یک‌جا</li>
+<li>مولد تنبل است</li>
+<li>list برای دیدن همه</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">count را تا ۵ ببر.</li>
+<li style="margin-bottom:6px">بدون list با for روی generator حلقه بزن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="01-دکوراتور-ها-Decorators.html">← دکوراتور ها (Decorators)</a><a href="03-ایتریتورها-Iterators.html">ایتریتورها (Iterators) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متن (Text) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: تراز، تزئین و فاصلهٔ حروف متن را برای خوانایی تنظیم کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "متن (Text)", "description": "این درس: تراز، تزئین و فاصلهٔ حروف متن را برای خوانایی تنظیم کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">متن و فونت</a><span class="sep">/</span><span>متن (Text)</span></div><div class="layout"><aside class="side"><h3>متن و فونت (18)</h3>
+<a href="01-متن-Text.html" class="on">1. متن (Text)</a>
+<a href="02-تراز-متن-Text-Alignment.html">2. تراز متن (Text Alignment)</a>
+<a href="03-تزئین-متن-Text-Decoration.html">3. تزئین متن (Text Decoration)</a>
+<a href="04-تبدیل-متن-Text-Transformation.html">4. تبدیل متن (Text Transformation)</a>
+<a href="05-فاصله-متن-Text-Spacing.html">5. فاصله متن (Text Spacing)</a>
+<a href="06-سایه-متن-Text-Shadow.html">6. سایه متن (Text Shadow)</a>
+<a href="07-فونت-ها-Fonts.html">7. فونت ها (Fonts)</a>
+<a href="08-فونت-های-وب-سیف-Web-Safe-Fonts.html">8. فونت های وب سیف (Web Safe Fonts)</a>
+<a href="09-جایگزین-های-فونت-Font-Fallbacks.html">9. جایگزین های فونت (Font Fallbacks)</a>
+<a href="10-سبک-فونت-Font-Style.html">10. سبک فونت (Font Style)</a>
+<a href="11-اندازه-فونت-Font-Size.html">11. اندازه فونت (Font Size)</a>
+<a href="12-فونت-گوگل-Google-Fonts.html">12. فونت گوگل (Google Fonts)</a>
+<a href="13-ترکیب-فونت-ها-Font-Pairings.html">13. ترکیب فونت ها (Font Pairings)</a>
+<a href="14-کوتاه-نویسی-فونت-Font-Shorthand.html">14. کوتاه نویسی فونت (Font Shorthand)</a>
+<a href="15-آیکون-ها-Icons.html">15. آیکون ها (Icons)</a>
+<a href="16-افکت-های-متن-Text-Effects.html">16. افکت های متن (Text Effects)</a>
+<a href="17-فونت-های-سفارشی-Custom-Fonts.html">17. فونت های سفارشی (Custom Fonts)</a>
+<a href="18-آزمون-متن-و-فونت.html">18. آزمون (متن و فونت)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="متن (Text)" data-cat="متن و فونت">📌 پین کردن این درس</button>
+<h2>متن (Text)</h2>
+<p><strong>هدف این درس:</strong> تراز، تزئین و فاصلهٔ حروف متن را برای خوانایی تنظیم کنی.</p>
+<div class="note"><strong>پوشه:</strong> متن و فونت &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس اول این پوشه.</div>
+<h3>مفهوم به زبان ساده</h3><p>text-align جهت قرارگیری متن در بلوک است. text-decoration خط زیر/روی متن. letter-spacing فاصلهٔ حروف. برای لینک‌ها معمولاً underline پیش‌فرض را کنترل می‌کنی.</p>
+<h3>ساختار (Syntax)</h3><div class="code">text-align: right;
+text-decoration: none;
+letter-spacing: 0.02em;</div>
+<h3>مثال 1: متن و لینک</h3>
+<div class="codewrap"><div class="code">p {
+  text-align: right;
+  line-height: 1.8;
+}
+a {
+  text-decoration: none;
+  color: #2563eb;
+}
+a:hover {
+  text-decoration: underline;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>text-align:</strong> برای فارسی معمولاً right.<br>
+<strong>decoration none:</strong> خط زیر لینک برداشته می‌شود.<br>
+<strong>hover:</strong> وقتی نشانگر روی لینک است خط برمی‌گردد — بازخورد واضح.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">text-align: left روی کل سایت فارسی بدون فکر</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> خواندن فارسی سخت‌تر می‌شود.<br><strong>چه می‌بینی؟</strong> UX ضعیف<br><strong>درست:</strong> برای بدنه right؛ موارد خاص جدا</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> لینکی بسازی که پیش‌فرض بدون خط باشد و در hover خط بگیرد.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>align برای بلوک</li>
+<li>decoration برای خط</li>
+<li>hover بازخورد می‌دهد</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">letter-spacing روی عنوان را کمی کم کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-تراز-متن-Text-Alignment.html">تراز متن (Text Alignment) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

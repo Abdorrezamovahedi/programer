@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرهای بیتی (Bitwise Operators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: عملگرهای بیتی را در فهرست بشناسی؛ برای شروع برنامه‌نویسی روزمره اولویت بعدی‌اند">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرهای بیتی (Bitwise Operators)", "description": "این درس: عملگرهای بیتی را در فهرست بشناسی؛ برای شروع برنامه‌نویسی روزمره اولویت بعدی‌اند", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرهای بیتی (Bitwise Operators)</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html" class="on">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرهای بیتی (Bitwise Operators)" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرهای بیتی (Bitwise Operators)</h2>
+<p><strong>هدف این درس:</strong> عملگرهای بیتی را در فهرست بشناسی؛ برای شروع برنامه‌نویسی روزمره اولویت بعدی‌اند.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها</div>
+<div class="note"><strong>درس معرفی «عملگرهای حسابی»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>عملگرهای حسابی (Arithmetic Operators)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<h3>مفهوم</h3><p>این عملگرها روی بیت‌های دودویی عدد کار می‌کنند. اگر تازه‌کاری، اول + - * / را کامل بلد شو؛ این‌ها را بعداً عمیق‌تر می‌کنی.</p>
+<h3>فهرست معرفی: عملگرهای بیتی</h3>
+<p>قبل از جزئیات، همهٔ موارد این مبحث را یک‌جا ببین. بعد هر کدام را جداگانه با مثال می‌بینی.</p>
+<div class="sum"><b>نقشهٔ مبحث</b><ul>
+<li><strong>&amp;</strong> — AND بیتی؛ بیت‌هایی که در هر دو ۱ هستند.</li>
+<li><strong>|</strong> — OR بیتی؛ بیت‌هایی که حداقل در یکی ۱ هستند.</li>
+<li><strong>^</strong> — XOR؛ بیت‌هایی که فقط در یکی ۱ هستند.</li>
+<li><strong>~</strong> — NOT بیتی؛ معکوس بیت‌ها.</li>
+<li><strong>&lt;&lt;</strong> — جابه‌جایی بیت‌ها به چپ (تقریباً ضرب در توان ۲).</li>
+<li><strong>&gt;&gt;</strong> — جابه‌جایی به راست (تقریباً تقسیم صحیح بر توان ۲).</li>
+</ul></div>
+<h3>توضیح دانه‌به‌دانه با مثال</h3>
+<h4>1. &amp;</h4>
+<p>AND بیتی؛ بیت‌هایی که در هر دو ۱ هستند.</p>
+<div class="codewrap"><div class="code">print(5 &amp; 3)  # 1</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>2. |</h4>
+<p>OR بیتی؛ بیت‌هایی که حداقل در یکی ۱ هستند.</p>
+<div class="codewrap"><div class="code">print(5 | 3)  # 7</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>3. ^</h4>
+<p>XOR؛ بیت‌هایی که فقط در یکی ۱ هستند.</p>
+<div class="codewrap"><div class="code">print(5 ^ 3)  # 6</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>4. ~</h4>
+<p>NOT بیتی؛ معکوس بیت‌ها.</p>
+<div class="codewrap"><div class="code">print(~5)  # -6 در نمایش مکمل دو</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>5. &lt;&lt;</h4>
+<p>جابه‌جایی بیت‌ها به چپ (تقریباً ضرب در توان ۲).</p>
+<div class="codewrap"><div class="code">print(3 &lt;&lt; 1)  # 6</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>6. &gt;&gt;</h4>
+<p>جابه‌جایی به راست (تقریباً تقسیم صحیح بر توان ۲).</p>
+<div class="codewrap"><div class="code">print(8 &gt;&gt; 1)  # 4</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">print(5 &amp; 3 == 1)  # اولویت مقایسه</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> اولویت &amp; و == ممکن است خلاف انتظار باشد.<br><strong>چه می‌بینی؟</strong> نتیجهٔ گیج‌کننده<br><strong>درست:</strong> print((5 &amp; 3) == 1)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> هر علامت بیتی را یک‌بار اجرا کنی و بدانی روز اول اجباری نیست.</div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>بیتی ≠ حسابی روزمره</li><li>اولویت با پرانتز روشن شود</li></ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4"><li>5 & 3 و 5 | 3 را چاپ کن.</li><li>اگر گیج شدی برگرد به عملگرهای حسابی.</li></ol>
+<div class="navbtn" style="margin-top:22px"><a href="08-عملگرهای-عضویت-Membership-Operators.html">← عملگرهای عضویت (Membership Operators)</a><a href="10-اولویت-عملگرها-Operator-Precedence.html">اولویت عملگرها (Operator Precedence) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

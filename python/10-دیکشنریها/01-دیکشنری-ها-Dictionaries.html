@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دیکشنری ها (Dictionaries) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="دیکشنری بسازی و با کلید مقدار را بخوانی و یک فیلد اضافه کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "دیکشنری ها (Dictionaries)", "description": "دیکشنری بسازی و با کلید مقدار را بخوانی و یک فیلد اضافه کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">دیکشنری‌ها</a><span class="sep">/</span><span>دیکشنری ها (Dictionaries)</span></div><div class="layout"><aside class="side"><h3>دیکشنری‌ها (19)</h3>
+<a href="01-دیکشنری-ها-Dictionaries.html" class="on">1. دیکشنری ها (Dictionaries)</a>
+<a href="02-آزمون-دیکشنری-ها.html">2. آزمون (دیکشنری ها)</a>
+<a href="03-دسترسی-به-آیتم-های-دیکشنری-Access-Items.html">3. دسترسی به آیتم های دیکشنری (Access Items)</a>
+<a href="04-آزمون-دسترسی-دیکشنری.html">4. آزمون (دسترسی دیکشنری)</a>
+<a href="05-تغییر-آیتم-های-دیکشنری-Change-Items.html">5. تغییر آیتم های دیکشنری (Change Items)</a>
+<a href="06-آزمون-تغییر-دیکشنری.html">6. آزمون (تغییر دیکشنری)</a>
+<a href="07-افزودن-آیتم-های-دیکشنری-Add-Items.html">7. افزودن آیتم های دیکشنری (Add Items)</a>
+<a href="08-آزمون-افزودن-دیکشنری.html">8. آزمون (افزودن دیکشنری)</a>
+<a href="09-حذف-آیتم-های-دیکشنری-Remove-Items.html">9. حذف آیتم های دیکشنری (Remove Items)</a>
+<a href="10-آزمون-حذف-دیکشنری.html">10. آزمون (حذف دیکشنری)</a>
+<a href="11-حلقه-دیکشنری-ها-Loop-Dictionaries.html">11. حلقه دیکشنری ها (Loop Dictionaries)</a>
+<a href="12-آزمون-حلقه-دیکشنری.html">12. آزمون (حلقه دیکشنری)</a>
+<a href="13-کپی-دیکشنری-ها-Copy-Dictionaries.html">13. کپی دیکشنری ها (Copy Dictionaries)</a>
+<a href="14-آزمون-کپی-دیکشنری.html">14. آزمون (کپی دیکشنری)</a>
+<a href="15-تو-در-تو-Nested-Dictionaries.html">15. تو در تو (Nested Dictionaries)</a>
+<a href="16-آزمون-دیکشنری-تو-در-تو.html">16. آزمون (دیکشنری تو در تو)</a>
+<a href="17-متدهای-دیکشنری-Dictionary-Methods.html">17. متدهای دیکشنری (Dictionary Methods)</a>
+<a href="18-تمرین-دیکشنری-Dictionary-Exercises.html">18. تمرین دیکشنری (Dictionary Exercises)</a>
+<a href="19-مرجع-متدهای-دیکشنری-Dictionary-Methods-Ref.html">19. مرجع متدهای دیکشنری (Dictionary Methods Ref)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="دیکشنری ها (Dictionaries)" data-cat="دیکشنری‌ها">📌 پین کردن این درس</button>
+<h2>دیکشنری ها (Dictionaries)</h2>
+<p><strong>هدف:</strong> دیکشنری بسازی و با کلید مقدار را بخوانی و یک فیلد اضافه کنی.</p>
+<div class="note"><strong>پوشه:</strong> دیکشنری‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> اولین درس این پوشه.</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «دیکشنری‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>دیکشنری نقشهٔ کلید به مقدار است. برای دادهٔ برچسب‌دار (مثل نام، سن، شهر) طبیعی‌تر از دو لیست موازی است.</p>
+<h3>ساختار</h3><div class="code">d = {&quot;name&quot;: &quot;سارا&quot;, &quot;age&quot;: 20}
+d[&quot;name&quot;]</div>
+<h3>مثال 1: ساخت و خواندن</h3>
+<div class="codewrap"><div class="code">student = {&quot;name&quot;: &quot;علی&quot;, &quot;grade&quot;: 19}
+print(student[&quot;name&quot;])
+print(student.get(&quot;city&quot;, &quot;—&quot;))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> دو جفت کلید–مقدار.<br>
+<strong>خط ۲:</strong> خواندن با کلید name.<br>
+<strong>خط ۳:</strong> city نیست؛ پیش‌فرض —.</div>
+<h3>مثال 2: افزودن فیلد</h3>
+<div class="codewrap"><div class="code">student = {&quot;name&quot;: &quot;علی&quot;}
+student[&quot;passed&quot;] = True
+print(student)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> کلید جدید اضافه شد.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">d = {&quot;a&quot;: 1}
+print(d[0])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> ۰ کلید نیست مگر خودت گذاشته باشی؛ دیکشنری ایندکس عددی اجباری ندارد.<br><strong>چه می‌بینی؟</strong> KeyError: 0<br><strong>درست:</strong> print(d[&quot;a&quot;])</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «دیکشنری ها» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>{} با جفت key: value.</li>
+<li>خواندن با کلید.</li>
+<li>get برای کلید اختیاری.</li>
+<li>کلید ۰ مثل لیست خودکار وجود ندارد.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">dict برای یک کالا (نام، قیمت) بساز.</li>
+<li style="margin-bottom:6px">یک فیلد موجودی اضافه کن.</li>
+<li style="margin-bottom:6px">با get فیلد تخفیف را با پیش‌فرض ۰ بخوان.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-آزمون-دیکشنری-ها.html">آزمون (دیکشنری ها) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

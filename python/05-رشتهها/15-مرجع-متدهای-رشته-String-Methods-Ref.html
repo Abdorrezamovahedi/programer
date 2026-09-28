@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرجع متدهای رشته (String Methods Ref) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="چند متد پرکاربرد رشته را برای تمیز کردن و شکستن متن به کار ببری">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "مرجع متدهای رشته (String Methods Ref)", "description": "چند متد پرکاربرد رشته را برای تمیز کردن و شکستن متن به کار ببری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">رشته‌ها</a><span class="sep">/</span><span>مرجع متدهای رشته (String Methods Ref)</span></div><div class="layout"><aside class="side"><h3>رشته‌ها (16)</h3>
+<a href="01-رشته-ها-Strings.html">1. رشته ها (Strings)</a>
+<a href="02-آزمون-رشته-ها.html">2. آزمون (رشته ها)</a>
+<a href="03-برش-رشته-Slicing-Strings.html">3. برش رشته (Slicing Strings)</a>
+<a href="04-آزمون-برش-رشته.html">4. آزمون (برش رشته)</a>
+<a href="05-تغییر-رشته-Modify-Strings.html">5. تغییر رشته (Modify Strings)</a>
+<a href="06-آزمون-تغییر-رشته.html">6. آزمون (تغییر رشته)</a>
+<a href="07-ترکیب-رشته-ها-Concatenate-Strings.html">7. ترکیب رشته ها (Concatenate Strings)</a>
+<a href="08-آزمون-ترکیب-رشته-ها.html">8. آزمون (ترکیب رشته ها)</a>
+<a href="09-قالب-بندی-رشته-ها-Format-Strings.html">9. قالب بندی رشته ها (Format Strings)</a>
+<a href="10-آزمون-قالب-بندی-رشته-ها.html">10. آزمون (قالب بندی رشته ها)</a>
+<a href="11-کاراکتر-فرار-Escape-Characters.html">11. کاراکتر فرار (Escape Characters)</a>
+<a href="12-متدهای-رشته-String-Methods.html">12. متدهای رشته (String Methods)</a>
+<a href="13-تمرین-رشته-ها-String-Exercises.html">13. تمرین رشته ها (String Exercises)</a>
+<a href="14-قالب-بندی-رشته-String-Formatting.html">14. قالب بندی رشته (String Formatting)</a>
+<a href="15-مرجع-متدهای-رشته-String-Methods-Ref.html" class="on">15. مرجع متدهای رشته (String Methods Ref)</a>
+<a href="16-برعکس-کردن-رشته-Reverse-a-String.html">16. برعکس کردن رشته (Reverse a String)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="مرجع متدهای رشته (String Methods Ref)" data-cat="رشته‌ها">📌 پین کردن این درس</button>
+<h2>مرجع متدهای رشته (String Methods Ref)</h2>
+<p><strong>هدف:</strong> چند متد پرکاربرد رشته را برای تمیز کردن و شکستن متن به کار ببری.</p>
+<div class="note"><strong>درس معرفی «کارهای رایج روی رشته»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>رشته ها (Strings)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> رشته‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «رشته‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «رشته‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>متد یعنی تابع وابسته به خودِ رشته: s.method(). برای کارهای تکراری متن (بزرگ/کوچک کردن، پاک کردن فاصله، شکستن با جداکننده) متد آماده هست.</p>
+<h3>ساختار</h3><div class="code">s.upper()  s.split(sep)  sep.join(list)  s.find(sub)  s.startswith(prefix)</div>
+<h3>مثال 1: split و join</h3>
+<div class="codewrap"><div class="code">line = &quot;علی,۲۰,تهران&quot;
+parts = line.split(&quot;,&quot;)
+print(parts)
+print(&quot; | &quot;.join(parts))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> روی هر ویرگول می‌شکند و لیست می‌دهد.<br>
+<strong>خط ۳:</strong> [&#x27;علی&#x27;, &#x27;۲۰&#x27;, &#x27;تهران&#x27;]<br>
+<strong>خط ۴:</strong> دوباره با جداکنندهٔ دیگر به هم می‌چسبد.</div>
+<h3>مثال 2: find و startswith</h3>
+<div class="codewrap"><div class="code">s = &quot;hello.py&quot;
+print(s.endswith(&quot;.py&quot;))
+print(s.find(&quot;ll&quot;))
+print(s.find(&quot;xx&quot;))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> اگر با .py تمام شود True.<br>
+<strong>خط ۳:</strong> اولین محل «ll» ایندکس ۲ است.<br>
+<strong>خط ۴:</strong> اگر نبود -1 برمی‌گردد نه خطا.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">print(&quot;a,b,c&quot;.split())
+# انتظار شکستن با ویرگول</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> split() بدون آرگومان روی فاصله می‌شکند نه ویرگول.<br><strong>چه می‌بینی؟</strong> نتیجهٔ اشتباه: یک عضو [&#x27;a,b,c&#x27;]<br><strong>درست:</strong> &quot;a,b,c&quot;.split(&quot;,&quot;)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «مرجع متدهای رشته» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>split رشته را به لیست تکه می‌کند.</li>
+<li>join برعکس عمل می‌کند.</li>
+<li>find ایندکس یا -1 می‌دهد.</li>
+<li>آرگومان متد را درست بده وگرنه نتیجه غیرمنتظره است.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک CSV ساده را split کن و عضو وسط را چاپ کن.</li>
+<li style="margin-bottom:6px">لیست کلمات را با join به جمله تبدیل کن.</li>
+<li style="margin-bottom:6px">endswith را برای پسوند فایل امتحان کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="14-قالب-بندی-رشته-String-Formatting.html">← قالب بندی رشته (String Formatting)</a><a href="16-برعکس-کردن-رشته-Reverse-a-String.html">برعکس کردن رشته (Reverse a String) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

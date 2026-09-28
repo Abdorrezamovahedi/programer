@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرهای حسابی (Arithmetic Operators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: هفت عملگر حسابی را یکی‌یکی با خروجی بشناسی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرهای حسابی (Arithmetic Operators)", "description": "این درس: هفت عملگر حسابی را یکی‌یکی با خروجی بشناسی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرهای حسابی (Arithmetic Operators)</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html" class="on">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرهای حسابی (Arithmetic Operators)" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرهای حسابی (Arithmetic Operators)</h2>
+<p><strong>هدف این درس:</strong> هفت عملگر حسابی را یکی‌یکی با خروجی بشناسی.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>عملگر حسابی روی عدد کار می‌کند و نتیجه می‌سازد. در باکس زیر همه کنار هم با کامنت آمده‌اند. بعد یک مثال ترکیبی را خط‌به‌خط می‌بینی.</p>
+<h3>فهرست معرفی: عملگرهای حسابی</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code"># عملگرهای حسابی — هر خط یک عمل
+print(3 + 2)    # +  جمع → 5
+print(10 - 4)   # -  تفریق → 6
+print(3 * 4)    # *  ضرب → 12
+print(7 / 2)    # /  تقسیم اعشاری → 3.5
+print(7 // 2)   # // تقسیم صحیح → 3
+print(7 % 2)    # %  باقی‌مانده → 1
+print(2 ** 3)   # ** توان (۲×۲×۲) → 8</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>/ و //:</strong> اسلش تنها اعشاری می‌دهد؛ دو اسلش قسمت صحیح را نگه می‌دارد.<br>
+<strong>%:</strong> باقی‌مانده برای زوج/فرد و دوره‌ها خیلی به کار می‌آید.</div>
+<h3>مثال 1: یک عبارت ترکیبی</h3>
+<div class="codewrap"><div class="code">a = 7
+b = 2
+print(a + b)
+print(a / b)
+print(a // b)
+print(a % b)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> a برابر ۷.<br>
+<strong>خط ۲:</strong> b برابر ۲.<br>
+<strong>خط ۳:</strong> جمع → ۹.<br>
+<strong>خط ۴:</strong> تقسیم اعشاری → ۳.۵.<br>
+<strong>خط ۵:</strong> تقسیم صحیح → ۳.<br>
+<strong>خط ۶:</strong> باقی‌مانده → ۱.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">print(7 / 0)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> تقسیم بر صفر تعریف نشده.<br><strong>چه می‌بینی؟</strong> ZeroDivisionError<br><strong>درست:</strong> مقسوم‌علیه غیرصفر بگذار</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> هر هفت عملگر را یک‌بار اجرا کنی و نتیجه را از حفظ بگویی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>+ - * حساب آشنا</li>
+<li>/ اعشاری و // صحیح</li>
+<li>% باقی‌مانده</li>
+<li>** توان</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">۲ ** ۵ را حساب کن.</li>
+<li style="margin-bottom:6px">با % بگو ۱۰ زوج است یا فرد.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="02-عملگرها-Operators.html">← عملگرها (Operators)</a><a href="04-عملگرهای-انتسابی-Assignment-Operators.html">عملگرهای انتسابی (Assignment Operators) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

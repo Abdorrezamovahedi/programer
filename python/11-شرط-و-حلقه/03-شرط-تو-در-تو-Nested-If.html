@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شرط تو در تو (Nested If) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: یک if داخل if دیگر بگذاری وقتی تصمیم دو لایه دارد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شرط تو در تو (Nested If)", "description": "این درس: یک if داخل if دیگر بگذاری وقتی تصمیم دو لایه دارد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>شرط تو در تو (Nested If)</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه (9)</h3>
+<a href="01-if-elif-else.html">1. if / elif / else</a>
+<a href="02-شرط-کوتاه-Shorthand-If.html">2. شرط کوتاه (Shorthand If)</a>
+<a href="03-شرط-تو-در-تو-Nested-If.html" class="on">3. شرط تو در تو (Nested If)</a>
+<a href="04-pass-Pass-Statement.html">4. pass (Pass Statement)</a>
+<a href="05-match-Match.html">5. match (Match)</a>
+<a href="06-حلقه-while-While-Loops.html">6. حلقه while (While Loops)</a>
+<a href="07-حلقه-for-For-Loops.html">7. حلقه for (For Loops)</a>
+<a href="08-بازه-Range.html">8. بازه (Range)</a>
+<a href="09-شرط-Where.html">9. شرط Where</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="شرط تو در تو (Nested If)" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>شرط تو در تو (Nested If)</h2>
+<p><strong>هدف این درس:</strong> یک if داخل if دیگر بگذاری وقتی تصمیم دو لایه دارد.</p>
+<div class="note"><strong>پوشه:</strong> شرط و حلقه</div>
+<h3>مفهوم به زبان ساده</h3><p>تو در تو یعنی بعد از برقرار بودن شرط اول، یک شرط دوم هم چک می‌شود. زیاد تودرتو کردن خواندن را سخت می‌کند؛ وقتی می‌توانی با and ساده کن، ساده کن.</p>
+<h3>ساختار</h3><div class="code">if شرط1:
+    if شرط2:
+        ...
+    else:
+        ...
+else:
+    ...</div>
+<p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
+<h3>مثال 1: ورود به بخش ویژه</h3>
+<div class="codewrap"><div class="code">age = 20
+has_ticket = True
+if age &gt;= 18:
+    if has_ticket:
+        print(&quot;ورود به بخش ویژه&quot;)
+    else:
+        print(&quot;بلیط لازم است&quot;)
+else:
+    print(&quot;سن کافی نیست&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۳:</strong> اول سن چک می‌شود.<br>
+<strong>خط ۴–۵:</strong> اگر سن کافی بود، تازه بلیط چک می‌شود.<br>
+<strong>خط ۶–۷:</strong> سن کافی است ولی بلیط نیست.<br>
+<strong>خط ۸–۹:</strong> اگر سن کافی نباشد، اصلاً سراغ بلیط نمی‌رویم.</div>
+<h3>مثال 2: همان منطق با and (خواناتر)</h3>
+<div class="codewrap"><div class="code">age = 20
+has_ticket = True
+if age &gt;= 18 and has_ticket:
+    print(&quot;ورود به بخش ویژه&quot;)
+elif age &gt;= 18:
+    print(&quot;بلیط لازم است&quot;)
+else:
+    print(&quot;سن کافی نیست&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۳:</strong> هر دو شرط با هم برای ورود کامل.<br>
+<strong>خط ۵–۶:</strong> سن کافی است ولی بلیط نه.<br>
+<strong>این مثال:</strong> گاهی می‌توانی بدون تو در تو، همان حرف را روشن‌تر بزنی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">if age &gt;= 18:
+if has_ticket:
+    print(&quot;ok&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> if دوم باید داخل if اول تورفتگی داشته باشد.<br><strong>چه می‌بینی؟</strong> منطق/Syntax غلط<br><strong>درست:</strong> زیر if اول، با تورفتگی if دوم را بنویس</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک مثال تو در تو بنویسی و بعد اگر ممکن است همان را با and ساده‌تر کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>تو در تو برای تصمیم لایه‌ای</li>
+<li>تورفتگی معنا دارد</li>
+<li>اگر می‌شود ساده کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">وضعیت آب‌وهوا و داشتن چتر را با تو در تو مدل کن.</li>
+</ol>
+<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
+<div class="navbtn" style="margin-top:22px"><a href="02-شرط-کوتاه-Shorthand-If.html">← شرط کوتاه (Shorthand If)</a><a href="04-pass-Pass-Statement.html">pass (Pass Statement) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

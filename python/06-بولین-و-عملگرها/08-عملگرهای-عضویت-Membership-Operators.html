@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرهای عضویت (Membership Operators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: همهٔ موارد «عملگرهای عضویت» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرهای عضویت (Membership Operators)", "description": "این درس: همهٔ موارد «عملگرهای عضویت» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرهای عضویت (Membership Operators)</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html" class="on">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرهای عضویت (Membership Operators)" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرهای عضویت (Membership Operators)</h2>
+<p><strong>هدف این درس:</strong> همهٔ موارد «عملگرهای عضویت» را در یک نگاه بشناسی و برای هر کدام یک مثال کوچک ببینی.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس، درسِ معرفی «عملگرهای عضویت» است. اول فهرست کامل را می‌بینی، بعد هر مورد جداگانه با مثال کوتاه. درس‌های بعدی همین موضوع جزئی‌تر می‌شوند و دیگر کل فهرست را تکرار نمی‌کنند.</p>
+<h3>فهرست معرفی: عملگرهای عضویت</h3>
+<p>قبل از جزئیات، همهٔ موارد این مبحث را یک‌جا ببین. بعد هر کدام را جداگانه با مثال می‌بینی.</p>
+<div class="sum"><b>نقشهٔ مبحث</b><ul>
+<li><strong>in / not in</strong> — آیا مقدار داخل یک مجموعه/رشته/فهرست هست؟ (عضویت)</li>
+</ul></div>
+<h3>توضیح دانه‌به‌دانه با مثال</h3>
+<h4>1. in / not in</h4>
+<p>آیا مقدار داخل یک مجموعه/رشته/فهرست هست؟ (عضویت)</p>
+<div class="codewrap"><div class="code">print(&quot;a&quot; in &quot;abc&quot;)  # True
+print(2 in [1, 2, 3])  # True</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>مرور سریع مثال 1</h3>
+<div class="codewrap"><div class="code">print(&quot;a&quot; in &quot;abc&quot;)  # True
+print(2 in [1, 2, 3])  # True</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>in / not in:</strong> آیا مقدار داخل یک مجموعه/رشته/فهرست هست؟ (عضویت)</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code"># استفاده از چیزی که هنوز در فهرست بالا نخوانده‌ای بدون برگشت به معرفی</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> ترتیب یادگیری می‌شکند و مثال‌ها گیج می‌شوند.<br><strong>چه می‌بینی؟</strong> فهم ناقص<br><strong>درست:</strong> اول همین فهرست را یک‌بار با دقت بخوان، بعد درس بعدی</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به فهرست بگویی هر مورد «عملگرهای عضویت» تقریباً چه می‌کند و یک مثالش را اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>این صفحه معرفی کامل «عملگرهای عضویت» است</li>
+<li>درس‌های بعدی جزئیات‌اند نه تکرار کل فهرست</li>
+<li>هر علامت/نوع را با مثال کوچک ببین</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">از فهرست ۳ مورد را خودت در محیط اجرا کن.</li>
+<li style="margin-bottom:6px">یکی را عمداً غلط بنویس و پیام را بخوان.</li>
+<li style="margin-bottom:6px">به درس بعدی همین پوشه برو.</li>
+</ol>
+<p class="rel">درس‌های بعدی همین مبحث را با تکیه بر همین فهرست بخوان؛ دیگر کل لیست تکرار نمی‌شود.</p>
+<div class="navbtn" style="margin-top:22px"><a href="07-عملگرهای-هویتی-Identity-Operators.html">← عملگرهای هویتی (Identity Operators)</a><a href="09-عملگرهای-بیتی-Bitwise-Operators.html">عملگرهای بیتی (Bitwise Operators) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

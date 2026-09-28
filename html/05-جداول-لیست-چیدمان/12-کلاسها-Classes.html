@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کلاس‌ها (Classes) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با class و id به بخش‌ها نام بدهی و اسکلت معنایی صفحه را بشناسی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "کلاس‌ها (Classes)", "description": "این درس: با class و id به بخش‌ها نام بدهی و اسکلت معنایی صفحه را بشناسی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">جداول لیست چیدمان</a><span class="sep">/</span><span>کلاس‌ها (Classes)</span></div><div class="layout"><aside class="side"><h3>جداول لیست چیدمان (16)</h3>
+<a href="01-جداول-Tables.html">1. جداول (Tables)</a>
+<a href="02-مرزهای-جدول.html">2. مرزهای جدول</a>
+<a href="03-اندازههای-جدول.html">3. اندازه‌های جدول</a>
+<a href="04-سربرگهای-جدول.html">4. سربرگ‌های جدول</a>
+<a href="05-فاصله-جدول-Padding-Spacing.html">5. فاصله جدول (Padding & Spacing)</a>
+<a href="06-گروه-ستونها-Colgroup.html">6. گروه ستون‌ها (Colgroup)</a>
+<a href="07-فهرستها-Lists.html">7. فهرست‌ها (Lists)</a>
+<a href="08-فهرست-نامرتب.html">8. فهرست نامرتب</a>
+<a href="09-فهرست-مرتب.html">9. فهرست مرتب</a>
+<a href="10-سایر-فهرستها.html">10. سایر فهرست‌ها</a>
+<a href="11-بلوک-و-درونخطی.html">11. بلوک و درون‌خطی</a>
+<a href="12-کلاسها-Classes.html" class="on">12. کلاس‌ها (Classes)</a>
+<a href="13-شناسهها-Id.html">13. شناسه‌ها (Id)</a>
+<a href="14-چیدمان-Layout.html">14. چیدمان (Layout)</a>
+<a href="15-طراحی-واکنشگرا.html">15. طراحی واکنش‌گرا</a>
+<a href="16-آزمون-جداول-لیست-چیدمان.html">16. آزمون (جداول لیست چیدمان)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="کلاس‌ها (Classes)" data-cat="جداول لیست چیدمان">📌 پین کردن این درس</button>
+<h2>کلاس‌ها (Classes)</h2>
+<p><strong>هدف این درس:</strong> با class و id به بخش‌ها نام بدهی و اسکلت معنایی صفحه را بشناسی.</p>
+<div class="note"><strong>پوشه:</strong> جداول لیست چیدمان &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («جداول لیست چیدمان») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>class برچسبی است که می‌توانی روی چند عنصر بگذاری (برای استایل مشترک). id نام یکتای یک عنصر در صفحه است. بهتر است به‌جای جعبهٔ بی‌معنی، از تگ‌هایی مثل header و main استفاده کنی که نقش بخش را می‌گویند.</p>
+<h3>ساختار (Syntax)</h3><div class="code">class=&quot;card&quot;
+id=&quot;main&quot;
+&lt;header&gt; &lt;main&gt; &lt;footer&gt;</div>
+<h3>مثال 1: اسکلت صفحه</h3>
+<div class="codewrap"><div class="code">&lt;header&gt;&lt;h1&gt;سایت من&lt;/h1&gt;&lt;/header&gt;
+&lt;nav&gt;&lt;a href=&quot;/&quot;&gt;خانه&lt;/a&gt;&lt;/nav&gt;
+&lt;main id=&quot;content&quot;&gt;&lt;p class=&quot;intro&quot;&gt;متن خوش‌آمد&lt;/p&gt;&lt;/main&gt;
+&lt;footer&gt;پایان صفحه&lt;/footer&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>header:</strong> بالای صفحه.<br>
+<strong>nav:</strong> لینک‌های جابه‌جایی.<br>
+<strong>main:</strong> محتوای اصلی.<br>
+<strong>class=intro:</strong> برچسب برای استایل بعدی.<br>
+<strong>id=content:</strong> نام یکتا برای هدف لینک یا اسکریپت.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;div id=&quot;x&quot;&gt;&lt;/div&gt;&lt;div id=&quot;x&quot;&gt;&lt;/div&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> id نباید تکرار شود.<br><strong>چه می‌بینی؟</strong> رفتار لینک و اسکریپت مبهم می‌شود<br><strong>درست:</strong> هر id فقط یک‌بار؛ برای گروه از class استفاده کن</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> اسکلت header / main / footer با یک class روی یک بند بنویسی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>class قابل تکرار</li>
+<li>id یکتا</li>
+<li>تگ معنایی بهتر از div خالی</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">از یک لینک #content به main بپر.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="11-بلوک-و-درونخطی.html">← بلوک و درون‌خطی</a><a href="13-شناسهها-Id.html">شناسه‌ها (Id) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

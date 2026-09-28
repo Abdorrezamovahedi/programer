@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرهای منطقی در شرط — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: and و or و not را داخل if برای تصمیم‌های ترکیبی به کار ببری">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرهای منطقی در شرط", "description": "این درس: and و or و not را داخل if برای تصمیم‌های ترکیبی به کار ببری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرهای منطقی در شرط</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html" class="on">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرهای منطقی در شرط" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرهای منطقی در شرط</h2>
+<p><strong>هدف این درس:</strong> and و or و not را داخل if برای تصمیم‌های ترکیبی به کار ببری.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها &nbsp;|&nbsp; بعد از عملگرهای منطقی — اینجا در شرط واقعی می‌بینی</div>
+<h3>مفهوم به زبان ساده</h3><p>گاهی یک شرط کافی نیست. and یعنی هر دو طرف درست باشند. or یعنی حداقل یکی درست باشد. not نتیجه را برعکس می‌کند.</p>
+<h3>ساختار</h3><div class="code">if شرط1 and شرط2:
+    ...
+if شرط1 or شرط2:
+    ...
+if not شرط:
+    ...</div>
+<p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
+<h3>مثال 1: ورود با سن و کارت</h3>
+<div class="codewrap"><div class="code">age = 20
+has_id = True
+if age &gt;= 18 and has_id:
+    print(&quot;ورود مجاز&quot;)
+else:
+    print(&quot;ورود غیرمجاز&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱–۲:</strong> سن ۲۰ و کارت دارد.<br>
+<strong>خط ۳:</strong> هر دو شرط با and باید True باشند.<br>
+<strong>خط ۴:</strong> چون هر دو درست‌اند، «ورود مجاز» چاپ می‌شود.</div>
+<h3>مثال 2: تخفیف سنی با or</h3>
+<div class="codewrap"><div class="code">age = 70
+if age &lt; 12 or age &gt;= 65:
+    print(&quot;شامل تخفیف&quot;)
+else:
+    print(&quot;بدون تخفیف&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> سن ۷۰.<br>
+<strong>خط ۲:</strong> اگر کودک باشد یا سالمند — or کافی است یکی برقرار باشد.<br>
+<strong>خط ۳:</strong> اینجا سن ≥ ۶۵ است؛ تخفیف اعمال می‌شود.</div>
+<h3>مثال 3: not برای برعکس کردن</h3>
+<div class="codewrap"><div class="code">is_closed = False
+if not is_closed:
+    print(&quot;فروشگاه باز است&quot;)
+else:
+    print(&quot;فروشگاه بسته است&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> فروشگاه بسته نیست.<br>
+<strong>خط ۲:</strong> not False می‌شود True؛ پس شاخهٔ if اجرا می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">if age &gt;= 18 or has_id and is_banned:
+    print(&quot;?&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون پرانتز، اولویت and/or ممکن است خلاف قصد تو باشد.<br><strong>چه می‌بینی؟</strong> منطق غیرمنتظره<br><strong>درست:</strong> if (age &gt;= 18 or has_id) and not is_banned:</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک if با and و یک if با or بنویسی و هر دو را با تغییر مقدارها آزمایش کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>and سخت‌گیر است</li>
+<li>or آسان‌گیر است</li>
+<li>not برعکس می‌کند</li>
+<li>برای وضوح از پرانتز استفاده کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">شرط «نمره بین ۱۰ و ۲۰» را با and بنویس.</li>
+<li style="margin-bottom:6px">عمداً یکی از شرط‌های and را False کن و ببین چه می‌شود.</li>
+</ol>
+<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
+<div class="navbtn" style="margin-top:22px"><a href="10-اولویت-عملگرها-Operator-Precedence.html">← اولویت عملگرها (Operator Precedence)</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

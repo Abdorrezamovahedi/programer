@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختصاص چند مقدار (Assign Multiple Values) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="چند متغیر را یک‌جا مقدار بدهی و بفهمی تعداد دو طرف باید یکی باشد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "اختصاص چند مقدار (Assign Multiple Values)", "description": "چند متغیر را یک‌جا مقدار بدهی و بفهمی تعداد دو طرف باید یکی باشد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">سایر مباحث</a><span class="sep">/</span><span>اختصاص چند مقدار (Assign Multiple Values)</span></div><div class="layout"><aside class="side"><h3>سایر مباحث (21)</h3>
+<a href="01-اختصاص-چند-مقدار-Assign-Multiple-Values.html" class="on">1. اختصاص چند مقدار (Assign Multiple Values)</a>
+<a href="02-آزمون-افزودن-آیتم.html">2. آزمون (افزودن آیتم)</a>
+<a href="03-آزمون-حذف-آیتم.html">3. آزمون (حذف آیتم)</a>
+<a href="04-آرگومان-ها-Arguments.html">4. آرگومان ها (Arguments)</a>
+<a href="05-تاریخ-ها-Dates.html">5. تاریخ ها (Dates)</a>
+<a href="06-عبارات-منظم-RegEx.html">6. عبارات منظم (RegEx)</a>
+<a href="07-None.html">7. None</a>
+<a href="08-ورودی-کاربر-User-Input.html">8. ورودی کاربر (User Input)</a>
+<a href="09-محیط-مجازی-VirtualEnv.html">9. محیط مجازی (VirtualEnv)</a>
+<a href="10-متد-init-init-Method.html">10. متد init (init Method)</a>
+<a href="11-کپسوله-سازی-Encapsulation.html">11. کپسوله سازی (Encapsulation)</a>
+<a href="12-میانگین-میانه-نما-Mean-Median-Mode.html">12. میانگین/میانه/نما (Mean Median Mode)</a>
+<a href="13-انحراف-معیار-Standard-Deviation.html">13. انحراف معیار (Standard Deviation)</a>
+<a href="14-صدک-Percentile.html">14. صدک (Percentile)</a>
+<a href="15-توزیع-داده-Data-Distribution.html">15. توزیع داده (Data Distribution)</a>
+<a href="16-توزیع-نرمال-Normal-Data-Distribution.html">16. توزیع نرمال (Normal Data Distribution)</a>
+<a href="17-نمودار-پراکندگی-Scatter-Plot.html">17. نمودار پراکندگی (Scatter Plot)</a>
+<a href="18-بگینگ-Bootstrap-Aggregation.html">18. بگینگ (Bootstrap Aggregation)</a>
+<a href="19-ایجاد-جدول-Create-Table.html">19. ایجاد جدول (Create Table)</a>
+<a href="20-حذف-جدول-Drop-Table.html">20. حذف جدول (Drop Table)</a>
+<a href="21-پیدا-کردن-Find.html">21. پیدا کردن (Find)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="اختصاص چند مقدار (Assign Multiple Values)" data-cat="سایر مباحث">📌 پین کردن این درس</button>
+<h2>اختصاص چند مقدار (Assign Multiple Values)</h2>
+<p><strong>هدف:</strong> چند متغیر را یک‌جا مقدار بدهی و بفهمی تعداد دو طرف باید یکی باشد.</p>
+<div class="note"><strong>پوشه:</strong> سایر مباحث &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> اولین درس این پوشه.</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «سایر مباحث» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>در پایتون می‌توانی چند نام را با چند مقدار در یک خط مقداردهی کنی. تعداد نام‌ها و مقدارها باید برابر باشد؛ وگرنه ValueError می‌گیری. این کار برای باز کردن تاپل/لیست هم استفاده می‌شود.</p>
+<h3>ساختار</h3><div class="code">a, b, c = 1, 2, 3
+x = y = 0</div>
+<h3>مثال 1: انتساب موازی</h3>
+<div class="codewrap"><div class="code">a, b, c = 10, 20, 30
+print(a)
+print(b)
+print(c)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> سه نام، سه مقدار؛ به ترتیب جفت می‌شوند.<br>
+<strong>خط ۲–۴:</strong> هر متغیر جدا چاپ می‌شود تا ترتیب را ببینی.</div>
+<h3>مثال 2: یک مقدار برای چند نام و جابه‌جایی</h3>
+<div class="codewrap"><div class="code">x = y = 0
+print(x, y)
+m, n = 1, 2
+m, n = n, m
+print(m, n)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> هر دو صفر می‌شوند.<br>
+<strong>خط ۳:</strong> m=1 و n=2.<br>
+<strong>خط ۴:</strong> جابه‌جایی بدون متغیر کمکی: سمت راست اول محاسبه می‌شود.<br>
+<strong>خط ۵:</strong> حالا m=2 و n=1.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">a, b = 1, 2, 3</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> دو نام و سه مقدار؛ پایتون نمی‌داند مال کدام است.<br><strong>چه می‌بینی؟</strong> ValueError: too many values to unpack<br><strong>درست:</strong> a, b, c = 1, 2, 3   یا   a, b = 1, 2</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «اختصاص چند مقدار» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>تعداد نام و مقدار باید یکی باشد.</li>
+<li>x = y = 0 همه را یک مقدار می‌دهد.</li>
+<li>جابه‌جایی با a, b = b, a ممکن است.</li>
+<li>ValueError یعنی تعداد جفت‌ها جور نیست.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">نام و سن را با یک خط انتساب بگیر و چاپ کن.</li>
+<li style="margin-bottom:6px">دو متغیر را جابه‌جا کن و قبل/بعد را چاپ کن.</li>
+<li style="margin-bottom:6px">عمداً تعداد را اشتباه بگذار و ValueError را ببین.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-آزمون-افزودن-آیتم.html">آزمون (افزودن آیتم) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

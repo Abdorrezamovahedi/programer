@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pyplot (Matplotlib Pyplot) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Pyplot (Matplotlib Pyplot)", "description": "بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">علم داده و ML</a><span class="sep">/</span><span>Pyplot (Matplotlib Pyplot)</span></div><div class="layout"><aside class="side"><h3>علم داده و ML (27)</h3>
+<a href="01-آموزش-SciPy-SciPy-Tutorial.html">1. آموزش SciPy (SciPy Tutorial)</a>
+<a href="02-Pyplot-Matplotlib-Pyplot.html" class="on">2. Pyplot (Matplotlib Pyplot)</a>
+<a href="03-نمودارسازی-Matplotlib-Plotting.html">3. نمودارسازی (Matplotlib Plotting)</a>
+<a href="04-نشانگرها-Matplotlib-Markers.html">4. نشانگرها (Matplotlib Markers)</a>
+<a href="05-خط-Matplotlib-Line.html">5. خط (Matplotlib Line)</a>
+<a href="06-برچسب-ها-Matplotlib-Labels.html">6. برچسب ها (Matplotlib Labels)</a>
+<a href="07-شبکه-Matplotlib-Grid.html">7. شبکه (Matplotlib Grid)</a>
+<a href="08-زیرنمودار-Matplotlib-Subplot.html">8. زیرنمودار (Matplotlib Subplot)</a>
+<a href="09-پراکندگی-Matplotlib-Scatter.html">9. پراکندگی (Matplotlib Scatter)</a>
+<a href="10-میله-ای-Matplotlib-Bars.html">10. میله ای (Matplotlib Bars)</a>
+<a href="11-هیستوگرام-Matplotlib-Histograms.html">11. هیستوگرام (Matplotlib Histograms)</a>
+<a href="12-دایره-ای-Matplotlib-Pie-Charts.html">12. دایره ای (Matplotlib Pie Charts)</a>
+<a href="13-یادگیری-ماشین-شروع-Getting-Started.html">13. یادگیری ماشین: شروع (Getting Started)</a>
+<a href="14-رگرسیون-خطی-Linear-Regression.html">14. رگرسیون خطی (Linear Regression)</a>
+<a href="15-رگرسیون-چندجمله-ای-Polynomial-Regression.html">15. رگرسیون چندجمله ای (Polynomial Regression)</a>
+<a href="16-مقیاس-بندی-Scale.html">16. مقیاس بندی (Scale)</a>
+<a href="17-آموزش-آزمون-Train-Test.html">17. آموزش/آزمون (Train/Test)</a>
+<a href="18-درخت-تصمیم-Decision-Tree.html">18. درخت تصمیم (Decision Tree)</a>
+<a href="19-ماتریس-اغتشاش-Confusion-Matrix.html">19. ماتریس اغتشاش (Confusion Matrix)</a>
+<a href="20-خوشه-بندی-سلسله-مراتبی-Hierarchical-Clustering.html">20. خوشه بندی سلسله مراتبی (Hierarchical Clustering)</a>
+<a href="21-رگرسیون-لجستیک-Logistic-Regression.html">21. رگرسیون لجستیک (Logistic Regression)</a>
+<a href="22-جست-وجوی-شبکه-ای-Grid-Search.html">22. جست وجوی شبکه ای (Grid Search)</a>
+<a href="23-پیش-پردازش-داده-های-دسته-ای-Categorical-Data.html">23. پیش پردازش داده های دسته ای (Categorical Data)</a>
+<a href="24-K-means.html">24. K-means</a>
+<a href="25-اعتبارسنجی-متقابل-Cross-Validation.html">25. اعتبارسنجی متقابل (Cross Validation)</a>
+<a href="26-منحنی-AUC-ROC-AUC-ROC-Curve.html">26. منحنی AUC-ROC (AUC-ROC Curve)</a>
+<a href="27-KNN-K-nearest-neighbors.html">27. KNN (K-nearest neighbors)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="Pyplot (Matplotlib Pyplot)" data-cat="علم داده و ML">📌 پین کردن این درس</button>
+<h2>Pyplot (Matplotlib Pyplot)</h2>
+<p><strong>هدف:</strong> بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب کتابخانه دارد.</p>
+<div class="note"><strong>پوشه:</strong> علم داده و ML &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «علم داده و ML».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> list و dict پایه بودند؛ اینجا همان داده با ابزار تخصصی سریع‌تر و بزرگ‌تر پردازش می‌شود.</div>
+<h3>مفهوم</h3><p>NumPy آرایهٔ عددی سریع است؛ Pandas جدول (DataFrame)؛ مدل‌های ML از دادهٔ آموزش الگو می‌گیرند و روی دادهٔ جدید پیش‌بینی می‌کنند. بدون نصب پکیج، کد واقعی اجرا نمی‌شود.</p>
+<h3>ساختار</h3><div class="code"># pip install numpy pandas
+# import numpy as np</div>
+<h3>مثال 1: ایده بدون وابستگی اجباری</h3>
+<div class="codewrap"><div class="code"># مفهوم: میانگین دستی شبیه ایدهٔ آماری
+data = [2, 4, 4, 6]
+mean = sum(data) / len(data)
+print(mean)
+# در NumPy: np.mean(np.array(data))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>data:</strong> نمونهٔ کوچک به‌جای دیتاست بزرگ.<br>
+<strong>mean:</strong> همان ایده‌ای که کتابخانه‌ها بهینه می‌کنند.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">import numpy as np  # بدون نصب</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> پکیج روی سیستم نیست.<br><strong>چه می‌بینی؟</strong> ModuleNotFoundError<br><strong>درست:</strong> pip install numpy  (ترجیحاً داخل venv)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> میانگین یک لیست را با خالص پایتون حساب کنی و بگویی معادلش در NumPy چیست.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>نیاز به نصب</li>
+<li>آرایه/جدول</li>
+<li>آموزش vs پیش‌بینی</li>
+<li>اول مفهوم بعد API</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک لیست نمرات را میانگین بگیر.</li>
+<li style="margin-bottom:6px">تفاوت train و test را یک جمله بنویس.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="01-آموزش-SciPy-SciPy-Tutorial.html">← آموزش SciPy (SciPy Tutorial)</a><a href="03-نمودارسازی-Matplotlib-Plotting.html">نمودارسازی (Matplotlib Plotting) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرجع مجموعه (Set Reference) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با مبحث «مرجع مجموعه» در حد یک آزمایش کوچک آشنا شوی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "مرجع مجموعه (Set Reference)", "description": "این درس: با مبحث «مرجع مجموعه» در حد یک آزمایش کوچک آشنا شوی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">آرایه و شیء</a><span class="sep">/</span><span>مرجع مجموعه (Set Reference)</span></div><div class="layout"><aside class="side"><h3>آرایه و شیء (44)</h3>
+<a href="01-اشیا-Objects.html">1. اشیا (Objects)</a>
+<a href="02-ویژگی-های-شی-Object-Properties.html">2. ویژگی های شی (Object Properties)</a>
+<a href="03-متدهای-شی-Object-Methods.html">3. متدهای شی (Object Methods)</a>
+<a href="04-نمایش-شی-Object-Display.html">4. نمایش شی (Object Display)</a>
+<a href="05-تاریخ-ها-Dates.html">5. تاریخ ها (Dates)</a>
+<a href="06-دریافت-تاریخ-Date-Get.html">6. دریافت تاریخ (Date Get)</a>
+<a href="07-تنظیم-تاریخ-Date-Set.html">7. تنظیم تاریخ (Date Set)</a>
+<a href="08-مرجع-تاریخ-Date-Reference.html">8. مرجع تاریخ (Date Reference)</a>
+<a href="09-آرایه-ها-Arrays.html">9. آرایه ها (Arrays)</a>
+<a href="10-متدهای-آرایه-Array-Methods.html">10. متدهای آرایه (Array Methods)</a>
+<a href="11-جستجوی-آرایه-Array-Search.html">11. جستجوی آرایه (Array Search)</a>
+<a href="12-مرتب-سازی-آرایه-Array-Sort.html">12. مرتب سازی آرایه (Array Sort)</a>
+<a href="13-تکرارهای-آرایه-Array-Iterations.html">13. تکرارهای آرایه (Array Iterations)</a>
+<a href="14-مرجع-آرایه-Array-Reference.html">14. مرجع آرایه (Array Reference)</a>
+<a href="15-مجموعه-ها-Sets.html">15. مجموعه ها (Sets)</a>
+<a href="16-متدهای-مجموعه-Set-Methods.html">16. متدهای مجموعه (Set Methods)</a>
+<a href="17-منطق-مجموعه-Set-Logic.html">17. منطق مجموعه (Set Logic)</a>
+<a href="18-WeakSet-WeakSet.html">18. WeakSet (WeakSet)</a>
+<a href="19-مرجع-مجموعه-Set-Reference.html" class="on">19. مرجع مجموعه (Set Reference)</a>
+<a href="20-نگاشت-ها-Maps.html">20. نگاشت ها (Maps)</a>
+<a href="21-متدهای-نگاشت-Map-Methods.html">21. متدهای نگاشت (Map Methods)</a>
+<a href="22-WeakMap-WeakMap.html">22. WeakMap (WeakMap)</a>
+<a href="23-مرجع-نگاشت-Map-Reference.html">23. مرجع نگاشت (Map Reference)</a>
+<a href="24-اشیای-RegExp-RegExp-Objects.html">24. اشیای RegExp (RegExp Objects)</a>
+<a href="25-شیء-خطا-Error-Object.html">25. شیء خطا (Error Object)</a>
+<a href="26-تاریخچه-History.html">26. تاریخچه (History)</a>
+<a href="27-تعریف-شی-Object-Definitions.html">27. تعریف شی (Object Definitions)</a>
+<a href="28-this-شی-Object-this.html">28. this شی (Object this)</a>
+<a href="29-تکرار-روی-شی-Object-Iterations.html">29. تکرار روی شی (Object Iterations)</a>
+<a href="30-مدیریت-ویژگی-ها-Object-Management.html">30. مدیریت ویژگی ها (Object Management)</a>
+<a href="31-گیرنده-گذارنده-Get-Set.html">31. گیرنده/گذارنده (Get / Set)</a>
+<a href="32-محافظت-از-شی-Object-Protection.html">32. محافظت از شی (Object Protection)</a>
+<a href="33-مرجع-شی-Object-Reference.html">33. مرجع شی (Object Reference)</a>
+<a href="34-تاریخچه-History.html">34. تاریخچه (History)</a>
+<a href="35-JSON-در-برابر-XML-JSON-vs-XML.html">35. JSON در برابر XML (JSON vs XML)</a>
+<a href="36-JSON-Parse-JSON-Parse.html">36. JSON Parse (JSON Parse)</a>
+<a href="37-اشیا-در-JSON-JSON-Objects.html">37. اشیا در JSON (JSON Objects)</a>
+<a href="38-آرایه-ها-در-JSON-JSON-Arrays.html">38. آرایه ها در JSON (JSON Arrays)</a>
+<a href="39-سرور-JSON-JSON-Server.html">39. سرور JSON (JSON Server)</a>
+<a href="40-JSON-و-PHP-JSON-PHP.html">40. JSON و PHP (JSON PHP)</a>
+<a href="41-JSON-و-HTML-JSON-HTML.html">41. JSON و HTML (JSON HTML)</a>
+<a href="42-JSONP-JSON-JSONP.html">42. JSONP (JSON JSONP)</a>
+<a href="43-اشیای-HTML-HTML-Objects.html">43. اشیای HTML (HTML Objects)</a>
+<a href="44-آزمون-آرایه-و-شیء.html">44. آزمون (آرایه و شیء)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="مرجع مجموعه (Set Reference)" data-cat="آرایه و شیء">📌 پین کردن این درس</button>
+<h2>مرجع مجموعه (Set Reference)</h2>
+<p><strong>هدف این درس:</strong> با مبحث «مرجع مجموعه» در حد یک آزمایش کوچک آشنا شوی.</p>
+<div class="note"><strong>پوشه:</strong> آرایه و شیء &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («آرایه و شیء») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس روی «مرجع مجموعه» تمرکز دارد. کوچک شروع کن: یک دستور، یک نتیجهٔ قابل دیدن در کنسول یا صفحه. وقتی درست کار کرد، یک تغییر کوچک بده.</p>
+<h3>مثال 1: شروع امن</h3>
+<div class="codewrap"><div class="code">// مرجع مجموعه
+const topic = &quot;مرجع مجموعه&quot;;
+console.log(topic);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>const:</strong> موضوع را نگه می‌دارد.<br>
+<strong>log:</strong> در کنسول می‌بینی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">چند مفهوم را با هم قاطی کردن بدون تست</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> منبع خطا پیدا نمی‌شود.<br><strong>چه می‌بینی؟</strong> گیجی<br><strong>درست:</strong> هر بار یک ایده</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> مثال را اجرا کنی و خروجی را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>کوچک آزمایش کن</li>
+<li>خروجی را ببین</li>
+<li>خطا را بخوان</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک تغییر کوچک بده و دوباره اجرا کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="18-WeakSet-WeakSet.html">← WeakSet (WeakSet)</a><a href="20-نگاشت-ها-Maps.html">نگاشت ها (Maps) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

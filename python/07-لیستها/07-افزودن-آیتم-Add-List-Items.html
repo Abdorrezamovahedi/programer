@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>افزودن آیتم (Add List Items) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با append و insert و extend به لیست عضو اضافه کنی و فرقشان را بدانی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "افزودن آیتم (Add List Items)", "description": "با append و insert و extend به لیست عضو اضافه کنی و فرقشان را بدانی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">لیست‌ها</a><span class="sep">/</span><span>افزودن آیتم (Add List Items)</span></div><div class="layout"><aside class="side"><h3>لیست‌ها (25)</h3>
+<a href="01-لیست-ها-Lists.html">1. لیست ها (Lists)</a>
+<a href="02-آزمون-لیست-ها.html">2. آزمون (لیست ها)</a>
+<a href="03-دسترسی-به-آیتم-ها-Access-List-Items.html">3. دسترسی به آیتم ها (Access List Items)</a>
+<a href="04-آزمون-دسترسی-به-آیتم-های-لیست.html">4. آزمون (دسترسی به آیتم های لیست)</a>
+<a href="05-تغییر-آیتم-ها-Change-List-Items.html">5. تغییر آیتم ها (Change List Items)</a>
+<a href="06-آزمون-تغییر-آیتم-های-لیست.html">6. آزمون (تغییر آیتم های لیست)</a>
+<a href="07-افزودن-آیتم-Add-List-Items.html" class="on">7. افزودن آیتم (Add List Items)</a>
+<a href="08-حذف-آیتم-Remove-List-Items.html">8. حذف آیتم (Remove List Items)</a>
+<a href="09-حلقه-روی-لیست-Loop-Lists.html">9. حلقه روی لیست (Loop Lists)</a>
+<a href="10-آزمون-حلقه-روی-لیست.html">10. آزمون (حلقه روی لیست)</a>
+<a href="11-درک-لیست-List-Comprehension.html">11. درک لیست (List Comprehension)</a>
+<a href="12-آزمون-درک-لیست.html">12. آزمون (درک لیست)</a>
+<a href="13-مرتب-سازی-لیست-Sort-Lists.html">13. مرتب سازی لیست (Sort Lists)</a>
+<a href="14-آزمون-مرتب-سازی-لیست.html">14. آزمون (مرتب سازی لیست)</a>
+<a href="15-کپی-لیست-Copy-Lists.html">15. کپی لیست (Copy Lists)</a>
+<a href="16-آزمون-کپی-لیست.html">16. آزمون (کپی لیست)</a>
+<a href="17-ادغام-لیست-ها-Join-Lists.html">17. ادغام لیست ها (Join Lists)</a>
+<a href="18-آزمون-ادغام-لیست-ها.html">18. آزمون (ادغام لیست ها)</a>
+<a href="19-متدهای-لیست-List-Methods.html">19. متدهای لیست (List Methods)</a>
+<a href="20-تمرین-لیست-ها-List-Exercises.html">20. تمرین لیست ها (List Exercises)</a>
+<a href="21-آرایه-ها-Arrays.html">21. آرایه ها (Arrays)</a>
+<a href="22-لیست-ها-و-آرایه-ها-Lists-and-Arrays.html">22. لیست ها و آرایه ها (Lists and Arrays)</a>
+<a href="23-لیست-های-پیوندی-Linked-Lists.html">23. لیست های پیوندی (Linked Lists)</a>
+<a href="24-مرجع-متدهای-لیست-List-Methods-Ref.html">24. مرجع متدهای لیست (List Methods Ref)</a>
+<a href="25-حذف-موارد-تکراری-لیست-Remove-List-Duplicates.html">25. حذف موارد تکراری لیست (Remove List Duplicates)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="افزودن آیتم (Add List Items)" data-cat="لیست‌ها">📌 پین کردن این درس</button>
+<h2>افزودن آیتم (Add List Items)</h2>
+<p><strong>هدف:</strong> با append و insert و extend به لیست عضو اضافه کنی و فرقشان را بدانی.</p>
+<div class="note"><strong>درس معرفی «کارهای رایج روی لیست»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>لیست ها (Lists)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> لیست‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «لیست‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «لیست‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>append یک عضو به انتها می‌چسباند. insert در جای مشخص درج می‌کند. extend اعضای یک iterable را یکی‌یکی اضافه می‌کند (نه به صورت یک زیرلیست تکی).</p>
+<h3>ساختار</h3><div class="code">a.append(x)
+a.insert(i, x)
+a.extend(iterable)</div>
+<h3>مثال 1: append و insert</h3>
+<div class="codewrap"><div class="code">a = [1, 2]
+a.append(3)
+print(a)
+a.insert(0, 0)
+print(a)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> ۳ به انتها → [1,2,3].<br>
+<strong>خط ۴:</strong> ۰ در ابتدای لیست درج می‌شود → [0,1,2,3].</div>
+<h3>مثال 2: extend در مقابل append لیست</h3>
+<div class="codewrap"><div class="code">a = [1, 2]
+b = [1, 2]
+a.append([3, 4])
+b.extend([3, 4])
+print(&quot;append:&quot;, a)
+print(&quot;extend:&quot;, b)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۳:</strong> append کل [3,4] را یک عضو می‌کند.<br>
+<strong>خط ۴:</strong> extend دو عضو ۳ و ۴ را جدا اضافه می‌کند.<br>
+<strong>خط ۵–۶:</strong> تفاوت را در خروجی ببین.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">a = [1]
+a.extend(5)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> extend آرگومان باید iterable باشد نه عدد تنها.<br><strong>چه می‌بینی؟</strong> TypeError: &#x27;int&#x27; object is not iterable<br><strong>درست:</strong> a.append(5)  یا  a.extend([5])</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «افزودن آیتم» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>append: یک عضو ته لیست.</li>
+<li>insert: درج در ایندکس.</li>
+<li>extend: باز کردن iterable و اضافه کردن اعضا.</li>
+<li>append([1,2]) با extend([1,2]) فرق دارد.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">لیست خالی بساز و سه عضو append کن.</li>
+<li style="margin-bottom:6px">یک عضو را اول لیست insert کن.</li>
+<li style="margin-bottom:6px">append و extend را با یک لیست دو‌عضوی مقایسه کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="06-آزمون-تغییر-آیتم-های-لیست.html">← آزمون (تغییر آیتم های لیست)</a><a href="08-حذف-آیتم-Remove-List-Items.html">حذف آیتم (Remove List Items) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

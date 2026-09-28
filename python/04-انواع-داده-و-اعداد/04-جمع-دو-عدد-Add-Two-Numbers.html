@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جمع دو عدد (Add Two Numbers) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="نوع مقدار را با type ببینی و فرق int و float و str را بدانی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "جمع دو عدد (Add Two Numbers)", "description": "نوع مقدار را با type ببینی و فرق int و float و str را بدانی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">انواع داده و اعداد</a><span class="sep">/</span><span>جمع دو عدد (Add Two Numbers)</span></div><div class="layout"><aside class="side"><h3>انواع داده و اعداد (4)</h3>
+<a href="01-نوع-داده-ها-Data-Types.html">1. نوع داده ها (Data Types)</a>
+<a href="02-اعداد-Numbers.html">2. اعداد (Numbers)</a>
+<a href="03-تبدیل-نوع-داده-Casting.html">3. تبدیل نوع داده (Casting)</a>
+<a href="04-جمع-دو-عدد-Add-Two-Numbers.html" class="on">4. جمع دو عدد (Add Two Numbers)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="جمع دو عدد (Add Two Numbers)" data-cat="انواع داده و اعداد">📌 پین کردن این درس</button>
+<h2>جمع دو عدد (Add Two Numbers)</h2>
+<p><strong>هدف:</strong> نوع مقدار را با type ببینی و فرق int و float و str را بدانی.</p>
+<div class="note"><strong>پوشه:</strong> انواع داده و اعداد &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «انواع داده و اعداد».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «انواع داده و اعداد» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>هر مقدار نوعی دارد که عملیات مجاز را مشخص می‌کند. type نوع را نشان می‌دهد.</p>
+<h3>ساختار</h3><div class="code">type(value)</div>
+<h3>مثال 1: انواع پایه</h3>
+<div class="codewrap"><div class="code">print(type(10))
+print(type(3.5))
+print(type(&quot;10&quot;))
+print(type(True))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> int<br>
+<strong>خط ۲:</strong> float<br>
+<strong>خط ۳:</strong> str — حتی اگر ظاهر عدد باشد<br>
+<strong>خط ۴:</strong> bool</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">print(&quot;5&quot; + 1)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> str و int با + جمع نمی‌شوند.<br><strong>چه می‌بینی؟</strong> TypeError<br><strong>درست:</strong> print(int(&quot;5&quot;) + 1)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «جمع دو عدد» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>type نوع را می‌گوید.</li>
+<li>ظاهر کافی نیست؛ نوع مهم است.</li>
+<li>عملیات باید با نوع سازگار باشد.</li>
+<li>TypeError یعنی نوع‌ها جور نیستند.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">type چند مقدار مختلف را چاپ کن.</li>
+<li style="margin-bottom:6px">&quot;5&quot; و 5 را مقایسه کن.</li>
+<li style="margin-bottom:6px">TypeError را عمداً بساز.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="03-تبدیل-نوع-داده-Casting.html">← تبدیل نوع داده (Casting)</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

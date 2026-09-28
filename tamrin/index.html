@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تمرین‌های عملی | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="تمرین برنامه‌نویسی با راهنمای مرحله‌ای — بدون پاسخ آماده.">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+<div class="logo"><a href="../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../index.html">خانه</a>
+<a href="../tamrin/index.html" class="active">تمرین</a>
+</nav>
+</header>
+<div class="wrap">
+<div id="exLangSelect">
+<div class="hero"><h1>تمرین‌های عملی</h1><p>راهنما هست؛ جواب آماده نه</p></div>
+<div class="langs" id="tamrinLangs"></div>
+<div style="text-align:center;margin-top:16px"><button type="button" id="btnShowQuiz" class="trybtn" style="padding:8px 16px">آزمون سراسری</button></div>
+</div>
+<div id="exListView" style="display:none;max-width:820px;margin:0 auto">
+  <div class="hero"><h1 id="exListTitle">تمرین‌ها</h1></div>
+  <div class="card" style="padding:14px 16px;margin-bottom:14px">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+      <select id="exFilterLevel" style="background:#161b22;border:1px solid #30363d;color:#e6edf3;border-radius:6px;padding:6px 10px;font-family:inherit"><option value="all">همه سطوح</option><option value="easy">آسان</option><option value="medium">متوسط</option><option value="hard">سخت</option></select>
+      <select id="exFilterTopic" style="background:#161b22;border:1px solid #30363d;color:#e6edf3;border-radius:6px;padding:6px 10px;font-family:inherit"><option value="all">همه موضوعات</option></select>
+    </div>
+    <input type="search" id="exSearch" placeholder="جستجو..." style="width:100%;background:#161b22;border:1px solid #30363d;color:#e6edf3;border-radius:8px;padding:10px 12px;font-family:inherit;direction:rtl">
+  </div>
+  <div id="exListRoot"></div>
+  <button type="button" id="backToExLangs" style="margin-top:14px;background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit">← بازگشت</button>
+</div>
+<div id="exDetailView" style="display:none;max-width:820px;margin:0 auto">
+  <article class="card" id="exDetailCard"></article>
+  <div class="navbtn" style="margin-top:14px"><button type="button" id="backToExList" style="background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:10px 16px;border-radius:8px;cursor:pointer;font-family:inherit">← لیست</button></div>
+</div>
+<div id="quizArea" style="display:none;max-width:720px;margin:16px auto">
+  <div class="hero"><h2>آزمون سراسری</h2></div>
+  <div id="scoreBox" style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px;margin-bottom:14px;text-align:center"></div>
+  <div id="quizRoot"></div>
+  <button type="button" id="backTamrin" style="margin-top:12px;background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit">← بازگشت</button>
+</div>
+</div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/exercises.js"></script>
+</body></html>

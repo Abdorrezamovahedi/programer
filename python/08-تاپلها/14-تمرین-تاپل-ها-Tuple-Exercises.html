@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تمرین تاپل ها (Tuple Exercises) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="تاپل بسازی، بخوانی و بدانی چرا نمی‌توان عضو را عوض کرد">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تمرین تاپل ها (Tuple Exercises)", "description": "تاپل بسازی، بخوانی و بدانی چرا نمی‌توان عضو را عوض کرد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">تاپل‌ها</a><span class="sep">/</span><span>تمرین تاپل ها (Tuple Exercises)</span></div><div class="layout"><aside class="side"><h3>تاپل‌ها (15)</h3>
+<a href="01-تاپل-ها-Tuples.html">1. تاپل ها (Tuples)</a>
+<a href="02-آزمون-تاپل-ها.html">2. آزمون (تاپل ها)</a>
+<a href="03-دسترسی-به-تاپل-ها-Access-Tuples.html">3. دسترسی به تاپل ها (Access Tuples)</a>
+<a href="04-آزمون-دسترسی-به-تاپل-ها.html">4. آزمون (دسترسی به تاپل ها)</a>
+<a href="05-به-روزرسانی-تاپل-ها-Update-Tuples.html">5. به روزرسانی تاپل ها (Update Tuples)</a>
+<a href="06-آزمون-به-روزرسانی-تاپل-ها.html">6. آزمون (به روزرسانی تاپل ها)</a>
+<a href="07-باز-کردن-تاپل-ها-Unpack-Tuples.html">7. باز کردن تاپل ها (Unpack Tuples)</a>
+<a href="08-آزمون-باز-کردن-تاپل-ها.html">8. آزمون (باز کردن تاپل ها)</a>
+<a href="09-حلقه-تاپل-ها-Loop-Tuples.html">9. حلقه تاپل ها (Loop Tuples)</a>
+<a href="10-آزمون-حلقه-تاپل-ها.html">10. آزمون (حلقه تاپل ها)</a>
+<a href="11-ادغام-تاپل-ها-Join-Tuples.html">11. ادغام تاپل ها (Join Tuples)</a>
+<a href="12-آزمون-ادغام-تاپل-ها.html">12. آزمون (ادغام تاپل ها)</a>
+<a href="13-متدهای-تاپل-Tuple-Methods.html">13. متدهای تاپل (Tuple Methods)</a>
+<a href="14-تمرین-تاپل-ها-Tuple-Exercises.html" class="on">14. تمرین تاپل ها (Tuple Exercises)</a>
+<a href="15-مرجع-متدهای-تاپل-Tuple-Methods-Ref.html">15. مرجع متدهای تاپل (Tuple Methods Ref)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تمرین تاپل ها (Tuple Exercises)" data-cat="تاپل‌ها">📌 پین کردن این درس</button>
+<h2>تمرین تاپل ها (Tuple Exercises)</h2>
+<p><strong>هدف:</strong> تاپل بسازی، بخوانی و بدانی چرا نمی‌توان عضو را عوض کرد.</p>
+<div class="note"><strong>پوشه:</strong> تاپل‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «تاپل‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «تاپل‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>تاپل مثل لیست مرتب است ولی بعد از ساخت تغییرناپذیر است. برای دادهٔ ثابت (مختصات، رکورد ثابت) مناسب است و می‌تواند کلید دیکشنری شود.</p>
+<h3>ساختار</h3><div class="code">t = (1, 2, 3)
+t[0]</div>
+<h3>مثال 1: ساخت و خواندن</h3>
+<div class="codewrap"><div class="code">point = (3, 5)
+print(point[0])
+print(len(point))
+a, b = point
+print(a, b)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> تاپل دو‌عضوی.<br>
+<strong>خط ۲:</strong> خواندن مثل لیست.<br>
+<strong>خط ۴:</strong> unpack: a=3 و b=5.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">t = (1, 2)
+t[0] = 9</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> تاپل immutable است.<br><strong>چه می‌بینی؟</strong> TypeError<br><strong>درست:</strong> اگر باید عوض شود از list استفاده کن: t = [1, 2]</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «تمرین تاپل ها» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>() و کاما؛ تک‌عضوی باید (1,) باشد.</li>
+<li>خواندن با ایندکس مجاز است.</li>
+<li>تغییر عضو TypeError است.</li>
+<li>unpack با تعداد مساوی نام.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">مختصات را در تاپل بگذار و x را چاپ کن.</li>
+<li style="margin-bottom:6px">unpack به دو متغیر.</li>
+<li style="margin-bottom:6px">عمداً عضو را عوض کن و TypeError را ببین.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="13-متدهای-تاپل-Tuple-Methods.html">← متدهای تاپل (Tuple Methods)</a><a href="15-مرجع-متدهای-تاپل-Tuple-Methods-Ref.html">مرجع متدهای تاپل (Tuple Methods Ref) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

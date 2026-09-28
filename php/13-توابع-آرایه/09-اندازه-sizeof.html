@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اندازه (sizeof) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع sizeof را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "اندازه (sizeof)", "description": "این درس: نام تابع sizeof را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">توابع آرایه</a><span class="sep">/</span><span>اندازه (sizeof)</span></div><div class="layout"><aside class="side"><h3>توابع آرایه (17)</h3>
+<a href="01-مرتب-سازی-نزولی-انجمنی-arsort.html">1. مرتب سازی نزولی انجمنی (arsort)</a>
+<a href="02-مرتب-سازی-انجمنی-asort.html">2. مرتب سازی انجمنی (asort)</a>
+<a href="03-شمارش-count.html">3. شمارش (count)</a>
+<a href="04-مرتب-سازی-نزولی-بر-اساس-کلید-krsort.html">4. مرتب سازی نزولی بر اساس کلید (krsort)</a>
+<a href="05-مرتب-سازی-بر-اساس-کلید-ksort.html">5. مرتب سازی بر اساس کلید (ksort)</a>
+<a href="06-مرتب-سازی-طبیعی-بدون-حساسیت-natcasesort.html">6. مرتب سازی طبیعی بدون حساسیت (natcasesort)</a>
+<a href="07-مرتب-سازی-طبیعی-natsort.html">7. مرتب سازی طبیعی (natsort)</a>
+<a href="08-مرتب-سازی-نزولی-rsort.html">8. مرتب سازی نزولی (rsort)</a>
+<a href="09-اندازه-sizeof.html" class="on">9. اندازه (sizeof)</a>
+<a href="10-مرتب-سازی-sort.html">10. مرتب سازی (sort)</a>
+<a href="11-uasort-uasort.html">11. uasort (uasort)</a>
+<a href="12-uksort-uksort.html">12. uksort (uksort)</a>
+<a href="13-usort-usort.html">13. usort (usort)</a>
+<a href="14-تعداد-فیلدها-field-count.html">14. تعداد فیلدها (field_count)</a>
+<a href="15-شمارش-هشدار-warning-count.html">15. شمارش هشدار (warning_count)</a>
+<a href="16-count-chars-count-chars.html">16. count_chars (count_chars)</a>
+<a href="17-آزمون-توابع-آرایه.html">17. آزمون (توابع آرایه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="اندازه (sizeof)" data-cat="توابع آرایه">📌 پین</button>
+<h2>اندازه (sizeof)</h2>
+<p><strong>هدف این درس:</strong> نام تابع sizeof را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> توابع آرایه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («توابع آرایه») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">sizeof(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;sizeof&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای sizeof را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="08-مرتب-سازی-نزولی-rsort.html">← قبلی</a><a href="10-مرتب-سازی-sort.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ثابت آرایه (Array Const) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: فرق let و const را با مثال بفهمی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ثابت آرایه (Array Const)", "description": "این درس: فرق let و const را با مثال بفهمی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">شروع JavaScript</a><span class="sep">/</span><span>ثابت آرایه (Array Const)</span></div><div class="layout"><aside class="side"><h3>شروع JavaScript (22)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-معرفی-Introduction.html">2. معرفی (Introduction)</a>
+<a href="03-کجا-قرار-دهیم-Where-To.html">3. کجا قرار دهیم (Where To)</a>
+<a href="04-خروجی-Output.html">4. خروجی (Output)</a>
+<a href="05-ساختار-نوشتاری-Syntax.html">5. ساختار نوشتاری (Syntax)</a>
+<a href="06-دستورات-Statements.html">6. دستورات (Statements)</a>
+<a href="07-توضیحات-Comments.html">7. توضیحات (Comments)</a>
+<a href="08-متغیرها-Variables.html">8. متغیرها (Variables)</a>
+<a href="09-Let-Let.html">9. Let (Let)</a>
+<a href="10-Const-Const.html">10. Const (Const)</a>
+<a href="11-ثابت-آرایه-Array-Const.html" class="on">11. ثابت آرایه (Array Const)</a>
+<a href="12-خطاها-مقدمه-Errors-Intro.html">12. خطاها: مقدمه (Errors Intro)</a>
+<a href="13-دستورات-خطا-Error-Statements.html">13. دستورات خطا (Error Statements)</a>
+<a href="14-حروف-UTF-8-UTF-8-Letters.html">14. حروف UTF-8 (UTF-8 Letters)</a>
+<a href="15-سازنده-ها-Object-Constructors.html">15. سازنده ها (Object Constructors)</a>
+<a href="16-ساختارشکنی-Object-Destructuring.html">16. ساختارشکنی (Object Destructuring)</a>
+<a href="17-DOM-معرفی-DOM-Intro.html">17. DOM معرفی (DOM Intro)</a>
+<a href="18-مقدمه-Web-API-Web-API-Intro.html">18. مقدمه Web API (Web API Intro)</a>
+<a href="19-AJAX-معرفی-AJAX-Intro.html">19. AJAX معرفی (AJAX Intro)</a>
+<a href="20-JSON-معرفی-JSON-Intro.html">20. JSON معرفی (JSON Intro)</a>
+<a href="21-JSON-نحو-JSON-Syntax.html">21. JSON نحو (JSON Syntax)</a>
+<a href="22-آزمون-شروع-JavaScript.html">22. آزمون (شروع JavaScript)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="ثابت آرایه (Array Const)" data-cat="شروع JavaScript">📌 پین کردن این درس</button>
+<h2>ثابت آرایه (Array Const)</h2>
+<p><strong>هدف این درس:</strong> فرق let و const را با مثال بفهمی.</p>
+<div class="note"><strong>پوشه:</strong> شروع JavaScript &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>const جلوی عوض شدن ارجاع را می‌گیرد. let وقتی مقدار باید عوض شود.</p>
+<h3>فهرست معرفی: let و const</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">// اعلام متغیر
+let score = 0;        // قابل تغییر
+score = 10;           // انتساب مجدد OK
+const APP = &quot;Demo&quot;;   // ثابت؛ دوباره APP = ... خطا
+// var قدیمی است — در کد جدید استفاده نکن</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: امتیاز</h3>
+<div class="codewrap"><div class="code">let score = 0;
+score += 5;
+const title = &quot;Game&quot;;
+console.log(score, title);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> شروع از ۰.<br>
+<strong>خط ۲:</strong> ۵ تا اضافه.<br>
+<strong>خط ۳:</strong> نام بازی ثابت.<br>
+<strong>خط ۴:</strong> چاپ هر دو.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">const n = 1;
+n = 2;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> const دوباره انتساب نمی‌پذیرد.<br><strong>چه می‌بینی؟</strong> TypeError<br><strong>درست:</strong> let n = 1; n = 2;</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک let و یک const بسازی و log کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>let تغییر می‌کند</li>
+<li>const ثابت است</li>
+<li>از var پرهیز</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">عمداً const را عوض کن و خطا را بخوان.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="10-Const-Const.html">← Const (Const)</a><a href="12-خطاها-مقدمه-Errors-Intro.html">خطاها: مقدمه (Errors Intro) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

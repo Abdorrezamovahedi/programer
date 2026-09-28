@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJAX و PHP (AJAX PHP) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: از اینترنت یک داده بگیری و در کنسول ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "AJAX و PHP (AJAX PHP)", "description": "این درس: از اینترنت یک داده بگیری و در کنسول ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">ناهمگام و API</a><span class="sep">/</span><span>AJAX و PHP (AJAX PHP)</span></div><div class="layout"><aside class="side"><h3>ناهمگام و API (18)</h3>
+<a href="01-غیرهمزمان-Asynchronous.html">1. غیرهمزمان (Asynchronous)</a>
+<a href="02-پرامیس-ها-Promises.html">2. پرامیس ها (Promises)</a>
+<a href="03-Async-Await-Async-Await.html">3. Async/Await (Async/Await)</a>
+<a href="04-Validation-API-Web-Validation-API.html">4. Validation API (Web Validation API)</a>
+<a href="05-History-API-Web-History-API.html">5. History API (Web History API)</a>
+<a href="06-Web-Storage-API-Web-Storage-API.html">6. Web Storage API (Web Storage API)</a>
+<a href="07-Web-Worker-API-Web-Worker-API.html">7. Web Worker API (Web Worker API)</a>
+<a href="08-Fetch-API-Web-Fetch-API.html">8. Fetch API (Web Fetch API)</a>
+<a href="09-Geolocation-API-Web-Geolocation-API.html">9. Geolocation API (Web Geolocation API)</a>
+<a href="10-AJAX-درخواست-AJAX-Request.html">10. AJAX درخواست (AJAX Request)</a>
+<a href="11-AJAX-پاسخ-AJAX-Response.html">11. AJAX پاسخ (AJAX Response)</a>
+<a href="12-AJAX-فایل-XML-AJAX-XML-File.html">12. AJAX فایل XML (AJAX XML File)</a>
+<a href="13-AJAX-و-PHP-AJAX-PHP.html" class="on">13. AJAX و PHP (AJAX PHP)</a>
+<a href="14-AJAX-و-ASP-AJAX-ASP.html">14. AJAX و ASP (AJAX ASP)</a>
+<a href="15-AJAX-پایگاه-داده-AJAX-Database.html">15. AJAX پایگاه داده (AJAX Database)</a>
+<a href="16-AJAX-کاربردها-AJAX-Applications.html">16. AJAX کاربردها (AJAX Applications)</a>
+<a href="17-AJAX-مثال-ها-AJAX-Examples.html">17. AJAX مثال ها (AJAX Examples)</a>
+<a href="18-آزمون-ناهمگام-و-API.html">18. آزمون (ناهمگام و API)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="AJAX و PHP (AJAX PHP)" data-cat="ناهمگام و API">📌 پین کردن این درس</button>
+<h2>AJAX و PHP (AJAX PHP)</h2>
+<p><strong>هدف این درس:</strong> از اینترنت یک داده بگیری و در کنسول ببینی.</p>
+<div class="note"><strong>پوشه:</strong> ناهمگام و API &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («ناهمگام و API») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>گاهی داده روی سرور دیگری است. fetch درخواست می‌فرستد. چون جواب طول می‌کشد، برنامه صبر می‌کند (await) تا صفحه قفل نشود. این الگو را قدم‌به‌قدم با مثال یاد بگیر.</p>
+<h3>ساختار (Syntax)</h3><div class="code">const res = await fetch(url);
+const data = await res.json();</div>
+<h3>مثال 1: یک درخواست نمونه</h3>
+<div class="codewrap"><div class="code">async function load() {
+  try {
+    const res = await fetch(&quot;https://jsonplaceholder.typicode.com/todos/1&quot;);
+    const data = await res.json();
+    console.log(data.title);
+  } catch (e) {
+    console.error(&quot;خطا&quot;, e);
+  }
+}
+load();</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>async:</strong> اجازه می‌دهد داخل تابع await بنویسی.<br>
+<strong>await fetch:</strong> صبر تا پاسخ شبکه.<br>
+<strong>await res.json():</strong> بدنه را به دادهٔ قابل استفاده تبدیل می‌کند.<br>
+<strong>try/catch:</strong> اگر شبکه قطع باشد برنامه نمی‌ترکد.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">fetch(url).json()</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> اول باید پاسخ برسد؛ json روی خود پاسخ است.<br><strong>چه می‌بینی؟</strong> TypeError<br><strong>درست:</strong> دو مرحله با await</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> همین مثال را با اینترنت اجرا کنی و یک عنوان در کنسول ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>شبکه زمان می‌برد</li>
+<li>await صبر می‌کند</li>
+<li>خطا را مدیریت کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">اگر پاسخ موفق نبود پیام جدا نشان بده.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="12-AJAX-فایل-XML-AJAX-XML-File.html">← AJAX فایل XML (AJAX XML File)</a><a href="14-AJAX-و-ASP-AJAX-ASP.html">AJAX و ASP (AJAX ASP) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

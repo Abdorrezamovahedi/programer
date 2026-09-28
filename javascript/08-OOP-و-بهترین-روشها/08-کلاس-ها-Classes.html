@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کلاس ها (Classes) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با مبحث «کلاس ها» در حد یک آزمایش کوچک آشنا شوی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "کلاس ها (Classes)", "description": "این درس: با مبحث «کلاس ها» در حد یک آزمایش کوچک آشنا شوی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">OOP و بهترین روش‌ها</a><span class="sep">/</span><span>کلاس ها (Classes)</span></div><div class="layout"><aside class="side"><h3>OOP و بهترین روش‌ها (13)</h3>
+<a href="01-کلاس-های-کاراکتری-RegExp-Classes.html">1. کلاس های کاراکتری (RegExp Classes)</a>
+<a href="02-اشکال-زدایی-Debugging.html">2. اشکال زدایی (Debugging)</a>
+<a href="03-حالت-سخت-گیرانه-Strict-Mode.html">3. حالت سخت گیرانه (Strict Mode)</a>
+<a href="04-راهنمای-نگارش-Style-Guide.html">4. راهنمای نگارش (Style Guide)</a>
+<a href="05-بهترین-شیوه-ها-Best-Practices.html">5. بهترین شیوه ها (Best Practices)</a>
+<a href="06-اشتباهات-رایج-Mistakes.html">6. اشتباهات رایج (Mistakes)</a>
+<a href="07-کلمات-رزرو-شده-Keywords-Reserved.html">7. کلمات رزرو شده (Keywords Reserved)</a>
+<a href="08-کلاس-ها-Classes.html" class="on">8. کلاس ها (Classes)</a>
+<a href="09-وراثت-کلاس-Class-Inheritance.html">9. وراثت کلاس (Class Inheritance)</a>
+<a href="10-اعضای-ایستا-Class-Static.html">10. اعضای ایستا (Class Static)</a>
+<a href="11-ماژول-ها-استاتیک-Modules-Static.html">11. ماژول ها: استاتیک (Modules Static)</a>
+<a href="12-ماژول-ها-داینامیک-Modules-Dynamic.html">12. ماژول ها: داینامیک (Modules Dynamic)</a>
+<a href="13-آزمون-OOP-و-بهترین-روشها.html">13. آزمون (OOP و بهترین روش‌ها)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="کلاس ها (Classes)" data-cat="OOP و بهترین روش‌ها">📌 پین کردن این درس</button>
+<h2>کلاس ها (Classes)</h2>
+<p><strong>هدف این درس:</strong> با مبحث «کلاس ها» در حد یک آزمایش کوچک آشنا شوی.</p>
+<div class="note"><strong>پوشه:</strong> OOP و بهترین روش‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («OOP و بهترین روش‌ها») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس روی «کلاس ها» تمرکز دارد. کوچک شروع کن: یک دستور، یک نتیجهٔ قابل دیدن در کنسول یا صفحه. وقتی درست کار کرد، یک تغییر کوچک بده.</p>
+<h3>مثال 1: شروع امن</h3>
+<div class="codewrap"><div class="code">// کلاس ها
+const topic = &quot;کلاس ها&quot;;
+console.log(topic);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>const:</strong> موضوع را نگه می‌دارد.<br>
+<strong>log:</strong> در کنسول می‌بینی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">چند مفهوم را با هم قاطی کردن بدون تست</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> منبع خطا پیدا نمی‌شود.<br><strong>چه می‌بینی؟</strong> گیجی<br><strong>درست:</strong> هر بار یک ایده</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> مثال را اجرا کنی و خروجی را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>کوچک آزمایش کن</li>
+<li>خروجی را ببین</li>
+<li>خطا را بخوان</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک تغییر کوچک بده و دوباره اجرا کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="07-کلمات-رزرو-شده-Keywords-Reserved.html">← کلمات رزرو شده (Keywords Reserved)</a><a href="09-وراثت-کلاس-Class-Inheritance.html">وراثت کلاس (Class Inheritance) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

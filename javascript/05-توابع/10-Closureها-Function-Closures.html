@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closureها (Function Closures) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: یک کار را داخل تابع بگذاری و نتیجه را برگردانی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Closureها (Function Closures)", "description": "این درس: یک کار را داخل تابع بگذاری و نتیجه را برگردانی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">توابع</a><span class="sep">/</span><span>Closureها (Function Closures)</span></div><div class="layout"><aside class="side"><h3>توابع (12)</h3>
+<a href="01-توابع-Functions.html">1. توابع (Functions)</a>
+<a href="02-تعریف-تابع-Function-Definitions.html">2. تعریف تابع (Function Definitions)</a>
+<a href="03-توابع-پیکانی-Function-Arrows.html">3. توابع پیکانی (Function Arrows)</a>
+<a href="04-پارامترهای-تابع-Function-Parameters.html">4. پارامترهای تابع (Function Parameters)</a>
+<a href="05-فراخوانی-تابع-Function-Invocation.html">5. فراخوانی تابع (Function Invocation)</a>
+<a href="06-this-در-تابع-Function-this.html">6. this در تابع (Function this)</a>
+<a href="07-call-Function-Call.html">7. call (Function Call)</a>
+<a href="08-apply-Function-Apply.html">8. apply (Function Apply)</a>
+<a href="09-bind-Function-Bind.html">9. bind (Function Bind)</a>
+<a href="10-Closureها-Function-Closures.html" class="on">10. Closureها (Function Closures)</a>
+<a href="11-کالبک-ها-Callbacks.html">11. کالبک ها (Callbacks)</a>
+<a href="12-آزمون-توابع.html">12. آزمون (توابع)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="Closureها (Function Closures)" data-cat="توابع">📌 پین کردن این درس</button>
+<h2>Closureها (Function Closures)</h2>
+<p><strong>هدف این درس:</strong> یک کار را داخل تابع بگذاری و نتیجه را برگردانی.</p>
+<div class="note"><strong>پوشه:</strong> توابع &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («توابع») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>تابع یک دستورالعمل نام‌دار است. ورودی می‌گیرد، کار می‌کند، و با return نتیجه می‌دهد. اگر return نباشد، نتیجه خالی (undefined) است.</p>
+<h3>ساختار (Syntax)</h3><div class="code">function add(a, b) {
+  return a + b;
+}</div>
+<h3>مثال 1: جمع و ضرب</h3>
+<div class="codewrap"><div class="code">function add(a, b) {
+  return a + b;
+}
+const mul = (a, b) =&gt; a * b;
+console.log(add(2, 3), mul(2, 3));</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function add:</strong> تعریف تابع.<br>
+<strong>return:</strong> خروجی را به بیرون می‌دهد.<br>
+<strong>=&gt;:</strong> شکل کوتاه برای تابع‌های ساده.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">function f(x) { x * 2; }
+console.log(f(3));</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> حساب شده ولی برگردانده نشده.<br><strong>چه می‌بینی؟</strong> undefined<br><strong>درست:</strong> return x * 2;</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> تابعی بنویسی که میانگین دو عدد را برگرداند و آن را صدا بزنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>تابع کار را بسته‌بندی می‌کند</li>
+<li>return نتیجه است</li>
+<li>بدون return نتیجه خالی است</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">تابع بدون ورودی که یک پیام چاپ کند.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="09-bind-Function-Bind.html">← bind (Function Bind)</a><a href="11-کالبک-ها-Callbacks.html">کالبک ها (Callbacks) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

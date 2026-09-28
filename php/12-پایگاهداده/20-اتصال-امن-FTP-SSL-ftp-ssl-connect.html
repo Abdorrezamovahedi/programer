@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اتصال امن FTP/SSL (ftp_ssl_connect) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع ftp_ssl_connect را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "اتصال امن FTP/SSL (ftp_ssl_connect)", "description": "این درس: نام تابع ftp_ssl_connect را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">پایگاه‌داده</a><span class="sep">/</span><span>اتصال امن FTP/SSL (ftp_ssl_connect)</span></div><div class="layout"><aside class="side"><h3>پایگاه‌داده (32)</h3>
+<a href="01-معرفی-MySQL-MySQL-Database.html">1. معرفی MySQL (MySQL Database)</a>
+<a href="02-اتصال-به-MySQL-MySQL-Connect.html">2. اتصال به MySQL (MySQL Connect)</a>
+<a href="03-ایجاد-پایگاه-داده-MySQL-Create-DB.html">3. ایجاد پایگاه داده (MySQL Create DB)</a>
+<a href="04-ایجاد-جدول-MySQL-Create-Table.html">4. ایجاد جدول (MySQL Create Table)</a>
+<a href="05-درج-داده-MySQL-Insert-Data.html">5. درج داده (MySQL Insert Data)</a>
+<a href="06-درج-چندتایی-MySQL-Insert-Multiple.html">6. درج چندتایی (MySQL Insert Multiple)</a>
+<a href="07-دستورات-آماده-MySQL-Prepared.html">7. دستورات آماده (MySQL Prepared)</a>
+<a href="08-انتخاب-داده-MySQL-Select-Data.html">8. انتخاب داده (MySQL Select Data)</a>
+<a href="09-شرط-Where-MySQL-Where.html">9. شرط Where (MySQL Where)</a>
+<a href="10-مرتب-سازی-MySQL-Order-By.html">10. مرتب سازی (MySQL Order By)</a>
+<a href="11-حذف-داده-MySQL-Delete-Data.html">11. حذف داده (MySQL Delete Data)</a>
+<a href="12-به-روزرسانی-داده-MySQL-Update-Data.html">12. به روزرسانی داده (MySQL Update Data)</a>
+<a href="13-محدودیت-نتایج-MySQL-Limit-Data.html">13. محدودیت نتایج (MySQL Limit Data)</a>
+<a href="14-AJAX-و-پایگاه-داده-AJAX-Database.html">14. AJAX و پایگاه داده (AJAX Database)</a>
+<a href="15-حذف-delete.html">15. حذف (delete)</a>
+<a href="16-is-executable-is-executable.html">16. is_executable() (is_executable)</a>
+<a href="17-is-writable-is-writable.html">17. is_writable() (is_writable)</a>
+<a href="18-ftp-connect-ftp-connect.html">18. ftp_connect (ftp_connect)</a>
+<a href="19-ftp-delete-ftp-delete.html">19. ftp_delete (ftp_delete)</a>
+<a href="20-اتصال-امن-FTP-SSL-ftp-ssl-connect.html" class="on">20. اتصال امن FTP/SSL (ftp_ssl_connect)</a>
+<a href="21-اتصال-قطع-شده؟-connection-aborted.html">21. اتصال قطع شده؟ (connection_aborted)</a>
+<a href="22-وضعیت-اتصال-connection-status.html">22. وضعیت اتصال (connection_status)</a>
+<a href="23-مهلت-اتصال-connection-timeout.html">23. مهلت اتصال (connection_timeout)</a>
+<a href="24-اتصال-connect.html">24. اتصال (connect)</a>
+<a href="25-کد-خطای-اتصال-connect-errno.html">25. کد خطای اتصال (connect_errno)</a>
+<a href="26-متن-خطای-اتصال-connect-error.html">26. متن خطای اتصال (connect_error)</a>
+<a href="27-insert-id-insert-id.html">27. insert_id (insert_id)</a>
+<a href="28-real-connect-real-connect.html">28. real_connect (real_connect)</a>
+<a href="29-انتخاب-دیتابیس-select-db.html">29. انتخاب دیتابیس (select_db)</a>
+<a href="30-stat-mysqli-stat.html">30. stat (mysqli_stat)</a>
+<a href="31-is-countable-is-countable.html">31. is_countable (is_countable)</a>
+<a href="32-آزمون-پایگاهداده.html">32. آزمون (پایگاه‌داده)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="اتصال امن FTP/SSL (ftp_ssl_connect)" data-cat="پایگاه‌داده">📌 پین</button>
+<h2>اتصال امن FTP/SSL (ftp_ssl_connect)</h2>
+<p><strong>هدف این درس:</strong> نام تابع ftp_ssl_connect را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> پایگاه‌داده &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («پایگاه‌داده») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">ftp_ssl_connect(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;ftp_ssl_connect&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای ftp_ssl_connect را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="19-ftp-delete-ftp-delete.html">← قبلی</a><a href="21-اتصال-قطع-شده؟-connection-aborted.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

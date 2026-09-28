@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تراز آیتم شبکه (Grid Item Align) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: صفحه را به ستون‌های منظم تقسیم کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تراز آیتم شبکه (Grid Item Align)", "description": "این درس: صفحه را به ستون‌های منظم تقسیم کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">چیدمان پایه</a><span class="sep">/</span><span>تراز آیتم شبکه (Grid Item Align)</span></div><div class="layout"><aside class="side"><h3>چیدمان پایه (19)</h3>
+<a href="01-تراز-جدول-Table-Alignment.html">1. تراز جدول (Table Alignment)</a>
+<a href="02-نمایش-Display.html">2. نمایش (Display)</a>
+<a href="03-موقعیت-دهی-Position.html">3. موقعیت دهی (Position)</a>
+<a href="04-شاخص-Z-Z-index.html">4. شاخص Z (Z-index)</a>
+<a href="05-سرریز-Overflow.html">5. سرریز (Overflow)</a>
+<a href="06-شناور-Float.html">6. شناور (Float)</a>
+<a href="07-نمونه-های-شناور-Float-Examples.html">7. نمونه های شناور (Float Examples)</a>
+<a href="08-نمایش-خطی-بلوک-Inline-block.html">8. نمایش خطی-بلوک (Inline-block)</a>
+<a href="09-تراز-کردن-Align.html">9. تراز کردن (Align)</a>
+<a href="10-ترکیب-کننده-ها-Combinators.html">10. ترکیب کننده ها (Combinators)</a>
+<a href="11-شبه-کلاس-ها-Pseudo-classes.html">11. شبه کلاس ها (Pseudo-classes)</a>
+<a href="12-شفافیت-Opacity.html">12. شفافیت (Opacity)</a>
+<a href="13-واحدها-Units.html">13. واحدها (Units)</a>
+<a href="14-ویژگی-important.html">14. ویژگی !important</a>
+<a href="15-تراز-مرکز-تصویر-Image-Centering.html">15. تراز مرکز تصویر (Image Centering)</a>
+<a href="16-ویژگی-object-position.html">16. ویژگی object-position</a>
+<a href="17-تراز-شبکه-Grid-Align.html">17. تراز شبکه (Grid Align)</a>
+<a href="18-تراز-آیتم-شبکه-Grid-Item-Align.html" class="on">18. تراز آیتم شبکه (Grid Item Align)</a>
+<a href="19-آزمون-چیدمان-پایه.html">19. آزمون (چیدمان پایه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تراز آیتم شبکه (Grid Item Align)" data-cat="چیدمان پایه">📌 پین کردن این درس</button>
+<h2>تراز آیتم شبکه (Grid Item Align)</h2>
+<p><strong>هدف این درس:</strong> صفحه را به ستون‌های منظم تقسیم کنی.</p>
+<div class="note"><strong>درس معرفی «چیدمان Flex و Grid»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>فلکس واکنش گرا (Flex Responsive)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> چیدمان پایه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («چیدمان پایه») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>گرید برای چیدمان دوبعدی است. می‌گویی چند ستون و با چه نسبتی. در موبایل معمولاً ستون‌ها را یکی می‌کنی.</p>
+<h3>ساختار (Syntax)</h3><div class="code">display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;</div>
+<h3>مثال 1: دو ستون واکنش‌گرا</h3>
+<div class="codewrap"><div class="code">.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 600px) {
+  .layout { grid-template-columns: 1fr; }
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>1fr 1fr:</strong> دو ستون هم‌عرض.<br>
+<strong>gap:</strong> فاصله شبکه.<br>
+<strong>media:</strong> زیر ۶۰۰ پیکسل یک ستون.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">فقط کل صفحه را کوچک کردن برای موبایل</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> متن و دکمه‌ها غیرقابل استفاده می‌شوند.<br><strong>چه می‌بینی؟</strong> تجربهٔ موبایل بد<br><strong>درست:</strong> چیدمان را با media عوض کن</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> در عرض کم مرورگر، دو ستون به یک ستون تبدیل شود.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>گرید برای شبکه</li>
+<li>fr سهم انعطاف</li>
+<li>media برای موبایل</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">سه ستون برای صفحهٔ عریض تعریف کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="17-تراز-شبکه-Grid-Align.html">← تراز شبکه (Grid Align)</a><a href="19-آزمون-چیدمان-پایه.html">آزمون (چیدمان پایه) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

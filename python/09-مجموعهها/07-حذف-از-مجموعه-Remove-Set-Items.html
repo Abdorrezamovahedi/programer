@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حذف از مجموعه (Remove Set Items) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="مجموعهٔ بدون تکرار بسازی و عضویت و اتحاد را امتحان کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "حذف از مجموعه (Remove Set Items)", "description": "مجموعهٔ بدون تکرار بسازی و عضویت و اتحاد را امتحان کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">مجموعه‌ها</a><span class="sep">/</span><span>حذف از مجموعه (Remove Set Items)</span></div><div class="layout"><aside class="side"><h3>مجموعه‌ها (16)</h3>
+<a href="01-مجموعه-ها-Sets.html">1. مجموعه ها (Sets)</a>
+<a href="02-آزمون-مجموعه-ها.html">2. آزمون (مجموعه ها)</a>
+<a href="03-دسترسی-به-مجموعه-Access-Set-Items.html">3. دسترسی به مجموعه (Access Set Items)</a>
+<a href="04-آزمون-دسترسی-به-مجموعه.html">4. آزمون (دسترسی به مجموعه)</a>
+<a href="05-افزودن-به-مجموعه-Add-Set-Items.html">5. افزودن به مجموعه (Add Set Items)</a>
+<a href="06-آزمون-افزودن-به-مجموعه.html">6. آزمون (افزودن به مجموعه)</a>
+<a href="07-حذف-از-مجموعه-Remove-Set-Items.html" class="on">7. حذف از مجموعه (Remove Set Items)</a>
+<a href="08-آزمون-حذف-از-مجموعه.html">8. آزمون (حذف از مجموعه)</a>
+<a href="09-حلقه-مجموعه-ها-Loop-Sets.html">9. حلقه مجموعه ها (Loop Sets)</a>
+<a href="10-آزمون-حلقه-مجموعه-ها.html">10. آزمون (حلقه مجموعه ها)</a>
+<a href="11-ادغام-مجموعه-ها-Join-Sets.html">11. ادغام مجموعه ها (Join Sets)</a>
+<a href="12-آزمون-ادغام-مجموعه-ها.html">12. آزمون (ادغام مجموعه ها)</a>
+<a href="13-فروزن-ست-Frozenset.html">13. فروزن ست (Frozenset)</a>
+<a href="14-متدهای-مجموعه-Set-Methods.html">14. متدهای مجموعه (Set Methods)</a>
+<a href="15-تمرین-مجموعه-ها-Set-Exercises.html">15. تمرین مجموعه ها (Set Exercises)</a>
+<a href="16-مرجع-متدهای-مجموعه-Set-Methods-Ref.html">16. مرجع متدهای مجموعه (Set Methods Ref)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="حذف از مجموعه (Remove Set Items)" data-cat="مجموعه‌ها">📌 پین کردن این درس</button>
+<h2>حذف از مجموعه (Remove Set Items)</h2>
+<p><strong>هدف:</strong> مجموعهٔ بدون تکرار بسازی و عضویت و اتحاد را امتحان کنی.</p>
+<div class="note"><strong>پوشه:</strong> مجموعه‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «مجموعه‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «مجموعه‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>set اعضای یکتا دارد و برای تست عضویت سریع و حذف تکراری‌ها خوب است. ایندکس عددی ندارد.</p>
+<h3>ساختار</h3><div class="code">s = {1, 2, 3}
+s.add(4)
+1 in s</div>
+<h3>مثال 1: یکتایی و add</h3>
+<div class="codewrap"><div class="code">s = {1, 2, 2, 3}
+print(s)
+s.add(4)
+print(4 in s)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱–۲:</strong> تکراری ۲ حذف می‌شود.<br>
+<strong>خط ۳:</strong> ۴ اضافه می‌شود.<br>
+<strong>خط ۴:</strong> عضویت True.</div>
+<h3>مثال 2: اتحاد و اشتراک</h3>
+<div class="codewrap"><div class="code">a = {1, 2, 3}
+b = {3, 4}
+print(a | b)
+print(a &amp; b)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۳:</strong> اتحاد.<br>
+<strong>خط ۴:</strong> اشتراک فقط ۳.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">s = {1, 2}
+print(s[0])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> set ایندکس ندارد.<br><strong>چه می‌بینی؟</strong> TypeError: &#x27;set&#x27; object is not subscriptable<br><strong>درست:</strong> از in یا حلقه for استفاده کن نه s[i].</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «حذف از مجموعه» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>تکراری‌ها حذف می‌شوند.</li>
+<li>ایندکس ندارد.</li>
+<li>add برای اضافه.</li>
+<li>| اتحاد و &amp; اشتراک.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">از یک لیست با تکرار set بساز.</li>
+<li style="margin-bottom:6px">عضویت یک عدد را چک کن.</li>
+<li style="margin-bottom:6px">اتحاد دو set را چاپ کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="06-آزمون-افزودن-به-مجموعه.html">← آزمون (افزودن به مجموعه)</a><a href="08-آزمون-حذف-از-مجموعه.html">آزمون (حذف از مجموعه) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

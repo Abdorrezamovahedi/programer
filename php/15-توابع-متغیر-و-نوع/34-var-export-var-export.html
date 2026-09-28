@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>var_export (var_export) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع var_export را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "var_export (var_export)", "description": "این درس: نام تابع var_export را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header><div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav></header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">توابع متغیر و نوع</a><span class="sep">/</span><span>var_export (var_export)</span></div><div class="layout"><aside class="side"><h3>توابع متغیر و نوع (35)</h3>
+<a href="01-is-dir-is-dir.html">1. is_dir() (is_dir)</a>
+<a href="02-is-link-is-link.html">2. is_link() (is_link)</a>
+<a href="03-is-readable-is-readable.html">3. is_readable() (is_readable)</a>
+<a href="04-is-writeable-is-writeable.html">4. is_writeable() (is_writeable)</a>
+<a href="05-خالی-empty.html">5. خالی (empty)</a>
+<a href="06-تنظیم-شده-مقداردهی-شده-isset.html">6. تنظیم شده/مقداردهی شده (isset)</a>
+<a href="07-متناهی-است؟-is-finite.html">7. متناهی است؟ (is_finite)</a>
+<a href="08-بی-نهایت-است؟-is-infinite.html">8. بی نهایت است؟ (is_infinite)</a>
+<a href="09-NaN-است؟-is-nan.html">9. NaN است؟ (is_nan)</a>
+<a href="10-debug-zval-dump-debug-zval-dump.html">10. debug_zval_dump (debug_zval_dump)</a>
+<a href="11-empty-empty.html">11. empty (empty)</a>
+<a href="12-floatval-floatval.html">12. floatval (floatval)</a>
+<a href="13-intval-intval.html">13. intval (intval)</a>
+<a href="14-is-bool-is-bool.html">14. is_bool (is_bool)</a>
+<a href="15-is-callable-is-callable.html">15. is_callable (is_callable)</a>
+<a href="16-is-double-is-double.html">16. is_double (is_double)</a>
+<a href="17-is-float-is-float.html">17. is_float (is_float)</a>
+<a href="18-is-int-is-int.html">18. is_int (is_int)</a>
+<a href="19-is-integer-is-integer.html">19. is_integer (is_integer)</a>
+<a href="20-is-iterable-is-iterable.html">20. is_iterable (is_iterable)</a>
+<a href="21-is-long-is-long.html">21. is_long (is_long)</a>
+<a href="22-is-null-is-null.html">22. is_null (is_null)</a>
+<a href="23-is-numeric-is-numeric.html">23. is_numeric (is_numeric)</a>
+<a href="24-is-real-is-real.html">24. is_real (is_real)</a>
+<a href="25-is-resource-is-resource.html">25. is_resource (is_resource)</a>
+<a href="26-is-scalar-is-scalar.html">26. is_scalar (is_scalar)</a>
+<a href="27-isset-isset.html">27. isset (isset)</a>
+<a href="28-serialize-serialize.html">28. serialize (serialize)</a>
+<a href="29-settype-settype.html">29. settype (settype)</a>
+<a href="30-strval-strval.html">30. strval (strval)</a>
+<a href="31-unserialize-unserialize.html">31. unserialize (unserialize)</a>
+<a href="32-unset-unset.html">32. unset (unset)</a>
+<a href="33-var-dump-var-dump.html">33. var_dump (var_dump)</a>
+<a href="34-var-export-var-export.html" class="on">34. var_export (var_export)</a>
+<a href="35-آزمون-توابع-متغیر-و-نوع.html">35. آزمون (توابع متغیر و نوع)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="var_export (var_export)" data-cat="توابع متغیر و نوع">📌 پین</button>
+<h2>var_export (var_export)</h2>
+<p><strong>هدف این درس:</strong> نام تابع var_export را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> توابع متغیر و نوع &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («توابع متغیر و نوع») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">var_export(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;var_export&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای var_export را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="33-var-dump-var-dump.html">← قبلی</a><a href="35-آزمون-توابع-متغیر-و-نوع.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>پین</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لانبدا (Lambda) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با lambda یک تابع یک‌خطی کوتاه برای map/sorted بنویسی و بدانی جایگزین def کامل نیست">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "لانبدا (Lambda)", "description": "با lambda یک تابع یک‌خطی کوتاه برای map/sorted بنویسی و بدانی جایگزین def کامل نیست", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">توابع</a><span class="sep">/</span><span>لانبدا (Lambda)</span></div><div class="layout"><aside class="side"><h3>توابع (6)</h3>
+<a href="01-توابع-Functions.html">1. توابع (Functions)</a>
+<a href="02-args-kwargs.html">2. *args / **kwargs</a>
+<a href="03-حوزه-دسترسی-Scope.html">3. حوزه دسترسی (Scope)</a>
+<a href="04-لانبدا-Lambda.html" class="on">4. لانبدا (Lambda)</a>
+<a href="05-بازگشت-Recursion.html">5. بازگشت (Recursion)</a>
+<a href="06-توابع-درون-ساخته-Built-in-Functions.html">6. توابع درون ساخته (Built-in Functions)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="لانبدا (Lambda)" data-cat="توابع">📌 پین کردن این درس</button>
+<h2>لانبدا (Lambda)</h2>
+<p><strong>هدف:</strong> با lambda یک تابع یک‌خطی کوتاه برای map/sorted بنویسی و بدانی جایگزین def کامل نیست.</p>
+<div class="note"><strong>پوشه:</strong> توابع &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «توابع».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> همان تابع که با def نوشتی؛ اینجا فقط برای کار کوتاه درجا.</div>
+<h3>مفهوم</h3><p>lambda آرگومان می‌گیرد و یک عبارت برمی‌گرداند. برای توابع خیلی کوچک درجا مناسب است.</p>
+<h3>ساختار</h3><div class="code">lambda x: x * 2</div>
+<h3>مثال 1: با map و sorted</h3>
+<div class="codewrap"><div class="code">nums = [1, 2, 3]
+print(list(map(lambda n: n * 2, nums)))
+words = [&quot;bb&quot;, &quot;a&quot;, &quot;ccc&quot;]
+print(sorted(words, key=lambda w: len(w)))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>map+lambda:</strong> هر عضو دو برابر.<br>
+<strong>key=lambda:</strong> مرتب‌سازی بر اساس طول.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">lambda x: y = x  # assignment</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدنهٔ lambda فقط یک عبارت است نه بلوک با =.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> def با return یا عبارت خالص</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> با lambda لیست اعداد را یک واحد افزایش بده و لیست کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>یک عبارت</li>
+<li>مناسب map/filter/sorted</li>
+<li>برای منطق طولانی def بهتر است</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">sorted با key طول.</li>
+<li style="margin-bottom:6px">lambda دو آرگومانی برای جمع.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="03-حوزه-دسترسی-Scope.html">← حوزه دسترسی (Scope)</a><a href="05-بازگشت-Recursion.html">بازگشت (Recursion) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

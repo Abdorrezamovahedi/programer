@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تبدیل نوع داده (Casting) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="بین int و str و float آگاهانه تبدیل کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تبدیل نوع داده (Casting)", "description": "بین int و str و float آگاهانه تبدیل کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">انواع داده و اعداد</a><span class="sep">/</span><span>تبدیل نوع داده (Casting)</span></div><div class="layout"><aside class="side"><h3>انواع داده و اعداد (4)</h3>
+<a href="01-نوع-داده-ها-Data-Types.html">1. نوع داده ها (Data Types)</a>
+<a href="02-اعداد-Numbers.html">2. اعداد (Numbers)</a>
+<a href="03-تبدیل-نوع-داده-Casting.html" class="on">3. تبدیل نوع داده (Casting)</a>
+<a href="04-جمع-دو-عدد-Add-Two-Numbers.html">4. جمع دو عدد (Add Two Numbers)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تبدیل نوع داده (Casting)" data-cat="انواع داده و اعداد">📌 پین کردن این درس</button>
+<h2>تبدیل نوع داده (Casting)</h2>
+<p><strong>هدف:</strong> بین int و str و float آگاهانه تبدیل کنی.</p>
+<div class="note"><strong>درس معرفی «انواع داده»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>نوع داده ها (Data Types)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> انواع داده و اعداد &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «انواع داده و اعداد».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «انواع داده و اعداد» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>input همیشه رشته می‌دهد. برای حساب باید int یا float کنی. str عدد را به متن تبدیل می‌کند تا بشود به رشته چسباند.</p>
+<h3>ساختار</h3><div class="code">int(x)  float(x)  str(x)</div>
+<h3>مثال 1: رشته به عدد</h3>
+<div class="codewrap"><div class="code">text = &quot;42&quot;
+n = int(text)
+print(n + 8)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> هنوز str است.<br>
+<strong>خط ۲:</strong> تبدیل به int.<br>
+<strong>خط ۳:</strong> حالا جمع عددی ممکن است → ۵۰.</div>
+<h3>مثال 2: عدد به رشته</h3>
+<div class="codewrap"><div class="code">age = 20
+print(&quot;سن: &quot; + str(age))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> بدون str، + خطا می‌دهد.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">int(&quot;۳.۱۴&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> int رشتهٔ اعشاری را مستقیم قبول نمی‌کند (و ارقام فارسی هم جداگانه مشکل‌سازند).<br><strong>چه می‌بینی؟</strong> ValueError<br><strong>درست:</strong> int(float(&quot;3.14&quot;))  با ارقام لاتین</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «تبدیل نوع داده» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>int/float/str برای تبدیل.</li>
+<li>input → str.</li>
+<li>تبدیل نامعتبر ValueError.</li>
+<li>int از float قسمت صحیح را برمی‌دارد.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">رشتهٔ عددی را int کن و جمع بزن.</li>
+<li style="margin-bottom:6px">عدد را str کن و به جمله بچسبان.</li>
+<li style="margin-bottom:6px">عمداً int روی متن غیرعددی و خطا را ببین.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="02-اعداد-Numbers.html">← اعداد (Numbers)</a><a href="04-جمع-دو-عدد-Add-Two-Numbers.html">جمع دو عدد (Add Two Numbers) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

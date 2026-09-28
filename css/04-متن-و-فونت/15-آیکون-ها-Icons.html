@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آیکون ها (Icons) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: ویژگی مربوط به «آیکون ها» را روی یک بخش صفحه آزمایش کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "آیکون ها (Icons)", "description": "این درس: ویژگی مربوط به «آیکون ها» را روی یک بخش صفحه آزمایش کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">متن و فونت</a><span class="sep">/</span><span>آیکون ها (Icons)</span></div><div class="layout"><aside class="side"><h3>متن و فونت (18)</h3>
+<a href="01-متن-Text.html">1. متن (Text)</a>
+<a href="02-تراز-متن-Text-Alignment.html">2. تراز متن (Text Alignment)</a>
+<a href="03-تزئین-متن-Text-Decoration.html">3. تزئین متن (Text Decoration)</a>
+<a href="04-تبدیل-متن-Text-Transformation.html">4. تبدیل متن (Text Transformation)</a>
+<a href="05-فاصله-متن-Text-Spacing.html">5. فاصله متن (Text Spacing)</a>
+<a href="06-سایه-متن-Text-Shadow.html">6. سایه متن (Text Shadow)</a>
+<a href="07-فونت-ها-Fonts.html">7. فونت ها (Fonts)</a>
+<a href="08-فونت-های-وب-سیف-Web-Safe-Fonts.html">8. فونت های وب سیف (Web Safe Fonts)</a>
+<a href="09-جایگزین-های-فونت-Font-Fallbacks.html">9. جایگزین های فونت (Font Fallbacks)</a>
+<a href="10-سبک-فونت-Font-Style.html">10. سبک فونت (Font Style)</a>
+<a href="11-اندازه-فونت-Font-Size.html">11. اندازه فونت (Font Size)</a>
+<a href="12-فونت-گوگل-Google-Fonts.html">12. فونت گوگل (Google Fonts)</a>
+<a href="13-ترکیب-فونت-ها-Font-Pairings.html">13. ترکیب فونت ها (Font Pairings)</a>
+<a href="14-کوتاه-نویسی-فونت-Font-Shorthand.html">14. کوتاه نویسی فونت (Font Shorthand)</a>
+<a href="15-آیکون-ها-Icons.html" class="on">15. آیکون ها (Icons)</a>
+<a href="16-افکت-های-متن-Text-Effects.html">16. افکت های متن (Text Effects)</a>
+<a href="17-فونت-های-سفارشی-Custom-Fonts.html">17. فونت های سفارشی (Custom Fonts)</a>
+<a href="18-آزمون-متن-و-فونت.html">18. آزمون (متن و فونت)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="آیکون ها (Icons)" data-cat="متن و فونت">📌 پین کردن این درس</button>
+<h2>آیکون ها (Icons)</h2>
+<p><strong>هدف این درس:</strong> ویژگی مربوط به «آیکون ها» را روی یک بخش صفحه آزمایش کنی.</p>
+<div class="note"><strong>پوشه:</strong> متن و فونت &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («متن و فونت») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>در این درس فقط «آیکون ها» را تمرین می‌کنی. یک کلاس بساز، مقدار را عوض کن، نتیجه را در مرورگر ببین. ابزار توسعه‌دهنده (F12) بهترین دوست توست.</p>
+<h3>ساختار (Syntax)</h3><div class="code">selector { property: value; }</div>
+<h3>مثال 1: جعبهٔ آزمایش</h3>
+<div class="codewrap"><div class="code">.demo {
+  /* آیکون ها */
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>.demo:</strong> هدف تمرین.<br>
+<strong>padding:</strong> فاصله داخلی قابل‌دیدن.<br>
+<strong>radius:</strong> گوشه گرد.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">تغییر ده ویژگی با هم</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> نمی‌فهمی کدام اثر داشته.<br><strong>چه می‌بینی؟</strong> گیج شدن<br><strong>درست:</strong> هر بار یک ویژگی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> کلاس demo را به یک عنصر بدهی و اثر را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>یک تغییر در هر آزمایش</li>
+<li>در مرورگر چک کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک ویژگی دیگر اضافه کن و F5 بزن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="14-کوتاه-نویسی-فونت-Font-Shorthand.html">← کوتاه نویسی فونت (Font Shorthand)</a><a href="16-افکت-های-متن-Text-Effects.html">افکت های متن (Text Effects) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

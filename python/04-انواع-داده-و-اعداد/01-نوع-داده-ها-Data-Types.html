@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نوع داده ها (Data Types) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: همهٔ نوع‌های پرکاربرد را در یک نگاه بشناسی و با type() چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "نوع داده ها (Data Types)", "description": "این درس: همهٔ نوع‌های پرکاربرد را در یک نگاه بشناسی و با type() چک کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">انواع داده و اعداد</a><span class="sep">/</span><span>نوع داده ها (Data Types)</span></div><div class="layout"><aside class="side"><h3>انواع داده و اعداد (4)</h3>
+<a href="01-نوع-داده-ها-Data-Types.html" class="on">1. نوع داده ها (Data Types)</a>
+<a href="02-اعداد-Numbers.html">2. اعداد (Numbers)</a>
+<a href="03-تبدیل-نوع-داده-Casting.html">3. تبدیل نوع داده (Casting)</a>
+<a href="04-جمع-دو-عدد-Add-Two-Numbers.html">4. جمع دو عدد (Add Two Numbers)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="نوع داده ها (Data Types)" data-cat="انواع داده و اعداد">📌 پین کردن این درس</button>
+<h2>نوع داده ها (Data Types)</h2>
+<p><strong>هدف این درس:</strong> همهٔ نوع‌های پرکاربرد را در یک نگاه بشناسی و با type() چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> انواع داده و اعداد &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>هر مقدار در پایتون یک «نوع» دارد. نوع مشخص می‌کند چه کارهایی روی آن مجاز است. در فهرست زیر، هر نوع با یک خط کد و کامنت معرفی شده است.</p>
+<h3>فهرست معرفی: انواع داده</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code"># انواع دادهٔ پایه در پایتون — هر خط یک نوع
+n = 10                 # int: عدد صحیح (بدون اعشار)
+price = 3.5            # float: عدد اعشاری
+name = &quot;سارا&quot;          # str: متن (رشته) داخل " (دابل‌کوتیشن)
+ok = True              # bool: فقط True یا False
+items = [1, 2, 3]      # list: فهرست قابل تغییر
+point = (1, 2)         # tuple: چندتایی مرتب (معمولاً ثابت)
+user = {&quot;age&quot;: 20}     # dict: کلید → مقدار
+unique = {1, 2, 2}     # set: بدون تکرار (اینجا {1, 2})
+empty = None           # NoneType: مقدار «هیچ»</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خواندن فهرست:</strong> هر خط یک نمونه می‌سازد؛ کامنت جلوی همان خط معنی نوع را می‌گوید.<br>
+<strong>type():</strong> در مثال بعدی با type می‌بینی پایتون چه نوعی گزارش می‌دهد.</div>
+<h3>مثال 1: دیدن نوع با type</h3>
+<div class="codewrap"><div class="code">print(type(10))
+print(type(3.5))
+print(type(&quot;سلام&quot;))
+print(type(True))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> type(10) → int ؛ عدد صحیح.<br>
+<strong>خط ۲:</strong> type(3.5) → float ؛ اعشاری.<br>
+<strong>خط ۳:</strong> type(&quot;سلام&quot;) → str ؛ متن.<br>
+<strong>خط ۴:</strong> type(True) → bool ؛ درست/نادرست.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">print(type(سلام))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون " (دابل‌کوتیشن)، سلام نام متغیر فرض می‌شود نه متن.<br><strong>چه می‌بینی؟</strong> NameError<br><strong>درست:</strong> print(type(&quot;سلام&quot;))</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> چهار type بالا را اجرا کنی و بدون نگاه به جواب بگویی هر کدام چه نوعی است.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>هر مقدار یک نوع دارد</li>
+<li>فهرست معرفی را با کامنت بخوان</li>
+<li>type برای چک کردن است</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">type یک list و یک dict را چاپ کن.</li>
+<li style="margin-bottom:6px">عمداً بدون " (دابل‌کوتیشن) خطا بگیر.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-اعداد-Numbers.html">اعداد (Numbers) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ftp_pwd (ftp_pwd) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع ftp_pwd را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ftp_pwd (ftp_pwd)", "description": "این درس: نام تابع ftp_pwd را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header><div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav></header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">شبکه و HTTP</a><span class="sep">/</span><span>ftp_pwd (ftp_pwd)</span></div><div class="layout"><aside class="side"><h3>شبکه و HTTP (33)</h3>
+<a href="01-مرجع-FTP-PHP-FTP.html">1. مرجع FTP (PHP FTP)</a>
+<a href="02-ftp-alloc-ftp-alloc.html">2. ftp_alloc (ftp_alloc)</a>
+<a href="03-ftp-cdup-ftp-cdup.html">3. ftp_cdup (ftp_cdup)</a>
+<a href="04-ftp-chdir-ftp-chdir.html">4. ftp_chdir (ftp_chdir)</a>
+<a href="05-ftp-chmod-ftp-chmod.html">5. ftp_chmod (ftp_chmod)</a>
+<a href="06-ftp-close-ftp-close.html">6. ftp_close (ftp_close)</a>
+<a href="07-ftp-exec-ftp-exec.html">7. ftp_exec (ftp_exec)</a>
+<a href="08-ftp-fput-ftp-fput.html">8. ftp_fput (ftp_fput)</a>
+<a href="09-ftp-login-ftp-login.html">9. ftp_login (ftp_login)</a>
+<a href="10-ftp-mdtm-ftp-mdtm.html">10. ftp_mdtm (ftp_mdtm)</a>
+<a href="11-ftp-mkdir-ftp-mkdir.html">11. ftp_mkdir (ftp_mkdir)</a>
+<a href="12-ftp-mlsd-ftp-mlsd.html">12. ftp_mlsd (ftp_mlsd)</a>
+<a href="13-ftp-nb-continue-ftp-nb-continue.html">13. ftp_nb_continue (ftp_nb_continue)</a>
+<a href="14-ftp-nb-fput-ftp-nb-fput.html">14. ftp_nb_fput (ftp_nb_fput)</a>
+<a href="15-ftp-nb-put-ftp-nb-put.html">15. ftp_nb_put (ftp_nb_put)</a>
+<a href="16-ftp-nlist-ftp-nlist.html">16. ftp_nlist (ftp_nlist)</a>
+<a href="17-ftp-pasv-ftp-pasv.html">17. ftp_pasv (ftp_pasv)</a>
+<a href="18-ftp-put-ftp-put.html">18. ftp_put (ftp_put)</a>
+<a href="19-ftp-pwd-ftp-pwd.html" class="on">19. ftp_pwd (ftp_pwd)</a>
+<a href="20-ftp-quit-ftp-quit.html">20. ftp_quit (ftp_quit)</a>
+<a href="21-ftp-raw-ftp-raw.html">21. ftp_raw (ftp_raw)</a>
+<a href="22-ftp-rawlist-ftp-rawlist.html">22. ftp_rawlist (ftp_rawlist)</a>
+<a href="23-ftp-rename-ftp-rename.html">23. ftp_rename (ftp_rename)</a>
+<a href="24-تنظیم-گزینه-FTP-ftp-set-option.html">24. تنظیم گزینه FTP (ftp_set_option)</a>
+<a href="25-اجرای-دستور-site-روی-FTP-ftp-site.html">25. اجرای دستور site روی FTP (ftp_site)</a>
+<a href="26-نوع-سیستم-سرور-FTP-ftp-systype.html">26. نوع سیستم سرور FTP (ftp_systype)</a>
+<a href="27-ثبت-کال-بک-هدر-header-register-callback.html">27. ثبت کال بک هدر (header_register_callback)</a>
+<a href="28-حذف-هدر-header-remove.html">28. حذف هدر (header_remove)</a>
+<a href="29-ارسال-هدر-header.html">29. ارسال هدر (header)</a>
+<a href="30-فهرست-هدرها-headers-list.html">30. فهرست هدرها (headers_list)</a>
+<a href="31-آیا-هدرها-ارسال-شده-اند؟-headers-sent.html">31. آیا هدرها ارسال شده اند؟ (headers_sent)</a>
+<a href="32-کد-پاسخ-HTTP-http-response-code.html">32. کد پاسخ HTTP (http_response_code)</a>
+<a href="33-آزمون-شبکه-و-HTTP.html">33. آزمون (شبکه و HTTP)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="ftp_pwd (ftp_pwd)" data-cat="شبکه و HTTP">📌 پین</button>
+<h2>ftp_pwd (ftp_pwd)</h2>
+<p><strong>هدف این درس:</strong> نام تابع ftp_pwd را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> شبکه و HTTP &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («شبکه و HTTP») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">ftp_pwd(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;ftp_pwd&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای ftp_pwd را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="18-ftp-put-ftp-put.html">← قبلی</a><a href="20-ftp-quit-ftp-quit.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>پین</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

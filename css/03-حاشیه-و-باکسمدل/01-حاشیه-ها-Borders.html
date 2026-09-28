@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حاشیه ها (Borders) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: فرق padding و margin و border را در عمل ببینی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "حاشیه ها (Borders)", "description": "این درس: فرق padding و margin و border را در عمل ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">حاشیه و باکس‌مدل</a><span class="sep">/</span><span>حاشیه ها (Borders)</span></div><div class="layout"><aside class="side"><h3>حاشیه و باکس‌مدل (15)</h3>
+<a href="01-حاشیه-ها-Borders.html" class="on">1. حاشیه ها (Borders)</a>
+<a href="02-عرض-حاشیه-Border-Width.html">2. عرض حاشیه (Border Width)</a>
+<a href="03-طرف-های-حاشیه-Border-Sides.html">3. طرف های حاشیه (Border Sides)</a>
+<a href="04-کوتاه-نویسی-حاشیه-Border-Shorthand.html">4. کوتاه نویسی حاشیه (Border Shorthand)</a>
+<a href="05-حاشیه-های-گرد-Rounded-Borders.html">5. حاشیه های گرد (Rounded Borders)</a>
+<a href="06-حاشیه-بیرونی-Outline.html">6. حاشیه بیرونی (Outline)</a>
+<a href="07-عرض-حاشیه-بیرونی-Outline-Width.html">7. عرض حاشیه بیرونی (Outline Width)</a>
+<a href="08-کوتاه-نویسی-حاشیه-بیرونی-Outline-Shorthand.html">8. کوتاه نویسی حاشیه بیرونی (Outline Shorthand)</a>
+<a href="09-فاصله-حاشیه-بیرونی-Outline-Offset.html">9. فاصله حاشیه بیرونی (Outline Offset)</a>
+<a href="10-حاشیه-داخلی-Padding.html">10. حاشیه داخلی (Padding)</a>
+<a href="11-ارتفاع-و-عرض-Height-Width.html">11. ارتفاع و عرض (Height/Width)</a>
+<a href="12-مدل-جعبه-ای-Box-Model.html">12. مدل جعبه ای (Box Model)</a>
+<a href="13-حداکثر-عرض-Max-width.html">13. حداکثر عرض (Max-width)</a>
+<a href="14-تصاویر-حاشیه-Border-Images.html">14. تصاویر حاشیه (Border Images)</a>
+<a href="15-آزمون-حاشیه-و-باکسمدل.html">15. آزمون (حاشیه و باکس‌مدل)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="حاشیه ها (Borders)" data-cat="حاشیه و باکس‌مدل">📌 پین کردن این درس</button>
+<h2>حاشیه ها (Borders)</h2>
+<p><strong>هدف این درس:</strong> فرق padding و margin و border را در عمل ببینی.</p>
+<div class="note"><strong>پوشه:</strong> حاشیه و باکس‌مدل &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>هر عنصر یک جعبه است: محتوا، فاصله داخلی، لبه، فاصله بیرونی.</p>
+<h3>فهرست معرفی: مدل جعبه</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">/* مدل جعبه */
+.box {
+  padding: 16px;              /* داخل لبه تا محتوا */
+  border: 1px solid #e2e8f0; /* خود لبه */
+  margin-bottom: 12px;        /* بیرون لبه تا همسایه */
+  border-radius: 8px;         /* گوشه گرد */
+  box-sizing: border-box;     /* width قابل‌پیش‌بینی‌تر */
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: دو کارت</h3>
+<div class="codewrap"><div class="code">.card {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>padding:</strong> نفس داخل کارت.<br>
+<strong>margin-bottom:</strong> فاصله با کارت بعدی.<br>
+<strong>border:</strong> لبه.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">/* فقط padding برای جدا کردن دو کارت */</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> padding داخل است.<br><strong>چه می‌بینی؟</strong> از بیرون می‌چسبند<br><strong>درست:</strong> margin بین کارت‌ها</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> دو جعبه با margin جدا از هم ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>padding داخل</li>
+<li>margin بیرون</li>
+<li>border لبه</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">در DevTools جعبه راinspect کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-عرض-حاشیه-Border-Width.html">عرض حاشیه (Border Width) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

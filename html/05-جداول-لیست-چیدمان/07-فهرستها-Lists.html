@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فهرست‌ها (Lists) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: فهرست گلوله‌ای و شماره‌دار بسازی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فهرست‌ها (Lists)", "description": "این درس: فهرست گلوله‌ای و شماره‌دار بسازی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">جداول لیست چیدمان</a><span class="sep">/</span><span>فهرست‌ها (Lists)</span></div><div class="layout"><aside class="side"><h3>جداول لیست چیدمان (16)</h3>
+<a href="01-جداول-Tables.html">1. جداول (Tables)</a>
+<a href="02-مرزهای-جدول.html">2. مرزهای جدول</a>
+<a href="03-اندازههای-جدول.html">3. اندازه‌های جدول</a>
+<a href="04-سربرگهای-جدول.html">4. سربرگ‌های جدول</a>
+<a href="05-فاصله-جدول-Padding-Spacing.html">5. فاصله جدول (Padding & Spacing)</a>
+<a href="06-گروه-ستونها-Colgroup.html">6. گروه ستون‌ها (Colgroup)</a>
+<a href="07-فهرستها-Lists.html" class="on">7. فهرست‌ها (Lists)</a>
+<a href="08-فهرست-نامرتب.html">8. فهرست نامرتب</a>
+<a href="09-فهرست-مرتب.html">9. فهرست مرتب</a>
+<a href="10-سایر-فهرستها.html">10. سایر فهرست‌ها</a>
+<a href="11-بلوک-و-درونخطی.html">11. بلوک و درون‌خطی</a>
+<a href="12-کلاسها-Classes.html">12. کلاس‌ها (Classes)</a>
+<a href="13-شناسهها-Id.html">13. شناسه‌ها (Id)</a>
+<a href="14-چیدمان-Layout.html">14. چیدمان (Layout)</a>
+<a href="15-طراحی-واکنشگرا.html">15. طراحی واکنش‌گرا</a>
+<a href="16-آزمون-جداول-لیست-چیدمان.html">16. آزمون (جداول لیست چیدمان)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="فهرست‌ها (Lists)" data-cat="جداول لیست چیدمان">📌 پین کردن این درس</button>
+<h2>فهرست‌ها (Lists)</h2>
+<p><strong>هدف این درس:</strong> فهرست گلوله‌ای و شماره‌دار بسازی.</p>
+<div class="note"><strong>پوشه:</strong> جداول لیست چیدمان &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («جداول لیست چیدمان») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>ul وقتی ترتیب مهم نیست (خرید). ol وقتی مراحل پشت سر هم مهم‌اند. هر مورد باید داخل li باشد.</p>
+<h3>فهرست معرفی: فهرست و جدول</h3>
+<p>قبل از جزئیات، همهٔ موارد این مبحث را یک‌جا ببین. بعد هر کدام را جداگانه با مثال می‌بینی.</p>
+<div class="sum"><b>نقشهٔ مبحث</b><ul>
+<li><strong>ul / li</strong> — فهرست بدون شماره.</li>
+<li><strong>ol / li</strong> — فهرست شماره‌دار.</li>
+<li><strong>table / tr / th / td</strong> — جدول داده: ردیف، سرستون، سلول.</li>
+</ul></div>
+<h3>توضیح دانه‌به‌دانه با مثال</h3>
+<h4>1. ul / li</h4>
+<p>فهرست بدون شماره.</p>
+<div class="codewrap"><div class="code">&lt;ul&gt;&lt;li&gt;نان&lt;/li&gt;&lt;li&gt;شیر&lt;/li&gt;&lt;/ul&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>2. ol / li</h4>
+<p>فهرست شماره‌دار.</p>
+<div class="codewrap"><div class="code">&lt;ol&gt;&lt;li&gt;اول&lt;/li&gt;&lt;li&gt;دوم&lt;/li&gt;&lt;/ol&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h4>3. table / tr / th / td</h4>
+<p>جدول داده: ردیف، سرستون، سلول.</p>
+<div class="codewrap"><div class="code">&lt;table&gt;&lt;tr&gt;&lt;th&gt;نام&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;سارا&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>ساختار (Syntax)</h3><div class="code">&lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;
+&lt;ol&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ol&gt;</div>
+<h3>مثال 1: دو نوع فهرست</h3>
+<div class="codewrap"><div class="code">&lt;ul&gt;
+  &lt;li&gt;نان&lt;/li&gt;
+  &lt;li&gt;شیر&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+  &lt;li&gt;فایل بساز&lt;/li&gt;
+  &lt;li&gt;در مرورگر باز کن&lt;/li&gt;
+&lt;/ol&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>ul:</strong> بدون شماره.<br>
+<strong>ol:</strong> با شماره.<br>
+<strong>li:</strong> هر آیتم.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;ul&gt;نان&lt;/ul&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> متن باید داخل li باشد.<br><strong>چه می‌بینی؟</strong> فهرست درست شکل نمی‌گیرد<br><strong>درست:</strong> &lt;ul&gt;&lt;li&gt;نان&lt;/li&gt;&lt;/ul&gt;</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک ul و یک ol هر کدام با دو آیتم بنویسی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>li اجباری است</li>
+<li>ul یا ol بر اساس معنا</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک فهرست تو در تو بساز (li شامل ul).</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="06-گروه-ستونها-Colgroup.html">← گروه ستون‌ها (Colgroup)</a><a href="08-فهرست-نامرتب.html">فهرست نامرتب →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>children (children) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: نام تابع children را بشناسی و بدانی چطور وجودش را چک کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "children (children)", "description": "این درس: نام تابع children را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">مرجع توابع PHP</a><span class="sep">/</span><span>children (children)</span></div><div class="layout"><aside class="side"><h3>مرجع توابع PHP (316)</h3>
+<a href="01-کاراکترهای-اِسکیپ-Escape-Characters.html">1. کاراکترهای اِسکیپ (Escape Characters)</a>
+<a href="02-اعداد-Numbers.html">2. اعداد (Numbers)</a>
+<a href="03-تبدیل-نوع-Casting.html">3. تبدیل نوع (Casting)</a>
+<a href="04-حلقه-ها-Loops.html">4. حلقه ها (Loops)</a>
+<a href="05-شکستن-حلقه-Break.html">5. شکستن حلقه (Break)</a>
+<a href="06-ادامه-حلقه-Continue.html">6. ادامه حلقه (Continue)</a>
+<a href="07-GLOBALS-GLOBALS.html">7. $GLOBALS ($GLOBALS)</a>
+<a href="08-SERVER-SERVER.html">8. $_SERVER ($_SERVER)</a>
+<a href="09-REQUEST-REQUEST.html">9. $_REQUEST ($_REQUEST)</a>
+<a href="10-اینکلود-Include.html">10. اینکلود (Include)</a>
+<a href="11-OOP-چیست؟-What-is-OOP.html">11. OOP چیست؟ (What is OOP)</a>
+<a href="12-سازنده-Constructor.html">12. سازنده (Constructor)</a>
+<a href="13-مخرب-Destructor.html">13. مخرب (Destructor)</a>
+<a href="14-قابل-تکرارها-Iterables.html">14. قابل تکرارها (Iterables)</a>
+<a href="15-AJAX-با-PHP-AJAX-PHP.html">15. AJAX با PHP (AJAX PHP)</a>
+<a href="16-جستجوی-زنده-AJAX-AJAX-Live-Search.html">16. جستجوی زنده AJAX (AJAX Live Search)</a>
+<a href="17-نظرسنجی-AJAX-AJAX-Poll.html">17. نظرسنجی AJAX (AJAX Poll)</a>
+<a href="18-نمونه-ها-Examples.html">18. نمونه ها (Examples)</a>
+<a href="19-کامپایلر-Compiler.html">19. کامپایلر (Compiler)</a>
+<a href="20-آزمون-Quiz.html">20. آزمون (Quiz)</a>
+<a href="21-تمرین-ها-Exercises.html">21. تمرین ها (Exercises)</a>
+<a href="22-سرور-Server.html">22. سرور (Server)</a>
+<a href="23-سیلابس-Syllabus.html">23. سیلابس (Syllabus)</a>
+<a href="24-برنامه-مطالعه-Study-Plan.html">24. برنامه مطالعه (Study Plan)</a>
+<a href="25-نمای-کلی-PHP-Overview.html">25. نمای کلی PHP (Overview)</a>
+<a href="26-عنصر-جاری-current.html">26. عنصر جاری (current)</a>
+<a href="27-each-each.html">27. each (each)</a>
+<a href="28-پایان-end.html">28. پایان (end)</a>
+<a href="29-استخراج-extract.html">29. استخراج (extract)</a>
+<a href="30-کلید-فعلی-key.html">30. کلید فعلی (key)</a>
+<a href="31-فهرست-سازی-list.html">31. فهرست سازی (list)</a>
+<a href="32-بعدی-next.html">32. بعدی (next)</a>
+<a href="33-pos-pos.html">33. pos (pos)</a>
+<a href="34-قبلی-prev.html">34. قبلی (prev)</a>
+<a href="35-بازه-range.html">35. بازه (range)</a>
+<a href="36-ریست-reset.html">36. ریست (reset)</a>
+<a href="37-درهم-ریزی-shuffle.html">37. درهم ریزی (shuffle)</a>
+<a href="38-مرجع-تقویم-PHP-Calendar.html">38. مرجع تقویم (PHP Calendar)</a>
+<a href="39-تعداد-روزهای-ماه-cal-days-in-month.html">39. تعداد روزهای ماه (cal_days_in_month)</a>
+<a href="40-تبدیل-از-ژولیَن-cal-from-jd.html">40. تبدیل از ژولیَن (cal_from_jd)</a>
+<a href="41-اطلاعات-تقویم-cal-info.html">41. اطلاعات تقویم (cal_info)</a>
+<a href="42-تبدیل-به-ژولیَن-cal-to-jd.html">42. تبدیل به ژولیَن (cal_to_jd)</a>
+<a href="43-روزهای-عید-پاک-easter-days.html">43. روزهای عید پاک (easter_days)</a>
+<a href="44-فرانسوی-به-JD-frenchtojd.html">44. فرانسوی به JD (frenchtojd)</a>
+<a href="45-گرگوری-به-JD-gregoriantojd.html">45. گرگوری به JD (gregoriantojd)</a>
+<a href="46-روز-هفته-JD-jddayofweek.html">46. روز هفته JD (jddayofweek)</a>
+<a href="47-نام-ماه-JD-jdmonthname.html">47. نام ماه JD (jdmonthname)</a>
+<a href="48-JD-به-فرانسوی-jdtofrench.html">48. JD به فرانسوی (jdtofrench)</a>
+<a href="49-JD-به-گرگوری-jdtogregorian.html">49. JD به گرگوری (jdtogregorian)</a>
+<a href="50-JD-به-یهودی-jdtojewish.html">50. JD به یهودی (jdtojewish)</a>
+<a href="51-JD-به-ژولین-jdtojulian.html">51. JD به ژولین (jdtojulian)</a>
+<a href="52-JD-به-یونیکس-jdtounix.html">52. JD به یونیکس (jdtounix)</a>
+<a href="53-یهودی-به-JD-jewishtojd.html">53. یهودی به JD (jewishtojd)</a>
+<a href="54-ژولین-به-JD-juliantojd.html">54. ژولین به JD (juliantojd)</a>
+<a href="55-یونیکس-به-JD-unixtojd.html">55. یونیکس به JD (unixtojd)</a>
+<a href="56-chdir-chdir.html">56. chdir() (chdir)</a>
+<a href="57-chroot-chroot.html">57. chroot() (chroot)</a>
+<a href="58-closedir-closedir.html">58. closedir() (closedir)</a>
+<a href="59-dir-dir.html">59. dir() (dir)</a>
+<a href="60-opendir-opendir.html">60. opendir() (opendir)</a>
+<a href="61-readdir-readdir.html">61. readdir() (readdir)</a>
+<a href="62-rewinddir-rewinddir.html">62. rewinddir() (rewinddir)</a>
+<a href="63-scandir-scandir.html">63. scandir() (scandir)</a>
+<a href="64-ردیابی-پشته-debug-backtrace.html">64. ردیابی پشته (debug_backtrace)</a>
+<a href="65-basename-basename.html">65. basename() (basename)</a>
+<a href="66-chgrp-chgrp.html">66. chgrp() (chgrp)</a>
+<a href="67-chmod-chmod.html">67. chmod() (chmod)</a>
+<a href="68-chown-chown.html">68. chown() (chown)</a>
+<a href="69-پاک-سازی-کش-آمار-clearstatcache.html">69. پاک سازی کش آمار (clearstatcache)</a>
+<a href="70-کپی-copy.html">70. کپی (copy)</a>
+<a href="71-dirname-dirname.html">71. dirname() (dirname)</a>
+<a href="72-فضای-آزاد-دیسک-disk-free-space.html">72. فضای آزاد دیسک (disk_free_space)</a>
+<a href="73-کل-فضای-دیسک-disk-total-space.html">73. کل فضای دیسک (disk_total_space)</a>
+<a href="74-diskfreespace-diskfreespace.html">74. diskfreespace() (diskfreespace)</a>
+<a href="75-fclose-fclose.html">75. fclose() (fclose)</a>
+<a href="76-feof-feof.html">76. feof() (feof)</a>
+<a href="77-fflush-fflush.html">77. fflush() (fflush)</a>
+<a href="78-flock-flock.html">78. flock() (flock)</a>
+<a href="79-fnmatch-fnmatch.html">79. fnmatch() (fnmatch)</a>
+<a href="80-fopen-fopen.html">80. fopen() (fopen)</a>
+<a href="81-fpassthru-fpassthru.html">81. fpassthru() (fpassthru)</a>
+<a href="82-fputcsv-fputcsv.html">82. fputcsv() (fputcsv)</a>
+<a href="83-fputs-fputs.html">83. fputs() (fputs)</a>
+<a href="84-fread-fread.html">84. fread() (fread)</a>
+<a href="85-fscanf-fscanf.html">85. fscanf() (fscanf)</a>
+<a href="86-fseek-fseek.html">86. fseek() (fseek)</a>
+<a href="87-fstat-fstat.html">87. fstat() (fstat)</a>
+<a href="88-ftell-ftell.html">88. ftell() (ftell)</a>
+<a href="89-ftruncate-ftruncate.html">89. ftruncate() (ftruncate)</a>
+<a href="90-fwrite-fwrite.html">90. fwrite() (fwrite)</a>
+<a href="91-glob-glob.html">91. glob() (glob)</a>
+<a href="92-lchgrp-lchgrp.html">92. lchgrp() (lchgrp)</a>
+<a href="93-lchown-lchown.html">93. lchown() (lchown)</a>
+<a href="94-link-link.html">94. link() (link)</a>
+<a href="95-linkinfo-linkinfo.html">95. linkinfo() (linkinfo)</a>
+<a href="96-lstat-lstat.html">96. lstat() (lstat)</a>
+<a href="97-mkdir-mkdir.html">97. mkdir() (mkdir)</a>
+<a href="98-pathinfo-pathinfo.html">98. pathinfo() (pathinfo)</a>
+<a href="99-pclose-pclose.html">99. pclose() (pclose)</a>
+<a href="100-popen-popen.html">100. popen() (popen)</a>
+<a href="101-readlink-readlink.html">101. readlink() (readlink)</a>
+<a href="102-realpath-realpath.html">102. realpath() (realpath)</a>
+<a href="103-اندازه-کش-realpath-realpath-cache-size.html">103. اندازه کش realpath (realpath_cache_size)</a>
+<a href="104-rename-rename.html">104. rename() (rename)</a>
+<a href="105-rewind-rewind.html">105. rewind() (rewind)</a>
+<a href="106-rmdir-rmdir.html">106. rmdir() (rmdir)</a>
+<a href="107-stat-stat.html">107. stat() (stat)</a>
+<a href="108-symlink-symlink.html">108. symlink() (symlink)</a>
+<a href="109-tempnam-tempnam.html">109. tempnam() (tempnam)</a>
+<a href="110-touch-touch.html">110. touch() (touch)</a>
+<a href="111-umask-umask.html">111. umask() (umask)</a>
+<a href="112-unlink-unlink.html">112. unlink() (unlink)</a>
+<a href="113-و-and.html">113. و (and)</a>
+<a href="114-به-عنوان-as.html">114. به عنوان (as)</a>
+<a href="115-شکست-خروج-از-حلقه-break.html">115. شکست/خروج از حلقه (break)</a>
+<a href="116-قابل-فراخوانی-callable.html">116. قابل فراخوانی (callable)</a>
+<a href="117-حالت-case.html">117. حالت (case)</a>
+<a href="118-گرفتن-catch.html">118. گرفتن (catch)</a>
+<a href="119-کلون-کپی-clone.html">119. کلون/کپی (clone)</a>
+<a href="120-ادامه-continue.html">120. ادامه (continue)</a>
+<a href="121-اعلامیه-declare.html">121. اعلامیه (declare)</a>
+<a href="122-پیش-فرض-default.html">122. پیش فرض (default)</a>
+<a href="123-do-do.html">123. do (do)</a>
+<a href="124-پایان-declare-enddeclare.html">124. پایان declare (enddeclare)</a>
+<a href="125-نهایی-final.html">125. نهایی (final)</a>
+<a href="126-در-نهایت-finally.html">126. در نهایت (finally)</a>
+<a href="127-سراسری-global.html">127. سراسری (global)</a>
+<a href="128-پیاده-سازی-می-کند-implements.html">128. پیاده سازی می کند (implements)</a>
+<a href="129-include-include.html">129. include (include)</a>
+<a href="130-include-once-include-once.html">130. include_once (include_once)</a>
+<a href="131-نمونه-ای-از-instanceof.html">131. نمونه ای از (instanceof)</a>
+<a href="132-به-جایِ-insteadof.html">132. به جایِ (insteadof)</a>
+<a href="133-لیست-list.html">133. لیست (list)</a>
+<a href="134-جدید-new.html">134. جدید (new)</a>
+<a href="135-یا-or.html">135. یا (or)</a>
+<a href="136-خصوصی-private.html">136. خصوصی (private)</a>
+<a href="137-محافظت-شده-protected.html">137. محافظت شده (protected)</a>
+<a href="138-عمومی-public.html">138. عمومی (public)</a>
+<a href="139-require-require.html">139. require (require)</a>
+<a href="140-require-once-require-once.html">140. require_once (require_once)</a>
+<a href="141-بازگشت-return.html">141. بازگشت (return)</a>
+<a href="142-پرتاب-پرتاب-استثنا-throw.html">142. پرتاب/پرتاب استثنا (throw)</a>
+<a href="143-use-use.html">143. use (use)</a>
+<a href="144-var-var.html">144. var (var)</a>
+<a href="145-xor-xor.html">145. xor (xor)</a>
+<a href="146-yield-yield.html">146. yield (yield)</a>
+<a href="147-yield-from-yield-from.html">147. yield from (yield from)</a>
+<a href="148-آرک-کسینوس-acos.html">148. آرک کسینوس (acos)</a>
+<a href="149-آرک-کسینوس-هیپربولیک-acosh.html">149. آرک کسینوس هیپربولیک (acosh)</a>
+<a href="150-آرک-سینوس-asin.html">150. آرک سینوس (asin)</a>
+<a href="151-آرک-سینوس-هیپربولیک-asinh.html">151. آرک سینوس هیپربولیک (asinh)</a>
+<a href="152-آرک-تانژانت-atan.html">152. آرک تانژانت (atan)</a>
+<a href="153-آرک-تانژانت2-atan2.html">153. آرک تانژانت2 (atan2)</a>
+<a href="154-آرک-تانژانت-هیپربولیک-atanh.html">154. آرک تانژانت هیپربولیک (atanh)</a>
+<a href="155-تبدیل-مبنا-base-convert.html">155. تبدیل مبنا (base_convert)</a>
+<a href="156-دودویی-به-ده-دهی-bindec.html">156. دودویی به ده دهی (bindec)</a>
+<a href="157-کسینوس-cos.html">157. کسینوس (cos)</a>
+<a href="158-کسینوس-هیپربولیک-cosh.html">158. کسینوس هیپربولیک (cosh)</a>
+<a href="159-ده-دهی-به-دودویی-decbin.html">159. ده دهی به دودویی (decbin)</a>
+<a href="160-ده-دهی-به-هگز-dechex.html">160. ده دهی به هگز (dechex)</a>
+<a href="161-ده-دهی-به-اکتال-decoct.html">161. ده دهی به اکتال (decoct)</a>
+<a href="162-درجه-به-رادیان-deg2rad.html">162. درجه به رادیان (deg2rad)</a>
+<a href="163-exp-exp.html">163. exp (exp)</a>
+<a href="164-expm1-expm1.html">164. expm1 (expm1)</a>
+<a href="165-باقیمانده-اعشاری-fmod.html">165. باقیمانده اعشاری (fmod)</a>
+<a href="166-هگز-به-ده-دهی-hexdec.html">166. هگز به ده دهی (hexdec)</a>
+<a href="167-وتر-هیپوتنوس-hypot.html">167. وتر/هیپوتنوس (hypot)</a>
+<a href="168-تقسیم-صحیح-intdiv.html">168. تقسیم صحیح (intdiv)</a>
+<a href="169-مقدار-LCG-lcg-value.html">169. مقدار LCG (lcg_value)</a>
+<a href="170-لگاریتم-طبیعی-log.html">170. لگاریتم طبیعی (log)</a>
+<a href="171-لگاریتم-پایه-10-log10.html">171. لگاریتم پایه 10 (log10)</a>
+<a href="172-log1p-log1p.html">172. log1p (log1p)</a>
+<a href="173-اکتال-به-ده-دهی-octdec.html">173. اکتال به ده دهی (octdec)</a>
+<a href="174-توان-pow.html">174. توان (pow)</a>
+<a href="175-رادیان-به-درجه-rad2deg.html">175. رادیان به درجه (rad2deg)</a>
+<a href="176-سینوس-sin.html">176. سینوس (sin)</a>
+<a href="177-سینوس-هیپربولیک-sinh.html">177. سینوس هیپربولیک (sinh)</a>
+<a href="178-ریشه-دوم-sqrt.html">178. ریشه دوم (sqrt)</a>
+<a href="179-تانژانت-tan.html">179. تانژانت (tan)</a>
+<a href="180-تانژانت-هیپربولیک-tanh.html">180. تانژانت هیپربولیک (tanh)</a>
+<a href="181-تعریف-شده؟-defined.html">181. تعریف شده؟ (defined)</a>
+<a href="182-die-die.html">182. die (die)</a>
+<a href="183-eval-eval.html">183. eval (eval)</a>
+<a href="184-exit-exit.html">184. exit (exit)</a>
+<a href="185-توقف-کامپایلر-halt-compiler.html">185. توقف کامپایلر (__halt_compiler)</a>
+<a href="186-نادیده-گرفتن-قطع-کاربر-ignore-user-abort.html">186. نادیده گرفتن قطع کاربر (ignore_user_abort)</a>
+<a href="187-بسته-بندی-باینری-pack.html">187. بسته بندی باینری (pack)</a>
+<a href="188-حذف-فضاهای-سفید-کد-PHP-php-strip-whitespace.html">188. حذف فضاهای سفید کد PHP (php_strip_whitespace)</a>
+<a href="189-نمایش-منبع-show-source.html">189. نمایش منبع (show_source)</a>
+<a href="190-خواب-sleep.html">190. خواب (sleep)</a>
+<a href="191-شناسه-یکتا-uniqid.html">191. شناسه یکتا (uniqid)</a>
+<a href="192-بازکردن-بسته-های-باینری-unpack.html">192. بازکردن بسته های باینری (unpack)</a>
+<a href="193-usleep-usleep.html">193. usleep (usleep)</a>
+<a href="194-تعداد-ردیف-های-متاثر-affected-rows.html">194. تعداد ردیف های متاثر (affected_rows)</a>
+<a href="195-خودکار-کامیت-autocommit.html">195. خودکار-کامیت (autocommit)</a>
+<a href="196-تعویض-کاربر-change-user.html">196. تعویض کاربر (change_user)</a>
+<a href="197-نام-مجموعه-کاراکتر-character-set-name.html">197. نام مجموعه کاراکتر (character_set_name)</a>
+<a href="198-بستن-اتصال-close.html">198. بستن اتصال (close)</a>
+<a href="199-کامیت-commit.html">199. کامیت (commit)</a>
+<a href="200-جابجایی-مکان-نما-data-seek.html">200. جابجایی مکان نما (data_seek)</a>
+<a href="201-دیباگ-debug.html">201. دیباگ (debug)</a>
+<a href="202-dump-debug-info-dump-debug-info.html">202. dump_debug_info (dump_debug_info)</a>
+<a href="203-errno-errno.html">203. errno (errno)</a>
+<a href="204-fetch-all-fetch-all.html">204. fetch_all (fetch_all)</a>
+<a href="205-fetch-assoc-fetch-assoc.html">205. fetch_assoc (fetch_assoc)</a>
+<a href="206-fetch-field-fetch-field.html">206. fetch_field (fetch_field)</a>
+<a href="207-fetch-field-direct-fetch-field-direct.html">207. fetch_field_direct (fetch_field_direct)</a>
+<a href="208-fetch-fields-fetch-fields.html">208. fetch_fields (fetch_fields)</a>
+<a href="209-fetch-lengths-fetch-lengths.html">209. fetch_lengths (fetch_lengths)</a>
+<a href="210-fetch-row-fetch-row.html">210. fetch_row (fetch_row)</a>
+<a href="211-جستجوی-فیلد-field-seek.html">211. جستجوی فیلد (field_seek)</a>
+<a href="212-info-info.html">212. info (info)</a>
+<a href="213-init-init.html">213. init (init)</a>
+<a href="214-kill-kill.html">214. kill (kill)</a>
+<a href="215-more-results-more-results.html">215. more_results (more_results)</a>
+<a href="216-multi-query-multi-query.html">216. multi_query (multi_query)</a>
+<a href="217-next-result-next-result.html">217. next_result (next_result)</a>
+<a href="218-options-options.html">218. options (options)</a>
+<a href="219-ping-ping.html">219. ping (ping)</a>
+<a href="220-poll-poll.html">220. poll (poll)</a>
+<a href="221-prepare-prepare.html">221. prepare (prepare)</a>
+<a href="222-query-query.html">222. query (query)</a>
+<a href="223-real-query-real-query.html">223. real_query (real_query)</a>
+<a href="224-reap-async-query-reap-async-query.html">224. reap_async_query (reap_async_query)</a>
+<a href="225-refresh-refresh.html">225. refresh (refresh)</a>
+<a href="226-rollback-rollback.html">226. rollback (rollback)</a>
+<a href="227-set-charset-set-charset.html">227. set_charset (set_charset)</a>
+<a href="228-sqlstate-sqlstate.html">228. sqlstate (sqlstate)</a>
+<a href="229-ssl-set-ssl-set.html">229. ssl_set (ssl_set)</a>
+<a href="230-stmt-init-stmt-init.html">230. stmt_init (stmt_init)</a>
+<a href="231-thread-id-thread-id.html">231. thread_id (thread_id)</a>
+<a href="232-thread-safe-thread-safe.html">232. thread_safe (thread_safe)</a>
+<a href="233-use-result-use-result.html">233. use_result (use_result)</a>
+<a href="234-بررسی-DNS-checkdnsrr.html">234. بررسی DNS (checkdnsrr)</a>
+<a href="235-بستن-syslog-closelog.html">235. بستن syslog (closelog)</a>
+<a href="236-dns-check-record-dns-check-record.html">236. dns_check_record (dns_check_record)</a>
+<a href="237-بازکردن-سوکت-اینترنتی-fsockopen.html">237. بازکردن سوکت اینترنتی (fsockopen)</a>
+<a href="238-ip2long-ip2long.html">238. ip2long (ip2long)</a>
+<a href="239-long2ip-long2ip.html">239. long2ip (long2ip)</a>
+<a href="240-بازکردن-syslog-openlog.html">240. بازکردن syslog (openlog)</a>
+<a href="241-pfsockopen-pfsockopen.html">241. pfsockopen (pfsockopen)</a>
+<a href="242-بلاک-کردن-سوکت-socket-set-blocking.html">242. بلاک کردن سوکت (socket_set_blocking)</a>
+<a href="243-syslog-syslog.html">243. syslog (syslog)</a>
+<a href="244-flush-flush.html">244. flush (flush)</a>
+<a href="245-ob-clean-ob-clean.html">245. ob_clean (ob_clean)</a>
+<a href="246-ob-end-clean-ob-end-clean.html">246. ob_end_clean (ob_end_clean)</a>
+<a href="247-ob-end-flush-ob-end-flush.html">247. ob_end_flush (ob_end_flush)</a>
+<a href="248-ob-flush-ob-flush.html">248. ob_flush (ob_flush)</a>
+<a href="249-ob-gzhandler-ob-gzhandler.html">249. ob_gzhandler (ob_gzhandler)</a>
+<a href="250-ob-implicit-flush-ob-implicit-flush.html">250. ob_implicit_flush (ob_implicit_flush)</a>
+<a href="251-ob-list-handlers-ob-list-handlers.html">251. ob_list_handlers (ob_list_handlers)</a>
+<a href="252-ob-start-ob-start.html">252. ob_start (ob_start)</a>
+<a href="253-output-add-rewrite-var-output-add-rewrite-var.html">253. output_add_rewrite_var (output_add_rewrite_var)</a>
+<a href="254-output-reset-rewrite-vars-output-reset-rewrite-vars.html">254. output_reset_rewrite_vars (output_reset_rewrite_vars)</a>
+<a href="255-افزودن-ویژگی-addAttribute.html">255. افزودن ویژگی (addAttribute)</a>
+<a href="256-افزودن-فرزند-addChild.html">256. افزودن فرزند (addChild)</a>
+<a href="257-attributes-attributes.html">257. attributes (attributes)</a>
+<a href="258-children-children.html" class="on">258. children (children)</a>
+<a href="259-XPath-xpath.html">259. XPath (xpath)</a>
+<a href="260-haschildren-hasChildren.html">260. haschildren (hasChildren)</a>
+<a href="261-استریم-PHP-Stream.html">261. استریم (PHP Stream)</a>
+<a href="262-addcslashes-addcslashes.html">262. addcslashes (addcslashes)</a>
+<a href="263-addslashes-addslashes.html">263. addslashes (addslashes)</a>
+<a href="264-bin2hex-bin2hex.html">264. bin2hex (bin2hex)</a>
+<a href="265-chop-chop.html">265. chop (chop)</a>
+<a href="266-chr-chr.html">266. chr (chr)</a>
+<a href="267-chunk-split-chunk-split.html">267. chunk_split (chunk_split)</a>
+<a href="268-crc32-crc32.html">268. crc32 (crc32)</a>
+<a href="269-hebrev-hebrev.html">269. hebrev (hebrev)</a>
+<a href="270-hebrevc-hebrevc.html">270. hebrevc (hebrevc)</a>
+<a href="271-hex2bin-hex2bin.html">271. hex2bin (hex2bin)</a>
+<a href="272-htmlentities-htmlentities.html">272. htmlentities (htmlentities)</a>
+<a href="273-join-join.html">273. join (join)</a>
+<a href="274-lcfirst-lcfirst.html">274. lcfirst (lcfirst)</a>
+<a href="275-levenshtein-levenshtein.html">275. levenshtein (levenshtein)</a>
+<a href="276-localeconv-localeconv.html">276. localeconv (localeconv)</a>
+<a href="277-metaphone-metaphone.html">277. metaphone (metaphone)</a>
+<a href="278-nl-langinfo-nl-langinfo.html">278. nl_langinfo (nl_langinfo)</a>
+<a href="279-nl2br-nl2br.html">279. nl2br (nl2br)</a>
+<a href="280-ord-ord.html">280. ord (ord)</a>
+<a href="281-quotemeta-quotemeta.html">281. quotemeta (quotemeta)</a>
+<a href="282-setlocale-setlocale.html">282. setlocale (setlocale)</a>
+<a href="283-similar-text-similar-text.html">283. similar_text (similar_text)</a>
+<a href="284-soundex-soundex.html">284. soundex (soundex)</a>
+<a href="285-sscanf-sscanf.html">285. sscanf (sscanf)</a>
+<a href="286-strcasecmp-strcasecmp.html">286. strcasecmp (strcasecmp)</a>
+<a href="287-strchr-strchr.html">287. strchr (strchr)</a>
+<a href="288-strcmp-strcmp.html">288. strcmp (strcmp)</a>
+<a href="289-strcoll-strcoll.html">289. strcoll (strcoll)</a>
+<a href="290-strcspn-strcspn.html">290. strcspn (strcspn)</a>
+<a href="291-strip-tags-strip-tags.html">291. strip_tags (strip_tags)</a>
+<a href="292-stripcslashes-stripcslashes.html">292. stripcslashes (stripcslashes)</a>
+<a href="293-stripslashes-stripslashes.html">293. stripslashes (stripslashes)</a>
+<a href="294-stripos-stripos.html">294. stripos (stripos)</a>
+<a href="295-stristr-stristr.html">295. stristr (stristr)</a>
+<a href="296-strnatcasecmp-strnatcasecmp.html">296. strnatcasecmp (strnatcasecmp)</a>
+<a href="297-strnatcmp-strnatcmp.html">297. strnatcmp (strnatcmp)</a>
+<a href="298-strncasecmp-strncasecmp.html">298. strncasecmp (strncasecmp)</a>
+<a href="299-strncmp-strncmp.html">299. strncmp (strncmp)</a>
+<a href="300-strpbrk-strpbrk.html">300. strpbrk (strpbrk)</a>
+<a href="301-strpos-strpos.html">301. strpos (strpos)</a>
+<a href="302-strrchr-strrchr.html">302. strrchr (strrchr)</a>
+<a href="303-strrev-strrev.html">303. strrev (strrev)</a>
+<a href="304-strripos-strripos.html">304. strripos (strripos)</a>
+<a href="305-strrpos-strrpos.html">305. strrpos (strrpos)</a>
+<a href="306-strspn-strspn.html">306. strspn (strspn)</a>
+<a href="307-strstr-strstr.html">307. strstr (strstr)</a>
+<a href="308-strtok-strtok.html">308. strtok (strtok)</a>
+<a href="309-strtolower-strtolower.html">309. strtolower (strtolower)</a>
+<a href="310-strtoupper-strtoupper.html">310. strtoupper (strtoupper)</a>
+<a href="311-strtr-strtr.html">311. strtr (strtr)</a>
+<a href="312-ucfirst-ucfirst.html">312. ucfirst (ucfirst)</a>
+<a href="313-ucwords-ucwords.html">313. ucwords (ucwords)</a>
+<a href="314-wordwrap-wordwrap.html">314. wordwrap (wordwrap)</a>
+<a href="315-boolval-boolval.html">315. boolval (boolval)</a>
+<a href="316-doubleval-doubleval.html">316. doubleval (doubleval)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="children (children)" data-cat="مرجع توابع PHP">📌 پین کردن این درس</button>
+<h2>children (children)</h2>
+<p><strong>هدف این درس:</strong> نام تابع children را بشناسی و بدانی چطور وجودش را چک کنی.</p>
+<div class="note"><strong>پوشه:</strong> مرجع توابع PHP &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («مرجع توابع PHP») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">children(...)</div>
+<h3>مثال 1: آیا تابع هست؟</h3>
+<div class="codewrap"><div class="code">&lt;?php
+var_dump(function_exists(&quot;children&quot;));
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای children را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>مرجع برای موقع نیاز</li>
+<li>مثال کوچک بزن</li>
+<li>از سند رسمی کمک بگیر</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="257-attributes-attributes.html">← attributes (attributes)</a><a href="259-XPath-xpath.html">XPath (xpath) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

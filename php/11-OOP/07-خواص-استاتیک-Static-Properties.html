@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خواص استاتیک (Static Properties) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: با موضوع «خواص استاتیک» در حد یک اسکریپت کوچک آشنا شوی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "خواص استاتیک (Static Properties)", "description": "این درس: با موضوع «خواص استاتیک» در حد یک اسکریپت کوچک آشنا شوی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">OOP</a><span class="sep">/</span><span>خواص استاتیک (Static Properties)</span></div><div class="layout"><aside class="side"><h3>OOP (25)</h3>
+<a href="01-کلاس-ها-اشیا-Classes-Objects.html">1. کلاس ها/اشیا (Classes/Objects)</a>
+<a href="02-وراثت-Inheritance.html">2. وراثت (Inheritance)</a>
+<a href="03-کلاس-های-انتزاعی-Abstract-Classes.html">3. کلاس های انتزاعی (Abstract Classes)</a>
+<a href="04-اینترفیس-ها-Interfaces.html">4. اینترفیس ها (Interfaces)</a>
+<a href="05-تِرِیت-ها-Traits.html">5. تِرِیت ها (Traits)</a>
+<a href="06-متدهای-استاتیک-Static-Methods.html">6. متدهای استاتیک (Static Methods)</a>
+<a href="07-خواص-استاتیک-Static-Properties.html" class="on">7. خواص استاتیک (Static Properties)</a>
+<a href="08-فضاهای-نام-Namespaces.html">8. فضاهای نام (Namespaces)</a>
+<a href="09-کلاس-Exception-Exception.html">9. کلاس Exception (Exception)</a>
+<a href="10-انتزاعی-abstract.html">10. انتزاعی (abstract)</a>
+<a href="11-کلاس-class.html">11. کلاس (class)</a>
+<a href="12-گسترش-می-دهد-ارث-بری-extends.html">12. گسترش می دهد/ارث بری (extends)</a>
+<a href="13-رابط-interface.html">13. رابط (interface)</a>
+<a href="14-فضای-نام-namespace.html">14. فضای نام (namespace)</a>
+<a href="15-ایستا-static.html">15. ایستا (static)</a>
+<a href="16-ویژگی-trait.html">16. ویژگی (trait)</a>
+<a href="17-fetch-object-fetch-object.html">17. fetch_object (fetch_object)</a>
+<a href="18-سازنده-SimpleXML-construct.html">18. سازنده SimpleXML (__construct)</a>
+<a href="19-ثبت-نام-فضا-برای-XPath-registerXPathNamespace.html">19. ثبت نام فضا برای XPath (registerXPathNamespace)</a>
+<a href="20-is-object-is-object.html">20. is_object (is_object)</a>
+<a href="21-ساخت-parser-با-namespace-xml-parser-create-ns.html">21. ساخت parser با namespace (xml_parser_create_ns)</a>
+<a href="22-پایان-namespace-decl-handler-xml-set-end-namespace-decl.html">22. پایان namespace decl handler (xml_set_end_namespace_decl_handler)</a>
+<a href="23-set-object-xml-set-object.html">23. set_object (xml_set_object)</a>
+<a href="24-شروع-namespace-decl-handler-xml-set-start-namespace-dec.html">24. شروع namespace decl handler (xml_set_start_namespace_decl_handler)</a>
+<a href="25-آزمون-OOP.html">25. آزمون (OOP)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="خواص استاتیک (Static Properties)" data-cat="OOP">📌 پین</button>
+<h2>خواص استاتیک (Static Properties)</h2>
+<p><strong>هدف این درس:</strong> با موضوع «خواص استاتیک» در حد یک اسکریپت کوچک آشنا شوی.</p>
+<div class="note"><strong>پوشه:</strong> OOP &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («OOP») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>این درس روی «خواص استاتیک» تمرکز دارد. کوچک بنویس، اجرا کن، خروجی را ببین، بعد یک تغییر بده. سرور باید فایل PHP را اجرا کند.</p>
+<h3>ساختار (Syntax)</h3><div class="code">&lt;?php ... ?&gt;</div>
+<h3>مثال 1: قالب کوچک</h3>
+<div class="codewrap"><div class="code">&lt;?php
+// خواص استاتیک
+$topic = &quot;خواص استاتیک&quot;;
+echo $topic;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>$:</strong> شروع نام متغیر.<br>
+<strong>echo:</strong> نمایش در خروجی.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">باز کردن فایل PHP با دوبارکلیک بدون سرور</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> کد اجرا نمی‌شود؛ متن خام دیده می‌شود.<br><strong>چه می‌بینی؟</strong> یادگیری ناقص<br><strong>درست:</strong> از سرور محلی استفاده کن</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> خروجی را از طریق سرور در مرورگر ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>کوچک شروع کن</li>
+<li>اجرا با سرور</li>
+<li>خروجی را تفسیر کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک تغییر کوچک بده و صفحه را تازه کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="06-متدهای-استاتیک-Static-Methods.html">← قبلی</a><a href="08-فضاهای-نام-Namespaces.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

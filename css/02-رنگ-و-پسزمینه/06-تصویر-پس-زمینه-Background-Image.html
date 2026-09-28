@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تصویر پس زمینه (Background Image) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: رنگ و تصویر پس‌زمینه را کنترل کنی و بدانی size و repeat چه می‌کنند">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تصویر پس زمینه (Background Image)", "description": "این درس: رنگ و تصویر پس‌زمینه را کنترل کنی و بدانی size و repeat چه می‌کنند", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">رنگ و پس‌زمینه</a><span class="sep">/</span><span>تصویر پس زمینه (Background Image)</span></div><div class="layout"><aside class="side"><h3>رنگ و پس‌زمینه (17)</h3>
+<a href="01-رنگ-ها-Colors.html">1. رنگ ها (Colors)</a>
+<a href="02-رنگ-های-RGB-RGB-Colors.html">2. رنگ های RGB (RGB Colors)</a>
+<a href="03-رنگ-های-HEX-HEX-Colors.html">3. رنگ های HEX (HEX Colors)</a>
+<a href="04-رنگ-های-HSL-HSL-Colors.html">4. رنگ های HSL (HSL Colors)</a>
+<a href="05-پس-زمینه-Backgrounds.html">5. پس زمینه (Backgrounds)</a>
+<a href="06-تصویر-پس-زمینه-Background-Image.html" class="on">6. تصویر پس زمینه (Background Image)</a>
+<a href="07-تکرار-پس-زمینه-Background-Repeat.html">7. تکرار پس زمینه (Background Repeat)</a>
+<a href="08-پیوست-پس-زمینه-Background-Attachment.html">8. پیوست پس زمینه (Background Attachment)</a>
+<a href="09-کوتاه-نویسی-پس-زمینه-Background-Shorthand.html">9. کوتاه نویسی پس زمینه (Background Shorthand)</a>
+<a href="10-رنگ-حاشیه-Border-Color.html">10. رنگ حاشیه (Border Color)</a>
+<a href="11-رنگ-حاشیه-بیرونی-Outline-Color.html">11. رنگ حاشیه بیرونی (Outline Color)</a>
+<a href="12-پس-زمینه-های-چندگانه-Multiple-Backgrounds.html">12. پس زمینه های چندگانه (Multiple Backgrounds)</a>
+<a href="13-اندازه-پس-زمینه-Background-Size.html">13. اندازه پس زمینه (Background Size)</a>
+<a href="14-مبدأ-پس-زمینه-Background-Origin.html">14. مبدأ پس زمینه (Background Origin)</a>
+<a href="15-برش-پس-زمینه-Background-Clip.html">15. برش پس زمینه (Background Clip)</a>
+<a href="16-کلیدواژه-های-رنگ-Color-Keywords.html">16. کلیدواژه های رنگ (Color Keywords)</a>
+<a href="17-آزمون-رنگ-و-پسزمینه.html">17. آزمون (رنگ و پس‌زمینه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تصویر پس زمینه (Background Image)" data-cat="رنگ و پس‌زمینه">📌 پین کردن این درس</button>
+<h2>تصویر پس زمینه (Background Image)</h2>
+<p><strong>هدف این درس:</strong> رنگ و تصویر پس‌زمینه را کنترل کنی و بدانی size و repeat چه می‌کنند.</p>
+<div class="note"><strong>درس معرفی «رنگ و پس‌زمینه»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>رنگ حاشیه بیرونی (Outline Color)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> رنگ و پس‌زمینه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «رنگ و پس‌زمینه».</div>
+<h3>مفهوم به زبان ساده</h3><p>پس‌زمینه می‌تواند رنگ ساده یا تصویر باشد. background-image مسیر می‌خواهد داخل url(). size مشخص می‌کند تصویر چقدر بزرگ شود؛ repeat تکرار را کنترل می‌کند.</p>
+<h3>ساختار (Syntax)</h3><div class="code">background-color: #fff;
+background-image: url(&quot;bg.jpg&quot;);
+background-size: cover;</div>
+<h3>مثال 1: تصویر تمام‌بخش</h3>
+<div class="codewrap"><div class="code">.hero {
+  background-color: #0f172a;
+  background-image: url(&quot;hero.jpg&quot;);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 240px;
+}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>background-color:</strong> اگر تصویر دیر لود شد، رنگ پشتیبان دیده می‌شود.<br>
+<strong>url(...):</strong> مسیر تصویر اجباری است.<br>
+<strong>cover:</strong> تصویر کل ناحیه را می‌پوشاند؛ ممکن است کمی برش بخورد.<br>
+<strong>no-repeat:</strong> کاشی نمی‌شود.<br>
+<strong>position: center:</strong> مرکز تصویر در مرکز بخش می‌ماند.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">background-image: hero.jpg;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون url().<br><strong>چه می‌بینی؟</strong> تصویر نمی‌آید<br><strong>درست:</strong> url(&quot;hero.jpg&quot;)</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک .hero با رنگ پشتیبان و cover بسازی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>url الزامی</li>
+<li>cover برای پوشش</li>
+<li>رنگ پشتیبان مفید است</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">size را contain کن و فرق را ببین.</li>
+<li style="margin-bottom:6px">repeat را repeat-x امتحان کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="05-پس-زمینه-Backgrounds.html">← پس زمینه (Backgrounds)</a><a href="07-تکرار-پس-زمینه-Background-Repeat.html">تکرار پس زمینه (Background Repeat) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

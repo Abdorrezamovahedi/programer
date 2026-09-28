@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متغیرهای سراسری (Global Variables) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="فرق متغیر بیرون تابع با داخل تابع را بدانی و فقط وقتی لازم است از global استفاده کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "متغیرهای سراسری (Global Variables)", "description": "فرق متغیر بیرون تابع با داخل تابع را بدانی و فقط وقتی لازم است از global استفاده کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>متغیرهای سراسری (Global Variables)</span></div><div class="layout"><aside class="side"><h3>متغیرها (6)</h3>
+<a href="01-متغیرها-Variables.html">1. متغیرها (Variables)</a>
+<a href="02-آزمون-متغیرها.html">2. آزمون (متغیرها)</a>
+<a href="03-نام-متغیرها-Variable-Names.html">3. نام متغیرها (Variable Names)</a>
+<a href="04-متغیرهای-سراسری-Global-Variables.html" class="on">4. متغیرهای سراسری (Global Variables)</a>
+<a href="05-تمرین-متغیرها-Variable-Exercises.html">5. تمرین متغیرها (Variable Exercises)</a>
+<a href="06-رگرسیون-چندمتغیره-Multiple-Regression.html">6. رگرسیون چندمتغیره (Multiple Regression)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="متغیرهای سراسری (Global Variables)" data-cat="متغیرها">📌 پین کردن این درس</button>
+<h2>متغیرهای سراسری (Global Variables)</h2>
+<p><strong>هدف:</strong> فرق متغیر بیرون تابع با داخل تابع را بدانی و فقط وقتی لازم است از global استفاده کنی.</p>
+<div class="note"><strong>درس معرفی «متغیرها»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>متغیرها (Variables)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> متغیرها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «متغیرها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «متغیرها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>متغیر تعریف‌شده در سطح فایل (بیرون تابع) سراسری است و داخل تابع معمولاً خوانده می‌شود. اگر بخواهی همان نام را از داخل تابع عوض کنی، باید با global اعلام کنی؛ وگرنه پایتون فکر می‌کند متغیر محلی جدیدی می‌سازی.</p>
+<h3>ساختار</h3><div class="code">x = 1
+def f():
+    global x
+    x = 2</div>
+<h3>مثال 1: خواندن سراسری بدون global</h3>
+<div class="codewrap"><div class="code">msg = &quot;سلام&quot;
+def show():
+    print(msg)
+show()</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> msg در سطح ماژول تعریف شده → سراسری.<br>
+<strong>خط ۲–۳:</strong> داخل تابع فقط خوانده می‌شود؛ برای خواندن global لازم نیست.<br>
+<strong>خط ۴:</strong> تابع را صدا می‌زنیم؛ «سلام» چاپ می‌شود.</div>
+<h3>مثال 2: تغییر سراسری با global</h3>
+<div class="codewrap"><div class="code">count = 0
+def inc():
+    global count
+    count = count + 1
+inc()
+inc()
+print(count)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> شمارنده از صفر.<br>
+<strong>خط ۳:</strong> بدون این خط، count = ... یک متغیر محلی می‌ساخت و سراسری عوض نمی‌شد.<br>
+<strong>خط ۴:</strong> مقدار سراسری یکی زیاد می‌شود.<br>
+<strong>خط ۵–۶:</strong> دو بار صدا → count برابر ۲.<br>
+<strong>خط ۷:</strong> ۲ چاپ می‌شود.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">n = 1
+def bad():
+    n = n + 1
+bad()</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> پایتون n = را محلی فرض می‌کند، اما در همان خط n سمت راست هنوز محلی تعریف نشده.<br><strong>چه می‌بینی؟</strong> UnboundLocalError<br><strong>درست:</strong> یا global n بگذار، یا مقدار را به عنوان آرگومان بده و return کن (روش تمیزتر).</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «متغیرهای سراسری» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>خواندن سراسری معمولاً آزاد است.</li>
+<li>نوشتن روی سراسری داخل تابع → global.</li>
+<li>زیاد از global استفاده نکن؛ return و آرگومان معمولاً بهترند.</li>
+<li>UnboundLocalError نشانهٔ قاطی شدن محلی/سراسری است.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">یک شمارنده سراسری بساز و با تابع زیادش کن.</li>
+<li style="margin-bottom:6px">همان کار را بدون global با return بازنویسی کن.</li>
+<li style="margin-bottom:6px">عمداً UnboundLocalError بساز و پیام را بخوان.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="03-نام-متغیرها-Variable-Names.html">← نام متغیرها (Variable Names)</a><a href="05-تمرین-متغیرها-Variable-Exercises.html">تمرین متغیرها (Variable Exercises) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

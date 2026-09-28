@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$_GET ($_GET) — PHP | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: دادهٔ GET را بخوانی و امن چاپ کنی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "$_GET ($_GET)", "description": "این درس: دادهٔ GET را بخوانی و امن چاپ کنی", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">فرم و درخواست</a><span class="sep">/</span><span>$_GET ($_GET)</span></div><div class="layout"><aside class="side"><h3>فرم و درخواست (97)</h3>
+<a href="01-POST-POST.html">1. $_POST ($_POST)</a>
+<a href="02-GET-GET.html" class="on">2. $_GET ($_GET)</a>
+<a href="03-آپلود-فایل-File-Upload.html">3. آپلود فایل (File Upload)</a>
+<a href="04-کوکی-ها-Cookies.html">4. کوکی ها (Cookies)</a>
+<a href="05-سشن-ها-Sessions.html">5. سشن ها (Sessions)</a>
+<a href="06-فیلترها-Filters.html">6. فیلترها (Filters)</a>
+<a href="07-فیلترهای-پیشرفته-Filters-Advanced.html">7. فیلترهای پیشرفته (Filters Advanced)</a>
+<a href="08-گرفتن-آخرین-ID-MySQL-Get-Last-ID.html">8. گرفتن آخرین ID (MySQL Get Last ID)</a>
+<a href="09-سیمپل-XML-دریافت-SimpleXML-Get.html">9. سیمپل XML: دریافت (SimpleXML-Get)</a>
+<a href="10-گرفتن-منطقه-پیش-فرض-date-default-timezone-get.html">10. گرفتن منطقه پیش فرض (date_default_timezone_get)</a>
+<a href="11-آخرین-خطاهای-تاریخ-date-get-last-errors.html">11. آخرین خطاهای تاریخ (date_get_last_errors)</a>
+<a href="12-گرفتن-آفست-date-offset-get.html">12. گرفتن آفست (date_offset_get)</a>
+<a href="13-گرفتن-timestamp-date-timestamp-get.html">13. گرفتن timestamp (date_timestamp_get)</a>
+<a href="14-گرفتن-منطقه-زمانی-date-timezone-get.html">14. گرفتن منطقه زمانی (date_timezone_get)</a>
+<a href="15-getdate-getdate.html">15. getdate() (getdate)</a>
+<a href="16-gettimeofday-gettimeofday.html">16. gettimeofday() (gettimeofday)</a>
+<a href="17-مختصات-منطقه-timezone-location-get.html">17. مختصات منطقه (timezone_location_get)</a>
+<a href="18-گرفتن-نام-منطقه-timezone-name-get.html">18. گرفتن نام منطقه (timezone_name_get)</a>
+<a href="19-گرفتن-آفست-منطقه-timezone-offset-get.html">19. گرفتن آفست منطقه (timezone_offset_get)</a>
+<a href="20-گذارهای-منطقه-timezone-transitions-get.html">20. گذارهای منطقه (timezone_transitions_get)</a>
+<a href="21-نسخه-منطقه-زمانی-timezone-version-get.html">21. نسخه منطقه زمانی (timezone_version_get)</a>
+<a href="22-getcwd-getcwd.html">22. getcwd() (getcwd)</a>
+<a href="23-آخرین-خطا-error-get-last.html">23. آخرین خطا (error_get_last)</a>
+<a href="24-گرفتن-کد-getCode.html">24. گرفتن کد (getCode)</a>
+<a href="25-گرفتن-فایل-getFile.html">25. گرفتن فایل (getFile)</a>
+<a href="26-گرفتن-پیام-getMessage.html">26. گرفتن پیام (getMessage)</a>
+<a href="27-گرفتن-خط-getLine.html">27. گرفتن خط (getLine)</a>
+<a href="28-گرفتن-قبلی-getPrevious.html">28. گرفتن قبلی (getPrevious)</a>
+<a href="29-گرفتن-Trace-getTrace.html">29. گرفتن Trace (getTrace)</a>
+<a href="30-fgetc-fgetc.html">30. fgetc() (fgetc)</a>
+<a href="31-fgetcsv-fgetcsv.html">31. fgetcsv() (fgetcsv)</a>
+<a href="32-fgets-fgets.html">32. fgets() (fgets)</a>
+<a href="33-fgetss-fgetss.html">33. fgetss() (fgetss)</a>
+<a href="34-file-get-contents-file-get-contents.html">34. file_get_contents() (file_get_contents)</a>
+<a href="35-is-uploaded-file-is-uploaded-file.html">35. is_uploaded_file() (is_uploaded_file)</a>
+<a href="36-انتقال-فایل-آپلودی-move-uploaded-file.html">36. انتقال فایل آپلودی (move_uploaded_file)</a>
+<a href="37-گرفتن-کش-realpath-realpath-cache-get.html">37. گرفتن کش realpath (realpath_cache_get)</a>
+<a href="38-مرجع-فیلتر-PHP-Filter.html">38. مرجع فیلتر (PHP Filter)</a>
+<a href="39-شناسه-فیلتر-filter-id.html">39. شناسه فیلتر (filter_id)</a>
+<a href="40-ورودی-فیلتر-filter-input.html">40. ورودی فیلتر (filter_input)</a>
+<a href="41-فهرست-فیلترها-filter-list.html">41. فهرست فیلترها (filter_list)</a>
+<a href="42-فیلتر-کردن-مقدار-filter-var.html">42. فیلتر کردن مقدار (filter_var)</a>
+<a href="43-ftp-fget-ftp-fget.html">43. ftp_fget (ftp_fget)</a>
+<a href="44-ftp-get-ftp-get.html">44. ftp_get (ftp_get)</a>
+<a href="45-ftp-get-option-ftp-get-option.html">45. ftp_get_option (ftp_get_option)</a>
+<a href="46-ftp-nb-fget-ftp-nb-fget.html">46. ftp_nb_fget (ftp_nb_fget)</a>
+<a href="47-ftp-nb-get-ftp-nb-get.html">47. ftp_nb_get (ftp_nb_get)</a>
+<a href="48-دریافت-همه-خطاهای-libxml-libxml-get-errors.html">48. دریافت همه خطاهای libxml (libxml_get_errors)</a>
+<a href="49-آخرین-خطای-libxml-libxml-get-last-error.html">49. آخرین خطای libxml (libxml_get_last_error)</a>
+<a href="50-حداکثر-rand-getrandmax.html">50. حداکثر rand (getrandmax)</a>
+<a href="51-mt-getrandmax-mt-getrandmax.html">51. mt_getrandmax (mt_getrandmax)</a>
+<a href="52-اطلاعات-مرورگر-get-browser.html">52. اطلاعات مرورگر (get_browser)</a>
+<a href="53-میانگین-بار-سیستم-sys-getloadavg.html">53. میانگین بار سیستم (sys_getloadavg)</a>
+<a href="54-get-charset-get-charset.html">54. get_charset (get_charset)</a>
+<a href="55-get-client-info-get-client-info.html">55. get_client_info (get_client_info)</a>
+<a href="56-get-client-stats-get-client-stats.html">56. get_client_stats (get_client_stats)</a>
+<a href="57-get-client-version-get-client-version.html">57. get_client_version (get_client_version)</a>
+<a href="58-آمار-اتصال-get-connection-stats.html">58. آمار اتصال (get_connection_stats)</a>
+<a href="59-اطلاعات-میزبان-get-host-info.html">59. اطلاعات میزبان (get_host_info)</a>
+<a href="60-نسخه-پروتکل-get-proto-info.html">60. نسخه پروتکل (get_proto_info)</a>
+<a href="61-اطلاعات-سرور-get-server-info.html">61. اطلاعات سرور (get_server_info)</a>
+<a href="62-نسخه-سرور-get-server-version.html">62. نسخه سرور (get_server_version)</a>
+<a href="63-dns-get-mx-dns-get-mx.html">63. dns_get_mx (dns_get_mx)</a>
+<a href="64-dns-get-record-dns-get-record.html">64. dns_get_record (dns_get_record)</a>
+<a href="65-gethostbyaddr-gethostbyaddr.html">65. gethostbyaddr (gethostbyaddr)</a>
+<a href="66-gethostbyname-gethostbyname.html">66. gethostbyname (gethostbyname)</a>
+<a href="67-gethostbynamel-gethostbynamel.html">67. gethostbynamel (gethostbynamel)</a>
+<a href="68-gethostname-gethostname.html">68. gethostname (gethostname)</a>
+<a href="69-getmxrr-getmxrr.html">69. getmxrr (getmxrr)</a>
+<a href="70-getprotobyname-getprotobyname.html">70. getprotobyname (getprotobyname)</a>
+<a href="71-getprotobynumber-getprotobynumber.html">71. getprotobynumber (getprotobynumber)</a>
+<a href="72-getservbyname-getservbyname.html">72. getservbyname (getservbyname)</a>
+<a href="73-getservbyport-getservbyport.html">73. getservbyport (getservbyport)</a>
+<a href="74-setcookie-setcookie.html">74. setcookie (setcookie)</a>
+<a href="75-setrawcookie-setrawcookie.html">75. setrawcookie (setrawcookie)</a>
+<a href="76-وضعیت-سوکت-socket-get-status.html">76. وضعیت سوکت (socket_get_status)</a>
+<a href="77-ob-get-clean-ob-get-clean.html">77. ob_get_clean (ob_get_clean)</a>
+<a href="78-ob-get-contents-ob-get-contents.html">78. ob_get_contents (ob_get_contents)</a>
+<a href="79-ob-get-flush-ob-get-flush.html">79. ob_get_flush (ob_get_flush)</a>
+<a href="80-ob-get-length-ob-get-length.html">80. ob_get_length (ob_get_length)</a>
+<a href="81-ob-get-level-ob-get-level.html">81. ob_get_level (ob_get_level)</a>
+<a href="82-فیلتر-با-الگو-preg-filter.html">82. فیلتر با الگو (preg_filter)</a>
+<a href="83-فضای-نام-ها-getDocNamespaces.html">83. فضای نام ها (getDocNamespaces)</a>
+<a href="84-نام-عنصر-getName.html">84. نام عنصر (getName)</a>
+<a href="85-دریافت-namespaceها-getNamespaces.html">85. دریافت namespaceها (getNamespaces)</a>
+<a href="86-getchildren-getChildren.html">86. getchildren (getChildren)</a>
+<a href="87-get-html-translation-table-get-html-translation-table.html">87. get_html_translation_table (get_html_translation_table)</a>
+<a href="88-str-getcsv-str-getcsv.html">88. str_getcsv (str_getcsv)</a>
+<a href="89-get-defined-vars-get-defined-vars.html">89. get_defined_vars (get_defined_vars)</a>
+<a href="90-get-resource-type-get-resource-type.html">90. get_resource_type (get_resource_type)</a>
+<a href="91-gettype-gettype.html">91. gettype (gettype)</a>
+<a href="92-بایت-اندیس-جاری-xml-get-current-byte-index.html">92. بایت اندیس جاری (xml_get_current_byte_index)</a>
+<a href="93-شماره-ستون-جاری-xml-get-current-column-number.html">93. شماره ستون جاری (xml_get_current_column_number)</a>
+<a href="94-شماره-خط-جاری-xml-get-current-line-number.html">94. شماره خط جاری (xml_get_current_line_number)</a>
+<a href="95-کد-خطا-xml-get-error-code.html">95. کد خطا (xml_get_error_code)</a>
+<a href="96-گرفتن-گزینه-parser-xml-parser-get-option.html">96. گرفتن گزینه parser (xml_parser_get_option)</a>
+<a href="97-آزمون-فرم-و-درخواست.html">97. آزمون (فرم و درخواست)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="$_GET ($_GET)" data-cat="فرم و درخواست">📌 پین</button>
+<h2>$_GET ($_GET)</h2>
+<p><strong>هدف این درس:</strong> دادهٔ GET را بخوانی و امن چاپ کنی.</p>
+<div class="note"><strong>پوشه:</strong> فرم و درخواست &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>ورودی کاربر قابل اعتماد نیست. همیشه قبل از نمایش در HTML با htmlspecialchars پاک‌سازی کن.</p>
+<h3>فهرست معرفی: ورودی کاربر</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code">&lt;?php
+// خواندن امن از URL: ?q=test
+$q = $_GET[&quot;q&quot;] ?? &quot;&quot;;                    // اگر نبود خالی
+echo htmlspecialchars($q, ENT_QUOTES, &quot;UTF-8&quot;); // قبل از چاپ در HTML
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<h3>مثال 1: خواندن q</h3>
+<div class="codewrap"><div class="code">&lt;?php
+$q = $_GET[&quot;q&quot;] ?? &quot;&quot;;
+echo htmlspecialchars($q, ENT_QUOTES, &quot;UTF-8&quot;);
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> مقدار q یا رشتهٔ خالی.<br>
+<strong>خط ۳:</strong> چاپ امن.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">echo $_GET[&quot;q&quot;];</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> XSS.<br><strong>چه می‌بینی؟</strong> ریسک امنیتی<br><strong>درست:</strong> htmlspecialchars</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> با ?q=test خروجی امن را ببینی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>$_GET از URL</li>
+<li>?? پیش‌فرض</li>
+<li>همیشه escape برای HTML</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">?q=&lt;b&gt;x را تست کن و ببین بی‌اثر شده.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="01-POST-POST.html">← قبلی</a><a href="03-آپلود-فایل-File-Upload.html">بعدی →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

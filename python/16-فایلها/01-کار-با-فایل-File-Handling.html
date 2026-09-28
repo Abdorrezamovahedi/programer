@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کار با فایل (File Handling) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="فایل را با with باز کنی، بخوانی یا بنویسی و بدانی چرا with از فراموشی close جلوگیری می‌کند">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "کار با فایل (File Handling)", "description": "فایل را با with باز کنی، بخوانی یا بنویسی و بدانی چرا with از فراموشی close جلوگیری می‌کند", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">فایل‌ها</a><span class="sep">/</span><span>کار با فایل (File Handling)</span></div><div class="layout"><aside class="side"><h3>فایل‌ها (5)</h3>
+<a href="01-کار-با-فایل-File-Handling.html" class="on">1. کار با فایل (File Handling)</a>
+<a href="02-خواندن-فایل-Read-Files.html">2. خواندن فایل (Read Files)</a>
+<a href="03-نوشتن-ایجاد-فایل-Write-Create-Files.html">3. نوشتن/ایجاد فایل (Write/Create Files)</a>
+<a href="04-حذف-فایل-Delete-Files.html">4. حذف فایل (Delete Files)</a>
+<a href="05-متدهای-فایل-File-Methods.html">5. متدهای فایل (File Methods)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="کار با فایل (File Handling)" data-cat="فایل‌ها">📌 پین کردن این درس</button>
+<h2>کار با فایل (File Handling)</h2>
+<p><strong>هدف:</strong> فایل را با with باز کنی، بخوانی یا بنویسی و بدانی چرا with از فراموشی close جلوگیری می‌کند.</p>
+<div class="note"><strong>پوشه:</strong> فایل‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> اولین درس این پوشه.</div>
+<div class="good"><strong>ارتباط با قبل:</strong> قبلاً print روی صفحه می‌نوشت؛ اینجا همان ایدهٔ «خروجی» به دیسک منتقل می‌شود.</div>
+<h3>مفهوم</h3><p>open مسیر را به شیء فایل وصل می‌کند. بدون بستن درست، قفل/نشتی رخ می‌دهد. with خودش در پایان می‌بندد. encoding=&quot;utf-8&quot; برای فارسی مهم است.</p>
+<h3>ساختار</h3><div class="code">with open(path, mode, encoding=&quot;utf-8&quot;) as f:
+    ...</div>
+<h3>مثال 1: نوشتن</h3>
+<div class="codewrap"><div class="code">with open(&quot;note.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;سلام\n&quot;)
+    f.write(&quot;خط دوم&quot;)
+print(&quot;نوشته شد&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>with open:</strong> حالت w = نوشتن (اگر باشد از اول بازنویسی می‌شود).<br>
+<strong>encoding:</strong> بدون utf-8 ممکن است فارسی خراب شود.<br>
+<strong>write:</strong> رشته را در فایل می‌گذارد؛ خودش خط جدید نمی‌گذارد مگر \n بدهی.<br>
+<strong>خروج از with:</strong> فایل بسته می‌شود حتی اگر وسط کار خطا بیاید.</div>
+<h3>مثال 2: خواندن</h3>
+<div class="codewrap"><div class="code">with open(&quot;note.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+    text = f.read()
+print(text)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>r:</strong> فقط خواندن.<br>
+<strong>read:</strong> کل محتوا یک رشته.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">f = open(&quot;a.txt&quot;, &quot;w&quot;)
+f.write(&quot;x&quot;)
+# فراموش کردن f.close()</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون close ممکن است داده کامل نوشته نشود یا فایل قفل بماند.<br><strong>چه می‌بینی؟</strong> رفتار وابسته به سیستم؛ داده گاهی ناقص<br><strong>درست:</strong> with open(&quot;a.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+    f.write(&quot;x&quot;)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> فایلی بنویس که یک خط فارسی داشته باشد، بخوان و همان متن را print کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>همیشه with</li>
+<li>utf-8 برای فارسی</li>
+<li>w بازنویسی می‌کند؛ a اضافه می‌کند</li>
+<li>read کل فایل</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">note.txt بساز و بخوان.</li>
+<li style="margin-bottom:6px">حالت a را برای اضافه کردن خط سوم امتحان کن.</li>
+<li style="margin-bottom:6px">بدون with بنویس و عمداً close را فراموش کن (بعد درستش کن).</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><span></span><a href="02-خواندن-فایل-Read-Files.html">خواندن فایل (Read Files) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

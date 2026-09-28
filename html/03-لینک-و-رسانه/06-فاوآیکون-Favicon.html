@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فاوآیکون (Favicon) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: تصویر را با مسیر درست و توضیح متنی در صفحه بگذاری">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فاوآیکون (Favicon)", "description": "این درس: تصویر را با مسیر درست و توضیح متنی در صفحه بگذاری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">لینک و رسانه</a><span class="sep">/</span><span>فاوآیکون (Favicon)</span></div><div class="layout"><aside class="side"><h3>لینک و رسانه (10)</h3>
+<a href="01-لینکها-Links.html">1. لینک‌ها (Links)</a>
+<a href="02-نشانه-لینک-Bookmarks.html">2. نشانه لینک (Bookmarks)</a>
+<a href="03-تصاویر-Images.html">3. تصاویر (Images)</a>
+<a href="04-نقشه-تصویر-Image-Map.html">4. نقشه تصویر (Image Map)</a>
+<a href="05-تصویر-پسزمینه.html">5. تصویر پس‌زمینه</a>
+<a href="06-فاوآیکون-Favicon.html" class="on">6. فاوآیکون (Favicon)</a>
+<a href="07-ویدیو-Video.html">7. ویدیو (Video)</a>
+<a href="08-صدا-Audio.html">8. صدا (Audio)</a>
+<a href="09-یوتیوب.html">9. یوتیوب</a>
+<a href="10-آزمون-لینک-و-رسانه.html">10. آزمون (لینک و رسانه)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="فاوآیکون (Favicon)" data-cat="لینک و رسانه">📌 پین کردن این درس</button>
+<h2>فاوآیکون (Favicon)</h2>
+<p><strong>هدف این درس:</strong> تصویر را با مسیر درست و توضیح متنی در صفحه بگذاری.</p>
+<div class="note"><strong>پوشه:</strong> لینک و رسانه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («لینک و رسانه») را با تایپ و اجرا خوانده باشی.</div>
+<h3>مفهوم به زبان ساده</h3><p>تگ img تصویر را نشان می‌دهد. مسیر فایل در src است. alt متن جایگزین است: اگر تصویر نیاید یا کاربر نتواند ببیند، همین متن کمک می‌کند. برای تصویر فقط تزئینی، alt را خالی بگذار.</p>
+<h3>ساختار (Syntax)</h3><div class="code">&lt;img src=&quot;file.jpg&quot; alt=&quot;توضیح کوتاه&quot;&gt;</div>
+<h3>مثال 1: تصویر با توضیح</h3>
+<div class="codewrap"><div class="code">&lt;img src=&quot;mountain.jpg&quot; alt=&quot;کوه در غروب آفتاب&quot; width=&quot;320&quot;&gt;
+&lt;img src=&quot;line.png&quot; alt=&quot;&quot;&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>src:</strong> نام یا مسیر فایل.<br>
+<strong>alt توصیفی:</strong> موضوع تصویر را می‌گوید.<br>
+<strong>alt خالی:</strong> یعنی این تصویر فقط تزئین است.<br>
+<strong>width:</strong> عرض نمایش.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">&lt;img src=&quot;a.jpg&quot;&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> بدون alt، صفحه برای خیلی از کاربران ناقص است.<br><strong>چه می‌بینی؟</strong> هشدار دسترس‌پذیری؛ تصویر بدون توضیح<br><strong>درست:</strong> alt=&quot;توضیح مفید&quot; یا برای تزئین alt=&quot;&quot;</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک img با alt واقعی بنویسی (حتی اگر فایل تصویر موجود نباشد).</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>src مسیر فایل</li>
+<li>alt را همیشه تصمیم بگیر</li>
+<li>تزئینی → alt خالی</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">src را غلط بگذار و ببین alt جای تصویر می‌آید یا نه.</li>
+</ol>
+<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
+<div class="navbtn" style="margin-top:22px"><a href="05-تصویر-پسزمینه.html">← تصویر پس‌زمینه</a><a href="07-ویدیو-Video.html">ویدیو (Video) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

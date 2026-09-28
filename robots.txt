@@ -1,15 +1,3 @@
 User-agent: *
 Allow: /
-
-# زبان‌ها
-Allow: /python/
-Allow: /html/
-Allow: /css/
-Allow: /javascript/
-Allow: /php/
-
-Sitemap: https://abdorrezamovahedi.github.io/programer/sitemap.xml
-
-# جلوگیری از ایندکس فایل‌های غیرضروری
-Disallow: /*.css$
-Disallow: /*.js$
+Sitemap: https://example.com/sitemap.xml

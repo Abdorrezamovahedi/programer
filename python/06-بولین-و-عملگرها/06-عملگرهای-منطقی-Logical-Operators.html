@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عملگرهای منطقی (Logical Operators) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: and و or و not را با مثال True/False بفهمی">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عملگرهای منطقی (Logical Operators)", "description": "این درس: and و or و not را با مثال True/False بفهمی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">بولین و عملگرها</a><span class="sep">/</span><span>عملگرهای منطقی (Logical Operators)</span></div><div class="layout"><aside class="side"><h3>بولین و عملگرها (11)</h3>
+<a href="01-بولین-ها-Booleans.html">1. بولین ها (Booleans)</a>
+<a href="02-عملگرها-Operators.html">2. عملگرها (Operators)</a>
+<a href="03-عملگرهای-حسابی-Arithmetic-Operators.html">3. عملگرهای حسابی (Arithmetic Operators)</a>
+<a href="04-عملگرهای-انتسابی-Assignment-Operators.html">4. عملگرهای انتسابی (Assignment Operators)</a>
+<a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">5. عملگرهای مقایسه ای (Comparison Operators)</a>
+<a href="06-عملگرهای-منطقی-Logical-Operators.html" class="on">6. عملگرهای منطقی (Logical Operators)</a>
+<a href="07-عملگرهای-هویتی-Identity-Operators.html">7. عملگرهای هویتی (Identity Operators)</a>
+<a href="08-عملگرهای-عضویت-Membership-Operators.html">8. عملگرهای عضویت (Membership Operators)</a>
+<a href="09-عملگرهای-بیتی-Bitwise-Operators.html">9. عملگرهای بیتی (Bitwise Operators)</a>
+<a href="10-اولویت-عملگرها-Operator-Precedence.html">10. اولویت عملگرها (Operator Precedence)</a>
+<a href="11-عملگرهای-منطقی-در-شرط.html">11. عملگرهای منطقی در شرط</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عملگرهای منطقی (Logical Operators)" data-cat="بولین و عملگرها">📌 پین کردن این درس</button>
+<h2>عملگرهای منطقی (Logical Operators)</h2>
+<p><strong>هدف این درس:</strong> and و or و not را با مثال True/False بفهمی.</p>
+<div class="note"><strong>پوشه:</strong> بولین و عملگرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3><p>گاهی چند شرط را با هم لازم داری. and سخت‌گیر است؛ or آسان‌گیر؛ not برعکس می‌کند.</p>
+<h3>فهرست معرفی: عملگرهای منطقی</h3>
+<p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="codewrap"><div class="code"># عملگرهای منطقی — ترکیب شرط‌ها
+print(True and False)   # and: هر دو باید True باشند → False
+print(True or False)    # or:  حداقل یکی True → True
+print(not True)         # not: برعکس → False
+print(5 &gt; 2 and 5 &gt; 10) # مثال ترکیبی → False</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>and:</strong> اگر یکی False باشد کل عبارت False است.<br>
+<strong>or:</strong> اگر یکی True باشد کل عبارت True است.</div>
+<h3>مثال 1: ورود با دو شرط</h3>
+<div class="codewrap"><div class="code">age = 20
+has_id = True
+print(age &gt;= 18 and has_id)
+print(age &lt; 12 or age &gt; 65)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> سن ۲۰.<br>
+<strong>خط ۲:</strong> کارت دارد True.<br>
+<strong>خط ۳:</strong> هر دو شرط ورود؛ نتیجه True.<br>
+<strong>خط ۴:</strong> کودک یا سالمند؟ False.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">print(not age &gt;= 18 and has_id)  # بدون پرانتز با عجله</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> اولویت not ممکن است خلاف قصدت باشد.<br><strong>چه می‌بینی؟</strong> منطق غیرمنتظره<br><strong>درست:</strong> با () واضح بنویس: not (age &gt;= 18 and has_id)</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک عبارت and و یک or خودت بنویسی و نتیجه را درست حدس بزنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>and سخت‌گیر</li>
+<li>or آسان‌گیر</li>
+<li>not برعکس</li>
+<li>پرانتز برای وضوح</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">شرط «نمره بالای ۱۰ و زیر ۲۰» را با and بنویس.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">← عملگرهای مقایسه ای (Comparison Operators)</a><a href="07-عملگرهای-هویتی-Identity-Operators.html">عملگرهای هویتی (Identity Operators) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>

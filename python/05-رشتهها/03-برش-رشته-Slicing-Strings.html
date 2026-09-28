@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برش رشته (Slicing Strings) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با ایندکس و slice بخش‌هایی از رشته را درست دربیاوری و بدانی end شامل نمی‌شود">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "برش رشته (Slicing Strings)", "description": "با ایندکس و slice بخش‌هایی از رشته را درست دربیاوری و بدانی end شامل نمی‌شود", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
+</head>
+<body>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">رشته‌ها</a><span class="sep">/</span><span>برش رشته (Slicing Strings)</span></div><div class="layout"><aside class="side"><h3>رشته‌ها (16)</h3>
+<a href="01-رشته-ها-Strings.html">1. رشته ها (Strings)</a>
+<a href="02-آزمون-رشته-ها.html">2. آزمون (رشته ها)</a>
+<a href="03-برش-رشته-Slicing-Strings.html" class="on">3. برش رشته (Slicing Strings)</a>
+<a href="04-آزمون-برش-رشته.html">4. آزمون (برش رشته)</a>
+<a href="05-تغییر-رشته-Modify-Strings.html">5. تغییر رشته (Modify Strings)</a>
+<a href="06-آزمون-تغییر-رشته.html">6. آزمون (تغییر رشته)</a>
+<a href="07-ترکیب-رشته-ها-Concatenate-Strings.html">7. ترکیب رشته ها (Concatenate Strings)</a>
+<a href="08-آزمون-ترکیب-رشته-ها.html">8. آزمون (ترکیب رشته ها)</a>
+<a href="09-قالب-بندی-رشته-ها-Format-Strings.html">9. قالب بندی رشته ها (Format Strings)</a>
+<a href="10-آزمون-قالب-بندی-رشته-ها.html">10. آزمون (قالب بندی رشته ها)</a>
+<a href="11-کاراکتر-فرار-Escape-Characters.html">11. کاراکتر فرار (Escape Characters)</a>
+<a href="12-متدهای-رشته-String-Methods.html">12. متدهای رشته (String Methods)</a>
+<a href="13-تمرین-رشته-ها-String-Exercises.html">13. تمرین رشته ها (String Exercises)</a>
+<a href="14-قالب-بندی-رشته-String-Formatting.html">14. قالب بندی رشته (String Formatting)</a>
+<a href="15-مرجع-متدهای-رشته-String-Methods-Ref.html">15. مرجع متدهای رشته (String Methods Ref)</a>
+<a href="16-برعکس-کردن-رشته-Reverse-a-String.html">16. برعکس کردن رشته (Reverse a String)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="برش رشته (Slicing Strings)" data-cat="رشته‌ها">📌 پین کردن این درس</button>
+<h2>برش رشته (Slicing Strings)</h2>
+<p><strong>هدف:</strong> با ایندکس و slice بخش‌هایی از رشته را درست دربیاوری و بدانی end شامل نمی‌شود.</p>
+<div class="note"><strong>درس معرفی «کارهای رایج روی رشته»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>رشته ها (Strings)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> رشته‌ها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «رشته‌ها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «رشته‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>هر کاراکتر یک شماره دارد که از ۰ شروع می‌شود. s[i] یک کاراکتر می‌دهد. s[a:b] از a تا قبل از b را برمی‌گرداند (b خودش داخل نیست). ایندکس منفی از آخر می‌شمارد.</p>
+<h3>ساختار</h3><div class="code">s[i]    s[start:end]    s[start:end:step]</div>
+<h3>مثال 1: ایندکس تکی</h3>
+<div class="codewrap"><div class="code">s = &quot;Python&quot;
+print(s[0])
+print(s[2])
+print(s[-1])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> شش کاراکتر؛ ایندکس ۰ تا ۵.<br>
+<strong>خط ۲:</strong> اولین حرف: P.<br>
+<strong>خط ۳:</strong> سومین حرف (ایندکس ۲): t.<br>
+<strong>خط ۴:</strong> آخرین حرف با -1: n.</div>
+<h3>مثال 2: برش</h3>
+<div class="codewrap"><div class="code">s = &quot;Python&quot;
+print(s[0:3])
+print(s[2:])
+print(s[:4])
+print(s[::2])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۲:</strong> از ۰ تا قبل از ۳ → Pyt.<br>
+<strong>خط ۳:</strong> از ۲ تا آخر → thon.<br>
+<strong>خط ۴:</strong> از اول تا قبل از ۴ → Pyth.<br>
+<strong>خط ۵:</strong> گام ۲: یکی در میان → Pto.</div>
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">s = &quot;abc&quot;
+print(s[5])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn"><strong>چرا اشتباه است؟</strong> فقط ایندکس ۰،۱،۲ معتبر است.<br><strong>چه می‌بینی؟</strong> IndexError: string index out of range<br><strong>درست:</strong> قبل از دسترسی len(s) را چک کن، یا از slice استفاده کن که برای بیرون‌زدگی خطا نمی‌دهد.</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «برش رشته» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>ایندکس از ۰؛ منفی از آخر.</li>
+<li>در slice، end شامل نمی‌شود.</li>
+<li>ایندکس تکی خارج از محدوده → IndexError.</li>
+<li>slice خارج از محدوده معمولاً تا جایی که هست برمی‌گردد.</li>
+</ul></div>
+<h3>گام عملی</h3><ol style="padding-right:22px;color:#b1bac4">
+<li style="margin-bottom:6px">اولین و آخرین حرف نام خودت را چاپ کن.</li>
+<li style="margin-bottom:6px">از یک کلمه، سه حرف وسط را با slice بگیر.</li>
+<li style="margin-bottom:6px">با گام ۲ یک رشته را یکی‌درمیان چاپ کن.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn" style="margin-top:22px"><a href="02-آزمون-رشته-ها.html">← آزمون (رشته ها)</a><a href="04-آزمون-برش-رشته.html">آزمون (برش رشته) →</a></div></article></div></div>
+<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script></body></html>
