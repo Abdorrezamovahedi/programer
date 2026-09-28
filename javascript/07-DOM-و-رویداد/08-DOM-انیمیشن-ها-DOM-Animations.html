@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name=\"theme-color\" content=\"#0f1419\">
 <title>DOM انیمیشن ها (DOM Animations) — JavaScript | مدرسه برنامه‌نویسان</title>
 <meta name="description" content="این درس: با کلیک روی دکمه متن آن را عوض کنی">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "DOM انیمیشن ها (DOM Animations)", "description": "این درس: با کلیک روی دکمه متن آن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
 <body>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
 <header>
 <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
@@ -18,6 +20,7 @@
 <a href="../../tamrin/index.html">تمرین</a>
 </nav>
 </header>
+<main id="main-content">
 <div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">JavaScript</a><span class="sep">/</span><a href="index.html">DOM و رویداد</a><span class="sep">/</span><span>DOM انیمیشن ها (DOM Animations)</span></div><div class="layout"><aside class="side"><h3>DOM و رویداد (22)</h3>
 <a href="01-تصادفی-Math-Random.html">1. تصادفی (Math Random)</a>
 <a href="02-رویدادها-Events.html">2. رویدادها (Events)</a>
@@ -77,8 +80,9 @@ btn.addEventListener(&quot;click&quot;, () =&gt; {
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn" style="margin-top:22px"><a href="07-DOM-CSS-DOM-CSS.html">← DOM CSS (DOM CSS)</a><a href="09-DOM-رویدادها-DOM-Events.html">DOM رویدادها (DOM Events) →</a></div></article></div></div>
-<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">مدرسه برنامه‌نویسان</footer>
 <script src="../../assets/js/app.js"></script></body></html>

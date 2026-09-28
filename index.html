@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
 <title>مدرسه برنامه‌نویسان | یادگیری برنامه‌نویسی از صفر</title>
 <meta name="description" content="درس مرحله‌ای برای پایتون، HTML، CSS، جاوااسکریپت و PHP.">
 <link rel="stylesheet" href="assets/css/main.css">
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
 <header>
 <div class="logo"><a href="index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
@@ -17,14 +18,16 @@
 <a href="tamrin/index.html">تمرین</a>
 </nav>
 </header>
+<main id="main-content">
 <div class="wrap"><div class="hero"><h1>از صفر یاد بگیر</h1><p>درس مرحله‌ای · مثال خط‌به‌خط · تمرین با راهنمای واضح</p></div><div class="langs"><a class="lang lang-link" href="python/index.html"><span class="ic">🐍</span><b>Python</b><small>پایتون · 20 موضوع · 254 درس</small></a>
 <a class="lang lang-link" href="html/index.html"><span class="ic">📄</span><b>HTML</b><small>اچ‌تی‌ام‌ال · 6 موضوع · 67 درس</small></a>
 <a class="lang lang-link" href="css/index.html"><span class="ic">🎨</span><b>CSS</b><small>سی‌اس‌اس · 7 موضوع · 152 درس</small></a>
 <a class="lang lang-link" href="javascript/index.html"><span class="ic">⚡</span><b>JavaScript</b><small>جاوااسکریپت · 11 موضوع · 232 درس</small></a>
 <a class="lang lang-link" href="php/index.html"><span class="ic">🐘</span><b>PHP</b><small>پی‌اچ‌پی · 19 موضوع · 902 درس</small></a>
 </div><div class="langs" style="margin:20px 0"><a class="lang lang-link" href="tamrin/index.html" style="border-color:#388bfd;background:#161b22"><span class="ic">📝</span><b>تمرین‌ها</b><small>با راهنمای مرحله‌ای</small></a></div></div>
-<button type="button" class="pin-fab" id="pinFab">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose">×</button></header><div class="pin-list" id="pinList"></div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">مدرسه برنامه‌نویسان</footer>
 <script src="assets/js/app.js"></script></body></html>
