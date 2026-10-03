@@ -11,16 +11,18 @@
     var grid = document.getElementById("catGrid");
     var results = document.getElementById("catSearchResults");
     if (!input || !grid || !results) return;
+
     input.addEventListener("input", function () {
       var q = (this.value || "").trim().toLowerCase();
       if (!q) {
-        results.style.display = "none";
+        results.classList.add("is-hidden");
         results.innerHTML = "";
-        grid.style.display = "grid";
+        grid.classList.remove("is-hidden");
         return;
       }
-      grid.style.display = "none";
-      results.style.display = "block";
+
+      grid.classList.add("is-hidden");
+      results.classList.remove("is-hidden");
       var html = "",
         found = 0;
       items.forEach(function (it) {

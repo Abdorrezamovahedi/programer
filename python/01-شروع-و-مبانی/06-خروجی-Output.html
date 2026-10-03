@@ -60,25 +60,23 @@
                         end پایان خط را کنترل می‌کند.</p>
                     <h3>ساختار</h3>
                     <div class="code">print(a, b, sep=&quot; &quot;, end=&quot;\n&quot;)</div>
-                    <h3>مثال 1: متن و عدد</h3>
+                    <h3>مثال 1: چند آرگومان خروجی</h3>
                     <div class="codewrap">
-                        <div class="code">print(&quot;سلام&quot;)
-                            print(42)
-                            print(&quot;سن:&quot;, 20)</div>
+                        <div class="code">print(&quot;اقلام:&quot;, 3, &quot;مبلغ:&quot;, 120)
+print(&quot;جمع:&quot;, 360)</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>خط ۱:</strong> رشته چاپ و خط جدید.<br>
-                        <strong>خط ۲:</strong> عدد بدون " (دابل‌کوتیشن).<br>
-                        <strong>خط ۳:</strong> دو تکه با فاصلهٔ پیش‌فرض بینشان.
+                    <div class="exp"><strong>خروجی:</strong> اقلام: 3 مبلغ: 120 و سپس جمع: 360.<br>
+                        هر فراخوانی <code>print</code> به‌طور پیش‌فرض در خط تازه نمایش داده می‌شود.
                     </div>
-                    <h3>مثال 2: sep و end</h3>
+                    <h3>مثال 2: جداکننده و پایان خط</h3>
                     <div class="codewrap">
                         <div class="code">print(&quot;الف&quot;, &quot;ب&quot;, sep=&quot;-&quot;)
-                            print(&quot;ادامه&quot;, end=&quot; | &quot;)
-                            print(&quot;همین خط&quot;)</div>
+print(&quot;ادامه&quot;, end=&quot; | &quot;)
+print(&quot;همین خط&quot;)</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>خط ۱:</strong> جداکننده خط تیره.<br>
-                        <strong>خط ۲:</strong> به‌جای خط جدید، « | » می‌آید.<br>
-                        <strong>خط ۳:</strong> در همان خط ادامه می‌یابد.
+                    <div class="exp"><strong>خروجی:</strong> الف-ب در خط اول؛ ادامه | همین خط در خط دوم.<br>
+                        <strong>sep:</strong> بین آرگومان‌ها خط تیره می‌گذارد.<br>
+                        <strong>end:</strong> پایان خط را با متن داده‌شده جایگزین می‌کند.
                     </div>
                     <h3>اشتباه رایج</h3>
                     <div class="codewrap">
@@ -99,14 +97,14 @@
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">نام و سن را در یک print چاپ کن.</li>
-                        <li style="margin-bottom:6px">با sep=&quot;/&quot; سه بخش تاریخ فرضی چاپ کن.</li>
-                        <li style="margin-bottom:6px">دو print را با end در یک خط نشان بده.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">نام و سن را در یک print چاپ کن.</li>
+                        <li class="practice-item">با sep=&quot;/&quot; سه بخش تاریخ فرضی چاپ کن.</li>
+                        <li class="practice-item">دو print را با end در یک خط نشان بده.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><a href="05-دستورات-Statements.html">← دستورات
+                    <div class="navbtn lesson-nav"><a href="05-دستورات-Statements.html">← دستورات
                             (Statements)</a><a href="07-چاپ-اعداد-Print-Numbers.html">چاپ اعداد (Print Numbers) →</a>
                     </div>
                 </article>

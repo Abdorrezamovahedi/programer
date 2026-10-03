@@ -29,52 +29,49 @@
           <p>راهنما هست؛ جواب آماده نه</p>
         </div>
         <div class="langs" id="tamrinLangs"></div>
-        <div style="text-align:center;margin-top:16px"><button type="button" id="btnShowQuiz" class="trybtn"
-            style="padding:8px 16px">آزمون سراسری</button></div>
+        <div class="exercise-toolbar">
+          <button type="button" id="btnShowQuiz" class="trybtn quiz-compact-button">آزمون سراسری</button>
+        </div>
       </div>
-      <div id="exListView" style="display:none;max-width:820px;margin:0 auto">
+
+      <div id="exListView" class="exercise-main-layout is-hidden">
         <div class="hero">
           <h1 id="exListTitle">تمرین‌ها</h1>
         </div>
-        <div class="card" style="padding:14px 16px;margin-bottom:14px">
-          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">
-            <select id="exFilterLevel"
-              style="background:#161b22;border:1px solid #30363d;color:#e6edf3;border-radius:6px;padding:6px 10px;font-family:inherit">
+
+        <div class="exercise-panel card">
+          <div class="exercise-filter-row">
+            <select id="exFilterLevel" class="filter-select">
               <option value="all">همه سطوح</option>
               <option value="easy">آسان</option>
               <option value="medium">متوسط</option>
               <option value="hard">سخت</option>
             </select>
-            <select id="exFilterTopic"
-              style="background:#161b22;border:1px solid #30363d;color:#e6edf3;border-radius:6px;padding:6px 10px;font-family:inherit">
+            <select id="exFilterTopic" class="filter-select">
               <option value="all">همه موضوعات</option>
             </select>
           </div>
-          <input type="search" id="exSearch" placeholder="جستجو..."
-            style="width:100%;background:#161b22;border:1px solid #30363d;color:#e6edf3;border-radius:8px;padding:10px 12px;font-family:inherit;direction:rtl">
+          <input type="search" id="exSearch" class="exercise-search" placeholder="جستجو...">
         </div>
+
         <div id="exListRoot"></div>
-        <button type="button" id="backToExLangs"
-          style="margin-top:14px;background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit">←
-          بازگشت</button>
+        <button type="button" id="backToExLangs" class="secondary-action">← بازگشت</button>
       </div>
-      <div id="exDetailView" style="display:none;max-width:820px;margin:0 auto">
+
+      <div id="exDetailView" class="exercise-detail-layout is-hidden">
         <article class="card" id="exDetailCard"></article>
-        <div class="navbtn" style="margin-top:14px"><button type="button" id="backToExList"
-            style="background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:10px 16px;border-radius:8px;cursor:pointer;font-family:inherit">←
-            لیست</button></div>
+        <div class="navbtn exercise-detail-actions">
+          <button type="button" id="backToExList" class="secondary-action">← لیست</button>
+        </div>
       </div>
-      <div id="quizArea" style="display:none;max-width:720px;margin:16px auto">
+
+      <div id="quizArea" class="quiz-panel is-hidden">
         <div class="hero">
           <h2>آزمون سراسری</h2>
         </div>
-        <div id="scoreBox"
-          style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:14px;margin-bottom:14px;text-align:center">
-        </div>
+        <div id="scoreBox" class="quiz-summary"></div>
         <div id="quizRoot"></div>
-        <button type="button" id="backTamrin"
-          style="margin-top:12px;background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit">←
-          بازگشت</button>
+        <button type="button" id="backTamrin" class="secondary-action">← بازگشت</button>
       </div>
     </div>
   </main>

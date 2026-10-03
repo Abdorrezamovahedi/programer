@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>جستجو با الگو (preg_grep) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: نام تابع preg_grep را بشناسی و بدانی چطور وجودش را چک کنی">
+<meta name="description" content="با preg_grep آرایه‌ای از کدهای محصول را بر اساس الگو فیلتر کن و تفاوت آن را با جستجو در یک رشته یاد بگیر.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "جستجو با الگو (preg_grep)", "description": "این درس: نام تابع preg_grep را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "جستجو با الگو (preg_grep)", "description": "فیلترکردن آرایهٔ کدهای محصول با preg_grep در PHP.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -34,30 +34,30 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="جستجو با الگو (preg_grep)" data-cat="عبارات منظم">📌 پین</button>
 <h2>جستجو با الگو (preg_grep)</h2>
-<p><strong>هدف این درس:</strong> نام تابع preg_grep را بشناسی و بدانی چطور وجودش را چک کنی.</p>
-<div class="note"><strong>پوشه:</strong> عبارات منظم &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («عبارات منظم») را با تایپ و اجرا خوانده باشی.</div>
-<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">preg_grep(...)</div>
-<h3>مثال 1: آیا تابع هست؟</h3>
+<p><strong>هدف این درس:</strong> از <code>preg_grep</code> برای انتخاب چند رشته از یک آرایه بر اساس الگوی مشترک استفاده کنی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با آرایه‌ها و الگوی منظم در PHP.</div>
+<h3>مفهوم به زبان ساده</h3><p><code>preg_grep</code> هر عضو آرایه را با الگو می‌سنجد و اعضای منطبق را در یک آرایهٔ تازه برمی‌گرداند. کلیدهای اصلی آرایه حفظ می‌شوند؛ اگر اندیس‌های پیوسته لازم داری، می‌توانی نتیجه را با <code>array_values</code> بازشماری کنی.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_grep($pattern, $array, $flags = 0);</div>
+<h3>مثال: انتخاب کدهای SKU</h3>
 <div class="codewrap"><div class="code">&lt;?php
-var_dump(function_exists(&quot;preg_grep&quot;));
+$codes = [&quot;SKU-104&quot;, &quot;BOX-22&quot;, &quot;SKU-208&quot;];
+$skuCodes = preg_grep('/^SKU-/', $codes);
+print_r(array_values($skuCodes));
 ?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای preg_grep را ببینی.</div>
+<div class="exp"><strong>خروجی:</strong> دو مقدار <code>SKU-104</code> و <code>SKU-208</code> در آرایهٔ نتیجه قرار می‌گیرند.<br><strong>/^SKU-/:</strong> ابتدای رشته باید با <code>SKU-</code> شروع شود.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>برای یک رشته از <code>preg_grep</code> استفاده نکن.</strong> این تابع ورودی آرایه‌ای می‌خواهد؛ برای بررسی یک متن، <code>preg_match</code> مناسب است.</div>
+<div class="good"><strong>معیار پایان:</strong> بتوانی آرایه‌ای را با یک پیشوند یا الگوی مشخص فیلتر کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>مرجع برای موقع نیاز</li>
-<li>مثال کوچک بزن</li>
-<li>از سند رسمی کمک بگیر</li>
+<li><code>preg_grep</code> برای جستجو در اعضای آرایه است.</li>
+<li>نتیجه فقط شامل اعضای منطبق می‌شود.</li>
+<li>کلیدهای اصلی حفظ می‌شوند مگر آنکه نتیجه را بازشماری کنی.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">از آرایه‌ای از نشانی‌ها فقط مواردی را نگه دار که به <code>.ir</code> ختم می‌شوند.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="01-عبارات-منظم-RegEx.html">← قبلی</a><a href="03-تطبیق-preg-match.html">بعدی →</a></div></article></div></div>
+<p class="rel">در درس بعد، با <code>preg_match</code> یک رشته را بررسی می‌کنی و گروه‌های تطبیق را می‌خوانی.</p>
+<div class="navbtn lesson-nav"><a href="01-عبارات-منظم-RegEx.html">← قبلی</a><a href="03-تطبیق-preg-match.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

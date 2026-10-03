@@ -1043,19 +1043,19 @@
     </div>
     <div id="catBlock" style="display:none">
       <div class="breadcrumb" id="catBreadcrumb"></div>
-      <div class="hero" style="padding-bottom:8px">
+      <div class="hero category-page-header">
         <h1 id="catLangTitle">موضوعات</h1>
       </div>
       <input type="search" id="catSearch" class="search-box" placeholder="جستجو در درس‌ها...">
       <div class="cat-grid" id="catGrid"></div>
-      <div id="catSearchResults" style="display:none"></div>
+      <div id="catSearchResults" class="is-hidden"></div>
       <button type="button" id="backToHomeFromCat"
         style="margin-top:12px;background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit">←
         خانه</button>
     </div>
     <div id="lessonListBlock" style="display:none;max-width:820px;margin:0 auto">
       <div class="breadcrumb" id="listBreadcrumb"></div>
-      <div class="hero" style="padding-bottom:8px">
+      <div class="hero category-page-header">
         <h1 id="listTitle">درس‌ها</h1>
         <p id="listSub"></p>
       </div>
@@ -1078,11 +1078,10 @@
           <p>راهنما هست؛ جواب آماده نه</p>
         </div>
         <div class="langs" id="tamrinLangs"></div>
-        <div style="text-align:center;margin-top:16px"><button type="button" id="btnShowQuiz" class="trybtn"
-            style="padding:8px 16px">آزمون سراسری</button></div>
+        <div class="centered-toolbar"><button type="button" id="btnShowQuiz" class="trybtn compact-inline-button">آزمون سراسری</button></div>
       </div>
-      <div id="exListView" style="display:none;max-width:820px;margin:0 auto">
-        <div class="hero" style="padding-bottom:8px">
+      <div id="exListView" class="exercise-main-layout is-hidden">
+        <div class="hero category-page-header">
           <h1 id="exListTitle">تمرین‌ها</h1>
           <p id="exListSub"></p>
         </div>
@@ -1108,14 +1107,14 @@
           style="margin-top:14px;background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit">←
           بازگشت</button>
       </div>
-      <div id="exDetailView" style="display:none;max-width:820px;margin:0 auto">
+      <div id="exDetailView" class="exercise-detail-layout is-hidden">
         <article class="card" id="exDetailCard"></article>
-        <div class="navbtn" style="margin-top:14px"><button type="button" id="backToExList"
+        <div class="navbtn centered-toolbar"><button type="button" id="backToExList"
             style="background:#161b22;border:1px solid #30363d;color:#58a6ff;padding:10px 16px;border-radius:8px;cursor:pointer;font-family:inherit">←
             لیست</button></div>
       </div>
-      <div id="quizArea" style="display:none;max-width:720px;margin:16px auto">
-        <div class="hero" style="padding-bottom:8px">
+      <div id="quizArea" class="quiz-panel is-hidden">
+        <div class="hero category-page-header">
           <h2>آزمون سراسری</h2>
         </div>
         <div id="scoreBox"

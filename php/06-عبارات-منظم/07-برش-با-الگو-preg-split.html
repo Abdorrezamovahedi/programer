@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>برش با الگو (preg_split) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی">
+<meta name="description" content="با preg_split یک فهرست برچسب را بر اساس ویرگول یا نقطه‌ویرگول جدا کن و فاصله‌های خالی را مدیریت کن.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "برش با الگو (preg_split)", "description": "این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "برش با الگو (preg_split)", "description": "جداکردن فهرست برچسب‌ها با preg_split در PHP.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -34,46 +34,36 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="برش با الگو (preg_split)" data-cat="عبارات منظم">📌 پین</button>
 <h2>برش با الگو (preg_split)</h2>
-<p><strong>هدف این درس:</strong> متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی.</p>
-<div class="note"><strong>پوشه:</strong> عبارات منظم &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «عبارات منظم».</div>
-<h3>مفهوم به زبان ساده</h3><p>رشته همان متن است. چسباندن با نقطه (.) انجام می‌شود. strlen طول را می‌دهد. substr از یک نقطه به بعد (یا با طول) برش می‌زند. برای فارسی در کار واقعی گاهی توابع mb_* بهترند؛ فعلاً ایده را با مثال انگلیسی/ساده محکم کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">$s = &quot;سلام&quot;;
-echo $s . &quot; دنیا&quot;;
-echo strlen(&quot;abc&quot;);
-echo substr(&quot;abcdef&quot;, 0, 3);</div>
-<h3>مثال 1: چسب و طول</h3>
+<p><strong>هدف این درس:</strong> با الگوی جداکننده، یک رشتهٔ شامل چند برچسب را به آرایه تبدیل کنی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با آرایه‌ها، رشته‌ها و delimiterهای الگو.</div>
+<h3>مفهوم به زبان ساده</h3><p><code>preg_split</code> رشته را هرجا با الگوی داده‌شده تطبیق کند می‌شکند و بخش‌ها را به شکل آرایه برمی‌گرداند. برخلاف <code>explode</code> می‌توانی جداکننده‌های متنوع یا چندتایی را با یک الگوی منظم پوشش بدهی.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_split($pattern, $subject, $limit, $flags);</div>
+<h3>مثال: جداکردن برچسب‌ها</h3>
 <div class="codewrap"><div class="code">&lt;?php
-$a = &quot;سلام&quot;;
-$b = &quot;دنیا&quot;;
-echo $a . &quot; &quot; . $b . &quot;\n&quot;;
-echo strlen(&quot;abc&quot;);
+$tagText = &quot;php, regex; آموزش&quot;;
+$tags = preg_split('/\s*[,;]\s*/', $tagText);
+print_r($tags);
 ?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>. :</strong> چسباندن.<br>
-<strong>فاصله وسط:</strong> با یک رشتهٔ &quot; &quot; جدا شده.<br>
-<strong>strlen(&quot;abc&quot;):</strong> ۳.</div>
-<h3>مثال 2: برش</h3>
+<div class="exp"><strong>خروجی:</strong> آرایه‌ای با سه مقدار <code>php</code>، <code>regex</code> و <code>آموزش</code>.<br><strong>\s*:</strong> فاصلهٔ اختیاری اطراف جداکننده را پوشش می‌دهد.<br><strong>[,;]:</strong> ویرگول یا نقطه‌ویرگول را می‌پذیرد.</div>
+<h3>کنترل بخش‌های خالی</h3>
 <div class="codewrap"><div class="code">&lt;?php
-echo substr(&quot;abcdef&quot;, 0, 3);
-// خروجی: abc
+$tags = preg_split('/\s*[,;]\s*/', &quot;php,,regex;&quot;, -1, PREG_SPLIT_NO_EMPTY);
+print_r($tags);
 ?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>از ۰:</strong> شروع از اول.<br>
-<strong>طول ۳:</strong> سه کاراکتر.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo &quot;a&quot; + &quot;b&quot;;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-<div class="warn"><strong>چرا اشتباه است؟</strong> + برای عدد است.<br><strong>چه می‌بینی؟</strong> ۰ یا نتیجهٔ عجیب<br><strong>درست:</strong> echo &quot;a&quot; . &quot;b&quot;;</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> دو کلمه را با فاصله بچسبانی و یک substr ساده اجرا کنی.</div>
+<div class="exp"><strong>PREG_SPLIT_NO_EMPTY:</strong> بخش‌های خالی حاصل از جداکننده‌های پشت‌سرهم یا انتهایی را حذف می‌کند.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>الگوی جداکننده را بیش از حد محدود نکن.</strong> اگر ورودی هم ویرگول و هم نقطه‌ویرگول دارد، الگو باید هر دو را پوشش دهد؛ در غیر این صورت بعضی بخش‌ها جدا نمی‌شوند.</div>
+<div class="good"><strong>معیار پایان:</strong> یک فهرست را با چند نوع جداکننده به آرایه تبدیل کنی و بخش‌های خالی را در صورت نیاز حذف کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>. برای متن</li>
-<li>strlen طول</li>
-<li>substr برش</li>
+<li><code>preg_split</code> رشته را بر اساس الگو به آرایه تبدیل می‌کند.</li>
+<li>الگو می‌تواند چند جداکننده و فاصله‌های اطرافشان را پوشش دهد.</li>
+<li>پرچم <code>PREG_SPLIT_NO_EMPTY</code> بخش خالی را حذف می‌کند.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">نام و نام‌خانوادگی را در یک جمله بساز.</li>
-<li style="margin-bottom:6px">سه حرف اول یک کلمه را جدا کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">رشتهٔ «html | css / javascript» را با الگوی شامل خط عمودی و ممیز به سه بخش تقسیم کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="06-جایگزینی-با-کال-بک-preg-replace-callback.html">← قبلی</a><a href="08-escape-الگو-preg-quote.html">بعدی →</a></div></article></div></div>
+<p class="rel">برای امن‌کردن متن دلخواهی که قرار است بخشی از الگو شود، درس بعدی دربارهٔ <code>preg_quote</code> را ببین.</p>
+<div class="navbtn lesson-nav"><a href="06-جایگزینی-با-کال-بک-preg-replace-callback.html">← قبلی</a><a href="08-escape-الگو-preg-quote.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

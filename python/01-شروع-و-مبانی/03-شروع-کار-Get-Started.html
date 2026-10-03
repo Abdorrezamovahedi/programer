@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f1419">
     <title>شروع کار (Get Started) — Python | مدرسه برنامه‌نویسان</title>
-    <meta name="description" content="اولین برنامه را اجرا کنی و بفهمی پایتون خط‌به‌خط دستورها را انجام می‌دهد">
+    <meta name="description" content="نصب پایتون را بررسی کن، نسخهٔ Python 3 را ببین و نخستین فایل پایتون را از ترمینال اجرا کن.">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <script
-        type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شروع کار (Get Started)", "description": "اولین برنامه را اجرا کنی و بفهمی پایتون خط‌به‌خط دستورها را انجام می‌دهد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+        type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شروع کار با پایتون", "description": "نصب پایتون را بررسی کن، نسخهٔ Python 3 را ببین و نخستین فایل پایتون را از ترمینال اجرا کن.", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
 
@@ -49,52 +49,42 @@
                 </aside>
                 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson"
                         data-title="شروع کار (Get Started)" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
-                    <h2>شروع کار (Get Started)</h2>
-                    <p><strong>هدف:</strong> اولین برنامه را اجرا کنی و بفهمی پایتون خط‌به‌خط دستورها را انجام می‌دهد.
-                    </p>
-                    <div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong>
-                        درس‌های قبلی «شروع و مبانی».</div>
-                    <div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «شروع و مبانی» بعد از مفاهیم
-                        قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
-                    <h3>مفهوم</h3>
-                    <p>هر خط معنادار یک دستور است. تورفتگی در پایتون معنا دارد (بعداً در if/for می‌بینی). فایل را ذخیره
-                        کن و با مفسر پایتون اجرا کن.</p>
-                    <h3>ساختار</h3>
-                    <div class="code">print(&quot;...&quot;)</div>
-                    <h3>مثال 1: اولین برنامه</h3>
+                    <h1>نصب و اجرای پایتون</h1>
+                    <p><strong>هدف:</strong> نصب بودن Python 3 را بررسی کنی، یک فایل بسازی و آن را از ترمینال اجرا کنی.</p>
+                    <div class="note"><strong>پیش‌نیاز:</strong> دسترسی به ترمینال یا خط فرمان. اگر پایتون نصب نیست، آن را از <a href="https://www.python.org/downloads/">وب‌سایت رسمی پایتون</a> دریافت کن.</div>
+                    <h3>بررسی نصب</h3>
+                    <p>ترمینال را باز کن. در ویندوز این دستور را اجرا کن؛ در macOS و Linux دستور دوم را امتحان کن:</p>
                     <div class="codewrap">
-                        <div class="code">print(&quot;سلام دنیا&quot;)
-                            print(2 + 3)</div>
+                        <pre class="code"><code>py --version&#10;python3 --version</code></pre>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>خط ۱:</strong> متن را نشان می‌دهد.<br>
-                        <strong>خط ۲:</strong> عبارت حساب می‌شود و ۵ چاپ می‌شود.
-                    </div>
-                    <h3>اشتباه رایج</h3>
+                    <div class="exp">اگر نصب باشد، شمارهٔ نسخه‌ای مانند <code>Python 3.x</code> نمایش داده می‌شود. اگر فرمان شناخته نشد، نصب را کامل کن و در ویندوز گزینهٔ افزودن Python به <code>PATH</code> را بررسی کن.</div>
+                    <h3>ساخت و اجرای فایل</h3>
+                    <p>یک فایل با نام <code>first.py</code> بساز و این دستور را داخلش بنویس:</p>
                     <div class="codewrap">
-                        <div class="code">print(&quot;سلام&quot;</div>
+                        <pre class="code"><code>print(&quot;اولین برنامهٔ من&quot;)</code></pre>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-                    <div class="warn"><strong>چرا اشتباه است؟</strong> پرانتز بسته نشده.<br><strong>چه می‌بینی؟</strong>
-                        SyntaxError: unexpected EOF<br><strong>درست:</strong> print(&quot;سلام&quot;)</div>
-                    <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ
-                        «شروع کار» بنویسی و اجرا کنی.</div>
+                    <p>در ترمینال، به پوشهٔ فایل برو و یکی از فرمان‌های مناسب سیستم خودت را اجرا کن:</p>
+                    <div class="codewrap">
+                        <pre class="code"><code>py first.py&#10;python3 first.py</code></pre>
+                    </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+                    <div class="exp"><strong>نتیجه:</strong> متن «اولین برنامهٔ من» در ترمینال چاپ می‌شود. فایل با پسوند <code>.py</code> شامل کد است؛ فرمان ترمینال آن را با مفسر اجرا می‌کند.</div>
+                    <div class="good"><strong>معیار یادگیری:</strong> بتوانی نسخهٔ پایتون را بررسی کنی و یک فایل <code>.py</code> را اجرا کنی.</div>
                     <div class="sum"><b>جمع‌بندی</b>
                         <ul>
-                            <li>دستورها معمولاً خط‌به‌خط اجرا می‌شوند.</li>
-                            <li>print برای دیدن نتیجه.</li>
-                            <li>خطای نحو را از پیام آخر بخوان.</li>
-                            <li>پرانتز و " (دابل‌کوتیشن) باید جفت باشند.</li>
+                            <li>بررسی نسخه کمک می‌کند مطمئن شوی مفسر در دسترس است.</li>
+                            <li>فایل‌های پایتون معمولاً پسوند <code>.py</code> دارند.</li>
+                            <li>فرمان اجرا را از ترمینال و در پوشهٔ درست وارد کن.</li>
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">دو print پشت سر هم بنویس.</li>
-                        <li style="margin-bottom:6px">یک محاسبهٔ ساده چاپ کن.</li>
-                        <li style="margin-bottom:6px">عمداً پرانتز را ناقص بگذار و پیام را بخوان.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">یک فایل <code>hello.py</code> بساز.</li>
+                        <li class="practice-item">پیام دلخواهت را با <code>print()</code> نمایش بده.</li>
+                        <li class="practice-item">فایل را با فرمان مناسب سیستم‌عاملت اجرا کن.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><a href="02-مقدمه-Intro.html">← مقدمه (Intro)</a><a
+                    <div class="navbtn lesson-nav"><a href="02-مقدمه-Intro.html">← مقدمه (Intro)</a><a
                             href="04-ساختار-نوشتاری-Syntax.html">ساختار نوشتاری (Syntax) →</a></div>
                 </article>
             </div>

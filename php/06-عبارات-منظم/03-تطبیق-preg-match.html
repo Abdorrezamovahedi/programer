@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>تطبیق (preg_match) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: نام تابع preg_match را بشناسی و بدانی چطور وجودش را چک کنی">
+<meta name="description" content="با preg_match قالب یک شناسهٔ سفارش را بررسی کن، مقدار بازگشتی تابع را بخوان و ورودی معتبر را تشخیص بده.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تطبیق (preg_match)", "description": "این درس: نام تابع preg_match را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تطبیق (preg_match)", "description": "اعتبارسنجی شناسهٔ سفارش با preg_match و خواندن نتیجهٔ تطبیق.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -34,30 +34,38 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="تطبیق (preg_match)" data-cat="عبارات منظم">📌 پین</button>
 <h2>تطبیق (preg_match)</h2>
-<p><strong>هدف این درس:</strong> نام تابع preg_match را بشناسی و بدانی چطور وجودش را چک کنی.</p>
-<div class="note"><strong>پوشه:</strong> عبارات منظم &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («عبارات منظم») را با تایپ و اجرا خوانده باشی.</div>
-<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">preg_match(...)</div>
-<h3>مثال 1: آیا تابع هست؟</h3>
+<p><strong>هدف این درس:</strong> با یک الگوی کامل، قالب شناسهٔ سفارش را بررسی و نتیجهٔ <code>preg_match</code> را تفسیر کنی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با delimiterها و الگوی رقم در درس قبل.</div>
+<h3>مفهوم به زبان ساده</h3><p><code>preg_match</code> فقط اولین تطبیق را بررسی می‌کند: اگر الگو پیدا شود <code>1</code>، اگر پیدا نشود <code>0</code> و در صورت خطای الگو <code>false</code> برمی‌گرداند. آرایهٔ سوم اختیاری است و بخش‌های پیدا‌شده را نگه می‌دارد.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_match($pattern, $subject, $matches = [], $flags = 0, $offset = 0);</div>
+<h3>مثال: بررسی شناسهٔ سفارش</h3>
 <div class="codewrap"><div class="code">&lt;?php
-var_dump(function_exists(&quot;preg_match&quot;));
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$orderId = &quot;INV-4821&quot;;
+$pattern = '/^INV-\d{4}$/';
+$result = preg_match($pattern, $orderId);
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای preg_match را ببینی.</div>
+if ($result === 1) {
+	echo &quot;شناسه معتبر است&quot;;
+} elseif ($result === 0) {
+	echo &quot;قالب شناسه معتبر نیست&quot;;
+} else {
+	echo &quot;الگوی جستجو خطا دارد&quot;;
+}
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> شناسه معتبر است<br><strong>^ و $:</strong> ابتدا و انتهای کل رشته را مشخص می‌کنند.<br><strong>\d{4}:</strong> دقیقاً چهار رقم می‌خواهد.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>نتیجه را فقط به‌صورت شرطی بررسی نکن.</strong> مقدار <code>0</code> یعنی تطبیقی نیست، اما <code>false</code> یعنی اجرای الگو با خطا روبه‌رو شده است؛ این دو را با مقایسهٔ دقیق از هم جدا کن.</div>
+<div class="good"><strong>معیار پایان:</strong> شناسهٔ درست و نادرست را آزمایش کنی و هر سه حالت بازگشتی را بشناسی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>مرجع برای موقع نیاز</li>
-<li>مثال کوچک بزن</li>
-<li>از سند رسمی کمک بگیر</li>
+<li><code>preg_match</code> اولین تطبیق را بررسی می‌کند.</li>
+<li>مقدار بازگشتی میان <code>1</code>، <code>0</code> و <code>false</code> تفاوت می‌گذارد.</li>
+<li>لنگرهای <code>^</code> و <code>$</code> کل رشته را محدود می‌کنند.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">الگو را تغییر بده تا شناسه‌هایی با پیشوند <code>ORD-</code> و پنج رقم را بپذیرد.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="02-جستجو-با-الگو-preg-grep.html">← قبلی</a><a href="04-تطبیق-همه-preg-match-all.html">بعدی →</a></div></article></div></div>
+<p class="rel">برای یافتن همهٔ تطبیق‌ها در متن، درس بعدی دربارهٔ <code>preg_match_all</code> را بخوان.</p>
+<div class="navbtn lesson-nav"><a href="02-جستجو-با-الگو-preg-grep.html">← قبلی</a><a href="04-تطبیق-همه-preg-match-all.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

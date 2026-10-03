@@ -4,11 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f1419" />
-   <title>بهترین سایت برنامه نویسی MCDprogrammers</title>
+    <title>آموزش برنامه‌نویسی رایگان | مدرسه برنامه‌نویسان</title>
     <meta
       name="description"
-      content="به این سایت سر نزنی برنامه نویسی رو ناقس یاد میگیری  | python  | HTML | CSS | javaScript | PHP | ..."
+      content="آموزش رایگان برنامه‌نویسی به زبان فارسی؛ یادگیری مرحله‌ای Python، HTML، CSS، JavaScript و PHP همراه با مثال‌های کاربردی و تمرین."
     />
+    <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fa_IR" />
+    <meta property="og:title" content="آموزش برنامه‌نویسی رایگان | مدرسه برنامه‌نویسان" />
+    <meta property="og:description" content="یادگیری مرحله‌ای Python، HTML، CSS، JavaScript و PHP به زبان فارسی، همراه با مثال و تمرین." />
+    <meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "مدرسه برنامه‌نویسان",
+        "url": "https://abdorrezamovahedi.github.io/programer/",
+        "inLanguage": "fa",
+        "description": "آموزش رایگان برنامه‌نویسی به زبان فارسی همراه با مثال و تمرین."
+      }
+    </script>
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
 
@@ -20,51 +36,108 @@
         <a href="index.html">مدرسه برنامه‌نویسان</a>
         <span>یادگیری واقعی · تمرین با راهنمای انسانی</span>
       </div>
-      <nav>
+      <nav aria-label="ناوبری اصلی">
         <a href="index.html" class="active">خانه</a>
+        <a href="#paths">مسیرهای یادگیری</a>
         <a href="tamrin/index.html">تمرین</a>
       </nav>
-      ّ
     </header>
+
     <main id="main-content">
       <div class="wrap">
         <div class="hero">
-          <h1>از صفر یاد بگیر</h1>
-          <p>درس مرحله‌ای · مثال خط‌به‌خط · تمرین با راهنمای واضح</p>
+          <h1>آموزش برنامه‌نویسی از پایه تا کاربرد</h1>
+          <p>از اولین مفهوم تا ساخت پروژه پیش برو؛ هر درس را با مثال و تمرین به مهارت قابل استفاده تبدیل کن.</p>
+          <form class="home-search" role="search" id="homeSearchForm">
+            <label for="homeSearch">جستجو در عنوان درس‌ها</label>
+            <div class="home-search-row">
+              <input id="homeSearch" type="search" autocomplete="off" placeholder="مثلاً متغیر، حلقه یا خطا" aria-controls="homeSearchResults">
+              <button type="submit">جستجو</button>
+            </div>
+            <p id="homeSearchStatus" class="search-status" aria-live="polite">عنوان درس‌ها و مسیرهای آموزشی را جستجو کن.</p>
+            <ol id="homeSearchResults" class="home-search-results is-hidden" aria-label="نتایج جستجو"></ol>
+          </form>
         </div>
-        <div class="langs">
-          <a class="lang lang-link" href="python/index.html"
-            ><span class="ic">🐍</span><b>Python</b
-            ><small>پایتون · 20 موضوع · 254 درس</small></a
-          >
-          <a class="lang lang-link" href="html/index.html"
-            ><span class="ic">📄</span><b>HTML</b
-            ><small>اچ‌تی‌ام‌ال · 6 موضوع · 67 درس</small></a
-          >
-          <a class="lang lang-link" href="css/index.html"
-            ><span class="ic">🎨</span><b>CSS</b
-            ><small>سی‌اس‌اس · 7 موضوع · 152 درس</small></a
-          >
-          <a class="lang lang-link" href="javascript/index.html"
-            ><span class="ic">⚡</span><b>JavaScript</b
-            ><small>جاوااسکریپت · 11 موضوع · 232 درس</small></a
-          >
-          <a class="lang lang-link" href="php/index.html"
-            ><span class="ic">🐘</span><b>PHP</b
-            ><small>پی‌اچ‌پی · 19 موضوع · 902 درس</small></a
-          >
-        </div>
-        <div class="langs" style="margin: 20px 0">
-          <a
-            class="lang lang-link"
-            href="tamrin/index.html"
-            style="border-color: #388bfd; background: #161b22"
-            ><span class="ic">📝</span><b>تمرین‌ها</b
-            ><small>با راهنمای مرحله‌ای</small></a
-          >
-        </div>
+
+        <section id="paths" class="home-section" aria-labelledby="paths-heading">
+          <div class="section-heading">
+            <div><span class="section-kicker">یادگیری مرحله‌ای</span><h2 id="paths-heading">مسیرهای یادگیری</h2></div>
+            <a href="tamrin/index.html">رفتن به تمرین‌ها ←</a>
+          </div>
+          <div class="langs">
+          <a class="lang lang-link" href="python/index.html">
+            <span class="ic">🐍</span>
+            <b>Python</b>
+            <small>آموزش پایتون از مبانی تا کار با داده و پایگاه‌داده</small>
+          </a>
+          <a class="lang lang-link" href="html/index.html">
+            <span class="ic">📄</span>
+            <b>HTML</b>
+            <small>ساختار صفحه‌های وب، فرم‌ها و محتوای HTML</small>
+          </a>
+          <a class="lang lang-link" href="css/index.html">
+            <span class="ic">🎨</span>
+            <b>CSS</b>
+            <small>استایل‌دهی، چیدمان و طراحی واکنش‌گرای وب</small>
+          </a>
+          <a class="lang lang-link" href="javascript/index.html">
+            <span class="ic">⚡</span>
+            <b>JavaScript</b>
+            <small>برنامه‌نویسی وب، کار با DOM و APIها</small>
+          </a>
+          <a class="lang lang-link" href="php/index.html">
+            <span class="ic">🐘</span>
+            <b>PHP</b>
+            <small>مبانی PHP، کار با فرم‌ها و توسعهٔ سمت سرور</small>
+          </a>
+          </div>
+        </section>
+
+        <section class="home-section" aria-labelledby="python-path-heading">
+          <div class="section-heading">
+            <div><span class="section-kicker">نمونهٔ مسیر پنج‌مرحله‌ای</span><h2 id="python-path-heading">از شروع Python تا پروژه</h2></div>
+            <a href="python/index.html">همهٔ درس‌های Python ←</a>
+          </div>
+          <ol class="learning-steps">
+            <li><a href="python/01-شروع-و-مبانی/01-خانه-HOME.html"><span>سطح ۱</span><b>مقدماتی</b><small>آشنایی با پایتون و اجرای نخستین دستور</small></a></li>
+            <li><a href="python/02-متغیرها/01-متغیرها-Variables.html"><span>سطح ۲</span><b>پایه</b><small>متغیرها و نگهداری داده‌ها</small></a></li>
+            <li><a href="python/11-شرط-و-حلقه/01-if-elif-else.html"><span>سطح ۳</span><b>متوسط</b><small>شرط‌ها و تکرار برای حل مسئله</small></a></li>
+            <li><a href="python/13-کلاس-و-شیء/index.html"><span>سطح ۴</span><b>پیشرفته</b><small>کلاس‌ها، شیءها و طراحی ساخت‌یافته</small></a></li>
+            <li><a href="tamrin/index.html"><span>سطح ۵</span><b>پروژه‌ای</b><small>ترکیب آموخته‌ها در تمرین‌های عملی</small></a></li>
+          </ol>
+        </section>
+
+        <section class="home-section" aria-labelledby="featured-heading">
+          <div class="section-heading">
+            <div><span class="section-kicker">شروع با موضوع‌های پرکاربرد</span><h2 id="featured-heading">درس‌های منتخب</h2></div>
+          </div>
+          <div class="featured-lessons">
+            <a href="python/02-متغیرها/01-متغیرها-Variables.html"><small>Python · پایه</small><b>متغیرها</b><span>ذخیره و استفاده از داده‌ها</span></a>
+            <a href="python/11-شرط-و-حلقه/01-if-elif-else.html"><small>Python · متوسط</small><b>شرط‌ها</b><span>انتخاب مسیر اجرای برنامه</span></a>
+            <a href="python/12-توابع/01-توابع-Functions.html"><small>Python · متوسط</small><b>توابع</b><span>تقسیم مسئله به بخش‌های قابل استفادهٔ دوباره</span></a>
+            <a href="javascript/01-شروع-JavaScript/08-متغیرها-Variables.html"><small>JavaScript · پایه</small><b>متغیرها در JavaScript</b><span>تعریف و مدیریت مقدارها</span></a>
+            <a href="html/06-فرمها/01-فرمها-Forms.html"><small>HTML · کاربردی</small><b>فرم‌ها</b><span>دریافت اطلاعات از کاربر</span></a>
+          </div>
+        </section>
+
+        <section class="home-section learner-panel" aria-labelledby="progress-heading">
+          <div>
+            <span class="section-kicker">پیشرفت روی همین دستگاه ذخیره می‌شود</span>
+            <h2 id="progress-heading">ادامهٔ یادگیری</h2>
+            <p id="homeProgressSummary">هنوز درسی را تکمیل نکرده‌ای. یک درس را شروع کن و پس از مطالعه، آن را تکمیل‌شده علامت بزن.</p>
+          </div>
+          <a id="continueLearning" class="continue-link" href="python/01-شروع-و-مبانی/01-خانه-HOME.html">شروع از مبانی Python ←</a>
+        </section>
+
+        <section class="home-section learning-method" aria-labelledby="method-heading">
+          <span class="section-kicker">از مفهوم تا مهارت</span>
+          <h2 id="method-heading">هر درس یک گام عملی</h2>
+          <p>مفهوم را بفهم، مثال را بخوان، کد را تغییر بده، تمرین را حل کن و در پایان آن را در یک مسئلهٔ واقعی به کار ببر.</p>
+          <a href="tamrin/index.html">دیدن تمرین‌ها و آزمون‌ها ←</a>
+        </section>
       </div>
     </main>
+
     <button
       type="button"
       class="pin-fab"
@@ -75,99 +148,38 @@
     </button>
     <div class="pin-panel" id="pinPanel">
       <header>
-        <b>📌 درس‌های پین‌شده</b
-        ><button type="button" id="pinPanelClose" aria-label="بستن">×</button>
+        <b>📌 درس‌های پین‌شده</b>
+        <button type="button" id="pinPanelClose" aria-label="بستن">×</button>
       </header>
       <div class="pin-list" id="pinList"></div>
     </div>
+
     <div id="edBack">
       <div id="edBox">
         <h3>مشاهده در ادیتور</h3>
         <pre id="edCode"></pre>
         <div class="navbtn">
-          <button type="button" id="edCopy">کپی</button
-          ><button type="button" id="edClose">بستن</button>
+          <button type="button" id="edCopy">کپی</button>
+          <button type="button" id="edClose">بستن</button>
         </div>
       </div>
     </div>
+
     <footer class="site-footer">
-      <pre>
-
-بیانیه سایت:
-
-سلام بر برنامه نویسان😀
-به این سایت خوش آمدید ما مشتاقانه منتظر شما بودیم
-این سایت برای تو و مخصوص تو ساخته شده تا بتونی
-جواب سوال های خودت رو برای برنامه نویسی پیدا کنی
-ما با تلاش بسیار سعی کردیم کاری کنیم که
-تمام سوال های تو برای زبون های فعلی سایت رفع شود
-ما خیلی خوشحالیم که به سایت
-ما سر زدی ما از صمیم قلب از شما استقبال می کنیم
-
-بریم سراغ اصل مطلب
-در این سایت آموزش های مرجع و جامع درباره ی:
-python
-html
-css
-javaScript
-و...
-برای شما قرار داده ایم تا نهایت استفاده رو ببرید .
-
-اول بذارین از بهترین زبان سایت یعنی  پایتون شروع کنیم
-ما در بخش زبان پایتون کلی چیز ها برای استفاده شما
-قرار دادیم
-
-مثلا:
-
-1. پایتون مقدماتی
-2. پایتون چیست؟
-3. آموزش نصب پایتون
-   و...
-
-بذارید یک توضیح مختصر خیلی کوتاه در باره پایتون
-به شما بدم:
-
-رتبه پایتون در زبان های برنامه نویسی:
-پایتون جزو قدرتمند ترین زبان های برنامه نویسی
-در جهان است
-و بسیار کاربردی و کارآمد به حساب میاد و هر برنامه
-نویس تازه کار
-برای شروع یاد گیری حتما باید از زبان پایتون شروع به
-یاد گیری کنه
-
-چرا باید از پایتون شروع کرد ::
-
-پایتون با توجه به ساده بودن و کاربردی بودن
-به شما مفهوم برنامه نویسی رو یاد میده
-تا شما وارد دنیای عظیم برنامه نویسی شوید
-و با توجه به  ویژگی های پایتون که توضیح دادیم پایتون
-در هر جایی به کار میاد که در ادامه می گیم
-
-پایتون به چه درد می خوره :::
-
-واااااااای وقتی از کارایی های پایتون حرف میزنیم
-یعنی داریم درباره سلطان صحبت می کنیم!!!!
-
-از کارایی های پایتون بگم چیز هایی مثل
-
-1. بازی سازی
-2. سایت سازی
-3. هوش مصنوعی
-   و...
-
-واین یعنی قدرت کامل .
-
-بخش پایانی :
-
-امید وارم که در این سایت مرجع برنامه نویسی
-نهایت برنامه نویسی و استفاده و لذت رو ببرید
-شمارو به خدا می سپارم و خدا نگهداااار
-
-سازنده سایت: سید عبدالرضا موحدی
-
-
-        </pre>
+      <p>
+        مدرسه برنامه‌نویسان مجموعه‌ای از آموزش‌های رایگان فارسی برای یادگیری
+        برنامه‌نویسی است. درس‌ها بر اساس موضوع دسته‌بندی شده‌اند تا بتوانی از
+        مبانی شروع کنی، نمونه‌کدها را بررسی کنی و آموخته‌هایت را در بخش تمرین
+        محک بزنی.
+      </p>
+      <p>
+        مطالب این سایت دربارهٔ Python، HTML، CSS، JavaScript و PHP است. برای
+        شروع، یک مسیر یادگیری را انتخاب کن و درس‌ها را به‌ترتیب پیش ببر.
+      </p>
+      <p>نویسنده و گردآورنده: سید عبدالرضا موحدی</p>
     </footer>
+
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/home.js"></script>
   </body>
 </html>

@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>escape الگو (preg_quote) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: نام تابع preg_quote را بشناسی و بدانی چطور وجودش را چک کنی">
+<meta name="description" content="با preg_quote کاراکترهای ویژهٔ متن ورودی را escape کن تا یک عبارت literal را به‌صورت امن در الگوی جستجو قرار دهی.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "escape الگو (preg_quote)", "description": "این درس: نام تابع preg_quote را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "escape الگو (preg_quote)", "description": "جستجوی یک عبارت literal دارای کاراکترهای ویژه با preg_quote.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -34,30 +34,33 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="escape الگو (preg_quote)" data-cat="عبارات منظم">📌 پین</button>
 <h2>escape الگو (preg_quote)</h2>
-<p><strong>هدف این درس:</strong> نام تابع preg_quote را بشناسی و بدانی چطور وجودش را چک کنی.</p>
-<div class="note"><strong>پوشه:</strong> عبارات منظم &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («عبارات منظم») را با تایپ و اجرا خوانده باشی.</div>
-<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">preg_quote(...)</div>
-<h3>مثال 1: آیا تابع هست؟</h3>
+<p><strong>هدف این درس:</strong> یک متن دلخواه را طوری escape کنی که کاراکترهای ویژه‌اش به‌عنوان متن عادی جستجو شوند.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با کاراکترهای ویژهٔ الگو و <code>preg_match</code>.</div>
+<h3>مفهوم به زبان ساده</h3><p>کاراکترهایی مانند نقطه در regex معنی ویژه دارند. اگر عبارت جستجو را از ورودی کاربر می‌گیری و قصدت یافتن همان متن دقیق است، <code>preg_quote</code> کاراکترهای ویژه را escape می‌کند. delimiter الگو را نیز به تابع می‌دهیم تا در صورت نیاز escape شود.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_quote($string, $delimiter = null);</div>
+<h3>مثال: جستجوی نام دامنه به‌صورت literal</h3>
 <div class="codewrap"><div class="code">&lt;?php
-var_dump(function_exists(&quot;preg_quote&quot;));
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$domain = &quot;example.com&quot;;
+$text = &quot;نشانی: example.com؛ نه exampleXcom&quot;;
+$pattern = '/' . preg_quote($domain, '/') . '/';
+$count = preg_match_all($pattern, $text, $matches);
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای preg_quote را ببینی.</div>
+echo $count;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> ۱<br><strong>بدون <code>preg_quote</code>:</strong> نقطهٔ الگو می‌تواند هر کاراکتری را بپذیرد و به‌اشتباه <code>exampleXcom</code> را هم تطبیق دهد.<br><strong>آرگومان دوم:</strong> delimiter الگو است.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>فراموش‌کردن delimiter در آرگومان دوم.</strong> وقتی الگو با delimiter دلخواهی مثل <code>/</code> ساخته می‌شود، آن را به <code>preg_quote</code> بده تا همین کاراکتر هم escape شود.</div>
+<div class="good"><strong>معیار پایان:</strong> ورودی دارای نقطه یا پرانتز را literal جستجو کنی و تطبیق‌های ناخواسته نگیری.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>مرجع برای موقع نیاز</li>
-<li>مثال کوچک بزن</li>
-<li>از سند رسمی کمک بگیر</li>
+<li><code>preg_quote</code> متن عادی را برای استفاده در regex escape می‌کند.</li>
+<li>کاراکترهای ویژه پس از escape معنی literal دارند.</li>
+<li>delimiter را به‌عنوان آرگومان دوم بده.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">جستجوی دقیق عبارت «(v2.1)» را طوری بساز که پرانتز و نقطه ویژهٔ regex تلقی نشوند.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="07-برش-با-الگو-preg-split.html">← قبلی</a><a href="09-آزمون-عبارات-منظم.html">بعدی →</a></div></article></div></div>
+<p class="rel">این درس آخرین آموزش فصل است؛ برای مرور تفاوت توابع و الگوها به <a href="09-آزمون-عبارات-منظم.html">آزمون عبارات منظم</a> برو.</p>
+<div class="navbtn lesson-nav"><a href="07-برش-با-الگو-preg-split.html">← قبلی</a><a href="09-آزمون-عبارات-منظم.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

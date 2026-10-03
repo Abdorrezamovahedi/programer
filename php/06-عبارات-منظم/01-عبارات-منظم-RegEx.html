@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>عبارات منظم (RegEx) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: نام تابع regex را بشناسی و بدانی چطور وجودش را چک کنی">
+<meta name="description" content="با الگوی منظم در PHP بخش‌های مشخصی از متن را پیدا کن؛ مفهوم delimiter، رقم و preg_match را با مثال شناسه سفارش یاد بگیر.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عبارات منظم (RegEx)", "description": "این درس: نام تابع regex را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عبارات منظم (RegEx)", "description": "آشنایی با الگوی منظم در PHP و پیدا کردن شماره سفارش در متن با preg_match.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -34,30 +34,35 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عبارات منظم (RegEx)" data-cat="عبارات منظم">📌 پین</button>
 <h2>عبارات منظم (RegEx)</h2>
-<p><strong>هدف این درس:</strong> نام تابع regex را بشناسی و بدانی چطور وجودش را چک کنی.</p>
-<div class="note"><strong>پوشه:</strong> عبارات منظم &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> هیچ پیش‌نیازی جز حوصله و تایپ کردن؛ از همین درس اول پوشه شروع کن.</div>
-<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">regex(...)</div>
-<h3>مثال 1: آیا تابع هست؟</h3>
+<p><strong>هدف این درس:</strong> بفهمی الگوی منظم چگونه بخشی از متن را پیدا می‌کند و یک رقم را از شناسهٔ سفارش بیرون بکشی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با رشته‌ها و متغیرها در PHP کافی است.</div>
+<h3>مفهوم به زبان ساده</h3><p>عبارت منظم الگویی برای توصیف متن است. در PHP با توابعی مثل <code>preg_match</code> از آن استفاده می‌کنیم. الگو معمولاً میان delimiterهایی مثل <code>/</code> نوشته می‌شود؛ مثلاً <code>/\d+/</code> یعنی یک یا چند رقم. تابعی به نام <code>regex()</code> در PHP وجود ندارد.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_match($pattern, $text, $matches);</div>
+<h3>مثال: پیدا کردن شمارهٔ سفارش</h3>
 <div class="codewrap"><div class="code">&lt;?php
-var_dump(function_exists(&quot;regex&quot;));
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$text = &quot;شماره سفارش: 4821&quot;;
+$found = preg_match('/\d+/', $text, $matches);
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای regex را ببینی.</div>
+if ($found === 1) {
+	echo $matches[0];
+} else {
+	echo &quot;شماره‌ای پیدا نشد&quot;;
+}
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> 4821<br><strong>/\d+/:</strong> یک یا چند رقم را پیدا می‌کند.<br><strong>$matches[0]:</strong> متن کامل تطبیق‌یافته را نگه می‌دارد.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>الگو را بدون delimiter ننویس.</strong> در PHP الگو باید مانند <code>/\d+/</code> delimiter داشته باشد؛ <code>\d+</code> به‌تنهایی الگوی کامل این تابع نیست.</div>
+<div class="good"><strong>معیار پایان:</strong> بتوانی با <code>preg_match</code> یک عدد را از متن دلخواه پیدا کنی و حالت پیدا نشدن را هم بررسی کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>مرجع برای موقع نیاز</li>
-<li>مثال کوچک بزن</li>
-<li>از سند رسمی کمک بگیر</li>
+<li>الگو شکل متن مورد نظر را توصیف می‌کند.</li>
+<li>delimiterها مرز الگو را مشخص می‌کنند.</li>
+<li><code>preg_match</code> اولین تطبیق را پیدا می‌کند.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">الگو را طوری تغییر بده که فقط شناسه‌های چهاررقمی را پیدا کند.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><span></span><a href="02-جستجو-با-الگو-preg-grep.html">بعدی →</a></div></article></div></div>
+<p class="rel">درس بعدی: استفاده از الگو برای فیلترکردن چند رشته با <code>preg_grep</code>.</p>
+<div class="navbtn lesson-nav"><span></span><a href="02-جستجو-با-الگو-preg-grep.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

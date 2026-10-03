@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>جایگزینی با کال بک (preg_replace_callback) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: نام تابع preg_replace_callback را بشناسی و بدانی چطور وجودش را چک کنی">
+<meta name="description" content="با preg_replace_callback قیمت‌های یک متن را پردازش کن و برای هر تطبیق، مقدار جایگزین محاسبه‌شده بساز.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "جایگزینی با کال بک (preg_replace_callback)", "description": "این درس: نام تابع preg_replace_callback را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "جایگزینی با کال بک (preg_replace_callback)", "description": "محاسبهٔ قیمت جدید برای هر تطبیق با preg_replace_callback در PHP.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -34,30 +34,37 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="جایگزینی با کال بک (preg_replace_callback)" data-cat="عبارات منظم">📌 پین</button>
 <h2>جایگزینی با کال بک (preg_replace_callback)</h2>
-<p><strong>هدف این درس:</strong> نام تابع preg_replace_callback را بشناسی و بدانی چطور وجودش را چک کنی.</p>
-<div class="note"><strong>پوشه:</strong> عبارات منظم &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («عبارات منظم») را با تایپ و اجرا خوانده باشی.</div>
-<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">preg_replace_callback(...)</div>
-<h3>مثال 1: آیا تابع هست؟</h3>
+<p><strong>هدف این درس:</strong> برای هر قیمت پیدا‌شده، با یک callback مقدار تازه محاسبه و جایگزین کنی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با <code>preg_match_all</code> و تابع‌های بی‌نام در PHP.</div>
+<h3>مفهوم به زبان ساده</h3><p>در <code>preg_replace_callback</code> تابعی دریافت می‌شود که برای هر تطبیق اجرا می‌شود. این روش وقتی مفید است که جایگزین ثابت نباشد و از دادهٔ همان تطبیق محاسبه شود.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_replace_callback($pattern, $callback, $subject, $limit = -1, $count = null, $flags = 0);</div>
+<h3>مثال: افزودن ۱۰ درصد به قیمت‌ها</h3>
 <div class="codewrap"><div class="code">&lt;?php
-var_dump(function_exists(&quot;preg_replace_callback&quot;));
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$invoice = &quot;دفتر 15.00 و خودکار 5.00&quot;;
+$updated = preg_replace_callback(
+	'/\d+\.\d{2}/',
+	function ($matches) {
+		return number_format((float) $matches[0] * 1.1, 2);
+	},
+	$invoice
+);
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای preg_replace_callback را ببینی.</div>
+echo $updated;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> دفتر 16.50 و خودکار 5.50<br><strong>$matches[0]:</strong> هر قیمت کامل را به callback می‌دهد.<br><strong>return:</strong> متن جایگزین همان تطبیق را برمی‌گرداند.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>از callback برای جایگزین ثابت استفاده نکن.</strong> اگر همهٔ تطبیق‌ها یک متن یکسان می‌خواهند، <code>preg_replace</code> ساده‌تر است.</div>
+<div class="good"><strong>معیار پایان:</strong> برای چند تطبیق، جایگزین متفاوتی محاسبه کنی و دلیل نیاز به callback را توضیح بدهی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>مرجع برای موقع نیاز</li>
-<li>مثال کوچک بزن</li>
-<li>از سند رسمی کمک بگیر</li>
+<li>callback برای هر تطبیق جداگانه اجرا می‌شود.</li>
+<li>مقدار بازگشتی callback متن جایگزین است.</li>
+<li>برای جایگزینی ثابت، <code>preg_replace</code> مناسب‌تر است.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">callback را تغییر بده تا به هر قیمت به‌جای ۱۰ درصد، مبلغ ثابت ۲ واحد اضافه کند.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="05-جایگزینی-preg-replace.html">← قبلی</a><a href="07-برش-با-الگو-preg-split.html">بعدی →</a></div></article></div></div>
+<p class="rel">در درس بعد، با <code>preg_split</code> یک رشته را بر اساس الگو به چند بخش تقسیم می‌کنی.</p>
+<div class="navbtn lesson-nav"><a href="05-جایگزینی-preg-replace.html">← قبلی</a><a href="07-برش-با-الگو-preg-split.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

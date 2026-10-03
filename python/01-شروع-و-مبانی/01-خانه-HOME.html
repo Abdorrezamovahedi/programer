@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f1419">
-    <title>خانه (HOME) — Python | مدرسه برنامه‌نویسان</title>
-    <meta name="description" content="اولین برنامه را اجرا کنی و بفهمی پایتون خط‌به‌خط دستورها را انجام می‌دهد">
+    <title>شروع یادگیری پایتون از پایه | مدرسه برنامه‌نویسان</title>
+    <meta name="description" content="با مسیر یادگیری پایتون آشنا شو، محیط اجرا را آماده کن و اولین برنامهٔ سادهٔ خودت را اجرا کن.">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <script
-        type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "خانه (HOME)", "description": "اولین برنامه را اجرا کنی و بفهمی پایتون خط‌به‌خط دستورها را انجام می‌دهد", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+        type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شروع یادگیری پایتون از پایه", "description": "با مسیر یادگیری پایتون آشنا شو، محیط اجرا را آماده کن و اولین برنامهٔ سادهٔ خودت را اجرا کن.", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
 
@@ -47,37 +47,22 @@
                     <a href="12-MySQL-شروع-MySQL-Get-Started.html">12. MySQL: شروع (MySQL Get Started)</a>
                     <a href="13-MongoDB-شروع-Get-Started.html">13. MongoDB: شروع (Get Started)</a>
                 </aside>
-                <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="خانه (HOME)"
+                <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="راهنمای شروع پایتون"
                         data-cat="شروع و مبانی">📌 پین کردن این درس</button>
-                    <h2>خانه (HOME)</h2>
-                    <p><strong>هدف:</strong> اولین برنامه را اجرا کنی و بفهمی پایتون خط‌به‌خط دستورها را انجام می‌دهد.
-                    </p>
-                    <div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> اولین
-                        درس این پوشه.</div>
-                    <div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «شروع و مبانی» بعد از مفاهیم
-                        قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
-                    <h3>مفهوم</h3>
-                    <p>هر خط معنادار یک دستور است. تورفتگی در پایتون معنا دارد (بعداً در if/for می‌بینی). فایل را ذخیره
-                        کن و با مفسر پایتون اجرا کن.</p>
-                    <h3>ساختار</h3>
-                    <div class="code">print(&quot;...&quot;)</div>
-                    <h3>مثال 1: اولین برنامه</h3>
+                    <h1>راهنمای شروع یادگیری پایتون</h1>
+                    <p><strong>هدف:</strong> با ترتیب درس‌های این دوره آشنا شوی و بدانی برای اجرای اولین برنامه به چه چیزهایی نیاز داری.</p>
+                    <div class="note"><strong>پیش‌نیاز:</strong> آشنایی قبلی با برنامه‌نویسی لازم نیست. برای اجرای مثال‌ها باید Python 3 روی رایانه‌ات نصب باشد.</div>
+                    <h3>در این مسیر چه یاد می‌گیری؟</h3>
+                    <p>ابتدا با زبان پایتون، نصب و اجرای آن آشنا می‌شوی؛ سپس متغیرها، نوع داده‌ها، شرط‌ها، حلقه‌ها، توابع و کار با فایل‌ها را قدم‌به‌قدم تمرین می‌کنی. هرجا تورفتگی لازم باشد، بخشی از ساختار کد است و نباید حذف شود.</p>
+                    <h3>اولین برنامه</h3>
+                    <p>تابع <code>print()</code> مقدار داخل پرانتز را در خروجی نشان می‌دهد. این برنامه را در محیط پایتون اجرا کن:</p>
                     <div class="codewrap">
-                        <div class="code">print(&quot;سلام دنیا&quot;)
-                            print(2 + 3)</div>
+                        <pre class="code"><code>print(&quot;سلام دنیا&quot;)&#10;print(2 + 3)</code></pre>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>خط ۱:</strong> متن را نشان می‌دهد.<br>
-                        <strong>خط ۲:</strong> عبارت حساب می‌شود و ۵ چاپ می‌شود.
-                    </div>
-                    <h3>اشتباه رایج</h3>
-                    <div class="codewrap">
-                        <div class="code">print(&quot;سلام&quot;</div>
-                    </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-                    <div class="warn"><strong>چرا اشتباه است؟</strong> پرانتز بسته نشده.<br><strong>چه می‌بینی؟</strong>
-                        SyntaxError: unexpected EOF<br><strong>درست:</strong> print(&quot;سلام&quot;)</div>
-                    <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ
-                        «خانه» بنویسی و اجرا کنی.</div>
+                    <div class="exp"><strong>خروجی:</strong> ابتدا «سلام دنیا» و سپس نتیجهٔ محاسبه، یعنی ۵، نمایش داده می‌شود.</div>
+                    <h3>گام بعدی</h3>
+                    <p>اگر Python 3 نصب است، درس «مقدمه» را بخوان و مثال‌ها را خودت اجرا کن. اگر هنوز نصبش نکرده‌ای، در درس «شروع کار» روش بررسی و اجرای برنامه را ببین.</p>
+                    <div class="good"><strong>معیار شروع:</strong> بتوانی یک فایل پایتون بسازی، دستور <code>print()</code> را در آن بنویسی و خروجی را ببینی.</div>
                     <div class="sum"><b>جمع‌بندی</b>
                         <ul>
                             <li>دستورها معمولاً خط‌به‌خط اجرا می‌شوند.</li>
@@ -87,14 +72,14 @@
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">دو print پشت سر هم بنویس.</li>
-                        <li style="margin-bottom:6px">یک محاسبهٔ ساده چاپ کن.</li>
-                        <li style="margin-bottom:6px">عمداً پرانتز را ناقص بگذار و پیام را بخوان.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">دو print پشت سر هم بنویس.</li>
+                        <li class="practice-item">یک محاسبهٔ ساده چاپ کن.</li>
+                        <li class="practice-item">عمداً پرانتز را ناقص بگذار و پیام را بخوان.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><span></span><a href="02-مقدمه-Intro.html">مقدمه (Intro)
+                    <div class="navbtn lesson-nav"><span></span><a href="02-مقدمه-Intro.html">مقدمه (Intro)
                             →</a></div>
                 </article>
             </div>

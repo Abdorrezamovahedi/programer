@@ -61,21 +61,34 @@
                     <h3>مفهوم</h3>
                     <p>فایل برای دادهٔ کوچک کافی است؛ دیتابیس برای جستجو، هم‌زمانی و یکپارچگی ساخته شده. در کد واقعی از
                         placeholder استفاده کن نه f-string داخل SQL.</p>
-                    <h3>ساختار</h3>
-                    <div class="code"># مفهومی
-                        # cursor.execute(&quot;SELECT * FROM t WHERE id = %s&quot;, (user_id,))</div>
-                    <h3>مثال 1: ایدهٔ پارامتریک (شبه‌کد قابل‌اجرا نیست بدون درایور)</h3>
+                    <h3>پیش‌نیاز اجرا</h3>
+                    <div class="code">python -m pip install mysql-connector-python</div>
+                    <h3>مثال: خواندن نام محصول با شناسه</h3>
                     <div class="codewrap">
-                        <div class="code"># درست (ایده):
-                            # sql = &quot;SELECT name FROM users WHERE id = %s&quot;
-                            # cursor.execute(sql, (uid,))
-                            #
-                            # غلط و خطرناک:
-                            # sql = f&quot;SELECT name FROM users WHERE id = {uid}&quot;
-                            print(&quot;همیشه پارامتر بده، رشته را بچسبان&quot;)</div>
+                        <div class="code">import os
+import mysql.connector
+
+product_id = 7
+connection = mysql.connector.connect(
+    host=&quot;127.0.0.1&quot;,
+    user=&quot;app_user&quot;,
+    password=os.environ[&quot;MYSQL_PASSWORD&quot;],
+    database=&quot;shop&quot;,
+)
+
+try:
+    cursor = connection.cursor()
+    cursor.execute(
+        &quot;SELECT name FROM products WHERE id = %s&quot;,
+        (product_id,),
+    )
+    print(cursor.fetchone())
+finally:
+    cursor.close()
+    connection.close()</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>%s یا ?:</strong> جای خالی امن؛ درایور مقدار را جدا می‌فرستد.<br>
-                        <strong>f-string در SQL:</strong> ریسک SQL Injection.
+                    <div class="exp"><strong>پیش‌نیاز:</strong> سرور MySQL و جدول <code>products</code> باید از قبل آماده باشند؛ رمز را در متغیر محیطی <code>MYSQL_PASSWORD</code> بگذار.<br>
+                        <strong>%s و tuple:</strong> درایور مقدار را جدا از دستور SQL می‌فرستد و از چسباندن ورودی جلوگیری می‌کند.
                     </div>
                     <h3>اشتباه رایج</h3>
                     <div class="codewrap">
@@ -86,8 +99,7 @@
                     <div class="warn"><strong>چرا اشتباه است؟</strong> ورودی کاربر می‌تواند کوئری را بشکند یا داده
                         بدزدد.<br><strong>چه می‌بینی؟</strong> آسیب‌پذیری SQL Injection<br><strong>درست:</strong>
                         execute با پارامتر جدا</div>
-                    <div class="good"><strong>معیار تمام‌شدن:</strong> یک جمله بنویس که چرا f-string داخل SQL خطرناک است
-                        و شکل امن را از روی مثال بگویی.</div>
+                    <div class="good"><strong>معیار تمام‌شدن:</strong> یک مقدار را با placeholder پارامتری به query بدهی و توضیح بدهی چرا رمز دیتابیس در کد ثابت نوشته نشده است.</div>
                     <div class="sum"><b>جمع‌بندی</b>
                         <ul>
                             <li>داده پایدار</li>
@@ -97,13 +109,13 @@
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">تفاوت فایل و DB را در دو خط بنویس.</li>
-                        <li style="margin-bottom:6px">یک SELECT مفهومی با placeholder بنویس.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">تفاوت فایل و DB را در دو خط بنویس.</li>
+                        <li class="practice-item">یک SELECT مفهومی با placeholder بنویس.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><a
+                    <div class="navbtn lesson-nav"><a
                             href="11-شروع-با-Matplotlib-Matplotlib-Get-Started.html">← شروع با Matplotlib (Matplotlib
                             Get Started)</a><a href="13-MongoDB-شروع-Get-Started.html">MongoDB: شروع (Get Started) →</a>
                     </div>

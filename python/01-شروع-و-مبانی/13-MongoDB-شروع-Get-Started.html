@@ -51,30 +51,32 @@
                 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson"
                         data-title="MongoDB: شروع (Get Started)" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
                     <h2>MongoDB: شروع (Get Started)</h2>
-                    <p><strong>هدف:</strong> بفهمی دیتابیس داده را پایدار نگه می‌دارد و کوئری باید پارامتریک باشد نه
-                        چسباندن رشته.</p>
+                    <p><strong>هدف:</strong> با PyMongo یک سند را بر اساس فیلد مشخص پیدا کنی و فیلدهای لازم را از نتیجه بخوانی.</p>
                     <div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong>
                         درس‌های قبلی «شروع و مبانی».</div>
                     <div class="good"><strong>ارتباط با قبل:</strong> dict و list داده را در RAM نگه می‌داشتند؛ دیتابیس
                         بعد از بستن برنامه هم می‌ماند.</div>
                     <h3>مفهوم</h3>
-                    <p>فایل برای دادهٔ کوچک کافی است؛ دیتابیس برای جستجو، هم‌زمانی و یکپارچگی ساخته شده. در کد واقعی از
-                        placeholder استفاده کن نه f-string داخل SQL.</p>
-                    <h3>ساختار</h3>
-                    <div class="code"># مفهومی
-                        # cursor.execute(&quot;SELECT * FROM t WHERE id = %s&quot;, (user_id,))</div>
-                    <h3>مثال 1: ایدهٔ پارامتریک (شبه‌کد قابل‌اجرا نیست بدون درایور)</h3>
+                    <p>MongoDB سندها را در collection نگه می‌دارد. با PyMongo می‌توانی شرط جستجو را به شکل یک دیکشنری بنویسی؛ لازم نیست query را با اتصال رشته بسازی.</p>
+                    <h3>پیش‌نیاز اجرا</h3>
+                    <div class="code">python -m pip install pymongo</div>
+                    <h3>مثال: پیدا کردن سفارش با شناسه</h3>
                     <div class="codewrap">
-                        <div class="code"># درست (ایده):
-                            # sql = &quot;SELECT name FROM users WHERE id = %s&quot;
-                            # cursor.execute(sql, (uid,))
-                            #
-                            # غلط و خطرناک:
-                            # sql = f&quot;SELECT name FROM users WHERE id = {uid}&quot;
-                            print(&quot;همیشه پارامتر بده، رشته را بچسبان&quot;)</div>
+                        <div class="code">import os
+from pymongo import MongoClient
+
+client = MongoClient(os.environ[&quot;MONGODB_URI&quot;])
+orders = client.shop.orders
+order = orders.find_one(
+    {&quot;order_id&quot;: 1042},
+    {&quot;_id&quot;: 0, &quot;order_id&quot;: 1, &quot;status&quot;: 1},
+)
+
+print(order)
+client.close()</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>%s یا ?:</strong> جای خالی امن؛ درایور مقدار را جدا می‌فرستد.<br>
-                        <strong>f-string در SQL:</strong> ریسک SQL Injection.
+                    <div class="exp"><strong>پیش‌نیاز:</strong> MongoDB در دسترس باشد و نشانی اتصال در متغیر محیطی <code>MONGODB_URI</code> تنظیم شده باشد.<br>
+                        <strong>find_one:</strong> اولین سند منطبق را پیدا می‌کند؛ projection فقط فیلدهای خواسته‌شده را برمی‌گرداند.
                     </div>
                     <h3>اشتباه رایج</h3>
                     <div class="codewrap">
@@ -85,8 +87,7 @@
                     <div class="warn"><strong>چرا اشتباه است؟</strong> ورودی کاربر می‌تواند کوئری را بشکند یا داده
                         بدزدد.<br><strong>چه می‌بینی؟</strong> آسیب‌پذیری SQL Injection<br><strong>درست:</strong>
                         execute با پارامتر جدا</div>
-                    <div class="good"><strong>معیار تمام‌شدن:</strong> یک جمله بنویس که چرا f-string داخل SQL خطرناک است
-                        و شکل امن را از روی مثال بگویی.</div>
+                    <div class="good"><strong>معیار تمام‌شدن:</strong> یک filter دیکشنری بسازی و توضیح بدهی projection چه فیلدهایی را در خروجی نگه می‌دارد.</div>
                     <div class="sum"><b>جمع‌بندی</b>
                         <ul>
                             <li>داده پایدار</li>
@@ -96,13 +97,13 @@
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">تفاوت فایل و DB را در دو خط بنویس.</li>
-                        <li style="margin-bottom:6px">یک SELECT مفهومی با placeholder بنویس.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">فیلتر را تغییر بده تا سفارش با وضعیت <code>shipped</code> پیدا شود.</li>
+                        <li class="practice-item">یک SELECT مفهومی با placeholder بنویس.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><a href="12-MySQL-شروع-MySQL-Get-Started.html">← MySQL:
+                    <div class="navbtn lesson-nav"><a href="12-MySQL-شروع-MySQL-Get-Started.html">← MySQL:
                             شروع (MySQL Get Started)</a></div>
                 </article>
             </div>

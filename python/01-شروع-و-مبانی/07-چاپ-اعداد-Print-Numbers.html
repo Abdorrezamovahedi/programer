@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f1419">
     <title>چاپ اعداد (Print Numbers) — Python | مدرسه برنامه‌نویسان</title>
-    <meta name="description" content="با print متن و عدد و چند مقدار را نشان بدهی و sep/end را بشناسی">
+    <meta name="description" content="عددها را در Python محاسبه و با f-string به‌صورت پول یا درصد و با دقت دلخواه چاپ کن.">
     <link rel="stylesheet" href="../../assets/css/main.css">
     <script
         type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "چاپ اعداد (Print Numbers)", "description": "با print متن و عدد و چند مقدار را نشان بدهی و sep/end را بشناسی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
@@ -50,35 +50,32 @@
                 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson"
                         data-title="چاپ اعداد (Print Numbers)" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
                     <h2>چاپ اعداد (Print Numbers)</h2>
-                    <p><strong>هدف:</strong> با print متن و عدد و چند مقدار را نشان بدهی و sep/end را بشناسی.</p>
+                    <p><strong>هدف:</strong> عددها را محاسبه و با دقت مشخص، به شکل خوانا چاپ کنی.</p>
                     <div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong>
                         درس‌های قبلی «شروع و مبانی».</div>
                     <div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «شروع و مبانی» بعد از مفاهیم
                         قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
                     <h3>مفهوم</h3>
-                    <p>print خروجی را روی صفحه می‌نویسد. چند آرگومان با کاما از هم جدا می‌شوند. sep فاصلهٔ بین آن‌ها و
-                        end پایان خط را کنترل می‌کند.</p>
+                    <p>مقدارهای عددی را می‌توان پیش از چاپ محاسبه کرد. f-string امکان تعیین تعداد رقم اعشار را می‌دهد؛ برای پول معمولاً دو رقم اعشار نمایش می‌دهیم.</p>
                     <h3>ساختار</h3>
-                    <div class="code">print(a, b, sep=&quot; &quot;, end=&quot;\n&quot;)</div>
-                    <h3>مثال 1: متن و عدد</h3>
+                    <div class="code">print(f&quot;{value:.2f}&quot;)</div>
+                    <h3>مثال 1: محاسبهٔ مبلغ سفارش</h3>
                     <div class="codewrap">
-                        <div class="code">print(&quot;سلام&quot;)
-                            print(42)
-                            print(&quot;سن:&quot;, 20)</div>
+                        <div class="code">unit_price = 19.95
+quantity = 3
+total = unit_price * quantity
+print(f&quot;جمع: {total:.2f} تومان&quot;)</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>خط ۱:</strong> رشته چاپ و خط جدید.<br>
-                        <strong>خط ۲:</strong> عدد بدون " (دابل‌کوتیشن).<br>
-                        <strong>خط ۳:</strong> دو تکه با فاصلهٔ پیش‌فرض بینشان.
+                    <div class="exp"><strong>خروجی:</strong> جمع: 59.85 تومان<br>
+                        <strong>:.2f:</strong> مقدار را با دو رقم اعشار نمایش می‌دهد.
                     </div>
-                    <h3>مثال 2: sep و end</h3>
+                    <h3>مثال 2: چاپ درصد صحیح</h3>
                     <div class="codewrap">
-                        <div class="code">print(&quot;الف&quot;, &quot;ب&quot;, sep=&quot;-&quot;)
-                            print(&quot;ادامه&quot;, end=&quot; | &quot;)
-                            print(&quot;همین خط&quot;)</div>
+                        <div class="code">discount_rate = 10
+print(f&quot;تخفیف: {discount_rate}%&quot;)</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>خط ۱:</strong> جداکننده خط تیره.<br>
-                        <strong>خط ۲:</strong> به‌جای خط جدید، « | » می‌آید.<br>
-                        <strong>خط ۳:</strong> در همان خط ادامه می‌یابد.
+                    <div class="exp"><strong>خروجی:</strong> تخفیف: 10%<br>
+                        علامت درصد داخل رشته نوشته شده و مقدار عددی درون آکولاد قرار گرفته است.
                     </div>
                     <h3>اشتباه رایج</h3>
                     <div class="codewrap">
@@ -99,14 +96,14 @@
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">نام و سن را در یک print چاپ کن.</li>
-                        <li style="margin-bottom:6px">با sep=&quot;/&quot; سه بخش تاریخ فرضی چاپ کن.</li>
-                        <li style="margin-bottom:6px">دو print را با end در یک خط نشان بده.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">قیمت سه کالا را جمع و نتیجه را با دو رقم اعشار چاپ کن.</li>
+                        <li class="practice-item">یک نرخ تخفیف را بدون رقم اعشار همراه علامت درصد نمایش بده.</li>
+                        <li class="practice-item">قیمت را از 19.9 به 19.95 تغییر بده و تفاوت قالب‌بندی را بررسی کن.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><a href="06-خروجی-Output.html">← خروجی (Output)</a><a
+                    <div class="navbtn lesson-nav"><a href="06-خروجی-Output.html">← خروجی (Output)</a><a
                             href="08-توضیحات-Comments.html">توضیحات (Comments) →</a></div>
                 </article>
             </div>

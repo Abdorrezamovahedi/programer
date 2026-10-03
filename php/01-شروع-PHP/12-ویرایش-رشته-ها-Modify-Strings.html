@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>ویرایش رشته ها (Modify Strings) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی">
+<meta name="description" content="رشته‌های PHP را با trim و str_replace ویرایش کن؛ یاد بگیر توابع رشته معمولاً مقدار تازه می‌سازند.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ویرایش رشته ها (Modify Strings)", "description": "این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "ویرایش رشته ها (Modify Strings)", "description": "پاک‌سازی فاصله‌ها و جایگزینی بخش‌هایی از رشته در PHP.", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
 <body>
@@ -76,47 +76,39 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="ویرایش رشته ها (Modify Strings)" data-cat="شروع PHP">📌 پین کردن این درس</button>
 <h2>ویرایش رشته ها (Modify Strings)</h2>
-<p><strong>هدف این درس:</strong> متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی.</p>
-<div class="note"><strong>درس معرفی «انواع داده در PHP»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>آزمون (توابع متغیر و نوع)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
-<div class="note"><strong>پوشه:</strong> شروع PHP &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شروع PHP».</div>
-<h3>مفهوم به زبان ساده</h3><p>رشته همان متن است. چسباندن با نقطه (.) انجام می‌شود. strlen طول را می‌دهد. substr از یک نقطه به بعد (یا با طول) برش می‌زند. برای فارسی در کار واقعی گاهی توابع mb_* بهترند؛ فعلاً ایده را با مثال انگلیسی/ساده محکم کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">$s = &quot;سلام&quot;;
-echo $s . &quot; دنیا&quot;;
-echo strlen(&quot;abc&quot;);
-echo substr(&quot;abcdef&quot;, 0, 3);</div>
-<h3>مثال 1: چسب و طول</h3>
+<p><strong>هدف این درس:</strong> فاصله‌های اضافی یک عنوان را پاک کنی و یک واژه را بدون تغییر بقیهٔ متن جایگزین کنی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> تعریف رشته و استفاده از متغیر در PHP.</div>
+<h3>مفهوم به زبان ساده</h3><p>تابع‌هایی مثل <code>trim</code> و <code>str_replace</code> رشتهٔ ورودی را می‌خوانند و یک رشتهٔ تازه برمی‌گردانند؛ مقدار متغیر اصلی خودبه‌خود تغییر نمی‌کند. اگر نتیجه مهم است، آن را دوباره در متغیر ذخیره کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">$clean = trim($text);
+$updated = str_replace($search, $replacement, $text);</div>
+<h3>مثال: پاک‌سازی عنوان پیش‌نویس</h3>
 <div class="codewrap"><div class="code">&lt;?php
-$a = &quot;سلام&quot;;
-$b = &quot;دنیا&quot;;
-echo $a . &quot; &quot; . $b . &quot;\n&quot;;
-echo strlen(&quot;abc&quot;);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>. :</strong> چسباندن.<br>
-<strong>فاصله وسط:</strong> با یک رشتهٔ &quot; &quot; جدا شده.<br>
-<strong>strlen(&quot;abc&quot;):</strong> ۳.</div>
-<h3>مثال 2: برش</h3>
-<div class="codewrap"><div class="code">&lt;?php
-echo substr(&quot;abcdef&quot;, 0, 3);
-// خروجی: abc
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>از ۰:</strong> شروع از اول.<br>
-<strong>طول ۳:</strong> سه کاراکتر.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo &quot;a&quot; + &quot;b&quot;;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$rawTitle = &quot;  draft: weekly report  &quot;;
+$cleanTitle = trim($rawTitle);
+$publishedTitle = str_replace('draft:', 'published:', $cleanTitle);
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> + برای عدد است.<br><strong>چه می‌بینی؟</strong> ۰ یا نتیجهٔ عجیب<br><strong>درست:</strong> echo &quot;a&quot; . &quot;b&quot;;</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> دو کلمه را با فاصله بچسبانی و یک substr ساده اجرا کنی.</div>
+echo $publishedTitle;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> published: weekly report<br><strong>trim:</strong> فاصلهٔ ابتدا و انتها را پاک می‌کند.<br><strong>str_replace:</strong> متن منطبق را با متن تازه جایگزین می‌کند.</div>
+<h3>اشتباه رایج: فراموش‌کردن ذخیرهٔ نتیجه</h3>
+<div class="codewrap"><div class="code">&lt;?php
+$title = &quot;  weekly report  &quot;;
+trim($title);
+echo $title;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> عنوان هنوز فاصلهٔ دو طرف را دارد؛ مقدار بازگشتی <code>trim</code> دور ریخته شده است.</div>
+<div class="good"><strong>معیار پایان:</strong> مقدار بازگشتی تابع را ذخیره کنی و نسخهٔ پاک‌سازی‌شده را استفاده کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>. برای متن</li>
-<li>strlen طول</li>
-<li>substr برش</li>
+<li><code>trim</code> فاصله‌های ابتدا و انتها را پاک می‌کند.</li>
+<li><code>str_replace</code> جایگزینی حساس به بزرگی حروف انجام می‌دهد.</li>
+<li>توابع رشته معمولاً نسخهٔ تازه‌ای برمی‌گردانند.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">نام و نام‌خانوادگی را در یک جمله بساز.</li>
-<li style="margin-bottom:6px">سه حرف اول یک کلمه را جدا کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">فاصله‌های ابتدا و انتهای یک پیام را حذف کن.</li>
+<li class="practice-item">واژهٔ <code>draft</code> را در عنوانی که خودت انتخاب می‌کنی با <code>final</code> جایگزین کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="11-رشته-ها-Strings.html">← رشته ها (Strings)</a><a href="13-چسباندن-رشته-ها-Concatenate-Strings.html">چسباندن رشته ها (Concatenate Strings) →</a></div></article></div></div>
+<p class="rel">برای اتصال رشته‌ها با نقطه و <code>.=</code>، درس بعدی را بخوان.</p>
+<div class="navbtn lesson-nav"><a href="11-رشته-ها-Strings.html">← رشته ها (Strings)</a><a href="13-چسباندن-رشته-ها-Concatenate-Strings.html">چسباندن رشته ها (Concatenate Strings) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

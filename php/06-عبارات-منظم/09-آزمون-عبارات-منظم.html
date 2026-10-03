@@ -38,28 +38,49 @@
 <div class="note"><strong>پوشه:</strong> عبارات منظم</div>
 <div class="good"><strong>قبل از آزمون:</strong> درس‌های همین پوشه را با تایپ خوانده باش. بعد از هر غلط، همان مبحث را دوباره باز کن.</div>
 <article class="qcard" data-quiz="1">
-<h3>1. PHP کجا اجرا می‌شود؟</h3>
-<button type="button" class="qopt" data-correct="0" data-exp="سمت سرور.">فقط داخل CSS</button>
-<button type="button" class="qopt" data-correct="1" data-exp="سمت سرور.">روی سرور</button>
-<button type="button" class="qopt" data-correct="0" data-exp="سمت سرور.">فقط در عنوان تب</button>
-<button type="button" class="qopt" data-correct="0" data-exp="سمت سرور.">هیچ‌وقت</button>
+<h3>1. برای بررسی کل شناسهٔ ORD-12345 کدام الگو مناسب است؟</h3>
+<button type="button" class="qopt" data-correct="0" data-exp="^ و $ کل رشته را محدود می‌کنند و \d{5} پنج رقم می‌خواهد.">/ORD-\d+/</button>
+<button type="button" class="qopt" data-correct="1" data-exp="^ و $ کل رشته را محدود می‌کنند و \d{5} پنج رقم می‌خواهد.">/^ORD-\d{5}$/</button>
+<button type="button" class="qopt" data-correct="0" data-exp="^ و $ کل رشته را محدود می‌کنند و \d{5} پنج رقم می‌خواهد.">/^ORD-[a-z]+$/</button>
+<button type="button" class="qopt" data-correct="0" data-exp="^ و $ کل رشته را محدود می‌کنند و \d{5} پنج رقم می‌خواهد.">/\d{5}/</button>
 <p class="qfb"></p></article>
 <article class="qcard" data-quiz="1">
-<h3>2. خروجی متن با؟</h3>
-<button type="button" class="qopt" data-correct="0" data-exp="echo رایج است.">print_html</button>
-<button type="button" class="qopt" data-correct="1" data-exp="echo رایج است.">echo</button>
-<button type="button" class="qopt" data-correct="0" data-exp="echo رایج است.">show</button>
-<button type="button" class="qopt" data-correct="0" data-exp="echo رایج است.">display</button>
+<h3>2. برای استخراج همهٔ قیمت‌های یک متن کدام تابع مناسب است؟</h3>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_match اولین تطبیق را می‌گیرد؛ preg_match_all همه را پیدا می‌کند.">preg_match</button>
+<button type="button" class="qopt" data-correct="1" data-exp="preg_match اولین تطبیق را می‌گیرد؛ preg_match_all همه را پیدا می‌کند.">preg_match_all</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_match اولین تطبیق را می‌گیرد؛ preg_match_all همه را پیدا می‌کند.">preg_grep</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_match اولین تطبیق را می‌گیرد؛ preg_match_all همه را پیدا می‌کند.">preg_quote</button>
 <p class="qfb"></p></article>
 <article class="qcard" data-quiz="1">
-<h3>3. متن در PHP؟</h3>
-<button type="button" class="qopt" data-correct="0" data-exp="&quot;متن&quot;">بدون علامت</button>
-<button type="button" class="qopt" data-correct="1" data-exp="&quot;متن&quot;">داخل " (دابل‌کوتیشن)</button>
-<button type="button" class="qopt" data-correct="0" data-exp="&quot;متن&quot;">فقط با {}</button>
-<button type="button" class="qopt" data-correct="0" data-exp="&quot;متن&quot;">فقط با #</button>
+<h3>3. برای تبدیل چند فاصلهٔ پیاپی به یک فاصله چه کاری انجام می‌دهی؟</h3>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_replace تطبیق‌ها را با متن جایگزین عوض می‌کند.">preg_split با الگوی /\s+/</button>
+<button type="button" class="qopt" data-correct="1" data-exp="preg_replace تطبیق‌ها را با متن جایگزین عوض می‌کند.">preg_replace('/\s+/', ' ', $text)</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_replace تطبیق‌ها را با متن جایگزین عوض می‌کند.">preg_grep('/\s+/', $text)</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_replace تطبیق‌ها را با متن جایگزین عوض می‌کند.">preg_match('/\s+/', $text)</button>
+<p class="qfb"></p></article>
+<article class="qcard" data-quiz="1">
+<h3>4. برای جداکردن متن با ویرگول یا نقطه‌ویرگول از چه تابعی استفاده می‌کنی؟</h3>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_split رشته را بر اساس الگو به آرایه تبدیل می‌کند.">preg_match</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_split رشته را بر اساس الگو به آرایه تبدیل می‌کند.">preg_replace_callback</button>
+<button type="button" class="qopt" data-correct="1" data-exp="preg_split رشته را بر اساس الگو به آرایه تبدیل می‌کند.">preg_split</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_split رشته را بر اساس الگو به آرایه تبدیل می‌کند.">preg_quote</button>
+<p class="qfb"></p></article>
+<article class="qcard" data-quiz="1">
+<h3>5. چرا برای جستجوی literal عبارت example.com باید از preg_quote استفاده کرد؟</h3>
+<button type="button" class="qopt" data-correct="0" data-exp="نقطه در regex هر کاراکتری را می‌پذیرد؛ preg_quote آن را literal می‌کند.">چون نقطه در PHP قابل جستجو نیست</button>
+<button type="button" class="qopt" data-correct="1" data-exp="نقطه در regex هر کاراکتری را می‌پذیرد؛ preg_quote آن را literal می‌کند.">چون نقطه در regex هر کاراکتری را می‌پذیرد</button>
+<button type="button" class="qopt" data-correct="0" data-exp="نقطه در regex هر کاراکتری را می‌پذیرد؛ preg_quote آن را literal می‌کند.">چون preg_quote متن را به حروف کوچک تبدیل می‌کند</button>
+<button type="button" class="qopt" data-correct="0" data-exp="نقطه در regex هر کاراکتری را می‌پذیرد؛ preg_quote آن را literal می‌کند.">برای تبدیل رشته به آرایه</button>
+<p class="qfb"></p></article>
+<article class="qcard" data-quiz="1">
+<h3>6. preg_grep چه نوع ورودی‌ای را فیلتر می‌کند؟</h3>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_grep اعضای یک آرایه را با الگو می‌سنجد.">یک عدد</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_grep اعضای یک آرایه را با الگو می‌سنجد.">یک فایل PHP</button>
+<button type="button" class="qopt" data-correct="1" data-exp="preg_grep اعضای یک آرایه را با الگو می‌سنجد.">یک آرایه از رشته‌ها</button>
+<button type="button" class="qopt" data-correct="0" data-exp="preg_grep اعضای یک آرایه را با الگو می‌سنجد.">فقط یک رشتهٔ منفرد</button>
 <p class="qfb"></p></article>
 <div class="good"><strong>معیار تمام‌شدن:</strong> همه سؤال‌ها را جواب بده. غلط‌ها را در درس هم‌موضوع مرور کن تا دیگر تکرار نشوند.</div>
-<div class="navbtn" style="margin-top:22px"><a href="08-escape-الگو-preg-quote.html">← قبلی</a></div></article></div></div>
+<div class="navbtn lesson-nav"><a href="08-escape-الگو-preg-quote.html">← قبلی</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

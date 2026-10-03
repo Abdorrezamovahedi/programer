@@ -1441,11 +1441,11 @@ var QUIZ = {
     ["exLangSelect", "exListView", "exDetailView", "quizArea"].forEach(
       function (x) {
         var el = document.getElementById(x);
-        if (el) el.style.display = "none";
+        if (el) el.classList.add("is-hidden");
       },
     );
     var el = document.getElementById(id);
-    if (el) el.style.display = "block";
+    if (el) el.classList.remove("is-hidden");
   }
 
   function renderExLangButtons() {

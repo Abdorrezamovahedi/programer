@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>برش رشته ها (Slicing Strings) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی">
+<meta name="description" content="با substr در PHP پیشوند و پسوند یک کد رهگیری را جدا کن؛ اندیس منفی و محدودیت رشته‌های چندبایتی را یاد بگیر.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "برش رشته ها (Slicing Strings)", "description": "این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "برش رشته ها (Slicing Strings)", "description": "برش رشته‌ها با substr و اندیس مثبت یا منفی در PHP.", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
 <body>
@@ -76,47 +76,40 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="برش رشته ها (Slicing Strings)" data-cat="شروع PHP">📌 پین کردن این درس</button>
 <h2>برش رشته ها (Slicing Strings)</h2>
-<p><strong>هدف این درس:</strong> متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی.</p>
-<div class="note"><strong>درس معرفی «انواع داده در PHP»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>آزمون (توابع متغیر و نوع)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
-<div class="note"><strong>پوشه:</strong> شروع PHP &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شروع PHP».</div>
-<h3>مفهوم به زبان ساده</h3><p>رشته همان متن است. چسباندن با نقطه (.) انجام می‌شود. strlen طول را می‌دهد. substr از یک نقطه به بعد (یا با طول) برش می‌زند. برای فارسی در کار واقعی گاهی توابع mb_* بهترند؛ فعلاً ایده را با مثال انگلیسی/ساده محکم کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">$s = &quot;سلام&quot;;
-echo $s . &quot; دنیا&quot;;
-echo strlen(&quot;abc&quot;);
-echo substr(&quot;abcdef&quot;, 0, 3);</div>
-<h3>مثال 1: چسب و طول</h3>
+<p><strong>هدف این درس:</strong> با <code>substr</code> بخشی از یک رشته را از ابتدا یا انتهای آن جدا کنی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> تعریف رشته و مفهوم اندیس صفرمبنا.</div>
+<h3>مفهوم به زبان ساده</h3><p><code>substr</code> از یک offset شروع می‌کند و در صورت تعیین طول، همان تعداد بایت را برمی‌گرداند. offset منفی از انتهای رشته شمرده می‌شود. این تابع بایت‌محور است؛ برای برش درست نویسه‌های چندبایتی فارسی از <code>mb_substr</code> استفاده کن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">substr($string, $offset, $length = null);</div>
+<h3>مثال: پیشوند و پسوند کد رهگیری</h3>
 <div class="codewrap"><div class="code">&lt;?php
-$a = &quot;سلام&quot;;
-$b = &quot;دنیا&quot;;
-echo $a . &quot; &quot; . $b . &quot;\n&quot;;
-echo strlen(&quot;abc&quot;);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>. :</strong> چسباندن.<br>
-<strong>فاصله وسط:</strong> با یک رشتهٔ &quot; &quot; جدا شده.<br>
-<strong>strlen(&quot;abc&quot;):</strong> ۳.</div>
-<h3>مثال 2: برش</h3>
-<div class="codewrap"><div class="code">&lt;?php
-echo substr(&quot;abcdef&quot;, 0, 3);
-// خروجی: abc
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>از ۰:</strong> شروع از اول.<br>
-<strong>طول ۳:</strong> سه کاراکتر.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo &quot;a&quot; + &quot;b&quot;;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$trackingCode = &quot;TRK-90841&quot;;
+$prefix = substr($trackingCode, 0, 3);
+$lastFour = substr($trackingCode, -4);
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> + برای عدد است.<br><strong>چه می‌بینی؟</strong> ۰ یا نتیجهٔ عجیب<br><strong>درست:</strong> echo &quot;a&quot; . &quot;b&quot;;</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> دو کلمه را با فاصله بچسبانی و یک substr ساده اجرا کنی.</div>
+echo $prefix . PHP_EOL;
+echo $lastFour;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> TRK و 0841<br><strong>offset صفر:</strong> از ابتدای رشته شروع می‌کند.<br><strong>offset منفی:</strong> از انتهای رشته به عقب می‌شمارد.</div>
+<h3>نمونهٔ محدودیت: متن فارسی</h3>
+<div class="codewrap"><div class="code">&lt;?php
+$word = &quot;سلام&quot;;
+echo mb_substr($word, 0, 2, 'UTF-8');
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> سلا<br><strong>mb_substr:</strong> برش را بر اساس نویسه انجام می‌دهد، نه تعداد بایت.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>برای رشتهٔ UTF-8 فارسی از <code>substr</code> به‌عنوان شمارش نویسه استفاده نکن.</strong> ممکن است برش در میانهٔ بایت‌های یک نویسه قرار بگیرد؛ از <code>mb_substr</code> استفاده کن.</div>
+<div class="good"><strong>معیار پایان:</strong> با offset مثبت یک پیشوند و با offset منفی یک پسوند برداری و تفاوت بایت و نویسه را بدانی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>. برای متن</li>
-<li>strlen طول</li>
-<li>substr برش</li>
+<li><code>substr</code> offset و طول را بر اساس بایت می‌سنجد.</li>
+<li>offset منفی از انتهای رشته شروع می‌شود.</li>
+<li>برای رشتهٔ فارسی UTF-8، <code>mb_substr</code> مناسب است.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">نام و نام‌خانوادگی را در یک جمله بساز.</li>
-<li style="margin-bottom:6px">سه حرف اول یک کلمه را جدا کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">سه حرف اول و چهار رقم آخر یک کد ASCII را جدا کن.</li>
+<li class="practice-item">دو نویسهٔ اول یک واژهٔ فارسی را با <code>mb_substr</code> بگیر.</li>
 </ol>
-<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="13-چسباندن-رشته-ها-Concatenate-Strings.html">← چسباندن رشته ها (Concatenate Strings)</a><a href="15-ثابت-ها-Constants.html">ثابت ها (Constants) →</a></div></article></div></div>
+<p class="rel">برای ثابت‌هایی که متن را نگه می‌دارند و تغییر نمی‌کنند، درس بعدی دربارهٔ Constants را ببین.</p>
+<div class="navbtn lesson-nav"><a href="13-چسباندن-رشته-ها-Concatenate-Strings.html">← چسباندن رشته ها (Concatenate Strings)</a><a href="15-ثابت-ها-Constants.html">ثابت ها (Constants) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

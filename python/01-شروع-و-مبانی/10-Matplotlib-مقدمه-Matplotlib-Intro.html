@@ -53,55 +53,50 @@
                         data-title="Matplotlib مقدمه (Matplotlib Intro)" data-cat="شروع و مبانی">📌 پین کردن این
                         درس</button>
                     <h2>Matplotlib مقدمه (Matplotlib Intro)</h2>
-                    <p><strong>هدف:</strong> بدانی این مبحث روی آرایه/جدول داده و مدل‌سازی آماری سوار است و نیاز به نصب
-                        کتابخانه دارد.</p>
+                    <p><strong>هدف:</strong> بفهمی Matplotlib داده‌های عددی را به نمودار تبدیل می‌کند و نخستین نمودار خطی را بسازی.</p>
                     <div class="note"><strong>پوشه:</strong> شروع و مبانی &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong>
                         درس‌های قبلی «شروع و مبانی».</div>
                     <div class="good"><strong>ارتباط با قبل:</strong> list و dict پایه بودند؛ اینجا همان داده با ابزار
                         تخصصی سریع‌تر و بزرگ‌تر پردازش می‌شود.</div>
                     <h3>مفهوم</h3>
-                    <p>NumPy آرایهٔ عددی سریع است؛ Pandas جدول (DataFrame)؛ مدل‌های ML از دادهٔ آموزش الگو می‌گیرند و
-                        روی دادهٔ جدید پیش‌بینی می‌کنند. بدون نصب پکیج، کد واقعی اجرا نمی‌شود.</p>
+                    <p>Matplotlib کتابخانه‌ای برای رسم نمودار در Python است. داده‌ها را به آن می‌دهی و با <code>pyplot</code> نمودار می‌سازی. برای اجرای مثال باید کتابخانه را نصب کرده باشی.</p>
                     <h3>ساختار</h3>
-                    <div class="code"># pip install numpy pandas
-                        # import numpy as np</div>
-                    <h3>مثال 1: ایده بدون وابستگی اجباری</h3>
+                    <div class="code">python -m pip install matplotlib</div>
+                    <h3>مثال: رسم تعداد بازدید روزانه</h3>
                     <div class="codewrap">
-                        <div class="code"># مفهوم: میانگین دستی شبیه ایدهٔ آماری
-                            data = [2, 4, 4, 6]
-                            mean = sum(data) / len(data)
-                            print(mean)
-                            # در NumPy: np.mean(np.array(data))</div>
+                        <div class="code">import matplotlib.pyplot as plt
+
+days = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;]
+visitors = [12, 18, 15]
+plt.plot(days, visitors, marker=&quot;o&quot;)
+plt.show()</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-                    <div class="exp"><strong>data:</strong> نمونهٔ کوچک به‌جای دیتاست بزرگ.<br>
-                        <strong>mean:</strong> همان ایده‌ای که کتابخانه‌ها بهینه می‌کنند.
+                    <div class="exp"><strong>خروجی:</strong> نمودار خطی سه نقطهٔ Mon، Tue و Wed را نمایش می‌دهد.<br>
+                        <strong>plt.plot:</strong> داده‌ها را به شکل خط رسم می‌کند؛ <strong>plt.show:</strong> پنجرهٔ نمودار را باز می‌کند.
                     </div>
                     <h3>اشتباه رایج</h3>
                     <div class="codewrap">
-                        <div class="code">import numpy as np # بدون نصب</div>
+                        <div class="code">import matplotlib.pyplot as plt</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
-                    <div class="warn"><strong>چرا اشتباه است؟</strong> پکیج روی سیستم نیست.<br><strong>چه
-                            می‌بینی؟</strong> ModuleNotFoundError<br><strong>درست:</strong> pip install numpy (ترجیحاً
-                        داخل venv)</div>
-                    <div class="good"><strong>معیار تمام‌شدن:</strong> میانگین یک لیست را با خالص پایتون حساب کنی و
-                        بگویی معادلش در NumPy چیست.</div>
+                    <div class="warn"><strong>اگر Matplotlib نصب نباشد</strong> import خطای <code>ModuleNotFoundError</code> می‌دهد.<br><strong>درست:</strong> <code>python -m pip install matplotlib</code> را در محیط مجازی پروژه اجرا کن.</div>
+                    <div class="good"><strong>معیار تمام‌شدن:</strong> یک فهرست x و y بسازی و بدانی <code>plot</code> هر جفت مقدار را به چه نقطه‌ای تبدیل می‌کند.</div>
                     <div class="sum"><b>جمع‌بندی</b>
                         <ul>
-                            <li>نیاز به نصب</li>
-                            <li>آرایه/جدول</li>
-                            <li>آموزش vs پیش‌بینی</li>
-                            <li>اول مفهوم بعد API</li>
+                            <li>Matplotlib داده‌ها را نمودار می‌کند.</li>
+                            <li><code>pyplot</code> ابزار رسم نمودار است.</li>
+                            <li><code>plot</code> نمودار خطی می‌سازد.</li>
+                            <li>برای نمایش نمودار <code>show</code> را اجرا کن.</li>
                         </ul>
                     </div>
                     <h3>گام عملی</h3>
-                    <ol style="padding-right:22px;color:#b1bac4">
-                        <li style="margin-bottom:6px">یک لیست نمرات را میانگین بگیر.</li>
-                        <li style="margin-bottom:6px">تفاوت train و test را یک جمله بنویس.</li>
+                    <ol class="practice-list">
+                        <li class="practice-item">برچسب روزها و تعداد بازدیدها را با داده‌های دلخواه جایگزین کن.</li>
+                        <li class="practice-item">تعداد بازدید روز چهارم را اضافه و نمودار را دوباره رسم کن.</li>
                     </ol>
                     <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل
                         درس را از صفر حفظ نکن.</p>
-                    <div class="navbtn" style="margin-top:22px"><a href="09-نمایش-متغیرها-Output-Variables.html">← نمایش
+                    <div class="navbtn lesson-nav"><a href="09-نمایش-متغیرها-Output-Variables.html">← نمایش
                             متغیرها (Output Variables)</a><a
                             href="11-شروع-با-Matplotlib-Matplotlib-Get-Started.html">شروع با Matplotlib (Matplotlib Get
                             Started) →</a></div>

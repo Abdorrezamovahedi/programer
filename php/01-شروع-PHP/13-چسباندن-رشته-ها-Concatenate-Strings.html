@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>چسباندن رشته ها (Concatenate Strings) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی">
+<meta name="description" content="رشته‌ها را در PHP با عملگر نقطه و نقطه-مساوی به هم بچسبان؛ متن خوشامدگویی را مرحله‌به‌مرحله بساز.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "چسباندن رشته ها (Concatenate Strings)", "description": "این درس: متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "چسباندن رشته ها (Concatenate Strings)", "description": "اتصال رشته‌ها در PHP با عملگرهای نقطه و نقطه-مساوی.", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
 </head>
 <body>
@@ -76,47 +76,37 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="چسباندن رشته ها (Concatenate Strings)" data-cat="شروع PHP">📌 پین کردن این درس</button>
 <h2>چسباندن رشته ها (Concatenate Strings)</h2>
-<p><strong>هدف این درس:</strong> متن را بسازی، بچسبانی، طول بگیری و یک تکه از آن را جدا کنی.</p>
-<div class="note"><strong>درس معرفی «انواع داده در PHP»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>آزمون (توابع متغیر و نوع)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
-<div class="note"><strong>پوشه:</strong> شروع PHP &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شروع PHP».</div>
-<h3>مفهوم به زبان ساده</h3><p>رشته همان متن است. چسباندن با نقطه (.) انجام می‌شود. strlen طول را می‌دهد. substr از یک نقطه به بعد (یا با طول) برش می‌زند. برای فارسی در کار واقعی گاهی توابع mb_* بهترند؛ فعلاً ایده را با مثال انگلیسی/ساده محکم کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">$s = &quot;سلام&quot;;
-echo $s . &quot; دنیا&quot;;
-echo strlen(&quot;abc&quot;);
-echo substr(&quot;abcdef&quot;, 0, 3);</div>
-<h3>مثال 1: چسب و طول</h3>
+<p><strong>هدف این درس:</strong> با عملگر نقطه چند بخش متن را به هم وصل کنی و با <code>.=</code> رشتهٔ موجود را گسترش بدهی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> تعریف رشته و متغیر در PHP.</div>
+<h3>مفهوم به زبان ساده</h3><p>در PHP عملگر نقطه (<code>.</code>) اتصال رشته را انجام می‌دهد. عملگر <code>.=</code> کوتاه‌نویسیِ «اتصال به مقدار فعلی و ذخیرهٔ نتیجه در همان متغیر» است. علامت <code>+</code> برای جمع عددی است، نه اتصال متن.</p>
+<h3>ساختار (Syntax)</h3><div class="code">$full = $first . &quot; &quot; . $last;
+$message .= $extraText;</div>
+<h3>مثال: ساخت پیام خوشامدگویی</h3>
 <div class="codewrap"><div class="code">&lt;?php
-$a = &quot;سلام&quot;;
-$b = &quot;دنیا&quot;;
-echo $a . &quot; &quot; . $b . &quot;\n&quot;;
-echo strlen(&quot;abc&quot;);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>. :</strong> چسباندن.<br>
-<strong>فاصله وسط:</strong> با یک رشتهٔ &quot; &quot; جدا شده.<br>
-<strong>strlen(&quot;abc&quot;):</strong> ۳.</div>
-<h3>مثال 2: برش</h3>
-<div class="codewrap"><div class="code">&lt;?php
-echo substr(&quot;abcdef&quot;, 0, 3);
-// خروجی: abc
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>از ۰:</strong> شروع از اول.<br>
-<strong>طول ۳:</strong> سه کاراکتر.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo &quot;a&quot; + &quot;b&quot;;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+$message = &quot;Welcome&quot;;
+$message .= &quot;, &quot;;
+$message .= &quot;Sara&quot;;
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> + برای عدد است.<br><strong>چه می‌بینی؟</strong> ۰ یا نتیجهٔ عجیب<br><strong>درست:</strong> echo &quot;a&quot; . &quot;b&quot;;</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> دو کلمه را با فاصله بچسبانی و یک substr ساده اجرا کنی.</div>
+echo $message . &quot;!&quot;;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> Welcome, Sara!<br><strong>.=:</strong> هر بخش را به انتهای مقدار فعلی اضافه می‌کند.<br><strong>.:</strong> بخش پایانی را برای نمایش به پیام وصل می‌کند.</div>
+<h3>اشتباه رایج: استفاده از جمع عددی</h3>
+<div class="codewrap"><div class="code">&lt;?php
+echo &quot;Hello &quot; + &quot;Sara&quot;;
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>این کد در PHP 8 خطای TypeError می‌دهد.</strong> برای اتصال متن، علامت <code>+</code> را با <code>.</code> جایگزین کن.</div>
+<div class="good"><strong>معیار پایان:</strong> یک پیام را هم با اتصال چند عبارت و هم با <code>.=</code> بسازی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>. برای متن</li>
-<li>strlen طول</li>
-<li>substr برش</li>
+<li><code>.</code> دو رشته را به هم متصل می‌کند.</li>
+<li><code>.=</code> رشتهٔ سمت راست را به متغیر سمت چپ اضافه می‌کند.</li>
+<li><code>+</code> برای محاسبهٔ عددی است.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">نام و نام‌خانوادگی را در یک جمله بساز.</li>
-<li style="margin-bottom:6px">سه حرف اول یک کلمه را جدا کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">یک پیام شامل نام، نام خانوادگی و علامت تعجب بساز.</li>
+<li class="practice-item">همان پیام را یک‌بار با <code>.</code> و یک‌بار با <code>.=</code> تولید کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی فقط همان خط خطا را با «اشتباه رایج» مقایسه کن. با تایپ و اجرا جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="12-ویرایش-رشته-ها-Modify-Strings.html">← ویرایش رشته ها (Modify Strings)</a><a href="14-برش-رشته-ها-Slicing-Strings.html">برش رشته ها (Slicing Strings) →</a></div></article></div></div>
+<p class="rel">برای جداکردن بخشی از یک رشته بر اساس جایگاه، درس بعدی دربارهٔ <code>substr</code> را ببین.</p>
+<div class="navbtn lesson-nav"><a href="12-ویرایش-رشته-ها-Modify-Strings.html">← ویرایش رشته ها (Modify Strings)</a><a href="14-برش-رشته-ها-Slicing-Strings.html">برش رشته ها (Slicing Strings) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>

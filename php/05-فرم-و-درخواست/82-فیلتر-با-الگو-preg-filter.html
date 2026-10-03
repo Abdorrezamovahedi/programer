@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
 <title>فیلتر با الگو (preg_filter) — PHP | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: نام تابع preg_filter را بشناسی و بدانی چطور وجودش را چک کنی">
+<meta name="description" content="با preg_filter فهرست کارهای فوری را بر اساس الگو انتخاب کن و پیشوند منطبق را جایگزین کن.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فیلتر با الگو (preg_filter)", "description": "این درس: نام تابع preg_filter را بشناسی و بدانی چطور وجودش را چک کنی", "inLanguage": "fa"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فیلتر با الگو (preg_filter)", "description": "انتخاب و جایگزینی اعضای منطبق آرایه با preg_filter در PHP.", "inLanguage": "fa"}</script>
 
 </head>
 <body>
@@ -122,30 +122,34 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="فیلتر با الگو (preg_filter)" data-cat="فرم و درخواست">📌 پین</button>
 <h2>فیلتر با الگو (preg_filter)</h2>
-<p><strong>هدف این درس:</strong> نام تابع preg_filter را بشناسی و بدانی چطور وجودش را چک کنی.</p>
-<div class="note"><strong>پوشه:</strong> فرم و درخواست &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («فرم و درخواست») را با تایپ و اجرا خوانده باشی.</div>
-<h3>مفهوم به زبان ساده</h3><p>صفحات مرجع تابع برای جزئیات‌اند. اول نحو زبان را یاد بگیر؛ بعد وقتی به کاری رسیدی، مثال همان تابع را اجرا کن.</p>
-<h3>ساختار (Syntax)</h3><div class="code">preg_filter(...)</div>
-<h3>مثال 1: آیا تابع هست؟</h3>
+<p><strong>هدف این درس:</strong> یک آرایه را با regex فیلتر کنی و هم‌زمان روی مقدارهای منطبق جایگزینی انجام بدهی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با آرایه‌ها و تفاوت <code>preg_filter</code> با <code>preg_replace</code>.</div>
+<h3>مفهوم به زبان ساده</h3><p><code>preg_filter</code> روی اعضای آرایه جایگزینی انجام می‌دهد، اما فقط نتیجهٔ اعضایی را برمی‌گرداند که با الگو تطبیق داشته‌اند. <code>preg_replace</code> در مقابل، اعضای بدون تطبیق را هم در نتیجه نگه می‌دارد.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_filter($pattern, $replacement, $subject, $limit = -1, $count = null);</div>
+<h3>مثال: برجسته‌کردن کارهای فوری</h3>
 <div class="codewrap"><div class="code">&lt;?php
-var_dump(function_exists(&quot;preg_filter&quot;));
+$tasks = [
+	&quot;urgent: reset password&quot;,
+	&quot;note: update documentation&quot;,
+	&quot;urgent: fix login&quot;,
+];
+$urgentTasks = preg_filter('/^urgent:\s*/', '[فوری] ', $tasks);
+print_r(array_values($urgentTasks));
 ?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>function_exists:</strong> true یعنی در این محیط موجود است.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">حفظ طوطی‌وار صدها تابع</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-<div class="warn"><strong>چرا اشتباه است؟</strong> بدون تمرین می‌پرد.<br><strong>چه می‌بینی؟</strong> یادگیری سطحی<br><strong>درست:</strong> هر بار یک تابع با یک مثال واقعی</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> نتیجهٔ function_exists برای preg_filter را ببینی.</div>
+<div class="exp"><strong>خروجی:</strong> فقط دو کار فوری در آرایه می‌مانند و پیشوندشان با <code>[فوری]</code> جایگزین می‌شود.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>خروجی <code>preg_filter</code> را با <code>preg_replace</code> یکی ندان.</strong> عضوهای بدون تطبیق از خروجی <code>preg_filter</code> حذف می‌شوند؛ اگر باید باقی بمانند، <code>preg_replace</code> را انتخاب کن.</div>
+<div class="good"><strong>معیار پایان:</strong> بتوانی از روی نیاز انتخاب کنی که عضوهای بدون تطبیق در نتیجه بمانند یا حذف شوند.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>مرجع برای موقع نیاز</li>
-<li>مثال کوچک بزن</li>
-<li>از سند رسمی کمک بگیر</li>
+<li><code>preg_filter</code> تطبیق را جایگزین می‌کند.</li>
+<li>فقط عضوهای منطبق را در نتیجه نگه می‌دارد.</li>
+<li>برای نگه‌داشتن همهٔ عضوها، <code>preg_replace</code> مناسب است.</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol style="padding-right:22px;color:#b1bac4">
-<li style="margin-bottom:6px">یک مثال رسمی را محلی تست کن.</li>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">از فهرست پیام‌ها فقط مواردی را برگردان که با <code>error:</code> شروع می‌شوند و این پیشوند را با <code>[خطا]</code> عوض کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn" style="margin-top:22px"><a href="81-ob-get-level-ob-get-level.html">← قبلی</a><a href="83-فضای-نام-ها-getDocNamespaces.html">بعدی →</a></div></article></div></div>
+<p class="rel">برای مقایسه، درس <a href="81-ob-get-level-ob-get-level.html">ob_get_level</a> یا مرجع <code>preg_replace</code> را ببین.</p>
+<div class="navbtn lesson-nav"><a href="81-ob-get-level-ob-get-level.html">← قبلی</a><a href="83-فضای-نام-ها-getDocNamespaces.html">بعدی →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
