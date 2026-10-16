@@ -1,89 +1,74 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0f1419">
-  <title>تمرین‌های عملی | مدرسه برنامه‌نویسان</title>
-  <meta name="description" content="تمرین برنامه‌نویسی با راهنمای مرحله‌ای — بدون پاسخ آماده.">
-  <link rel="stylesheet" href="../assets/css/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>تمرین‌های عملی | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="تمرین برنامه‌نویسی با راهنمای مرحله‌ای — هر زبان پوشه جدا و هر مسئله فایل جدا">
+<link rel="stylesheet" href="../assets/css/main.css">
 </head>
-
 <body>
-  <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../index.html">خانه</a>
+<a href="index.html" class="active">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="hero">
+<h1>تمرین‌های عملی</h1>
+<p>راهنما هست؛ جواب آماده نه. هر زبان پوشهٔ خودش را دارد و هر مسئله یک فایل جدا است.</p>
+</div>
 
-  <header>
-    <div class="logo"><a href="../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای
-        انسانی</span></div>
-    <nav>
-      <a href="../index.html">خانه</a>
-      <a href="../tamrin/index.html" class="active">تمرین</a>
-    </nav>
-  </header>
-  <main id="main-content">
-    <div class="wrap">
-      <div id="exLangSelect">
-        <div class="hero">
-          <h1>تمرین‌های عملی</h1>
-          <p>راهنما هست؛ جواب آماده نه</p>
-        </div>
-        <div class="langs" id="tamrinLangs"></div>
-        <div class="exercise-toolbar">
-          <button type="button" id="btnShowQuiz" class="trybtn quiz-compact-button">آزمون سراسری</button>
-        </div>
-      </div>
+<div class="langs" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:2rem 0;">
+<a class="card" href="python/index.html" style="text-align:center;padding:1.5rem;text-decoration:none;color:inherit;">
+<strong style="font-size:1.3rem;">Python</strong>
+<p style="margin:0.5rem 0 0;opacity:0.8;">۳۰ تمرین</p>
+</a>
+<a class="card" href="html/index.html" style="text-align:center;padding:1.5rem;text-decoration:none;color:inherit;">
+<strong style="font-size:1.3rem;">HTML</strong>
+<p style="margin:0.5rem 0 0;opacity:0.8;">۱۰ تمرین</p>
+</a>
+<a class="card" href="css/index.html" style="text-align:center;padding:1.5rem;text-decoration:none;color:inherit;">
+<strong style="font-size:1.3rem;">CSS</strong>
+<p style="margin:0.5rem 0 0;opacity:0.8;">۸ تمرین</p>
+</a>
+<a class="card" href="javascript/index.html" style="text-align:center;padding:1.5rem;text-decoration:none;color:inherit;">
+<strong style="font-size:1.3rem;">JavaScript</strong>
+<p style="margin:0.5rem 0 0;opacity:0.8;">۱۰ تمرین</p>
+</a>
+<a class="card" href="php/index.html" style="text-align:center;padding:1.5rem;text-decoration:none;color:inherit;">
+<strong style="font-size:1.3rem;">PHP</strong>
+<p style="margin:0.5rem 0 0;opacity:0.8;">۸ تمرین</p>
+</a>
+</div>
 
-      <div id="exListView" class="exercise-main-layout is-hidden">
-        <div class="hero">
-          <h1 id="exListTitle">تمرین‌ها</h1>
-        </div>
+<div class="card" style="margin-top:2rem;">
+<h3>چطور ویرایش کنم؟</h3>
+<p>اگر می‌خواهی متن یک تمرین را عوض کنی:</p>
+<ol>
+<li>پوشهٔ زبان مورد نظر را باز کن (مثلاً <code>tamrin/python/</code>)</li>
+<li>فایل مربوط به آن مسئله را پیدا کن</li>
+<li>فقط متن داخل تگ‌های <code>&lt;p&gt;</code> را ویرایش کن</li>
+</ol>
+<p>نیازی به دانستن جاوااسکریپت نیست.</p>
+</div>
 
-        <div class="exercise-panel card">
-          <div class="exercise-filter-row">
-            <select id="exFilterLevel" class="filter-select">
-              <option value="all">همه سطوح</option>
-              <option value="easy">آسان</option>
-              <option value="medium">متوسط</option>
-              <option value="hard">سخت</option>
-            </select>
-            <select id="exFilterTopic" class="filter-select">
-              <option value="all">همه موضوعات</option>
-            </select>
-          </div>
-          <input type="search" id="exSearch" class="exercise-search" placeholder="جستجو...">
-        </div>
+<div class="exercise-toolbar" style="margin-top:1.5rem;">
+<button type="button" id="btnShowQuiz" class="trybtn quiz-compact-button">آزمون سراسری (نسخهٔ قبلی)</button>
+</div>
 
-        <div id="exListRoot"></div>
-        <button type="button" id="backToExLangs" class="secondary-action">← بازگشت</button>
-      </div>
-
-      <div id="exDetailView" class="exercise-detail-layout is-hidden">
-        <article class="card" id="exDetailCard"></article>
-        <div class="navbtn exercise-detail-actions">
-          <button type="button" id="backToExList" class="secondary-action">← لیست</button>
-        </div>
-      </div>
-
-      <div id="quizArea" class="quiz-panel is-hidden">
-        <div class="hero">
-          <h2>آزمون سراسری</h2>
-        </div>
-        <div id="scoreBox" class="quiz-summary"></div>
-        <div id="quizRoot"></div>
-        <button type="button" id="backTamrin" class="secondary-action">← بازگشت</button>
-      </div>
-    </div>
-  </main>
-  <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge"
-      id="pinBadge">0</span></button>
-  <div class="pin-panel" id="pinPanel">
-    <header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header>
-    <div class="pin-list" id="pinList"></div>
-  </div>
-  <footer class="site-footer">مدرسه برنامه‌نویسان</footer>
-  <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/exercises.js"></script>
+<!-- Keep old interactive runner available -->
+<div id="exLangSelect" class="is-hidden"></div>
+<div id="exListView" class="is-hidden"></div>
+<div id="exDetailView" class="is-hidden"></div>
+</div>
+</main>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/exercises.js"></script>
 </body>
-
 </html>

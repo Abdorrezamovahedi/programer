@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>بگینگ (Bootstrap Aggregation) — Python | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="مفهوم «بگینگ (Bootstrap Aggregation)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی">
-<link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "بگینگ (Bootstrap Aggregation)", "description": "مفهوم «بگینگ (Bootstrap Aggregation)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#0f1419" name="theme-color"/>
+<title>بگینگ (Bootstrap Aggregation) — Python | مدرسه برنامه‌نویسان</title>
+<meta content="مفهوم «بگینگ (Bootstrap Aggregation)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی" name="description"/>
+<link href="../../assets/css/main.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "بگینگ (Bootstrap Aggregation)", "description": "مفهوم «بگینگ (Bootstrap Aggregation)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-
 <header>
 <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
-<a href="../../index.html" class="active">خانه</a>
+<a class="active" href="../../index.html">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
 </nav>
 </header>
@@ -39,30 +38,29 @@
 <a href="15-توزیع-داده-Data-Distribution.html">15. توزیع داده (Data Distribution)</a>
 <a href="16-توزیع-نرمال-Normal-Data-Distribution.html">16. توزیع نرمال (Normal Data Distribution)</a>
 <a href="17-نمودار-پراکندگی-Scatter-Plot.html">17. نمودار پراکندگی (Scatter Plot)</a>
-<a href="18-بگینگ-Bootstrap-Aggregation.html" class="on">18. بگینگ (Bootstrap Aggregation)</a>
+<a class="on" href="18-بگینگ-Bootstrap-Aggregation.html">18. بگینگ (Bootstrap Aggregation)</a>
 <a href="19-ایجاد-جدول-Create-Table.html">19. ایجاد جدول (Create Table)</a>
 <a href="20-حذف-جدول-Drop-Table.html">20. حذف جدول (Drop Table)</a>
 <a href="21-پیدا-کردن-Find.html">21. پیدا کردن (Find)</a>
 </aside>
-<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="بگینگ (Bootstrap Aggregation)" data-cat="سایر مباحث">📌 پین کردن این درس</button>
+<article class="card"><button class="btn-pin" data-cat="سایر مباحث" data-title="بگینگ (Bootstrap Aggregation)" id="btnPinLesson" type="button">📌 پین کردن این درس</button>
 <h2>بگینگ (Bootstrap Aggregation)</h2>
-<p><strong>هدف:</strong> مفهوم «بگینگ (Bootstrap Aggregation)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی.</p>
-<div class="note"><strong>پوشه:</strong> سایر مباحث &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «سایر مباحث».</div>
+<p><strong>هدف این درس:</strong> مفهوم «بگینگ (Bootstrap Aggregation)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی.</p>
+<div class="note"><strong>پوشه:</strong> سایر مباحث  |  <strong>پیش‌نیاز:</strong> درس‌های قبلی «سایر مباحث».</div>
 <div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «سایر مباحث» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
-<h3>مفهوم</h3><p>این صفحه روی «بگینگ (Bootstrap Aggregation)» متمرکز است. مثال را خط‌به‌خط بخوان، بعد خودت یک مقدار را عوض کن.</p>
+<h3>مفهوم</h3><p>در این درس با «بگینگ (Bootstrap Aggregation)» آشنا می‌شوی. مثال را خط‌به‌خط بخوان، یک مقدار را عوض کن و خروجی را ببین. اگر خطا دیدی، پیام خطا را از پایین بخوان.</p>
 <h3>مثال 1: شروع</h3>
 <div class="codewrap"><div class="code"># مبحث: بگینگ (Bootstrap Aggregation)
 value = 10
 print(value)
-print(type(value))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>خط ۱:</strong> کامنت موضوع؛ اجرا نمی‌شود.<br>
-<strong>خط ۲:</strong> یک مقدار نمونه در متغیر.<br>
-<strong>خط ۳:</strong> چاپ مقدار.<br>
+print(type(value))</div></div><button class="trybtn" type="button">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> کامنت موضوع؛ اجرا نمی‌شود.<br/>
+<strong>خط ۲:</strong> یک مقدار نمونه در متغیر.<br/>
+<strong>خط ۳:</strong> چاپ مقدار.<br/>
 <strong>خط ۴:</strong> چاپ نوع تا ببینی با چه داده‌ای طرفی.</div>
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">print(undefined_name)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-<div class="warn"><strong>چرا اشتباه است؟</strong> نامی که تعریف نشده.<br><strong>چه می‌بینی؟</strong> NameError<br><strong>درست:</strong> اول متغیر را تعریف کن یا نام را درست بنویس.</div>
+<div class="codewrap"><div class="code">print(undefined_name)</div></div><button class="trybtn" type="button">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> نامی که تعریف نشده.<br/><strong>چه می‌بینی؟</strong> NameError<br/><strong>درست:</strong> اول متغیر را تعریف کن یا نام را درست بنویس.</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «بگینگ» بنویسی و اجرا کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
 <li>موضوع: بگینگ (Bootstrap Aggregation)</li>
@@ -78,8 +76,8 @@ print(type(value))</div></div><button type="button" class="trybtn">مشاهده 
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="17-نمودار-پراکندگی-Scatter-Plot.html">← نمودار پراکندگی (Scatter Plot)</a><a href="19-ایجاد-جدول-Create-Table.html">ایجاد جدول (Create Table) →</a></div></article></div></div>
 </main>
-<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
-<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<button aria-label="درس‌های پین‌شده" class="pin-fab" id="pinFab" type="button">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button aria-label="بستن" id="pinPanelClose" type="button">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button id="edCopy" type="button">کپی</button><button id="edClose" type="button">بستن</button></div></div></div>
 <footer class="site-footer">مدرسه برنامه‌نویسان</footer>
 <script src="../../assets/js/app.js"></script></body></html>

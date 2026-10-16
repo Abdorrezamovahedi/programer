@@ -5,18 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f1419">
 <title>خطاها (Errors) — CSS | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: اولین قانون ظاهر را بنویسی و رنگ متن را عوض کنی">
+<meta name="description" content="خطاهای رایج CSS را بشناس و یاد بگیر چطور سریع پیدایشان کنی">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "خطاها (Errors)", "description": "این درس: اولین قانون ظاهر را بنویسی و رنگ متن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "خطاها (Errors)", "description": "خطاهای رایج CSS را بشناس و یاد بگیر چطور سریع پیدایشان کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-
 <header>
 <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
-<a href="../../index.html" class="active">خانه</a>
+<a href="../../index.html">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
 </nav>
 </header>
@@ -38,41 +36,56 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="خطاها (Errors)" data-cat="شروع CSS">📌 پین کردن این درس</button>
 <h2>خطاها (Errors)</h2>
-<p><strong>هدف این درس:</strong> اولین قانون ظاهر را بنویسی و رنگ متن را عوض کنی.</p>
-<div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی همین پوشه («شروع CSS») را با تایپ و اجرا خوانده باشی.</div>
-<h3>مفهوم به زبان ساده</h3><p>CSS ظاهر صفحه را کنترل می‌کند: رنگ، فاصله، فونت، چیدمان. یک قانون می‌گوید «کدام بخش» و «چه شکلی». HTML ساختار را می‌سازد؛ CSS لباس آن است.</p>
-<h3>ساختار (Syntax)</h3><div class="code">selector {
-  property: value;
-}</div>
-<h3>مثال 1: خواناتر کردن بندها</h3>
-<div class="codewrap"><div class="code">p {
-  color: #1e293b;
-  line-height: 1.8;
-  font-size: 1.05rem;
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>p:</strong> همهٔ بندهای صفحه.<br>
-<strong>color:</strong> رنگ نوشته.<br>
-<strong>line-height:</strong> فاصلهٔ بین خط‌ها — برای خواندن فارسی مهم است.<br>
-<strong>;:</strong> پایان هر دستور داخل بلوک.</div>
-<h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">p { color: red</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<p><strong>هدف این درس:</strong> خطاهای رایج CSS را بشناس و یاد بگیر چطور سریع پیدایشان کنی.</p>
+<div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3>
+<p>CSS معمولاً خطای قرمز بزرگ نشان نمی‌دهد؛ فقط استایل اعمال نمی‌شود. رایج‌ترین علت‌ها: فراموش کردن ; یا }، غلط نوشتن نام ویژگی، یا اشتباه در انتخاب‌گر است.</p>
+<h3>خطاهای پرتکرار</h3>
+<div class="codewrap"><div class="code">/* ۱. فراموش کردن ; */
+p {
+  color: red
+  font-size: 18px;
+}
 
-<div class="warn"><strong>چرا اشتباه است؟</strong> آکولاد بسته یا نقطه‌ویرگول جا افتاده.<br><strong>چه می‌بینی؟</strong> استایل اعمال نمی‌شود یا قوانین بعدی خراب می‌شوند<br><strong>درست:</strong> p { color: red; }</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> این قانون را در صفحه بگذاری و رنگ بند را با چشم ببینی.</div>
+/* ۲. فراموش کردن } */
+.box {
+  padding: 1rem;
+/* اینجا } جا افتاده */
+
+/* ۳. نام ویژگی غلط */
+.text {
+  colour: blue;   /* درست: color */
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>نکته:</strong> ابزار DevTools مرورگر (F12) بهترین دوست تو برای پیدا کردن این خطاهاست.</div>
+<h3>مثال: پیدا کردن مشکل</h3>
+<div class="codewrap"><div class="code">.card {
+  background: #f8fafc;
+  padding: 16px
+  border: 1px solid #e2e8f0;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>مشکل:</strong> بعد از 16px علامت ; نیست. در نتیجه ویژگی بعدی هم ممکن است نادیده گرفته شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">p { color: red; }
+.card { padding: 1rem }</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> در قانون دوم ; بعد از 1rem جا افتاده (قبل از }).<br>
+<strong>چه می‌بینی؟</strong> در بعضی مرورگرها کار می‌کند، در بعضی نه. همیشه ; بگذار.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی با نگاه به کد، حداقل دو نوع خطای رایج را تشخیص دهی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>هر قانون: هدف + ویژگی‌ها</li>
-<li>نقطه‌ویرگول و } را کامل بنویس</li>
-<li>اول ساده شروع کن</li>
+<li>فراموش کردن ; و } خیلی رایج است</li>
+<li>نام ویژگی را درست بنویس (color نه colour)</li>
+<li>از DevTools برای بررسی استفاده کن</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol class="practice-list">
-<li class="practice-item">رنگ را عوض کن.</li>
-<li class="practice-item">اندازهٔ فونت را بزرگ‌تر کن.</li>
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">عمداً یک ; را پاک کن و ببین چه می‌شود.</li>
+<li class="practice-item">با DevTools (F12) استایل عنصر را بررسی کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
-<div class="navbtn lesson-nav"><a href="06-توضیحات-Comments.html">← توضیحات (Comments)</a><a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">انتخاب گرهای ویژگی (Attribute Selectors) →</a></div></article></div></div>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn lesson-nav"><a href="06-توضیحات-Comments.html">← توضیحات (Comments)</a><a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">انتخاب گرهای ویژگی →</a></div></article></div></div>
 </main>
-<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
-<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

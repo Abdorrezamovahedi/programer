@@ -5,18 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f1419">
 <title>فلکس باکس (Flexbox Intro) — CSS | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: اولین قانون CSS را بنویسی و رنگ متن را عوض کنی">
+<meta name="description" content="با display:flex یک ردیف از آیتم‌ها بساز و تراز افقی و عمودی آن‌ها را کنترل کن">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فلکس باکس (Flexbox Intro)", "description": "این درس: اولین قانون CSS را بنویسی و رنگ متن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فلکس باکس (Flexbox Intro)", "description": "با display:flex یک ردیف از آیتم‌ها بساز و تراز افقی و عمودی آن‌ها را کنترل کن", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-
 <header>
 <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
-<a href="../../index.html" class="active">خانه</a>
+<a href="../../index.html">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
 </nav>
 </header>
@@ -38,43 +36,60 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="فلکس باکس (Flexbox Intro)" data-cat="شروع CSS">📌 پین کردن این درس</button>
 <h2>فلکس باکس (Flexbox Intro)</h2>
-<p><strong>هدف این درس:</strong> اولین قانون CSS را بنویسی و رنگ متن را عوض کنی.</p>
+<p><strong>هدف این درس:</strong> با display:flex یک ردیف از آیتم‌ها بساز و تراز افقی و عمودی آن‌ها را کنترل کن.</p>
 <div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
-<h3>مفهوم به زبان ساده</h3><p>CSS ظاهر را کنترل می‌کند. HTML می‌گوید «این بند است»؛ CSS می‌گوید «چه شکلی باشد».</p>
-<h3>فهرست معرفی: قانون CSS</h3>
+<h3>مفهوم به زبان ساده</h3>
+<p>فلکس‌باکس برای چیدمان یک‌بعدی (ردیف یا ستون) است. وقتی به یک ظرف <code>display: flex</code> می‌دهی، فرزندانش در یک خط قرار می‌گیرند و می‌توانی فاصله و ترازشان را خیلی راحت تنظیم کنی.</p>
+<h3>فهرست معرفی: فلکس‌باکس</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
-<div class="codewrap"><div class="code">/* یک قانون CSS = انتخاب‌گر + ویژگی‌ها */
-p {                      /* همهٔ بندها */
-  color: #1e293b;        /* رنگ متن */
-  line-height: 1.8;      /* فاصلهٔ خطوط */
-  font-size: 1.05rem;    /* اندازهٔ نوشته */
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>; و }:</strong> هر اعلام با ; تمام می‌شود؛ بلوک با } بسته می‌شود.</div>
-<h3>مثال 1: اعمال روی صفحه</h3>
-<div class="codewrap"><div class="code">p {
-  color: #0f172a;
-  background-color: #f8fafc;
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>خط ۱:</strong> هدف: همهٔ pها.<br>
-<strong>خط ۲:</strong> رنگ متن تیره.<br>
-<strong>خط ۳:</strong> پس‌زمینه روشن برای خوانایی.</div>
+<div class="codewrap"><div class="code">.container {
+  display: flex;           /* فعال کردن فلکس */
+  justify-content: center; /* تراز افقی */
+  align-items: center;     /* تراز عمودی */
+  gap: 1rem;               /* فاصله بین آیتم‌ها */
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>display: flex:</strong> ظرف را به فلکس تبدیل می‌کند.<br>
+<strong>justify-content:</strong> آیتم‌ها را در محور اصلی (معمولاً افقی) تراز می‌کند.<br>
+<strong>align-items:</strong> تراز در محور عمود.<br>
+<strong>gap:</strong> فاصله یکنواخت بین آیتم‌ها.</div>
+<h3>مثال 1: سه کارت در یک ردیف</h3>
+<div class="codewrap"><div class="code">.row {
+  display: flex;
+  gap: 12px;
+}
+.card {
+  flex: 1;                 /* همه کارت‌ها عرض برابر */
+  padding: 1rem;
+  background: #f1f5f9;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱–۳:</strong> ظرف فلکس با فاصله ۱۲ پیکسل.<br>
+<strong>flex: 1:</strong> هر کارت فضای مساوی می‌گیرد.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">p { color: red</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="warn"><strong>چرا اشتباه است؟</strong> } یا ; ناقص است.<br><strong>چه می‌بینی؟</strong> استایل نمی‌آید<br><strong>درست:</strong> p { color: red; }</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> رنگ یک بند را در مرورگر عوض‌شده ببینی.</div>
+<div class="codewrap"><div class="code">.container {
+  display: flex
+  justify-content: center
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> بعد از هر ویژگی باید ; باشد.<br>
+<strong>چه می‌بینی؟</strong> استایل اعمال نمی‌شود.<br>
+<strong>درست:</strong> بعد از flex و center علامت ; بگذار.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> سه آیتم را با flex در یک ردیف ببینی و فاصله و ترازشان را عوض کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>انتخاب‌گر + بلوک</li>
-<li>color برای متن</li>
-<li>کامل بنویس</li>
+<li>display: flex ظرف را فلکس می‌کند</li>
+<li>justify-content تراز افقی</li>
+<li>align-items تراز عمودی</li>
+<li>gap فاصله بین آیتم‌ها</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol class="practice-list">
-<li class="practice-item">font-size را بزرگ‌تر کن.</li>
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">یک ظرف با سه فرزند بساز و display: flex بده.</li>
+<li class="practice-item">justify-content را به space-between تغییر بده و نتیجه را ببین.</li>
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="09-توضیحات-راهنما-Tooltips.html">← توضیحات راهنما (Tooltips)</a><a href="11-شبکه-Grid-Intro.html">شبکه (Grid Intro) →</a></div></article></div></div>
 </main>
-<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
-<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

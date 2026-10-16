@@ -5,18 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f1419">
 <title>شبکه (Grid Intro) — CSS | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: اولین قانون CSS را بنویسی و رنگ متن را عوض کنی">
+<meta name="description" content="با CSS Grid صفحه را به ستون‌ها و ردیف‌های منظم تقسیم کن">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شبکه (Grid Intro)", "description": "این درس: اولین قانون CSS را بنویسی و رنگ متن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شبکه (Grid Intro)", "description": "با CSS Grid صفحه را به ستون‌ها و ردیف‌های منظم تقسیم کن", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-
 <header>
 <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
-<a href="../../index.html" class="active">خانه</a>
+<a href="../../index.html">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
 </nav>
 </header>
@@ -38,43 +36,58 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="شبکه (Grid Intro)" data-cat="شروع CSS">📌 پین کردن این درس</button>
 <h2>شبکه (Grid Intro)</h2>
-<p><strong>هدف این درس:</strong> اولین قانون CSS را بنویسی و رنگ متن را عوض کنی.</p>
+<p><strong>هدف این درس:</strong> با CSS Grid صفحه را به ستون‌ها و ردیف‌های منظم تقسیم کن.</p>
 <div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
-<h3>مفهوم به زبان ساده</h3><p>CSS ظاهر را کنترل می‌کند. HTML می‌گوید «این بند است»؛ CSS می‌گوید «چه شکلی باشد».</p>
-<h3>فهرست معرفی: قانون CSS</h3>
+<h3>مفهوم به زبان ساده</h3>
+<p>گرید برای چیدمان دوبعدی است (هم ردیف و هم ستون). با تعریف تعداد ستون‌ها و عرضشان، آیتم‌ها خودشان در خانه‌های شبکه جای می‌گیرند. برای صفحه‌آرایی کامل معمولاً از Grid استفاده می‌شود.</p>
+<h3>فهرست معرفی: Grid</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
-<div class="codewrap"><div class="code">/* یک قانون CSS = انتخاب‌گر + ویژگی‌ها */
-p {                      /* همهٔ بندها */
-  color: #1e293b;        /* رنگ متن */
-  line-height: 1.8;      /* فاصلهٔ خطوط */
-  font-size: 1.05rem;    /* اندازهٔ نوشته */
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>; و }:</strong> هر اعلام با ; تمام می‌شود؛ بلوک با } بسته می‌شود.</div>
-<h3>مثال 1: اعمال روی صفحه</h3>
-<div class="codewrap"><div class="code">p {
-  color: #0f172a;
-  background-color: #f8fafc;
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>خط ۱:</strong> هدف: همهٔ pها.<br>
-<strong>خط ۲:</strong> رنگ متن تیره.<br>
-<strong>خط ۳:</strong> پس‌زمینه روشن برای خوانایی.</div>
+<div class="codewrap"><div class="code">.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* سه ستون برابر */
+  gap: 1rem;                         /* فاصله بین خانه‌ها */
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>display: grid:</strong> ظرف را به شبکه تبدیل می‌کند.<br>
+<strong>grid-template-columns:</strong> تعداد و عرض ستون‌ها را مشخص می‌کند.<br>
+<strong>1fr:</strong> یعنی یک واحد از فضای باقی‌مانده (Fraction).</div>
+<h3>مثال 1: چهار کارت در دو ستون</h3>
+<div class="codewrap"><div class="code">.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.item {
+  background: #e2e8f0;
+  padding: 1.5rem;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>repeat(2, 1fr):</strong> دو ستون با عرض مساوی.<br>
+<strong>gap:</strong> فاصله افقی و عمودی بین آیتم‌ها.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">p { color: red</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="warn"><strong>چرا اشتباه است؟</strong> } یا ; ناقص است.<br><strong>چه می‌بینی؟</strong> استایل نمی‌آید<br><strong>درست:</strong> p { color: red; }</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> رنگ یک بند را در مرورگر عوض‌شده ببینی.</div>
+<div class="codewrap"><div class="code">.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> ; در پایان ویژگی جا افتاده.<br>
+<strong>چه می‌بینی؟</strong> ممکن است کل قانون نادیده گرفته شود.<br>
+<strong>درست:</strong> بعد از 1fr آخر ; بگذار.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک شبکهٔ دو یا سه ستونه بسازی و فاصله بین خانه‌ها را تنظیم کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>انتخاب‌گر + بلوک</li>
-<li>color برای متن</li>
-<li>کامل بنویس</li>
+<li>display: grid ظرف را شبکه می‌کند</li>
+<li>grid-template-columns ستون‌ها را تعریف می‌کند</li>
+<li>1fr واحد نسبی فضای باقی‌مانده است</li>
+<li>gap فاصله بین خانه‌هاست</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol class="practice-list">
-<li class="practice-item">font-size را بزرگ‌تر کن.</li>
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">یک ظرف با چهار فرزند بساز و آن را به grid سه ستونه تبدیل کن.</li>
+<li class="practice-item">gap را تغییر بده و نتیجه را ببین.</li>
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="10-فلکس-باکس-Flexbox-Intro.html">← فلکس باکس (Flexbox Intro)</a><a href="12-واکنش-گرا-RWD-Intro.html">واکنش گرا (RWD Intro) →</a></div></article></div></div>
 </main>
-<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
-<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

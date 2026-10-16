@@ -5,18 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0f1419">
 <title>واکنش گرا (RWD Intro) — CSS | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: اولین قانون CSS را بنویسی و رنگ متن را عوض کنی">
+<meta name="description" content="با Media Query استایل صفحه را برای موبایل و دسکتاپ متفاوت کن">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "واکنش گرا (RWD Intro)", "description": "این درس: اولین قانون CSS را بنویسی و رنگ متن را عوض کنی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
-
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "واکنش گرا (RWD Intro)", "description": "با Media Query استایل صفحه را برای موبایل و دسکتاپ متفاوت کن", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-
 <header>
 <div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
-<a href="../../index.html" class="active">خانه</a>
+<a href="../../index.html">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
 </nav>
 </header>
@@ -38,43 +36,69 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="واکنش گرا (RWD Intro)" data-cat="شروع CSS">📌 پین کردن این درس</button>
 <h2>واکنش گرا (RWD Intro)</h2>
-<p><strong>هدف این درس:</strong> اولین قانون CSS را بنویسی و رنگ متن را عوض کنی.</p>
+<p><strong>هدف این درس:</strong> با Media Query استایل صفحه را برای موبایل و دسکتاپ متفاوت کن.</p>
 <div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
-<h3>مفهوم به زبان ساده</h3><p>CSS ظاهر را کنترل می‌کند. HTML می‌گوید «این بند است»؛ CSS می‌گوید «چه شکلی باشد».</p>
-<h3>فهرست معرفی: قانون CSS</h3>
+<h3>مفهوم به زبان ساده</h3>
+<p>صفحهٔ واکنش‌گرا یعنی ظاهر سایت روی موبایل و کامپیوتر فرق می‌کند. با <code>@media</code> می‌گویی «اگر عرض صفحه از فلان مقدار کمتر/بیشتر بود، این قوانین را اعمال کن».</p>
+<h3>فهرست معرفی: Media Query</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
-<div class="codewrap"><div class="code">/* یک قانون CSS = انتخاب‌گر + ویژگی‌ها */
-p {                      /* همهٔ بندها */
-  color: #1e293b;        /* رنگ متن */
-  line-height: 1.8;      /* فاصلهٔ خطوط */
-  font-size: 1.05rem;    /* اندازهٔ نوشته */
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>; و }:</strong> هر اعلام با ; تمام می‌شود؛ بلوک با } بسته می‌شود.</div>
-<h3>مثال 1: اعمال روی صفحه</h3>
-<div class="codewrap"><div class="code">p {
-  color: #0f172a;
-  background-color: #f8fafc;
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp"><strong>خط ۱:</strong> هدف: همهٔ pها.<br>
-<strong>خط ۲:</strong> رنگ متن تیره.<br>
-<strong>خط ۳:</strong> پس‌زمینه روشن برای خوانایی.</div>
+<div class="codewrap"><div class="code">/* حالت پیش‌فرض (موبایل اول) */
+.container {
+  padding: 1rem;
+}
+
+/* وقتی عرض حداقل ۷۶۸ پیکسل شد (تبلت و بالاتر) */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>@media:</strong> شرط برای اعمال استایل.<br>
+<strong>min-width:</strong> وقتی عرض از این مقدار بیشتر شد.<br>
+<strong>max-width:</strong> وقتی عرض از این مقدار کمتر شد.</div>
+<h3>مثال 1: تغییر تعداد ستون‌ها</h3>
+<div class="codewrap"><div class="code">.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* موبایل: یک ستون */
+  gap: 1rem;
+}
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* تبلت: دو ستون */
+  }
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr; /* دسکتاپ: سه ستون */
+  }
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>ایده:</strong> از کوچک شروع کن و با بزرگ‌تر شدن صفحه ستون اضافه کن.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">p { color: red</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="warn"><strong>چرا اشتباه است؟</strong> } یا ; ناقص است.<br><strong>چه می‌بینی؟</strong> استایل نمی‌آید<br><strong>درست:</strong> p { color: red; }</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> رنگ یک بند را در مرورگر عوض‌شده ببینی.</div>
+<div class="codewrap"><div class="code">@media min-width: 768px {
+  .box { color: red; }
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> شرط باید داخل پرانتز باشد.<br>
+<strong>چه می‌بینی؟</strong> استایل اعمال نمی‌شود.<br>
+<strong>درست:</strong> @media (min-width: 768px) { ... }</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک استایل بنویسی که روی عرض کمتر از ۶۰۰ پیکسل فرق کند.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>انتخاب‌گر + بلوک</li>
-<li>color برای متن</li>
-<li>کامل بنویس</li>
+<li>@media شرط اعمال استایل است</li>
+<li>min-width و max-width رایج‌ترین شرط‌ها هستند</li>
+<li>رویکرد Mobile-first توصیه می‌شود</li>
 </ul></div>
-<h3>گام عملی — همین الان</h3><ol class="practice-list">
-<li class="practice-item">font-size را بزرگ‌تر کن.</li>
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">یک قانون بنویس که فقط وقتی عرض بیشتر از ۷۰۰ پیکسل است رنگ پس‌زمینه عوض شود.</li>
+<li class="practice-item">پنجره مرورگر را کوچک و بزرگ کن و نتیجه را ببین.</li>
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="11-شبکه-Grid-Intro.html">← شبکه (Grid Intro)</a><a href="13-آزمون-شروع-CSS.html">آزمون (شروع CSS) →</a></div></article></div></div>
 </main>
-<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
-<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
-<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
