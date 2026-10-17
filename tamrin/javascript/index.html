@@ -3,15 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>تمرین‌های javascript | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="فهرست تمرین‌های عملی javascript">
+<meta name="theme-color" content="#00ff9f">
+<title>تمرین‌های JavaScript | MCD programmers</title>
+<meta name="description" content="فهرست 10 تمرین عملی JavaScript — با مثال و راهنمای مرحله‌ای">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+.exercise-list { list-style: none; padding: 0; margin: 0; }
+.exercise-list li { padding: 0.65rem 0; border-bottom: 1px solid #1a2e26; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.exercise-list a { color: inherit; text-decoration: none; font-weight: 500; }
+.exercise-list a:hover { color: #00ff9f; }
+.ex-num { opacity: 0.6; margin-left: 0.25rem; }
+.ex-badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+.ex-badge.easy { background: #14532d; color: #bbf7d0; }
+.ex-badge.medium { background: #713f12; color: #fde68a; }
+.ex-badge.hard { background: #7f1d1d; color: #fecaca; }
+.topic-tag { font-size: 0.8rem; opacity: 0.7; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html">خانه</a>
 <a href="../index.html" class="active">تمرین</a>
@@ -22,27 +34,26 @@
 <div class="breadcrumb">
 <a href="../../index.html">خانه</a><span class="sep">/</span>
 <a href="../index.html">تمرین</a><span class="sep">/</span>
-<span>javascript</span>
+<span>JavaScript</span>
 </div>
 <div class="hero">
-<h1>تمرین‌های javascript</h1>
-<p>هر فایل یک مسئله مستقل است — راحت ویرایش کن</p>
+<h1>تمرین‌های JavaScript</h1>
+<p>10 تمرین — هر کدام با صورت‌مسئله، مثال و راهنمای مرحله‌ای</p>
 </div>
 <article class="card">
 <ul class="exercise-list">
-<li><a href="01-سلام-در-Console.html">1. سلام در Console</a> <span class="badge">آسان</span> <span class="topic">شروع</span></li>
-<li><a href="02-متغیری-که-عوض-می‌شود.html">2. متغیری که عوض می‌شود</a> <span class="badge">آسان</span> <span class="topic">متغیر</span></li>
-<li><a href="03-مقایسهٔ-سخت-و-سست.html">3. مقایسهٔ سخت و سست</a> <span class="badge">آسان</span> <span class="topic">عملگرها</span></li>
-<li><a href="04-تصمیم-ساده.html">4. تصمیم ساده</a> <span class="badge">آسان</span> <span class="topic">شرط</span></li>
-<li><a href="05-عددهای-۱-تا-۵.html">5. عددهای ۱ تا ۵</a> <span class="badge">آسان</span> <span class="topic">حلقه</span></li>
-<li><a href="06-اولین-عضو-آرایه.html">6. اولین عضو آرایه</a> <span class="badge">آسان</span> <span class="topic">آرایه</span></li>
-<li><a href="07-اضافه-کردن-به-آرایه.html">7. اضافه کردن به آرایه</a> <span class="badge">آسان</span> <span class="topic">آرایه</span></li>
-<li><a href="08-دکمه-حرف-می‌زند.html">8. دکمه حرف می‌زند</a> <span class="badge">آسان</span> <span class="topic">DOM</span></li>
-<li><a href="09-خواندن-چیزی-که-کاربر-نوشت.html">9. خواندن چیزی که کاربر نوشت</a> <span class="badge">متوسط</span> <span class="topic">DOM</span></li>
-<li><a href="10-لیست-پویا.html">10. لیست پویا</a> <span class="badge">متوسط</span> <span class="topic">DOM و آرایه</span></li>
-
+<li><a href="01-سلام-در-Console.html"><span class="ex-num">1.</span> سلام در Console</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">شروع</span></li>
+<li><a href="02-متغیری-که-عوض-می‌شود.html"><span class="ex-num">2.</span> متغیری که عوض می‌شود</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">متغیر</span></li>
+<li><a href="03-مقایسهٔ-سخت-و-سست.html"><span class="ex-num">3.</span> مقایسهٔ سخت و سست</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">عملگرها</span></li>
+<li><a href="04-تصمیم-ساده.html"><span class="ex-num">4.</span> تصمیم ساده</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">شرط</span></li>
+<li><a href="05-عددهای-۱-تا-۵.html"><span class="ex-num">5.</span> عددهای ۱ تا ۵</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">حلقه</span></li>
+<li><a href="06-اولین-عضو-آرایه.html"><span class="ex-num">6.</span> اولین عضو آرایه</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">آرایه</span></li>
+<li><a href="07-اضافه-کردن-به-آرایه.html"><span class="ex-num">7.</span> اضافه کردن به آرایه</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">آرایه</span></li>
+<li><a href="08-دکمه-حرف-می‌زند.html"><span class="ex-num">8.</span> دکمه حرف می‌زند</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">DOM</span></li>
+<li><a href="09-خواندن-چیزی-که-کاربر-نوشت.html"><span class="ex-num">9.</span> خواندن چیزی که کاربر نوشت</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">DOM</span></li>
+<li><a href="10-لیست-پویا.html"><span class="ex-num">10.</span> لیست پویا</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">DOM و آرایه</span></li>
 </ul>
-<div class="navbtn"><a href="../index.html">← بازگشت به همه زبان‌ها</a></div>
+<div class="navbtn" style="margin-top:1.5rem;"><a href="../index.html">← بازگشت به همه زبان‌ها</a></div>
 </article>
 </div>
 </main>

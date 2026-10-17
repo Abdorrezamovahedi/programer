@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>if / elif / else — Python | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="این درس: با if و elif و else یک تصمیم واقعی در برنامه بگیری">
+<meta name="theme-color" content="#00ff9f">
+<title>آموزش شرط if elif else در پایتون | تصمیم‌گیری در برنامه | MCD programmers</title>
+<meta name="description" content="آموزش شرط‌های if، elif و else در Python با MCD programmers: تصمیم‌گیری واقعی در برنامه همراه با مثال و تمرین.">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "if / elif / else", "description": "این درس: با if و elif و else یک تصمیم واقعی در برنامه بگیری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
@@ -14,7 +14,7 @@
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
-<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html" class="active">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
@@ -34,9 +34,9 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="if / elif / else" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
 <h2>if / elif / else</h2>
-<p><strong>هدف این درس:</strong> با if و elif و else یک تصمیم واقعی در برنامه بگیری.</p>
+<p><strong>هدف این درس:</strong> در این درس از MCD programmers یاد می‌گیری با if و elif و else یک تصمیم واقعی در برنامه بگیری و مسیر اجرای کد را کنترل کنی.</p>
 <div class="note"><strong>پوشه:</strong> شرط و حلقه &nbsp;|&nbsp; شروع این مبحث — از همین درس شروع کن</div>
-<h3>مفهوم به زبان ساده</h3><p>شرط یعنی برنامه بر اساس وضعیت، یکی از چند مسیر را برود. if اولین شرط است. اگر برقرار نبود، elif شرط بعدی را چک می‌کند. else وقتی است که هیچ‌کدام برقرار نباشد.</p>
+<h3>مفهوم به زبان ساده</h3><p>شرط یعنی برنامه بر اساس وضعیت، یکی از چند مسیر را انتخاب کند. if اولین شرط را بررسی می‌کند. اگر برقرار نبود، elif شرط بعدی را چک می‌کند. else وقتی اجرا می‌شود که هیچ‌کدام از شرط‌های قبلی برقرار نباشد. این ساختار پایهٔ تصمیم‌گیری در تقریباً همهٔ برنامه‌هاست و بدون آن نمی‌توانی رفتار پویا بسازی.</p>
 <h3>ساختار</h3><div class="code">if شرط:
     دستورها
 elif شرط_دیگر:
@@ -73,20 +73,23 @@ else:
 <div class="warn"><strong>چرا اشتباه است؟</strong> بعد از شرط باید : بیاید.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> if age &gt;= 18:</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک برنامه با حداقل یک if، یک elif و یک else بنویسی و با دو مقدار مختلف نتیجهٔ متفاوت ببینی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>if اولین شرط</li>
-<li>elif شرط‌های بعدی</li>
-<li>else مسیر باقی‌مانده</li>
-<li>تورفتگی زیر if اجباری است</li>
+<li>if اولین شرط را بررسی می‌کند</li>
+<li>elif برای شرط‌های بعدی استفاده می‌شود</li>
+<li>else مسیر باقی‌مانده است وقتی هیچ شرطی برقرار نباشد</li>
+<li>تورفتگی (Indentation) زیر if اجباری است</li>
+<li>بعد از شرط حتماً علامت : باید بیاید</li>
 </ul></div>
+<p><strong>سوالات پرتکرار:</strong> آیا می‌توانم چند elif پشت سر هم داشته باشم؟ بله. آیا else اجباری است؟ خیر، اما در بسیاری از موارد برای پوشش حالت‌های باقی‌مانده مفید است.</p>
 <h3>گام عملی — همین الان</h3><ol class="practice-list">
 <li class="practice-item">نمره را ۱۰ و ۱۹ بگذار و هر دو را اجرا کن.</li>
 <li class="practice-item">عمداً : را بردار و پیام خطا را بخوان.</li>
+<li class="practice-item">یک شرط با سن یا نمره بنویس که حداقل یک if، یک elif و یک else داشته باشد.</li>
 </ol>
-<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
+<p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست. برای تمرین بیشتر به <a href="../../tamrin/python/index.html">تمرین‌های پایتون</a> سر بزن.</p>
 <div class="navbtn lesson-nav"><span></span><a href="02-شرط-کوتاه-Shorthand-If.html">شرط کوتاه (Shorthand If) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<footer class="site-footer">MCD programmers</footer>
 <script src="../../assets/js/app.js"></script></body></html>

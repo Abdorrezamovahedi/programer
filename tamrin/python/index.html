@@ -3,15 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>تمرین‌های python | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="فهرست تمرین‌های عملی python">
+<meta name="theme-color" content="#00ff9f">
+<title>تمرین‌های Python | MCD programmers</title>
+<meta name="description" content="فهرست 25 تمرین عملی Python — با مثال و راهنمای مرحله‌ای">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+.exercise-list { list-style: none; padding: 0; margin: 0; }
+.exercise-list li { padding: 0.65rem 0; border-bottom: 1px solid #1a2e26; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.exercise-list a { color: inherit; text-decoration: none; font-weight: 500; }
+.exercise-list a:hover { color: #00ff9f; }
+.ex-num { opacity: 0.6; margin-left: 0.25rem; }
+.ex-badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+.ex-badge.easy { background: #14532d; color: #bbf7d0; }
+.ex-badge.medium { background: #713f12; color: #fde68a; }
+.ex-badge.hard { background: #7f1d1d; color: #fecaca; }
+.topic-tag { font-size: 0.8rem; opacity: 0.7; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html">خانه</a>
 <a href="../index.html" class="active">تمرین</a>
@@ -22,47 +34,41 @@
 <div class="breadcrumb">
 <a href="../../index.html">خانه</a><span class="sep">/</span>
 <a href="../index.html">تمرین</a><span class="sep">/</span>
-<span>python</span>
+<span>Python</span>
 </div>
 <div class="hero">
-<h1>تمرین‌های python</h1>
-<p>هر فایل یک مسئله مستقل است — راحت ویرایش کن</p>
+<h1>تمرین‌های Python</h1>
+<p>25 تمرین — هر کدام با صورت‌مسئله، مثال و راهنمای مرحله‌ای</p>
 </div>
 <article class="card">
 <ul class="exercise-list">
-<li><a href="01-اولین-چاپ.html">1. اولین چاپ</a> <span class="badge">آسان</span> <span class="topic">شروع و print</span></li>
-<li><a href="02-چند-چیز-با-هم.html">2. چند چیز با هم</a> <span class="badge">آسان</span> <span class="topic">شروع و print</span></li>
-<li><a href="03-اسم-من-در-متغیر.html">3. اسم من در متغیر</a> <span class="badge">آسان</span> <span class="topic">متغیرها</span></li>
-<li><a href="04-سن-که-عوض-می‌شود.html">4. سن که عوض می‌شود</a> <span class="badge">آسان</span> <span class="topic">متغیرها</span></li>
-<li><a href="05-بفهمم-چه-نوعی-است.html">5. بفهمم چه نوعی است</a> <span class="badge">آسان</span> <span class="topic">انواع داده</span></li>
-<li><a href="06-رشته-را-به-عدد-تبدیل-کن.html">6. رشته را به عدد تبدیل کن</a> <span class="badge">آسان</span> <span class="topic">انواع داده</span></li>
-<li><a href="07-جمع-دو-عددی-که-کاربر-می‌دهد.html">7. جمع دو عددی که کاربر می‌دهد</a> <span class="badge">آسان</span> <span class="topic">عملگرها و input</span></li>
-<li><a href="08-فرق-تقسیم-معمولی-و-صحیح.html">8. فرق تقسیم معمولی و صحیح</a> <span class="badge">آسان</span> <span class="topic">عملگرهای حسابی</span></li>
-<li><a href="09-باقی‌مانده-و-توان.html">9. باقی‌مانده و توان</a> <span class="badge">آسان</span> <span class="topic">عملگرهای حسابی</span></li>
-<li><a href="10-امتیاز-را-کم‌کم-زیاد-کن.html">10. امتیاز را کم‌کم زیاد کن</a> <span class="badge">آسان</span> <span class="topic">عملگرهای انتسابی</span></li>
-<li><a href="11-آیا-این-دو-عدد-برابرند؟.html">11. آیا این دو عدد برابرند؟</a> <span class="badge">آسان</span> <span class="topic">عملگرهای مقایسه</span></li>
-<li><a href="12-بالغ-یا-نه؟.html">12. بالغ یا نه؟</a> <span class="badge">آسان</span> <span class="topic">شرط</span></li>
-<li><a href="13-زوج-یا-فرد.html">13. زوج یا فرد</a> <span class="badge">آسان</span> <span class="topic">شرط</span></li>
-<li><a href="14-ورود-با-دو-شرط.html">14. ورود با دو شرط</a> <span class="badge">متوسط</span> <span class="topic">عملگرهای منطقی</span></li>
-<li><a href="15-چاپ-عددهای-۱-تا-۵.html">15. چاپ عددهای ۱ تا ۵</a> <span class="badge">آسان</span> <span class="topic">حلقه</span></li>
-<li><a href="16-مجموع-از-۱-تا-n.html">16. مجموع از ۱ تا n</a> <span class="badge">متوسط</span> <span class="topic">حلقه</span></li>
-<li><a href="17-طول-یک-جمله.html">17. طول یک جمله</a> <span class="badge">آسان</span> <span class="topic">رشته</span></li>
-<li><a href="18-اولین-حرف.html">18. اولین حرف</a> <span class="badge">آسان</span> <span class="topic">رشته</span></li>
-<li><a href="19-لیست-خرید-کوچک.html">19. لیست خرید کوچک</a> <span class="badge">آسان</span> <span class="topic">لیست</span></li>
-<li><a href="20-اضافه-کردن-به-لیست.html">20. اضافه کردن به لیست</a> <span class="badge">آسان</span> <span class="topic">لیست</span></li>
-<li><a href="21-پیمایش-لیست.html">21. پیمایش لیست</a> <span class="badge">آسان</span> <span class="topic">لیست</span></li>
-<li><a href="22-دفترچهٔ-کوچک-با-دیکشنری.html">22. دفترچهٔ کوچک با دیکشنری</a> <span class="badge">آسان</span> <span class="topic">دیکشنری</span></li>
-<li><a href="23-تابع-سلام.html">23. تابع سلام</a> <span class="badge">آسان</span> <span class="topic">توابع</span></li>
-<li><a href="24-تابع-جمع.html">24. تابع جمع</a> <span class="badge">متوسط</span> <span class="topic">توابع</span></li>
-<li><a href="25-مواظب-تقسیم-بر-صفر.html">25. مواظب تقسیم بر صفر</a> <span class="badge">متوسط</span> <span class="topic">مدیریت خطا</span></li>
-<li><a href="26-python.html">26. python</a> <span class="badge">آسان</span> <span class="topic"></span></li>
-<li><a href="27-html.html">27. html</a> <span class="badge">آسان</span> <span class="topic"></span></li>
-<li><a href="28-css.html">28. css</a> <span class="badge">آسان</span> <span class="topic"></span></li>
-<li><a href="29-javascript.html">29. javascript</a> <span class="badge">آسان</span> <span class="topic"></span></li>
-<li><a href="30-php.html">30. php</a> <span class="badge">آسان</span> <span class="topic"></span></li>
-
+<li><a href="01-اولین-چاپ.html"><span class="ex-num">1.</span> اولین چاپ</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">شروع و print</span></li>
+<li><a href="02-چند-چیز-با-هم.html"><span class="ex-num">2.</span> چند چیز با هم</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">شروع و print</span></li>
+<li><a href="03-اسم-من-در-متغیر.html"><span class="ex-num">3.</span> اسم من در متغیر</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">متغیرها</span></li>
+<li><a href="04-سن-که-عوض-می‌شود.html"><span class="ex-num">4.</span> سن که عوض می‌شود</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">متغیرها</span></li>
+<li><a href="05-بفهمم-چه-نوعی-است.html"><span class="ex-num">5.</span> بفهمم چه نوعی است</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">انواع داده</span></li>
+<li><a href="06-رشته-را-به-عدد-تبدیل-کن.html"><span class="ex-num">6.</span> رشته را به عدد تبدیل کن</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">انواع داده</span></li>
+<li><a href="07-جمع-دو-عددی-که-کاربر-می‌دهد.html"><span class="ex-num">7.</span> جمع دو عددی که کاربر می‌دهد</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">عملگرها و input</span></li>
+<li><a href="08-فرق-تقسیم-معمولی-و-صحیح.html"><span class="ex-num">8.</span> فرق تقسیم معمولی و صحیح</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">عملگرهای حسابی</span></li>
+<li><a href="09-باقی‌مانده-و-توان.html"><span class="ex-num">9.</span> باقی‌مانده و توان</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">عملگرهای حسابی</span></li>
+<li><a href="10-امتیاز-را-کم‌کم-زیاد-کن.html"><span class="ex-num">10.</span> امتیاز را کم‌کم زیاد کن</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">عملگرهای انتسابی</span></li>
+<li><a href="11-آیا-این-دو-عدد-برابرند.html"><span class="ex-num">11.</span> آیا این دو عدد برابرند؟</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">عملگرهای مقایسه</span></li>
+<li><a href="12-بالغ-یا-نه.html"><span class="ex-num">12.</span> بالغ یا نه؟</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">شرط</span></li>
+<li><a href="13-زوج-یا-فرد.html"><span class="ex-num">13.</span> زوج یا فرد</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">شرط</span></li>
+<li><a href="14-ورود-با-دو-شرط.html"><span class="ex-num">14.</span> ورود با دو شرط</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">عملگرهای منطقی</span></li>
+<li><a href="15-چاپ-عددهای-۱-تا-۵.html"><span class="ex-num">15.</span> چاپ عددهای ۱ تا ۵</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">حلقه</span></li>
+<li><a href="16-مجموع-از-۱-تا-n.html"><span class="ex-num">16.</span> مجموع از ۱ تا n</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">حلقه</span></li>
+<li><a href="17-طول-یک-جمله.html"><span class="ex-num">17.</span> طول یک جمله</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">رشته</span></li>
+<li><a href="18-اولین-حرف.html"><span class="ex-num">18.</span> اولین حرف</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">رشته</span></li>
+<li><a href="19-لیست-خرید-کوچک.html"><span class="ex-num">19.</span> لیست خرید کوچک</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">لیست</span></li>
+<li><a href="20-اضافه-کردن-به-لیست.html"><span class="ex-num">20.</span> اضافه کردن به لیست</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">لیست</span></li>
+<li><a href="21-پیمایش-لیست.html"><span class="ex-num">21.</span> پیمایش لیست</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">لیست</span></li>
+<li><a href="22-دفترچهٔ-کوچک-با-دیکشنری.html"><span class="ex-num">22.</span> دفترچهٔ کوچک با دیکشنری</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">دیکشنری</span></li>
+<li><a href="23-تابع-سلام.html"><span class="ex-num">23.</span> تابع سلام</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">توابع</span></li>
+<li><a href="24-تابع-جمع.html"><span class="ex-num">24.</span> تابع جمع</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">توابع</span></li>
+<li><a href="25-مواظب-تقسیم-بر-صفر.html"><span class="ex-num">25.</span> مواظب تقسیم بر صفر</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">مدیریت خطا</span></li>
 </ul>
-<div class="navbtn"><a href="../index.html">← بازگشت به همه زبان‌ها</a></div>
+<div class="navbtn" style="margin-top:1.5rem;"><a href="../index.html">← بازگشت به همه زبان‌ها</a></div>
 </article>
 </div>
 </main>

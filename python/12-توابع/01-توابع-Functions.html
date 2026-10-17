@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>توابع (Functions) — Python | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="تابع با def تعریف کنی، آرگومان بدهی و با return نتیجه بگیری">
+<meta name="theme-color" content="#00ff9f">
+<title>آموزش توابع در پایتون از پایه | Functions با مثال | MCD programmers</title>
+<meta name="description" content="آموزش توابع در Python با MCD programmers: تعریف با def، آرگومان و return همراه با مثال کاربردی.">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "توابع (Functions)", "description": "تابع با def تعریف کنی، آرگومان بدهی و با return نتیجه بگیری", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
@@ -14,7 +14,7 @@
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
-<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html" class="active">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
@@ -31,10 +31,10 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="توابع (Functions)" data-cat="توابع">📌 پین کردن این درس</button>
 <h2>توابع (Functions)</h2>
-<p><strong>هدف:</strong> تابع با def تعریف کنی، آرگومان بدهی و با return نتیجه بگیری.</p>
+<p><strong>هدف:</strong> در این درس از MCD programmers یاد می‌گیری تابع را با def تعریف کنی، آرگومان بدهی و با return نتیجه را برگردانی تا کد تکراری نداشته باشی.</p>
 <div class="note"><strong>پوشه:</strong> توابع &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> اولین درس این پوشه.</div>
 <div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «توابع» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
-<h3>مفهوم</h3><p>تابع کار را با یک نام جمع می‌کند تا تکرار نشود. پارامتر ورودی است؛ return مقدار را به محل صدا برمی‌گرداند. بدون return نتیجه None است.</p>
+<h3>مفهوم</h3><p>تابع کار را با یک نام جمع می‌کند تا تکرار نشود و کد خوانا‌تر شود. پارامتر ورودی تابع است؛ return مقدار را به محل صدا زدن برمی‌گرداند. اگر return ننویسی، نتیجه None خواهد بود. توابع یکی از مهم‌ترین ابزارهای برنامه‌نویسی برای تقسیم مسئله به بخش‌های کوچک‌تر هستند.</p>
 <h3>ساختار</h3><div class="code">def name(params):
     return value</div>
 <h3>مثال 1: return</h3>
@@ -62,21 +62,23 @@ print(double(4))</div></div><button type="button" class="trybtn">مشاهده د
 <div class="warn"><strong>چرا اشتباه است؟</strong> محاسبه شده ولی return نشده.<br><strong>چه می‌بینی؟</strong> خروجی None<br><strong>درست:</strong> return x * 2</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «توابع» بنویسی و اجرا کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>def برای تعریف.</li>
-<li>return برای برگرداندن مقدار.</li>
-<li>بدون return → None.</li>
-<li>پارامتر پیش‌فرض اختیاری است.</li>
+<li>با def تابع را تعریف می‌کنی</li>
+<li>return مقدار را به محل صدا زدن برمی‌گرداند</li>
+<li>بدون return نتیجه None است</li>
+<li>می‌توانی پارامتر پیش‌فرض تعریف کنی</li>
+<li>توابع کد را تمیزتر و قابل استفاده مجدد می‌کنند</li>
 </ul></div>
+<p><strong>سوالات پرتکرار:</strong> آیا تابع می‌تواند چند مقدار برگرداند؟ بله، با return چند مقدار (به صورت tuple). آیا همیشه باید return بنویسم؟ اگر فقط کاری انجام می‌دهد و نیازی به خروجی نیست، می‌توانی return ننویسی.</p>
 <h3>گام عملی</h3><ol class="practice-list">
 <li class="practice-item">تابعی بنویس که سه عدد را میانگین کند و return کند.</li>
 <li class="practice-item">با و بدون آرگومان پیش‌فرض صدا بزن.</li>
 <li class="practice-item">عمداً return را بردار و None را ببین.</li>
 </ol>
-<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن. برای تمرین بیشتر به <a href="../../tamrin/python/index.html">تمرین‌های پایتون</a> مراجعه کن.</p>
 <div class="navbtn lesson-nav"><span></span><a href="02-args-kwargs.html">*args / **kwargs →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<footer class="site-footer">MCD programmers</footer>
 <script src="../../assets/js/app.js"></script></body></html>
