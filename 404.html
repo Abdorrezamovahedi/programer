@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>صفحه پیدا نشد — MCD programmers</title>
+    <meta name="robots" content="noindex">
+    <style>
+      :root{--bg:#0d1117;--card:#0f1613;--accent:#00ff9f;--text:#e6edf3}
+      html,body{height:100%;margin:0;font-family:Tahoma,Segoe UI,Roboto,system-ui;background:var(--bg);color:var(--text)}
+      .wrap{max-width:820px;margin:6vh auto;padding:22px;background:var(--card);border:1px solid #21262d;border-radius:12px}
+      h1{margin:0 0 8px;font-size:20px}
+      p{color:#c9d7cf}
+      a{color:var(--accent)}
+      .actions{margin-top:18px}
+      .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:transparent;border:1px solid #30363d;color:var(--accent);text-decoration:none}
+    </style>
+  </head>
+  <body>
+    <main class="wrap" role="main">
+      <h1>صفحه مورد نظر یافت نشد (404)</h1>
+      <p>به نظر می‌رسد آدرس درخواستی وجود ندارد یا منتقل شده است. ما سعی می‌کنیم به‌طور خودکار صفحهٔ صحیح را پیدا کنیم و در صورت موفقیت به آن منتقل شویم. اگر منتقل نشدی، می‌توانی به صفحهٔ اصلی بروی یا از نقشهٔ سایت استفاده کنی.</p>
+      <div class="actions">
+        <a class="btn" id="gotoRoot" href="/programer/">رفتن به صفحهٔ اصلی</a>
+        <a class="btn" id="openSitemap" href="/programer/sitemap.xml" target="_blank">مشاهدهٔ نقشهٔ سایت</a>
+      </div>
+      <p style="margin-top:12px;color:#9fb9a7" id="status">در حال جستجو برای پیدا کردن صفحه...</p>
+    </main>
+
+    <script>
+      (function(){
+        // Try to reduce 404s by attempting client-side fixes:
+        // 1) try the raw requested path
+        // 2) try path + 'index.html'
+        // 3) try path + '.html' (when directory-like request)
+        // 4) search sitemap.xml for a close match and redirect
+
+        const origin = location.origin;
+        const repoBase = '/programer'; // GitHub Pages project site base (owner.github.io/programer)
+        const path = decodeURIComponent(location.pathname || '/');
+        const statusEl = document.getElementById('status');
+
+        function normalize(p){
+          // remove trailing slash (but keep root '/'), lowercase english parts for matching
+          if(!p) return '/';
+          try{ p = decodeURIComponent(p); } catch(e){}
+          if(p.length>1 && p.endsWith('/')) p = p.slice(0,-1);
+          return p;
+        }
+
+        function absolute(p){
+          if(p.startsWith('http')) return p;
+          // ensure leading slash
+          if(!p.startsWith('/')) p = '/' + p;
+          // if site is served under /programer/ (project pages), keep that prefix
+          if(location.pathname.startsWith(repoBase) || location.href.indexOf(repoBase)>-1){
+            if(!p.startsWith(repoBase)) p = repoBase + (p === '/' ? '/' : p);
+          }
+          return p;
+        }
+
+        async function exists(url){
+          try{
+            const res = await fetch(url, {cache: 'no-store'});
+            return res && res.ok;
+          }catch(e){
+            return false;
+          }
+        }
+
+        async function tryCommonVariants(){
+          const tries = [];
+          const n = normalize(path);
+          tries.push(n);
+          if(n === '/' || n === repoBase) {
+            return false;
+          }
+          // try with index.html
+          tries.push(n.replace(/\/$/, '') + '/index.html');
+          // try as file.html
+          tries.push(n + '.html');
+          // try removing repoBase if present
+          if(n.startsWith(repoBase)) tries.push(n.replace(repoBase,'') || '/');
+
+          for(const t of tries){
+            const a = absolute(t);
+            statusEl.textContent = 'جستجو: ' + a;
+            if(await exists(a)){
+              location.href = a;
+              return true;
+            }
+          }
+          return false;
+        }
+
+        function extractUrlsFromSitemap(text){
+          const urls = [];
+          try{
+            const re = /<loc>(.*?)<\/loc>/g;
+            let m;
+            while((m = re.exec(text))){
+              urls.push(m[1]);
+            }
+          }catch(e){}
+          return urls;
+        }
+
+        function pathMatchesRequested(url){
+          try{
+            const u = new URL(url);
+            let p = u.pathname || '/';
+            p = decodeURIComponent(p);
+            // normalize both
+            const rp = normalize(path);
+            const np = normalize(p);
+            if(np === rp) return true;
+            // compare last segment similarity
+            const segReq = rp.split('/').filter(Boolean).pop();
+            const segU = np.split('/').filter(Boolean).pop();
+            if(!segReq || !segU) return false;
+            return segReq === segU || segU && segU.indexOf(segReq) !== -1 || segReq.indexOf(segU) !== -1;
+          }catch(e){return false}
+        }
+
+        async function searchSitemapAndRedirect(){
+          try{
+            const sitemapUrl = absolute('/sitemap.xml');
+            statusEl.textContent = 'در حال جستجو در نقشهٔ سایت...';
+            const r = await fetch(sitemapUrl, {cache:'no-store'});
+            if(!r.ok) return false;
+            const text = await r.text();
+            const urls = extractUrlsFromSitemap(text);
+            // prefer exact match
+            for(const u of urls){
+              if(pathMatchesRequested(u)){
+                statusEl.textContent = 'پیدا شد، انتقال...';
+                location.href = u;
+                return true;
+              }
+            }
+            // heuristic: find urls that share the last path segment
+            const segReq = normalize(path).split('/').filter(Boolean).pop();
+            if(!segReq) return false;
+            for(const u of urls){
+              try{
+                const up = new URL(u).pathname;
+                if(up && up.toLowerCase().includes(segReq.toLowerCase())){
+                  location.href = u;
+                  return true;
+                }
+              }catch(e){}
+            }
+          }catch(e){ }
+          return false;
+        }
+
+        (async function main(){
+          // First try simple existence checks
+          const found = await tryCommonVariants();
+          if(found) return;
+          // Then search sitemap
+          const bySitemap = await searchSitemapAndRedirect();
+          if(bySitemap) return;
+
+          // fallback: redirect to root after short delay
+          statusEl.textContent = 'صفحه پیدا نشد؛ به صفحهٔ اصلی منتقل می‌شوید...';
+          setTimeout(()=>{ location.href = absolute('/'); }, 3000);
+        })();
+
+      })();
+    </script>
+  </body>
+</html>
