@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#00ff9f">
-<title>مجموع از ۱ تا n — تمرین Python | MCD programmers</title>
+<meta name="theme-color" content="#0f1419">
+<title>مجموع از ۱ تا n — تمرین Python | مدرسه برنامه‌نویسان</title>
 <meta name="description" content="عدد n را از کاربر بگیر و مجموع عددهای ۱ تا n را حساب کن. مثلاً اگر n برابر ۵ باشد، باید ۱+۲+۳+۴+۵ یعنی ۱۵ را ببینی.">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <style>
@@ -13,13 +13,13 @@
 .ex-badge.easy { background: #14532d; color: #bbf7d0; }
 .ex-badge.medium { background: #713f12; color: #fde68a; }
 .ex-badge.hard { background: #7f1d1d; color: #fecaca; }
-.example-box { background: #0d1512; border: 1px solid #1a2e26; border-radius: 10px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+.example-box { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 1rem 1.25rem; margin: 1.25rem 0; }
 .example-box h3 { margin-top: 0; font-size: 1.05rem; }
 .ex-sample { margin: 0.6rem 0; }
-.ex-sample pre { background: #050a08; padding: 0.65rem 0.9rem; border-radius: 6px; overflow-x: auto; margin: 0.35rem 0 0; direction: ltr; text-align: left; color: #00ff9f; }
+.ex-sample pre { background: #0f172a; padding: 0.65rem 0.9rem; border-radius: 6px; overflow-x: auto; margin: 0.35rem 0 0; direction: ltr; text-align: left; }
 .ex-note { opacity: 0.85; font-size: 0.9rem; margin: 0.5rem 0 0; }
-.hints-box { margin: 1.25rem 0; border: 1px solid #1a2e26; border-radius: 10px; padding: 0.75rem 1rem; background: #0d1512; }
-.hints-box summary { cursor: pointer; font-weight: 600; color: #00ff9f; }
+.hints-box { margin: 1.25rem 0; border: 1px solid #334155; border-radius: 10px; padding: 0.75rem 1rem; background: #1e293b; }
+.hints-box summary { cursor: pointer; font-weight: 600; }
 .hints-list { margin: 0.75rem 0 0.25rem 1.25rem; }
 .hints-list li { margin: 0.4rem 0; }
 .related-lessons { font-size: 0.9rem; opacity: 0.85; }
@@ -29,7 +29,7 @@
 <body>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html">خانه</a>
 <a href="../index.html" class="active">تمرین</a>
@@ -56,16 +56,19 @@
 <p>عدد n را از کاربر بگیر و مجموع عددهای ۱ تا n را حساب کن. مثلاً اگر n برابر ۵ باشد، باید ۱+۲+۳+۴+۵ یعنی ۱۵ را ببینی.</p>
 </div>
 
+
 <div class="example-box">
 <h3>مثال و خروجی مورد انتظار</h3>
 <div class='ex-sample'><strong>نمونه ورودی:</strong><pre>5</pre></div>
 <div class='ex-sample'><strong>خروجی مورد انتظار:</strong><pre>15</pre></div>
+<p class='ex-note'>مجموع ۱ تا n برای n=5 برابر ۱۵.</p>
 </div>
+
 
 <details class="hints-box">
 <summary>راهنماهای مرحله‌ای (ابتدا خودت تلاش کن)</summary>
 <ol class="hints-list">
-<li>قبل از حلقه total = 0 بگذار. این ظرف خالیِ جمع است.</li><li>داخل حلقه بنویس total = total + i تا هر عدد به مجموع قبلی اضافه شود.</li><li>print را بعد از تمام شدن حلقه بگذار؛ اگر داخل حلقه باشد هر مرحله چاپ می‌شود.</li>
+<li>اول صورت‌مسئله را دوباره بخوان و ببین دقیقاً چه خروجی‌ای می‌خواهی.</li><li>کد را خط‌به‌خط بنویس و بعد از هر بخش اجرا کن تا خطا را زود ببینی.</li><li>اگر خطا گرفتی، پیام خطا را از آخر بخوان؛ معمولاً خط و نوع مشکل را می‌گوید.</li>
 </ol>
 </details>
 
@@ -75,12 +78,11 @@
 
 <div class="navbtn lesson-nav">
 <a href="index.html">← بازگشت به فهرست Python</a>
-<a href="17-طول-یک-جمله.html">تمرین بعد →</a>
+<a href="../index.html">همه زبان‌ها →</a>
 </div>
 </article>
 </div>
 </main>
-<footer class="site-footer"><p>MCD programmers</p></footer>
 <script src="../../assets/js/app.js"></script>
 </body>
 </html>

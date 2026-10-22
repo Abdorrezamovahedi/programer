@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>توضیحات راهنما (Tooltips) — CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="با CSS یک راهنمای شناور (Tooltip) ساده بساز که با هاور ظاهر شود">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "توضیحات راهنما (Tooltips)", "description": "با CSS یک راهنمای شناور (Tooltip) ساده بساز که با هاور ظاهر شود", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">شروع CSS</a><span class="sep">/</span><span>توضیحات راهنما (Tooltips)</span></div><div class="layout"><aside class="side"><h3>شروع CSS (13)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-معرفی-Introduction.html">2. معرفی (Introduction)</a>
+<a href="03-نحو-نگارش-Syntax.html">3. نحو نگارش (Syntax)</a>
+<a href="04-انتخاب-گرها-Selectors.html">4. انتخاب گرها (Selectors)</a>
+<a href="05-نحوه-استفاده-How-To.html">5. نحوه استفاده (How To)</a>
+<a href="06-توضیحات-Comments.html">6. توضیحات (Comments)</a>
+<a href="07-خطاها-Errors.html">7. خطاها (Errors)</a>
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">8. انتخاب گرهای ویژگی (Attribute Selectors)</a>
+<a href="09-توضیحات-راهنما-Tooltips.html" class="on">9. توضیحات راهنما (Tooltips)</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">10. فلکس باکس (Flexbox Intro)</a>
+<a href="11-شبکه-Grid-Intro.html">11. شبکه (Grid Intro)</a>
+<a href="12-واکنش-گرا-RWD-Intro.html">12. واکنش گرا (RWD Intro)</a>
+<a href="13-آزمون-شروع-CSS.html">13. آزمون (شروع CSS)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="توضیحات راهنما (Tooltips)" data-cat="شروع CSS">📌 پین کردن این درس</button>
+<h2>توضیحات راهنما (Tooltips)</h2>
+<p><strong>هدف این درس:</strong> با CSS یک راهنمای شناور (Tooltip) ساده بساز که با هاور ظاهر شود.</p>
+<div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
+<h3>مفهوم به زبان ساده</h3>
+<p>تولتیپ همان متن کوچکی است که وقتی ماوس را روی یک عنصر می‌بری ظاهر می‌شود. با ترکیب <code>position</code> و <code>:hover</code> می‌توانی آن را فقط با CSS بسازی.</p>
+<h3>فهرست معرفی: Tooltip</h3>
+<div class="codewrap"><div class="code">.tooltip {
+  position: relative;          /* مرجع برای فرزند */
+  display: inline-block;
+}
+.tooltip .tip {
+  visibility: hidden;          /* مخفی در حالت عادی */
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+.tooltip:hover .tip {
+  visibility: visible;         /* نمایش با هاور */
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>position: relative</strong> روی والد و <strong>absolute</strong> روی فرزند، موقعیت را کنترل می‌کند.<br>
+<strong>:hover</strong> باعث می‌شود فقط وقتی ماوس روی عنصر است، راهنما دیده شود.</div>
+<h3>مثال 1: دکمه با راهنما</h3>
+<div class="codewrap"><div class="code">.btn-tip {
+  position: relative;
+}
+.btn-tip::after {
+  content: "این یک راهنماست";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.btn-tip:hover::after {
+  opacity: 1;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>::after + content:</strong> بدون HTML اضافه، متن راهنما ساخته می‌شود.</div>
+<h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="codewrap"><div class="code">.tip {
+  position: absolute;
+  /* والد relative ندارد */
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>چرا اشتباه است؟</strong> اگر والد position: relative نداشته باشد، absolute نسبت به کل صفحه محاسبه می‌شود.<br>
+<strong>درست:</strong> همیشه روی ظرف والد position: relative بگذار.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک عنصر بسازی که با هاور متن راهنما نشان دهد.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>والد: position: relative</li>
+<li>فرزند راهنما: position: absolute</li>
+<li>با :hover یا opacity نمایش را کنترل کن</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">یک دکمه با راهنمای هاور بساز.</li>
+<li class="practice-item">موقعیت راهنما را از بالا به پایین تغییر بده.</li>
+</ol>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
+<div class="navbtn lesson-nav"><a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">← انتخاب گرهای ویژگی</a><a href="10-فلکس-باکس-Flexbox-Intro.html">فلکس باکس →</a></div></article></div></div>
+</main>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

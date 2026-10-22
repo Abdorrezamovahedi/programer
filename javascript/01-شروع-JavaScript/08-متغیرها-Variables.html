@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name=\"theme-color\" content="#00ff9f">
-<title>آموزش متغیر let و const در جاوااسکریپت | Variables | MCD programmers</title>
-<meta name="description" content="آموزش متغیرها در JavaScript با MCD programmers: تفاوت let و const همراه با مثال عملی.">
+<meta name=\"theme-color\" content=\"#0f1419\">
+<title>متغیرها (Variables) — JavaScript | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: فرق let و const را با مثال بفهمی">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "متغیرها (Variables)", "description": "این درس: فرق let و const را با مثال بفهمی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
@@ -14,7 +14,7 @@
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
-<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html" class="active">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
@@ -47,9 +47,9 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="متغیرها (Variables)" data-cat="شروع JavaScript">📌 پین کردن این درس</button>
 <h2>متغیرها (Variables)</h2>
-<p><strong>هدف این درس:</strong> در این درس از MCD programmers فرق let و const را با مثال عملی می‌فهمی تا متغیرهای درست و ایمن در جاوااسکریپت بنویسی.</p>
+<p><strong>هدف این درس:</strong> فرق let و const را با مثال بفهمی.</p>
 <div class="note"><strong>پوشه:</strong> شروع JavaScript &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
-<h3>مفهوم به زبان ساده</h3><p>در جاوااسکریپت مدرن از let و const استفاده می‌کنیم. const جلوی عوض شدن ارجاع را می‌گیرد و برای مقادیر ثابت مناسب است. let وقتی مقدار باید عوض شود به کار می‌رود. از var در کدهای جدید پرهیز کن چون رفتار قدیمی و گیج‌کننده‌ای دارد.</p>
+<h3>مفهوم به زبان ساده</h3><p>const جلوی عوض شدن ارجاع را می‌گیرد. let وقتی مقدار باید عوض شود.</p>
 <h3>فهرست معرفی: let و const</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
 <div class="codewrap"><div class="code">// اعلام متغیر
@@ -72,21 +72,18 @@ n = 2;</div></div><button type="button" class="trybtn">مشاهده در ادی�
 <div class="warn"><strong>چرا اشتباه است؟</strong> const دوباره انتساب نمی‌پذیرد.<br><strong>چه می‌بینی؟</strong> TypeError<br><strong>درست:</strong> let n = 1; n = 2;</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک let و یک const بسازی و log کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>let برای مقادیری که باید تغییر کنند</li>
-<li>const برای مقادیر ثابت (ارجاع تغییر نمی‌کند)</li>
-<li>از var در کدهای جدید پرهیز کن</li>
-<li>همیشه let یا const را قبل از استفاده اعلام کن</li>
+<li>let تغییر می‌کند</li>
+<li>const ثابت است</li>
+<li>از var پرهیز</li>
 </ul></div>
-<p><strong>سوالات پرتکرار:</strong> آیا const کاملاً غیرقابل تغییر است؟ ارجاع آن ثابت است، اما اگر شیء باشد محتوای داخلی‌اش قابل تغییر است. چه زمانی از let استفاده کنم؟ وقتی مقدار باید در طول برنامه عوض شود.</p>
 <h3>گام عملی — همین الان</h3><ol class="practice-list">
 <li class="practice-item">عمداً const را عوض کن و خطا را بخوان.</li>
-<li class="practice-item">یک let و یک const بساز و هر دو را console.log کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن. تمرین بیشتر را در <a href="../../tamrin/javascript/index.html">تمرین‌های JavaScript</a> ببین.</p>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="07-توضیحات-Comments.html">← توضیحات (Comments)</a><a href="09-Let-Let.html">Let (Let) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">MCD programmers</footer>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
 <script src="../../assets/js/app.js"></script></body></html>

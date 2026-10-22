@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#00ff9f">
-<title>آموزش فرم HTML برای مبتدی | ساخت Forms | MCD programmers</title>
-<meta name="description" content="آموزش ساخت فرم در HTML با MCD programmers: label، input و دکمه همراه با مثال کاربردی.">
+<meta name="theme-color" content="#0f1419">
+<title>فرم‌ها (Forms) — HTML | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: فرم ساده با label و input و دکمه بسازی">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "فرم‌ها (Forms)", "description": "این درس: فرم ساده با label و input و دکمه بسازی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
@@ -14,7 +14,7 @@
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
-<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html" class="active">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
@@ -27,9 +27,9 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="فرم‌ها (Forms)" data-cat="فرم‌ها">📌 پین کردن این درس</button>
 <h2>فرم‌ها (Forms)</h2>
-<p><strong>هدف این درس:</strong> در این درس از MCD programmers یاد می‌گیری یک فرم ساده با label و input و دکمه بسازی تا بتوانی داده را از کاربر دریافت کنی.</p>
+<p><strong>هدف این درس:</strong> فرم ساده با label و input و دکمه بسازی.</p>
 <div class="note"><strong>پوشه:</strong> فرم‌ها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
-<h3>مفهوم به زبان ساده</h3><p>فرم ابزاری است که داده را از کاربر می‌گیرد و به سرور یا صفحه دیگر ارسال می‌کند. ویژگی name نام فیلد را در ارسال مشخص می‌کند. استفاده از label هم دسترسی‌پذیری را بهتر می‌کند و هم تجربه کاربری را حرفه‌ای‌تر می‌سازد. فرم‌ها پایهٔ تعامل کاربر با سایت‌های وب هستند.</p>
+<h3>مفهوم به زبان ساده</h3><p>فرم داده را از کاربر می‌گیرد. name نام فیلد در ارسال است. label دسترسی را بهتر می‌کند.</p>
 <h3>فهرست معرفی: فرم</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
 <div class="codewrap"><div class="code">&lt;!-- اجزای فرم --&gt;
@@ -53,21 +53,18 @@
 <div class="warn"><strong>چرا اشتباه است؟</strong> بدون name و label.<br><strong>چه می‌بینی؟</strong> داده/دسترسی ضعیف<br><strong>درست:</strong> name و label را بگذار</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> فرم را submit کنی و اثر را در آدرس ببینی (حتی اگر 404 شد).</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>ویژگی name برای ارسال داده ضروری است</li>
-<li>label دسترسی و خوانایی را بهتر می‌کند</li>
-<li>required فیلد را اجباری می‌کند</li>
-<li>فرم پایهٔ دریافت اطلاعات از کاربر است</li>
+<li>name برای داده</li>
+<li>label برای انسان</li>
+<li>required اختیاری مفید</li>
 </ul></div>
-<p><strong>سوالات پرتکرار:</strong> آیا همیشه باید action و method بنویسم؟ برای شروع بله، تا بدانی داده کجا و چگونه ارسال می‌شود. آیا می‌توانم چند input در یک فرم داشته باشم؟ بله، هر فیلد با name جداگانه.</p>
 <h3>گام عملی — همین الان</h3><ol class="practice-list">
-<li class="practice-item">type=email بگذار و فرم را تست کن.</li>
-<li class="practice-item">یک فرم با دو فیلد (نام و ایمیل) بساز.</li>
+<li class="practice-item">type=email بگذار.</li>
 </ol>
-<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن. تمرین بیشتر را در <a href="../../tamrin/html/index.html">تمرین‌های HTML</a> ببین.</p>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><span></span><a href="02-انواع-ورودی-Input-Types.html">انواع ورودی (Input Types) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">MCD programmers</footer>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
 <script src="../../assets/js/app.js"></script></body></html>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#00ff9f">
-<title>آموزش متغیرها در پایتون از صفر | تعریف و استفاده Variables | MCD programmers</title>
-<meta name="description" content="آموزش کامل متغیرها در Python با MCD programmers: ساخت، خواندن، تغییر و قواعد نام‌گذاری متغیر همراه با مثال عملی.">
+<meta name="theme-color" content="#0f1419">
+<title>متغیرها (Variables) — Python | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="این درس: متغیر بسازی، بخوانی، عوض کنی و قاعدهٔ نام‌گذاری را بدانی">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "متغیرها (Variables)", "description": "این درس: متغیر بسازی، بخوانی، عوض کنی و قاعدهٔ نام‌گذاری را بدانی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
@@ -14,7 +14,7 @@
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
-<div class="logo"><a href="../../index.html">MCD programmers</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html" class="active">خانه</a>
 <a href="../../tamrin/index.html">تمرین</a>
@@ -31,9 +31,9 @@
 </aside>
 <article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="متغیرها (Variables)" data-cat="متغیرها">📌 پین کردن این درس</button>
 <h2>متغیرها (Variables)</h2>
-<p><strong>هدف این درس:</strong> در این درس از MCD programmers یاد می‌گیری متغیر بسازی، مقدار آن را بخوانی و تغییر دهی و قواعد نام‌گذاری صحیح را بدانی تا کدهای تمیز و بدون خطا بنویسی.</p>
+<p><strong>هدف این درس:</strong> متغیر بسازی، بخوانی، عوض کنی و قاعدهٔ نام‌گذاری را بدانی.</p>
 <div class="note"><strong>پوشه:</strong> متغیرها &nbsp;|&nbsp; <strong>نقش:</strong> درس معرفی مبحث</div>
-<h3>مفهوم به زبان ساده</h3><p>متغیر مثل یک برچسب یا جعبه است که روی یک مقدار می‌چسبد. با علامت = مقدار را داخل آن می‌گذاری. بعداً هر جا نام متغیر را بنویسی، همان مقدار استفاده می‌شود. متغیرها پایهٔ هر برنامه‌ای هستند؛ بدون آن‌ها نمی‌توانی داده‌ها را ذخیره و مدیریت کنی. فهرست زیر همهٔ حالت‌های پایه را با کامنت نشان می‌دهد.</p>
+<h3>مفهوم به زبان ساده</h3><p>متغیر برچسب روی مقدار است. با = مقدار می‌دهی. بعداً با نوشتن نام، همان مقدار استفاده می‌شود. فهرست زیر همهٔ حالت‌های پایه را با کامنت نشان می‌دهد.</p>
 <h3>فهرست معرفی: متغیرها</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
 <div class="codewrap"><div class="code"># متغیر = نامی که به یک مقدار وصل می‌شود
@@ -58,22 +58,19 @@ print(score)</div></div><button type="button" class="trybtn">مشاهده در �
 <div class="warn"><strong>چرا اشتباه است؟</strong> نام نمی‌تواند با رقم شروع شود.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> name1 = 5</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک متغیر بسازی، چاپ کنی، عوض کنی، دوباره چاپ کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>با علامت = مقدار را در متغیر ذخیره می‌کنی</li>
-<li>برای خواندن مقدار، فقط نام متغیر را می‌نویسی</li>
-<li>نام متغیر نباید با رقم شروع شود و فاصله نداشته باشد</li>
-<li>می‌توانی مقدار یک متغیر را بعداً تغییر دهی</li>
+<li>= برای ذخیره</li>
+<li>نام را دوباره بنویس تا بخوانی</li>
+<li>نام با رقم شروع نشود</li>
 </ul></div>
-<p><strong>سوالات پرتکرار:</strong> آیا می‌توانم چند متغیر را با هم تعریف کنم؟ بله، مثل a, b = 1, 2. آیا نوع متغیر را باید مشخص کنم؟ در پایتون معمولاً لازم نیست و خود زبان نوع را تشخیص می‌دهد.</p>
 <h3>گام عملی — همین الان</h3><ol class="practice-list">
 <li class="practice-item">دو متغیر بساز و هر دو را در یک print چاپ کن.</li>
 <li class="practice-item">نام غیرمجاز را امتحان کن و خطا را بخوان.</li>
-<li class="practice-item">یک متغیر بساز، مقدارش را تغییر بده و دوباره چاپ کن.</li>
 </ol>
-<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن. تمرین بیشتر را در بخش <a href="../../tamrin/python/index.html">تمرین‌های پایتون</a> ببین.</p>
+<p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><span></span><a href="02-آزمون-متغیرها.html">آزمون (متغیرها) →</a></div></article></div></div>
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
-<footer class="site-footer">MCD programmers</footer>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
 <script src="../../assets/js/app.js"></script></body></html>

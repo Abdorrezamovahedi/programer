@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://abdorrezamovahedi.github.io/programer/sitemap.xml
