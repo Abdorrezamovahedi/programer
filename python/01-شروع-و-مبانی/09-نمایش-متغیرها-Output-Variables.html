@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>نمایش متغیرها در پایتون | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="یاد بگیر چطور مقدار متغیرها را در پایتون نمایش بدهی. ترکیب چند متغیر، متن و عدد با print. مثال‌های ساده و توضیح خط‌به‌خط.">
+<meta name="keywords" content="نمایش متغیر پایتون, print متغیر, خروجی متغیر در پایتون">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/01-شروع-و-مبانی/09-نمایش-متغیرها-Output-Variables.html">
+<meta property="og:title" content="نمایش متغیرها در پایتون">
+<meta property="og:description" content="چطور مقدار متغیرها را با print نشان بدهی.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"نمایش متغیرها در پایتون","description":"آموزش چاپ مقدار متغیرها برای مبتدیان.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع و مبانی پایتون","provider":{"@type":"Organization","name":"مدرسه برنامه‌نویسان"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شروع و مبانی</a><span class="sep">/</span><span>نمایش متغیرها</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع و مبانی</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-مقدمه-Intro.html">2. مقدمه</a>
+<a href="03-شروع-کار-Get-Started.html">3. شروع کار</a>
+<a href="04-ساختار-نوشتاری-Syntax.html">4. ساختار نوشتاری</a>
+<a href="05-دستورات-Statements.html">5. دستورات</a>
+<a href="06-خروجی-Output.html">6. خروجی</a>
+<a href="07-چاپ-اعداد-Print-Numbers.html">7. چاپ اعداد</a>
+<a href="08-توضیحات-Comments.html">8. توضیحات</a>
+<a href="09-نمایش-متغیرها-Output-Variables.html" class="on">9. نمایش متغیرها</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="نمایش متغیرها" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
+<h2>نمایش متغیرها در پایتون</h2>
+<p><strong>هدف این درس:</strong> بتوانی مقدار یک یا چند متغیر را به شکل خوانا روی صفحه نشان بدهی.</p>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>متغیر مثل جعبه‌ای است که چیزی داخلش گذاشته‌ای. برای دیدن محتویات جعبه از print استفاده می‌کنیم.</p>
+
+<h3>چاپ یک متغیر</h3>
+<div class="codewrap"><div class="code">name = "مینا"
+print(name)</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>چاپ چند متغیر با متن</h3>
+<div class="codewrap"><div class="code">name = "مینا"
+age = 22
+city = "اصفهان"
+print("نام:", name)
+print("سن:", age)
+print("شهر:", city)</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">با گذاشتن متن قبل از متغیر، خروجی خواناتر می‌شود.</div>
+
+<h3>همه در یک خط</h3>
+<div class="codewrap"><div class="code">print(name, "در", city, "زندگی می‌کند و", age, "ساله است")</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی اطلاعات چند متغیر را به شکل مرتب و خوانا چاپ کنی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>برای دیدن مقدار متغیر از print استفاده کن</li>
+<li>متن و متغیر را می‌توانی با کاما کنار هم بگذاری</li>
+<li>ترتیب آرگومان‌ها در خروجی حفظ می‌شود</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">نام، سن و علاقه خودت را در سه متغیر ذخیره کن و مرتب چاپ کن.</li>
+<li class="practice-item">همه را در یک print پشت سر هم نشان بده.</li>
+</ol>
+<div class="navbtn lesson-nav">
+<a href="08-توضیحات-Comments.html">← توضیحات</a>
+<a href="01-خانه-HOME.html">بازگشت به خانه این بخش</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

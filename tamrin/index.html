@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>تمرین‌های عملی | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="تمرین برنامه‌نویسی با مثال، خروجی مورد انتظار و راهنمای مرحله‌ای — Python، HTML، CSS، JavaScript و PHP">
+<link rel="stylesheet" href="../assets/css/main.css">
+<style>
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.lang-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  border: 1px solid #334155;
+  background: #1e293b;
+}
+.lang-card:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8;
+}
+.lang-card strong {
+  font-size: 1.25rem;
+  display: block;
+}
+.lang-card span {
+  display: block;
+  margin-top: 0.4rem;
+  opacity: 0.75;
+  font-size: 0.9rem;
+}
+.help-card {
+  margin-top: 2rem;
+}
+.help-card ol {
+  margin: 0.75rem 0 0 1.25rem;
+}
+.help-card code {
+  background: #0f172a;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+<script src="../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../index.html">خانه</a>
+<a href="index.html" class="active">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="hero">
+<h1>تمرین‌های عملی</h1>
+<p>هر تمرین صورت‌مسئله، مثال، خروجی مورد انتظار و راهنمای مرحله‌ای دارد. جواب آماده وجود ندارد.</p>
+</div>
+
+<div class="lang-grid">
+<a class="lang-card" href="python/index.html">
+<strong>Python</strong>
+<span>۲۵ تمرین</span>
+</a>
+<a class="lang-card" href="html/index.html">
+<strong>HTML</strong>
+<span>۱۰ تمرین</span>
+</a>
+<a class="lang-card" href="css/index.html">
+<strong>CSS</strong>
+<span>۸ تمرین</span>
+</a>
+<a class="lang-card" href="javascript/index.html">
+<strong>JavaScript</strong>
+<span>۱۰ تمرین</span>
+</a>
+<a class="lang-card" href="php/index.html">
+<strong>PHP</strong>
+<span>۸ تمرین</span>
+</a>
+</div>
+
+<div class="card help-card">
+<h3>چطور از تمرین‌ها استفاده کنم؟</h3>
+<ol>
+<li>زبان مورد نظرت را انتخاب کن.</li>
+<li>یک تمرین را باز کن و <strong>صورت مسئله</strong> را بخوان.</li>
+<li>به بخش <strong>مثال و خروجی مورد انتظار</strong> نگاه کن تا دقیقاً بفهمی چه چیزی باید بسازی.</li>
+<li>خودت حل کن. اگر گیر کردی، <strong>راهنماهای مرحله‌ای</strong> را باز کن.</li>
+</ol>
+</div>
+
+<div class="card help-card">
+<h3>چطور یک تمرین را ویرایش کنم؟ (برای مدیر سایت)</h3>
+<ol>
+<li>پوشه زبان را باز کن، مثلاً <code>tamrin/python/</code></li>
+<li>فایل مربوط به همان تمرین را پیدا کن.</li>
+<li>متن صورت‌مسئله، مثال یا راهنماها را مستقیم در HTML عوض کن.</li>
+</ol>
+<p>نیازی به دانستن جاوااسکریپت نیست.</p>
+</div>
+</div>
+</main>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

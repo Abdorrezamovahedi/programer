@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>راهنما (Tooltip) در CSS | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="چطور با CSS یک راهنمای کوچک (tooltip) بسازی که با رفتن موس روی عنصر نمایش داده شود. مثال ساده و کاربردی.">
+<meta name="keywords" content="tooltip در CSS, راهنما CSS, آموزش tooltip">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/css/01-شروع-CSS/09-توضیحات-راهنما-Tooltips.html">
+<meta property="og:title" content="راهنما (Tooltip) در CSS">
+<meta property="og:description" content="ساخت tooltip ساده با CSS.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Tooltip در CSS","description":"آموزش ساخت راهنما با CSS.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع CSS","provider":{"@type":"Organization","name":"مدرسه برنامه‌نویسان"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">شروع CSS</a><span class="sep">/</span><span>Tooltips</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع CSS (13)</h3>
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">8. انتخاب‌گر ویژگی</a>
+<a href="09-توضیحات-راهنما-Tooltips.html" class="on">9. Tooltips</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">10. فلکس‌باکس</a>
+<a href="11-شبکه-Grid-Intro.html">11. شبکه</a>
+<a href="12-واکنش-گرا-RWD-Intro.html">12. واکنش‌گرا</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="Tooltips" data-cat="شروع CSS">📌 پین کردن این درس</button>
+<h2>راهنما (Tooltip) در CSS</h2>
+<p><strong>هدف این درس:</strong> بتوانی یک راهنمای کوچک بسازی که با رفتن موس روی عنصر ظاهر شود.</p>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>Tooltip همان متن کوچکی است که وقتی موس را روی دکمه‌ای می‌بری، ظاهر می‌شود و توضیح کوتاهی می‌دهد.</p>
+
+<div class="codewrap"><div class="code">.tooltip {
+  position: relative;
+}
+.tooltip::after {
+  content: "این یک راهنما است";
+  position: absolute;
+  bottom: 100%;
+  background: #333;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tooltip:hover::after {
+  opacity: 1;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">با hover موس، راهنما ظاهر می‌شود.</div>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی یک tooltip ساده روی یک دکمه یا لینک بسازی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>از position و ::after برای ساخت tooltip استفاده می‌کنیم</li>
+<li>با hover ظاهر و ناپدید می‌شود</li>
+<li>برای راهنمایی کوتاه به کاربر عالی است</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">یک دکمه بساز و tooltip روی آن قرار بده.</li>
+<li class="practice-item">متن راهنما را به چیزی مفید تغییر بده.</li>
+</ol>
+<div class="navbtn lesson-nav">
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">← انتخاب‌گر ویژگی</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">فلکس‌باکس →</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

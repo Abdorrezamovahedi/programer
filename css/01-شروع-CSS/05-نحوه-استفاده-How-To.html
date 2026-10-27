@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>نحوه استفاده از CSS — سه روش اصلی | مدرسه برنامه‌نویسان</title>
+<meta name="description" content="یاد بگیر سه روش استفاده از CSS: داخلی، خارجی و درون‌خطی. کدام روش بهتر است و چطور فایل CSS را به HTML وصل کنی. با مثال ساده و توضیح خط‌به‌خط.">
+<meta name="keywords" content="نحوه استفاده از CSS, CSS خارجی, CSS داخلی, inline CSS, اتصال فایل CSS">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/css/01-شروع-CSS/05-نحوه-استفاده-How-To.html">
+<meta property="og:title" content="نحوه استفاده از CSS — سه روش اصلی">
+<meta property="og:description" content="سه روش نوشتن CSS را با زبان ساده یاد بگیر و بهترین روش را بشناس.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"نحوه استفاده از CSS","description":"سه روش استفاده از CSS: خارجی، داخلی و درون‌خطی.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع CSS","provider":{"@type":"Organization","name":"مدرسه برنامه‌نویسان"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">شروع CSS</a><span class="sep">/</span><span>نحوه استفاده</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع CSS (13)</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-معرفی-Introduction.html">2. معرفی</a>
+<a href="03-نحو-نگارش-Syntax.html">3. نحو نگارش</a>
+<a href="04-انتخاب-گرها-Selectors.html">4. انتخاب‌گرها</a>
+<a href="05-نحوه-استفاده-How-To.html" class="on">5. نحوه استفاده</a>
+<a href="06-توضیحات-Comments.html">6. توضیحات</a>
+<a href="07-خطاها-Errors.html">7. خطاها</a>
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">8. انتخاب‌گر ویژگی</a>
+<a href="09-توضیحات-راهنما-Tooltips.html">9. Tooltips</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">10. فلکس‌باکس</a>
+<a href="11-شبکه-Grid-Intro.html">11. شبکه</a>
+<a href="12-واکنش-گرا-RWD-Intro.html">12. واکنش‌گرا</a>
+<a href="13-آزمون-شروع-CSS.html">13. آزمون</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="نحوه استفاده" data-cat="شروع CSS">📌 پین کردن این درس</button>
+<h2>نحوه استفاده از CSS</h2>
+<p><strong>هدف این درس:</strong> سه روش نوشتن CSS را بشناسی و بدانی کدام روش برای پروژه‌های واقعی بهتر است.</p>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>CSS را می‌توانی به سه شکل به صفحه وصل کنی. مثل این است که رنگ خانه را از سه جا بخری: از فروشگاه جدا، از داخل خانه، یا فقط روی یک دیوار.</p>
+
+<h3>روش ۱: فایل خارجی (بهترین روش)</h3>
+<p>یک فایل جدا با پسوند <code>.css</code> می‌سازی و از HTML به آن لینک می‌دهی.</p>
+<div class="codewrap"><div class="code">&lt;!-- در فایل HTML --&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">این روش تمیزترین و حرفه‌ای‌ترین است. یک فایل CSS را می‌توانی روی چندین صفحه استفاده کنی.</div>
+
+<h3>روش ۲: داخلی (Internal)</h3>
+<p>کد CSS را داخل تگ <code>&lt;style&gt;</code> در بخش head صفحه می‌نویسی.</p>
+<div class="codewrap"><div class="code">&lt;head&gt;
+  &lt;style&gt;
+    p { color: #1e293b; }
+  &lt;/style&gt;
+&lt;/head&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">برای صفحه‌های تک‌نفره یا تست سریع مناسب است، اما برای سایت بزرگ توصیه نمی‌شود.</div>
+
+<h3>روش ۳: درون‌خطی (Inline)</h3>
+<p>استایل را مستقیماً روی خود تگ می‌نویسی.</p>
+<div class="codewrap"><div class="code">&lt;p style="color: red; font-size: 1.2rem;"&gt;متن نمونه&lt;/p&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">فقط برای تغییرات خیلی کوچک و موقت استفاده کن. در پروژه‌های واقعی کمتر از آن استفاده می‌شود.</div>
+
+<h3>کدام روش را انتخاب کنیم؟</h3>
+<ul>
+<li><strong>پروژه واقعی و چندصفحه‌ای:</strong> همیشه فایل خارجی</li>
+<li><strong>تست سریع یک ایده:</strong> داخلی یا درون‌خطی</li>
+<li><strong>اولویت:</strong> خارجی &gt; داخلی &gt; درون‌خطی</li>
+</ul>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی یک فایل CSS خارجی بسازی و آن را با تگ link به HTML وصل کنی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>سه روش: خارجی، داخلی، درون‌خطی</li>
+<li>فایل خارجی بهترین و تمیزترین روش است</li>
+<li>با <code>&lt;link rel="stylesheet" href="..."&gt;</code> فایل را وصل می‌کنی</li>
+<li>درون‌خطی را فقط در موارد خاص استفاده کن</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">یک فایل به نام <code>style.css</code> بساز و یک قانون ساده در آن بنویس.</li>
+<li class="practice-item">آن را با تگ link به صفحه HTML وصل کن و نتیجه را ببین.</li>
+</ol>
+<div class="navbtn lesson-nav">
+<a href="04-انتخاب-گرها-Selectors.html">← انتخاب‌گرها</a>
+<a href="06-توضیحات-Comments.html">توضیحات →</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">مدرسه برنامه‌نویسان</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>
