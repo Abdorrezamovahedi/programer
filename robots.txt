@@ -1,11 +1,4 @@
-# MCD Code Up — https://abdorrezamovahedi.github.io/programer/
-# توجه: این فایل در مسیر پروژه GitHub Pages قرار دارد.
-# فایل robots.txt استاندارد ریشه دامنه (github.io) فقط با دامنه اختصاصی
-# یا سایت کاربر (username.github.io) در ریشه قابل کنترل کامل است.
-# نقشه سایت را حتماً در Google Search Console هم ثبت کنید.
-
 User-agent: *
 Allow: /
 
-# نقشه سایت
 Sitemap: https://abdorrezamovahedi.github.io/programer/sitemap.xml
