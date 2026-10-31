@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name=\"theme-color\" content=\"#0f1419\">
+<title>عبارات منظم (RegEx) — PHP | MCD Code Up</title>
+<meta name="description" content="با الگوی منظم در PHP بخش‌های مشخصی از متن را پیدا کن؛ مفهوم delimiter، رقم و preg_match را با مثال شناسه سفارش یاد بگیر.">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "عبارات منظم (RegEx)", "description": "آشنایی با الگوی منظم در PHP و پیدا کردن شماره سفارش در متن با preg_match.", "inLanguage": "fa"}</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">عبارات منظم</a><span class="sep">/</span><span>عبارات منظم (RegEx)</span></div><div class="layout"><aside class="side"><h3>عبارات منظم (9)</h3>
+<a href="01-عبارات-منظم-RegEx.html" class="on">1. عبارات منظم (RegEx)</a>
+<a href="02-جستجو-با-الگو-preg-grep.html">2. جستجو با الگو (preg_grep)</a>
+<a href="03-تطبیق-preg-match.html">3. تطبیق (preg_match)</a>
+<a href="04-تطبیق-همه-preg-match-all.html">4. تطبیق همه (preg_match_all)</a>
+<a href="05-جایگزینی-preg-replace.html">5. جایگزینی (preg_replace)</a>
+<a href="06-جایگزینی-با-کال-بک-preg-replace-callback.html">6. جایگزینی با کال بک (preg_replace_callback)</a>
+<a href="07-برش-با-الگو-preg-split.html">7. برش با الگو (preg_split)</a>
+<a href="08-escape-الگو-preg-quote.html">8. escape الگو (preg_quote)</a>
+<a href="09-آزمون-عبارات-منظم.html">9. آزمون (عبارات منظم)</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="عبارات منظم (RegEx)" data-cat="عبارات منظم">📌 پین</button>
+<h2>عبارات منظم (RegEx)</h2>
+<p><strong>هدف این درس:</strong> بفهمی الگوی منظم چگونه بخشی از متن را پیدا می‌کند و یک رقم را از شناسهٔ سفارش بیرون بکشی.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> آشنایی با رشته‌ها و متغیرها در PHP کافی است.</div>
+<h3>مفهوم به زبان ساده</h3><p>عبارت منظم الگویی برای توصیف متن است. در PHP با توابعی مثل <code>preg_match</code> از آن استفاده می‌کنیم. الگو معمولاً میان delimiterهایی مثل <code>/</code> نوشته می‌شود؛ مثلاً <code>/\d+/</code> یعنی یک یا چند رقم. تابعی به نام <code>regex()</code> در PHP وجود ندارد.</p>
+<h3>ساختار (Syntax)</h3><div class="code">preg_match($pattern, $text, $matches);</div>
+<h3>مثال: پیدا کردن شمارهٔ سفارش</h3>
+<div class="codewrap"><div class="code">&lt;?php
+$text = &quot;شماره سفارش: 4821&quot;;
+$found = preg_match('/\d+/', $text, $matches);
+
+if ($found === 1) {
+	echo $matches[0];
+} else {
+	echo &quot;شماره‌ای پیدا نشد&quot;;
+}
+?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خروجی:</strong> 4821<br><strong>/\d+/:</strong> یک یا چند رقم را پیدا می‌کند.<br><strong>$matches[0]:</strong> متن کامل تطبیق‌یافته را نگه می‌دارد.</div>
+<h3>اشتباه رایج</h3>
+<div class="warn"><strong>الگو را بدون delimiter ننویس.</strong> در PHP الگو باید مانند <code>/\d+/</code> delimiter داشته باشد؛ <code>\d+</code> به‌تنهایی الگوی کامل این تابع نیست.</div>
+<div class="good"><strong>معیار پایان:</strong> بتوانی با <code>preg_match</code> یک عدد را از متن دلخواه پیدا کنی و حالت پیدا نشدن را هم بررسی کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>الگو شکل متن مورد نظر را توصیف می‌کند.</li>
+<li>delimiterها مرز الگو را مشخص می‌کنند.</li>
+<li><code>preg_match</code> اولین تطبیق را پیدا می‌کند.</li>
+</ul></div>
+<h3>گام عملی — همین الان</h3><ol class="practice-list">
+<li class="practice-item">الگو را طوری تغییر بده که فقط شناسه‌های چهاررقمی را پیدا کند.</li>
+</ol>
+<p class="rel">درس بعدی: استفاده از الگو برای فیلترکردن چند رشته با <code>preg_grep</code>.</p>
+<div class="navbtn lesson-nav"><span></span><a href="02-جستجو-با-الگو-preg-grep.html">بعدی →</a></div></article></div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script></body></html>

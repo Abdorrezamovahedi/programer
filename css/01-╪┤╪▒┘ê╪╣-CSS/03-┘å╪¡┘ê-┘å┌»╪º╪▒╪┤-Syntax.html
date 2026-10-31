@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>نحو نگارش CSS — ساختار درست یک قانون | MCD Code Up</title>
+<meta name="description" content="یاد بگیر نحو نگارش CSS چگونه است. ساختار صحیح انتخاب‌گر، آکولاد، ویژگی و نقطه‌ویرگول را با مثال ساده و توضیح خط‌به‌خط بفهم. مناسب برای مبتدیان.">
+<meta name="keywords" content="نحو نگارش CSS, سینتکس CSS, ساختار قانون CSS, آموزش CSS فارسی">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/css/01-شروع-CSS/03-نحو-نگارش-Syntax.html">
+<meta property="og:title" content="نحو نگارش CSS — ساختار درست یک قانون">
+<meta property="og:description" content="ساختار صحیح یک قانون CSS را با زبان ساده و مثال تمیز یاد بگیر.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "نحو نگارش CSS (Syntax)",
+  "description": "یاد بگیر ساختار صحیح یک قانون CSS چگونه نوشته می‌شود. انتخاب‌گر، آکولاد، ویژگی و نقطه‌ویرگول.",
+  "inLanguage": "fa",
+  "learningResourceType": "Lesson",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "شروع CSS",
+    "provider": {"@type": "Organization", "name": "MCD Code Up"}
+  }
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">خانه</a><span class="sep">/</span>
+<a href="../index.html">CSS</a><span class="sep">/</span>
+<a href="index.html">شروع CSS</a><span class="sep">/</span>
+<span>نحو نگارش (Syntax)</span>
+</div>
+<div class="layout">
+<aside class="side">
+<h3>شروع CSS (13)</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-معرفی-Introduction.html">2. معرفی (Introduction)</a>
+<a href="03-نحو-نگارش-Syntax.html" class="on">3. نحو نگارش (Syntax)</a>
+<a href="04-انتخاب-گرها-Selectors.html">4. انتخاب‌گرها (Selectors)</a>
+<a href="05-نحوه-استفاده-How-To.html">5. نحوه استفاده (How To)</a>
+<a href="06-توضیحات-Comments.html">6. توضیحات (Comments)</a>
+<a href="07-خطاها-Errors.html">7. خطاها (Errors)</a>
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">8. انتخاب‌گرهای ویژگی</a>
+<a href="09-توضیحات-راهنما-Tooltips.html">9. توضیحات راهنما</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">10. فلکس‌باکس</a>
+<a href="11-شبکه-Grid-Intro.html">11. شبکه (Grid)</a>
+<a href="12-واکنش-گرا-RWD-Intro.html">12. واکنش‌گرا</a>
+<a href="13-آزمون-شروع-CSS.html">13. آزمون</a>
+</aside>
+
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="نحو نگارش (Syntax)" data-cat="شروع CSS">📌 پین کردن این درس</button>
+
+<h2>نحو نگارش CSS (Syntax)</h2>
+
+<p><strong>هدف این درس:</strong> ساختار درست یک قانون CSS را کامل بفهمی و بتوانی بدون اشتباه بنویسی.</p>
+
+<div class="note"><strong>پوشه:</strong> شروع CSS &nbsp;|&nbsp; <strong>نقش:</strong> یادگیری ساختار رسمی قانون</div>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>
+نحو نگارش یعنی «قوانین نوشتن». مثل دستور زبان در فارسی.
+اگر نقطه یا ویرگول را اشتباه بگذاری، جمله معنی‌اش را از دست می‌دهد.
+در CSS هم اگر نقطه‌ویرگول یا آکولاد را فراموش کنی، مرورگر قانون را نادیده می‌گیرد.
+</p>
+
+<h3>ساختار کامل یک قانون CSS</h3>
+<p>هر قانون CSS دقیقاً از این قسمت‌ها تشکیل شده:</p>
+
+<div class="codewrap"><div class="code">انتخاب‌گر {
+  ویژگی: مقدار;
+  ویژگی: مقدار;
+}</div></div>
+
+<ul>
+<li><strong>انتخاب‌گر</strong> — مشخص می‌کند روی کدام عنصر کار می‌کنی (مثلاً p یا h1)</li>
+<li><strong>آکولاد باز {</strong> — شروع بلوک ویژگی‌ها</li>
+<li><strong>ویژگی: مقدار;</strong> — هر تغییر یک خط است و با ; تمام می‌شود</li>
+<li><strong>آکولاد بسته }</strong> — پایان بلوک</li>
+</ul>
+
+<h3>مثال کامل با توضیح خط‌به‌خط</h3>
+
+<div class="codewrap"><div class="code">h1 {                    /* انتخاب‌گر: همه عنوان‌های اصلی */
+  color: #0f172a;       /* رنگ متن تیره */
+  font-size: 2rem;      /* اندازه بزرگ */
+  margin-bottom: 1rem;  /* فاصله از پایین */
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+<strong>خط ۱:</strong> انتخاب‌گر h1 می‌گوید «روی همه تگ‌های h1 کار کن».<br>
+<strong>خط ۲:</strong> ویژگی color رنگ متن را عوض می‌کند.<br>
+<strong>خط ۳:</strong> ویژگی font-size اندازه نوشته را تعیین می‌کند.<br>
+<strong>خط ۴:</strong> ویژگی margin-bottom فاصله از عنصر بعدی را مشخص می‌کند.<br>
+<strong>توجه:</strong> بعد از هر مقدار حتماً ; بگذار و در پایان } را فراموش نکن.
+</div>
+
+<h3>چند قانون پشت سر هم</h3>
+<p>می‌توانی چندین قانون را پشت سر هم بنویسی:</p>
+
+<div class="codewrap"><div class="code">h1 {
+  color: navy;
+}
+
+p {
+  color: #334155;
+  line-height: 1.7;
+}
+
+a {
+  color: #0369a1;
+  text-decoration: none;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+هر بلوک مستقل است. مرورگر از بالا به پایین می‌خواند و هر قانون را روی عناصر مربوطه اعمال می‌کند.
+</div>
+
+<h3>اشتباه‌های رایج نحو نگارش</h3>
+
+<div class="codewrap"><div class="code">p {
+  color: red
+  font-size: 18px
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn">
+<strong>مشکل:</strong> بعد از red و بعد از 18px علامت ; جا افتاده.<br>
+<strong>نتیجه:</strong> معمولاً هیچ‌کدام از ویژگی‌ها درست اعمال نمی‌شوند.<br>
+<strong>شکل درست:</strong>
+</div>
+
+<div class="codewrap"><div class="code">p {
+  color: red;
+  font-size: 18px;
+}</div></div>
+
+<div class="good">
+<strong>معیار تمام‌شدن درس:</strong><br>
+باید بتوانی یک قانون کامل با انتخاب‌گر، دو ویژگی و ; و } درست بنویسی و نتیجه را در مرورگر ببینی.
+</div>
+
+<div class="sum">
+<b>جمع‌بندی</b>
+<ul>
+<li>ساختار ثابت است: انتخاب‌گر { ویژگی: مقدار; }</li>
+<li>هر ویژگی با ; تمام می‌شود</li>
+<li>بلوک با } بسته می‌شود</li>
+<li>چند قانون را می‌توان پشت سر هم نوشت</li>
+<li>کوچک‌ترین اشتباه نحوی باعث می‌شود استایل اعمال نشود</li>
+</ul>
+</div>
+
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">یک قانون برای تگ <code>h2</code> بنویس که رنگ متن و اندازه فونت را تغییر دهد.</li>
+<li class="practice-item">یک قانون برای <code>p</code> بنویس که سه ویژگی داشته باشد (رنگ، فاصله خطوط و اندازه).</li>
+</ol>
+
+<p class="rel">اگر نتیجه ندیدی، اول ; و } را چک کن. بیشتر خطاهای مبتدیان از همین دو علامت است.</p>
+
+<div class="navbtn lesson-nav">
+<a href="02-معرفی-Introduction.html">← معرفی (Introduction)</a>
+<a href="04-انتخاب-گرها-Selectors.html">انتخاب‌گرها (Selectors) →</a>
+</div>
+</article>
+</div>
+</div>
+</main>
+
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel">
+<header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header>
+<div class="pin-list" id="pinList"></div>
+</div>
+<div id="edBack">
+<div id="edBox">
+<h3>مشاهده در ادیتور</h3>
+<pre id="edCode"></pre>
+<div class="navbtn">
+<button type="button" id="edCopy">کپی</button>
+<button type="button" id="edClose">بستن</button>
+</div>
+</div>
+</div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

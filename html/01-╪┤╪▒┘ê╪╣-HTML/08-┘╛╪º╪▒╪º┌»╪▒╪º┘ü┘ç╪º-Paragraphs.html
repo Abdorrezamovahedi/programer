@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>پاراگراف‌ها در HTML | MCD Code Up</title>
+<meta name="description" content="چطور بند متن (پاراگراف) در HTML بنویسی. تگ p و چند نکته مهم برای نوشتن متن خوانا.">
+<meta name="keywords" content="پاراگراف HTML, تگ p, بند متن در HTML">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/08-پاراگرافها-Paragraphs.html">
+<meta property="og:title" content="پاراگراف‌ها در HTML">
+<meta property="og:description" content="نوشتن بند متن با تگ p را یاد بگیر.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"پاراگراف‌ها در HTML","description":"آموزش تگ p برای مبتدیان.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع HTML","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">شروع HTML</a><span class="sep">/</span><span>پاراگراف‌ها</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع HTML</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-مقدمه-Introduction.html">2. مقدمه</a>
+<a href="03-ویرایشگرها-Editors.html">3. ویرایشگرها</a>
+<a href="04-پایهها-Basic.html">4. پایه‌ها</a>
+<a href="05-المانها-Elements.html">5. المان‌ها</a>
+<a href="06-ویژگیها-Attributes.html">6. ویژگی‌ها</a>
+<a href="07-سرفصلها-Headings.html">7. سرفصل‌ها</a>
+<a href="08-پاراگرافها-Paragraphs.html" class="on">8. پاراگراف‌ها</a>
+<a href="09-توضیحات-Comments.html">9. توضیحات</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="پاراگراف‌ها" data-cat="شروع HTML">📌 پین کردن این درس</button>
+<h2>پاراگراف‌ها در HTML</h2>
+<p><strong>هدف این درس:</strong> بتوانی بندهای متن را با تگ p به درستی بنویسی.</p>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>هر بند متن جداگانه را داخل تگ <code>&lt;p&gt;</code> می‌گذاریم. مرورگر بین پاراگراف‌ها فاصله مناسبی می‌گذارد.</p>
+
+<div class="codewrap"><div class="code">&lt;p&gt;این اولین بند متن است.&lt;/p&gt;
+&lt;p&gt;این دومین بند متن است و از بند قبلی جدا نمایش داده می‌شود.&lt;/p&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>نکته مهم</h3>
+<p>برای رفتن به خط بعد داخل یک پاراگراف از <code>&lt;br&gt;</code> استفاده کن، نه از پاراگراف جدید.</p>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی حداقل دو پاراگراف پشت سر هم بنویسی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>تگ p برای بند متن استفاده می‌شود</li>
+<li>هر پاراگراف جداگانه فاصله می‌گیرد</li>
+<li>برای خط جدید داخل پاراگراف از br استفاده کن</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">سه پاراگراف کوتاه درباره خودت بنویس.</li>
+<li class="practice-item">در یکی از آن‌ها از br برای شکستن خط استفاده کن.</li>
+</ol>
+<div class="navbtn lesson-nav">
+<a href="07-سرفصلها-Headings.html">← سرفصل‌ها</a>
+<a href="09-توضیحات-Comments.html">توضیحات →</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

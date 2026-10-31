@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>خروجی در پایتون با print — آموزش کامل | MCD Code Up</title>
+<meta name="description" content="یاد بگیر چطور با print در پایتون متن، عدد و چند مقدار را روی صفحه نشان بدهی. پارامترهای sep و end را با مثال ساده و توضیح خط‌به‌خط بفهم. مناسب برای مبتدیان.">
+<meta name="keywords" content="print در پایتون, خروجی پایتون, sep و end در print, آموزش print پایتون">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/01-شروع-و-مبانی/06-خروجی-Output.html">
+<meta property="og:title" content="خروجی در پایتون با print — آموزش کامل">
+<meta property="og:description" content="با زبان ساده یاد بگیر چطور با print خروجی بسازی و sep و end را کنترل کنی.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "خروجی (Output) در پایتون",
+  "description": "یاد بگیر با print متن و عدد را نشان بدهی و پارامترهای sep و end را کنترل کنی.",
+  "inLanguage": "fa",
+  "learningResourceType": "Lesson",
+  "isPartOf": {
+    "@type": "Course",
+    "name": "شروع و مبانی پایتون",
+    "provider": {"@type": "Organization", "name": "MCD Code Up"}
+  }
+}
+</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb">
+<a href="../../index.html">خانه</a><span class="sep">/</span>
+<a href="../index.html">Python</a><span class="sep">/</span>
+<a href="index.html">شروع و مبانی</a><span class="sep">/</span>
+<span>خروجی (Output)</span>
+</div>
+<div class="layout">
+<aside class="side">
+<h3>شروع و مبانی</h3>
+<a href="01-خانه-HOME.html">1. خانه (HOME)</a>
+<a href="02-مقدمه-Intro.html">2. مقدمه (Intro)</a>
+<a href="03-شروع-کار-Get-Started.html">3. شروع کار</a>
+<a href="04-ساختار-نوشتاری-Syntax.html">4. ساختار نوشتاری</a>
+<a href="05-دستورات-Statements.html">5. دستورات</a>
+<a href="06-خروجی-Output.html" class="on">6. خروجی (Output)</a>
+<a href="07-چاپ-اعداد-Print-Numbers.html">7. چاپ اعداد</a>
+<a href="08-توضیحات-Comments.html">8. توضیحات</a>
+<a href="09-نمایش-متغیرها-Output-Variables.html">9. نمایش متغیرها</a>
+</aside>
+
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="خروجی (Output)" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
+
+<h2>خروجی در پایتون با print</h2>
+
+<p><strong>هدف این درس:</strong> بتوانی با دستور print متن، عدد و چند مقدار را روی صفحه نشان بدهی و پارامترهای sep و end را بشناسی.</p>
+
+<div class="note"><strong>پیش‌نیاز:</strong> درس‌های قبلی شروع و مبانی. اگر هنوز print ساده را تمرین نکرده‌ای، اول آن را مرور کن.</div>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>
+کامپیوتر وقتی برنامه‌ات را اجرا می‌کند، نتیجه را در جایی نشان می‌دهد. در پایتون رایج‌ترین راه برای دیدن نتیجه، دستور <code>print</code> است.
+هر چیزی که داخل پرانتز print بگذاری، روی صفحه چاپ می‌شود.
+</p>
+
+<h3>ساده‌ترین شکل</h3>
+
+<div class="codewrap"><div class="code">print("سلام")
+print(42)
+print("جمع =", 10 + 5)</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+<strong>خط ۱:</strong> یک متن ساده چاپ می‌شود.<br>
+<strong>خط ۲:</strong> یک عدد چاپ می‌شود.<br>
+<strong>خط ۳:</strong> متن و نتیجه یک محاسبه کنار هم چاپ می‌شوند.
+</div>
+
+<h3>چند مقدار در یک print</h3>
+<p>می‌توانی چند چیز را با کاما از هم جدا کنی. پایتون به طور پیش‌فرض بین آن‌ها فاصله می‌گذارد:</p>
+
+<div class="codewrap"><div class="code">print("اقلام:", 3, "مبلغ:", 120)
+print("جمع:", 360)</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+هر آرگومان با کاما جدا شده. خروجی چیزی شبیه این می‌شود:<br>
+<code>اقلام: 3 مبلغ: 120</code>
+</div>
+
+<h3>کنترل فاصله با sep</h3>
+<p>پارامتر <code>sep</code> مشخص می‌کند بین مقدارها چه چیزی قرار بگیرد:</p>
+
+<div class="codewrap"><div class="code">print("سال", 2026, sep="-")
+print("نام", "خانوادگی", sep=" | ")</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+<strong>خط ۱:</strong> بین دو مقدار خط تیره قرار می‌گیرد → <code>سال-2026</code><br>
+<strong>خط ۲:</strong> بین دو مقدار یک خط عمودی با فاصله قرار می‌گیرد.
+</div>
+
+<h3>کنترل پایان خط با end</h3>
+<p>به طور پیش‌فرض print بعد از چاپ به خط بعد می‌رود. با <code>end</code> می‌توانی این رفتار را عوض کنی:</p>
+
+<div class="codewrap"><div class="code">print("در حال بارگذاری", end="...")
+print(" تمام شد")</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+چون end را به "..." تغییر دادیم، دو print پشت سر هم در یک خط ظاهر می‌شوند.
+</div>
+
+<h3>اشتباه رایج</h3>
+
+<div class="codewrap"><div class="code">print("سلام"
+print("دنیا")</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="warn">
+<strong>مشکل:</strong> پرانتز بسته در خط اول جا افتاده.<br>
+<strong>نتیجه:</strong> پایتون خطای SyntaxError می‌دهد.<br>
+<strong>درست:</strong>
+</div>
+
+<div class="codewrap"><div class="code">print("سلام")
+print("دنیا")</div></div>
+
+<div class="good">
+<strong>معیار تمام‌شدن درس:</strong><br>
+باید بتوانی چند مقدار را با print چاپ کنی و حداقل یک‌بار از sep یا end استفاده کنی.
+</div>
+
+<div class="sum">
+<b>جمع‌بندی</b>
+<ul>
+<li><code>print</code> برای نشان دادن نتیجه روی صفحه است.</li>
+<li>چند مقدار را با کاما جدا کن.</li>
+<li><code>sep</code> فاصله بین مقدارها را کنترل می‌کند.</li>
+<li><code>end</code> مشخص می‌کند بعد از چاپ چه اتفاقی بیفتد (معمولاً خط جدید).</li>
+<li>پرانتزها را همیشه کامل ببند.</li>
+</ul>
+</div>
+
+<h3>گام عملی — همین الان</h3>
+<ol class="practice-list">
+<li class="practice-item">نام و سن خودت را با یک print و با sep مناسب چاپ کن.</li>
+<li class="practice-item">با استفاده از end دو پیام را در یک خط پشت سر هم نشان بده.</li>
+</ol>
+
+<p class="rel">اگر خروجی آن‌طور که انتظار داشتی نبود، مقدار sep و end را دوباره چک کن. این دو پارامتر قدرت زیادی به print می‌دهند.</p>
+
+<div class="navbtn lesson-nav">
+<a href="05-دستورات-Statements.html">← دستورات</a>
+<a href="07-چاپ-اعداد-Print-Numbers.html">چاپ اعداد →</a>
+</div>
+</article>
+</div>
+</div>
+</main>
+
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel">
+<header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header>
+<div class="pin-list" id="pinList"></div>
+</div>
+<div id="edBack">
+<div id="edBox">
+<h3>مشاهده در ادیتور</h3>
+<pre id="edCode"></pre>
+<div class="navbtn">
+<button type="button" id="edCopy">کپی</button>
+<button type="button" id="edClose">بستن</button>
+</div>
+</div>
+</div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

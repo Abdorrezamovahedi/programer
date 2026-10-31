@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>HTML چیست؟ معرفی برای مبتدیان | MCD Code Up</title>
+<meta name="description" content="HTML چیست و چرا پایه همه صفحات وب است؟ با زبان خیلی ساده مفهوم تگ، ساختار صفحه و اولین کد HTML را یاد بگیر.">
+<meta name="keywords" content="HTML چیست, معرفی HTML, آموزش HTML از صفر, تگ HTML">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/02-مقدمه-Introduction.html">
+<meta property="og:title" content="HTML چیست؟ معرفی برای مبتدیان">
+<meta property="og:description" content="با زبان ساده بفهم HTML چیست و اولین تگ‌ها را بشناس.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"HTML چیست","description":"معرفی HTML برای مبتدیان مطلق.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع HTML","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">شروع HTML</a><span class="sep">/</span><span>مقدمه</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع HTML</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-مقدمه-Introduction.html" class="on">2. مقدمه</a>
+<a href="03-ویرایشگرها-Editors.html">3. ویرایشگرها</a>
+<a href="04-پایهها-Basic.html">4. پایه‌ها</a>
+<a href="05-المانها-Elements.html">5. المان‌ها</a>
+<a href="06-ویژگیها-Attributes.html">6. ویژگی‌ها</a>
+<a href="07-سرفصلها-Headings.html">7. سرفصل‌ها</a>
+<a href="08-پاراگرافها-Paragraphs.html">8. پاراگراف‌ها</a>
+<a href="09-توضیحات-Comments.html">9. توضیحات</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="مقدمه HTML" data-cat="شروع HTML">📌 پین کردن این درس</button>
+<h2>HTML چیست؟</h2>
+<p><strong>هدف این درس:</strong> بفهمی HTML چیست و نقش آن در ساخت صفحات وب چیست.</p>
+
+<h3>مفهوم به زبان خیلی ساده</h3>
+<p>HTML اسکلت صفحه وب است. با HTML می‌گویی «اینجا یک عنوان است»، «اینجا یک بند متن است»، «اینجا یک تصویر است».<br>
+ظاهر (رنگ و فونت) کار CSS است. تعامل (کلیک و حرکت) کار JavaScript است. HTML فقط ساختار را مشخص می‌کند.</p>
+
+<h3>تگ چیست؟</h3>
+<p>تقریباً همه چیز در HTML داخل تگ نوشته می‌شود. تگ‌ها معمولاً دوتایی هستند:</p>
+<div class="codewrap"><div class="code">&lt;p&gt;این یک بند متن است&lt;/p&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">
+<strong>&lt;p&gt;</strong> شروع بند<br>
+<strong>&lt;/p&gt;</strong> پایان بند<br>
+متن بین این دو قرار می‌گیرد.
+</div>
+
+<h3>ساده‌ترین صفحه HTML</h3>
+<div class="codewrap"><div class="code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;صفحه من&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;سلام دنیا&lt;/h1&gt;
+    &lt;p&gt;این اولین صفحه‌ام است.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">
+<strong>DOCTYPE</strong> می‌گوید این یک سند HTML5 است.<br>
+<strong>head</strong> اطلاعات صفحه (مثل عنوان تب مرورگر)<br>
+<strong>body</strong> محتوای قابل مشاهده صفحه
+</div>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی با زبان خودت بگویی HTML چیست و یک تگ ساده بنویسی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>HTML ساختار صفحه وب را مشخص می‌کند</li>
+<li>تقریباً همه چیز داخل تگ نوشته می‌شود</li>
+<li>تگ‌ها معمولاً باز و بسته دارند</li>
+<li>body محل محتوای اصلی صفحه است</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">یک فایل HTML خیلی ساده با یک عنوان و یک بند بساز.</li>
+<li class="practice-item">آن را در مرورگر باز کن و نتیجه را ببین.</li>
+</ol>
+<div class="navbtn lesson-nav">
+<a href="01-خانه-HOME.html">← خانه</a>
+<a href="03-ویرایشگرها-Editors.html">ویرایشگرها →</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

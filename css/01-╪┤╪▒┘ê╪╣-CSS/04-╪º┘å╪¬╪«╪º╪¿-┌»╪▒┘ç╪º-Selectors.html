@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>انتخاب‌گرها در CSS — چطور عنصر را هدف بگیریم | MCD Code Up</title>
+<meta name="description" content="یاد بگیر انتخاب‌گر در CSS چیست و چطور عنصرهای HTML را هدف قرار دهی. انتخاب‌گر تگ، کلاس و آیدی با مثال ساده و توضیح خط‌به‌خط. مناسب برای مبتدیان.">
+<meta name="keywords" content="انتخاب‌گر CSS, selector در CSS, کلاس و آیدی در CSS, آموزش انتخاب‌گر CSS">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/css/01-شروع-CSS/04-انتخاب-گرها-Selectors.html">
+<meta property="og:title" content="انتخاب‌گرها در CSS — چطور عنصر را هدف بگیریم">
+<meta property="og:description" content="با زبان ساده یاد بگیر چطور با انتخاب‌گر، کلاس و آیدی عنصرهای صفحه را هدف قرار دهی.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"انتخاب‌گرها در CSS","description":"یاد بگیر انتخاب‌گر تگ، کلاس و آیدی چگونه کار می‌کند.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع CSS","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">CSS</a><span class="sep">/</span><a href="index.html">شروع CSS</a><span class="sep">/</span><span>انتخاب‌گرها</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع CSS (13)</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-معرفی-Introduction.html">2. معرفی</a>
+<a href="03-نحو-نگارش-Syntax.html">3. نحو نگارش</a>
+<a href="04-انتخاب-گرها-Selectors.html" class="on">4. انتخاب‌گرها</a>
+<a href="05-نحوه-استفاده-How-To.html">5. نحوه استفاده</a>
+<a href="06-توضیحات-Comments.html">6. توضیحات</a>
+<a href="07-خطاها-Errors.html">7. خطاها</a>
+<a href="08-انتخاب-گرهای-ویژگی-Attribute-Selectors.html">8. انتخاب‌گر ویژگی</a>
+<a href="09-توضیحات-راهنما-Tooltips.html">9. Tooltips</a>
+<a href="10-فلکس-باکس-Flexbox-Intro.html">10. فلکس‌باکس</a>
+<a href="11-شبکه-Grid-Intro.html">11. شبکه</a>
+<a href="12-واکنش-گرا-RWD-Intro.html">12. واکنش‌گرا</a>
+<a href="13-آزمون-شروع-CSS.html">13. آزمون</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="انتخاب‌گرها" data-cat="شروع CSS">📌 پین کردن این درس</button>
+<h2>انتخاب‌گرها در CSS</h2>
+<p><strong>هدف این درس:</strong> بفهمی انتخاب‌گر چیست و بتوانی با تگ، کلاس و آیدی عنصرهای صفحه را هدف بگیری.</p>
+<div class="note"><strong>پیش‌نیاز:</strong> نحو نگارش CSS را بلد باشی.</div>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>انتخاب‌گر مثل آدرس است. به CSS می‌گوید «روی کدام عنصر کار کن».<br>
+اگر آدرس را اشتباه بنویسی، استایل به عنصر دیگری می‌رود یا اصلاً اعمال نمی‌شود.</p>
+
+<h3>۱. انتخاب‌گر تگ (Element Selector)</h3>
+<p>ساده‌ترین نوع: نام تگ HTML را می‌نویسی.</p>
+<div class="codewrap"><div class="code">p {
+  color: #1e293b;
+}
+h1 {
+  color: navy;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱–۳:</strong> همه تگ‌های p رنگ تیره‌ای می‌گیرند.<br><strong>خط ۴–۶:</strong> همه عنوان‌های h1 آبی تیره می‌شوند.</div>
+
+<h3>۲. انتخاب‌گر کلاس (Class Selector)</h3>
+<p>با نقطه شروع می‌شود. روی عنصرهایی که آن کلاس را دارند اعمال می‌شود.</p>
+<div class="codewrap"><div class="code">.highlight {
+  background-color: #fef3c7;
+  padding: 0.5rem;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">فقط عنصرهایی که <code>class="highlight"</code> دارند این استایل را می‌گیرند. یک کلاس را می‌توانی روی چندین عنصر استفاده کنی.</div>
+
+<h3>۳. انتخاب‌گر آیدی (ID Selector)</h3>
+<p>با # شروع می‌شود. معمولاً برای یک عنصر یکتا استفاده می‌شود.</p>
+<div class="codewrap"><div class="code">#main-title {
+  font-size: 2.2rem;
+  color: #0f172a;
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">فقط عنصری که <code>id="main-title"</code> دارد هدف قرار می‌گیرد. آیدی باید در صفحه یکتا باشد.</div>
+
+<h3>اشتباه رایج</h3>
+<div class="codewrap"><div class="code">.highlight {
+  color: red
+}
+#main-title {
+  font-size: 2rem
+}</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="warn"><strong>مشکل:</strong> بعد از مقادیر ; جا افتاده.<br><strong>نتیجه:</strong> استایل ممکن است اعمال نشود.<br><strong>درست:</strong> همیشه بعد از هر مقدار ; بگذار.</div>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی یک انتخاب‌گر تگ، یک کلاس و یک آیدی بنویسی و نتیجه را در مرورگر ببینی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>انتخاب‌گر تگ: نام تگ (p, h1, ...)</li>
+<li>انتخاب‌گر کلاس: با نقطه شروع می‌شود (.name)</li>
+<li>انتخاب‌گر آیدی: با # شروع می‌شود (#name)</li>
+<li>کلاس برای چند عنصر، آیدی برای یک عنصر یکتا</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">یک کلاس به نام <code>note</code> بساز که پس‌زمینه روشن و padding داشته باشد.</li>
+<li class="practice-item">یک آیدی به نام <code>header</code> بساز و اندازه فونت آن را بزرگ کن.</li>
+</ol>
+<p class="rel">اگر استایل اعمال نشد، اول نام انتخاب‌گر و وجود ; و } را چک کن.</p>
+<div class="navbtn lesson-nav">
+<a href="03-نحو-نگارش-Syntax.html">← نحو نگارش</a>
+<a href="05-نحوه-استفاده-How-To.html">نحوه استفاده →</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

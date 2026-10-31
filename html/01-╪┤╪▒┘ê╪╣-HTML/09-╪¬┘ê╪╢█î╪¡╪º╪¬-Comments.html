@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>توضیحات (کامنت) در HTML | MCD Code Up</title>
+<meta name="description" content="چطور در HTML توضیح بنویسی. کامنت‌ها به تو و دیگران کمک می‌کنند کد را بفهمید و بخش‌هایی را موقتاً غیرفعال کنید.">
+<meta name="keywords" content="کامنت در HTML, توضیحات HTML, comment در اچ تی ام ال">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/09-توضیحات-Comments.html">
+<meta property="og:title" content="توضیحات (کامنت) در HTML">
+<meta property="og:description" content="نوشتن کامنت در HTML را با مثال ساده یاد بگیر.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"توضیحات در HTML","description":"آموزش کامنت در HTML برای مبتدیان.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع HTML","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">شروع HTML</a><span class="sep">/</span><span>توضیحات</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع HTML</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-مقدمه-Introduction.html">2. مقدمه</a>
+<a href="03-ویرایشگرها-Editors.html">3. ویرایشگرها</a>
+<a href="04-پایهها-Basic.html">4. پایه‌ها</a>
+<a href="05-المانها-Elements.html">5. المان‌ها</a>
+<a href="06-ویژگیها-Attributes.html">6. ویژگی‌ها</a>
+<a href="07-سرفصلها-Headings.html">7. سرفصل‌ها</a>
+<a href="08-پاراگرافها-Paragraphs.html">8. پاراگراف‌ها</a>
+<a href="09-توضیحات-Comments.html" class="on">9. توضیحات</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="توضیحات" data-cat="شروع HTML">📌 پین کردن این درس</button>
+<h2>توضیحات (کامنت) در HTML</h2>
+<p><strong>هدف این درس:</strong> یاد بگیری چطور در HTML توضیح بنویسی تا کد خواناتر شود.</p>
+
+<h3>مفهوم به زبان ساده</h3>
+<p>کامنت یادداشتی است که مرورگر آن را نشان نمی‌دهد. فقط برای انسان نوشته می‌شود.</p>
+
+<div class="codewrap"><div class="code">&lt;!-- این یک توضیح است --&gt;
+&lt;p&gt;این متن در صفحه دیده می‌شود.&lt;/p&gt;
+&lt;!-- 
+  این توضیح
+  چند خطی است
+--&gt;</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">همه چیز بین <code>&lt;!--</code> و <code>--&gt;</code> نادیده گرفته می‌شود.</div>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی حداقل یک کامنت مفید در کد HTML بنویسی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>کامنت با &lt;!-- شروع و با --&gt; تمام می‌شود</li>
+<li>مرورگر کامنت را نشان نمی‌دهد</li>
+<li>برای توضیح و غیرفعال کردن موقت کد مفید است</li>
+</ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">بالای یک بخش از کد یک کامنت بنویس که بگوید آن بخش چیست.</li>
+<li class="practice-item">یک تگ را موقتاً با کامنت غیرفعال کن و نتیجه را ببین.</li>
+</ol>
+<div class="navbtn lesson-nav">
+<a href="08-پاراگرافها-Paragraphs.html">← پاراگراف‌ها</a>
+<a href="01-خانه-HOME.html">بازگشت به خانه این بخش</a>
+</div>
+</article>
+</div></div>
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+</body></html>

@@ -1,16 +1,21 @@
 :root {
-  --bg-dark: #050505;
-  --bg-panel: #0a0f0c;
-  --bg-panel-strong: #0f1a14;
-  --bg-code: #030805;
-  --border: #1a2e24;
-  --text: #e0e0e0;
-  --text-soft: #a8c4b5;
-  --text-muted: #8aa89a;
-  --link: #00c853;
-  --link-strong: #00e676;
+  /* Hacker green theme — solid colors for WebView / all OS */
+  color-scheme: dark;
+  --bg-dark: #020805;
+  --bg-panel: #07140e;
+  --bg-panel-strong: #0c1f16;
+  --bg-code: #010604;
+  --border: #1f3d2e;
+  --text: #e8f5e9;
+  --text-soft: #a5d6a7;
+  --text-muted: #81c784;
+  --link: #00e676;
+  --link-strong: #69f0ae;
   --success: #00e676;
-  --shadow: rgba(0, 200, 83, 0.18);
+  --accent: #00ff7a;
+  --accent-dim: #00c853;
+  --shadow: rgba(0, 230, 118, 0.28);
+  --glow: rgba(0, 255, 122, 0.15);
 }
 
 * {
@@ -21,6 +26,8 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+  background: var(--bg-dark);
 }
 
 body {
@@ -29,6 +36,8 @@ body {
   color: var(--text);
   line-height: 1.95;
   font-size: 15px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 img {
@@ -105,7 +114,7 @@ nav a:hover {
 }
 
 .hero p {
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 14px
 }
 
@@ -117,8 +126,8 @@ nav a:hover {
 }
 
 .lang {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 12px;
   padding: 18px 10px;
   text-align: center;
@@ -127,8 +136,8 @@ nav a:hover {
 }
 
 .lang:hover {
-  border-color: #00a844;
-  background: #161b22
+  border-color: #00e676;
+  background: #0c1f16
 }
 
 .lang .ic {
@@ -143,7 +152,7 @@ nav a:hover {
 }
 
 .lang small {
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 12px
 }
 
@@ -160,8 +169,8 @@ nav a:hover {
 }
 
 .side {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 10px;
   padding: 12px;
   max-height: 80vh;
@@ -180,19 +189,19 @@ nav a:hover {
   padding: 6px 10px;
   border-radius: 6px;
   font-size: 12.5px;
-  color: #d0d7de;
+  color: #c8e6c9;
   margin-bottom: 2px
 }
 
 .side a.on,
 .side a:hover {
-  background: #00c85322;
+  background: rgba(0, 230, 118, 0.18);
   color: #00c853
 }
 
 .card {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 10px;
   padding: 22px 18px;
   overflow: hidden;
@@ -202,7 +211,7 @@ nav a:hover {
 .card h2 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: #e6edf3
+  color: #e8f5e9
 }
 
 .card h3 {
@@ -212,7 +221,7 @@ nav a:hover {
 }
 
 .card p {
-  color: #d0d7de;
+  color: #c8e6c9;
   margin-bottom: 12px;
   font-size: 14.5px
 }
@@ -220,8 +229,8 @@ nav a:hover {
 .code {
   direction: ltr;
   text-align: left;
-  background: #010409;
-  border: 1px solid #21262d;
+  background: #010604;
+  border: 1px solid #1f3d2e;
   border-radius: 8px;
   padding: 14px 16px;
   overflow-x: auto !important;
@@ -242,19 +251,19 @@ nav a:hover {
 }
 
 .exp {
-  background: #161b22;
+  background: #0c1f16;
   border-right: 3px solid #00c853;
   padding: 14px 16px;
   margin: 12px 0;
   border-radius: 0 8px 8px 0;
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 14px;
   line-height: 1.9
 }
 
 .note {
-  background: #00c85315;
-  border: 1px solid #00a84444;
+  background: rgba(0, 230, 118, 0.14);
+  border: 1px solid #00e67644;
   border-radius: 8px;
   padding: 12px 14px;
   margin: 14px 0;
@@ -263,7 +272,7 @@ nav a:hover {
 }
 
 .good {
-  background: #3fb95015;
+  background: rgba(0, 230, 118, 0.14);
   border: 1px solid #3fb95044;
   border-radius: 8px;
   padding: 12px 14px;
@@ -281,7 +290,7 @@ nav a:hover {
 }
 
 .navbtn button {
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   border-radius: 8px;
   padding: 10px 16px;
@@ -292,15 +301,15 @@ nav a:hover {
 }
 
 .navbtn button:hover {
-  background: #00c85322
+  background: rgba(0, 230, 118, 0.18)
 }
 
 footer {
   text-align: center;
   padding: 18px;
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 12px;
-  border-top: 1px solid #21262d;
+  border-top: 1px solid #1f3d2e;
   margin-top: 20px
 }
 
@@ -335,7 +344,7 @@ footer {
 }
 
 .card li {
-  color: #d0d7de;
+  color: #c8e6c9;
   margin-bottom: 6px;
   font-size: 14.5px
 }
@@ -351,14 +360,14 @@ footer {
 }
 
 .sum {
-  background: #161b22;
+  background: #0c1f16;
   border-radius: 8px;
   padding: 12px 16px;
   margin: 16px 0
 }
 
 .sum b {
-  color: #e6edf3;
+  color: #e8f5e9;
   display: block;
   margin-bottom: 8px
 }
@@ -375,7 +384,7 @@ footer {
 }
 
 .card li {
-  color: #d0d7de;
+  color: #c8e6c9;
   margin-bottom: 6px;
   font-size: 14.5px;
   line-height: 1.7
@@ -393,14 +402,14 @@ footer {
 }
 
 .rel {
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 14px;
   line-height: 1.8;
   margin: 14px 0
 }
 
 .sum {
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   border-radius: 10px;
   padding: 14px 16px;
@@ -408,7 +417,7 @@ footer {
 }
 
 .sum b {
-  color: #e6edf3;
+  color: #e8f5e9;
   display: block;
   margin-bottom: 8px;
   font-size: 15px
@@ -448,7 +457,7 @@ footer {
 }
 
 #edBox {
-  background: #0d1117;
+  background: #07140e;
   border: 1px solid #30363d;
   border-radius: 12px;
   width: min(720px, 100%);
@@ -459,17 +468,17 @@ footer {
 
 #edBox h3 {
   margin: 0 0 10px;
-  color: #e6edf3
+  color: #e8f5e9
 }
 
 #edCode {
   white-space: pre-wrap;
   direction: ltr;
   text-align: left;
-  background: #161b22;
+  background: #0c1f16;
   border-radius: 8px;
   padding: 12px;
-  color: #d0d7de;
+  color: #c8e6c9;
   font-family: ui-monospace, monospace;
   font-size: 13px;
   line-height: 1.6
@@ -478,7 +487,7 @@ footer {
 .exp {
   line-height: 2;
   font-size: 14.5px;
-  color: #d0d7de
+  color: #c8e6c9
 }
 
 .exp strong {
@@ -493,8 +502,8 @@ footer {
 }
 
 .qcard {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 12px;
   padding: 16px;
   margin: 0 0 12px
@@ -509,12 +518,12 @@ footer {
   display: block;
   width: 100%;
   text-align: right;
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   border-radius: 8px;
   padding: 10px 12px;
   margin: 6px 0;
-  color: #d0d7de;
+  color: #c8e6c9;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px
@@ -526,7 +535,7 @@ footer {
 
 .qopt.ok {
   border-color: #3fb950;
-  background: #23863633;
+  background: rgba(0, 230, 118, 0.22);
   color: #3fb950
 }
 
@@ -540,7 +549,7 @@ footer {
   display: none;
   margin-top: 8px;
   font-size: 13px;
-  color: #b6c0cc
+  color: #a5d6a7
 }
 
 .qfb.on {
@@ -550,8 +559,8 @@ footer {
 .qcode {
   direction: ltr;
   text-align: left;
-  background: #010409;
-  border: 1px solid #21262d;
+  background: #010604;
+  border: 1px solid #1f3d2e;
   border-radius: 8px;
   padding: 10px;
   margin: 8px 0;
@@ -567,8 +576,8 @@ footer {
    برای تغییر ظاهر کارت‌های تمرین این بخش را ویرایش کن
 ========================================== */
 .ex-item {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 12px;
   padding: 14px 16px;
   margin: 0 0 10px;
@@ -577,19 +586,19 @@ footer {
 }
 
 .ex-item:hover {
-  border-color: #00a844;
-  background: #161b22;
+  border-color: #00e676;
+  background: #0c1f16;
 }
 
 .ex-item h3 {
   font-size: 15px;
   margin-bottom: 6px;
-  color: #e6edf3;
+  color: #e8f5e9;
 }
 
 .ex-meta {
   font-size: 12.5px;
-  color: #b6c0cc;
+  color: #a5d6a7;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -606,7 +615,7 @@ footer {
 .ex-badge.easy {
   color: #3fb950;
   border-color: #3fb95055;
-  background: #3fb95015;
+  background: rgba(0, 230, 118, 0.14);
 }
 
 .ex-badge.medium {
@@ -638,8 +647,8 @@ footer {
 }
 
 .ex-io {
-  background: #010409;
-  border: 1px solid #21262d;
+  background: #010604;
+  border: 1px solid #1f3d2e;
   border-radius: 8px;
   padding: 12px 14px;
   direction: ltr;
@@ -652,12 +661,12 @@ footer {
 }
 
 .ex-hint {
-  background: #161b22;
+  background: #0c1f16;
   border-right: 3px solid #d29922;
   padding: 10px 14px;
   margin: 8px 0;
   border-radius: 0 8px 8px 0;
-  color: #d0d7de;
+  color: #c8e6c9;
   font-size: 14px;
   line-height: 1.8;
 }
@@ -671,7 +680,7 @@ footer {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   color: #00c853;
   border-radius: 6px;
@@ -688,7 +697,7 @@ footer {
 
 .ex-empty {
   text-align: center;
-  color: #b6c0cc;
+  color: #a5d6a7;
   padding: 30px 10px;
   font-size: 14px;
 }
@@ -703,8 +712,8 @@ footer {
 }
 
 .cat-card {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 12px;
   padding: 18px 12px;
   text-align: center;
@@ -712,8 +721,8 @@ footer {
 }
 
 .cat-card:hover {
-  border-color: #00a844;
-  background: #161b22
+  border-color: #00e676;
+  background: #0c1f16
 }
 
 .cat-card .ic {
@@ -725,11 +734,11 @@ footer {
 .cat-card b {
   font-size: 14px;
   display: block;
-  color: #e6edf3
+  color: #e8f5e9
 }
 
 .cat-card small {
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 12px
 }
 
@@ -739,7 +748,7 @@ footer {
   gap: 6px;
   align-items: center;
   font-size: 13px;
-  color: #b6c0cc;
+  color: #a5d6a7;
   margin-bottom: 14px
 }
 
@@ -753,8 +762,8 @@ footer {
 }
 
 .lesson-list-item {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 10px;
   padding: 12px 14px;
   margin: 0 0 8px;
@@ -765,8 +774,8 @@ footer {
 }
 
 .lesson-list-item:hover {
-  border-color: #00a844;
-  background: #161b22
+  border-color: #00e676;
+  background: #0c1f16
 }
 
 .lesson-list-item .num {
@@ -776,15 +785,15 @@ footer {
 }
 
 #tamrinBlock {
-  border-top: 3px solid #00a844;
+  border-top: 3px solid #00e676;
   min-height: 60vh
 }
 
 .search-box {
   width: 100%;
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
-  color: #e6edf3;
+  color: #e8f5e9;
   border-radius: 8px;
   padding: 10px 12px;
   font-family: inherit;
@@ -805,7 +814,7 @@ footer {
 .category-back-link {
   display: inline-block;
   margin-top: 12px;
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   color: #00c853;
   padding: 8px 14px;
@@ -836,7 +845,7 @@ footer {
 .list-back-link {
   display: inline-block;
   margin-top: 12px;
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   color: #00c853;
   padding: 8px 14px;
@@ -865,9 +874,9 @@ footer {
 .quiz-summary,
 .exercise-panel,
 .exercise-card {
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
-  color: #e6edf3;
+  color: #e8f5e9;
   border-radius: 8px;
 }
 
@@ -931,7 +940,7 @@ footer {
 }
 
 .secondary-action {
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   color: #00c853;
   border-radius: 8px;
@@ -941,8 +950,8 @@ footer {
 }
 
 .qcard {
-  background: #0d1117;
-  border: 1px solid #21262d;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
   border-radius: 12px;
   padding: 16px;
   margin: 0 0 12px
@@ -951,19 +960,19 @@ footer {
 .qcard h3 {
   font-size: 15px;
   margin-bottom: 10px;
-  color: #e6edf3
+  color: #e8f5e9
 }
 
 .qopt {
   display: block;
   width: 100%;
   text-align: right;
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
   border-radius: 8px;
   padding: 10px 12px;
   margin: 6px 0;
-  color: #d0d7de;
+  color: #c8e6c9;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px
@@ -975,7 +984,7 @@ footer {
 
 .qopt.ok {
   border-color: #3fb950;
-  background: #23863633;
+  background: rgba(0, 230, 118, 0.22);
   color: #3fb950
 }
 
@@ -989,7 +998,7 @@ footer {
   display: none;
   margin-top: 8px;
   font-size: 13px;
-  color: #b6c0cc;
+  color: #a5d6a7;
   line-height: 1.8
 }
 
@@ -1011,7 +1020,7 @@ footer {
   border-radius: 8px;
   padding: 10px 12px;
   margin: 10px 0;
-  color: #d0d7de;
+  color: #c8e6c9;
   font-size: 13.5px;
   line-height: 1.8
 }
@@ -1021,9 +1030,9 @@ footer {
   left: 16px;
   bottom: 20px;
   z-index: 9000;
-  background: #21262d;
-  border: 1px solid #00a844;
-  color: #e6edf3;
+  background: #1f3d2e;
+  border: 1px solid #00e676;
+  color: #e8f5e9;
   border-radius: 999px;
   padding: 10px 16px;
   font-family: inherit;
@@ -1041,7 +1050,7 @@ footer {
 }
 
 .pin-fab .badge {
-  background: #00a844;
+  background: #00e676;
   color: #fff;
   border-radius: 999px;
   min-width: 20px;
@@ -1061,7 +1070,7 @@ footer {
   z-index: 9001;
   width: min(340px, calc(100vw - 32px));
   max-height: min(420px, 60vh);
-  background: #0d1117;
+  background: #07140e;
   border: 1px solid #30363d;
   border-radius: 12px;
   box-shadow: 0 8px 32px #000a;
@@ -1075,22 +1084,22 @@ footer {
 
 .pin-panel header {
   padding: 12px 14px;
-  border-bottom: 1px solid #21262d;
+  border-bottom: 1px solid #1f3d2e;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #161b22
+  background: #0c1f16
 }
 
 .pin-panel header b {
-  color: #e6edf3;
+  color: #e8f5e9;
   font-size: 14px
 }
 
 .pin-panel header button {
   background: transparent;
   border: none;
-  color: #b6c0cc;
+  color: #a5d6a7;
   cursor: pointer;
   font-size: 18px;
   line-height: 1;
@@ -1110,15 +1119,15 @@ footer {
   gap: 8px;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid #21262d;
+  border: 1px solid #1f3d2e;
   margin-bottom: 6px;
   cursor: pointer;
-  background: #0d1117
+  background: #07140e
 }
 
 .pin-item:hover {
-  border-color: #00a844;
-  background: #161b22
+  border-color: #00e676;
+  background: #0c1f16
 }
 
 .pin-item .meta {
@@ -1128,14 +1137,14 @@ footer {
 
 .pin-item .meta b {
   display: block;
-  color: #e6edf3;
+  color: #e8f5e9;
   font-size: 13px;
   margin-bottom: 2px;
   word-break: break-word
 }
 
 .pin-item .meta small {
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 11px
 }
 
@@ -1153,15 +1162,15 @@ footer {
 .pin-empty {
   padding: 24px 16px;
   text-align: center;
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 13px;
   line-height: 1.8
 }
 
 .btn-pin {
-  background: #161b22;
+  background: #0c1f16;
   border: 1px solid #30363d;
-  color: #d0d7de;
+  color: #c8e6c9;
   border-radius: 8px;
   padding: 8px 12px;
   font-family: inherit;
@@ -1174,7 +1183,7 @@ footer {
 }
 
 .btn-pin:hover {
-  border-color: #00a844;
+  border-color: #00e676;
   color: #00c853
 }
 
@@ -1197,9 +1206,9 @@ a.lang-link {
 .site-footer {
   text-align: right;
   padding: 18px;
-  color: #b6c0cc;
+  color: #a5d6a7;
   font-size: 12px;
-  border-top: 1px solid #21262d;
+  border-top: 1px solid #1f3d2e;
   margin-top: 20px
 }
 
@@ -1217,8 +1226,8 @@ a.lang-link {
 }
 
 .home-practice-link {
-  border-color: #00a844;
-  background: #161b22;
+  border-color: #00e676;
+  background: #0c1f16;
 }
 
 /* a11y */
@@ -1253,7 +1262,7 @@ body {
   height: 1px;
   overflow: hidden;
   background: #00c853;
-  color: #0d1117;
+  color: #07140e;
   padding: 8px 14px;
   border-radius: 6px;
   z-index: 10000;
@@ -1290,12 +1299,12 @@ footer,
 .site-footer,
 .logo span,
 nav a {
-  color: #b6c0cc
+  color: #a5d6a7
 }
 
 .card p,
 .card li {
-  color: #d0d7de
+  color: #c8e6c9
 }
 
 
@@ -1365,7 +1374,7 @@ nav a {
 .home-search button {
   min-width: 92px;
   padding: 9px 14px;
-  border: 1px solid #00a844;
+  border: 1px solid #00e676;
   border-radius: 8px;
   background: #1f6feb;
   color: #fff;
@@ -1444,7 +1453,7 @@ nav a {
 
 .learning-steps a:hover,
 .featured-lessons a:hover {
-  border-color: #00a844;
+  border-color: #00e676;
   background: var(--bg-panel-strong);
 }
 
@@ -1776,5 +1785,57 @@ nav a {
   h3 {
     break-inside: avoid-page;
     page-break-inside: avoid;
+  }
+}
+
+
+/* ===== Cross-platform & WebView color stability (hacker green) ===== */
+html, body {
+  background-color: #020805 !important;
+  color: #e8f5e9;
+}
+
+header {
+  background: #07140e;
+  border-bottom-color: #1f3d2e;
+}
+
+.logo {
+  color: #00e676;
+  text-shadow: 0 0 12px rgba(0, 255, 122, 0.25);
+}
+
+.side h3,
+.card h2,
+.card h3 {
+  color: #00e676;
+}
+
+.code,
+pre,
+.codewrap,
+#edCode {
+  background: #010604 !important;
+  color: #69f0ae;
+  border-color: #1f3d2e;
+}
+
+a:hover,
+nav a.active {
+  color: #69f0ae;
+}
+
+/* Standalone / PWA / in-app WebView */
+@media (display-mode: standalone) {
+  html, body {
+    background-color: #020805;
+  }
+}
+
+/* Prevent OS forced-light washing text */
+@supports (color: color(display-p3 0 1 0)) {
+  :root {
+    --link: #00e676;
+    --link-strong: #69f0ae;
   }
 }

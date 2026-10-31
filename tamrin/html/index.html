@@ -3,28 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f1419">
-<title>تمرین‌های HTML | مدرسه برنامه‌نویسان</title>
-<meta name="description" content="فهرست 10 تمرین عملی HTML — با مثال و راهنمای مرحله‌ای">
+<meta name="theme-color" content="#00e676">
+<title>تمرین‌های HTML | MCD Code Up</title>
+<meta name="description" content="تمرین‌های عملی HTML با امکان جست‌وجو، فیلتر سطح سختی و فیلتر مبحث. هر تمرین صورت‌مسئله و راهنما دارد.">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/tamrin/html/">
+<meta property="og:title" content="تمرین‌های HTML | MCD Code Up">
+<meta property="og:locale" content="fa_IR">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <style>
+
+.ex-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+  padding: 1rem;
+  background: #07140e;
+  border: 1px solid #1f3d2e;
+  border-radius: 12px;
+}
+@media (min-width: 700px) {
+  .ex-filters { grid-template-columns: 2fr 1fr 1fr; }
+}
+.ex-filters label {
+  display: block;
+  font-size: 0.8rem;
+  color: #a5d6a7;
+  margin-bottom: 0.35rem;
+}
+.ex-filters input,
+.ex-filters select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #1f3d2e;
+  background: #020805;
+  color: #e8f5e9;
+  font: inherit;
+}
+.ex-filters input:focus,
+.ex-filters select:focus {
+  outline: 2px solid #00e676;
+  outline-offset: 1px;
+}
+.ex-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #a5d6a7;
+  font-size: 0.9rem;
+}
 .exercise-list { list-style: none; padding: 0; margin: 0; }
-.exercise-list li { padding: 0.65rem 0; border-bottom: 1px solid #334155; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.exercise-list a { color: inherit; text-decoration: none; font-weight: 500; }
-.exercise-list a:hover { color: #38bdf8; }
-.ex-num { opacity: 0.6; margin-left: 0.25rem; }
-.ex-badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
-.ex-badge.easy { background: #14532d; color: #bbf7d0; }
-.ex-badge.medium { background: #713f12; color: #fde68a; }
-.ex-badge.hard { background: #7f1d1d; color: #fecaca; }
-.topic-tag { font-size: 0.8rem; opacity: 0.7; }
+.exercise-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.85rem 0.5rem;
+  border-bottom: 1px solid #1f3d2e;
+}
+.exercise-list a { color: #e8f5e9; text-decoration: none; flex: 1; min-width: 12rem; }
+.exercise-list a:hover { color: #00e676; }
+.ex-num { opacity: 0.6; margin-left: 0.35rem; }
+.ex-badge {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.ex-badge.easy { background: rgba(0,230,118,0.15); color: #69f0ae; }
+.ex-badge.medium { background: rgba(255,193,7,0.15); color: #ffd54f; }
+.ex-badge.hard { background: rgba(244,67,54,0.18); color: #ef9a9a; }
+.topic-tag { font-size: 0.8rem; color: #81c784; }
+.ex-empty {
+  text-align: center;
+  padding: 1.5rem;
+  color: #a5d6a7;
+  border: 1px dashed #1f3d2e;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
 </style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">مدرسه برنامه‌نویسان</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav>
 <a href="../../index.html">خانه</a>
 <a href="../index.html" class="active">تمرین</a>
@@ -39,25 +107,55 @@
 </div>
 <div class="hero">
 <h1>تمرین‌های HTML</h1>
-<p>10 تمرین — هر کدام با صورت‌مسئله، مثال و راهنمای مرحله‌ای</p>
+<p>10 تمرین — جست‌وجو کن، سطح سختی و مبحث را فیلتر کن، بعد تمرین را باز کن.</p>
 </div>
+
+<div class="ex-filters" role="search" aria-label="فیلتر تمرین‌ها">
+  <div>
+    <label for="exSearch">جست‌وجوی نام تمرین</label>
+    <input type="search" id="exSearch" placeholder="مثلاً متغیر، حلقه، فرم…" autocomplete="off">
+  </div>
+  <div>
+    <label for="exLevel">سطح سختی</label>
+    <select id="exLevel">
+      <option value="">همه سطح‌ها</option>
+      <option value="easy">آسان</option>
+      <option value="medium">متوسط</option>
+      <option value="hard">سخت</option>
+    </select>
+  </div>
+  <div>
+    <label for="exTopic">مبحث</label>
+    <select id="exTopic">
+      <option value="">همه مبحث‌ها</option>
+    </select>
+  </div>
+</div>
+
+<div class="ex-meta-row">
+  <span>نمایش: <strong id="exCount">10</strong> تمرین</span>
+  <a href="../index.html">← همه زبان‌ها</a>
+</div>
+
 <article class="card">
-<ul class="exercise-list">
-<li><a href="01-اولین-صفحه.html"><span class="ex-num">1.</span> اولین صفحه</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">پایه</span></li>
-<li><a href="02-عنوان-تب-و-عنوان-صفحه.html"><span class="ex-num">2.</span> عنوان تب و عنوان صفحه</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">پایه و متن</span></li>
-<li><a href="03-یک-بخش-کوتاه-دربارهٔ-خودت.html"><span class="ex-num">3.</span> یک بخش کوتاه دربارهٔ خودت</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">متن</span></li>
-<li><a href="04-فهرست-کارها.html"><span class="ex-num">4.</span> فهرست کارها</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">فهرست</span></li>
-<li><a href="05-لینک-به-بیرون-و-داخل.html"><span class="ex-num">5.</span> لینک به بیرون و داخل</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">لینک</span></li>
-<li><a href="06-تصویر-با-توضیح.html"><span class="ex-num">6.</span> تصویر با توضیح</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">تصویر</span></li>
-<li><a href="07-جدول-دو-نفره.html"><span class="ex-num">7.</span> جدول دو نفره</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">جدول</span></li>
-<li><a href="08-فرم-نام-ساده.html"><span class="ex-num">8.</span> فرم نام ساده</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">فرم</span></li>
-<li><a href="09-فرم-تماس-کوچیک.html"><span class="ex-num">9.</span> فرم تماس کوچیک</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">فرم</span></li>
-<li><a href="10-صفحهٔ-معرفی-یک‌صفحه‌ای.html"><span class="ex-num">10.</span> صفحهٔ معرفی یک‌صفحه‌ای</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">ترکیبی</span></li>
+<ul class="exercise-list" id="exList">
+<li data-title="اولین صفحه" data-level="easy" data-topic="پایه"><a href="01-اولین-صفحه.html"><span class="ex-num">1.</span> اولین صفحه</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">پایه</span></li>
+<li data-title="عنوان تب و عنوان صفحه" data-level="easy" data-topic="پایه و متن"><a href="02-عنوان-تب-و-عنوان-صفحه.html"><span class="ex-num">2.</span> عنوان تب و عنوان صفحه</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">پایه و متن</span></li>
+<li data-title="یک بخش کوتاه دربارهٔ خودت" data-level="easy" data-topic="متن"><a href="03-یک-بخش-کوتاه-دربارهٔ-خودت.html"><span class="ex-num">3.</span> یک بخش کوتاه دربارهٔ خودت</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">متن</span></li>
+<li data-title="فهرست کارها" data-level="easy" data-topic="فهرست"><a href="04-فهرست-کارها.html"><span class="ex-num">4.</span> فهرست کارها</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">فهرست</span></li>
+<li data-title="لینک به بیرون و داخل" data-level="easy" data-topic="لینک"><a href="05-لینک-به-بیرون-و-داخل.html"><span class="ex-num">5.</span> لینک به بیرون و داخل</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">لینک</span></li>
+<li data-title="تصویر با توضیح" data-level="easy" data-topic="تصویر"><a href="06-تصویر-با-توضیح.html"><span class="ex-num">6.</span> تصویر با توضیح</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">تصویر</span></li>
+<li data-title="جدول دو نفره" data-level="easy" data-topic="جدول"><a href="07-جدول-دو-نفره.html"><span class="ex-num">7.</span> جدول دو نفره</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">جدول</span></li>
+<li data-title="فرم نام ساده" data-level="easy" data-topic="فرم"><a href="08-فرم-نام-ساده.html"><span class="ex-num">8.</span> فرم نام ساده</a> <span class="ex-badge easy">آسان</span> <span class="topic-tag">فرم</span></li>
+<li data-title="فرم تماس کوچیک" data-level="medium" data-topic="فرم"><a href="09-فرم-تماس-کوچیک.html"><span class="ex-num">9.</span> فرم تماس کوچیک</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">فرم</span></li>
+<li data-title="صفحهٔ معرفی یک‌صفحه‌ای" data-level="medium" data-topic="ترکیبی"><a href="10-صفحهٔ-معرفی-یک‌صفحه‌ای.html"><span class="ex-num">10.</span> صفحهٔ معرفی یک‌صفحه‌ای</a> <span class="ex-badge medium">متوسط</span> <span class="topic-tag">ترکیبی</span></li>
 </ul>
-<div class="navbtn" style="margin-top:1.5rem;"><a href="../index.html">← بازگشت به همه زبان‌ها</a></div>
+<p class="ex-empty" id="exEmpty" hidden>تمرینی با این فیلتر پیدا نشد. جست‌وجو یا فیلتر را عوض کن.</p>
 </article>
 </div>
 </main>
+<footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/tamrin-filter.js"></script>
 </body>
 </html>
