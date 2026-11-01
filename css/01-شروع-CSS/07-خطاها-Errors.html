@@ -55,27 +55,39 @@
 <p>وقتی استایل اعمال نمی‌شود، معمولاً یکی از این سه مورد اتفاق افتاده: علامت فراموش شده، انتخاب‌گر اشتباه نوشته شده، یا فایل CSS به درستی وصل نشده است.</p>
 
 <h3>خطای ۱: فراموشی نقطه‌ویرگول یا آکولاد</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">p {
   color: red
   font-size: 18px
-}</div></div>
+}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">p {</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">color: red</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">font-size: 18px</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان بلوک استایل.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>مشکل:</strong> بعد از red و 18px علامت ; جا افتاده.<br><strong>نتیجه:</strong> استایل اعمال نمی‌شود یا فقط بخشی از آن کار می‌کند.<br><strong>درست:</strong></div>
+<div class="example-unit">
 <div class="codewrap"><div class="code">p {
   color: red;
   font-size: 18px;
-}</div></div>
+}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">p {</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">color: red;</code><span class="ln-exp"> — ویژگی «color» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">font-size: 18px;</code><span class="ln-exp"> — ویژگی «font-size» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان بلوک استایل.</span></li></ol></div>
+</div></div>
 
 <h3>خطای ۲: انتخاب‌گر اشتباه</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">.titel {
   color: navy;
-}</div></div>
+}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">.titel {</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">color: navy;</code><span class="ln-exp"> — ویژگی «color» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان بلوک استایل.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn">اگر در HTML نوشته‌ای <code>class="title"</code> ولی در CSS نوشته‌ای <code>.titel</code>، هیچ اتفاقی نمی‌افتد. املای دقیق مهم است.</div>
 
 <h3>خطای ۳: فایل CSS وصل نشده</h3>
 <p>اگر از فایل خارجی استفاده می‌کنی، مسیر فایل را دوباره چک کن:</p>
-<div class="codewrap"><div class="code">&lt;link rel="stylesheet" href="css/style.css"&gt;</div></div>
+<div class="example-unit">
+<div class="codewrap"><div class="code">&lt;link rel="stylesheet" href="css/style.css"&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div>
 <div class="exp">اگر مسیر اشتباه باشد، هیچ استایلی اعمال نمی‌شود. در ابزارهای توسعه‌دهنده مرورگر (F12) می‌توانی ببینی فایل لود شده یا نه.</div>
 
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی حداقل دو خطای رایج را در کد خودت پیدا و درست کنی.</div>
@@ -99,30 +111,6 @@
 </div>
 </article>
 </div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="error" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>خطاها Errors</strong> در مسیر CSS.</p>
-<p>مدیریت خطا برنامه را در برابر ورودی بد و شرایط غیرمنتظره مقاوم می‌کند.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «خطاها Errors» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>خطا را بگیر، پیام روشن بده، و در صورت امکان مسیر جایگزین داشته باش.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>بلعیدن خطا بدون پیام</li><li>پیام مبهم برای کاربر.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «خطاها Errors» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «خطاها Errors» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

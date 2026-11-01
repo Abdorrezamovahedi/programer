@@ -54,17 +54,23 @@
 <div class="good"><strong>ارتباط با قبل:</strong> همان list که قبلاً دیدی، اینجا نقش ساختار دادهٔ خاص را بازی می‌کند.</div>
 <h3>مفهوم</h3><p>ساختار داده نحوهٔ چیدن اطلاعات است؛ الگوریتم نحوهٔ پردازش آن. با list می‌توان بسیاری از ایده‌ها را ساده شبیه‌سازی کرد تا مفهوم جا بیفتد.</p>
 <h3>مثال 1: پشته با list (LIFO)</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">stack = []
 stack.append(&quot;A&quot;)
 stack.append(&quot;B&quot;)
 print(stack.pop())
-print(stack)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(stack)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">stack = []</code><span class="ln-exp"> — یک مقدار را داخل «stack» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">stack.append(&quot;A&quot;)</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">stack.append(&quot;B&quot;)</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(stack.pop())</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(stack)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>append:</strong> ورود به بالای پشته.<br>
 <strong>pop:</strong> خروج از بالا → B؛ LIFO.<br>
 <strong>باقی‌مانده:</strong> فقط A می‌ماند.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">stack = []
-stack.pop()</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+stack.pop()</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">stack = []</code><span class="ln-exp"> — یک مقدار را داخل «stack» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">stack.pop()</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> پشته خالی است.<br><strong>چه می‌بینی؟</strong> IndexError<br><strong>درست:</strong> قبل از pop چک کن if stack:</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> سه عنصر push کن، یکی pop کن و محتویات باقی‌مانده را چاپ کنی.</div>
@@ -79,30 +85,6 @@ stack.pop()</div></div><button type="button" class="trybtn">مشاهده در ا
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="15-مرتب-سازی-رادیکس-Radix-Sort.html">← مرتب سازی رادیکس (Radix Sort)</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>مرتب سازی ادغامی Merge Sort</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «مرتب سازی ادغامی Merge Sort» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «مرتب سازی ادغامی Merge Sort» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «مرتب سازی ادغامی Merge Sort» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

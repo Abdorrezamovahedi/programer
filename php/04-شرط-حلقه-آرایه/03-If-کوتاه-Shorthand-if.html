@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
@@ -153,15 +154,21 @@
 <h3>ساختار (Syntax)</h3><div class="code">if ($x &gt; 0) { }
 for ($i = 1; $i &lt;= 3; $i++) { }</div>
 <h3>مثال 1: تصمیم و تکرار</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 $n = 7;
 if ($n % 2 === 0) { echo &quot;زوج&quot;; } else { echo &quot;فرد&quot;; }
 for ($i = 1; $i &lt;= 3; $i++) { echo $i; }
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">$n = 7;</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">if ($n % 2 === 0) { echo &quot;زوج&quot;; } else { echo &quot;فرد&quot;; }</code><span class="ln-exp"> — شرط را بررسی می‌کند؛ اگر درست باشد وارد این بخش می‌شود.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">for ($i = 1; $i &lt;= 3; $i++) { echo $i; }</code><span class="ln-exp"> — یک حلقه تکرار را شروع می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>% و ===:</strong> زوج/فرد بودن را می‌سنجد.<br>
 <strong>for:</strong> از ۱ تا ۳ تکرار می‌کند.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">if ($x = 1) {}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">if ($x = 1) {}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">if ($x = 1) {}</code><span class="ln-exp"> — شرط را بررسی می‌کند؛ اگر درست باشد وارد این بخش می‌شود.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> یک مساوی مقدار می‌گذارد نه مقایسه.<br><strong>چه می‌بینی؟</strong> مسیر اشتباه<br><strong>درست:</strong> if ($x === 1)</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> اعداد ۱ تا ۵ را با for چاپ کنی.</div>
@@ -175,30 +182,6 @@ for ($i = 1; $i &lt;= 3; $i++) { echo $i; }
 </ol>
 <p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
 <div class="navbtn lesson-nav"><a href="02-If-Else-If-Else.html">← قبلی</a><a href="04-If-تو-در-تو-Nested-if.html">بعدی →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="loop" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>If کوتاه Shorthand if</strong> در مسیر PHP.</p>
-<p>حلقه برای تکرار یک کار است تا وقتی شرط برقرار باشد یا روی مجموعه‌ای از آیتم‌ها حرکت کنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «If کوتاه Shorthand if» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مشخص کن چه چیزی تکرار شود، شرط توقف چیست، و داخل حلقه چه تغییری رخ می‌دهد.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حلقه بی‌نهایت</li><li>تغییر ندادن متغیر شرط</li><li>یکی زیاد یا یکی کم شمردن بازه.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «If کوتاه Shorthand if» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «If کوتاه Shorthand if» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

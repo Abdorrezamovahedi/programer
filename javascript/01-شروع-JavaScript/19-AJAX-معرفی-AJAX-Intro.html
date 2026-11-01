@@ -61,24 +61,33 @@
 <h3>مفهوم به زبان ساده</h3><p>JavaScript را مرورگر اجرا می‌کند تا صفحه تعاملی شود. console.log برای دیدن مقدار هنگام یادگیری است.</p>
 <h3>فهرست معرفی: شروع JS</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code">// خروجی در Console مرورگر (F12)
 console.log(&quot;سلام&quot;);     // چاپ متن
 console.log(2 + 3);      // چاپ نتیجهٔ حساب
 const name = &quot;سارا&quot;;     // ثابت نام
-console.log(name);       // چاپ مقدار متغیر</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+console.log(name);       // چاپ مقدار متغیر</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">// خروجی در Console مرورگر (F12)</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">console.log(&quot;سلام&quot;);     // چاپ متن</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">console.log(2 + 3);      // چاپ نتیجهٔ حساب</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">const name = &quot;سارا&quot;;     // ثابت نام</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">console.log(name);       // چاپ مقدار متغیر</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <h3>مثال 1: متن و عدد</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">console.log(&quot;hi&quot;);
 console.log(10 / 2);
 let n = 1;
 n = 2;
-console.log(n);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+console.log(n);</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">console.log(&quot;hi&quot;);</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">console.log(10 / 2);</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">let n = 1;</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">n = 2;</code><span class="ln-exp"> — یک مقدار را داخل «n» ذخیره می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">console.log(n);</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> متن در کنسول.<br>
 <strong>خط ۲:</strong> حاصل تقسیم → ۵.<br>
 <strong>خط ۳:</strong> متغیر قابل تغییر.<br>
 <strong>خط ۴:</strong> مقدار عوض شد.<br>
 <strong>خط ۵:</strong> چاپ ۲.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">console.log(salam)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">console.log(salam)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">console.log(salam)</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> بدون " (دابل‌کوتیشن) نام متغیر است.<br><strong>چه می‌بینی؟</strong> ReferenceError<br><strong>درست:</strong> console.log(&quot;salam&quot;)</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> دو log در Console ببینی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -91,30 +100,6 @@ console.log(n);</div></div><button type="button" class="trybtn">مشاهده د�
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="18-مقدمه-Web-API-Web-API-Intro.html">← مقدمه Web API (Web API Intro)</a><a href="20-JSON-معرفی-JSON-Intro.html">JSON معرفی (JSON Intro) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>AJAX معرفی AJAX Intro</strong> در مسیر جاوااسکریپت.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «AJAX معرفی AJAX Intro» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «AJAX معرفی AJAX Intro» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «AJAX معرفی AJAX Intro» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

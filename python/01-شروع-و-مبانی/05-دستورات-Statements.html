@@ -51,10 +51,13 @@
 <p>دستور یعنی یک کار کامل که به پایتون می‌گویی انجام بدهد. مثل «این مقدار را ذخیره کن» یا «این متن را چاپ کن».</p>
 
 <h3>هر خط یک دستور</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">name = "سارا"
 age = 25
 print(name)
-print(age)</div></div>
+print(age)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">name = &quot;سارا&quot;</code><span class="ln-exp"> — یک مقدار را داخل «name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">age = 25</code><span class="ln-exp"> — یک مقدار را داخل «age» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(age)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">
 <strong>خط ۱:</strong> یک دستور برای ساخت متغیر name<br>
@@ -65,8 +68,11 @@ print(age)</div></div>
 <h3>ترتیب اجرا مهم است</h3>
 <p>پایتون از بالا به پایین خط‌ها را یکی‌یکی اجرا می‌کند. اگر متغیری را قبل از تعریف استفاده کنی، خطا می‌گیری.</p>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print(city)   # خطا! هنوز تعریف نشده
-city = "تهران"</div></div>
+city = "تهران"</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(city)   # خطا! هنوز تعریف نشده</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">city = &quot;تهران&quot;</code><span class="ln-exp"> — یک مقدار را داخل «city» ذخیره می‌کند.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn">همیشه اول تعریف کن، بعد استفاده کن.</div>
 
@@ -90,30 +96,6 @@ city = "تهران"</div></div>
 </div>
 </article>
 </div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>دستورات Statements</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «دستورات Statements» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: مفهوم «دستورات Statements» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «دستورات Statements» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

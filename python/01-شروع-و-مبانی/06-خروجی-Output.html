@@ -83,9 +83,12 @@
 
 <h3>ساده‌ترین شکل</h3>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print("سلام")
 print(42)
-print("جمع =", 10 + 5)</div></div>
+print("جمع =", 10 + 5)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;سلام&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(42)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(&quot;جمع =&quot;, 10 + 5)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="exp">
@@ -97,8 +100,11 @@ print("جمع =", 10 + 5)</div></div>
 <h3>چند مقدار در یک print</h3>
 <p>می‌توانی چند چیز را با کاما از هم جدا کنی. پایتون به طور پیش‌فرض بین آن‌ها فاصله می‌گذارد:</p>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print("اقلام:", 3, "مبلغ:", 120)
-print("جمع:", 360)</div></div>
+print("جمع:", 360)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;اقلام:&quot;, 3, &quot;مبلغ:&quot;, 120)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;جمع:&quot;, 360)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="exp">
@@ -109,8 +115,11 @@ print("جمع:", 360)</div></div>
 <h3>کنترل فاصله با sep</h3>
 <p>پارامتر <code>sep</code> مشخص می‌کند بین مقدارها چه چیزی قرار بگیرد:</p>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print("سال", 2026, sep="-")
-print("نام", "خانوادگی", sep=" | ")</div></div>
+print("نام", "خانوادگی", sep=" | ")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;سال&quot;, 2026, sep=&quot;-&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;نام&quot;, &quot;خانوادگی&quot;, sep=&quot; | &quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="exp">
@@ -121,8 +130,11 @@ print("نام", "خانوادگی", sep=" | ")</div></div>
 <h3>کنترل پایان خط با end</h3>
 <p>به طور پیش‌فرض print بعد از چاپ به خط بعد می‌رود. با <code>end</code> می‌توانی این رفتار را عوض کنی:</p>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print("در حال بارگذاری", end="...")
-print(" تمام شد")</div></div>
+print(" تمام شد")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;در حال بارگذاری&quot;, end=&quot;...&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot; تمام شد&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="exp">
@@ -131,8 +143,11 @@ print(" تمام شد")</div></div>
 
 <h3>اشتباه رایج</h3>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print("سلام"
-print("دنیا")</div></div>
+print("دنیا")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;سلام&quot;</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;دنیا&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn">
@@ -141,8 +156,11 @@ print("دنیا")</div></div>
 <strong>درست:</strong>
 </div>
 
+<div class="example-unit">
 <div class="codewrap"><div class="code">print("سلام")
-print("دنیا")</div></div>
+print("دنیا")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;سلام&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;دنیا&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 
 <div class="good">
 <strong>معیار تمام‌شدن درس:</strong><br>
@@ -175,30 +193,6 @@ print("دنیا")</div></div>
 </article>
 </div>
 </div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>خروجی Output</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «خروجی Output» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: مفهوم «خروجی Output» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «خروجی Output» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 

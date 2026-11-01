@@ -68,18 +68,27 @@
 for i, item in enumerate(a):
     ...</div>
 <h3>مثال 1: for ساده</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">for name in [&quot;سارا&quot;, &quot;علی&quot;, &quot;رضا&quot;]:
-    print(&quot;سلام&quot;, name)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+    print(&quot;سلام&quot;, name)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">for name in [&quot;سارا&quot;, &quot;علی&quot;, &quot;رضا&quot;]:</code><span class="ln-exp"> — یک حلقه تکرار را شروع می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;سلام&quot;, name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> هر دور name یکی از اسم‌ها می‌شود.<br>
 <strong>خط ۲:</strong> سه بار چاپ با اسم متفاوت.</div>
 <h3>مثال 2: enumerate</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">for i, name in enumerate([&quot;سارا&quot;, &quot;علی&quot;], start=1):
-    print(i, name)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+    print(i, name)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">for i, name in enumerate([&quot;سارا&quot;, &quot;علی&quot;], start=1):</code><span class="ln-exp"> — یک حلقه تکرار را شروع می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(i, name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> i شماره است؛ start=1 یعنی از ۱ شروع کن نه ۰.<br>
 <strong>خط ۲:</strong> ۱ سارا / ۲ علی.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">for x in [1, 2, 3]
-print(x)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(x)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">for x in [1, 2, 3]</code><span class="ln-exp"> — یک حلقه تکرار را شروع می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(x)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> بعد از for باید : باشد و بدنه تورفتگی داشته باشد.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> for x in [1, 2, 3]:
     print(x)</div>
@@ -97,30 +106,6 @@ print(x)</div></div><button type="button" class="trybtn">مشاهده در اد�
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="08-حذف-آیتم-Remove-List-Items.html">← حذف آیتم (Remove List Items)</a><a href="10-آزمون-حلقه-روی-لیست.html">آزمون (حلقه روی لیست) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="loop" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>حلقه روی لیست Loop Lists</strong> در مسیر پایتون.</p>
-<p>حلقه برای تکرار یک کار است تا وقتی شرط برقرار باشد یا روی مجموعه‌ای از آیتم‌ها حرکت کنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «حلقه روی لیست Loop Lists» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مشخص کن چه چیزی تکرار شود، شرط توقف چیست، و داخل حلقه چه تغییری رخ می‌دهد.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حلقه بی‌نهایت</li><li>تغییر ندادن متغیر شرط</li><li>یکی زیاد یا یکی کم شمردن بازه.</li></ul>
-<p>پیشنهاد: مفهوم «حلقه روی لیست Loop Lists» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «حلقه روی لیست Loop Lists» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

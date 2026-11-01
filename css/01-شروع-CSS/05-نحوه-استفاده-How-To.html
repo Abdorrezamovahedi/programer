@@ -56,24 +56,33 @@
 
 <h3>روش ۱: فایل خارجی (بهترین روش)</h3>
 <p>یک فایل جدا با پسوند <code>.css</code> می‌سازی و از HTML به آن لینک می‌دهی.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;!-- در فایل HTML --&gt;
-&lt;link rel="stylesheet" href="styles.css"&gt;</div></div>
+&lt;link rel="stylesheet" href="styles.css"&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;!-- در فایل HTML --&gt;</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">این روش تمیزترین و حرفه‌ای‌ترین است. یک فایل CSS را می‌توانی روی چندین صفحه استفاده کنی.</div>
 
 <h3>روش ۲: داخلی (Internal)</h3>
 <p>کد CSS را داخل تگ <code>&lt;style&gt;</code> در بخش head صفحه می‌نویسی.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;head&gt;
   &lt;style&gt;
     p { color: #1e293b; }
   &lt;/style&gt;
-&lt;/head&gt;</div></div>
+&lt;/head&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;head&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">&lt;style&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">p { color: #1e293b; }</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">&lt;/style&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">&lt;/head&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">برای صفحه‌های تک‌نفره یا تست سریع مناسب است، اما برای سایت بزرگ توصیه نمی‌شود.</div>
 
 <h3>روش ۳: درون‌خطی (Inline)</h3>
 <p>استایل را مستقیماً روی خود تگ می‌نویسی.</p>
-<div class="codewrap"><div class="code">&lt;p style="color: red; font-size: 1.2rem;"&gt;متن نمونه&lt;/p&gt;</div></div>
+<div class="example-unit">
+<div class="codewrap"><div class="code">&lt;p style="color: red; font-size: 1.2rem;"&gt;متن نمونه&lt;/p&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;p style=&quot;color: red; font-size: 1.2rem;&quot;&gt;متن نمونه&lt;/p&gt;</code><span class="ln-exp"> — ویژگی «&lt;p style=&quot;color» را مقداردهی می‌کند.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">فقط برای تغییرات خیلی کوچک و موقت استفاده کن. در پروژه‌های واقعی کمتر از آن استفاده می‌شود.</div>
 
@@ -105,30 +114,6 @@
 </div>
 </article>
 </div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>نحوه استفاده How To</strong> در مسیر CSS.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «نحوه استفاده How To» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: مفهوم «نحوه استفاده How To» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «نحوه استفاده How To» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

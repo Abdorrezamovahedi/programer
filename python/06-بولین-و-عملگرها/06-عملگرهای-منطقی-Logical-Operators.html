@@ -49,24 +49,33 @@
 <h3>مفهوم به زبان ساده</h3><p>گاهی چند شرط را با هم لازم داری. and سخت‌گیر است؛ or آسان‌گیر؛ not برعکس می‌کند.</p>
 <h3>فهرست معرفی: عملگرهای منطقی</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code"># عملگرهای منطقی — ترکیب شرط‌ها
 print(True and False)   # and: هر دو باید True باشند → False
 print(True or False)    # or:  حداقل یکی True → True
 print(not True)         # not: برعکس → False
-print(5 &gt; 2 and 5 &gt; 10) # مثال ترکیبی → False</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(5 &gt; 2 and 5 &gt; 10) # مثال ترکیبی → False</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code"># عملگرهای منطقی — ترکیب شرط‌ها</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(True and False)   # and: هر دو باید True باشند → False</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(True or False)    # or:  حداقل یکی True → True</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(not True)         # not: برعکس → False</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(5 &gt; 2 and 5 &gt; 10) # مثال ترکیبی → False</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>and:</strong> اگر یکی False باشد کل عبارت False است.<br>
 <strong>or:</strong> اگر یکی True باشد کل عبارت True است.</div>
 <h3>مثال 1: ورود با دو شرط</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">age = 20
 has_id = True
 print(age &gt;= 18 and has_id)
-print(age &lt; 12 or age &gt; 65)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(age &lt; 12 or age &gt; 65)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">age = 20</code><span class="ln-exp"> — یک مقدار را داخل «age» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">has_id = True</code><span class="ln-exp"> — یک مقدار را داخل «has_id» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(age &gt;= 18 and has_id)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(age &lt; 12 or age &gt; 65)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> سن ۲۰.<br>
 <strong>خط ۲:</strong> کارت دارد True.<br>
 <strong>خط ۳:</strong> هر دو شرط ورود؛ نتیجه True.<br>
 <strong>خط ۴:</strong> کودک یا سالمند؟ False.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">print(not age &gt;= 18 and has_id)  # بدون پرانتز با عجله</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(not age &gt;= 18 and has_id)  # بدون پرانتز با عجله</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(not age &gt;= 18 and has_id)  # بدون پرانتز با عجله</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> اولویت not ممکن است خلاف قصدت باشد.<br><strong>چه می‌بینی؟</strong> منطق غیرمنتظره<br><strong>درست:</strong> با () واضح بنویس: not (age &gt;= 18 and has_id)</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک عبارت and و یک or خودت بنویسی و نتیجه را درست حدس بزنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -80,30 +89,6 @@ print(age &lt; 12 or age &gt; 65)</div></div><button type="button" class="trybtn
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="05-عملگرهای-مقایسه-ای-Comparison-Operators.html">← عملگرهای مقایسه ای (Comparison Operators)</a><a href="07-عملگرهای-هویتی-Identity-Operators.html">عملگرهای هویتی (Identity Operators) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="operator" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>عملگرهای منطقی Logical Operators</strong> در مسیر پایتون.</p>
-<p>عملگرها روی مقدارها کار می‌کنند: حسابی، مقایسه و منطقی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «عملگرهای منطقی Logical Operators» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>اولویت عملگرها را بشناس و برای وضوح از پرانتز استفاده کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>اشتباه = با ==</li><li>اولویت نادرست</li><li>عملگر منطقی غلط.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «عملگرهای منطقی Logical Operators» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «عملگرهای منطقی Logical Operators» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

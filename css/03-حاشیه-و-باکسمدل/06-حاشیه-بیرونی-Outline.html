@@ -53,6 +53,7 @@
 <h3>مفهوم به زبان ساده</h3><p>هر عنصر یک جعبه است: محتوا، فاصله داخلی، لبه، فاصله بیرونی.</p>
 <h3>فهرست معرفی: مدل جعبه</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code">/* مدل جعبه */
 .box {
   padding: 16px;              /* داخل لبه تا محتوا */
@@ -60,18 +61,26 @@
   margin-bottom: 12px;        /* بیرون لبه تا همسایه */
   border-radius: 8px;         /* گوشه گرد */
   box-sizing: border-box;     /* width قابل‌پیش‌بینی‌تر */
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">/* مدل جعبه */</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">.box {</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">padding: 16px;              /* داخل لبه تا محتوا */</code><span class="ln-exp"> — ویژگی «padding» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">border: 1px solid #e2e8f0; /* خود لبه */</code><span class="ln-exp"> — ویژگی «border» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">margin-bottom: 12px;        /* بیرون لبه تا همسایه */</code><span class="ln-exp"> — ویژگی «margin-bottom» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 6:</span> <code class="ln-code">border-radius: 8px;         /* گوشه گرد */</code><span class="ln-exp"> — ویژگی «border-radius» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 7:</span> <code class="ln-code">box-sizing: border-box;     /* width قابل‌پیش‌بینی‌تر */</code><span class="ln-exp"> — ویژگی «box-sizing» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 8:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان بلوک استایل.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <h3>مثال 1: دو کارت</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">.card {
   padding: 16px;
   margin-bottom: 12px;
   border: 1px solid #ddd;
-}</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">.card {</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">padding: 16px;</code><span class="ln-exp"> — ویژگی «padding» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">margin-bottom: 12px;</code><span class="ln-exp"> — ویژگی «margin-bottom» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">border: 1px solid #ddd;</code><span class="ln-exp"> — ویژگی «border» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان بلوک استایل.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>padding:</strong> نفس داخل کارت.<br>
 <strong>margin-bottom:</strong> فاصله با کارت بعدی.<br>
 <strong>border:</strong> لبه.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">/* فقط padding برای جدا کردن دو کارت */</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">/* فقط padding برای جدا کردن دو کارت */</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">/* فقط padding برای جدا کردن دو کارت */</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> padding داخل است.<br><strong>چه می‌بینی؟</strong> از بیرون می‌چسبند<br><strong>درست:</strong> margin بین کارت‌ها</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> دو جعبه با margin جدا از هم ببینی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -84,30 +93,6 @@
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="05-حاشیه-های-گرد-Rounded-Borders.html">← حاشیه های گرد (Rounded Borders)</a><a href="07-عرض-حاشیه-بیرونی-Outline-Width.html">عرض حاشیه بیرونی (Outline Width) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="box" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>حاشیه بیرونی Outline</strong> در مسیر CSS.</p>
-<p>Box Model یعنی محتوا، padding، border و margin با هم اندازه نهایی عنصر را می‌سازند.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «حاشیه بیرونی Outline» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>هر لایه را جدا امتحان کن تا ببینی فاصله از کجا می‌آید.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>قاقی کردن margin و padding</li><li>محاسبات عرض غیرمنتظره.</li></ul>
-<p>پیشنهاد: مفهوم «حاشیه بیرونی Outline» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «حاشیه بیرونی Outline» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

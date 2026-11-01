@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
@@ -46,17 +47,23 @@
 <h3>مفهوم به زبان ساده</h3><p><code>preg_split</code> رشته را هرجا با الگوی داده‌شده تطبیق کند می‌شکند و بخش‌ها را به شکل آرایه برمی‌گرداند. برخلاف <code>explode</code> می‌توانی جداکننده‌های متنوع یا چندتایی را با یک الگوی منظم پوشش بدهی.</p>
 <h3>ساختار (Syntax)</h3><div class="code">preg_split($pattern, $subject, $limit, $flags);</div>
 <h3>مثال: جداکردن برچسب‌ها</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 $tagText = &quot;php, regex; آموزش&quot;;
 $tags = preg_split('/\s*[,;]\s*/', $tagText);
 print_r($tags);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">$tagText = &quot;php, regex; آموزش&quot;;</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">$tags = preg_split(&#x27;/\s*[,;]\s*/&#x27;, $tagText);</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print_r($tags);</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خروجی:</strong> آرایه‌ای با سه مقدار <code>php</code>، <code>regex</code> و <code>آموزش</code>.<br><strong>\s*:</strong> فاصلهٔ اختیاری اطراف جداکننده را پوشش می‌دهد.<br><strong>[,;]:</strong> ویرگول یا نقطه‌ویرگول را می‌پذیرد.</div>
 <h3>کنترل بخش‌های خالی</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 $tags = preg_split('/\s*[,;]\s*/', &quot;php,,regex;&quot;, -1, PREG_SPLIT_NO_EMPTY);
 print_r($tags);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">$tags = preg_split(&#x27;/\s*[,;]\s*/&#x27;, &quot;php,,regex;&quot;, -1, PREG_SPLIT_NO_EMPTY);</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print_r($tags);</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>PREG_SPLIT_NO_EMPTY:</strong> بخش‌های خالی حاصل از جداکننده‌های پشت‌سرهم یا انتهایی را حذف می‌کند.</div>
 <h3>اشتباه رایج</h3>
 <div class="warn"><strong>الگوی جداکننده را بیش از حد محدود نکن.</strong> اگر ورودی هم ویرگول و هم نقطه‌ویرگول دارد، الگو باید هر دو را پوشش دهد؛ در غیر این صورت بعضی بخش‌ها جدا نمی‌شوند.</div>
@@ -71,30 +78,6 @@ print_r($tags);
 </ol>
 <p class="rel">برای امن‌کردن متن دلخواهی که قرار است بخشی از الگو شود، درس بعدی دربارهٔ <code>preg_quote</code> را ببین.</p>
 <div class="navbtn lesson-nav"><a href="06-جایگزینی-با-کال-بک-preg-replace-callback.html">← قبلی</a><a href="08-escape-الگو-preg-quote.html">بعدی →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>برش با الگو preg split</strong> در مسیر PHP.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «برش با الگو preg split» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «برش با الگو preg split» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «برش با الگو preg split» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

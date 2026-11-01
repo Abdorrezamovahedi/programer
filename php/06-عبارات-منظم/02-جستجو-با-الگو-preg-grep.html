@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
@@ -46,11 +47,14 @@
 <h3>مفهوم به زبان ساده</h3><p><code>preg_grep</code> هر عضو آرایه را با الگو می‌سنجد و اعضای منطبق را در یک آرایهٔ تازه برمی‌گرداند. کلیدهای اصلی آرایه حفظ می‌شوند؛ اگر اندیس‌های پیوسته لازم داری، می‌توانی نتیجه را با <code>array_values</code> بازشماری کنی.</p>
 <h3>ساختار (Syntax)</h3><div class="code">preg_grep($pattern, $array, $flags = 0);</div>
 <h3>مثال: انتخاب کدهای SKU</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 $codes = [&quot;SKU-104&quot;, &quot;BOX-22&quot;, &quot;SKU-208&quot;];
 $skuCodes = preg_grep('/^SKU-/', $codes);
 print_r(array_values($skuCodes));
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">$codes = [&quot;SKU-104&quot;, &quot;BOX-22&quot;, &quot;SKU-208&quot;];</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">$skuCodes = preg_grep(&#x27;/^SKU-/&#x27;, $codes);</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print_r(array_values($skuCodes));</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خروجی:</strong> دو مقدار <code>SKU-104</code> و <code>SKU-208</code> در آرایهٔ نتیجه قرار می‌گیرند.<br><strong>/^SKU-/:</strong> ابتدای رشته باید با <code>SKU-</code> شروع شود.</div>
 <h3>اشتباه رایج</h3>
 <div class="warn"><strong>برای یک رشته از <code>preg_grep</code> استفاده نکن.</strong> این تابع ورودی آرایه‌ای می‌خواهد؛ برای بررسی یک متن، <code>preg_match</code> مناسب است.</div>
@@ -65,30 +69,6 @@ print_r(array_values($skuCodes));
 </ol>
 <p class="rel">در درس بعد، با <code>preg_match</code> یک رشته را بررسی می‌کنی و گروه‌های تطبیق را می‌خوانی.</p>
 <div class="navbtn lesson-nav"><a href="01-عبارات-منظم-RegEx.html">← قبلی</a><a href="03-تطبیق-preg-match.html">بعدی →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>جستجو با الگو preg grep</strong> در مسیر PHP.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «جستجو با الگو preg grep» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «جستجو با الگو preg grep» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «جستجو با الگو preg grep» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

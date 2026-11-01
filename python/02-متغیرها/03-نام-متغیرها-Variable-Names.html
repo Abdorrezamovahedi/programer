@@ -48,22 +48,31 @@
 # 2x = 1      # غیرمجاز
 # my-name = 1  # غیرمجاز</div>
 <h3>مثال 1: نام‌های درست</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">user_name = &quot;سارا&quot;
 total_price = 150000
 is_active = True
-print(user_name, total_price, is_active)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(user_name, total_price, is_active)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">user_name = &quot;سارا&quot;</code><span class="ln-exp"> — یک مقدار را داخل «user_name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">total_price = 150000</code><span class="ln-exp"> — یک مقدار را داخل «total_price» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">is_active = True</code><span class="ln-exp"> — یک مقدار را داخل «is_active» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(user_name, total_price, is_active)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> user_name با حرف شروع شده و کلمات با _ جدا شده‌اند (سبک رایج پایتون).<br>
 <strong>خط ۲:</strong> total_price معنی دارد: خواننده می‌فهمد این قیمت کل است.<br>
 <strong>خط ۳:</strong> is_active برای بولین رایج است؛ True/False بدون " (دابل‌کوتیشن) نوشته می‌شوند.<br>
 <strong>خط ۴:</strong> سه مقدار چاپ می‌شوند تا ببینی انتساب درست بوده.</div>
 <h3>مثال 2: نام‌های غیرمجاز (اجرا نکن؛ فقط برای فهم خطا)</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code"># 2name = &quot;بد&quot;     # شروع با عدد
 # my-name = &quot;بد&quot;   # خط تیره
-# class = 1        # کلمهٔ کلیدی</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+# class = 1        # کلمهٔ کلیدی</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code"># 2name = &quot;بد&quot;     # شروع با عدد</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code"># my-name = &quot;بد&quot;   # خط تیره</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code"># class = 1        # کلمهٔ کلیدی</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>توضیح:</strong> هر کدام اگر از حالت کامنت خارج شوند SyntaxError می‌دهند. class برای تعریف کلاس رزرو شده است.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">for = 10
-print(for)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(for)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">for = 10</code><span class="ln-exp"> — یک مقدار را داخل «for» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(for)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> for کلمهٔ کلیدی حلقه است؛ نمی‌تواند نام متغیر باشد.<br><strong>چه می‌بینی؟</strong> SyntaxError: invalid syntax<br><strong>درست:</strong> for_count = 10
 print(for_count)</div>
@@ -81,30 +90,6 @@ print(for_count)</div>
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="02-آزمون-متغیرها.html">← آزمون (متغیرها)</a><a href="04-متغیرهای-سراسری-Global-Variables.html">متغیرهای سراسری (Global Variables) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="variable" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>نام متغیرها Variable Names</strong> در مسیر پایتون.</p>
-<p>متغیر مثل جعبه‌ای است که یک مقدار را با یک اسم نگه می‌دارد تا بعداً دوباره از آن استفاده کنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «نام متغیرها Variable Names» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>اول اسم معنادار انتخاب کن، بعد مقدار بده، سپس همان اسم را در دستورهای بعدی به کار ببر.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>استفاده از اسم‌های مبهم مثل a و b</li><li>فراموش کردن به‌روزرسانی مقدار</li><li>قاطی کردن نوع داده.</li></ul>
-<p>پیشنهاد: مفهوم «نام متغیرها Variable Names» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «نام متغیرها Variable Names» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

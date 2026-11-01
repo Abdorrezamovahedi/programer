@@ -51,10 +51,13 @@
 <p>در خیلی از زبان‌ها با آکولاد { } بلوک کد را مشخص می‌کنند. در پایتون به جای آکولاد از <strong>تورفتگی</strong> (فاصله از اول خط) استفاده می‌شود. این ویژگی باعث می‌شود کد پایتون خیلی خوانا باشد.</p>
 
 <h3>تورفتگی چگونه کار می‌کند؟</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">if True:
     print("این خط داخل بلوک است")
     print("این هم داخل همان بلوک است")
-print("این خط بیرون بلوک است")</div></div>
+print("این خط بیرون بلوک است")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">if True:</code><span class="ln-exp"> — شرط را بررسی می‌کند؛ اگر درست باشد وارد این بخش می‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;این خط داخل بلوک است&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(&quot;این هم داخل همان بلوک است&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(&quot;این خط بیرون بلوک است&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">
 خطوطی که فاصله از اول دارند، متعلق به بلوک بالایی هستند.<br>
@@ -62,23 +65,32 @@ print("این خط بیرون بلوک است")</div></div>
 </div>
 
 <h3>حروف بزرگ و کوچک مهم هستند</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">name = "Ali"
 print(name)   # درست
-# print(Name)  # خطا می‌دهد چون Name تعریف نشده</div></div>
+# print(Name)  # خطا می‌دهد چون Name تعریف نشده</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">name = &quot;Ali&quot;</code><span class="ln-exp"> — یک مقدار را داخل «name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(name)   # درست</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code"># print(Name)  # خطا می‌دهد چون Name تعریف نشده</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">پایتون بین name و Name تفاوت قائل می‌شود. همیشه یکسان بنویس.</div>
 
 <h3>اشتباه رایج تورفتگی</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">if True:
-print("خطا!")</div></div>
+print("خطا!")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">if True:</code><span class="ln-exp"> — شرط را بررسی می‌کند؛ اگر درست باشد وارد این بخش می‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;خطا!&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn">
 <strong>مشکل:</strong> بعد از : باید خط بعدی تورفتگی داشته باشد.<br>
 <strong>خطا:</strong> IndentationError<br>
 <strong>درست:</strong>
 </div>
+<div class="example-unit">
 <div class="codewrap"><div class="code">if True:
-    print("درست است")</div></div>
+    print("درست است")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">if True:</code><span class="ln-exp"> — شرط را بررسی می‌کند؛ اگر درست باشد وارد این بخش می‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;درست است&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
 
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی یک بلوک ساده با تورفتگی درست بنویسی و خطای IndentationError نگیری.</div>
 
@@ -101,30 +113,6 @@ print("خطا!")</div></div>
 </div>
 </article>
 </div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>ساختار نوشتاری Syntax</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «ساختار نوشتاری Syntax» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «ساختار نوشتاری Syntax» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «ساختار نوشتاری Syntax» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

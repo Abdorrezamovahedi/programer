@@ -64,16 +64,22 @@
 <div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «لیست‌ها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
 <h3>مفهوم</h3><p>این صفحه روی «مرجع متدهای لیست (List Methods Ref)» متمرکز است. مثال را خط‌به‌خط بخوان، بعد خودت یک مقدار را عوض کن.</p>
 <h3>مثال 1: شروع</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code"># مبحث: مرجع متدهای لیست (List Methods Ref)
 value = 10
 print(value)
-print(type(value))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(type(value))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code"># مبحث: مرجع متدهای لیست (List Methods Ref)</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">value = 10</code><span class="ln-exp"> — یک مقدار را داخل «value» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(value)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(type(value))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> کامنت موضوع؛ اجرا نمی‌شود.<br>
 <strong>خط ۲:</strong> یک مقدار نمونه در متغیر.<br>
 <strong>خط ۳:</strong> چاپ مقدار.<br>
 <strong>خط ۴:</strong> چاپ نوع تا ببینی با چه داده‌ای طرفی.</div>
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">print(undefined_name)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(undefined_name)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(undefined_name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> نامی که تعریف نشده.<br><strong>چه می‌بینی؟</strong> NameError<br><strong>درست:</strong> اول متغیر را تعریف کن یا نام را درست بنویس.</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «مرجع متدهای لیست» بنویسی و اجرا کنی.</div>
@@ -90,30 +96,6 @@ print(type(value))</div></div><button type="button" class="trybtn">مشاهده 
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="23-لیست-های-پیوندی-Linked-Lists.html">← لیست های پیوندی (Linked Lists)</a><a href="25-حذف-موارد-تکراری-لیست-Remove-List-Duplicates.html">حذف موارد تکراری لیست (Remove List Duplicates) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="array" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>مرجع متدهای لیست List Methods Ref</strong> در مسیر پایتون.</p>
-<p>آرایه/لیست مجموعه‌ای مرتب از مقدارهاست که با اندیس به هر عضو دسترسی داری.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «مرجع متدهای لیست List Methods Ref» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ساخت مجموعه، خواندن عضو، پیمایش با حلقه و افزودن/حذف را جداگانه تمرین کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>اندیس از صفر</li><li>خارج از محدوده</li><li>تغییر ناخواسته لیست اصلی.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «مرجع متدهای لیست List Methods Ref» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «مرجع متدهای لیست List Methods Ref» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

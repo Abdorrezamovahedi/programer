@@ -59,20 +59,29 @@
 <h3>ساختار</h3><div class="code">d[&quot;k&quot;] = v
 d.update({&quot;k&quot;: v})</div>
 <h3>مثال 1: عوض کردن و افزودن</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">user = {&quot;name&quot;: &quot;سارا&quot;, &quot;age&quot;: 20}
 user[&quot;age&quot;] = 21
 user[&quot;city&quot;] = &quot;تهران&quot;
-print(user)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(user)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">user = {&quot;name&quot;: &quot;سارا&quot;, &quot;age&quot;: 20}</code><span class="ln-exp"> — یک مقدار را داخل «user» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">user[&quot;age&quot;] = 21</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">user[&quot;city&quot;] = &quot;تهران&quot;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(user)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> age از ۲۰ به ۲۱.<br>
 <strong>خط ۳:</strong> کلید جدید city اضافه می‌شود.</div>
 <h3>مثال 2: update</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">user = {&quot;name&quot;: &quot;سارا&quot;}
 user.update({&quot;name&quot;: &quot;سارا محمدی&quot;, &quot;age&quot;: 20})
-print(user)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(user)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">user = {&quot;name&quot;: &quot;سارا&quot;}</code><span class="ln-exp"> — یک مقدار را داخل «user» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">user.update({&quot;name&quot;: &quot;سارا محمدی&quot;, &quot;age&quot;: 20})</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(user)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> name عوض و age اضافه می‌شود.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">d = {}
-d.add(&quot;a&quot;, 1)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+d.add(&quot;a&quot;, 1)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">d = {}</code><span class="ln-exp"> — یک مقدار را داخل «d» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">d.add(&quot;a&quot;, 1)</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> dict متد add مثل set ندارد.<br><strong>چه می‌بینی؟</strong> AttributeError<br><strong>درست:</strong> d[&quot;a&quot;] = 1</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «تغییر آیتم های دیکشنری» بنویسی و اجرا کنی.</div>
@@ -89,30 +98,6 @@ d.add(&quot;a&quot;, 1)</div></div><button type="button" class="trybtn">مشاه
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="04-آزمون-دسترسی-دیکشنری.html">← آزمون (دسترسی دیکشنری)</a><a href="06-آزمون-تغییر-دیکشنری.html">آزمون (تغییر دیکشنری) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>تغییر آیتم های دیکشنری Change Items</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «تغییر آیتم های دیکشنری Change Items» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «تغییر آیتم های دیکشنری Change Items» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «تغییر آیتم های دیکشنری Change Items» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

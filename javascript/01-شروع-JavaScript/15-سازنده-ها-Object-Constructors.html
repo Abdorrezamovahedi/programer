@@ -61,23 +61,32 @@
 <h3>مفهوم به زبان ساده</h3><p>const جلوی عوض شدن ارجاع را می‌گیرد. let وقتی مقدار باید عوض شود.</p>
 <h3>فهرست معرفی: let و const</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code">// اعلام متغیر
 let score = 0;        // قابل تغییر
 score = 10;           // انتساب مجدد OK
 const APP = &quot;Demo&quot;;   // ثابت؛ دوباره APP = ... خطا
-// var قدیمی است — در کد جدید استفاده نکن</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+// var قدیمی است — در کد جدید استفاده نکن</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">// اعلام متغیر</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">let score = 0;        // قابل تغییر</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">score = 10;           // انتساب مجدد OK</code><span class="ln-exp"> — یک مقدار را داخل «score» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">const APP = &quot;Demo&quot;;   // ثابت؛ دوباره APP = ... خطا</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">// var قدیمی است — در کد جدید استفاده نکن</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <h3>مثال 1: امتیاز</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">let score = 0;
 score += 5;
 const title = &quot;Game&quot;;
-console.log(score, title);</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+console.log(score, title);</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">let score = 0;</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">score += 5;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">const title = &quot;Game&quot;;</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">console.log(score, title);</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> شروع از ۰.<br>
 <strong>خط ۲:</strong> ۵ تا اضافه.<br>
 <strong>خط ۳:</strong> نام بازی ثابت.<br>
 <strong>خط ۴:</strong> چاپ هر دو.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">const n = 1;
-n = 2;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+n = 2;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">const n = 1;</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">n = 2;</code><span class="ln-exp"> — یک مقدار را داخل «n» ذخیره می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> const دوباره انتساب نمی‌پذیرد.<br><strong>چه می‌بینی؟</strong> TypeError<br><strong>درست:</strong> let n = 1; n = 2;</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک let و یک const بسازی و log کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -90,30 +99,6 @@ n = 2;</div></div><button type="button" class="trybtn">مشاهده در ادی�
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><a href="14-حروف-UTF-8-UTF-8-Letters.html">← حروف UTF-8 (UTF-8 Letters)</a><a href="16-ساختارشکنی-Object-Destructuring.html">ساختارشکنی (Object Destructuring) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="oop" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>سازنده ها Object Constructors</strong> در مسیر جاوااسکریپت.</p>
-<p>شیءگرایی کمک می‌کند داده و رفتار مرتبط را کنار هم در قالب کلاس/شیء مدل کنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «سازنده ها Object Constructors» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مفهوم موجودیت را مشخص کن، ویژگی‌ها و رفتارها را جدا کن، بعد مثال کوچک بساز.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>کلاس بیش‌ازحد پیچیده</li><li>ارث‌بری غیرضروری.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «سازنده ها Object Constructors» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «سازنده ها Object Constructors» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

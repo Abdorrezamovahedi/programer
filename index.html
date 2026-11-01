@@ -51,192 +51,69 @@
       </nav>
     </header>
 
-    <main id="main-content">
-      <div class="wrap">
-        <div class="hero mcd-hero">
-          <h1>آموزش برنامه‌نویسی از صفر تا ساخت پروژه</h1>
-          <p>اگر می‌خواهی برنامه‌نویسی را از صفر یاد بگیری، MCD Code Up مسیر آموزش رایگان فارسی را مرحله‌به‌مرحله فراهم کرده است. از مفاهیم پایه تا تمرین عملی در Python، HTML، CSS، JavaScript و PHP پیش برو و با مثال واقعی مهارت بساز.</p>
-          <form class="home-search" role="search" id="homeSearchForm">
-            <label for="homeSearch">جستجو در عنوان درس‌ها</label>
-            <div class="home-search-row">
-              <input id="homeSearch" type="search" autocomplete="off" placeholder="مثلاً متغیر، حلقه، شرط یا فرم" aria-controls="homeSearchResults">
-              <button type="submit">جستجو</button>
-            </div>
-            <p id="homeSearchStatus" class="search-status" aria-live="polite">عنوان درس‌ها و مسیرهای آموزشی را جستجو کن.</p>
-            <ol id="homeSearchResults" class="home-search-results is-hidden" aria-label="نتایج جستجو"></ol>
-          </form>
+    
+
+<main id="main-content">
+  <div class="wrap home-clean">
+    <div class="hero mcd-hero">
+      <p class="hero-kicker">MCD Code Up · آموزش رایگان فارسی</p>
+      <h1>از صفر برنامه‌نویسی یاد بگیر</h1>
+      <p class="hero-lead">یک مسیر را انتخاب کن. درس‌ها کوتاه و مرحله‌به‌مرحله‌اند. لازم نیست همه بخش‌ها را یک‌جا بخوانی.</p>
+      <form class="home-search" role="search" id="homeSearchForm">
+        <label for="homeSearch">جستجوی درس</label>
+        <div class="home-search-row">
+          <input id="homeSearch" type="search" autocomplete="off" placeholder="مثلاً متغیر، حلقه، فرم…" aria-controls="homeSearchResults">
+          <button type="submit">جستجو</button>
         </div>
+        <p id="homeSearchStatus" class="search-status" aria-live="polite">اگر موضوع مشخصی داری، همین‌جا جستجو کن.</p>
+        <ol id="homeSearchResults" class="home-search-results is-hidden" aria-label="نتایج جستجو"></ol>
+      </form>
+    </div>
 
-        <section id="paths" class="home-section" aria-labelledby="paths-heading">
-          <div class="section-heading">
-            <div>
-              <span class="section-kicker">یادگیری مرحله‌به‌مرحله</span>
-              <h2 id="paths-heading">مسیرهای یادگیری</h2>
-            </div>
-            <a href="tamrin/index.html">رفتن به تمرین‌ها ←</a>
-          </div>
-          <div class="langs">
-            <a class="lang lang-link" href="python/index.html">
-              <span class="ic">🐍</span>
-              <b>Python</b>
-              <small>آموزش پایتون از مبانی تا کار با داده و پایگاه‌داده — مناسب شروع برای همه</small>
-            </a>
-            <a class="lang lang-link" href="html/index.html">
-              <span class="ic">📄</span>
-              <b>HTML</b>
-              <small>ساختار صفحه‌های وب، متن، لینک، تصویر و فرم‌ها را از پایه یاد بگیر</small>
-            </a>
-            <a class="lang lang-link" href="css/index.html">
-              <span class="ic">🎨</span>
-              <b>CSS</b>
-              <small>استایل‌دهی، رنگ، فونت، چیدمان و طراحی واکنش‌گرا برای صفحات زیبا</small>
-            </a>
-            <a class="lang lang-link" href="javascript/index.html">
-              <span class="ic">⚡</span>
-              <b>JavaScript</b>
-              <small>برنامه‌نویسی سمت مرورگر، کار با عناصر صفحه و ساخت تعامل</small>
-            </a>
-            <a class="lang lang-link" href="php/index.html">
-              <span class="ic">🐘</span>
-              <b>PHP</b>
-              <small>مبانی برنامه‌نویسی سمت سرور، فرم‌ها و کار با داده‌ها</small>
-            </a>
-          </div>
-        </section>
+    <section class="home-section" id="paths" aria-labelledby="paths-heading">
+      <div class="section-heading simple">
+        <h2 id="paths-heading">۱. زبان را انتخاب کن</h2>
+        <p class="section-help">فقط یکی را شروع کن. بعداً می‌توانی بقیه را هم یاد بگیری.</p>
+      </div>
+      <div class="langs langs-clean">
+        <a class="lang lang-link" href="python/index.html"><span class="ic">🐍</span><b>Python</b><small>شروع منطق برنامه‌نویسی</small></a>
+        <a class="lang lang-link" href="html/index.html"><span class="ic">📄</span><b>HTML</b><small>ساخت ساختار صفحه وب</small></a>
+        <a class="lang lang-link" href="css/index.html"><span class="ic">🎨</span><b>CSS</b><small>ظاهر و چیدمان سایت</small></a>
+        <a class="lang lang-link" href="javascript/index.html"><span class="ic">⚡</span><b>JavaScript</b><small>تعامل و پویایی صفحه</small></a>
+        <a class="lang lang-link" href="php/index.html"><span class="ic">🐘</span><b>PHP</b><small>منطق سمت سرور</small></a>
+      </div>
+    </section>
 
-        <section class="home-section" aria-labelledby="python-path-heading">
-          <div class="section-heading">
-            <div>
-              <span class="section-kicker">نمونهٔ مسیر پنج‌مرحله‌ای</span>
-              <h2 id="python-path-heading">از شروع Python تا پروژه</h2>
-            </div>
-            <a href="python/index.html">همهٔ درس‌های Python ←</a>
-          </div>
-          <ol class="learning-steps">
-            <li>
-              <a href="python/01-شروع-و-مبانی/01-خانه-HOME.html">
-                <span>سطح ۱</span>
-                <b>مقدماتی</b>
-                <small>آشنایی با پایتون و اجرای نخستین دستور — اولین قدم</small>
-              </a>
-            </li>
-            <li>
-              <a href="python/02-متغیرها/01-متغیرها-Variables.html">
-                <span>سطح ۲</span>
-                <b>پایه</b>
-                <small>متغیرها و نگهداری داده‌ها — چگونه اطلاعات را ذخیره کنیم</small>
-              </a>
-            </li>
-            <li>
-              <a href="python/11-شرط-و-حلقه/01-if-elif-else.html">
-                <span>سطح ۳</span>
-                <b>متوسط</b>
-                <small>شرط‌ها و تکرار — تصمیم‌گیری و حل مسئله با حلقه</small>
-              </a>
-            </li>
-            <li>
-              <a href="python/13-کلاس-و-شیء/index.html">
-                <span>سطح ۴</span>
-                <b>پیشرفته</b>
-                <small>کلاس‌ها و شیءها — طراحی ساخت‌یافته برنامه</small>
-              </a>
-            </li>
-            <li>
-              <a href="tamrin/index.html">
-                <span>سطح ۵</span>
-                <b>پروژه‌ای</b>
-                <small>ترکیب آموخته‌ها در تمرین‌های عملی و واقعی</small>
-              </a>
-            </li>
-          </ol>
-        </section>
+    <section class="home-section" aria-labelledby="next-heading">
+      <div class="section-heading simple">
+        <h2 id="next-heading">۲. بعد از انتخاب زبان چه کار کنی؟</h2>
+      </div>
+      <ol class="clean-steps">
+        <li><strong>درس اول همان زبان</strong> را باز کن و مثال را اجرا کن.</li>
+        <li>درس‌ها را <strong>به ترتیب</strong> برو؛ لازم نیست عجله کنی.</li>
+        <li>وقتی آماده بودی برو سراغ <a href="tamrin/index.html">تمرین‌ها</a>.</li>
+      </ol>
+    </section>
 
-        <section class="home-section" aria-labelledby="featured-heading">
-          <div class="section-heading">
-            <div>
-              <span class="section-kicker">شروع با موضوع‌های پرکاربرد</span>
-              <h2 id="featured-heading">درس‌های منتخب برای شروع</h2>
-            </div>
-          </div>
-          <div class="featured-lessons">
-            <a href="python/02-متغیرها/01-متغیرها-Variables.html">
-              <small>Python · پایه</small>
-              <b>متغیرها</b>
-              <span>چگونه داده‌ها را در برنامه ذخیره و استفاده کنیم</span>
-            </a>
-            <a href="python/11-شرط-و-حلقه/01-if-elif-else.html">
-              <small>Python · متوسط</small>
-              <b>شرط‌ها</b>
-              <span>برنامه چطور بین چند مسیر یکی را انتخاب می‌کند</span>
-            </a>
-            <a href="python/12-توابع/01-توابع-Functions.html">
-              <small>Python · متوسط</small>
-              <b>توابع</b>
-              <span>تقسیم مسئله به بخش‌های کوچک و قابل استفادهٔ دوباره</span>
-            </a>
-            <a href="javascript/01-شروع-JavaScript/08-متغیرها-Variables.html">
-              <small>JavaScript · پایه</small>
-              <b>متغیرها در JavaScript</b>
-              <span>تعریف و مدیریت مقدارها در مرورگر</span>
-            </a>
-            <a href="html/06-فرمها/01-فرمها-Forms.html">
-              <small>HTML · کاربردی</small>
-              <b>فرم‌ها</b>
-              <span>چگونه از کاربر اطلاعات بگیریم</span>
-            </a>
-          </div>
-        </section>
+    <section class="home-section quiet" aria-labelledby="start-heading">
+      <div class="section-heading simple">
+        <h2 id="start-heading">۳. اگر نمی‌دانی از کجا شروع کنی</h2>
+      </div>
+      <div class="start-grid">
+        <a class="start-card" href="python/01-شروع-و-مبانی/01-خانه-HOME.html"><b>شروع Python</b><span>پیشنهاد برای اکثر مبتدیان</span></a>
+        <a class="start-card" href="html/01-شروع-HTML/index.html"><b>شروع HTML</b><span>اگر هدفت ساخت سایت است</span></a>
+        <a class="start-card" href="tamrin/index.html"><b>تمرین عملی</b><span>بعد از چند درس اول</span></a>
+      </div>
+    </section>
 
-        <section class="home-section learner-panel" aria-labelledby="progress-heading">
-          <div>
-            <span class="section-kicker">پیشرفت روی همین دستگاه ذخیره می‌شود</span>
-            <h2 id="progress-heading">ادامهٔ یادگیری</h2>
-            <p id="homeProgressSummary">هنوز درسی را تکمیل نکرده‌ای. یک درس را شروع کن و پس از مطالعه، آن را تکمیل‌شده علامت بزن.</p>
-          </div>
-          <a id="continueLearning" class="continue-link" href="python/01-شروع-و-مبانی/01-خانه-HOME.html">شروع از مبانی Python ←</a>
-        </section>
+    <!-- SEO text kept short so page stays calm -->
+    <section class="home-section seo-note" aria-label="درباره آموزش">
+      <p>MCD Code Up آموزش برنامه‌نویسی از صفر به زبان فارسی است؛ با مسیرهای Python، HTML، CSS، JavaScript و PHP. تمرکز روی فهم مطلب است، نه شلوغی صفحه.</p>
+    </section>
+  </div>
+</main>
 
-        <section class="home-section learning-method" aria-labelledby="method-heading">
-          <span class="section-kicker">از مفهوم تا مهارت</span>
-          <h2 id="method-heading">هر درس یک گام عملی</h2>
-          <p>
-            در هر درس اول مفهوم را با زبان ساده می‌فهمی، بعد مثال تمیز را می‌بینی،
-            سپس کد را خط‌به‌خط توضیح می‌دهیم، اشتباه‌های رایج را نشان می‌دهیم و
-            در نهایت یک گام عملی به تو می‌دهیم تا خودت امتحان کنی.
-            این روش کمک می‌کند حتی اگر اولین بار است برنامه‌نویسی می‌کنی،
-            مطمئن و قدم‌به‌قدم جلو بروی.
-          </p>
-          <a href="tamrin/index.html">دیدن تمرین‌ها و آزمون‌ها ←</a>
-        </section>
-      
-      <section class="card" style="margin-top:1.5rem" aria-label="مسیرهای آموزش رایگان">
-        <h2>بهترین سایت برنامه‌نویسی برای شروع رایگان</h2>
-        <p style="line-height:1.9;opacity:0.95">
-          در MCD Code Up می‌توانی <strong>آموزش ساخت سایت رایگان</strong> و
-          <strong>آموزش ساخت وب رایگان</strong> را از پایه شروع کنی.
-          مسیرها شامل <strong>آموزش HTML رایگان</strong>،
-          <strong>آموزش CSS رایگان</strong> و
-          <strong>بهترین دوره آموزشی CSS</strong> برای چیدمان و ظاهر صفحات،
-          <strong>دوره پایتون رایگان</strong> و مسیر
-          <strong>بهترین دوره پایتون</strong> برای منطق برنامه،
-          و <strong>آموزش PHP</strong> برای سمت سرور است.
-          اگر دنبال <strong>بهترین آموزش برنامه‌نویسی وب رایگان</strong> با تمرین عملی هستی،
-          از صفحه هر زبان وارد شو و درس‌ها را به ترتیب بخوان.
-        </p>
-        <p style="margin-top:0.75rem;line-height:1.9">
-          <a href="html/index.html">HTML</a> ·
-          <a href="css/index.html">CSS</a> ·
-          <a href="javascript/index.html">JavaScript</a> ·
-          <a href="python/index.html">Python</a> ·
-          <a href="php/index.html">PHP</a> ·
-          <a href="tamrin/index.html">تمرین‌ها</a>
-        </p>
-      </section>
-
-</div>
-    </main>
-
-    <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">
       📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span>
     </button>
     <div class="pin-panel" id="pinPanel">
@@ -245,20 +122,7 @@
         <button type="button" id="pinPanelClose" aria-label="بستن">×</button>
       </header>
       <div class="pin-list" id="pinList"></div>
-    </div>
-
-    <div id="edBack">
-      <div id="edBox">
-        <h3>مشاهده در ادیتور</h3>
-        <pre id="edCode"></pre>
-        <div class="navbtn">
-          <button type="button" id="edCopy">کپی</button>
-          <button type="button" id="edClose">بستن</button>
-        </div>
-      </div>
-    </div>
-
-    <footer class="site-footer">
+<footer class="site-footer">
       <p>
         MCD Code Up مجموعه‌ای از آموزش‌های رایگان فارسی برای یادگیری
         برنامه‌نویسی است. درس‌ها بر اساس موضوع دسته‌بندی شده‌اند تا بتوانی از
@@ -273,9 +137,14 @@
       </p>
       <p>نویسنده و گردآورنده: سید عبدالرضا موحدی</p>
     </footer>
-
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/home.js"></script>
-  <script src="assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebSite", "name": "MCD Code Up", "url": "https://abdorrezamovahedi.github.io/programer/", "inLanguage": "fa", "description": "آموزش برنامه‌نویسی از صفر به زبان فارسی"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Organization", "name": "MCD Code Up", "url": "https://abdorrezamovahedi.github.io/programer/"}
+</script>
+<script src="assets/js/boot-loader.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home.js"></script>
+<script src="assets/js/mcd-motion.js" defer></script>
+</body></html>

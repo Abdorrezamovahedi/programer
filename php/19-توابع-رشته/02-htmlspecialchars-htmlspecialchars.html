@@ -17,6 +17,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <h1>htmlspecialchars htmlspecialchars</h1>
 
 <header><div class="logo"><a href="../../index.html">MCD Code Up</a></div>
@@ -50,10 +51,16 @@
 <h3>مفهوم به زبان ساده</h3><p>PHP توابع آماده‌ای دارد که کار تکراری را انجام می‌دهند. «htmlspecialchars» یکی از آن‌هاست. قبل از نمایش در صفحه، نویسه‌های خطرناک را خنثی می‌کند. لازم نیست همه را حفظ کنی؛ الگو را یاد بگیر و موقع نیاز مثال را ببین.</p>
 <h3>ساختار (Syntax)</h3><div class="code">htmlspecialchars(...)</div>
 <h3>مثال 1: استفاده از htmlspecialchars</h3>
-<div class="codewrap"><div class="code">&lt;?php echo htmlspecialchars(&quot;&lt;b&gt;x&lt;/b&gt;&quot;, ENT_QUOTES, &quot;UTF-8&quot;); ?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">&lt;?php echo htmlspecialchars(&quot;&lt;b&gt;x&lt;/b&gt;&quot;, ENT_QUOTES, &quot;UTF-8&quot;); ?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php echo htmlspecialchars(&quot;&lt;b&gt;x&lt;/b&gt;&quot;, ENT_QUOTES, &quot;UTF-8&quot;); ?&gt;</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>فراخوانی:</strong> قبل از نمایش در صفحه، نویسه‌های خطرناک را خنثی می‌کند.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">htmlspecialchars(); // بدون ورودی لازم</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">htmlspecialchars(); // بدون ورودی لازم</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">htmlspecialchars(); // بدون ورودی لازم</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> تعداد یا نوع ورودی اشتباه است.<br><strong>چه می‌بینی؟</strong> هشدار یا خطا<br><strong>درست:</strong> طبق مثال ورودی بده</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> همین مثال htmlspecialchars را اجرا کنی و یک ورودی را عوض کنی.</div>
@@ -72,29 +79,6 @@
 <div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
-
-
-
-<section class="card deep-content v9" data-topic="string" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>htmlspecialchars htmlspecialchars</strong> در مسیر PHP.</p>
-<p>رشته متن است؛ برای پیام، ورودی کاربر و پردازش نوشته‌ها استفاده می‌شود.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «htmlspecialchars htmlspecialchars» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ساخت رشته، اتصال متن‌ها، و استخراج بخشی از متن را با مثال کوچک تمرین کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>غلط املایی در کوتیشن</li><li>قاطی کردن عدد و متن</li><li>برش اشتباه بازه.</li></ul>
-<p>پیشنهاد: مفهوم «htmlspecialchars htmlspecialchars» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «htmlspecialchars htmlspecialchars» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 <script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

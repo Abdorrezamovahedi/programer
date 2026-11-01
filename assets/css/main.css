@@ -2105,3 +2105,1377 @@ select:focus-visible {
   #mcd-page-fx { display: none !important; }
   .hero.mcd-hero h1::after { display: none; }
 }
+
+
+
+/* ===== Home clean layout — less clutter ===== */
+.home-clean { max-width: 880px; }
+.home-clean .hero.mcd-hero { margin-bottom: 1.75rem; }
+.hero-kicker {
+  color: #81c784;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+.hero-lead {
+  max-width: 36em;
+  margin: 0.5rem auto 1rem;
+  color: #c8e6c9 !important;
+  line-height: 1.8;
+}
+.home-clean .home-section {
+  margin: 1.75rem 0 1.25rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.section-heading.simple {
+  display: block;
+  border-right: 3px solid #00e676;
+  padding: 0 0.75rem 0.35rem 0;
+  margin-bottom: 0.85rem;
+}
+.section-heading.simple h2 {
+  font-size: 1.15rem;
+  margin: 0;
+  color: #e8f5e9;
+}
+.section-help {
+  margin: 0.35rem 0 0;
+  color: #a5d6a7;
+  font-size: 0.92rem;
+}
+.langs-clean {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+.langs-clean .lang {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 0.85rem;
+  border-radius: 12px;
+  min-height: 110px;
+}
+.langs-clean .lang b { font-size: 1.05rem; color: #e8f5e9; }
+.langs-clean .lang small { color: #a5d6a7; line-height: 1.5; font-size: 0.82rem; }
+.langs-clean .lang .ic { font-size: 1.35rem; }
+
+.clean-steps {
+  margin: 0;
+  padding: 0.5rem 1.25rem 0.5rem 0;
+  color: #e8f5e9;
+  line-height: 2;
+}
+.clean-steps li { margin-bottom: 0.35rem; }
+
+.start-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.start-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #1f3d2e;
+  background: #07140e;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.start-card:hover {
+  transform: translateY(-2px);
+  border-color: #00c853;
+}
+.start-card b { color: #69f0ae; }
+.start-card span { color: #a5d6a7; font-size: 0.85rem; }
+
+.home-section.quiet { opacity: 0.98; }
+.seo-note {
+  margin-top: 2rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid #1f3d2e;
+}
+.seo-note p {
+  color: #81c784;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Reduce visual noise site-wide a bit */
+.home-section .section-kicker { display: none; }
+
+
+
+/* ===== Lesson readability: example bound to its explanation ===== */
+.example-unit {
+  margin: 0.85rem 0 1.25rem;
+  padding: 0.75rem 0.85rem 0.85rem;
+  border: 1px solid #1f3d2e;
+  border-right: 3px solid #00e676;
+  border-radius: 12px;
+  background: #06110c;
+}
+.example-unit .codewrap,
+.example-unit pre,
+.example-unit .code {
+  margin: 0 0 0.5rem;
+}
+.example-unit .trybtn {
+  margin: 0.25rem 0 0.5rem;
+}
+.example-unit .exp {
+  margin: 0.35rem 0 0;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: #0c1f16;
+  border: 1px solid #1f3d2e;
+  color: #c8e6c9;
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+.example-unit .exp::before {
+  content: "توضیح همین مثال: ";
+  color: #00e676;
+  font-weight: 700;
+}
+
+/* Headings above examples stay tight */
+article.card > h3 {
+  margin: 1.25rem 0 0.4rem;
+  color: #e8f5e9;
+  font-size: 1.05rem;
+}
+
+/* Avoid huge disconnected blocks after article */
+article.card {
+  max-width: 100%;
+}
+.layout {
+  align-items: flex-start;
+}
+
+/* Sidebar less noisy */
+.side a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  color: #a5d6a7;
+  font-size: 0.9rem;
+}
+.side a.on {
+  background: #0c1f16;
+  color: #69f0ae;
+  border-right: 2px solid #00e676;
+}
+
+/* Reduce double H1/H2 confusion */
+article.card > h2 {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+
+
+/* =========================================================
+   MCD Reactive Motion v2 — animation only, layout-safe
+   ========================================================= */
+
+@keyframes mcd-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes mcd-ripple {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.45; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+@keyframes mcd-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+  50% { box-shadow: 0 0 18px 0 rgba(0, 230, 118, 0.28); }
+}
+@keyframes mcd-sheen {
+  0% { background-position: -120% 0; }
+  100% { background-position: 120% 0; }
+}
+@keyframes mcd-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Interactive defaults — transform/opacity only */
+a, button, .lang, .lang-link, .lang-card, .card, .start-card,
+.cat-grid a, .featured-lessons a, .navbtn a, .side a, .trybtn, .btn-pin {
+  transition:
+    transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    color 0.18s ease,
+    background-color 0.18s ease,
+    filter 0.2s ease;
+  will-change: transform;
+}
+
+a:hover, button:hover, .trybtn:hover, .navbtn a:hover {
+  transform: translateY(-2px);
+}
+a:active, button:active, .trybtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.lang:hover, .lang-link:hover, .lang-card:hover,
+.cat-grid a:hover, .start-card:hover, .card:hover {
+  transform: translateY(-4px);
+  border-color: #00c853;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,230,118,0.22);
+  filter: brightness(1.05);
+}
+
+.side a:hover {
+  transform: translateX(-3px);
+  background: rgba(0, 230, 118, 0.08);
+  color: #69f0ae;
+}
+.side a.on {
+  box-shadow: inset 0 0 0 1px rgba(0,230,118,0.25);
+}
+
+/* Code reactive */
+.codewrap, pre, .code {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, filter 0.25s ease;
+}
+.codewrap:hover, pre:hover, .example-unit:hover {
+  border-color: #00c853;
+  box-shadow: 0 0 0 1px rgba(0,230,118,0.25), 0 0 24px rgba(0,230,118,0.12);
+}
+.example-unit {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.example-unit:hover {
+  transform: translateY(-2px);
+}
+
+/* Scroll reveal — only opacity/transform */
+.mcd-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.mcd-reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Click ripple */
+.mcd-rippling { position: relative; overflow: hidden; }
+.mcd-ripple-span {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(0, 230, 118, 0.45);
+  pointer-events: none;
+  left: 50%; top: 50%;
+  animation: mcd-ripple 0.6s ease-out forwards;
+}
+
+/* Header subtle reactive */
+header {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+header.mcd-scrolled {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-bottom-color: #00c853;
+}
+
+/* Logo pulse on hover only */
+.logo a:hover {
+  animation: mcd-pop 0.45s ease;
+}
+
+/* Page transition overlay kept minimal */
+#mcd-page-fx {
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: 0; background: rgba(2, 8, 5, 0.72);
+  transition: opacity 0.2s ease;
+}
+#mcd-page-fx.is-on { opacity: 1; }
+#mcd-page-fx .fx-line {
+  position: absolute; left: 10%; right: 10%; top: 50%; height: 2px;
+  background: linear-gradient(90deg, transparent, #00e676, transparent);
+  box-shadow: 0 0 18px #00e676;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcd-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  #mcd-page-fx { display: none !important; }
+  a, button, .card, .lang, .lang-link, .example-unit {
+    transition: none !important;
+  }
+}
+
+
+
+/* ===== Terminal code blocks — cleaner, ordered ===== */
+.codewrap,
+pre.mcd-terminal,
+article .codewrap,
+.example-unit .codewrap {
+  display: block;
+  margin: 0.75rem 0 0.5rem;
+  padding: 0;
+  border: 1px solid #1f3d2e;
+  border-radius: 12px;
+  background: #010604 !important;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(0, 230, 118, 0.06);
+}
+
+/* unified terminal title bar */
+.codewrap::before {
+  content: "● ● ●  terminal";
+  display: block;
+  direction: ltr;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #81c784;
+  background: #0a1a12;
+  border-bottom: 1px solid #1f3d2e;
+  padding: 8px 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.codewrap .code,
+.codewrap pre,
+.codewrap code,
+pre.mcd-terminal,
+pre code,
+article .code {
+  display: block;
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: plaintext;
+  margin: 0 !important;
+  padding: 14px 16px !important;
+  background: #010604 !important;
+  color: #c8facc !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+/* if pre itself is terminal, give it bar via class only once */
+pre.mcd-terminal {
+  padding: 0 !important;
+}
+pre.mcd-terminal > code {
+  padding: 14px 16px !important;
+}
+
+/* example unit keeps code+explain together but terminal looks clean */
+.example-unit {
+  padding: 0.65rem 0.75rem 0.75rem;
+}
+.example-unit .codewrap {
+  margin-top: 0.35rem;
+}
+.example-unit .trybtn {
+  margin-top: 0.45rem;
+}
+.example-unit .exp {
+  margin-top: 0.55rem;
+}
+
+/* avoid double chrome: pre inside codewrap should not add second bar */
+.codewrap pre::before,
+.codewrap .code::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* try button aligned under terminal */
+.trybtn {
+  direction: rtl;
+}
+
+/* SEO note readable but calm */
+.seo-note h2 {
+  font-size: 1.05rem;
+  color: #e8f5e9;
+  margin-bottom: 0.4rem;
+}
+.seo-note p {
+  color: #a5d6a7;
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+.seo-note a {
+  color: #69f0ae;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+
+/* Line-by-line explanation under the same example */
+.line-exp {
+  margin-top: 0.55rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  background: #0c1f16;
+  border: 1px solid #1f3d2e;
+  color: #c8e6c9;
+}
+.line-exp .exp-title {
+  color: #00e676;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+.line-exp-list {
+  margin: 0;
+  padding: 0 1.1rem 0 0;
+}
+.line-exp-list li {
+  margin: 0.4rem 0;
+  line-height: 1.75;
+  color: #e8f5e9;
+}
+.line-exp-list .ln {
+  color: #00e676;
+  font-weight: 700;
+}
+.line-exp-list .ln-code {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  display: inline-block;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.85em;
+  color: #b9f6ca;
+  background: #010604;
+  border: 1px solid #1f3d2e;
+  border-radius: 4px;
+  padding: 0 5px;
+  margin: 0 4px;
+}
+.line-exp-list .ln-exp { color: #c8e6c9; }
+
+
+
+/* =========================================================
+   MCD Live Reactive Motion v3 — vibrant but layout-safe
+   ========================================================= */
+
+@keyframes mcd-enter-soft {
+  from { opacity: 0; transform: translateY(16px) scale(0.985); filter: saturate(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: saturate(1); }
+}
+@keyframes mcd-ripple-v3 {
+  0% { transform: translate(-50%, -50%) scale(0.15); opacity: 0.55; }
+  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+}
+@keyframes mcd-pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,230,118,0); }
+  50% { box-shadow: 0 0 0 1px rgba(0,230,118,0.35), 0 0 22px rgba(0,230,118,0.18); }
+}
+@keyframes mcd-cursor-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes mcd-fx-scan {
+  0% { transform: translateY(-30vh); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(30vh); opacity: 0; }
+}
+@keyframes mcd-shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+html { scroll-behavior: smooth; }
+
+body.mcd-ready main {
+  animation: mcd-enter-soft 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Interactive elements */
+a, button, .lang, .lang-link, .lang-card, .card, .start-card,
+.cat-grid a, .featured-lessons a, .navbtn a, .side a, .trybtn, .btn-pin,
+.ex-badge, .home-search button {
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease,
+    border-color 0.2s ease,
+    color 0.18s ease,
+    background-color 0.18s ease,
+    filter 0.2s ease;
+}
+
+a:hover, .navbtn a:hover, nav a:hover {
+  transform: translateY(-2px);
+  color: #69f0ae;
+  text-shadow: 0 0 10px rgba(0,230,118,0.28);
+}
+a:active, button:active, .trybtn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.lang:hover, .lang-link:hover, .lang-card:hover,
+.cat-grid a:hover, .start-card:hover {
+  transform: translateY(-5px) scale(1.015);
+  border-color: #00e676;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(0,230,118,0.28),
+    0 0 28px rgba(0,230,118,0.14);
+  filter: brightness(1.06);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #00c853;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,230,118,0.18);
+}
+
+.side a:hover {
+  transform: translateX(-4px);
+  background: rgba(0,230,118,0.09);
+  color: #69f0ae;
+}
+.side a.on {
+  box-shadow: inset 3px 0 0 #00e676, 0 0 16px rgba(0,230,118,0.08);
+}
+
+.trybtn:hover, .home-search button:hover, button:hover {
+  border-color: #00e676;
+  box-shadow: 0 0 18px rgba(0,230,118,0.22);
+  color: #b9f6ca;
+}
+
+/* Code terminal live feel */
+.codewrap, pre.mcd-terminal, .example-unit {
+  transition: transform 0.22s ease, box-shadow 0.25s ease, border-color 0.22s ease;
+}
+.codewrap:hover, pre.mcd-terminal:hover, .example-unit:hover {
+  transform: translateY(-2px);
+  border-color: #00e676 !important;
+  box-shadow:
+    0 0 0 1px rgba(0,230,118,0.28),
+    0 0 26px rgba(0,230,118,0.14),
+    inset 0 0 0 1px rgba(0,230,118,0.05);
+}
+
+/* Scroll reveal */
+.mcd-reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+.mcd-reveal.is-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Ripple */
+.mcd-rippling { position: relative; overflow: hidden; }
+.mcd-ripple-span {
+  position: absolute;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,230,118,0.55) 0%, rgba(0,230,118,0.05) 70%, transparent 100%);
+  pointer-events: none;
+  left: 50%; top: 50%;
+  animation: mcd-ripple-v3 0.65s ease-out forwards;
+  z-index: 2;
+}
+
+/* Header */
+header {
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+header.mcd-scrolled {
+  border-bottom-color: #00e676;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.4), 0 0 20px rgba(0,230,118,0.08);
+}
+
+.logo a:hover {
+  filter: drop-shadow(0 0 8px rgba(0,230,118,0.45));
+}
+
+/* Magnetic-ish focus */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #00e676;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0,230,118,0.15);
+}
+
+/* Page transition */
+#mcd-page-fx {
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at center, rgba(0,230,118,0.12), transparent 55%),
+    rgba(2, 8, 5, 0.78);
+  transition: opacity 0.22s ease;
+}
+#mcd-page-fx.is-on { opacity: 1; }
+#mcd-page-fx .fx-line {
+  position: absolute; left: 8%; right: 8%; top: 42%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00e676, #69f0ae, #00e676, transparent);
+  box-shadow: 0 0 22px #00e676, 0 0 48px rgba(0,230,118,0.35);
+  animation: mcd-fx-scan 0.55s ease-in-out infinite;
+}
+#mcd-page-fx .fx-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,230,118,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,230,118,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+}
+
+/* Cursor glow follower (soft) */
+#mcd-cursor-glow {
+  position: fixed;
+  width: 180px; height: 180px;
+  margin-left: -90px; margin-top: -90px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(circle, rgba(0,230,118,0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: screen;
+}
+body.mcd-ready #mcd-cursor-glow.is-on { opacity: 1; }
+
+@media (hover: none), (pointer: coarse) {
+  #mcd-cursor-glow { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mcd-ready main { animation: none !important; }
+  .mcd-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  #mcd-page-fx, #mcd-cursor-glow { display: none !important; }
+  a, button, .card, .lang, .lang-link, .example-unit, .codewrap {
+    transition: none !important;
+  }
+}
+
+
+
+/* =========================================================
+   MCD Signature FX — keep brand + cooler scan/transition
+   Does NOT remove logo / MCD naming
+   ========================================================= */
+
+@keyframes mcd-scan-sweep {
+  0% { transform: translateY(-45vh) scaleX(0.6); opacity: 0; }
+  15% { opacity: 1; transform: translateY(-20vh) scaleX(1); }
+  85% { opacity: 1; transform: translateY(25vh) scaleX(1); }
+  100% { transform: translateY(50vh) scaleX(0.7); opacity: 0; }
+}
+@keyframes mcd-scan-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.35); }
+}
+@keyframes mcd-brand-breathe {
+  0%, 100% { text-shadow: 0 0 8px rgba(0,230,118,0.25); }
+  50% { text-shadow: 0 0 16px rgba(0,230,118,0.55), 0 0 28px rgba(0,230,118,0.2); }
+}
+@keyframes mcd-matrix-drift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 48px, 48px 0; }
+}
+@keyframes mcd-orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes mcd-boot-flash {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Brand must stay visible & cool */
+.logo,
+.logo a {
+  color: #00e676 !important;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  animation: mcd-brand-breathe 3.6s ease-in-out infinite;
+}
+.logo span {
+  color: #a5d6a7 !important;
+  animation: none;
+}
+
+/* Richer page transition: scan + grid + brand badge */
+#mcd-page-fx {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0,230,118,0.16), transparent 50%),
+    rgba(2, 8, 5, 0.82);
+  transition: opacity 0.2s ease;
+}
+#mcd-page-fx.is-on { opacity: 1; }
+
+#mcd-page-fx .fx-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,230,118,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,230,118,0.045) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px;
+  animation: mcd-matrix-drift 2.4s linear infinite;
+  opacity: 0.4;
+}
+
+#mcd-page-fx .fx-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #00c853 20%,
+    #00e676 50%,
+    #69f0ae 70%,
+    transparent 100%);
+  box-shadow:
+    0 0 12px #00e676,
+    0 0 28px rgba(0,230,118,0.55),
+    0 0 48px rgba(0,230,118,0.25);
+  animation: mcd-scan-sweep 0.7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+#mcd-page-fx .fx-brand {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  color: #00e676;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  font-family: ui-monospace, Consolas, monospace;
+  text-shadow: 0 0 18px rgba(0,230,118,0.7);
+  white-space: nowrap;
+  opacity: 0.95;
+}
+#mcd-page-fx .fx-brand small {
+  display: block;
+  margin-top: 6px;
+  color: #a5d6a7;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Boot line once per page */
+#mcd-boot-scan {
+  position: fixed;
+  left: 0; right: 0;
+  top: 0;
+  height: 2px;
+  z-index: 9998;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #00e676, transparent);
+  box-shadow: 0 0 16px #00e676;
+  animation: mcd-scan-sweep 0.85s cubic-bezier(0.22,1,0.36,1) 1;
+  opacity: 0;
+}
+#mcd-boot-scan.run { opacity: 1; }
+
+/* Click burst rings */
+.mcd-burst {
+  position: absolute;
+  width: 10px; height: 10px;
+  border: 2px solid rgba(0,230,118,0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.3);
+  animation: mcd-burst-out 0.55s ease-out forwards;
+  z-index: 3;
+}
+@keyframes mcd-burst-out {
+  to { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
+}
+
+/* Card hover becomes more playful */
+.lang:hover, .lang-link:hover, .start-card:hover, .cat-grid a:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  box-shadow:
+    0 16px 36px rgba(0,0,0,0.42),
+    0 0 0 1px rgba(0,230,118,0.35),
+    0 0 30px rgba(0,230,118,0.18) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo, .logo a { animation: none !important; }
+  #mcd-page-fx, #mcd-boot-scan { display: none !important; }
+  .mcd-burst { display: none !important; }
+}
+
+
+
+/* =========================================================
+   MCD Perf Motion — reactive, programming feel, low lag
+   Only compositor-friendly props (transform/opacity)
+   ========================================================= */
+
+:root {
+  --mcd-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Avoid animating layout-heavy properties sitewide */
+a, button, .lang, .lang-link, .lang-card, .start-card,
+.cat-grid a, .navbtn a, .side a, .trybtn, .btn-pin, nav a {
+  transition: transform 0.18s var(--mcd-ease), opacity 0.18s ease;
+  will-change: auto;
+}
+
+a:hover, nav a:hover, .navbtn a:hover, .side a:hover {
+  transform: translateY(-2px);
+}
+.side a:hover { transform: translateX(-3px); }
+
+.lang:hover, .lang-link:hover, .lang-card:hover,
+.start-card:hover, .cat-grid a:hover {
+  transform: translateY(-4px);
+}
+
+a:active, button:active, .trybtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Code blocks: cheap border glow via box-shadow only on hover target */
+.codewrap, .example-unit, pre.mcd-terminal {
+  transition: transform 0.18s var(--mcd-ease), box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.codewrap:hover, .example-unit:hover, pre.mcd-terminal:hover {
+  transform: translateY(-2px);
+  border-color: #00c853;
+  box-shadow: 0 0 0 1px rgba(0, 230, 118, 0.22);
+}
+
+/* Reveal: one-time, transform+opacity only */
+.mcd-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s var(--mcd-ease), transform 0.35s var(--mcd-ease);
+  transition-delay: 0s !important; /* avoid long stagger lag */
+}
+.mcd-reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header shadow toggle — class based, no continuous animation */
+header {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+header.mcd-scrolled {
+  border-bottom-color: #00c853;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+}
+
+/* Logo: very light, paused when not visible */
+.logo, .logo a {
+  color: #00e676 !important;
+  /* no infinite animation — was causing constant work */
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.28);
+  transition: text-shadow 0.2s ease;
+}
+.logo a:hover {
+  text-shadow: 0 0 14px rgba(0, 230, 118, 0.45);
+}
+
+/* Ripple — single element, auto-removed */
+.mcd-rippling { position: relative; overflow: hidden; }
+.mcd-ripple-span {
+  position: absolute;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 230, 118, 0.4);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.2);
+  animation: mcd-ripple-perf 0.45s ease-out forwards;
+  z-index: 2;
+}
+@keyframes mcd-ripple-perf {
+  to { transform: translate(-50%, -50%) scale(2.6); opacity: 0; }
+}
+
+/* Disable expensive continuous FX if present */
+#mcd-cursor-glow { display: none !important; }
+#mcd-page-fx { display: none !important; }
+#mcd-boot-scan { display: none !important; }
+
+/* content-visibility helps long lists */
+.side a, .exercise-list li, .cat-grid a, .langs .lang {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcd-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  a, button, .lang, .codewrap, .example-unit { transition: none !important; }
+  .mcd-ripple-span { display: none !important; }
+}
+
+
+
+/* =========================================================
+   MCD Algo Atmosphere — programming feel, low cost
+   ========================================================= */
+
+@keyframes mcd-caret {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes mcd-soft-shift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+@keyframes mcd-terminal-bar {
+  0% { transform: scaleX(0.2); opacity: .4; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0.35); opacity: .55; }
+}
+@keyframes mcd-blink-dot {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+@keyframes mcd-code-active {
+  0%, 100% { box-shadow: inset 2px 0 0 rgba(0,230,118,0.25); }
+  50% { box-shadow: inset 2px 0 0 rgba(0,230,118,0.85); }
+}
+
+/* Live status chip in header */
+.mcd-live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid #1f3d2e;
+  background: #07140e;
+  color: #81c784;
+  font-size: 11px;
+  font-family: ui-monospace, Consolas, monospace;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.mcd-live-chip .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #00e676;
+  box-shadow: 0 0 8px rgba(0,230,118,0.7);
+  animation: mcd-blink-dot 1.6s ease-in-out infinite;
+}
+
+/* Headings: subtle terminal caret (not all text — performance) */
+main h1::after,
+.hero h1::after {
+  content: "▍";
+  color: #00e676;
+  margin-right: 4px;
+  font-weight: 500;
+  animation: mcd-caret 1.1s step-end infinite;
+}
+
+/* Section titles gentle float */
+main h2 {
+  animation: mcd-soft-shift 5s ease-in-out infinite;
+}
+
+/* Hero algorithmic frame */
+.hero, .hero.mcd-hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::after, .hero.mcd-hero::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #00e676, transparent);
+  transform-origin: center;
+  animation: mcd-terminal-bar 2.8s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Code feels "running" */
+.codewrap, pre.mcd-terminal {
+  animation: mcd-code-active 3.2s ease-in-out infinite;
+}
+.codewrap:hover, pre.mcd-terminal:hover {
+  animation: none;
+  border-color: #00e676;
+}
+
+/* Mono snippets inline feel algorithmic */
+code:not(.ln-code) {
+  font-family: ui-monospace, Consolas, monospace;
+  color: #b9f6ca;
+}
+
+/* Tiny matrix rain ONLY on homepage hero canvas host */
+#mcd-algo-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero > *:not(#mcd-algo-canvas) { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  main h1::after, .hero h1::after { display: none !important; }
+  main h2, .codewrap, pre.mcd-terminal, .mcd-live-chip .dot, .hero::after {
+    animation: none !important;
+  }
+  #mcd-algo-canvas { display: none !important; }
+}
+
+
+
+/* =========================================================
+   MCD Auto Live Pack (~20) — auto-running, low-cost
+   ========================================================= */
+
+@keyframes mcd-a1-pulse-dot { 0%,100%{opacity:.35;transform:scale(.9)} 50%{opacity:1;transform:scale(1.15)} }
+@keyframes mcd-a2-scan-x { 0%{transform:translateX(-40%);opacity:0} 20%{opacity:.9} 100%{transform:translateX(40%);opacity:0} }
+@keyframes mcd-a3-breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.015)} }
+@keyframes mcd-a4-border-glow { 0%,100%{border-color:#1f3d2e} 50%{border-color:#00c853} }
+@keyframes mcd-a5-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+@keyframes mcd-a6-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+@keyframes mcd-a7-caret { 0%,45%{opacity:1} 50%,100%{opacity:0} }
+@keyframes mcd-a8-progress { 0%{transform:scaleX(.15)} 50%{transform:scaleX(1)} 100%{transform:scaleX(.25)} }
+@keyframes mcd-a9-blink { 0%,100%{opacity:.4} 50%{opacity:1} }
+@keyframes mcd-a10-spin-slow { to{transform:rotate(360deg)} }
+@keyframes mcd-a11-dash { to{stroke-dashoffset:0} }
+@keyframes mcd-a12-typing-bar { 0%,100%{opacity:.25;transform:scaleY(.6)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes mcd-a13-slide-in-soft { 0%{opacity:.7;transform:translateY(4px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes mcd-a14-hue-line { 0%{filter:brightness(.9)} 50%{filter:brightness(1.25)} 100%{filter:brightness(.9)} }
+@keyframes mcd-a15-soft-shadow { 0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,0)} 50%{box-shadow:0 0 16px rgba(0,230,118,.18)} }
+@keyframes mcd-a16-grid-flicker { 0%,100%{opacity:.08} 50%{opacity:.16} }
+@keyframes mcd-a17-chip { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-1px)} }
+@keyframes mcd-a18-code-sheen { 0%{transform:translateX(-120%)} 100%{transform:translateX(120%)} }
+@keyframes mcd-a19-footer-pulse { 0%,100%{opacity:.55} 50%{opacity:1} }
+@keyframes mcd-a20-side-active { 0%,100%{box-shadow:inset 3px 0 0 rgba(0,230,118,.45)} 50%{box-shadow:inset 3px 0 0 rgba(0,230,118,1)} }
+
+/* 1) Live status dots */
+.mcd-live-chip .dot { animation: mcd-a1-pulse-dot 1.5s ease-in-out infinite; }
+
+/* 2) Header thin scanner */
+header::after {
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:linear-gradient(90deg, transparent, #00e676, transparent);
+  animation: mcd-a2-scan-x 3.8s linear infinite;
+  pointer-events:none;
+}
+header { position: sticky; overflow: hidden; }
+
+/* 3) Cards gentle breathe (very subtle) */
+.lang, .lang-link, .start-card, .cat-grid a {
+  animation: mcd-a3-breathe 7s ease-in-out infinite;
+}
+.lang:nth-child(2n), .lang-link:nth-child(2n) { animation-delay: .4s; }
+.lang:nth-child(3n), .lang-link:nth-child(3n) { animation-delay: .8s; }
+
+/* 4) Auto border color pulse on feature cards */
+.card, article.card {
+  animation: mcd-a4-border-glow 6.5s ease-in-out infinite;
+}
+
+/* 5) Section title shimmer underline */
+main h2, .section-heading h2 {
+  position: relative;
+}
+main h2::after, .section-heading h2::after {
+  content:"";
+  display:block;
+  height:2px; width:min(180px,40%);
+  margin-top:6px;
+  background: linear-gradient(90deg, transparent, #00e676, #69f0ae, transparent);
+  background-size: 200% 100%;
+  animation: mcd-a5-shimmer 3.5s linear infinite;
+}
+
+/* 6) Icons float */
+.lang .ic, .lang-link .ic { display:inline-block; animation: mcd-a6-float 3.2s ease-in-out infinite; }
+
+/* 7) H1 caret already exists — reinforce */
+main h1::after, .hero h1::after {
+  content:"▍"; color:#00e676; margin-right:4px;
+  animation: mcd-a7-caret 1.1s step-end infinite;
+}
+
+/* 8) Section progress line */
+.home-section, article.card {
+  position: relative;
+}
+.home-section::before, article.card::before {
+  content:"";
+  position:absolute; top:0; right:0; left:0; height:2px;
+  background: linear-gradient(90deg, transparent, rgba(0,230,118,.85), transparent);
+  transform-origin: center;
+  animation: mcd-a8-progress 4.5s ease-in-out infinite;
+  pointer-events:none;
+  opacity:.7;
+}
+
+/* 9) Badge / pin blink */
+.badge, .ex-badge, .btn-pin {
+  animation: mcd-a9-blink 2.2s ease-in-out infinite;
+}
+
+/* 10) Optional spinner accent near logo */
+.mcd-live-chip::before {
+  content:"";
+  width:8px; height:8px; margin-left:4px;
+  border:1.5px solid rgba(0,230,118,.25);
+  border-top-color:#00e676;
+  border-radius:50%;
+  animation: mcd-a10-spin-slow 1.2s linear infinite;
+}
+
+/* 11 & 12) Terminal header dots + activity bars */
+.codewrap::before {
+  content:"● ● ●  terminal  |  running";
+  display:block; direction:ltr; text-align:left;
+  font-size:11px; letter-spacing:.04em; color:#81c784;
+  background:#0a1a12; border-bottom:1px solid #1f3d2e;
+  padding:8px 12px;
+  font-family: ui-monospace, Consolas, monospace;
+  position: relative;
+}
+.codewrap {
+  position: relative;
+  overflow: hidden;
+}
+.codewrap::after {
+  content:"";
+  position:absolute; top:0; bottom:0; left:0; width:3px;
+  background:#00e676;
+  animation: mcd-a12-typing-bar 1.4s ease-in-out infinite;
+  opacity:.8;
+}
+
+/* 13) Soft enter loop for line explanations */
+.line-exp {
+  animation: mcd-a13-slide-in-soft 3.5s ease-in-out infinite alternate;
+}
+
+/* 14) Breadcrumb brightness */
+.breadcrumb {
+  animation: mcd-a14-hue-line 5s ease-in-out infinite;
+}
+
+/* 15) Buttons ambient glow cycle */
+.trybtn, .home-search button, button[type="submit"] {
+  animation: mcd-a15-soft-shadow 3.8s ease-in-out infinite;
+}
+
+/* 16) Hero grid flicker */
+.hero::before, .hero.mcd-hero::before {
+  animation: mcd-a16-grid-flicker 4s ease-in-out infinite;
+}
+
+/* 17) Live chip float */
+.mcd-live-chip { animation: mcd-a17-chip 3s ease-in-out infinite; }
+
+/* 18) Code sheen sweep */
+.codewrap .code, .codewrap pre, pre.mcd-terminal {
+  position: relative;
+}
+.example-unit .codewrap {
+  isolation: isolate;
+}
+.codewrap > .code::after,
+.codewrap > pre::after {
+  content:"";
+  position:absolute; top:0; bottom:0; width:28%;
+  background: linear-gradient(90deg, transparent, rgba(0,230,118,.08), transparent);
+  animation: mcd-a18-code-sheen 4.8s linear infinite;
+  pointer-events:none;
+}
+
+/* 19) Footer alive */
+.site-footer, footer {
+  animation: mcd-a19-footer-pulse 4s ease-in-out infinite;
+}
+
+/* 20) Sidebar active lesson pulse */
+.side a.on {
+  animation: mcd-a20-side-active 2.4s ease-in-out infinite;
+}
+
+/* Extra code beautify */
+.codewrap .code, .codewrap pre, pre.mcd-terminal, pre code {
+  color: #c8facc !important;
+  text-shadow: 0 0 1px rgba(0,230,118,0.15);
+}
+.line-exp .exp-title::before {
+  content:"// ";
+  color:#00e676;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+/* Reduce motion: kill auto loops */
+@media (prefers-reduced-motion: reduce) {
+  .lang, .lang-link, .start-card, .cat-grid a, .card, article.card,
+  main h2::after, .section-heading h2::after, .lang .ic,
+  main h1::after, .hero h1::after, .home-section::before, article.card::before,
+  .badge, .ex-badge, .btn-pin, .mcd-live-chip, .mcd-live-chip::before, .mcd-live-chip .dot,
+  .codewrap::after, .line-exp, .breadcrumb, .trybtn, .home-search button,
+  button[type="submit"], .hero::before, .codewrap > .code::after, .codewrap > pre::after,
+  .site-footer, footer, .side a.on, header::after {
+    animation: none !important;
+  }
+}
+
+
+/* Equalizer bars for code blocks */
+.mcd-code-status {
+  display:flex; align-items:center; gap:8px;
+  direction:ltr; text-align:left;
+  padding:6px 12px 8px;
+  border-top:1px solid #1f3d2e;
+  color:#81c784; font-size:10px;
+  font-family: ui-monospace, Consolas, monospace;
+  background:#060f0b;
+}
+.mcd-code-bars { display:inline-flex; align-items:flex-end; gap:2px; height:12px; }
+.mcd-code-bars i {
+  display:block; width:3px; background:#00e676; opacity:.8;
+  animation: mcd-a12-typing-bar 1s ease-in-out infinite;
+}
+.mcd-code-bars i:nth-child(1){height:4px; animation-delay:0s}
+.mcd-code-bars i:nth-child(2){height:8px; animation-delay:.1s}
+.mcd-code-bars i:nth-child(3){height:6px; animation-delay:.2s}
+.mcd-code-bars i:nth-child(4){height:10px; animation-delay:.3s}
+
+
+
+
+
+/* ===== Binary GLITCH wind — chaotic but low-lag ===== */
+#mcd-binary-wind {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+}
+#mcd-binary-wind.is-blowing { opacity: 1; }
+
+#mcd-binary-wind .bit {
+  position: absolute;
+  color: rgba(0, 230, 118, 0.62);
+  font-family: ui-monospace, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 6px rgba(0, 230, 118, 0.35);
+  white-space: nowrap;
+  will-change: transform, opacity;
+  animation-name: mcd-bit-glitch-wind;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+#mcd-binary-wind .bit.err {
+  color: rgba(255, 82, 82, 0.7);
+  text-shadow: 0 0 8px rgba(255, 82, 82, 0.35);
+}
+#mcd-binary-wind .bit.warn {
+  color: rgba(255, 214, 0, 0.65);
+  text-shadow: 0 0 8px rgba(255, 214, 0, 0.25);
+}
+#mcd-binary-wind .bit.ghost {
+  opacity: 0.35;
+  filter: blur(0.3px);
+}
+
+@keyframes mcd-bit-glitch-wind {
+  0%   { transform: translate3d(-15vw, 0, 0) skewX(0deg); opacity: 0; }
+  8%   { opacity: 0.85; }
+  22%  { transform: translate3d(18vw, -2px, 0) skewX(-4deg); }
+  40%  { transform: translate3d(42vw, 1px, 0) skewX(3deg); }
+  55%  { transform: translate3d(58vw, -1px, 0) skewX(-2deg); opacity: 0.75; }
+  78%  { transform: translate3d(88vw, 2px, 0) skewX(5deg); opacity: 0.45; }
+  100% { transform: translate3d(115vw, 0, 0) skewX(0deg); opacity: 0; }
+}
+
+#mcd-binary-wind .wash {
+  position: absolute;
+  inset: -15% -25%;
+  background:
+    linear-gradient(105deg, transparent 25%, rgba(0,230,118,0.05) 48%, transparent 70%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,230,118,0.03) 0px,
+      rgba(0,230,118,0.03) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  transform: translate3d(-50%,0,0);
+  animation: mcd-wash-glitch 2.6s ease-in-out forwards;
+  mix-blend-mode: screen;
+}
+@keyframes mcd-wash-glitch {
+  0%   { transform: translate3d(-55%,0,0); opacity: 0; }
+  15%  { opacity: 1; }
+  35%  { transform: translate3d(-10%,0,0) skewX(2deg); }
+  60%  { transform: translate3d(20%,0,0) skewX(-2deg); }
+  100% { transform: translate3d(55%,0,0); opacity: 0; }
+}
+
+/* brief screen tear lines */
+#mcd-binary-wind .tear {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: rgba(0, 230, 118, 0.35);
+  box-shadow: 0 0 12px rgba(0,230,118,0.4);
+  animation: mcd-tear 0.55s ease-out forwards;
+  opacity: 0.8;
+}
+@keyframes mcd-tear {
+  0% { transform: scaleX(0.2); opacity: 0; }
+  40% { opacity: 0.9; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #mcd-binary-wind { display: none !important; }
+}
+

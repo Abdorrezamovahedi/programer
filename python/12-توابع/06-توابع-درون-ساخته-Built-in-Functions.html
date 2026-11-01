@@ -46,26 +46,35 @@
 <h3>ساختار</h3><div class="code">def name(params):
     return value</div>
 <h3>مثال 1: return</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">def area(w, h):
     return w * h
 print(area(3, 4))
 result = area(5, 2)
-print(result)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(result)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">def area(w, h):</code><span class="ln-exp"> — یک تابع جدید تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">return w * h</code><span class="ln-exp"> — نتیجه را از تابع برمی‌گرداند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(area(3, 4))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">result = area(5, 2)</code><span class="ln-exp"> — یک مقدار را داخل «result» ذخیره می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(result)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱–۲:</strong> تابع مساحت را حساب و برمی‌گرداند.<br>
 <strong>خط ۳:</strong> ۱۲ چاپ می‌شود.<br>
 <strong>خط ۴:</strong> مقدار برگشتی در متغیر ذخیره می‌شود.</div>
 <h3>مثال 2: پیش‌فرض</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">def greet(name=&quot;مهمان&quot;):
     print(&quot;سلام&quot;, name)
 greet()
-greet(&quot;سارا&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+greet(&quot;سارا&quot;)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">def greet(name=&quot;مهمان&quot;):</code><span class="ln-exp"> — یک تابع جدید تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;سلام&quot;, name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">greet()</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">greet(&quot;سارا&quot;)</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> اگر name ندهی «مهمان» استفاده می‌شود.<br>
 <strong>خط ۳:</strong> بدون آرگومان.<br>
 <strong>خط ۴:</strong> با آرگومان صریح.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">def double(x):
     x * 2
-print(double(4))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(double(4))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">def double(x):</code><span class="ln-exp"> — یک تابع جدید تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">x * 2</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(double(4))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> محاسبه شده ولی return نشده.<br><strong>چه می‌بینی؟</strong> خروجی None<br><strong>درست:</strong> return x * 2</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «توابع درون ساخته» بنویسی و اجرا کنی.</div>
@@ -82,30 +91,6 @@ print(double(4))</div></div><button type="button" class="trybtn">مشاهده د
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="05-بازگشت-Recursion.html">← بازگشت (Recursion)</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="function" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>توابع درون ساخته Built in Functions</strong> در مسیر پایتون.</p>
-<p>تابع یک تکه کد نام‌دار است که یک کار مشخص را انجام می‌دهد و می‌توانی بارها صدایش بزنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «توابع درون ساخته Built in Functions» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ورودی‌ها را مشخص کن، بدنه را ساده نگه دار، و در صورت نیاز یک خروجی واضح برگردان.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>تابع خیلی طولانی</li><li>اثر جانبی پنهان</li><li>نام‌گذاری ضعیف.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «توابع درون ساخته Built in Functions» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «توابع درون ساخته Built in Functions» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

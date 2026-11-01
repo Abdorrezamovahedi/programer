@@ -91,15 +91,21 @@
 echo &quot;سلام&quot;;
 ?&gt;</div>
 <h3>مثال 1: سلام از سرور</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 echo &quot;سلام دنیا&quot;;
 echo 2 + 3;
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">echo &quot;سلام دنیا&quot;;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">echo 2 + 3;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>&lt;?php:</strong> از اینجا کد PHP شروع می‌شود.<br>
 <strong>echo متن:</strong> متن را به صفحه می‌فرستد.<br>
 <strong>echo 2+3:</strong> حساب در سرور انجام می‌شود؛ کاربر فقط نتیجه را می‌بیند.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo سلام;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">echo سلام;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">echo سلام;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> متن باید داخل " (دابل‌کوتیشن) باشد.<br><strong>چه می‌بینی؟</strong> پیام خطا یا رفتار عجیب<br><strong>درست:</strong> echo &quot;سلام&quot;;</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> با سرور محلی خروجی «سلام دنیا» را در مرورگر ببینی.</div>
@@ -114,30 +120,6 @@ echo 2 + 3;
 </ol>
 <p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
 <div class="navbtn lesson-nav"><a href="05-توضیحات-Comments.html">← توضیحات (Comments)</a><a href="07-متغیرها-Variables.html">متغیرها (Variables) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>توضیحات چندخطی Multiline Comments</strong> در مسیر PHP.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «توضیحات چندخطی Multiline Comments» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «توضیحات چندخطی Multiline Comments» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «توضیحات چندخطی Multiline Comments» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

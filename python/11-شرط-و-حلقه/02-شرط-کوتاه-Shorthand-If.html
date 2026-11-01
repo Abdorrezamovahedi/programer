@@ -48,20 +48,29 @@
 <h3>ساختار</h3><div class="code">مقدار_اگر_درست if شرط else مقدار_اگر_نادرست</div>
 <p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
 <h3>مثال 1: برچسب زوج/فرد</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">n = 7
 label = &quot;زوج&quot; if n % 2 == 0 else &quot;فرد&quot;
-print(label)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(label)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">n = 7</code><span class="ln-exp"> — یک مقدار را داخل «n» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">label = &quot;زوج&quot; if n % 2 == 0 else &quot;فرد&quot;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(label)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> عدد ۷.<br>
 <strong>خط ۲:</strong> اگر باقی‌مانده بر ۲ صفر بود «زوج»، وگرنه «فرد» در label می‌رود.<br>
 <strong>خط ۳:</strong> چاپ: فرد.</div>
 <h3>مثال 2: حداقل سن برای پیام</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">age = 20
 msg = &quot;بالغ&quot; if age &gt;= 18 else &quot;نابالغ&quot;
-print(msg)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(msg)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">age = 20</code><span class="ln-exp"> — یک مقدار را داخل «age» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">msg = &quot;بالغ&quot; if age &gt;= 18 else &quot;نابالغ&quot;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(msg)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> انتخاب بین دو متن کوتاه با یک شرط.<br>
 <strong>خط ۳:</strong> چاپ: بالغ.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">print(&quot;ok&quot;) if x &gt; 0</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(&quot;ok&quot;) if x &gt; 0</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;ok&quot;) if x &gt; 0</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> شکل کوتاه وقتی else دارد کامل است؛ بدون else این فرم برای انتساب/عبارت محدود است.<br><strong>چه می‌بینی؟</strong> SyntaxError در بسیاری حالت‌ها<br><strong>درست:</strong> یا else اضافه کن یا if معمولی چندخطی بنویس</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک برچسب متنی با شرط کوتاه بسازی و چاپ کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -73,30 +82,6 @@ print(msg)</div></div><button type="button" class="trybtn">مشاهده در ا�
 </ol>
 <p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
 <div class="navbtn lesson-nav"><a href="01-if-elif-else.html">← if / elif / else</a><a href="03-شرط-تو-در-تو-Nested-If.html">شرط تو در تو (Nested If) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="loop" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>شرط کوتاه Shorthand If</strong> در مسیر پایتون.</p>
-<p>حلقه برای تکرار یک کار است تا وقتی شرط برقرار باشد یا روی مجموعه‌ای از آیتم‌ها حرکت کنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «شرط کوتاه Shorthand If» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مشخص کن چه چیزی تکرار شود، شرط توقف چیست، و داخل حلقه چه تغییری رخ می‌دهد.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حلقه بی‌نهایت</li><li>تغییر ندادن متغیر شرط</li><li>یکی زیاد یا یکی کم شمردن بازه.</li></ul>
-<p>پیشنهاد: مفهوم «شرط کوتاه Shorthand If» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «شرط کوتاه Shorthand If» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

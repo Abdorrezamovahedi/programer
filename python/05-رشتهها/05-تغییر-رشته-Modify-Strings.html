@@ -56,25 +56,34 @@
 <h3>مفهوم</h3><p>رشته در پایتون تغییرناپذیر است. متدها رشتهٔ جدید برمی‌گردانند؛ اصل s همان می‌ماند مگر بنویسی s = s.upper().</p>
 <h3>ساختار</h3><div class="code">s.upper()  s.lower()  s.strip()  s.replace(a, b)</div>
 <h3>مثال 1: upper و strip</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">s = &quot;  Hello  &quot;
 print(s.strip())
 print(s.upper())
-print(s)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(s)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">s = &quot;  Hello  &quot;</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(s.strip())</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(s.upper())</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(s)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> فاصله در دو طرف دارد.<br>
 <strong>خط ۲:</strong> strip فاصلهٔ دو سر را برمی‌دارد → «Hello».<br>
 <strong>خط ۳:</strong> نسخهٔ تمام‌بزرگ؛ اصل s هنوز فاصله دارد.<br>
 <strong>خط ۴:</strong> s اصلی چاپ می‌شود تا ببینی عوض نشده.</div>
 <h3>مثال 2: replace و assign</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">s = &quot;سلام دنیا&quot;
 s2 = s.replace(&quot;دنیا&quot;, &quot;علی&quot;)
 print(s2)
 s = s.replace(&quot;سلام&quot;, &quot;درود&quot;)
-print(s)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(s)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">s = &quot;سلام دنیا&quot;</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">s2 = s.replace(&quot;دنیا&quot;, &quot;علی&quot;)</code><span class="ln-exp"> — یک مقدار را داخل «s2» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(s2)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">s = s.replace(&quot;سلام&quot;, &quot;درود&quot;)</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(s)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> نتیجه در s2؛ s هنوز «سلام دنیا» است.<br>
 <strong>خط ۴:</strong> حالا نتیجه را دوباره در s می‌گذاریم تا s عوض شود.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">s = &quot;abc&quot;
-s[0] = &quot;A&quot;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+s[0] = &quot;A&quot;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">s = &quot;abc&quot;</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">s[0] = &quot;A&quot;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> نمی‌توان یک کاراکتر رشته را درجا عوض کرد.<br><strong>چه می‌بینی؟</strong> TypeError: &#x27;str&#x27; object does not support item assignment<br><strong>درست:</strong> s = &quot;A&quot; + s[1:]   # ساخت رشتهٔ جدید</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «تغییر رشته» بنویسی و اجرا کنی.</div>
@@ -91,30 +100,6 @@ s[0] = &quot;A&quot;</div></div><button type="button" class="trybtn">مشاهد�
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="04-آزمون-برش-رشته.html">← آزمون (برش رشته)</a><a href="06-آزمون-تغییر-رشته.html">آزمون (تغییر رشته) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="condition" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>تغییر رشته Modify Strings</strong> در مسیر پایتون.</p>
-<p>شرط به برنامه می‌گوید کدام مسیر را برود: اگر درست بود یک کار، وگرنه کار دیگر.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «تغییر رشته Modify Strings» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>شرط را ساده بنویس، حالت‌های مهم را پوشش بده، و نتیجه هر شاخه را جداگانه تست کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>استفاده اشتباه از = به‌جای مقایسه</li><li>شرطهای تو در تو بیش از حد</li><li>فراموش کردن حالت else.</li></ul>
-<p>پیشنهاد: مفهوم «تغییر رشته Modify Strings» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «تغییر رشته Modify Strings» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

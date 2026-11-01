@@ -61,15 +61,21 @@
 <h3>ساختار (Syntax)</h3><div class="code">document.querySelector(&quot;#btn&quot;)
 btn.addEventListener(&quot;click&quot;, () =&gt; { ... })</div>
 <h3>مثال 1: دکمه واکنش‌نشان‌دهنده</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">const btn = document.querySelector(&quot;#btn&quot;);
 btn.addEventListener(&quot;click&quot;, () =&gt; {
   btn.textContent = &quot;کلیک شد&quot;;
-});</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+});</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">const btn = document.querySelector(&quot;#btn&quot;);</code><span class="ln-exp"> — با عناصر صفحه وب (DOM) کار می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">btn.addEventListener(&quot;click&quot;, () =&gt; {</code><span class="ln-exp"> — برای یک رویداد (مثل کلیک) واکنش تعریف می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">btn.textContent = &quot;کلیک شد&quot;;</code><span class="ln-exp"> — یک مقدار را داخل «btn.textContent» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">});</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>querySelector:</strong> اولین عنصر با این مشخصه را پیدا می‌کند.<br>
 <strong>addEventListener:</strong> شنوندهٔ رویداد.<br>
 <strong>textContent:</strong> متن روی دکمه عوض می‌شود.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">اسکریپت در بالای صفحه قبل از دکمه</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">اسکریپت در بالای صفحه قبل از دکمه</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">اسکریپت در بالای صفحه قبل از دکمه</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> هنوز دکمه‌ای در صفحه ساخته نشده.<br><strong>چه می‌بینی؟</strong> Cannot read properties of null<br><strong>درست:</strong> اسکریپت را پایین صفحه بگذار یا بعد از بارگذاری اجرا کن</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک دکمه با id در HTML بسازی و با کلیک متنش عوض شود.</div>
@@ -83,30 +89,6 @@ btn.addEventListener(&quot;click&quot;, () =&gt; {
 </ol>
 <p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
 <div class="navbtn lesson-nav"><a href="14-لیست-گره-های-DOM-DOM-Node-Lists.html">← لیست گره های DOM (DOM Node Lists)</a><a href="16-jQuery-HTML-jQuery-HTML.html">jQuery HTML (jQuery HTML) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="dom" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>jQuery انتخابگرها jQuery Selectors</strong> در مسیر جاوااسکریپت.</p>
-<p>DOM نمای ساختاری صفحه در مرورگر است؛ با آن عنصر را پیدا و تغییر می‌دهی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «jQuery انتخابگرها jQuery Selectors» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>عنصر را انتخاب کن، محتوا یا استایل را عوض کن، و به رویداد وصل کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>اجرای اسکریپت قبل از آماده شدن صفحه</li><li>انتخابگر اشتباه.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «jQuery انتخابگرها jQuery Selectors» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «jQuery انتخابگرها jQuery Selectors» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

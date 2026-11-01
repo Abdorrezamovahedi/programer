@@ -17,6 +17,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <h1>rewind SimpleXML rewind</h1>
 
 <header>
@@ -74,15 +75,21 @@
 <h3>مفهوم به زبان ساده</h3><p>این درس روی «rewind» تمرکز دارد. کوچک بنویس، اجرا کن، خروجی را ببین، بعد یک تغییر بده. سرور باید فایل PHP را اجرا کند.</p>
 <h3>ساختار (Syntax)</h3><div class="code">&lt;?php ... ?&gt;</div>
 <h3>مثال 1: قالب کوچک</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 // rewind
 $topic = &quot;rewind&quot;;
 echo $topic;
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">// rewind</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">$topic = &quot;rewind&quot;;</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">echo $topic;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>$:</strong> شروع نام متغیر.<br>
 <strong>echo:</strong> نمایش در خروجی.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">باز کردن فایل PHP با دوبارکلیک بدون سرور</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">باز کردن فایل PHP با دوبارکلیک بدون سرور</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">باز کردن فایل PHP با دوبارکلیک بدون سرور</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> کد اجرا نمی‌شود؛ متن خام دیده می‌شود.<br><strong>چه می‌بینی؟</strong> یادگیری ناقص<br><strong>درست:</strong> از سرور محلی استفاده کن</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> خروجی را از طریق سرور در مرورگر ببینی.</div>
@@ -101,29 +108,6 @@ echo $topic;
 <div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>rewind SimpleXML rewind</strong> در مسیر PHP.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «rewind SimpleXML rewind» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «rewind SimpleXML rewind» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «rewind SimpleXML rewind» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 <script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

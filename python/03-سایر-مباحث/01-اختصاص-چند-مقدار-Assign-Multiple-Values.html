@@ -61,24 +61,33 @@
 <h3>ساختار</h3><div class="code">a, b, c = 1, 2, 3
 x = y = 0</div>
 <h3>مثال 1: انتساب موازی</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">a, b, c = 10, 20, 30
 print(a)
 print(b)
-print(c)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(c)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">a, b, c = 10, 20, 30</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(a)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(b)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(c)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> سه نام، سه مقدار؛ به ترتیب جفت می‌شوند.<br>
 <strong>خط ۲–۴:</strong> هر متغیر جدا چاپ می‌شود تا ترتیب را ببینی.</div>
 <h3>مثال 2: یک مقدار برای چند نام و جابه‌جایی</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">x = y = 0
 print(x, y)
 m, n = 1, 2
 m, n = n, m
-print(m, n)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(m, n)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">x = y = 0</code><span class="ln-exp"> — یک مقدار را داخل «x» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(x, y)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">m, n = 1, 2</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">m, n = n, m</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(m, n)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> هر دو صفر می‌شوند.<br>
 <strong>خط ۳:</strong> m=1 و n=2.<br>
 <strong>خط ۴:</strong> جابه‌جایی بدون متغیر کمکی: سمت راست اول محاسبه می‌شود.<br>
 <strong>خط ۵:</strong> حالا m=2 و n=1.</div>
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">a, b = 1, 2, 3</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">a, b = 1, 2, 3</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">a, b = 1, 2, 3</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> دو نام و سه مقدار؛ پایتون نمی‌داند مال کدام است.<br><strong>چه می‌بینی؟</strong> ValueError: too many values to unpack<br><strong>درست:</strong> a, b, c = 1, 2, 3   یا   a, b = 1, 2</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «اختصاص چند مقدار» بنویسی و اجرا کنی.</div>
@@ -95,30 +104,6 @@ print(m, n)</div></div><button type="button" class="trybtn">مشاهده در ا
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><span></span><a href="02-آزمون-افزودن-آیتم.html">آزمون (افزودن آیتم) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>اختصاص چند مقدار Assign Multiple Values</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «اختصاص چند مقدار Assign Multiple Values» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: مفهوم «اختصاص چند مقدار Assign Multiple Values» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «اختصاص چند مقدار Assign Multiple Values» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

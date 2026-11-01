@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
@@ -135,14 +136,20 @@
 <h3>ساختار (Syntax)</h3><div class="code">file_put_contents(&quot;note.txt&quot;, &quot;سلام&quot;);
 echo file_get_contents(&quot;note.txt&quot;);</div>
 <h3>مثال 1: نوشتن و خواندن</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 file_put_contents(&quot;note.txt&quot;, &quot;سلام\n&quot;);
 echo file_get_contents(&quot;note.txt&quot;);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">file_put_contents(&quot;note.txt&quot;, &quot;سلام\n&quot;);</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">echo file_get_contents(&quot;note.txt&quot;);</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>put_contents:</strong> متن را در فایل می‌نویسد.<br>
 <strong>get_contents:</strong> کل فایل را می‌خواند.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">مسیر فایل را مستقیم از کاربر بگیر</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">مسیر فایل را مستقیم از کاربر بگیر</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">مسیر فایل را مستقیم از کاربر بگیر</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> ممکن است به فایل‌های حساس دسترسی پیدا کند.<br><strong>چه می‌بینی؟</strong> نفوذ به فایل‌های سیستم<br><strong>درست:</strong> فقط نام‌های مجاز از پیش‌تعیین‌شده</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک note.txt بسازی و محتویاتش را در صفحه ببینی.</div>
@@ -156,30 +163,6 @@ echo file_get_contents(&quot;note.txt&quot;);
 </ol>
 <p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
 <div class="navbtn lesson-nav"><a href="24-گرفتن-کد-getCode.html">← قبلی</a><a href="26-گرفتن-پیام-getMessage.html">بعدی →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="form" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>گرفتن فایل getFile</strong> در مسیر PHP.</p>
-<p>فرم راه گرفتن اطلاعات از کاربر است: نام، ایمیل، پیام و ارسال.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «گرفتن فایل getFile» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>برچسب مناسب بگذار، نوع ورودی درست انتخاب کن، و ارسال را مرحله‌به‌مرحله تست کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>بدون label</li><li>نام‌گذاری نادرست فیلدها</li><li>نبود پیام راهنما.</li></ul>
-<p>پیشنهاد: مفهوم «گرفتن فایل getFile» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «گرفتن فایل getFile» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

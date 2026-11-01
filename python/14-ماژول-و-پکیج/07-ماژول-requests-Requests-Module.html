@@ -50,15 +50,21 @@
 <h3>ساختار</h3><div class="code">import math
 from math import sqrt</div>
 <h3>مثال 1: math و random</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">import math
 import random
 print(math.sqrt(16))
-print(random.randint(1, 6))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(random.randint(1, 6))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">import math</code><span class="ln-exp"> — ماژول یا ابزار بیرونی را به برنامه اضافه می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">import random</code><span class="ln-exp"> — ماژول یا ابزار بیرونی را به برنامه اضافه می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(math.sqrt(16))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(random.randint(1, 6))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>import math:</strong> ماژول ریاضی استاندارد.<br>
 <strong>sqrt:</strong> جذر ۱۶ = ۴.۰<br>
 <strong>randint:</strong> عدد صحیح تصادفی در بازهٔ بسته.</div>
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">print(sqrt(9))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(sqrt(9))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(sqrt(9))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> sqrt بدون import یا from در دسترس نیست.<br><strong>چه می‌بینی؟</strong> NameError: name &#x27;sqrt&#x27; is not defined<br><strong>درست:</strong> import math; math.sqrt(9)  یا  from math import sqrt</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> با math.ceil یک عدد اعشاری را به بالا گرد کن و با random یک تاس بینداز.</div>
@@ -75,30 +81,6 @@ print(random.randint(1, 6))</div></div><button type="button" class="trybtn">مش
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="06-ماژول-random-Random-Module.html">← ماژول random (Random Module)</a><a href="08-ماژول-statistics-Statistics-Module.html">ماژول statistics (Statistics Module) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>ماژول requests Requests Module</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «ماژول requests Requests Module» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: مفهوم «ماژول requests Requests Module» را برای خودت در دو خط توضیح بده.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «ماژول requests Requests Module» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

@@ -56,27 +56,36 @@
 <h3>مفهوم</h3><p>هر کاراکتر یک شماره دارد که از ۰ شروع می‌شود. s[i] یک کاراکتر می‌دهد. s[a:b] از a تا قبل از b را برمی‌گرداند (b خودش داخل نیست). ایندکس منفی از آخر می‌شمارد.</p>
 <h3>ساختار</h3><div class="code">s[i]    s[start:end]    s[start:end:step]</div>
 <h3>مثال 1: ایندکس تکی</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">s = &quot;Python&quot;
 print(s[0])
 print(s[2])
-print(s[-1])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(s[-1])</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">s = &quot;Python&quot;</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(s[0])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(s[2])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(s[-1])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> شش کاراکتر؛ ایندکس ۰ تا ۵.<br>
 <strong>خط ۲:</strong> اولین حرف: P.<br>
 <strong>خط ۳:</strong> سومین حرف (ایندکس ۲): t.<br>
 <strong>خط ۴:</strong> آخرین حرف با -1: n.</div>
 <h3>مثال 2: برش</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">s = &quot;Python&quot;
 print(s[0:3])
 print(s[2:])
 print(s[:4])
-print(s[::2])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(s[::2])</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">s = &quot;Python&quot;</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(s[0:3])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(s[2:])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(s[:4])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(s[::2])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> از ۰ تا قبل از ۳ → Pyt.<br>
 <strong>خط ۳:</strong> از ۲ تا آخر → thon.<br>
 <strong>خط ۴:</strong> از اول تا قبل از ۴ → Pyth.<br>
 <strong>خط ۵:</strong> گام ۲: یکی در میان → Pto.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">s = &quot;abc&quot;
-print(s[5])</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(s[5])</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">s = &quot;abc&quot;</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(s[5])</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> فقط ایندکس ۰،۱،۲ معتبر است.<br><strong>چه می‌بینی؟</strong> IndexError: string index out of range<br><strong>درست:</strong> قبل از دسترسی len(s) را چک کن، یا از slice استفاده کن که برای بیرون‌زدگی خطا نمی‌دهد.</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «برش رشته» بنویسی و اجرا کنی.</div>
@@ -93,30 +102,6 @@ print(s[5])</div></div><button type="button" class="trybtn">مشاهده در ا
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="02-آزمون-رشته-ها.html">← آزمون (رشته ها)</a><a href="04-آزمون-برش-رشته.html">آزمون (برش رشته) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="string" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>برش رشته Slicing Strings</strong> در مسیر پایتون.</p>
-<p>رشته متن است؛ برای پیام، ورودی کاربر و پردازش نوشته‌ها استفاده می‌شود.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «برش رشته Slicing Strings» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ساخت رشته، اتصال متن‌ها، و استخراج بخشی از متن را با مثال کوچک تمرین کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>غلط املایی در کوتیشن</li><li>قاطی کردن عدد و متن</li><li>برش اشتباه بازه.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «برش رشته Slicing Strings» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «برش رشته Slicing Strings» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

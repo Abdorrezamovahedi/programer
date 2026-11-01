@@ -71,7 +71,8 @@
                     <h3>پیش‌نیاز اجرا</h3>
                     <div class="code">python -m pip install mysql-connector-python</div>
                     <h3>مثال: خواندن نام محصول با شناسه</h3>
-                    <div class="codewrap">
+                    <div class="example-unit">
+<div class="codewrap">
                         <div class="code">import os
 import mysql.connector
 
@@ -93,14 +94,19 @@ try:
 finally:
     cursor.close()
     connection.close()</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">import os</code><span class="ln-exp"> — ماژول یا ابزار بیرونی را به برنامه اضافه می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">import mysql.connector</code><span class="ln-exp"> — ماژول یا ابزار بیرونی را به برنامه اضافه می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">product_id = 7</code><span class="ln-exp"> — یک مقدار را داخل «product_id» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">connection = mysql.connector.connect(</code><span class="ln-exp"> — یک مقدار را داخل «connection» ذخیره می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">host=&quot;127.0.0.1&quot;,</code><span class="ln-exp"> — یک مقدار را داخل «host» ذخیره می‌کند.</span></li><li><span class="ln">خط 6:</span> <code class="ln-code">user=&quot;app_user&quot;,</code><span class="ln-exp"> — یک مقدار را داخل «user» ذخیره می‌کند.</span></li><li><span class="ln">خط 7:</span> <code class="ln-code">password=os.environ[&quot;MYSQL_PASSWORD&quot;],</code><span class="ln-exp"> — یک مقدار را داخل «password» ذخیره می‌کند.</span></li><li><span class="ln">خط 8:</span> <code class="ln-code">database=&quot;shop&quot;,</code><span class="ln-exp"> — یک مقدار را داخل «database» ذخیره می‌کند.</span></li><li><span class="ln">خط 9:</span> <code class="ln-code">)</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 10:</span> <code class="ln-code">try:</code><span class="ln-exp"> — شروع بخش مدیریت خطا.</span></li><li><span class="ln">خط 11:</span> <code class="ln-code">cursor = connection.cursor()</code><span class="ln-exp"> — یک مقدار را داخل «cursor» ذخیره می‌کند.</span></li><li><span class="ln">خط 12:</span> <code class="ln-code">cursor.execute(</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 13:</span> <code class="ln-code">&quot;SELECT name FROM products WHERE id = %s&quot;,</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 14:</span> <code class="ln-code">(product_id,),</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 15:</span> <code class="ln-code">)</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 16:</span> <code class="ln-code">print(cursor.fetchone())</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 17:</span> <code class="ln-code">finally:</code><span class="ln-exp"> — شروع یک بلوک جدید از دستورات.</span></li><li><span class="ln">خط 18:</span> <code class="ln-code">cursor.close()</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li><li><span class="ln">خط 19:</span> <code class="ln-code">connection.close()</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li></ol></div>
+</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
                     <div class="exp"><strong>پیش‌نیاز:</strong> سرور MySQL و جدول <code>products</code> باید از قبل آماده باشند؛ رمز را در متغیر محیطی <code>MYSQL_PASSWORD</code> بگذار.<br>
                         <strong>%s و tuple:</strong> درایور مقدار را جدا از دستور SQL می‌فرستد و از چسباندن ورودی جلوگیری می‌کند.
                     </div>
                     <h3>اشتباه رایج</h3>
-                    <div class="codewrap">
+                    <div class="example-unit">
+<div class="codewrap">
                         <div class="code">query = &quot;SELECT * FROM users WHERE name = &#x27;&quot; + name +
                             &quot;&#x27;&quot;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">query = &quot;SELECT * FROM users WHERE name = &#x27;&quot; + name +</code><span class="ln-exp"> — یک مقدار را داخل «query» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">&quot;&#x27;&quot;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div>
                     </div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
                     <div class="warn"><strong>چرا اشتباه است؟</strong> ورودی کاربر می‌تواند کوئری را بشکند یا داده
@@ -129,30 +135,6 @@ finally:
                 </article>
             </div>
         </div>
-    
-
-
-
-<section class="card deep-content v9" data-topic="db" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>MySQL شروع MySQL Get Started</strong> در مسیر پایتون.</p>
-<p>پایگاه‌داده محل ذخیره ساخت‌یافته اطلاعات است تا بعداً بازیابی شود.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «MySQL شروع MySQL Get Started» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>داده را منظم مدل کن، عملیات اصلی را بشناس و با مثال کوچک تمرین کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>ذخیره بدون ساختار</li><li>نادیده گرفتن یکتایی داده.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «MySQL شروع MySQL Get Started» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «MySQL شروع MySQL Get Started» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
     <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge"

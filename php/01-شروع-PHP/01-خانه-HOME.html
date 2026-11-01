@@ -89,22 +89,31 @@
 <h3>مفهوم به زبان ساده</h3><p>PHP روی سرور اجرا می‌شود. خروجی معمولاً HTML یا متن است که به مرورگر می‌رسد. با دوبارکلیک ساده اجرا نمی‌شود؛ سرور لازم است.</p>
 <h3>فهرست معرفی: شروع PHP</h3>
 <p>همهٔ موارد این مبحث را یک‌جا در کد ببین. هر خط با <strong>کامنت</strong> توضیح داده شده است.</p>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 // خروجی سمت سرور
 echo &quot;سلام&quot;;     // چاپ متن در پاسخ صفحه
 echo 2 + 3;      // حساب در سرور؛ کاربر نتیجه را می‌بیند
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">// خروجی سمت سرور</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">echo &quot;سلام&quot;;     // چاپ متن در پاسخ صفحه</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">echo 2 + 3;      // حساب در سرور؛ کاربر نتیجه را می‌بیند</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <h3>مثال 1: متن و حساب</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 echo &quot;سلام دنیا\n&quot;;
 echo 10 / 2;
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">echo &quot;سلام دنیا\n&quot;;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">echo 10 / 2;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> شروع بلوک PHP.<br>
 <strong>خط ۲:</strong> متن به خروجی.<br>
 <strong>خط ۳:</strong> حاصل ۵.<br>
 <strong>خط ۴:</strong> پایان بلوک.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo سلام;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">echo سلام;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">echo سلام;</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> متن بدون " (دابل‌کوتیشن).<br><strong>چه می‌بینی؟</strong> خطا/هشدار<br><strong>درست:</strong> echo &quot;سلام&quot;;</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> با سرور محلی خروجی را در مرورگر ببینی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -117,30 +126,6 @@ echo 10 / 2;
 </ol>
 <p class="rel">اگر گیر کردی، همان خط کد را با توضیح زیر مثال مقایسه کن.</p>
 <div class="navbtn lesson-nav"><span></span><a href="02-مقدمه-Intro.html">مقدمه (Intro) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>خانه HOME</strong> در مسیر PHP.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «خانه HOME» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «خانه HOME» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «خانه HOME» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

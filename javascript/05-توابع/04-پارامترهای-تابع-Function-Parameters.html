@@ -52,17 +52,23 @@
   return a + b;
 }</div>
 <h3>مثال 1: جمع و ضرب</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">function add(a, b) {
   return a + b;
 }
 const mul = (a, b) =&gt; a * b;
-console.log(add(2, 3), mul(2, 3));</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+console.log(add(2, 3), mul(2, 3));</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">function add(a, b) {</code><span class="ln-exp"> — یک تابع جدید تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">return a + b;</code><span class="ln-exp"> — نتیجه را از تابع برمی‌گرداند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان این بلوک.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">const mul = (a, b) =&gt; a * b;</code><span class="ln-exp"> — یک متغیر در JavaScript تعریف می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">console.log(add(2, 3), mul(2, 3));</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>function add:</strong> تعریف تابع.<br>
 <strong>return:</strong> خروجی را به بیرون می‌دهد.<br>
 <strong>=&gt;:</strong> شکل کوتاه برای تابع‌های ساده.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">function f(x) { x * 2; }
-console.log(f(3));</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+console.log(f(3));</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">function f(x) { x * 2; }</code><span class="ln-exp"> — یک تابع جدید تعریف می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">console.log(f(3));</code><span class="ln-exp"> — پیام یا مقدار را در کنسول مرورگر چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> حساب شده ولی برگردانده نشده.<br><strong>چه می‌بینی؟</strong> undefined<br><strong>درست:</strong> return x * 2;</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> تابعی بنویسی که میانگین دو عدد را برگرداند و آن را صدا بزنی.</div>
@@ -76,30 +82,6 @@ console.log(f(3));</div></div><button type="button" class="trybtn">مشاهده 
 </ol>
 <p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
 <div class="navbtn lesson-nav"><a href="03-توابع-پیکانی-Function-Arrows.html">← توابع پیکانی (Function Arrows)</a><a href="05-فراخوانی-تابع-Function-Invocation.html">فراخوانی تابع (Function Invocation) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="function" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>پارامترهای تابع Function Parameters</strong> در مسیر جاوااسکریپت.</p>
-<p>تابع یک تکه کد نام‌دار است که یک کار مشخص را انجام می‌دهد و می‌توانی بارها صدایش بزنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «پارامترهای تابع Function Parameters» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ورودی‌ها را مشخص کن، بدنه را ساده نگه دار، و در صورت نیاز یک خروجی واضح برگردان.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>تابع خیلی طولانی</li><li>اثر جانبی پنهان</li><li>نام‌گذاری ضعیف.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «پارامترهای تابع Function Parameters» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «پارامترهای تابع Function Parameters» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

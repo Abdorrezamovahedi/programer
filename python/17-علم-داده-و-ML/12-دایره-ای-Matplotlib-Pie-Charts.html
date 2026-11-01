@@ -67,15 +67,21 @@
 <h3>ساختار</h3><div class="code"># pip install numpy pandas
 # import numpy as np</div>
 <h3>مثال 1: ایده بدون وابستگی اجباری</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code"># مفهوم: میانگین دستی شبیه ایدهٔ آماری
 data = [2, 4, 4, 6]
 mean = sum(data) / len(data)
 print(mean)
-# در NumPy: np.mean(np.array(data))</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+# در NumPy: np.mean(np.array(data))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code"># مفهوم: میانگین دستی شبیه ایدهٔ آماری</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">data = [2, 4, 4, 6]</code><span class="ln-exp"> — یک مقدار را داخل «data» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">mean = sum(data) / len(data)</code><span class="ln-exp"> — یک مقدار را داخل «mean» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(mean)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code"># در NumPy: np.mean(np.array(data))</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>data:</strong> نمونهٔ کوچک به‌جای دیتاست بزرگ.<br>
 <strong>mean:</strong> همان ایده‌ای که کتابخانه‌ها بهینه می‌کنند.</div>
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">import numpy as np  # بدون نصب</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">import numpy as np  # بدون نصب</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">import numpy as np  # بدون نصب</code><span class="ln-exp"> — ماژول یا ابزار بیرونی را به برنامه اضافه می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> پکیج روی سیستم نیست.<br><strong>چه می‌بینی؟</strong> ModuleNotFoundError<br><strong>درست:</strong> pip install numpy  (ترجیحاً داخل venv)</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> میانگین یک لیست را با خالص پایتون حساب کنی و بگویی معادلش در NumPy چیست.</div>
@@ -91,30 +97,6 @@ print(mean)
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="11-هیستوگرام-Matplotlib-Histograms.html">← هیستوگرام (Matplotlib Histograms)</a><a href="13-یادگیری-ماشین-شروع-Getting-Started.html">یادگیری ماشین: شروع (Getting Started) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>دایره ای Matplotlib Pie Charts</strong> در مسیر پایتون.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «دایره ای Matplotlib Pie Charts» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «دایره ای Matplotlib Pie Charts» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «دایره ای Matplotlib Pie Charts» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

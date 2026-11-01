@@ -59,52 +59,43 @@
 <h3>توضیح دانه‌به‌دانه با مثال</h3>
 <h4>1. پرانتز ()</h4>
 <p>اول از همه داخل پرانتز حساب می‌شود.</p>
-<div class="codewrap"><div class="code">print((2 + 3) * 4)  # 20</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print((2 + 3) * 4)  # 20</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print((2 + 3) * 4)  # 20</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <h4>2. توان **</h4>
 <p>بعد از پرانتز، توان زودتر از ضرب و تقسیم است.</p>
-<div class="codewrap"><div class="code">print(2 * 3 ** 2)  # 18  نه 36</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(2 * 3 ** 2)  # 18  نه 36</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(2 * 3 ** 2)  # 18  نه 36</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <h4>3. * / // %</h4>
 <p>ضرب و تقسیم و باقی‌مانده هم‌سطح‌اند؛ از چپ به راست.</p>
-<div class="codewrap"><div class="code">print(10 / 2 * 3)  # 15.0</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(10 / 2 * 3)  # 15.0</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(10 / 2 * 3)  # 15.0</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <h4>4. + -</h4>
 <p>جمع و تفریق بعد از ضرب و تقسیم.</p>
-<div class="codewrap"><div class="code">print(2 + 3 * 4)  # 14</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(2 + 3 * 4)  # 14</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(2 + 3 * 4)  # 14</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">print(2 + 3 * 4)  # انتظار 20؟</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(2 + 3 * 4)  # انتظار 20؟</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(2 + 3 * 4)  # انتظار 20؟</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> ضرب زودتر از جمع انجام می‌شود.<br><strong>چه می‌بینی؟</strong> ۱۴ نه ۲۰<br><strong>درست:</strong> print((2 + 3) * 4)</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بدون اجرا حدس بزنی 2 + 3 * 4 چند می‌شود و با پرانتز همان را ۲۰ کنی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul><li>() اول</li><li>بعد **</li><li>بعد * / // %</li><li>بعد + -</li></ul></div>
 <h3>گام عملی</h3><ol class="practice-list"><li>عبارت 2 + 3 * 4 را اجرا کن.</li><li>با پرانتز نتیجه‌ات را عوض کن.</li><li>یک عبارت با ** و * بنویس.</li></ol>
 <div class="navbtn lesson-nav"><a href="09-عملگرهای-بیتی-Bitwise-Operators.html">← عملگرهای بیتی (Bitwise Operators)</a><a href="11-عملگرهای-منطقی-در-شرط.html">عملگرهای منطقی در شرط →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="operator" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>اولویت عملگرها Operator Precedence</strong> در مسیر پایتون.</p>
-<p>عملگرها روی مقدارها کار می‌کنند: حسابی، مقایسه و منطقی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «اولویت عملگرها Operator Precedence» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>اولویت عملگرها را بشناس و برای وضوح از پرانتز استفاده کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>اشتباه = با ==</li><li>اولویت نادرست</li><li>عملگر منطقی غلط.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «اولویت عملگرها Operator Precedence» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «اولویت عملگرها Operator Precedence» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

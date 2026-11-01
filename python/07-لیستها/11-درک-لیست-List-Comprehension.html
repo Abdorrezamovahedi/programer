@@ -65,20 +65,29 @@
 [عبارت for عضو in دنباله if شرط]</div>
 <p class="rel">بالا فقط شکل کلی است؛ پایین مثال واقعی می‌بینی که اجرا می‌شود.</p>
 <h3>مثال 1: مربع عددها</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">nums = [1, 2, 3, 4]
 squares = [n * n for n in nums]
-print(squares)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(squares)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">nums = [1, 2, 3, 4]</code><span class="ln-exp"> — یک مقدار را داخل «nums» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">squares = [n * n for n in nums]</code><span class="ln-exp"> — یک مقدار را داخل «squares» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(squares)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> لیست اولیه.<br>
 <strong>خط ۲:</strong> برای هر n، مقدار n*n را در لیست جدید بگذار.<br>
 <strong>خط ۳:</strong> خروجی: [1, 4, 9, 16]</div>
 <h3>مثال 2: فقط زوج‌ها</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">nums = [1, 2, 3, 4, 5, 6]
 evens = [n for n in nums if n % 2 == 0]
-print(evens)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(evens)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">nums = [1, 2, 3, 4, 5, 6]</code><span class="ln-exp"> — یک مقدار را داخل «nums» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">evens = [n for n in nums if n % 2 == 0]</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(evens)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> فقط وقتی عضو را نگه دار که زوج باشد.<br>
 <strong>خط ۳:</strong> خروجی: [2, 4, 6]</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">[print(n) for n in nums]</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">[print(n) for n in nums]</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">[print(n) for n in nums]</code><span class="ln-exp"> — یک دستور یا فراخوانی را اجرا می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn"><strong>چرا اشتباه است؟</strong> درک لیست برای ساختن لیست است؛ print مقدار مفید در لیست نمی‌سازد.<br><strong>چه می‌بینی؟</strong> لیستی از None و عوارض جانبی<br><strong>درست:</strong> یا حلقه for معمولی با print، یا درک لیست برای مقدار واقعی</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> یک لیست مربعات و یک لیست فیلترشده با if بسازی.</div>
 <div class="sum"><b>جمع‌بندی</b><ul>
@@ -91,30 +100,6 @@ print(evens)</div></div><button type="button" class="trybtn">مشاهده در �
 </ol>
 <p class="rel">هر مثال را خودت تایپ کن و اجرا کن؛ فقط خواندن کافی نیست.</p>
 <div class="navbtn lesson-nav"><a href="10-آزمون-حلقه-روی-لیست.html">← آزمون (حلقه روی لیست)</a><a href="12-آزمون-درک-لیست.html">آزمون (درک لیست) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="array" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>درک لیست List Comprehension</strong> در مسیر پایتون.</p>
-<p>آرایه/لیست مجموعه‌ای مرتب از مقدارهاست که با اندیس به هر عضو دسترسی داری.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «درک لیست List Comprehension» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ساخت مجموعه، خواندن عضو، پیمایش با حلقه و افزودن/حذف را جداگانه تمرین کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>اندیس از صفر</li><li>خارج از محدوده</li><li>تغییر ناخواسته لیست اصلی.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «درک لیست List Comprehension» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «درک لیست List Comprehension» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

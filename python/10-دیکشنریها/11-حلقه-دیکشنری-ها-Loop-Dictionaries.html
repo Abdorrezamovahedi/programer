@@ -59,15 +59,21 @@
 <h3>ساختار</h3><div class="code">for k in d:
 for k, v in d.items():</div>
 <h3>مثال 1: items</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">scores = {&quot;علی&quot;: 18, &quot;سارا&quot;: 20}
 for name, score in scores.items():
-    print(name, &quot;→&quot;, score)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+    print(name, &quot;→&quot;, score)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">scores = {&quot;علی&quot;: 18, &quot;سارا&quot;: 20}</code><span class="ln-exp"> — یک مقدار را داخل «scores» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">for name, score in scores.items():</code><span class="ln-exp"> — یک حلقه تکرار را شروع می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(name, &quot;→&quot;, score)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۲:</strong> هر دور یک جفت کلید و مقدار.<br>
 <strong>خط ۳:</strong> چاپ خوانا برای هر نفر.</div>
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">d = {&quot;a&quot;: 1, &quot;b&quot;: 2}
 for k in d:
-    del d[k]</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+    del d[k]</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">d = {&quot;a&quot;: 1, &quot;b&quot;: 2}</code><span class="ln-exp"> — یک مقدار را داخل «d» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">for k in d:</code><span class="ln-exp"> — یک حلقه تکرار را شروع می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">del d[k]</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> حذف هنگام پیمایش مستقیم دیکشنری خطر RuntimeError دارد.<br><strong>چه می‌بینی؟</strong> RuntimeError: dictionary changed size during iteration<br><strong>درست:</strong> for k in list(d):
     del d[k]</div>
@@ -85,30 +91,6 @@ for k in d:
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="10-آزمون-حذف-دیکشنری.html">← آزمون (حذف دیکشنری)</a><a href="12-آزمون-حلقه-دیکشنری.html">آزمون (حلقه دیکشنری) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="loop" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>حلقه دیکشنری ها Loop Dictionaries</strong> در مسیر پایتون.</p>
-<p>حلقه برای تکرار یک کار است تا وقتی شرط برقرار باشد یا روی مجموعه‌ای از آیتم‌ها حرکت کنی.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «حلقه دیکشنری ها Loop Dictionaries» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مشخص کن چه چیزی تکرار شود، شرط توقف چیست، و داخل حلقه چه تغییری رخ می‌دهد.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حلقه بی‌نهایت</li><li>تغییر ندادن متغیر شرط</li><li>یکی زیاد یا یکی کم شمردن بازه.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «حلقه دیکشنری ها Loop Dictionaries» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «حلقه دیکشنری ها Loop Dictionaries» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

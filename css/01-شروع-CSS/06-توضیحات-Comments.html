@@ -55,11 +55,14 @@
 <p>کامنت مثل یادداشت کنار دفتر است. مرورگر آن را نمی‌خواند و هیچ تأثیری روی ظاهر صفحه ندارد. فقط برای انسان نوشته می‌شود.</p>
 
 <h3>شکل نوشتن کامنت در CSS</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">/* این یک توضیح است */
 p {
   color: #1e293b;   /* رنگ متن تیره */
   /* line-height: 1.8;  این خط فعلاً غیرفعال است */
-}</div></div>
+}</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">/* این یک توضیح است */</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">p {</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">color: #1e293b;   /* رنگ متن تیره */</code><span class="ln-exp"> — ویژگی «color» را مقداردهی می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">/* line-height: 1.8;  این خط فعلاً غیرفعال است */</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">}</code><span class="ln-exp"> — پایان بلوک استایل.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp">
 <strong>شروع کامنت:</strong> با <code>/*</code><br>
@@ -75,8 +78,11 @@ p {
 </ul>
 
 <h3>اشتباه رایج</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">// این کامنت در CSS کار نمی‌کند
-p { color: red; }</div></div>
+p { color: red; }</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">// این کامنت در CSS کار نمی‌کند</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">p { color: red; }</code><span class="ln-exp"> — یک انتخابگر را باز می‌کند تا استایل‌هایش را بنویسیم.</span></li></ol></div>
+</div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="warn">
 <strong>مشکل:</strong> علامت <code>//</code> مخصوص JavaScript و برخی زبان‌های دیگر است. در CSS کار نمی‌کند و ممکن است باعث خطا شود.<br>
@@ -104,30 +110,6 @@ p { color: red; }</div></div>
 </div>
 </article>
 </div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>توضیحات Comments</strong> در مسیر CSS.</p>
-<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «توضیحات Comments» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
-<p>پیشنهاد: یک اشتباه عمدی در مثال «توضیحات Comments» بساز و پیام خطا را بخوان.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «توضیحات Comments» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

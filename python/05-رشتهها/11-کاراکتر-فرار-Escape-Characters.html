@@ -55,19 +55,28 @@
 <h3>مفهوم</h3><p>گاهی می‌خواهی خودِ علامت " (دابل‌کوتیشن) یا یک خط جدید داخل رشته باشد. با بک‌اسلش \ به پایتون می‌گویی کاراکتر بعدی معنی خاص دارد: \n خط جدید، \&quot; " (دابل‌کوتیشن)، \\ یک بک‌اسلش واقعی.</p>
 <h3>ساختار</h3><div class="code">&quot;خط1\nخط2&quot;   &quot;او گفت: \&quot;سلام\&quot;&quot;   &quot;C:\\Users&quot;</div>
 <h3>مثال 1: خط جدید و " (دابل‌کوتیشن)</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">print(&quot;خط اول\nخط دوم&quot;)
 print(&quot;او گفت: \&quot;سلام\&quot;&quot;)
-print(&#x27;او گفت: &quot;سلام&quot;&#x27;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(&#x27;او گفت: &quot;سلام&quot;&#x27;)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;خط اول\nخط دوم&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(&quot;او گفت: \&quot;سلام\&quot;&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(&#x27;او گفت: &quot;سلام&quot;&#x27;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> \n مکان‌نما را به خط بعد می‌برد.<br>
 <strong>خط ۲:</strong> \&quot; یعنی یک &quot; واقعی داخل رشتهٔ دوتایی.<br>
 <strong>خط ۳:</strong> راه ساده‌تر: " (دابل‌کوتیشن) بیرونی تک، درونی دوتایی.</div>
 <h3>مثال 2: بک‌اسلش و raw</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">print(&quot;مسیر: C:\\temp&quot;)
-print(r&quot;مسیر: C:\temp&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+print(r&quot;مسیر: C:\temp&quot;)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;مسیر: C:\\temp&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(r&quot;مسیر: C:\temp&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>خط ۱:</strong> هر \\ یک \ در خروجی می‌شود.<br>
 <strong>خط ۲:</strong> r یعنی رشتهٔ خام؛ \ کمتر تفسیر می‌شود (برای مسیر مفید است).</div>
 <h3>اشتباه رایج</h3>
-<div class="codewrap"><div class="code">print(&quot;او گفت: &quot;سلام&quot;&quot;)</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(&quot;او گفت: &quot;سلام&quot;&quot;)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(&quot;او گفت: &quot;سلام&quot;&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> " (دابل‌کوتیشن) وسط رشته زودتر رشته را می‌بندد و باقی نحو خراب می‌شود.<br><strong>چه می‌بینی؟</strong> SyntaxError<br><strong>درست:</strong> print(&quot;او گفت: \&quot;سلام\&quot;&quot;)  یا  print(&#x27;او گفت: &quot;سلام&quot;&#x27;)</div>
 <div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «کاراکتر فرار» بنویسی و اجرا کنی.</div>
@@ -84,30 +93,6 @@ print(r&quot;مسیر: C:\temp&quot;)</div></div><button type="button" class="tr
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="10-آزمون-قالب-بندی-رشته-ها.html">← آزمون (قالب بندی رشته ها)</a><a href="12-متدهای-رشته-String-Methods.html">متدهای رشته (String Methods) →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="string" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>کاراکتر فرار Escape Characters</strong> در مسیر پایتون.</p>
-<p>رشته متن است؛ برای پیام، ورودی کاربر و پردازش نوشته‌ها استفاده می‌شود.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «کاراکتر فرار Escape Characters» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>ساخت رشته، اتصال متن‌ها، و استخراج بخشی از متن را با مثال کوچک تمرین کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>غلط املایی در کوتیشن</li><li>قاطی کردن عدد و متن</li><li>برش اشتباه بازه.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «کاراکتر فرار Escape Characters» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «کاراکتر فرار Escape Characters» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>

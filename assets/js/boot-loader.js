@@ -8,7 +8,7 @@
   window.__MCD_BOOT_DONE__ = true;
 
   var FULL_MS = 2200;
-  var LESSON_MS = 250;
+  var LESSON_MS = 420;
   var FLAG = "mcd_boot_seen";
 
   function isLessonPage() {
@@ -161,7 +161,7 @@
     } catch (e) {
       finish();
     }
-    setTimeout(finish, DUR + (isShort ? 600 : 3500));
+    setTimeout(finish, DUR + (isShort ? 500 : 3500));
   }
 
   mount();

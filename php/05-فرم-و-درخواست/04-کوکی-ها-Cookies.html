@@ -16,6 +16,7 @@
 
 </head>
 <body>
+<script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 
 <header>
@@ -135,15 +136,21 @@
 <h3>ساختار (Syntax)</h3><div class="code">$q = $_GET[&quot;q&quot;] ?? &quot;&quot;;
 echo htmlspecialchars($q, ENT_QUOTES, &quot;UTF-8&quot;);</div>
 <h3>مثال 1: خواندن امن</h3>
+<div class="example-unit">
 <div class="codewrap"><div class="code">&lt;?php
 $q = $_GET[&quot;q&quot;] ?? &quot;&quot;;
 echo &quot;جستجو: &quot; . htmlspecialchars($q, ENT_QUOTES, &quot;UTF-8&quot;);
-?&gt;</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+?&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;?php</code><span class="ln-exp"> — شروع بلوک کد PHP.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">$q = $_GET[&quot;q&quot;] ?? &quot;&quot;;</code><span class="ln-exp"> — یک متغیر PHP را مقداردهی می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">echo &quot;جستجو: &quot; . htmlspecialchars($q, ENT_QUOTES, &quot;UTF-8&quot;);</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">?&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 <div class="exp"><strong>$_GET:</strong> داده‌های بخش query آدرس.<br>
 <strong>?? &quot;&quot;:</strong> اگر نبود، خالی در نظر بگیر.<br>
 <strong>htmlspecialchars:</strong> نویسه‌های خطرناک را بی‌اثر می‌کند.</div>
 <h3>اشتباه رایج مبتدی‌ها</h3>
-<div class="codewrap"><div class="code">echo $_GET[&quot;q&quot;];</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="example-unit">
+<div class="codewrap"><div class="code">echo $_GET[&quot;q&quot;];</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">echo $_GET[&quot;q&quot;];</code><span class="ln-exp"> — متن یا مقدار را در خروجی چاپ می‌کند.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
 <div class="warn"><strong>چرا اشتباه است؟</strong> ورودی خام ممکن است کد وارد صفحه کند.<br><strong>چه می‌بینی؟</strong> ریسک امنیتی جدی<br><strong>درست:</strong> همیشه قبل از چاپ در HTML پاک‌سازی کن</div>
 <div class="good"><strong>معیار تمام‌شدن درس:</strong> صفحه را یک‌بار با ?q=test و یک‌بار با مقدار عجیب تست کنی و خروجی امن ببینی.</div>
@@ -157,30 +164,6 @@ echo &quot;جستجو: &quot; . htmlspecialchars($q, ENT_QUOTES, &quot;UTF-8&quo
 </ol>
 <p class="rel">اگر گیر کردی، فقط همان یک خطی که خطا می‌دهد را با بخش «اشتباه رایج» مقایسه کن. لازم نیست همه چیز را یک‌جا حفظ کنی — با تمرین جا می‌افتد.</p>
 <div class="navbtn lesson-nav"><a href="03-آپلود-فایل-File-Upload.html">← قبلی</a><a href="05-سشن-ها-Sessions.html">بعدی →</a></div></article></div></div>
-
-
-
-
-<section class="card deep-content v9" data-topic="form" style="margin-top:1.25rem">
-<h2>مفهوم به زبان ساده</h2>
-<p>موضوع این درس: <strong>کوکی ها Cookies</strong> در مسیر PHP.</p>
-<p>فرم راه گرفتن اطلاعات از کاربر است: نام، ایمیل، پیام و ارسال.</p>
-<h2>کاربرد واقعی</h2>
-<p>وقتی پروژه‌ای می‌نویسی، بارها به «کوکی ها Cookies» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
-<h2>روش یادگیری این درس</h2>
-<p>برچسب مناسب بگذار، نوع ورودی درست انتخاب کن، و ارسال را مرحله‌به‌مرحله تست کن.</p>
-<ol>
-<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
-<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
-<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
-<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
-</ol>
-<h2>اشتباه‌های رایج</h2>
-<ul><li>بدون label</li><li>نام‌گذاری نادرست فیلدها</li><li>نبود پیام راهنما.</li></ul>
-<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «کوکی ها Cookies» بنویس.</p>
-<h2>جمع‌بندی</h2>
-<p>اگر می‌توانی بگویی «کوکی ها Cookies» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
-</section>
 
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
