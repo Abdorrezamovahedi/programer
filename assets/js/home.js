@@ -17,13 +17,14 @@
     const continueLink = document.getElementById('continueLearning');
     if (!summary || !continueLink) return;
 
-    const completed = safeRead(COMPLETED_KEY, []);
+    const storedCompleted = safeRead(COMPLETED_KEY, []);
+    const completed = Array.isArray(storedCompleted) ? storedCompleted : [];
     const lastLesson = safeRead(LAST_LESSON_KEY, null);
     summary.textContent = completed.length
       ? `${completed.length} درس را تکمیل کرده‌ای. هر زمان خواستی می‌توانی مرورشان کنی.`
       : 'هنوز درسی را تکمیل نکرده‌ای. یک درس را شروع کن و پس از مطالعه، آن را تکمیل‌شده علامت بزن.';
 
-    if (lastLesson && lastLesson.url && lastLesson.title) {
+    if (lastLesson && typeof lastLesson.url === 'string' && typeof lastLesson.title === 'string') {
       continueLink.href = lastLesson.url;
       continueLink.textContent = `ادامه: ${lastLesson.title} ←`;
     }

@@ -1,3 +1,13 @@
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 (function () {
   const STORAGE_KEY = 'madrase_pins_v1';
   const COMPLETED_KEY = 'madrase_completed_lessons_v1';
@@ -5,7 +15,12 @@
 
   function loadCompletedLessons() {
     try {
-      return JSON.parse(localStorage.getItem(COMPLETED_KEY) || '[]');
+      const stored = JSON.parse(localStorage.getItem(COMPLETED_KEY) || '[]');
+      return Array.isArray(stored)
+        ? stored.filter(function (lesson) {
+            return lesson && typeof lesson === 'object' && typeof lesson.url === 'string';
+          })
+        : [];
     } catch (error) {
       return [];
     }
@@ -130,7 +145,14 @@
 
   function loadPins() {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return Array.isArray(stored)
+        ? stored.filter(function (pin) {
+            return pin && typeof pin === 'object' &&
+              typeof pin.k === 'string' && typeof pin.url === 'string' &&
+              typeof pin.title === 'string';
+          })
+        : [];
     } catch (error) {
       return [];
     }
@@ -279,7 +301,7 @@
       copyButton.onclick = function () {
         const codeText = document.getElementById('edCode')?.textContent || '';
         if (navigator.clipboard) {
-          navigator.clipboard.writeText(codeText);
+          navigator.clipboard.writeText(codeText).catch(function () {});
         }
       };
     }

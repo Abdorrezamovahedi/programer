@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/php/06-عبارات-منظم/04-تطبیق-همه-preg-match-all.html">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="تطبیق همه preg match all | PHP · MCD Code Up">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/php/06-عبارات-منظم/04-تطبیق-همه-preg-match-all.html">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name=\"theme-color\" content=\"#0f1419\">
-<title>تطبیق همه (preg_match_all) — PHP | MCD Code Up</title>
-<meta name="description" content="با preg_match_all همهٔ قیمت‌های یک متن را همراه با گروه‌های تطبیق استخراج کن و تفاوت آن را با preg_match ببین.">
+<title>تطبیق همه preg match all | PHP · MCD Code Up</title>
+<meta name="description" content="آموزش تطبیق همه preg match all در PHP از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "تطبیق همه (preg_match_all)", "description": "استخراج همهٔ قیمت‌ها از یک رشته با preg_match_all در PHP.", "inLanguage": "fa"}</script>
 
@@ -21,6 +26,8 @@
 </nav>
 </header>
 <main id="main-content">
+<h1>تطبیق همه preg match all</h1>
+
 <div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">PHP</a><span class="sep">/</span><a href="index.html">عبارات منظم</a><span class="sep">/</span><span>تطبیق همه (preg_match_all)</span></div><div class="layout"><aside class="side"><h3>عبارات منظم (9)</h3>
 <a href="01-عبارات-منظم-RegEx.html">1. عبارات منظم (RegEx)</a>
 <a href="02-جستجو-با-الگو-preg-grep.html">2. جستجو با الگو (preg_grep)</a>
@@ -63,9 +70,35 @@ echo &quot;تعداد قیمت‌ها: &quot; . $count;
 </ol>
 <p class="rel">برای جایگزین‌کردن همهٔ تطبیق‌ها به‌جای استخراج آن‌ها، درس بعدی یعنی <code>preg_replace</code> را ببین.</p>
 <div class="navbtn lesson-nav"><a href="03-تطبیق-preg-match.html">← قبلی</a><a href="05-جایگزینی-preg-replace.html">بعدی →</a></div></article></div></div>
+
+
+
+
+<section class="card deep-content v9" data-topic="general" style="margin-top:1.25rem">
+<h2>مفهوم به زبان ساده</h2>
+<p>موضوع این درس: <strong>تطبیق همه preg match all</strong> در مسیر PHP.</p>
+<p>این درس یک قطعه از مسیر یادگیری است؛ هدف فهم مفهوم و استفاده عملی آن است.</p>
+<h2>کاربرد واقعی</h2>
+<p>وقتی پروژه‌ای می‌نویسی، بارها به «تطبیق همه preg match all» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
+<h2>روش یادگیری این درس</h2>
+<p>مثال را بخوان، خودت اجرا کن، یک تغییر کوچک بده و نتیجه را بررسی کن.</p>
+<ol>
+<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
+<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
+<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
+<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
+</ol>
+<h2>اشتباه‌های رایج</h2>
+<ul><li>حفظ طوطی‌وار</li><li>رد شدن از خطا</li><li>نرفتن سراغ تمرین.</li></ul>
+<p>پیشنهاد: بعد از این درس، یک مثال شخصی درباره «تطبیق همه preg match all» بنویس.</p>
+<h2>جمع‌بندی</h2>
+<p>اگر می‌توانی بگویی «تطبیق همه preg match all» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
+</section>
+
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+<script src="../../assets/js/app.js"></script><script src="../../assets/js/mcd-motion.js" defer></script>
+</body></html>

@@ -1839,3 +1839,269 @@ nav a.active {
     --link-strong: #69f0ae;
   }
 }
+
+img{max-width:100%;height:auto}
+
+/* reduce render cost for long lesson lists */
+.exercise-list li,.cat-grid a{content-visibility:auto;contain-intrinsic-size:48px;}
+
+
+
+/* =========================================================
+   MCD Motion Layer — hacker / programming feel
+   Solid sRGB colors only · respects prefers-reduced-motion
+   ========================================================= */
+
+:root {
+  --mcd-green: #00e676;
+  --mcd-green-soft: #69f0ae;
+  --mcd-green-dim: #00c853;
+  --mcd-panel: #07140e;
+  --mcd-line: #1f3d2e;
+  --mcd-glow: rgba(0, 230, 118, 0.35);
+}
+
+/* Page enter */
+@keyframes mcd-fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes mcd-scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+@keyframes mcd-border-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px var(--mcd-line), 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 0 1px var(--mcd-green-dim), 0 0 18px 0 var(--mcd-glow); }
+}
+@keyframes mcd-caret {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes mcd-hue-soft {
+  0%, 100% { color: #e8f5e9; }
+  50% { color: #c8f7dc; }
+}
+@keyframes mcd-title-glow {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 12px rgba(0, 230, 118, 0.35); }
+}
+@keyframes mcd-code-shine {
+  0% { background-position: -120% 0; }
+  100% { background-position: 120% 0; }
+}
+@keyframes mcd-card-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+body.mcd-ready main,
+body.mcd-ready .wrap {
+  animation: mcd-fade-up 0.45s ease both;
+}
+
+/* Hacker-ish headings — readable, subtle */
+.hero h1,
+h1 {
+  animation: mcd-title-glow 5s ease-in-out infinite;
+}
+.logo {
+  letter-spacing: 0.02em;
+}
+.logo a {
+  color: #00e676 !important;
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+  transition: text-shadow 0.25s ease, color 0.25s ease;
+}
+.logo a:hover {
+  color: #69f0ae !important;
+  text-shadow: 0 0 16px rgba(0, 230, 118, 0.55);
+}
+
+/* Cards & lang tiles */
+.card,
+.lang,
+.lang-link,
+.lang-card,
+.cat-grid a,
+.featured-lessons a,
+.learning-steps > * {
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+  border: 1px solid var(--mcd-line);
+  background: var(--mcd-panel);
+}
+.card:hover,
+.lang:hover,
+.lang-link:hover,
+.lang-card:hover,
+.cat-grid a:hover,
+.featured-lessons a:hover {
+  transform: translateY(-3px);
+  border-color: #00c853;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 230, 118, 0.2);
+}
+
+/* Stagger home language cards */
+.langs .lang,
+.langs .lang-link {
+  animation: mcd-card-in 0.5s ease both;
+}
+.langs .lang:nth-child(1), .langs .lang-link:nth-child(1) { animation-delay: 0.05s; }
+.langs .lang:nth-child(2), .langs .lang-link:nth-child(2) { animation-delay: 0.1s; }
+.langs .lang:nth-child(3), .langs .lang-link:nth-child(3) { animation-delay: 0.15s; }
+.langs .lang:nth-child(4), .langs .lang-link:nth-child(4) { animation-delay: 0.2s; }
+.langs .lang:nth-child(5), .langs .lang-link:nth-child(5) { animation-delay: 0.25s; }
+
+/* Code blocks — terminal feel */
+pre,
+.code,
+.codewrap,
+pre code {
+  position: relative;
+  border: 1px solid #1f3d2e !important;
+  background: #010604 !important;
+  color: #b9f6ca !important; /* readable green-white */
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+pre:hover,
+.codewrap:hover,
+.code:hover {
+  border-color: #00c853 !important;
+  box-shadow: 0 0 0 1px rgba(0, 230, 118, 0.25), 0 0 22px rgba(0, 230, 118, 0.12);
+}
+/* terminal header bar */
+.codewrap {
+  overflow: hidden;
+}
+.codewrap::before,
+pre.mcd-terminal::before {
+  content: "● ● ●  terminal";
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #81c784;
+  background: #0a1a12;
+  border-bottom: 1px solid #1f3d2e;
+  padding: 6px 10px;
+  margin: -0.75rem -0.75rem 0.75rem -0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+pre:not(.mcd-terminal) {
+  /* add class via JS; fallback soft glow */
+  box-shadow: inset 0 0 0 1px rgba(0, 230, 118, 0.05);
+}
+
+/* Links */
+a {
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+a:hover {
+  color: #69f0ae;
+  text-shadow: 0 0 8px rgba(0, 230, 118, 0.25);
+}
+
+/* Buttons / nav pills */
+nav a,
+.navbtn,
+.ex-badge {
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+nav a:hover,
+.navbtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.15);
+}
+
+/* Page transition overlay */
+#mcd-page-fx {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 230, 118, 0.08), transparent 30%),
+    #020805;
+  transition: opacity 0.28s ease;
+}
+#mcd-page-fx.is-on {
+  opacity: 1;
+}
+#mcd-page-fx .fx-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00e676, transparent);
+  top: 45%;
+  box-shadow: 0 0 16px #00e676;
+  animation: mcd-scan-move 0.6s linear infinite;
+  opacity: 0.85;
+}
+@keyframes mcd-scan-move {
+  from { transform: translateY(-40vh); }
+  to { transform: translateY(40vh); }
+}
+
+/* Home hero terminal strip */
+.hero.mcd-hero {
+  position: relative;
+  border: 1px solid #1f3d2e;
+  border-radius: 16px;
+  background: #07140e;
+  padding: 28px 16px 22px;
+  overflow: hidden;
+}
+.hero.mcd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 230, 118, 0.04) 1px, transparent 1px);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.hero.mcd-hero h1 {
+  position: relative;
+  color: #e8f5e9;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, Tahoma, sans-serif;
+}
+.hero.mcd-hero h1::after {
+  content: "▌";
+  color: #00e676;
+  margin-right: 4px;
+  animation: mcd-caret 1.1s step-end infinite;
+}
+.hero.mcd-hero p {
+  position: relative;
+  color: #c8e6c9;
+}
+
+/* Section headings accent */
+.section-heading,
+.home-section h2 {
+  border-right: 3px solid #00e676;
+  padding-right: 10px;
+}
+
+/* Focus visible for a11y */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #00e676;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  #mcd-page-fx { display: none !important; }
+  .hero.mcd-hero h1::after { display: none; }
+}

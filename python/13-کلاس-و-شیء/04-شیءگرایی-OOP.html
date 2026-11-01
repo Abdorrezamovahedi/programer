@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/13-کلاس-و-شیء/04-شیءگرایی-OOP.html">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="شیءگرایی OOP | PYTHON · MCD Code Up">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/13-کلاس-و-شیء/04-شیءگرایی-OOP.html">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<title>شیءگرایی (OOP) — Python | MCD Code Up</title>
-<meta name="description" content="یک کلاس با __init__ و متد بسازی و یک شیء از آن بسازی">
+<title>شیءگرایی OOP | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش شیءگرایی OOP در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "شیءگرایی (OOP)", "description": "یک کلاس با __init__ و متد بسازی و یک شیء از آن بسازی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 
@@ -22,6 +27,8 @@
 </nav>
 </header>
 <main id="main-content">
+<h1>شیءگرایی OOP</h1>
+
 <div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">کلاس و شیء</a><span class="sep">/</span><span>شیءگرایی (OOP)</span></div><div class="layout"><aside class="side"><h3>کلاس و شیء (11)</h3>
 <a href="01-دکوراتور-ها-Decorators.html">1. دکوراتور ها (Decorators)</a>
 <a href="02-جنریتور-ها-Generators.html">2. جنریتور ها (Generators)</a>
@@ -82,9 +89,35 @@ print(a.x)</div></div><button type="button" class="trybtn">مشاهده در ا�
 </ol>
 <p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
 <div class="navbtn lesson-nav"><a href="03-ایتریتورها-Iterators.html">← ایتریتورها (Iterators)</a><a href="05-کلاس-ها-اشیا-Classes-Objects.html">کلاس ها/اشیا (Classes/Objects) →</a></div></article></div></div>
+
+
+
+
+<section class="card deep-content v9" data-topic="oop" style="margin-top:1.25rem">
+<h2>مفهوم به زبان ساده</h2>
+<p>موضوع این درس: <strong>شیءگرایی OOP</strong> در مسیر پایتون.</p>
+<p>شیءگرایی کمک می‌کند داده و رفتار مرتبط را کنار هم در قالب کلاس/شیء مدل کنی.</p>
+<h2>کاربرد واقعی</h2>
+<p>وقتی پروژه‌ای می‌نویسی، بارها به «شیءگرایی OOP» برمی‌خوری. اگر همین‌جا خوب یادش بگیری، در درس‌های بعدی و پروژه‌های کوچک سریع‌تر جلو می‌روی.</p>
+<h2>روش یادگیری این درس</h2>
+<p>مفهوم موجودیت را مشخص کن، ویژگی‌ها و رفتارها را جدا کن، بعد مثال کوچک بساز.</p>
+<ol>
+<li>عنوان و هدف درس را یک‌بار با صدای خودت بگو.</li>
+<li>مثال کد را خط‌به‌خط بخوان و اجرا کن.</li>
+<li>یک مقدار یا شرط را تغییر بده و خروجی جدید را ببین.</li>
+<li>یک تمرین ۳۰ ثانیه‌ای برای خودت تعریف کن و حل کن.</li>
+</ol>
+<h2>اشتباه‌های رایج</h2>
+<ul><li>کلاس بیش‌ازحد پیچیده</li><li>ارث‌بری غیرضروری.</li></ul>
+<p>پیشنهاد: مفهوم «شیءگرایی OOP» را برای خودت در دو خط توضیح بده.</p>
+<h2>جمع‌بندی</h2>
+<p>اگر می‌توانی بگویی «شیءگرایی OOP» چیست و یک مثال کوچک از آن بنویسی، برای رفتن به درس بعد آماده‌ای.</p>
+</section>
+
 </main>
 <button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
 <div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
 <div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
-<script src="../../assets/js/app.js"></script></body></html>
+<script src="../../assets/js/app.js"></script><script src="../../assets/js/mcd-motion.js" defer></script>
+</body></html>
