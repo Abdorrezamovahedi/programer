@@ -1975,18 +1975,7 @@ pre:hover,
   overflow: hidden;
 }
 .codewrap::before,
-pre.mcd-terminal::before {
-  content: "● ● ●  terminal";
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: #81c784;
-  background: #0a1a12;
-  border-bottom: 1px solid #1f3d2e;
-  padding: 6px 10px;
-  margin: -0.75rem -0.75rem 0.75rem -0.75rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
+pre.mcd-terminal::before{content:none!important;display:none!important}
 pre:not(.mcd-terminal) {
   /* add class via JS; fallback soft glow */
   box-shadow: inset 0 0 0 1px rgba(0, 230, 118, 0.05);
@@ -2434,20 +2423,8 @@ article .codewrap,
 }
 
 /* unified terminal title bar */
-.codewrap::before {
-  content: "● ● ●  terminal";
-  display: block;
-  direction: ltr;
-  text-align: left;
-  font-size: 11px;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-  color: #81c784;
-  background: #0a1a12;
-  border-bottom: 1px solid #1f3d2e;
-  padding: 8px 12px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}
+/* terminal header removed */
+.codewrap::before{content:none!important;display:none!important}
 
 .codewrap .code,
 .codewrap pre,
@@ -3269,15 +3246,8 @@ main h1::after, .hero h1::after {
 }
 
 /* 11 & 12) Terminal header dots + activity bars */
-.codewrap::before {
-  content:"● ● ●  terminal  |  running";
-  display:block; direction:ltr; text-align:left;
-  font-size:11px; letter-spacing:.04em; color:#81c784;
-  background:#0a1a12; border-bottom:1px solid #1f3d2e;
-  padding:8px 12px;
-  font-family: ui-monospace, Consolas, monospace;
-  position: relative;
-}
+/* terminal header removed */
+.codewrap::before{content:none!important;display:none!important}
 .codewrap {
   position: relative;
   overflow: hidden;
@@ -3479,3 +3449,222 @@ main h1::after, .hero h1::after {
   #mcd-binary-wind { display: none !important; }
 }
 
+
+
+
+/* ===== Code examples: no terminal label, cleaner ===== */
+.codewrap::before,
+pre.mcd-terminal::before {
+  content: none !important;
+  display: none !important;
+}
+.codewrap {
+  margin: 0.75rem 0 0.5rem;
+  padding: 0;
+  border: 1px solid #1f3d2e;
+  border-radius: 10px;
+  background: #010604 !important;
+  overflow: hidden;
+}
+.codewrap .code,
+.codewrap pre,
+.codewrap code,
+pre.mcd-terminal,
+pre code {
+  display: block;
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: plaintext;
+  margin: 0 !important;
+  padding: 12px 14px !important;
+  background: #010604 !important;
+  color: #c8facc !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
+  white-space: pre-wrap !important;
+}
+
+/* ===== Line-by-line: smaller, tidier code chips ===== */
+.line-exp,
+.exp.line-exp {
+  margin: 0.65rem 0 0.9rem;
+  padding: 0.7rem 0.8rem 0.75rem;
+  border-radius: 10px;
+  background: #08140f;
+  border: 1px solid #1f3d2e;
+  border-right: 3px solid #00e676;
+  animation: none !important;
+}
+.line-exp .exp-title {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #1f3d2e;
+  color: #00e676;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.line-exp .exp-title::before {
+  content: none !important;
+}
+.line-exp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+.line-exp-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "num code"
+    "num exp";
+  column-gap: 0.45rem;
+  row-gap: 0.12rem;
+  margin: 0;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(1, 6, 4, 0.55);
+  border: 1px solid rgba(31, 61, 46, 0.85);
+  line-height: 1.6;
+}
+.line-exp-list .ln {
+  grid-area: num;
+  min-width: 2.6rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.22);
+  color: #00e676;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 0.12rem;
+}
+/* SMALL code chip — not competing with main example */
+.line-exp-list .ln-code {
+  grid-area: code;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.78em !important;
+  line-height: 1.45 !important;
+  color: #a5d6a7 !important;
+  background: transparent !important;
+  border: 1px dashed #2a4a38 !important;
+  border-radius: 4px;
+  padding: 0.08rem 0.35rem !important;
+  margin: 0 !important;
+  opacity: 0.95;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.line-exp-list .ln-exp {
+  grid-area: exp;
+  color: #c8e6c9;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  display: block;
+}
+/* hide process footer if present under code for cleaner look - optional keep small */
+.mcd-code-status {
+  font-size: 10px;
+  opacity: 0.75;
+}
+@media (max-width: 640px) {
+  .line-exp-list li {
+    grid-template-columns: 1fr;
+    grid-template-areas: "num" "code" "exp";
+  }
+}
+
+
+
+/* ===== Full effects, lag-safe constraints ===== */
+#mcd-binary-wind{position:fixed;inset:0;z-index:9990;pointer-events:none;overflow:hidden;opacity:0}
+#mcd-binary-wind.is-blowing{opacity:1}
+#mcd-binary-wind .bit{position:absolute;color:rgba(0,230,118,.62);font-family:ui-monospace,Consolas,monospace;white-space:nowrap;text-shadow:0 0 6px rgba(0,230,118,.35);will-change:transform,opacity;animation-name:mcd-bit-glitch-wind;animation-timing-function:linear;animation-fill-mode:forwards}
+#mcd-binary-wind .bit.err{color:rgba(255,82,82,.7)}
+#mcd-binary-wind .bit.warn{color:rgba(255,214,0,.65)}
+@keyframes mcd-bit-glitch-wind{0%{transform:translate3d(-15vw,0,0);opacity:0}10%{opacity:.8}100%{transform:translate3d(115vw,0,0);opacity:0}}
+#mcd-binary-wind .wash{position:absolute;inset:-15% -25%;background:linear-gradient(105deg,transparent 25%,rgba(0,230,118,.05) 48%,transparent 70%);animation:mcd-wash-glitch 2.5s ease-in-out forwards}
+@keyframes mcd-wash-glitch{0%{transform:translate3d(-55%,0,0);opacity:0}20%{opacity:1}100%{transform:translate3d(55%,0,0);opacity:0}}
+#mcd-binary-wind .tear{position:absolute;left:0;right:0;height:2px;background:rgba(0,230,118,.35);animation:mcd-tear .5s ease-out forwards}
+@keyframes mcd-tear{0%{transform:scaleX(.2);opacity:0}40%{opacity:.9;transform:scaleX(1)}100%{opacity:0}}
+
+#mcd-algo-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.12;pointer-events:none;z-index:0}
+.hero>*:not(#mcd-algo-canvas){position:relative;z-index:1}
+
+.mcd-live-chip{display:inline-flex;align-items:center;gap:6px;margin-right:8px;padding:3px 8px;border-radius:999px;border:1px solid #1f3d2e;background:#07140e;color:#81c784;font-size:11px;font-family:ui-monospace,Consolas,monospace}
+.mcd-live-chip .dot{width:7px;height:7px;border-radius:50%;background:#00e676;animation:mcd-dot 1.6s ease-in-out infinite}
+@keyframes mcd-dot{0%,100%{opacity:.35}50%{opacity:1}}
+
+.mcd-reveal{opacity:0;transform:translate3d(0,12px,0);transition:opacity .32s ease,transform .32s ease}
+.mcd-reveal.is-in{opacity:1;transform:translate3d(0,0,0)}
+.mcd-rippling{position:relative;overflow:hidden}
+.mcd-ripple-span{position:absolute;width:12px;height:12px;border-radius:50%;background:rgba(0,230,118,.4);transform:translate(-50%,-50%) scale(.2);animation:mcd-rip .4s ease-out forwards;pointer-events:none}
+@keyframes mcd-rip{to{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+
+/* keep auto ambience but only transform/opacity-ish */
+header{transition:box-shadow .2s ease,border-color .2s ease}
+header.mcd-scrolled{border-bottom-color:#00c853;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+
+/* Cap paint cost */
+.side a,.exercise-list li,.cat-grid a,.langs .lang,.line-exp-list li{content-visibility:auto;contain-intrinsic-size:1px 48px}
+main,header,.wrap,.card,.codewrap{contain:layout style}
+
+@media (prefers-reduced-motion:reduce){
+  #mcd-binary-wind,#mcd-algo-canvas{display:none!important}
+  .mcd-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .mcd-live-chip .dot{animation:none!important}
+}
+
+
+
+/* Adaptive performance tiers (runtime on body) */
+body.mcd-perf-low .mcd-live-chip,
+body.mcd-perf-low #mcd-binary-wind,
+body.mcd-perf-low #mcd-algo-canvas { display: none !important; }
+
+body.mcd-perf-low .lang,
+body.mcd-perf-low .lang-link,
+body.mcd-perf-low .card,
+body.mcd-perf-low article.card,
+body.mcd-perf-low .codewrap,
+body.mcd-perf-low main h2::after,
+body.mcd-perf-low .badge,
+body.mcd-perf-low .trybtn,
+body.mcd-perf-low header::after,
+body.mcd-perf-low .home-section::before,
+body.mcd-perf-low .side a.on,
+body.mcd-perf-low main h1::after,
+body.mcd-perf-low .hero::after {
+  animation: none !important;
+}
+
+body.mcd-perf-mid #mcd-algo-canvas { opacity: 0.08; }
+body.mcd-perf-mid .lang,
+body.mcd-perf-mid .card,
+body.mcd-perf-mid article.card {
+  /* keep lighter continuous animation load */
+  animation-duration: 10s !important;
+}
+
+/* shared wind styles if missing */
+#mcd-binary-wind{position:fixed;inset:0;z-index:9990;pointer-events:none;overflow:hidden;opacity:0}
+#mcd-binary-wind.is-blowing{opacity:1}
+#mcd-binary-wind .bit{position:absolute;color:rgba(0,230,118,.62);font-family:ui-monospace,Consolas,monospace;white-space:nowrap;animation:mcd-bit-glitch-wind linear forwards}
+#mcd-binary-wind .bit.err{color:rgba(255,82,82,.7)}
+@keyframes mcd-bit-glitch-wind{0%{transform:translate3d(-15vw,0,0);opacity:0}10%{opacity:.8}100%{transform:translate3d(115vw,0,0);opacity:0}}
+#mcd-binary-wind .wash{position:absolute;inset:-15% -25%;background:linear-gradient(105deg,transparent 25%,rgba(0,230,118,.05) 48%,transparent 70%);animation:mcd-wash-glitch 2.5s ease-in-out forwards}
+@keyframes mcd-wash-glitch{0%{transform:translate3d(-55%,0,0);opacity:0}20%{opacity:1}100%{transform:translate3d(55%,0,0);opacity:0}}
+#mcd-binary-wind .tear{position:absolute;left:0;right:0;height:2px;background:rgba(0,230,118,.35);animation:mcd-tear .5s ease-out forwards}
+@keyframes mcd-tear{0%{transform:scaleX(.2);opacity:0}40%{opacity:.9;transform:scaleX(1)}100%{opacity:0}}

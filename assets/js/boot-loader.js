@@ -7,8 +7,22 @@
   if (window.__MCD_BOOT_DONE__) return;
   window.__MCD_BOOT_DONE__ = true;
 
-  var FULL_MS = 2200;
-  var LESSON_MS = 420;
+  
+  var mcdBootTier = "high";
+  try {
+    var __c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (__c) {
+      if (__c.saveData) mcdBootTier = "low";
+      else {
+        var __t = String(__c.effectiveType || "").toLowerCase();
+        if (__t === "slow-2g" || __t === "2g") mcdBootTier = "low";
+        else if (__t === "3g") mcdBootTier = "mid";
+      }
+    }
+  } catch (e) {}
+
+  var FULL_MS = 1800;
+  var LESSON_MS = 350;
   var FLAG = "mcd_boot_seen";
 
   function isLessonPage() {
@@ -27,7 +41,7 @@
     try { isShort = sessionStorage.getItem(FLAG) === "1"; } catch (e) {}
   }
 
-  var DUR = isShort ? LESSON_MS : FULL_MS;
+  var DUR = isShort ? (mcdBootTier==="low"?200:LESSON_MS) : (mcdBootTier==="low"?900:mcdBootTier==="mid"?1400:FULL_MS);
   var CHARS = "01<>{}[]/+*=#";
 
   var css = document.createElement("style");
@@ -38,13 +52,7 @@
     "#boot-loader canvas{position:absolute;inset:0;width:100%;height:100%}";
   document.head.appendChild(css);
 
-  if (!document.getElementById("mcd-boot-fonts")) {
-    var fl = document.createElement("link");
-    fl.id = "mcd-boot-fonts";
-    fl.rel = "stylesheet";
-    fl.href = "https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Fira+Code:wght@500&display=swap";
-    document.head.appendChild(fl);
-  }
+  
 
   var loader = document.createElement("div");
   loader.id = "boot-loader";
@@ -99,7 +107,7 @@
       o.fillStyle = "#fff";
       o.textAlign = "center";
       o.textBaseline = "middle";
-      o.font = "bold 120px Orbitron, Arial Black, sans-serif";
+      o.font = "bold 120px Arial Black, Arial, sans-serif";
       o.fillText("MCD", ow / 2, oh * 0.5);
       var data = o.getImageData(0, 0, ow, oh).data;
       var pts = [], step = isShort ? 8 : 5;
@@ -138,7 +146,7 @@
       var p = Math.min(1, (now - t0) / DUR);
       ctx.fillStyle = "#050505";
       ctx.fillRect(0, 0, W, H);
-      ctx.font = '11px "Fira Code", monospace';
+      ctx.font = '11px monospace';
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       for (var i = 0; i < parts.length; i++) {
