@@ -28,7 +28,7 @@
     background: #07140e;
     padding: 28px 20px;
     text-align: center;
-    box-shadow: 0 0 0 1px rgba(0,230,118,0.08), 0 16px 40px rgba(0,0,0,0.35);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
   }
   .logo { color: #00e676; font-weight: 700; margin-bottom: 0.75rem; }
   .icon { font-size: 2.2rem; margin-bottom: 0.45rem; }
@@ -41,14 +41,10 @@
     background: #0c1f16;
     border: 1px dashed #2a4a38;
     color: #c8e6c9;
-    font-size: 1.12rem;
+    font-size: 1.15rem;
     font-weight: 700;
   }
-  .status {
-    margin-top: 0.85rem;
-    font-size: 0.9rem;
-    color: #81c784;
-  }
+  .status { margin-top: 0.85rem; font-size: 0.9rem; color: #81c784; }
   .status.on { color: #00e676; }
   button {
     border: 1px solid #1f3d2e;
@@ -69,7 +65,7 @@
     <div class="icon" aria-hidden="true">📡</div>
     <h1>اینترنت قطع شده</h1>
     <div class="msg">اینترنت رو روشن کن دیگه 😄</div>
-    <p>تا نت وصل نشه نمی‌تونیم درس‌ها و تمرین‌ها رو برات بیاریم.</p>
+    <p>تا نت وصل نشه نمی‌تونیم درس‌ها رو برات بیاریم.</p>
     <p style="margin-top:0.75rem">
       <button type="button" id="retry">دوباره تلاش کن</button>
     </p>
@@ -79,26 +75,20 @@
     function goSite() {
       var back = null;
       try { back = sessionStorage.getItem('mcd_last_url'); } catch (e) {}
-      if (back && back.indexOf('offline.html') === -1) {
-        location.href = back;
-      } else {
-        location.href = 'index.html';
-      }
+      if (back && back.indexOf('offline.html') === -1) location.href = back;
+      else location.href = 'index.html';
     }
-    function setOnlineUI() {
+    function onOnline() {
       var st = document.getElementById('status');
-      if (st) {
-        st.textContent = 'وصل شد! الان وارد سایت می‌شی…';
-        st.className = 'status on';
-      }
-      setTimeout(goSite, 400);
+      if (st) { st.textContent = 'وصل شد! الان وارد سایت می‌شی…'; st.className = 'status on'; }
+      setTimeout(goSite, 500);
     }
     document.getElementById('retry').onclick = function () {
       if (navigator.onLine) goSite();
       else location.reload();
     };
-    window.addEventListener('online', setOnlineUI);
-    if (navigator.onLine) setOnlineUI();
+    window.addEventListener('online', onOnline);
+    if (navigator.onLine) onOnline();
   </script>
 </body>
 </html>
