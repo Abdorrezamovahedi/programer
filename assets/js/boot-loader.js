@@ -7,12 +7,42 @@
   if (window.__MCD_BOOT_DONE__) return;
   window.__MCD_BOOT_DONE__ = true;
 
-  /* Service worker + offline handling */
+  function offlineUrl() {
+    var path = (location.pathname || '').replace(/\\/g, '/');
+    if (path.indexOf('/programer') !== -1) return '/programer/offline.html';
+    if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
+      var segs = path.split('/').filter(Boolean);
+      var i2 = -1;
+      for (var k = 0; k < segs.length; k++) {
+        if (/^(python|html|css|javascript|php|tamrin)$/i.test(segs[k])) { i2 = k; break; }
+      }
+      if (i2 >= 0) {
+        var up2 = segs.length - i2;
+        var d2 = [];
+        for (var t = 0; t < up2; t++) d2.push('..');
+        return d2.join('/') + '/offline.html';
+      }
+    }
+    return 'offline.html';
+  }
+
+  /* If user enters site without internet → offline page immediately */
+  try {
+    if (!navigator.onLine && !/offline\.html$/i.test(location.pathname || '')) {
+      try { sessionStorage.setItem('mcd_last_url', location.href); } catch (e) {}
+      location.replace(offlineUrl());
+      return;
+    }
+  } catch (e) {}
+
+  /* Service worker registration */
   try {
     if ('serviceWorker' in navigator) {
       var swPath = 'sw.js';
       var path = (location.pathname || '').replace(/\\/g, '/');
-      if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
+      if (path.indexOf('/programer') !== -1) {
+        swPath = '/programer/sw.js';
+      } else if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
         var parts = path.split('/').filter(Boolean);
         var idx = -1;
         for (var i = 0; i < parts.length; i++) {
@@ -20,49 +50,27 @@
         }
         if (idx >= 0) {
           var up = parts.length - idx;
-          if (/\.html?$/i.test(parts[parts.length - 1])) up = parts.length - idx;
-          else up = parts.length - idx;
           var dots = [];
           for (var j = 0; j < up; j++) dots.push('..');
           swPath = dots.join('/') + '/sw.js';
         }
       }
-      /* Prefer absolute path under GitHub Pages project */
-      if (path.indexOf('/programer') !== -1) {
-        swPath = '/programer/sw.js';
-      }
       navigator.serviceWorker.register(swPath).catch(function () {});
     }
   } catch (e) {}
 
+  /* While browsing: if net drops → offline page */
   try {
     if (!/offline\.html$/i.test(location.pathname || '')) {
       try { sessionStorage.setItem('mcd_last_url', location.href); } catch (e) {}
       window.addEventListener('offline', function () {
-        var off = 'offline.html';
-        if ((location.pathname || '').indexOf('/programer') !== -1) off = '/programer/offline.html';
-        else {
-          var p = (location.pathname || '').replace(/\\/g, '/');
-          if (/\/(python|html|css|javascript|php|tamrin)\//i.test(p)) {
-            var segs = p.split('/').filter(Boolean);
-            var i2 = -1;
-            for (var k = 0; k < segs.length; k++) {
-              if (/^(python|html|css|javascript|php|tamrin)$/i.test(segs[k])) { i2 = k; break; }
-            }
-            if (i2 >= 0) {
-              var up2 = segs.length - i2;
-              var d2 = [];
-              for (var t = 0; t < up2; t++) d2.push('..');
-              off = d2.join('/') + '/offline.html';
-            }
-          }
-        }
-        location.href = off;
+        try { sessionStorage.setItem('mcd_last_url', location.href); } catch (e) {}
+        location.href = offlineUrl();
       });
     }
   } catch (e) {}
 
-  /* Tidy line-by-line layout — inline so every language/lesson gets it */
+  /* Tidy line-by-line layout */
   try {
     if (!document.getElementById('mcd-line-exp-inline')) {
       var s = document.createElement('style');
