@@ -7,7 +7,51 @@
   if (window.__MCD_BOOT_DONE__) return;
   window.__MCD_BOOT_DONE__ = true;
 
-  
+  /* Site-wide tidy line-by-line explanation layout */
+  try {
+    if (!document.getElementById('mcd-line-exp-css')) {
+      var href = 'assets/css/line-exp.css';
+      var scripts = document.getElementsByTagName('script');
+      for (var si = 0; si < scripts.length; si++) {
+        var src = scripts[si].src || '';
+        var m = src.match(/^(.*\/assets\/)js\/boot-loader\.js/i);
+        if (m) { href = m[1] + 'css/line-exp.css'; break; }
+      }
+      if (href.indexOf('assets/') === 0) {
+        var depth = (location.pathname.match(/\//g) || []).length;
+        /* rough relative path from nested lesson folders */
+        var path = (location.pathname || '').replace(/\\/g, '/');
+        var segs = path.split('/').filter(Boolean);
+        /* if on github pages project site, last parts after repo name */
+        var up = '';
+        if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
+          up = path.replace(/[^/]+\.html?$/i, '').split('/').filter(Boolean);
+          /* count folders under site root after programer */
+          var idx = -1;
+          for (var i = 0; i < up.length; i++) {
+            if (/^(python|html|css|javascript|php|tamrin)$/i.test(up[i])) { idx = i; break; }
+          }
+          if (idx >= 0) {
+            var levels = up.length - idx + 0; /* lang + optional subfolder */
+            /* from python/02-x/file.html -> ../../assets */
+            var dots = [];
+            for (var j = 0; j < (up.length - idx + 1); j++) dots.push('..');
+            href = dots.join('/') + '/assets/css/line-exp.css';
+          } else {
+            href = 'assets/css/line-exp.css';
+          }
+        } else {
+          href = 'assets/css/line-exp.css';
+        }
+      }
+      var link = document.createElement('link');
+      link.id = 'mcd-line-exp-css';
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  } catch (e) {}
+
   var mcdBootTier = "high";
   try {
     var __c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
@@ -51,8 +95,6 @@
     "#boot-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}" +
     "#boot-loader canvas{position:absolute;inset:0;width:100%;height:100%}";
   document.head.appendChild(css);
-
-  
 
   var loader = document.createElement("div");
   loader.id = "boot-loader";
