@@ -7,48 +7,25 @@
   if (window.__MCD_BOOT_DONE__) return;
   window.__MCD_BOOT_DONE__ = true;
 
-  /* Site-wide tidy line-by-line explanation layout */
+  /* Tidy line-by-line layout — inline so every language/lesson gets it */
   try {
-    if (!document.getElementById('mcd-line-exp-css')) {
-      var href = 'assets/css/line-exp.css';
-      var scripts = document.getElementsByTagName('script');
-      for (var si = 0; si < scripts.length; si++) {
-        var src = scripts[si].src || '';
-        var m = src.match(/^(.*\/assets\/)js\/boot-loader\.js/i);
-        if (m) { href = m[1] + 'css/line-exp.css'; break; }
-      }
-      if (href.indexOf('assets/') === 0) {
-        var depth = (location.pathname.match(/\//g) || []).length;
-        /* rough relative path from nested lesson folders */
-        var path = (location.pathname || '').replace(/\\/g, '/');
-        var segs = path.split('/').filter(Boolean);
-        /* if on github pages project site, last parts after repo name */
-        var up = '';
-        if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
-          up = path.replace(/[^/]+\.html?$/i, '').split('/').filter(Boolean);
-          /* count folders under site root after programer */
-          var idx = -1;
-          for (var i = 0; i < up.length; i++) {
-            if (/^(python|html|css|javascript|php|tamrin)$/i.test(up[i])) { idx = i; break; }
-          }
-          if (idx >= 0) {
-            var levels = up.length - idx + 0; /* lang + optional subfolder */
-            /* from python/02-x/file.html -> ../../assets */
-            var dots = [];
-            for (var j = 0; j < (up.length - idx + 1); j++) dots.push('..');
-            href = dots.join('/') + '/assets/css/line-exp.css';
-          } else {
-            href = 'assets/css/line-exp.css';
-          }
-        } else {
-          href = 'assets/css/line-exp.css';
-        }
-      }
-      var link = document.createElement('link');
-      link.id = 'mcd-line-exp-css';
-      link.rel = 'stylesheet';
-      link.href = href;
-      document.head.appendChild(link);
+    if (!document.getElementById('mcd-line-exp-inline')) {
+      var s = document.createElement('style');
+      s.id = 'mcd-line-exp-inline';
+      s.textContent =
+        '.example-unit{margin:1rem 0 1.25rem}' +
+        '.example-unit .codewrap{margin:0}' +
+        '.example-unit .code,.codewrap>.code{margin-bottom:.5rem}' +
+        '.line-exp,.exp.line-exp{margin:.55rem 0 0!important;padding:.75rem .85rem .85rem!important;border-radius:12px!important;background:#06120c!important;border:1px solid #1a3328!important;border-right:3px solid #00e676!important;color:#c8e6c9!important;animation:none!important;box-shadow:none!important}' +
+        '.line-exp .exp-title{margin:0 0 .65rem!important;padding:0 0 .45rem!important;border-bottom:1px solid #1f3d2e!important;color:#00e676!important;font-weight:700!important;font-size:.88rem!important;line-height:1.4!important}' +
+        '.line-exp .exp-title::before{content:none!important}' +
+        '.line-exp-list{list-style:none!important;margin:0!important;padding:0!important;display:flex!important;flex-direction:column!important;gap:.5rem!important}' +
+        '.line-exp-list li{display:grid!important;grid-template-columns:3.1rem 1fr!important;grid-template-areas:"num code" "num exp"!important;column-gap:.55rem!important;row-gap:.2rem!important;margin:0!important;padding:.55rem .65rem!important;border-radius:10px!important;background:#040d09!important;border:1px solid #163326!important;align-items:start!important}' +
+        '.line-exp-list .ln{grid-area:num!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:2.85rem!important;height:1.55rem!important;margin:.1rem 0 0!important;padding:0 .4rem!important;border-radius:999px!important;background:rgba(0,230,118,.1)!important;border:1px solid rgba(0,230,118,.28)!important;color:#00e676!important;font-weight:700!important;font-size:.72rem!important;white-space:nowrap!important}' +
+        '.line-exp-list .ln-code{grid-area:code!important;direction:ltr!important;unicode-bidi:plaintext!important;display:inline-block!important;max-width:100%!important;width:fit-content!important;margin:0!important;padding:.15rem .45rem!important;border-radius:6px!important;border:1px solid #243f32!important;background:#020805!important;color:#b2dfdb!important;font-family:ui-monospace,Consolas,monospace!important;font-size:.8rem!important;line-height:1.45!important;white-space:pre-wrap!important;word-break:break-word!important;box-shadow:none!important}' +
+        '.line-exp-list .ln-exp{grid-area:exp!important;display:block!important;margin:0!important;padding:.05rem 0 0!important;color:#c8e6c9!important;font-size:.9rem!important;line-height:1.7!important}' +
+        '@media (max-width:640px){.line-exp-list li{grid-template-columns:1fr!important;grid-template-areas:"num" "code" "exp"!important;row-gap:.28rem!important}.line-exp-list .ln{width:fit-content!important;margin:0!important}}';
+      document.head.appendChild(s);
     }
   } catch (e) {}
 
