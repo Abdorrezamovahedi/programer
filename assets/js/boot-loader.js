@@ -1,7 +1,6 @@
 /**
  * MCD programmers – boot loader
- * First home visit: full (~2.2s). Lesson files: always ~0.25s.
- * One particle MCD only — no second logo/text.
+ * Offline: cache offline.html on first online visit; show it when net is off.
  */
 (function () {
   if (window.__MCD_BOOT_DONE__) return;
@@ -26,7 +25,7 @@
     return 'offline.html';
   }
 
-  /* If user enters site without internet → offline page immediately */
+  /* Entering while offline → offline page (needs prior cache) */
   try {
     if (!navigator.onLine && !/offline\.html$/i.test(location.pathname || '')) {
       try { sessionStorage.setItem('mcd_last_url', location.href); } catch (e) {}
@@ -35,31 +34,27 @@
     }
   } catch (e) {}
 
-  /* Service worker registration */
+  /* Register SW + force offline.html into browser cache while online */
   try {
     if ('serviceWorker' in navigator) {
-      var swPath = 'sw.js';
-      var path = (location.pathname || '').replace(/\\/g, '/');
-      if (path.indexOf('/programer') !== -1) {
-        swPath = '/programer/sw.js';
-      } else if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
-        var parts = path.split('/').filter(Boolean);
-        var idx = -1;
-        for (var i = 0; i < parts.length; i++) {
-          if (/^(python|html|css|javascript|php|tamrin)$/i.test(parts[i])) { idx = i; break; }
-        }
-        if (idx >= 0) {
-          var up = parts.length - idx;
-          var dots = [];
-          for (var j = 0; j < up; j++) dots.push('..');
-          swPath = dots.join('/') + '/sw.js';
-        }
-      }
-      navigator.serviceWorker.register(swPath).catch(function () {});
+      var swPath = (location.pathname || '').indexOf('/programer') !== -1
+        ? '/programer/sw.js'
+        : 'sw.js';
+      navigator.serviceWorker.register(swPath).then(function () {
+        if (!('caches' in window)) return;
+        var off = offlineUrl();
+        var home = (location.pathname || '').indexOf('/programer') !== -1
+          ? '/programer/index.html'
+          : 'index.html';
+        caches.open('mcd-offline-v3').then(function (cache) {
+          cache.add(off).catch(function () {});
+          cache.add(home).catch(function () {});
+        });
+      }).catch(function () {});
     }
   } catch (e) {}
 
-  /* While browsing: if net drops → offline page */
+  /* Net drops while browsing → offline page */
   try {
     if (!/offline\.html$/i.test(location.pathname || '')) {
       try { sessionStorage.setItem('mcd_last_url', location.href); } catch (e) {}
@@ -70,7 +65,7 @@
     }
   } catch (e) {}
 
-  /* Tidy line-by-line layout */
+  /* Line-by-line layout CSS */
   try {
     if (!document.getElementById('mcd-line-exp-inline')) {
       var s = document.createElement('style');
