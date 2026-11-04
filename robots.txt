@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
-Allow: /programer/assets/
+
+# Utility pages — do not prioritize in search
+Disallow: /programer/offline.html
+Disallow: /offline.html
 
 Sitemap: https://abdorrezamovahedi.github.io/programer/sitemap.xml
