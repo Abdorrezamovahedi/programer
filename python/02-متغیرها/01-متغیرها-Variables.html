@@ -5,89 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>متغیرها در پایتون | مفهوم و تعریف | MCD Code Up</title>
-<meta name="description" content="متغیر در پایتون چیست؟ با مثال ساده یاد بگیر چطور مقدار را ذخیره کنی و با print نمایش بدهی.">
-<meta name="keywords" content="متغیر در پایتون, آموزش متغیر Python, تعریف متغیر, print در پایتون">
+<title>متغیر در پایتون چیست؟ | آموزش از صفر | MCD Code Up</title>
+<meta name="description" content="متغیر در پایتون چیست و چطور مقدار ذخیره می‌کنیم؟ توضیح ساده با مثال و توضیح خط‌به‌خط برای مبتدیان.">
+<meta name="keywords" content="متغیر در پایتون, variable python, آموزش پایتون از صفر, دوره پایتون رایگان">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/01-متغیرها-Variables.html">
-<meta property="og:title" content="متغیرها در پایتون | مفهوم و تعریف">
-<meta property="og:description" content="مفهوم متغیر را با زبان ساده و مثال تمیز یاد بگیر.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="fa_IR">
 <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
+<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a></nav>
 </header>
 <main id="main-content">
 <div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>متغیرها</span></div>
-<div class="layout">
-<aside class="side">
-<h3>متغیرها</h3>
-<a href="01-متغیرها-Variables.html" class="on">1. متغیرها</a>
-<a href="03-نام-متغیرها-Variable-Names.html">2. نام متغیرها</a>
-<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
-<a href="04-متغیرهای-سراسری-Global-Variables.html">4. متغیرهای سراسری</a>
-<a href="05-تبدیل-نوع-Type-Conversion.html">5. تبدیل نوع</a>
-<a href="05-تمرین-متغیرها-Variable-Exercises.html">6. تمرین متغیرها</a>
-</aside>
 <article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="متغیرها" data-cat="متغیرها">📌 پین کردن این درس</button>
-<h1>متغیرها در پایتون</h1>
-<p><strong>هدف این درس:</strong> بفهمی متغیر چیست و بتوانی مقدار را در آن ذخیره کنی و با <code>print</code> ببینی.</p>
-
-<h2>مفهوم به زبان ساده</h2>
-<p>متغیر مثل جعبه‌ای با برچسب است. روی جعبه یک نام می‌نویسی و چیزی داخلش می‌گذاری. بعداً با همان نام به محتویاتش دسترسی داری. در پایتون لازم نیست از قبل بگویی جعبه برای عدد است یا متن؛ خود پایتون از روی مقدار می‌فهمد.</p>
-
+<h1>متغیر در پایتون چیست؟</h1>
+<p><strong>هدف:</strong> بفهمی متغیر مثل یک جعبه نام‌دار برای نگه‌داشتن مقدار است.</p>
+<h2>مفهوم ساده</h2>
+<p>وقتی می‌خواهی عددی یا متنی را نگه داری تا بعداً استفاده کنی، آن را داخل متغیر می‌گذاری. در پایتون لازم نیست نوع متغیر را از قبل اعلام کنی؛ با یک انتساب ساده ساخته می‌شود.</p>
 <div class="example-unit">
-<div class="codewrap"><div class="code">name = "رضا"
-age = 28
+<div class="codewrap"><div class="code">name = "Ali"
+age = 20
 print(name)
 print(age)</div>
 <div class="exp line-exp">
 <div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">name = "رضا"</code><span class="ln-exp">متغیر «name» ساخته می‌شود و متن «رضا» داخل آن قرار می‌گیرد.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">age = 28</code><span class="ln-exp">متغیر «age» ساخته می‌شود و عدد صحیح ۲۸ داخل آن ذخیره می‌شود.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">print(name)</code><span class="ln-exp">مقدار فعلی «name» را از جعبه برمی‌دارد و در خروجی چاپ می‌کند.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">print(age)</code><span class="ln-exp">مقدار فعلی «age» را در خروجی چاپ می‌کند.</span></li>
+<li><span class="ln">خط 1</span><code class="ln-code">name = "Ali"</code><span class="ln-exp">متغیر name با مقدار متنی Ali ساخته می‌شود.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">age = 20</code><span class="ln-exp">متغیر age با عدد 20 ساخته می‌شود.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">print(name)</code><span class="ln-exp">مقدار name را چاپ می‌کند.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">print(age)</code><span class="ln-exp">مقدار age را چاپ می‌کند.</span></li>
 </ol>
 </div>
 </div>
 </div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
-
-<div class="exp">
-<strong>خروجی مورد انتظار:</strong><br>
-<pre class="code" style="direction:ltr;text-align:left">رضا
-28</pre>
-</div>
-
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی دو متغیر بسازی و مقدارشان را چاپ کنی.</div>
-
+<div class="good"><strong>تمرین:</strong> یک متغیر برای نام خودت و یک متغیر برای سن بساز و چاپ کن.</div>
 <div class="sum"><b>جمع‌بندی</b>
 <ul>
-<li>متغیر نامی برای نگهداری مقدار است.</li>
-<li>با علامت <code>=</code> مقدار را داخل متغیر می‌گذاریم.</li>
-<li>با <code>print</code> مقدار را در خروجی می‌بینیم.</li>
+<li>متغیر نامی برای یک مقدار است.</li>
+<li>با = مقدار می‌دهیم.</li>
+<li>می‌توانی بعداً مقدار را عوض کنی.</li>
 </ul></div>
-
-<h2>گام عملی</h2>
-<ol class="practice-list">
-<li class="practice-item">نام، سن و شهر خودت را در سه متغیر ذخیره کن و چاپ کن.</li>
-<li class="practice-item">مقدار یکی از متغیرها را عوض کن و دوباره چاپ کن.</li>
-</ol>
-
 <div class="navbtn lesson-nav">
 <a href="index.html">← فهرست متغیرها</a>
 <a href="03-نام-متغیرها-Variable-Names.html">نام متغیرها →</a>
 </div>
 </article>
-</div>
 </div>
 </main>
 <footer class="site-footer">MCD Code Up</footer>
