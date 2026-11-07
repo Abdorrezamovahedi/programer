@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>compile | RegEx | MCD Code Up</title>
+<title>compile و پرچم در RegEx پایتون | MCD Code Up</title>
+<meta name="description" content="re.compile و پرچم IGNORECASE در پایتون با مثال خط‌به‌خط و آزمون.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.35rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.45rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
 </head><body>
 <script src="../../assets/js/boot-loader.js"></script>
 <main><div class="wrap"><article class="card">
-<h1>compile و پرچم</h1>
-<p><code>IGNORECASE</code> حروف بزرگ و کوچک را یکی می‌گیرد.</p>
+<h1>compile و پرچم‌ها</h1>
+<p><strong>هدف درس:</strong> الگو را با <code>compile</code> از پیش بسازی و پرچم‌هایی مثل <code>IGNORECASE</code> را بشناسی.</p>
+<ul class="items-taught">
+<li><code>re.compile</code> برای الگوی آماده‌شده</li>
+<li>پرچم <code>IGNORECASE</code></li>
+<li>استفاده چندباره از یک الگو</li>
+</ul>
+<p>اگر یک الگو را چند بار استفاده می‌کنی، یک‌بار آن را compile کن. <code>IGNORECASE</code> باعث می‌شود بزرگی و کوچکی حروف انگلیسی مهم نباشد.</p>
 <div class="code">import re
-p=re.compile(r"py", re.I)
-print(bool(p.search("PY")))</div>
-<section class="mcd-quiz" id="q8"><h3>آزمون</h3>
-<div class="q" data-answer="1"><p>IGNORECASE؟</p>
-<label><input type="radio" name="x" value="0"> فاصله</label>
-<label><input type="radio" name="x" value="1"> حروف بزرگ/کوچک</label>
-<label><input type="radio" name="x" value="2"> فقط عدد</label>
+pat = re.compile(r"python", re.IGNORECASE)
+print(bool(pat.search("I love PYTHON")))
+print(bool(pat.search("python3")))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 2</span><code class="ln-code">compile(...)</code><span class="ln-exp">الگو یک‌بار ساخته می‌شود.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">IGNORECASE</code><span class="ln-exp">حروف بزرگ و کوچک یکی گرفته می‌شوند.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">search("I love PYTHON")</code><span class="ln-exp">با وجود حروف بزرگ، تطابق دارد.</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>compile الگو را آماده نگه می‌دارد</li><li>IGNORECASE حساسیت حروف را کم می‌کند</li><li>برای استفاده تکراری مفید است</li></ul></div>
+<section class="mcd-quiz" id="q09"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>IGNORECASE چه می‌کند؟</p>
+<label><input type="radio" name="x" value="0"> فاصله را حذف می‌کند</label>
+<label><input type="radio" name="x" value="1"> بزرگی و کوچکی حروف را نادیده می‌گیرد</label>
+<label><input type="radio" name="x" value="2"> فقط عدد قبول می‌کند</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q8">نتیجه</button></section>
+<button type="button" data-check="q09">دیدن نتیجه</button></section>
 <div class="navbtn"><a href="08-sub.html">← قبل</a><a href="10-practice.html">بعد →</a></div>
 </article></div></main>
 <script src="../../assets/js/lesson-quiz.js"></script>

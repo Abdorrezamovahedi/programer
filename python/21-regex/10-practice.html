@@ -1,25 +1,57 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تمرین نهایی | RegEx | MCD Code Up</title>
+<title>تمرین نهایی RegEx پایتون | MCD Code Up</title>
+<meta name="description" content="تمرین نهایی RegEx در پایتون: ترکیب findall، match و sub با جمع‌بندی و آزمون.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.35rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.45rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
 </head><body>
 <script src="../../assets/js/boot-loader.js"></script>
 <main><div class="wrap"><article class="card">
-<h1>تمرین نهایی</h1>
-<div class="good"><ol><li>همه رقم‌ها را پیدا کن</li><li>شروع با سلام را چک کن</li><li>رقم‌ها را با # عوض کن</li></ol></div>
+<h1>تمرین نهایی RegEx</h1>
+<p><strong>هدف درس:</strong> چند مهارت RegEx را در یک سناریوی کوچک کنار هم استفاده کنی.</p>
+<ul class="items-taught">
+<li>ترکیب findall و match و sub</li>
+<li>تمرین عملی روی یک متن واقعی‌تر</li>
+<li>مرور مسیر کامل بخش RegEx</li>
+</ul>
+<div class="good"><strong>قبل از دیدن پاسخ خودت امتحان کن:</strong>
+<ol>
+<li>همه رقم‌های متن را پیدا کن.</li>
+<li>بررسی کن متن با «سلام» شروع می‌شود یا نه.</li>
+<li>دنباله‌های عددی را با # عوض کن.</li>
+</ol></div>
 <div class="code">import re
-print(re.findall(r"\d+", "x42"))
-print(re.sub(r"\d+", "#", "x42"))</div>
-<section class="mcd-quiz" id="q9"><h3>آزمون</h3>
-<div class="q" data-answer="2"><p>جایگزینی با؟</p>
+msg = "سلام 42 بار و 7 پیام"
+print(re.findall(r"\d+", msg))
+print(bool(re.match(r"سلام", msg)))
+print(re.sub(r"\d+", "#", msg))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 2</span><code class="ln-code">msg = ...</code><span class="ln-exp">متن تمرین.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">findall</code><span class="ln-exp">همه اعداد: 42 و 7.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">match</code><span class="ln-exp">بررسی شروع متن با سلام.</span></li>
+<li><span class="ln">خط 5</span><code class="ln-code">sub</code><span class="ln-exp">اعداد را با # جایگزین می‌کند.</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>findall برای گرفتن همه موارد</li>
+<li>match برای بررسی شروع متن</li>
+<li>sub برای ویرایش متن</li>
+<li>با تمرین روی متن خودت مطلب تثبیت می‌شود</li>
+</ul></div>
+<section class="mcd-quiz" id="q10"><h3>آزمون</h3>
+<div class="q" data-answer="2"><p>برای جایگزینی اعداد؟</p>
 <label><input type="radio" name="x" value="0"> search</label>
 <label><input type="radio" name="x" value="1"> findall</label>
 <label><input type="radio" name="x" value="2"> sub</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q9">نتیجه</button></section>
-<div class="navbtn"><a href="09-compile.html">← قبل</a><a href="index.html">فهرست →</a></div>
+<div class="q" data-answer="1"><p>برای گرفتن همه اعداد؟</p>
+<label><input type="radio" name="y" value="0"> match</label>
+<label><input type="radio" name="y" value="1"> findall با \d+</label>
+<label><input type="radio" name="y" value="2"> IGNORECASE</label>
+<div class="result" hidden></div></div>
+<button type="button" data-check="q10">دیدن نتیجه</button></section>
+<div class="navbtn"><a href="09-compile.html">← قبل</a><a href="index.html">فهرست RegEx →</a></div>
 </article></div></main>
 <script src="../../assets/js/lesson-quiz.js"></script>
 </body></html>
