@@ -4,61 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>عبارات منظم RegEx در پایتون | مسیر کامل | MCD Code Up</title>
-<meta name="description" content="مسیر کامل یادگیری RegEx در پایتون: ده درس مرتب با مثال، توضیح خط‌به‌خط و آزمون چندگزینه‌ای.">
+<title>آموزش کامل RegEx در پایتون از صفر | MCD Code Up</title>
+<meta name="description" content="مسیر کامل آموزش عبارات منظم در پایتون: از ماژول re تا search، findall، متاکاراکتر، گروه، sub و تمرین نهایی با آزمون.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/21-regex/">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <style>
-.lesson-list{display:grid;gap:.75rem;margin:1.2rem 0}
-.lesson-list a{display:block;padding:1rem 1.1rem;border-radius:14px;border:1px solid #1a3328;background:#07140f;text-decoration:none;color:inherit;transition:.15s ease}
-.lesson-list a:hover{border-color:#00e676;transform:translateY(-1px)}
+.lesson-list{display:grid;gap:.8rem;margin:1.25rem 0}
+.lesson-list a{display:block;padding:1rem 1.15rem;border-radius:14px;border:1px solid #1a3328;background:#07140f;text-decoration:none;color:inherit}
+.lesson-list a:hover{border-color:#00e676}
 .lesson-list .num{color:#00e676;font-weight:800;margin-left:.45rem}
-.lesson-list .desc{display:block;opacity:.82;font-size:.92rem;margin-top:.28rem;line-height:1.7}
+.lesson-list .desc{display:block;opacity:.84;font-size:.93rem;margin-top:.3rem;line-height:1.75}
 </style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
 <header>
 <div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav>
-<a href="../../index.html">خانه</a>
-<a href="../index.html">Python</a>
-<a href="../../tamrin/index.html">تمرین</a>
-</nav>
+<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a></nav>
 </header>
-<main id="main-content">
+<main>
 <div class="wrap">
-<div class="breadcrumb">
-<a href="../../index.html">خانه</a><span class="sep">/</span>
-<a href="../index.html">Python</a><span class="sep">/</span>
-<span>RegEx</span>
-</div>
 <div class="hero category-page-header">
-<h1>عبارات منظم (RegEx) در پایتون</h1>
-<p class="section-help">ده درس مرتب؛ هر درس یک مهارت + مثال واقعی + آزمون کوتاه</p>
+<h1>آموزش کامل عبارات منظم (RegEx) در پایتون</h1>
+<p class="section-help">ده درس مرتب از صفر تا تمرین؛ هر درس با مثال، توضیح خط‌به‌خط، معرفی مفاهیم، جمع‌بندی و آزمون</p>
 </div>
 </div>
 <section class="card" style="margin:1.25rem auto;max-width:920px">
-<p>RegEx برای پیدا کردن و تغییر الگوهای متن است. این مسیر از صفر تا تمرین نهایی چیده شده تا گیج نشوی.</p>
+<p>اگر تازه‌کار هستی از درس اول شروع کن. هر صفحه یک مهارت را کامل توضیح می‌دهد.</p>
 <h2>مباحث کامل این بخش</h2>
 <div class="lesson-list">
-<a href="01-intro.html"><span class="num">01</span><strong>مقدمه و ماژول re</strong><span class="desc">import re و مفهوم RegEx</span></a>
+<a href="01-intro.html"><span class="num">01</span><strong>مقدمه و ماژول re</strong><span class="desc">مفهوم RegEx و اولین search</span></a>
 <a href="02-search-match.html"><span class="num">02</span><strong>search و match</strong><span class="desc">فرق جست‌وجو در کل متن و اول متن</span></a>
 <a href="03-findall.html"><span class="num">03</span><strong>findall</strong><span class="desc">گرفتن همه تطابق‌ها</span></a>
 <a href="04-metacharacters.html"><span class="num">04</span><strong>متاکاراکترها</strong><span class="desc">. ^ $ و معنی آن‌ها</span></a>
-<a href="05-char-class.html"><span class="num">05</span><strong>کلاس کاراکتر</strong><span class="desc">[ ] و \d \w \s</span></a>
+<a href="05-char-class.html"><span class="num">05</span><strong>کلاس کاراکتر</strong><span class="desc">\d \w \s و []</span></a>
 <a href="06-quantifiers.html"><span class="num">06</span><strong>تعداد تکرار</strong><span class="desc">* + ? و {}</span></a>
 <a href="07-groups.html"><span class="num">07</span><strong>گروه‌ها</strong><span class="desc">پرانتز و group</span></a>
 <a href="08-sub.html"><span class="num">08</span><strong>جایگزینی sub</strong><span class="desc">عوض کردن متن مطابق الگو</span></a>
-<a href="09-compile.html"><span class="num">09</span><strong>compile و پرچم</strong><span class="desc">IGNORECASE و الگوی ازپیش‌ساخته</span></a>
-<a href="10-practice.html"><span class="num">10</span><strong>تمرین نهایی</strong><span class="desc">جمع‌بندی عملی</span></a>
+<a href="09-compile.html"><span class="num">09</span><strong>compile و پرچم</strong><span class="desc">IGNORECASE و الگوی آماده</span></a>
+<a href="10-practice.html"><span class="num">10</span><strong>تمرین نهایی</strong><span class="desc">ترکیب مهارت‌ها</span></a>
 </div>
-<p style="margin-top:1.2rem"><a href="../index.html">← فهرست Python</a></p>
+<p><a href="../index.html">← فهرست Python</a></p>
 </section>
 </main>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+</body></html>

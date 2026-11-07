@@ -1,28 +1,76 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>search و match | RegEx | MCD Code Up</title>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<title>search و match در پایتون | آموزش RegEx | MCD Code Up</title>
+<meta name="description" content="فرق re.search و re.match در پایتون با مثال عملی، توضیح خط‌به‌خط، جمع‌بندی و آزمون.">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/21-regex/02-search-match.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.35rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.45rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
-</head><body>
+<style>.mcd-quiz{margin:1.5rem 0 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.8rem 0;padding:.85rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;padding:.4rem .55rem;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
+</head>
+<body>
 <script src="../../assets/js/boot-loader.js"></script>
 <header><div class="logo"><a href="../../index.html">MCD Code Up</a></div>
-<nav><a href="index.html">RegEx</a></nav></header>
-<main><div class="wrap"><article class="card">
-<h1>search و match</h1>
-<p><code>search</code> در کل متن می‌گردد. <code>match</code> فقط از اول متن.</p>
-<div class="code">import re
-s="abc123"
+<nav><a href="../index.html">Python</a><a href="index.html">RegEx</a></nav></header>
+<main><div class="wrap"><div class="layout">
+<aside class="side"><h3>عبارات منظم</h3>
+<a href="01-intro.html">1. مقدمه</a>
+<a href="02-search-match.html" class="on">2. search و match</a>
+<a href="03-findall.html">3. findall</a>
+<a href="04-metacharacters.html">4. متاکاراکترها</a>
+<a href="05-char-class.html">5. کلاس کاراکتر</a>
+<a href="06-quantifiers.html">6. تعداد تکرار</a>
+<a href="07-groups.html">7. گروه‌ها</a>
+<a href="08-sub.html">8. sub</a>
+<a href="09-compile.html">9. compile</a>
+<a href="10-practice.html">10. تمرین</a></aside>
+<article class="card">
+<h1>search و match در پایتون</h1>
+<p><strong>هدف درس:</strong> فرق دقیق <code>re.search</code> و <code>re.match</code> را بفهمی و بدانی هرکدام کجا مناسب است.</p>
+<h2>در این درس چه چیزی یاد می‌گیری؟</h2>
+<ul class="items-taught">
+<li>رفتار search در کل متن</li>
+<li>رفتار match فقط از ابتدای متن</li>
+<li>نتیجه None وقتی چیزی پیدا نشود</li>
+<li>انتخاب درست بین search و match</li>
+</ul>
+<h2>مفهوم به زبان ساده</h2>
+<p>هر دو تابع برای پیدا کردن الگو هستند، اما نقطه شروعشان فرق دارد. <code>search</code> متن را می‌گردد و اولین مورد مناسب را برمی‌گرداند. <code>match</code> فقط اول متن را بررسی می‌کند؛ اگر از همان ابتدا جور نباشد، حتی با وجود الگو در وسط متن، نتیجه <code>None</code> است.</p>
+<h2>مثال</h2>
+<div class="example-unit"><div class="codewrap"><div class="code">import re
+s = "abc123xyz"
 print(re.search(r"\d+", s))
-print(re.match(r"\d+", s))</div>
-<section class="mcd-quiz" id="q1"><h3>آزمون</h3>
-<div class="q" data-answer="1"><p>search کجا را می‌گردد؟</p>
-<label><input type="radio" name="x" value="0"> فقط اول</label>
-<label><input type="radio" name="x" value="1"> کل متن</label>
-<label><input type="radio" name="x" value="2"> فقط آخر</label>
+print(re.match(r"\d+", s))
+print(re.match(r"abc", s))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 1</span><code class="ln-code">import re</code><span class="ln-exp">ماژول re را می‌آوریم.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">s = "abc123xyz"</code><span class="ln-exp">متن نمونه با رقم در وسط.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">re.search(r"\d+", s)</code><span class="ln-exp">رقم را در وسط متن پیدا می‌کند.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">re.match(r"\d+", s)</code><span class="ln-exp">چون متن با رقم شروع نشده، None می‌دهد.</span></li>
+<li><span class="ln">خط 5</span><code class="ln-code">re.match(r"abc", s)</code><span class="ln-exp">متن با abc شروع شده؛ تطابق موفق است.</span></li>
+</ol></div></div></div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>search در هر جای متن می‌گردد.</li>
+<li>match فقط از ابتدای متن.</li>
+<li>اگر چیزی پیدا نشود، نتیجه None است.</li>
+</ul></div>
+<section class="mcd-quiz" id="q02"><h3>آزمون این درس</h3>
+<div class="q" data-answer="1"><p>search از کجا متن را بررسی می‌کند؟</p>
+<label><input type="radio" name="a" value="0"> فقط ابتدای متن</label>
+<label><input type="radio" name="a" value="1"> تقریباً در کل متن</label>
+<label><input type="radio" name="a" value="2"> فقط انتهای متن</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q1">نتیجه</button></section>
-<div class="navbtn"><a href="01-intro.html">← قبل</a><a href="03-findall.html">بعد →</a></div>
-</article></div></main>
+<div class="q" data-answer="2"><p>اگر تطابقی نباشد معمولاً چه چیزی برمی‌گردد؟</p>
+<label><input type="radio" name="b" value="0"> 0</label>
+<label><input type="radio" name="b" value="1"> رشته خالی</label>
+<label><input type="radio" name="b" value="2"> None</label>
+<div class="result" hidden></div></div>
+<button type="button" data-check="q02">دیدن نتیجه</button></section>
+<div class="navbtn"><a href="01-intro.html">← مقدمه</a><a href="03-findall.html">findall →</a></div>
+</article></div></div></main>
+<script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/lesson-quiz.js"></script>
 </body></html>
