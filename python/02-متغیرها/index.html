@@ -5,11 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>متغیرها در پایتون | ۶ درس از صفر | MCD Code Up</title>
-<meta name="description" content="آموزش کامل متغیرها در پایتون از صفر: ساخت متغیر، نام‌گذاری، تخصیص چندتایی، انواع داده، تبدیل نوع و تمرین.">
-<meta name="keywords" content="متغیرها در پایتون, آموزش پایتون از صفر, variable python, دوره پایتون رایگان">
+<title>متغیرها در پایتون | مسیر یادگیری | MCD Code Up</title>
+<meta name="description" content="مسیر یادگیری مرتب و جذاب متغیرها در پایتون از صفر تا تمرین.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+.learning-path{list-style:none;margin:1.35rem 0 .5rem;padding:0;position:relative}
+.learning-path::before{content:"";position:absolute;top:12px;bottom:12px;right:19px;width:2px;background:linear-gradient(180deg,rgba(0,230,118,.55),rgba(0,230,118,.08));border-radius:2px}
+.learning-path li{position:relative;margin:0 0 .85rem}
+.learning-path a{display:grid;grid-template-columns:42px 1fr auto;gap:.85rem;align-items:start;text-decoration:none;color:inherit;padding:.95rem 1rem;border-radius:14px;border:1px solid #1a3328;background:linear-gradient(180deg,#081610,#06120c);transition:.15s ease}
+.learning-path a:hover{border-color:#00e676;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25),0 0 0 1px rgba(0,230,118,.12)}
+.learning-path .step-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;color:#04140c;background:#00e676;box-shadow:0 0 0 4px rgba(0,230,118,.12);position:relative;z-index:1}
+.learning-path .step-title{display:block;font-weight:700;color:#e8f5e9;margin:.15rem 0 .25rem;line-height:1.5}
+.learning-path .step-desc{display:block;color:#a5d6a7;font-size:.9rem;line-height:1.7}
+.learning-path .step-go{align-self:center;color:#00e676;font-size:.85rem;white-space:nowrap}
+.learning-path-head{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between;margin:.4rem 0 .2rem}
+.path-badge{display:inline-flex;padding:.35rem .75rem;border-radius:999px;border:1px solid rgba(0,230,118,.35);color:#00e676;font-size:.82rem;background:rgba(0,230,118,.06)}
+@media (max-width:640px){.learning-path a{grid-template-columns:36px 1fr}.learning-path .step-go{display:none}.learning-path .step-num{width:32px;height:32px}}
+</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
@@ -29,23 +42,24 @@
 <span>متغیرها</span>
 </div>
 <div class="hero category-page-header">
-<h1>متغیرها در پایتون</h1>
-<p class="section-help">شش درس کوتاه از صفر تا تمرین؛ هر درس یک مفهوم.</p>
+<h1>مسیر یادگیری متغیرها در پایتون</h1>
+<p class="section-help">شش قدم کوتاه از مفهوم تا تمرین</p>
 </div>
 </div>
-<section class="card" style="margin:1.25rem auto;max-width:900px">
-<p>متغیر پایه تقریباً هر برنامه است. در این بخش قدم‌به‌قدم یاد می‌گیری مقدار را ذخیره کنی، نام درست بگذاری، چند مقدار را با هم تنظیم کنی، نوع داده را بشناسی و وقتی لازم شد نوع را عوض کنی.</p>
-<h2>مسیر یادگیری این بخش</h2>
-<ol>
-<li><a href="01-متغیرها-Variables.html">متغیرها چیست؟</a> — مفهوم جعبه نام‌دار</li>
-<li><a href="02-نامگذاری-متغیر-Variable-Names.html">نام‌گذاری متغیر</a> — قوانین و نام خوانا</li>
-<li><a href="03-تخصیص-چندتایی-Multiple-Assignment.html">تخصیص چندتایی</a> — چند متغیر در یک خط</li>
-<li><a href="04-انواع-داده-ساده-Data-Types.html">انواع داده ساده</a> — int، float، str، bool</li>
-<li><a href="05-تبدیل-نوع-Type-Conversion.html">تبدیل نوع</a> — int و str در عمل</li>
-<li><a href="06-تمرین-متغیرها-Variable-Exercises.html">تمرین متغیرها</a> — تثبیت با کار عملی</li>
+<section class="card" style="margin:1.25rem auto;max-width:920px">
+<div class="learning-path-head">
+<p style="margin:0;line-height:1.8;color:#c8e6c9">متغیر پایه تقریباً هر برنامه است. قدم‌به‌قدم جلو برو و هر مثال را خودت تایپ کن.</p>
+<span class="path-badge">۶ قدم · مسیر کامل</span>
+</div>
+<ol class="learning-path">
+<li><a href="01-متغیرها-Variables.html"><span class="step-num">۱</span><span class="step-body"><span class="step-title">متغیرها چیست؟</span><span class="step-desc">مفهوم جعبه نام‌دار برای نگه‌داشتن مقدار</span></span><span class="step-go">شروع ←</span></a></li>
+<li><a href="02-نامگذاری-متغیر-Variable-Names.html"><span class="step-num">۲</span><span class="step-body"><span class="step-title">نام‌گذاری متغیر</span><span class="step-desc">قوانین نام و انتخاب نام خوانا</span></span><span class="step-go">ادامه ←</span></a></li>
+<li><a href="03-تخصیص-چندتایی-Multiple-Assignment.html"><span class="step-num">۳</span><span class="step-body"><span class="step-title">تخصیص چندتایی</span><span class="step-desc">چند متغیر در یک خط</span></span><span class="step-go">ادامه ←</span></a></li>
+<li><a href="04-انواع-داده-ساده-Data-Types.html"><span class="step-num">۴</span><span class="step-body"><span class="step-title">انواع داده ساده</span><span class="step-desc">int، float، str و bool</span></span><span class="step-go">ادامه ←</span></a></li>
+<li><a href="05-تبدیل-نوع-Type-Conversion.html"><span class="step-num">۵</span><span class="step-body"><span class="step-title">تبدیل نوع</span><span class="step-desc">تبدیل متن به عدد و برعکس</span></span><span class="step-go">ادامه ←</span></a></li>
+<li><a href="06-تمرین-متغیرها-Variable-Exercises.html"><span class="step-num">۶</span><span class="step-body"><span class="step-title">تمرین متغیرها</span><span class="step-desc">تثبیت با چند تمرین کوتاه</span></span><span class="step-go">پایان ←</span></a></li>
 </ol>
-<p><strong>پیشنهاد:</strong> هر درس را همان روز با تایپ مثال تمام کن؛ بعد برو درس بعدی.</p>
-<p><a href="../index.html">← فهرست Python</a> · <a href="../01-شروع-و-مبانی/index.html">شروع و مبانی</a></p>
+<p style="margin-top:1.35rem"><a class="category-back-link" href="../index.html">← فهرست Python</a></p>
 </section>
 </main>
 <footer class="site-footer">MCD Code Up</footer>
