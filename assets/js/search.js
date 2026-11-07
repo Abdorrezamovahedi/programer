@@ -1,4 +1,3 @@
-
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -16,27 +15,49 @@ function escapeHtml(str) {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
+
+  function collectFromDom() {
+    var items = [];
+    var root = document.getElementById("catGrid") || document.querySelector(".cat-grid") || document.querySelector(".langs");
+    if (!root) return items;
+    root.querySelectorAll("a").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      if (!href || href === "#" || href.indexOf("javascript:") === 0) return;
+      var title = (a.querySelector("b") && a.querySelector("b").textContent) || a.textContent || "";
+      title = title.replace(/\s+/g, " ").trim();
+      var cat = (a.querySelector("small") && a.querySelector("small").textContent) || "";
+      cat = cat.replace(/\s+/g, " ").trim();
+      if (!title) return;
+      items.push({ title: title, cat: cat, href: href });
+    });
+    return items;
+  }
+
   function bindLangSearch(items) {
     var input = document.getElementById("catSearch");
-    var grid = document.getElementById("catGrid");
+    var grid = document.getElementById("catGrid") || document.querySelector(".cat-grid");
     var results = document.getElementById("catSearchResults");
-    if (!input || !grid || !results) return;
+    if (!input || !results) return;
 
-    input.addEventListener("input", function () {
-      var q = (this.value || "").trim().toLowerCase();
+    if (!items || !items.length) {
+      items = collectFromDom();
+    }
+
+    function run() {
+      var q = (input.value || "").trim().toLowerCase();
       if (!q) {
         results.classList.add("is-hidden");
         results.innerHTML = "";
-        grid.classList.remove("is-hidden");
+        if (grid) grid.classList.remove("is-hidden");
         return;
       }
-
-      grid.classList.add("is-hidden");
+      if (grid) grid.classList.add("is-hidden");
       results.classList.remove("is-hidden");
-      var html = "",
-        found = 0;
+      var html = "";
+      var found = 0;
       items.forEach(function (it) {
-        if ((it.title + " " + it.cat).toLowerCase().indexOf(q) === -1) return;
+        var hay = ((it.title || "") + " " + (it.cat || "") + " " + (it.href || "")).toLowerCase();
+        if (hay.indexOf(q) === -1) return;
         found++;
         html +=
           '<a class="lesson-list-item lang-link" href="' +
@@ -50,7 +71,17 @@ function escapeHtml(str) {
       results.innerHTML = found
         ? html
         : '<div class="ex-empty">نتیجه‌ای پیدا نشد.</div>';
-    });
+    }
+
+    input.addEventListener("input", run);
+    input.addEventListener("search", run);
   }
+
   window.bindLangSearch = bindLangSearch;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("catSearch")) {
+      bindLangSearch();
+    }
+  });
 })();
