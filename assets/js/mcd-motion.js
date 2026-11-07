@@ -1,4 +1,4 @@
-/*! MCD adaptive performance — stable tier, lag-safe */
+/*! MCD adaptive performance — stable tier, lag-safe, non-intrusive */
 (function () {
   if (window.__MCD_ADAPTIVE__) return;
   window.__MCD_ADAPTIVE__ = true;
@@ -50,7 +50,7 @@
 
   function tierFromScore(score) {
     if (score < 38) return 'low';
-    if (score < 60) return 'mid';
+    if (score < 68) return 'mid';
     return 'high';
   }
 
@@ -70,19 +70,17 @@
     try { sessionStorage.setItem(TIER_KEY, t); } catch (e) {}
   }
 
-  // Prefer cached tier in this tab; only allow downgrade later
   var computed = tierFromScore(scoreDevice());
   var cached = readCachedTier();
   var tier = cached || computed;
   if (cached && rank(computed) < rank(cached)) tier = computed;
-  // Mobile: never start at high (matrix/wind too costly)
   if (isMobileLike() && tier === 'high') tier = 'mid';
   writeCachedTier(tier);
 
   var reduce = false;
   try {
     reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  } catch (e) {}
+  } catch (e5) {}
   if (reduce) tier = 'low';
 
   function applyTier(t) {
@@ -90,19 +88,19 @@
     if (!b) return;
     b.classList.remove('mcd-perf-high', 'mcd-perf-mid', 'mcd-perf-low');
     b.classList.add('mcd-perf-' + t);
-    b.setAttribute('data-mcd-perf', t);
     window.__MCD_PERF_TIER__ = t;
     writeCachedTier(t);
-
-    if (!document.getElementById('mcd-perf-css')) {
-      var st = document.createElement('style');
-      st.id = 'mcd-perf-css';
-      st.textContent =
+    if (!document.getElementById('mcd-perf-style')) {
+      var s = document.createElement('style');
+      s.id = 'mcd-perf-style';
+      s.textContent =
         'body.mcd-perf-low #mcd-algo-canvas,body.mcd-perf-low #mcd-binary-wind,body.mcd-perf-low .mcd-live-chip{display:none!important}' +
         'body.mcd-perf-low .mcd-reveal{opacity:1!important;transform:none!important;transition:none!important}' +
         'body.mcd-perf-mid #mcd-algo-canvas,body.mcd-perf-mid #mcd-binary-wind{display:none!important}' +
-        'body.mcd-perf-low .mcd-ripple-span{display:none!important}';
-      document.head.appendChild(st);
+        'body.mcd-perf-low .mcd-ripple-span{display:none!important}' +
+        '#mcd-binary-wind{pointer-events:none;opacity:0.35}' +
+        '#mcd-algo-canvas{opacity:0.35;pointer-events:none}';
+      document.head.appendChild(s);
     }
   }
 
@@ -116,35 +114,26 @@
     if (rank(to) >= rank(tier)) return;
     tier = to;
     whenBody(function () { applyTier(tier); });
-    // stop heavy loops if any
     window.__MCD_PERF_TIER__ = tier;
   }
 
-  // Network: only downgrade, never upgrade mid-session (prevents flicker)
-  try {
-    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    if (conn && conn.addEventListener) {
-      conn.addEventListener('change', function () {
-        var next = tierFromScore(scoreDevice());
-        if (isMobileLike() && next === 'high') next = 'mid';
-        if (rank(next) < rank(tier)) downgrade(next);
-      });
-    }
-  } catch (e) {}
+  setTimeout(function () {
+    try {
+      var next = tierFromScore(scoreDevice());
+      if (rank(next) < rank(tier)) downgrade(next);
+    } catch (e) {}
+  }, 2500);
 
-  // One-shot FPS check after paint; only downgrade
   setTimeout(function () {
     if (tier === 'low' || document.hidden) return;
-    var frames = 0;
-    var start = 0;
-    function tick(ts) {
-      if (!start) start = ts;
+    var frames = 0, start = performance.now();
+    function tick(now) {
       frames++;
-      if (ts - start < 800) {
+      if (now - start < 1000) {
         requestAnimationFrame(tick);
         return;
       }
-      var fps = Math.round(frames * 1000 / (ts - start));
+      var fps = frames;
       if (fps < 22) downgrade('low');
       else if (fps < 40 && tier === 'high') downgrade('mid');
     }
@@ -175,7 +164,7 @@
 
   function setupReveal() {
     if (reduce || tier === 'low') return;
-    var max = tier === 'mid' ? 8 : 16;
+    var max = tier === 'mid' ? 5 : 10;
     var targets = qs('main .home-section, main .card, main .lang, main .lang-link, main article.card').slice(0, max);
     if (!targets.length) return;
     targets.forEach(function (el) { el.classList.add('mcd-reveal'); });
@@ -195,7 +184,7 @@
   }
 
   function setupRipple() {
-    if (reduce || tier !== 'high') return; // only strong desktops
+    if (reduce || tier !== 'high') return;
     document.addEventListener('click', function (e) {
       if (window.__MCD_PERF_TIER__ !== 'high') return;
       var el = e.target.closest('a.lang, a.lang-link, .trybtn, .start-card, nav a');
@@ -210,7 +199,6 @@
     }, { passive: true });
   }
 
-  // Heavy visuals ONLY on high + desktop
   function setupHeroMatrix() {
     if (reduce || tier !== 'high' || isMobileLike()) return;
     var hero = document.querySelector('.hero');
@@ -218,49 +206,44 @@
     var path = (location.pathname || '').replace(/\\/g, '/');
     if (!(/\/$/.test(path) || /index\.html?$/i.test(path))) return;
     if (path.split('/').filter(Boolean).length > 2) return;
-
     var canvas = document.getElementById('mcd-algo-canvas');
     if (!canvas) {
       canvas = document.createElement('canvas');
       canvas.id = 'mcd-algo-canvas';
       canvas.setAttribute('aria-hidden', 'true');
-      hero.insertBefore(canvas, hero.firstChild);
+      hero.style.position = hero.style.position || 'relative';
+      hero.appendChild(canvas);
     }
     var ctx = canvas.getContext('2d');
     if (!ctx) return;
-    var chars = '01{}MCD';
     var cols = [];
+    var chars = '01';
     var running = true;
     var last = 0;
-    var gapMs = 70;
-
+    var gapMs = 80;
     function resize() {
       var r = hero.getBoundingClientRect();
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.max(1, (r.width * dpr) | 0);
-      canvas.height = Math.max(1, (r.height * dpr) | 0);
-      canvas.style.width = r.width + 'px';
-      canvas.style.height = r.height + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var gap = 32;
-      var n = Math.max(4, Math.min(14, Math.floor(r.width / gap)));
+      canvas.width = Math.max(1, r.width | 0);
+      canvas.height = Math.max(1, r.height | 0);
+      canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0.35;z-index:0';
       cols = [];
-      for (var i = 0; i < n; i++) cols.push({ x: i * gap + 8, y: Math.random() * r.height, s: 0.5 + Math.random() * 0.6 });
+      var n = Math.max(6, (r.width / 28) | 0);
+      for (var i = 0; i < n; i++) cols.push({ x: i * 28 + 6, y: Math.random() * r.height, s: 0.4 + Math.random() * 0.5 });
     }
     function frame(ts) {
       if (!running || window.__MCD_PERF_TIER__ !== 'high') return;
       if (ts - last < gapMs) { requestAnimationFrame(frame); return; }
       last = ts;
       var r = hero.getBoundingClientRect();
-      ctx.fillStyle = 'rgba(2,8,5,0.25)';
+      ctx.fillStyle = 'rgba(2,8,5,0.35)';
       ctx.fillRect(0, 0, r.width, r.height);
       ctx.font = '11px monospace';
-      ctx.fillStyle = 'rgba(0,230,118,0.4)';
+      ctx.fillStyle = 'rgba(0,230,118,0.18)';
       for (var i = 0; i < cols.length; i++) {
         var c = cols[i];
         ctx.fillText(chars[(Math.random() * chars.length) | 0], c.x, c.y);
         c.y += c.s * 8;
-        if (c.y > r.height + 12) { c.y = -12; c.s = 0.5 + Math.random() * 0.6; }
+        if (c.y > r.height + 12) { c.y = -12; c.s = 0.4 + Math.random() * 0.5; }
       }
       requestAnimationFrame(frame);
     }
@@ -291,26 +274,26 @@
       host.innerHTML = '';
       host.classList.add('is-blowing');
       var frag = document.createDocumentFragment();
-      for (var i = 0; i < 14; i++) {
+      for (var i = 0; i < 8; i++) {
         var bit = document.createElement('span');
         bit.className = 'bit';
         bit.textContent = Math.random() > 0.5 ? '01' : '10';
         bit.style.top = Math.random() * 90 + 'vh';
         bit.style.left = -12 - Math.random() * 10 + 'vw';
         bit.style.fontSize = '11px';
-        bit.style.animationDuration = '2.2s';
+        bit.style.animationDuration = '2.4s';
         frag.appendChild(bit);
       }
       host.appendChild(frag);
       setTimeout(function () {
         host.classList.remove('is-blowing');
         host.innerHTML = '';
-      }, 2300);
+      }, 2500);
     }
-    setTimeout(blow, 15000);
+    setTimeout(blow, 45000);
     setInterval(function () {
       if (!document.hidden && window.__MCD_PERF_TIER__ === 'high') blow();
-    }, 90000);
+    }, 180000);
   }
 
   function boot() {
