@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تعداد تکرار | RegEx | MCD Code Up</title>
+<title>تعداد تکرار در RegEx پایتون | MCD Code Up</title>
+<meta name="description" content="تعداد تکرار در RegEx پایتون: * + ? و {} با مثال خط‌به‌خط و آزمون.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.35rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.45rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
 </head><body>
 <script src="../../assets/js/boot-loader.js"></script>
 <main><div class="wrap"><article class="card">
-<h1>تعداد تکرار</h1>
-<ul><li><code>*</code> صفر یا بیشتر</li><li><code>+</code> یک یا بیشتر</li><li><code>?</code> صفر یا یک</li></ul>
+<h1>تعداد تکرار در RegEx</h1>
+<p><strong>هدف درس:</strong> تعداد تکرار یک الگو را کنترل کنی.</p>
+<ul class="items-taught">
+<li><code>*</code> صفر یا بیشتر</li>
+<li><code>+</code> یک یا بیشتر</li>
+<li><code>?</code> صفر یا یک</li>
+<li><code>{m,n}</code> بین m و n بار</li>
+</ul>
+<p>تفاوت <code>\d</code> و <code>\d+</code> مهم است: اولی یک رقم، دومی یک دنباله رقم.</p>
 <div class="code">import re
-print(re.findall(r"\d+", "12 3"))</div>
-<section class="mcd-quiz" id="q5"><h3>آزمون</h3>
+print(re.findall(r"\d+", "12 3 456"))
+print(re.findall(r"\d{2,3}", "1 22 333 4444"))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 2</span><code class="ln-code">\d+</code><span class="ln-exp">دنباله‌های یک یا چند رقمی.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">\d{2,3}</code><span class="ln-exp">فقط ۲ یا ۳ رقم پشت‌سرهم.</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>+ حداقل یک تکرار</li><li>* صفر تکرار را هم قبول می‌کند</li><li>{m,n} بازه را محدود می‌کند</li></ul></div>
+<section class="mcd-quiz" id="q06"><h3>آزمون</h3>
 <div class="q" data-answer="1"><p>+ یعنی؟</p>
 <label><input type="radio" name="x" value="0"> صفر یا بیشتر</label>
 <label><input type="radio" name="x" value="1"> یک یا بیشتر</label>
 <label><input type="radio" name="x" value="2"> هیچ</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q5">نتیجه</button></section>
+<button type="button" data-check="q06">دیدن نتیجه</button></section>
 <div class="navbtn"><a href="05-char-class.html">← قبل</a><a href="07-groups.html">بعد →</a></div>
 </article></div></main>
 <script src="../../assets/js/lesson-quiz.js"></script>

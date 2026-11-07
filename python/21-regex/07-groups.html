@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>گروه‌ها | RegEx | MCD Code Up</title>
+<title>گروه‌ها در RegEx پایتون | MCD Code Up</title>
+<meta name="description" content="گروه‌گیری با پرانتز در عبارات منظم پایتون و خواندن group با مثال و آزمون.">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.35rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.45rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
 </head><body>
 <script src="../../assets/js/boot-loader.js"></script>
 <main><div class="wrap"><article class="card">
-<h1>گروه‌ها</h1>
-<p>با <code>()</code> بخش الگو را جدا می‌کنی.</p>
+<h1>گروه‌ها در RegEx</h1>
+<p><strong>هدف درس:</strong> با پرانتز گروه بسازی و بخشی از متن پیدا‌شده را جدا بخوانی.</p>
+<ul class="items-taught">
+<li>گروه‌بندی با <code>()</code></li>
+<li>خواندن <code>group(1)</code> و <code>group(2)</code></li>
+<li>جدا کردن بخش‌های یک الگو مثل قبل و بعد @</li>
+</ul>
+<p>پرانتز یک گروه می‌سازد تا بتوانی قسمت‌های مختلف الگو را جداگانه برداری.</p>
 <div class="code">import re
-m=re.search(r"(\w+)@(\w+)", "a@b")
-print(m.group(1))</div>
-<section class="mcd-quiz" id="q6"><h3>آزمون</h3>
-<div class="q" data-answer="1"><p>گروه با؟</p>
+m = re.search(r"(\w+)@(\w+\.\w+)", "user@mail.com")
+print(m.group(0))
+print(m.group(1))
+print(m.group(2))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 2</span><code class="ln-code">(\w+)@(...)</code><span class="ln-exp">دو گروه: قبل از @ و دامنه.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">group(0)</code><span class="ln-exp">کل تطابق.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">group(1)</code><span class="ln-exp">گروه اول: user</span></li>
+<li><span class="ln">خط 5</span><code class="ln-code">group(2)</code><span class="ln-exp">گروه دوم: mail.com</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>() گروه می‌سازد</li><li>group(1) اولین گروه است</li><li>group(0) کل تطابق است</li></ul></div>
+<section class="mcd-quiz" id="q07"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>گروه‌بندی با؟</p>
 <label><input type="radio" name="x" value="0"> []</label>
 <label><input type="radio" name="x" value="1"> ()</label>
 <label><input type="radio" name="x" value="2"> {}</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q6">نتیجه</button></section>
+<button type="button" data-check="q07">دیدن نتیجه</button></section>
 <div class="navbtn"><a href="06-quantifiers.html">← قبل</a><a href="08-sub.html">بعد →</a></div>
 </article></div></main>
 <script src="../../assets/js/lesson-quiz.js"></script>
