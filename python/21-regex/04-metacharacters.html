@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>متاکاراکترها در RegEx پایتون | MCD Code Up</title>
-<meta name="description" content="متاکاراکترهای . ^ $ در عبارات منظم پایتون با مثال خط‌به‌خط، جمع‌بندی و آزمون.">
+<title>متاکاراکترهای RegEx در پایتون (. ^ $) | MCD Code Up</title>
+<meta name="description" content="معنی نقطه، ابتدای متن و انتهای متن در عبارات منظم پایتون با مثال و آزمون.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/21-regex/04-metacharacters.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
 </head><body>
 <script src="../../assets/js/boot-loader.js"></script>
-<header><div class="logo"><a href="../../index.html">MCD Code Up</a></div><nav><a href="index.html">RegEx</a></nav></header>
 <main><div class="wrap"><article class="card">
-<h1>متاکاراکترها در پایتون</h1>
-<p><strong>هدف درس:</strong> سه متاکاراکتر پرکاربرد را درست استفاده کنی.</p>
-<h2>در این درس چه چیزی یاد می‌گیری؟</h2>
-<ul class="items-taught">
-<li>نقطه (.) برای تقریباً هر کاراکتر</li>
-<li>علامت ^ برای ابتدای متن</li>
-<li>علامت $ برای انتهای متن</li>
-</ul>
-<h2>مفهوم به زبان ساده</h2>
-<p>بعضی نویسه‌ها در RegEx معنای ویژه دارند. <code>^</code> یعنی از اول متن، <code>$</code> یعنی تا آخر متن، و <code>.</code> تقریباً با هر کاراکتری جور می‌شود.</p>
+<h1>متاکاراکترها در RegEx</h1>
+<p><strong>هدف:</strong> سه متاکاراکتر پرکاربرد را درست استفاده کنی.</p>
+<ul><li><code>^</code> ابتدای متن</li><li><code>$</code> انتهای متن</li><li><code>.</code> تقریباً هر کاراکتر</li></ul>
 <div class="code">import re
 print(bool(re.search(r"^سلام", "سلام دنیا")))
 print(bool(re.search(r"دنیا$", "سلام دنیا")))
 print(bool(re.search(r"^دنیا", "سلام دنیا")))</div>
 <div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 2</span><code class="ln-code">^سلام</code><span class="ln-exp">آیا متن با سلام شروع می‌شود؟ بله.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">دنیا$</code><span class="ln-exp">آیا متن با دنیا تمام می‌شود؟ بله.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">^دنیا</code><span class="ln-exp">متن با دنیا شروع نشده؛ False.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">^سلام</code><span class="ln-exp">شروع با سلام؟ بله.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">دنیا$</code><span class="ln-exp">پایان با دنیا؟ بله.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">^دنیا</code><span class="ln-exp">شروع با دنیا؟ خیر.</span></li>
 </ol></div>
-<div class="sum"><b>جمع‌بندی</b><ul><li>^ ابتدای رشته</li><li>$ انتهای رشته</li><li>. تقریباً هر کاراکتر</li></ul></div>
-<section class="mcd-quiz" id="q04"><h3>آزمون</h3>
+<div class="sum"><b>جمع‌بندی</b><ul><li>^ ابتدا</li><li>$ انتها</li><li>. تقریباً هر کاراکتر</li></ul></div>
+<section class="mcd-quiz" id="q4"><h3>آزمون</h3>
 <div class="q" data-answer="1"><p>برای ابتدای متن؟</p>
 <label><input type="radio" name="x" value="0"> $</label>
 <label><input type="radio" name="x" value="1"> ^</label>
 <label><input type="radio" name="x" value="2"> .</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q04">دیدن نتیجه</button></section>
+<button type="button" data-check="q4">نتیجه</button></section>
 <div class="navbtn"><a href="03-findall.html">← قبل</a><a href="05-char-class.html">بعد →</a></div>
 </article></div></main>
 <script src="../../assets/js/lesson-quiz.js"></script>
