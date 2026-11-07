@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تمرین نهایی RegEx پایتون | MCD Code Up</title>
+<meta name="description" content="تمرین پایانی عبارات منظم در پایتون با آزمون.">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.4rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676}</style></head>
+<body><script src="../../assets/js/boot-loader.js"></script>
+<main><div class="wrap"><article class="card">
+<h1>تمرین نهایی RegEx</h1>
+<div class="good"><strong>تمرین:</strong>
+<ol><li>همه رقم‌های یک متن را پیدا کن.</li><li>بررسی کن متن با «سلام» شروع می‌شود.</li><li>رقم‌ها را با # جایگزین کن.</li></ol></div>
+<div class="code">import re
+msg = "سلام 42 بار"
+print(re.findall(r"\d+", msg))
+print(bool(re.match(r"سلام", msg)))
+print(re.sub(r"\d+", "#", msg))</div>
+<section class="mcd-quiz" id="q10"><h3>آزمون</h3>
+<div class="q" data-answer="2"><p>برای جایگزینی؟</p>
+<label><input type="radio" name="x" value="0"> search</label>
+<label><input type="radio" name="x" value="1"> findall</label>
+<label><input type="radio" name="x" value="2"> sub</label><div class="result" hidden></div></div>
+<button type="button" data-check="q10">نتیجه</button></section>
+<div class="navbtn"><a href="09-compile-و-پرچم.html">← قبل</a><a href="index.html">فهرست RegEx →</a></div>
+</article></div></main>
+<script src="../../assets/js/lesson-quiz.js"></script></body></html>
