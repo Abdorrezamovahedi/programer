@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>گروه‌ها | RegEx | MCD Code Up</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<style>.mcd-quiz{margin:1.2rem 0;padding:1rem;border:1px solid #1a3328;border-radius:12px;background:#06120c}.mcd-quiz label{display:block;margin:.35rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.45rem 1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
+</head><body>
+<script src="../../assets/js/boot-loader.js"></script>
+<main><div class="wrap"><article class="card">
+<h1>گروه‌ها</h1>
+<p>با <code>()</code> بخش الگو را جدا می‌کنی.</p>
+<div class="code">import re
+m=re.search(r"(\w+)@(\w+)", "a@b")
+print(m.group(1))</div>
+<section class="mcd-quiz" id="q6"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>گروه با؟</p>
+<label><input type="radio" name="x" value="0"> []</label>
+<label><input type="radio" name="x" value="1"> ()</label>
+<label><input type="radio" name="x" value="2"> {}</label>
+<div class="result" hidden></div></div>
+<button type="button" data-check="q6">نتیجه</button></section>
+<div class="navbtn"><a href="06-quantifiers.html">← قبل</a><a href="08-sub.html">بعد →</a></div>
+</article></div></main>
+<script src="../../assets/js/lesson-quiz.js"></script>
+</body></html>
