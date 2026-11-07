@@ -5,23 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>مقدمه و ماژول re در پایتون | آموزش RegEx از صفر | MCD Code Up</title>
-<meta name="description" content="آموزش مقدماتی عبارات منظم در پایتون با ماژول re؛ مفهوم RegEx، الگوی متن و اولین جست‌وجو با مثال خط‌به‌خط.">
-<meta name="keywords" content="آموزش regex پایتون, عبارات منظم python, ماژول re, دوره پایتون رایگان, MCD Code Up">
+<title>مقدمه RegEx و ماژول re در پایتون | آموزش از صفر | MCD Code Up</title>
+<meta name="description" content="عبارت منظم چیست و چرا در پایتون از ماژول re استفاده می‌کنیم؛ با مثال ساده، توضیح خط‌به‌خط و آزمون.">
+<meta name="keywords" content="آموزش regex پایتون, ماژول re, عبارت منظم python, re.search">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/21-regex/01-intro.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.75rem 0 0;padding:1.15rem 1.25rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:linear-gradient(180deg,#07140f,#050f0b)}.mcd-quiz h3{margin:0 0 .55rem;color:#00e676}.mcd-quiz .q{margin:.9rem 0;padding:.9rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:flex;gap:.55rem;margin:.32rem 0;padding:.48rem .65rem;border-radius:10px;cursor:pointer}.mcd-quiz label:hover{border:1px solid #1f3d2e;background:#081610}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.55rem;padding:.52rem 1.2rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}.items-taught{display:grid;gap:.55rem;margin:1rem 0 1.25rem;padding:0}.items-taught li{padding:.55rem .75rem;border-radius:10px;background:#07140f;border:1px solid #1a3328;list-style:none}</style>
+<style>.mcd-quiz{margin:1.75rem 0 0;padding:1.15rem 1.25rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz h3{margin:0 0 .55rem;color:#00e676}.mcd-quiz .q{margin:.9rem 0;padding:.9rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:flex;gap:.55rem;margin:.32rem 0;padding:.48rem .65rem;border-radius:10px;cursor:pointer}.mcd-quiz label:hover{border:1px solid #1f3d2e;background:#081610}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.55rem;padding:.52rem 1.2rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
 <header>
 <div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a><a href="index.html">RegEx</a></nav>
+<nav><a href="../../python/index.html">Python</a><a href="index.html">RegEx</a></nav>
 </header>
 <main id="main-content">
-<div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">RegEx</a><span class="sep">/</span><span>مقدمه</span></div>
-<div class="layout">
+<div class="wrap"><div class="layout">
 <aside class="side"><h3>عبارات منظم</h3>
 <a href="01-intro.html" class="on">1. مقدمه و ماژول re</a>
 <a href="02-search-match.html">2. search و match</a>
@@ -30,66 +28,66 @@
 <a href="05-char-class.html">5. کلاس کاراکتر</a>
 <a href="06-quantifiers.html">6. تعداد تکرار</a>
 <a href="07-groups.html">7. گروه‌ها</a>
-<a href="08-sub.html">8. جایگزینی با sub</a>
-<a href="09-compile.html">9. compile و پرچم‌ها</a>
-<a href="10-practice.html">10. تمرین نهایی</a>
+<a href="08-sub.html">8. sub</a>
+<a href="09-compile.html">9. compile</a>
+<a href="10-practice.html">10. تمرین</a>
 </aside>
 <article class="card">
 <h1>مقدمه و ماژول re در پایتون</h1>
-<p><strong>هدف درس:</strong> بفهمی عبارت منظم چیست، چرا به آن نیاز داریم و اولین جست‌وجوی واقعی را با ماژول <code>re</code> انجام بدهی.</p>
+<p><strong>هدف درس:</strong> بفهمی عبارت منظم چیست، چه زمانی به آن نیاز داری، و اولین جست‌وجو را با <code>re.search</code> درست انجام بدهی.</p>
 <div class="note"><strong>پیش‌نیاز:</strong> آشنایی خیلی کوتاه با رشته و <code>print</code>.</div>
 <h2>در این درس چه چیزی یاد می‌گیری؟</h2>
 <ul class="items-taught">
-<li>مفهوم الگوی متن به‌جای متن ثابت</li>
-<li>نقش ماژول استاندارد re در پایتون</li>
+<li>تفاوت جست‌وجوی متن ثابت با الگوی متن</li>
+<li>نقش ماژول استاندارد re</li>
 <li>اولین استفاده از re.search</li>
 <li>معنی الگوی r"\d+" و raw string</li>
 </ul>
-<h2>مفهوم به زبان ساده</h2>
-<p>گاهی نمی‌خواهی فقط یک کلمه مشخص را پیدا کنی؛ می‌خواهی «شکل» متن را پیدا کنی. مثلاً «هر عددی که در پیام آمده» یا «هر چیزی که شبیه ایمیل است». این‌جا <strong>عبارت منظم (Regular Expression یا RegEx)</strong> به کار می‌آید.</p>
-<p>عبارت منظم یک الگو است. تو الگو را می‌نویسی و پایتون داخل متن می‌گردد تا بخش‌هایی که با آن الگو جور هستند را پیدا کند. در پایتون برای این کار از ماژول استاندارد <code>re</code> استفاده می‌کنیم؛ نیازی به نصب جداگانه نیست.</p>
-<h2>مثال</h2>
-<div class="example-unit"><div class="codewrap"><div class="code">import re
+<h2>این مفهوم چیست؟</h2>
+<p>گاهی نمی‌خواهی فقط یک کلمه مشخص را پیدا کنی؛ می‌خواهی «شکل» متن را پیدا کنی. مثلاً «هر عددی که در پیام آمده». این‌جا <strong>عبارت منظم (RegEx)</strong> به کار می‌آید.</p>
+<p>در پایتون از ماژول استاندارد <code>re</code> استفاده می‌کنیم؛ نیازی به نصب جداگانه نیست.</p>
+<h2>مثال پایه</h2>
+<div class="code">import re
 text = "قیمت نهایی 250 تومان است"
 result = re.search(r"\d+", text)
 print(result)
-print(result.group())</div>
+if result:
+    print(result.group())</div>
 <div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">import re</code><span class="ln-exp">ماژول عبارات منظم پایتون را وارد می‌کند.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">text = "قیمت نهایی 250 تومان است"</code><span class="ln-exp">متنی که قرار است داخلش بگردیم.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">result = re.search(r"\d+", text)</code><span class="ln-exp">الگوی \d+ یعنی یک یا چند رقم؛ search اولین مورد را پیدا می‌کند.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">print(result)</code><span class="ln-exp">شیء نتیجه را نشان می‌دهد؛ اگر چیزی نباشد None است.</span></li>
-<li><span class="ln">خط 5</span><code class="ln-code">print(result.group())</code><span class="ln-exp">همان بخش پیدا‌شده از متن را چاپ می‌کند: 250.</span></li>
-</ol></div></div></div>
-<div class="good"><strong>نکته مهم:</strong> حرف <code>r</code> قبل از رشته الگو (raw string) کمک می‌کند بک‌اسلش‌ها درست خوانده شوند. در آموزش RegEx تقریباً همیشه الگو را با <code>r"..."</code> می‌نویسیم.</div>
+<li><span class="ln">خط 1</span><code class="ln-code">import re</code><span class="ln-exp">ماژول عبارات منظم را وارد می‌کند.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">text = "..."</code><span class="ln-exp">متنی که داخلش می‌گردیم.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">re.search(r"\d+", text)</code><span class="ln-exp">\d+ یعنی یک یا چند رقم؛ search اولین مورد را پیدا می‌کند.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">print(result)</code><span class="ln-exp">شیء نتیجه یا None.</span></li>
+<li><span class="ln">خط 5-6</span><code class="ln-code">if result: print(result.group())</code><span class="ln-exp">فقط اگر چیزی پیدا شد، متن پیدا‌شده را چاپ کن.</span></li>
+</ol></div>
+<div class="good"><strong>نکته:</strong> حرف <code>r</code> قبل از الگو (raw string) بک‌اسلش‌ها را درست نگه می‌دارد.</div>
+<h2>اشتباه‌های رایج</h2>
+<ul>
+<li>فراموش کردن import re</li>
+<li>خواندن group وقتی result برابر None است</li>
+<li>نوشتن الگو بدون r</li>
+</ul>
 <div class="sum"><b>جمع‌بندی</b><ul>
-<li>RegEx الگوی متن است، نه فقط یک کلمه ثابت.</li>
+<li>RegEx الگوی متن است.</li>
 <li>در پایتون با ماژول re کار می‌کنیم.</li>
-<li>re.search اولین تطابق را پیدا می‌کند.</li>
+<li>search اولین تطابق را پیدا می‌کند.</li>
 <li>\d+ یعنی یک یا چند رقم.</li>
 </ul></div>
-<section class="mcd-quiz" id="q01"><h3>آزمون این درس</h3>
-<div class="q" data-answer="1"><p><strong>سؤال ۱:</strong> برای کار با عبارات منظم در پایتون معمولاً از کدام ماژول استفاده می‌شود؟</p>
-<label><input type="radio" name="q01_0" value="0"><span>regex</span></label>
-<label><input type="radio" name="q01_0" value="1"><span>re</span></label>
-<label><input type="radio" name="q01_0" value="2"><span>string</span></label>
+<section class="mcd-quiz" id="q_rx01"><h3>آزمون این درس</h3>
+<div class="q" data-answer="1"><p>ماژول رایج RegEx در پایتون؟</p>
+<label><input type="radio" name="q1" value="0"><span>regex</span></label>
+<label><input type="radio" name="q1" value="1"><span>re</span></label>
+<label><input type="radio" name="q1" value="2"><span>string</span></label>
 <div class="result" hidden></div></div>
-<div class="q" data-answer="1"><p><strong>سؤال ۲:</strong> الگوی \d+ تقریباً به چه معناست؟</p>
-<label><input type="radio" name="q01_1" value="0"><span>یک حرف</span></label>
-<label><input type="radio" name="q01_1" value="1"><span>یک یا چند رقم</span></label>
-<label><input type="radio" name="q01_1" value="2"><span>فقط فاصله</span></label>
+<div class="q" data-answer="1"><p>\d+ یعنی؟</p>
+<label><input type="radio" name="q2" value="0"><span>یک حرف</span></label>
+<label><input type="radio" name="q2" value="1"><span>یک یا چند رقم</span></label>
+<label><input type="radio" name="q2" value="2"><span>فقط فاصله</span></label>
 <div class="result" hidden></div></div>
-<div class="q" data-answer="1"><p><strong>سؤال ۳:</strong> حرف r قبل از رشته الگو بیشتر برای چیست؟</p>
-<label><input type="radio" name="q01_2" value="0"><span>تغییر رنگ خروجی</span></label>
-<label><input type="radio" name="q01_2" value="1"><span>raw string و مدیریت بک‌اسلش</span></label>
-<label><input type="radio" name="q01_2" value="2"><span>حذف فاصله‌ها</span></label>
-<div class="result" hidden></div></div>
-<button type="button" data-check="q01">دیدن نتیجه</button></section>
-<div class="navbtn lesson-nav"><a href="index.html">← فهرست RegEx</a><a href="02-search-match.html">search و match →</a></div>
+<button type="button" data-check="q_rx01">دیدن نتیجه</button></section>
+<div class="navbtn"><a href="index.html">← فهرست</a><a href="02-search-match.html">بعد →</a></div>
 </article></div></div></main>
-<footer class="site-footer">MCD Code Up · آموزش پایتون از صفر</footer>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/lesson-quiz.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

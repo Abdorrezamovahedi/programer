@@ -3,64 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>findall در پایتون | آموزش RegEx | MCD Code Up</title>
-<meta name="description" content="استخراج همه تطابق‌ها با re.findall در پایتون؛ مثال خط‌به‌خط، جمع‌بندی و آزمون.">
+<title>re.findall در پایتون | گرفتن همه تطابق‌ها | MCD Code Up</title>
+<meta name="description" content="با findall همه موارد مطابق الگو را به صورت لیست بگیر؛ مثال و آزمون.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/21-regex/03-findall.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.5rem 0 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.8rem 0;padding:.85rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;padding:.4rem .55rem;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.8rem 0;padding:.85rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<header><div class="logo"><a href="../../index.html">MCD Code Up</a></div>
-<nav><a href="index.html">RegEx</a></nav></header>
-<main><div class="wrap"><div class="layout">
-<aside class="side"><h3>عبارات منظم</h3>
-<a href="01-intro.html">1. مقدمه</a>
-<a href="02-search-match.html">2. search و match</a>
-<a href="03-findall.html" class="on">3. findall</a>
-<a href="04-metacharacters.html">4. متاکاراکترها</a>
-<a href="05-char-class.html">5. کلاس کاراکتر</a>
-<a href="06-quantifiers.html">6. تعداد تکرار</a>
-<a href="07-groups.html">7. گروه‌ها</a>
-<a href="08-sub.html">8. sub</a>
-<a href="09-compile.html">9. compile</a>
-<a href="10-practice.html">10. تمرین</a></aside>
-<article class="card">
+<header><div class="logo"><a href="../../index.html">MCD Code Up</a></div><nav><a href="index.html">RegEx</a></nav></header>
+<main><div class="wrap"><article class="card">
 <h1>findall در پایتون</h1>
-<p><strong>هدف درس:</strong> بتوانی همه موارد مطابق الگو را یک‌جا با <code>findall</code> بگیری.</p>
-<h2>در این درس چه چیزی یاد می‌گیری؟</h2>
-<ul class="items-taught">
-<li>تفاوت findall با search</li>
-<li>خروجی لیستی findall</li>
-<li>کاربرد پیدا کردن چند عدد در یک متن</li>
-</ul>
-<h2>مفهوم به زبان ساده</h2>
-<p><code>search</code> فقط اولین مورد را می‌دهد. اگر چند عدد یا چند الگو در متن باشد و همه را بخواهی، <code>findall</code> مناسب‌تر است. خروجی‌اش معمولاً یک لیست از رشته‌های پیدا‌شده است.</p>
-<h2>مثال</h2>
-<div class="example-unit"><div class="codewrap"><div class="code">import re
+<p><strong>هدف:</strong> همه تطابق‌ها را یک‌جا بگیری، نه فقط اولی را.</p>
+<p><code>search</code> فقط اولین مورد را می‌دهد. <code>findall</code> لیست همه را برمی‌گرداند.</p>
+<div class="code">import re
 text = "سفارش a1 و b22 و c333 ثبت شد"
-print(re.findall(r"\d+", text))
-print(len(re.findall(r"\d+", text)))</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+nums = re.findall(r"\d+", text)
+print(nums)
+print(len(nums))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">import re</code><span class="ln-exp">وارد کردن ماژول.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">text = ...</code><span class="ln-exp">متنی با چند عدد.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">findall(r"\d+", text)</code><span class="ln-exp">لیست همه اعداد: 1 و 22 و 333.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">len(...)</code><span class="ln-exp">تعداد موارد پیدا‌شده.</span></li>
-</ol></div></div></div>
-<div class="sum"><b>جمع‌بندی</b><ul>
-<li>findall همه تطابق‌ها را برمی‌گرداند.</li>
-<li>خروجی رایج آن یک لیست است.</li>
-<li>برای شمارش موارد هم مفید است.</li>
-</ul></div>
-<section class="mcd-quiz" id="q03"><h3>آزمون این درس</h3>
-<div class="q" data-answer="1"><p>خروجی رایج findall چیست؟</p>
-<label><input type="radio" name="a" value="0"> یک عدد تکی</label>
+<li><span class="ln">خط 3</span><code class="ln-code">findall</code><span class="ln-exp">لیست همه اعداد: 1 و 22 و 333.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">len(nums)</code><span class="ln-exp">تعداد موارد.</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>findall همه تطابق‌ها را می‌دهد</li><li>خروجی رایج یک لیست است</li></ul></div>
+<section class="mcd-quiz" id="q3"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>خروجی رایج findall؟</p>
+<label><input type="radio" name="a" value="0"> یک عدد</label>
 <label><input type="radio" name="a" value="1"> یک لیست</label>
 <label><input type="radio" name="a" value="2"> یک فایل</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q03">دیدن نتیجه</button></section>
+<button type="button" data-check="q3">نتیجه</button></section>
 <div class="navbtn"><a href="02-search-match.html">← قبل</a><a href="04-metacharacters.html">بعد →</a></div>
-</article></div></div></main>
+</article></div></main>
 <script src="../../assets/js/lesson-quiz.js"></script>
 </body></html>
