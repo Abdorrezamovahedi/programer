@@ -1,87 +1,71 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/04-انواع-داده-ساده-Data-Types.html">
-<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<title>انواع داده ساده Data Types | PYTHON · MCD Code Up</title>
-<meta name="description" content="آموزش انواع داده ساده Data Types در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
-<meta name="keywords" content="انواع داده پایتون, int float str bool, type در پایتون">
+<meta name="robots" content="index, follow">
+<title>انواع داده ساده در پایتون | int str float bool | MCD Code Up</title>
+<meta name="description" content="انواع داده ساده متغیر در پایتون: عدد صحیح، اعشار، متن و بولین را با مثال یاد بگیر.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/04-انواع-داده-ساده-Data-Types.html">
-<meta property="og:title" content="انواع داده ساده در پایتون">
-<meta property="og:description" content="int, float, str و bool را بشناس.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="fa_IR">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"انواع داده ساده","description":"آموزش data types پایه.","inLanguage":"fa","learningResourceType":"Lesson"}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
+<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a></nav>
 </header>
 <main id="main-content">
-<h1>انواع داده ساده Data Types</h1>
-
 <div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>انواع داده</span></div>
 <div class="layout">
-<aside class="side"><h3>متغیرها</h3>
+<aside class="side">
+<h3>متغیرها</h3>
+<a href="01-متغیرها-Variables.html">1. متغیرها چیست؟</a>
+<a href="02-نامگذاری-متغیر-Variable-Names.html">2. نام‌گذاری متغیر</a>
 <a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
 <a href="04-انواع-داده-ساده-Data-Types.html" class="on">4. انواع داده ساده</a>
+<a href="05-تبدیل-نوع-Type-Conversion.html">5. تبدیل نوع</a>
+<a href="06-تمرین-متغیرها-Variable-Exercises.html">6. تمرین متغیرها</a>
 </aside>
 <article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="انواع داده" data-cat="متغیرها">📌 پین کردن این درس</button>
-<h2>انواع داده ساده در پایتون</h2>
-<p><strong>هدف این درس:</strong> انواع اصلی داده را بشناسی و با type() نوع را چک کنی.</p>
+<h1>انواع داده ساده در متغیر</h1>
+<p><strong>هدف درس:</strong> بشناسی چهار نوع رایج را و با type نوع مقدار را بررسی کنی.</p>
+<p>هر مقدار در پایتون نوعی دارد. عدد بدون اعشار int است، متن str است، عدد اعشاری float است و درست/غلط bool است. لازم نیست نوع را خودت بنویسی؛ پایتون از روی مقدار می‌فهمد.</p>
 <div class="example-unit">
-<div class="codewrap"><div class="code">a = 10          # int
-b = 3.14        # float
-c = "سلام"      # str
-d = True        # bool
-print(type(a))
-print(type(c))</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">a = 10          # int</code><span class="ln-exp"> — یک مقدار را داخل «a» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">b = 3.14        # float</code><span class="ln-exp"> — یک مقدار را داخل «b» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">c = &quot;سلام&quot;      # str</code><span class="ln-exp"> — یک مقدار را داخل «c» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">d = True        # bool</code><span class="ln-exp"> — یک مقدار را داخل «d» ذخیره می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(type(a))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 6:</span> <code class="ln-code">print(type(c))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
-</div></div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp">type() نوع داده را نشان می‌دهد.</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> چهار نوع داده اصلی را ساخته و type آن‌ها را چاپ کرده باشی.</div>
-<div class="sum"><b>جمع‌بندی</b><ul>
-<li>int عدد صحیح</li>
-<li>float عدد اعشاری</li>
-<li>str متن</li>
-<li>bool درست/نادرست</li>
-</ul></div>
-<h3>گام عملی</h3>
-<ol class="practice-list"><li class="practice-item">از هر نوع یک متغیر بساز و type آن را چاپ کن.</li></ol>
-<div class="navbtn lesson-nav"><a href="03-تخصیص-چندتایی-Multiple-Assignment.html">← تخصیص چندتایی</a></div>
-</article>
-</div></div>
-
-
-
-
-<article class="card" style="margin-top:1rem">
-<h2>خلاصه درس: انواع داده ساده Data Types</h2>
-<p>
-این صفحه برای یادگیری <strong>انواع داده ساده Data Types</strong> در مسیر پایتون نوشته شده است.
-ابتدا تعریف و کاربرد را بخوان، سپس مثال را اجرا کن و در پایان یک تغییر کوچک در کد بده تا مطمئن شوی مفهوم را فهمیده‌ای.
-</p>
-<h3>گام‌های یادگیری</h3>
-<ol>
-<li>موضوع درس را در یک جمله برای خودت توضیح بده.</li>
-<li>مثال را بدون کپی، خودت تایپ کن.</li>
-<li>خروجی را با انتظار خودت مقایسه کن.</li>
-<li>یک تمرین مشابه با دادهٔ جدید بساز.</li>
+<div class="codewrap"><div class="code">age = 20
+height = 1.75
+name = "Mina"
+is_student = True
+print(type(age))
+print(type(name))</div>
+<div class="exp line-exp">
+<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 1</span><code class="ln-code">age = 20</code><span class="ln-exp">عدد صحیح (int).</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">height = 1.75</code><span class="ln-exp">عدد اعشاری (float).</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">name = "Mina"</code><span class="ln-exp">متن (str).</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">is_student = True</code><span class="ln-exp">مقدار بولین (bool).</span></li>
+<li><span class="ln">خط 5</span><code class="ln-code">print(type(age))</code><span class="ln-exp">نوع age را نشان می‌دهد.</span></li>
+<li><span class="ln">خط 6</span><code class="ln-code">print(type(name))</code><span class="ln-exp">نوع name را نشان می‌دهد.</span></li>
 </ol>
+</div>
+</div>
+</div>
+<ul>
+<li>True و False باید با حرف بزرگ نوشته شوند.</li>
+<li>متن همیشه داخل نقل‌قول است.</li>
+</ul>
+<div class="navbtn lesson-nav">
+<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">← تخصیص چندتایی</a>
+<a href="05-تبدیل-نوع-Type-Conversion.html">تبدیل نوع →</a>
+</div>
 </article>
-
+</div>
+</div>
 </main>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/mcd-motion.js" defer></script>
-</body></html>
+</body>
+</html>
