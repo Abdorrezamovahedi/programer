@@ -5,91 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>متغیر در پایتون چیست؟ | آموزش از صفر | MCD Code Up</title>
-<meta name="description" content="متغیر در پایتون چیست؟ یاد بگیر چطور با یک نام ساده مقدار را ذخیره کنی و با print ببینی؛ با مثال و توضیح خط‌به‌خط.">
-<meta name="keywords" content="متغیر در پایتون, variable python, آموزش پایتون از صفر, دوره پایتون رایگان">
+<title>متغیر در پایتون چیست؟ آموزش از صفر | MCD Code Up</title>
+<meta name="description" content="متغیر در پایتون مانند جعبه‌ای نام‌دار برای نگه‌داشتن مقدار است؛ با مثال، توضیح خط‌به‌خط و آزمون.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/01-متغیرها-Variables.html">
-<meta property="og:title" content="متغیر در پایتون چیست؟">
-<meta property="og:description" content="متغیر در پایتون چیست؟ یاد بگیر چطور با یک نام ساده مقدار را ذخیره کنی و با print ببینی؛ با مثال و توضیح خط‌به‌خط.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="fa_IR">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-<header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav>
-<a href="../../index.html">خانه</a>
-<a href="../index.html">Python</a>
-<a href="../../tamrin/index.html">تمرین</a>
-</nav>
-</header>
-<main id="main-content">
-<div class="wrap">
-<div class="breadcrumb">
-<a href="../../index.html">خانه</a><span class="sep">/</span>
-<a href="../index.html">Python</a><span class="sep">/</span>
-<a href="index.html">متغیرها</a><span class="sep">/</span>
-<span>متغیر در پایتون چیست؟</span>
-</div>
-<div class="layout">
-<aside class="side">
-<h3>متغیرها</h3>
-<a href="01-متغیرها-Variables.html" class="on">1. متغیرها چیست؟</a>
-<a href="02-نامگذاری-متغیر-Variable-Names.html">2. نام‌گذاری متغیر</a>
-<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
-<a href="04-انواع-داده-ساده-Data-Types.html">4. انواع داده ساده</a>
-<a href="05-تبدیل-نوع-Type-Conversion.html">5. تبدیل نوع</a>
-<a href="06-تمرین-متغیرها-Variable-Exercises.html">6. تمرین متغیرها</a>
-</aside>
-<article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="متغیر در پایتون چیست؟" data-cat="متغیرها">پین کردن این درس</button>
-<h1>متغیر در پایتون چیست؟</h1>
-<p><strong>هدف درس:</strong> بفهمی متغیر مثل یک جعبه نام‌دار برای نگه‌داشتن مقدار است و بتوانی مقدار را ذخیره و چاپ کنی.</p>
-<div class="note"><strong>پیش‌نیاز:</strong> آشنایی خیلی کوتاه با print از بخش شروع و مبانی.</div>
-<h2>مفهوم به زبان ساده</h2>
-<p>وقتی می‌خواهی عددی یا متنی را نگه داری تا بعداً استفاده کنی، آن را داخل متغیر می‌گذاری. در پایتون لازم نیست از قبل بگویی نوع متغیر چیست؛ فقط نام می‌گذاری و با علامت = مقدار می‌دهی.</p>
-<h2>مثال</h2>
-<div class="example-unit">
-<div class="codewrap"><div class="code">name = "Sara"
-age = 18
+<header><div class="logo"><a href="../../index.html">MCD Code Up</a></div>
+<nav><a href="../../python/index.html">Python</a><a href="index.html">متغیرها</a></nav></header>
+<main><div class="wrap"><article class="card">
+<h1>متغیرها چیست؟</h1>
+<p><strong>هدف:</strong> اولین متغیر را بسازی و چاپ کنی.</p>
+<div class="code">name = "Sara"
+age = 20
 print(name)
 print(age)</div>
-<div class="exp line-exp">
-<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">name = "Sara"</code><span class="ln-exp">متغیر name ساخته می‌شود و متن Sara داخلش قرار می‌گیرد.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">age = 18</code><span class="ln-exp">متغیر age با عدد 18 ساخته می‌شود.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">print(name)</code><span class="ln-exp">مقدار name را روی صفحه نشان می‌دهد.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">print(age)</code><span class="ln-exp">مقدار age را نشان می‌دهد.</span></li>
-</ol>
-</div>
-</div>
-</div>
-<h2>نکته‌های مهم</h2>
-<ul>
-<li>نام متغیر را خودت انتخاب می‌کنی؛ بهتر است معنادار باشد.</li>
-<li>مقدار متغیر را بعداً می‌توانی عوض کنی.</li>
-<li>متن را بین علامت نقل‌قول بنویس.</li>
-</ul>
-<div class="sum"><b>جمع‌بندی</b>
-<ul>
-<li>متغیر نامی برای یک مقدار است.</li>
-<li>با = مقدار می‌دهیم.</li>
-<li>با print می‌توانی مقدار را ببینی.</li>
-</ul></div>
-<div class="navbtn lesson-nav">
-<a href="index.html">← فهرست متغیرها</a>
-<a href="02-نامگذاری-متغیر-Variable-Names.html">نام‌گذاری متغیر →</a>
-</div>
-</article>
-</div>
-</div>
-</main>
-<footer class="site-footer">MCD Code Up · آموزش پایتون از صفر</footer>
-<script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+<li><span class="ln">خط 1</span><code class="ln-code">name = "Sara"</code><span class="ln-exp">متغیر متنی.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">age = 20</code><span class="ln-exp">متغیر عددی.</span></li>
+<li><span class="ln">خط 3-4</span><code class="ln-code">print(...)</code><span class="ln-exp">چاپ مقدارها.</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>متغیر نامی برای یک مقدار است</li><li>با = مقدار می‌دهیم</li></ul></div>
+<section class="mcd-quiz" id="v1"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>عملگر مقداردهی؟</p>
+<label><input type="radio" name="a" value="0"> ==</label>
+<label><input type="radio" name="a" value="1"> =</label>
+<label><input type="radio" name="a" value="2"> :</label>
+<div class="result" hidden></div></div>
+<button type="button" data-check="v1">نتیجه</button></section>
+<p><a href="index.html">← فهرست</a> · <a href="02-نامگذاری-متغیر-Variable-Names.html">بعد →</a></p>
+</article></div></main>
+<script src="../../assets/js/lesson-quiz.js"></script>
+</body></html>

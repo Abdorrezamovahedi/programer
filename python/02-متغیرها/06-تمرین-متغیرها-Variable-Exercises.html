@@ -5,69 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>تمرین متغیرها در پایتون | از صفر | MCD Code Up</title>
-<meta name="description" content="تمرین عملی متغیر در پایتون: چند تمرین کوتاه برای تثبیت ساخت متغیر، نام‌گذاری و تبدیل نوع.">
-<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/06-تمرین-متغیرها-Variable-Exercises.html">
+<title>تمرین متغیرها در پایتون | MCD Code Up</title>
+<meta name="description" content="تمرین کوتاه برای تثبیت مفهوم متغیر، نام‌گذاری و تبدیل نوع.">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
-<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a></nav>
-</header>
-<main id="main-content">
-<div class="wrap">
-<div class="layout">
-<aside class="side">
-<h3>متغیرها</h3>
-<a href="01-متغیرها-Variables.html">1. متغیرها چیست؟</a>
-<a href="02-نامگذاری-متغیر-Variable-Names.html">2. نام‌گذاری متغیر</a>
-<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
-<a href="04-انواع-داده-ساده-Data-Types.html">4. انواع داده ساده</a>
-<a href="05-تبدیل-نوع-Type-Conversion.html">5. تبدیل نوع</a>
-<a href="06-تمرین-متغیرها-Variable-Exercises.html" class="on">6. تمرین متغیرها</a>
-</aside>
-<article class="card">
+<main><div class="wrap"><article class="card">
 <h1>تمرین متغیرها</h1>
-<p><strong>هدف درس:</strong> با چند تمرین کوتاه مطمئن شوی متغیر، نام‌گذاری و تبدیل نوع را بلدی.</p>
-<p>تمرین را خودت بنویس؛ فقط خواندن کافی نیست. اگر گیر کردی به درس قبلی برگرد و مثال را دوباره تایپ کن.</p>
-<div class="example-unit">
-<div class="codewrap"><div class="code">first_name = "Reza"
-age = 21
-next_year = age + 1
-print(first_name)
-print("سال بعد:", next_year)</div>
-<div class="exp line-exp">
-<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">first_name = "Reza"</code><span class="ln-exp">یک متغیر متنی بساز.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">age = 21</code><span class="ln-exp">سن را ذخیره کن.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">next_year = age + 1</code><span class="ln-exp">سال بعد را حساب کن.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">print(first_name)</code><span class="ln-exp">نام را چاپ کن.</span></li>
-<li><span class="ln">خط 5</span><code class="ln-code">print("سال بعد:", next_year)</code><span class="ln-exp">نتیجه را با برچسب چاپ کن.</span></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="good">
-<strong>تمرین‌ها:</strong>
-<ol>
-<li>دو متغیر برای نام و شهر بساز و چاپ کن.</li>
-<li>دو عدد را در متغیر بگذار و جمعشان را چاپ کن.</li>
-<li>متن "15" را به عدد تبدیل کن و در ۷ ضرب کن.</li>
-</ol>
-</div>
-<div class="navbtn lesson-nav">
-<a href="05-تبدیل-نوع-Type-Conversion.html">← تبدیل نوع</a>
-<a href="../04-انواع-داده-و-اعداد/index.html">انواع داده و اعداد →</a>
-</div>
-</article>
-</div>
-</div>
-</main>
-<footer class="site-footer">MCD Code Up</footer>
-<script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+<div class="good"><ol>
+<li>متغیر city بساز و چاپ کن</li>
+<li>جمع دو عدد</li>
+<li>int("8")+2</li>
+</ol></div>
+<div class="code">city = "Shiraz"
+print(city)
+print(4 + 6)
+print(int("8") + 2)</div>
+<section class="mcd-quiz" id="v6"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>کدام درست است؟</p>
+<label><input type="radio" name="a" value="0"> 1name="Ali"</label>
+<label><input type="radio" name="a" value="1"> name1="Ali"</label>
+<label><input type="radio" name="a" value="2"> my name="Ali"</label>
+<div class="result" hidden></div></div>
+<button type="button" data-check="v6">نتیجه</button></section>
+<p><a href="05-تبدیل-نوع-Type-Conversion.html">← قبل</a> · <a href="index.html">فهرست →</a></p>
+</article></div></main>
+<script src="../../assets/js/lesson-quiz.js"></script>
+</body></html>

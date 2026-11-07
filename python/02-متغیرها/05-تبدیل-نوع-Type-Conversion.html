@@ -5,61 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>تبدیل نوع در پایتون | int str float | MCD Code Up</title>
-<meta name="description" content="تبدیل نوع متغیر در پایتون: چطور متن را به عدد و عدد را به متن تبدیل کنیم با مثال ساده.">
-<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/05-تبدیل-نوع-Type-Conversion.html">
+<title>تبدیل نوع داده در پایتون | int str float | MCD Code Up</title>
+<meta name="description" content="تبدیل رشته به عدد و عدد به رشته در پایتون با مثال.">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
-<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a></nav>
-</header>
-<main id="main-content">
-<div class="wrap">
-<div class="layout">
-<aside class="side">
-<h3>متغیرها</h3>
-<a href="01-متغیرها-Variables.html">1. متغیرها چیست؟</a>
-<a href="02-نامگذاری-متغیر-Variable-Names.html">2. نام‌گذاری متغیر</a>
-<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
-<a href="04-انواع-داده-ساده-Data-Types.html">4. انواع داده ساده</a>
-<a href="05-تبدیل-نوع-Type-Conversion.html" class="on">5. تبدیل نوع</a>
-<a href="06-تمرین-متغیرها-Variable-Exercises.html">6. تمرین متغیرها</a>
-</aside>
-<article class="card">
-<h1>تبدیل نوع در پایتون</h1>
-<p><strong>هدف درس:</strong> بتوانی در مواقع لازم نوع مقدار را عوض کنی؛ مثلاً متن عددی را به int تبدیل کنی.</p>
-<p>گاهی ورودی به‌صورت متن می‌آید ولی تو می‌خواهی حساب کنی. آن وقت باید نوع را عوض کنی. int() متن عددی را عدد می‌کند و str() عدد را متن می‌کند.</p>
-<div class="example-unit">
-<div class="codewrap"><div class="code">a = "7"
-b = int(a)
-c = b + 3
-print(c)
-print(str(c) + " امتیاز")</div>
-<div class="exp line-exp">
-<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">a = "7"</code><span class="ln-exp">این مقدار متن است نه عدد.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">b = int(a)</code><span class="ln-exp">متن 7 به عدد صحیح تبدیل می‌شود.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">c = b + 3</code><span class="ln-exp">حالا جمع عددی ممکن است: 10.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">print(c)</code><span class="ln-exp">عدد 10 چاپ می‌شود.</span></li>
-<li><span class="ln">خط 5</span><code class="ln-code">print(str(c) + " امتیاز")</code><span class="ln-exp">عدد به متن تبدیل و به رشته وصل می‌شود.</span></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="navbtn lesson-nav">
-<a href="04-انواع-داده-ساده-Data-Types.html">← انواع داده</a>
-<a href="06-تمرین-متغیرها-Variable-Exercises.html">تمرین →</a>
-</div>
-</article>
-</div>
-</div>
-</main>
-<footer class="site-footer">MCD Code Up</footer>
-<script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+<main><div class="wrap"><article class="card">
+<h1>تبدیل نوع</h1>
+<div class="code">print(int("12") + 3)
+print(str(20) + "1")</div>
+<div class="warn">int("12a") خطا می‌دهد چون کل رشته عدد معتبر نیست.</div>
+<section class="mcd-quiz" id="v5"><h3>آزمون</h3>
+<div class="q" data-answer="1"><p>int("5")+2 ؟</p>
+<label><input type="radio" name="a" value="0"> "52"</label>
+<label><input type="radio" name="a" value="1"> 7</label>
+<label><input type="radio" name="a" value="2"> خطا همیشه</label>
+<div class="result" hidden></div></div>
+<button type="button" data-check="v5">نتیجه</button></section>
+<p><a href="04-انواع-داده-ساده-Data-Types.html">← قبل</a> · <a href="06-تمرین-متغیرها-Variable-Exercises.html">بعد →</a></p>
+</article></div></main>
+<script src="../../assets/js/lesson-quiz.js"></script>
+</body></html>
