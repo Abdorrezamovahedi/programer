@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>جایگزینی sub در RegEx پایتون | MCD Code Up</title>
-<meta name="description" content="جایگزینی متن با re.sub در پایتون؛ سانسور رقم و ویرایش الگو با مثال خط‌به‌خط و آزمون.">
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#00e676">
+<meta name="robots" content="index, follow">
+<title>جایگزینی متن با re.sub در پایتون | MCD Code Up</title>
+<meta name="description" content="با re.sub بخش‌های مطابق الگو را عوض کن؛ مثال سانسور رقم، توضیح خط‌به‌خط و آزمون.">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/21-regex/08-sub.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer}.items-taught{padding:0}.items-taught li{list-style:none;padding:.55rem .75rem;margin:.4rem 0;border-radius:10px;background:#07140f;border:1px solid #1a3328}</style>
-</head><body>
+<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}</style>
+</head>
+<body>
 <script src="../../assets/js/boot-loader.js"></script>
+<header><div class="logo"><a href="../../index.html">MCD Code Up</a></div>
+<nav><a href="../../python/index.html">Python</a><a href="index.html">RegEx</a></nav></header>
 <main><div class="wrap"><article class="card">
 <h1>جایگزینی با sub</h1>
-<p><strong>هدف درس:</strong> متن‌های مطابق الگو را با <code>sub</code> عوض کنی.</p>
-<ul class="items-taught">
-<li>تابع <code>re.sub</code></li>
-<li>جایگزینی رقم یا الگوی دیگر</li>
-<li>کاربردهایی مثل سانسور یا یکدست‌کردن متن</li>
-</ul>
-<p><code>sub</code> یعنی substitute: بخش‌هایی که با الگو جور هستند را با چیز دیگری جایگزین می‌کند.</p>
+<p><strong>هدف:</strong> متن مطابق الگو را با چیز دیگری عوض کنی.</p>
 <div class="code">import re
 text = "تماس: 0912-345"
 print(re.sub(r"\d", "*", text))
 print(re.sub(r"\d+", "#", text))</div>
 <div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 2</span><code class="ln-code">text = ...</code><span class="ln-exp">متن دارای رقم.</span></li>
 <li><span class="ln">خط 3</span><code class="ln-code">sub(r"\d", "*")</code><span class="ln-exp">هر رقم جداگانه با * عوض می‌شود.</span></li>
 <li><span class="ln">خط 4</span><code class="ln-code">sub(r"\d+", "#")</code><span class="ln-exp">هر دنباله رقم یکجا با # عوض می‌شود.</span></li>
 </ol></div>
-<div class="sum"><b>جمع‌بندی</b><ul><li>sub برای جایگزینی است</li><li>الگوی دقیق نتیجه را عوض می‌کند</li><li>\d و \d+ در sub رفتار متفاوت دارند</li></ul></div>
-<section class="mcd-quiz" id="q08"><h3>آزمون</h3>
+<div class="sum"><b>جمع‌بندی</b><ul><li>sub رشته جدید برمی‌گرداند</li><li>متن اصلی خودش عوض نمی‌شود مگر دوباره ذخیره کنی</li></ul></div>
+<section class="mcd-quiz" id="q8"><h3>آزمون</h3>
 <div class="q" data-answer="1"><p>sub چه می‌کند؟</p>
 <label><input type="radio" name="x" value="0"> فقط جست‌وجو</label>
-<label><input type="radio" name="x" value="1"> جایگزینی بخش‌های مطابق الگو</label>
+<label><input type="radio" name="x" value="1"> جایگزینی مطابق الگو</label>
 <label><input type="radio" name="x" value="2"> حذف فایل</label>
 <div class="result" hidden></div></div>
-<button type="button" data-check="q08">دیدن نتیجه</button></section>
-<div class="navbtn"><a href="07-groups.html">← قبل</a><a href="09-compile.html">بعد →</a></div>
+<button type="button" data-check="q8">نتیجه</button></section>
+<p><a href="07-groups.html">← قبل</a> · <a href="09-compile.html">بعد →</a></p>
 </article></div></main>
+<script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/lesson-quiz.js"></script>
 </body></html>
