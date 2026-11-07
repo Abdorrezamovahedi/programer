@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/02-نامگذاری-متغیر-Variable-Names.html">
-<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<title>نامگذاری متغیر Variable Names | PYTHON · MCD Code Up</title>
-<meta name="description" content="آموزش نامگذاری متغیر Variable Names در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
-<meta name="keywords" content="نامگذاری متغیر پایتون, قواعد نام متغیر, snake_case">
+<meta name="robots" content="index, follow">
+<title>نام‌گذاری متغیر در پایتون | قوانین نام | MCD Code Up</title>
+<meta name="description" content="قوانین نام‌گذاری متغیر در پایتون: چه نام‌هایی مجازند، چه اشتباهاتی رایج است و چطور نام خوانا بنویسی.">
+<meta name="keywords" content="نام متغیر پایتون, variable names python, آموزش پایتون از صفر">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/02-نامگذاری-متغیر-Variable-Names.html">
-<meta property="og:title" content="نام‌گذاری متغیر در پایتون">
-<meta property="og:description" content="قواعد و بهترین روش نام‌گذاری متغیر.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="fa_IR">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"نام‌گذاری متغیر","description":"آموزش قواعد نام متغیر در پایتون.","inLanguage":"fa","learningResourceType":"Lesson"}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
+<nav><a href="../../index.html">خانه</a><a href="../index.html">Python</a></nav>
 </header>
 <main id="main-content">
-<h1>نامگذاری متغیر Variable Names</h1>
-
 <div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>نام‌گذاری</span></div>
 <div class="layout">
-<aside class="side"><h3>متغیرها</h3>
-<a href="01-متغیرها-Variables.html">1. متغیرها</a>
-<a href="02-نامگذاری-متغیر-Variable-Names.html" class="on">2. نام‌گذاری</a>
+<aside class="side">
+<h3>متغیرها</h3>
+<a href="01-متغیرها-Variables.html">1. متغیرها چیست؟</a>
+<a href="02-نامگذاری-متغیر-Variable-Names.html" class="on">2. نام‌گذاری متغیر</a>
+<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
+<a href="04-انواع-داده-ساده-Data-Types.html">4. انواع داده ساده</a>
+<a href="05-تبدیل-نوع-Type-Conversion.html">5. تبدیل نوع</a>
+<a href="06-تمرین-متغیرها-Variable-Exercises.html">6. تمرین متغیرها</a>
 </aside>
 <article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="نام‌گذاری متغیر" data-cat="متغیرها">📌 پین کردن این درس</button>
-<h2>نام‌گذاری متغیر در پایتون</h2>
-<p><strong>هدف این درس:</strong> قواعد نام‌گذاری درست متغیر را بدانی.</p>
+<h1>نام‌گذاری متغیر در پایتون</h1>
+<p><strong>هدف درس:</strong> بتوانی برای متغیر نام درست و خوانا انتخاب کنی و از نام‌های غیرمجاز پرهیز کنی.</p>
+<h2>مفهوم به زبان ساده</h2>
+<p>نام متغیر آدرس جعبه است. اگر نام گیج‌کننده باشد، بعداً خودت هم سردرگم می‌شوی. پایتون چند قانون ساده دارد: نام نباید با عدد شروع شود، فاصله نگیرد، و بعضی کلمه‌های رزرو شده مثل if را نمی‌توانی استفاده کنی.</p>
 <div class="example-unit">
-<div class="codewrap"><div class="code">user_name = "علی"      # درست
-age2 = 25              # درست
-# 2age = 25            # اشتباه - با عدد شروع نشود
-# user-name = "علی"    # اشتباه - خط تیره مجاز نیست</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">user_name = &quot;علی&quot;      # درست</code><span class="ln-exp"> — یک مقدار را داخل «user_name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">age2 = 25              # درست</code><span class="ln-exp"> — یک مقدار را داخل «age2» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code"># 2age = 25            # اشتباه - با عدد شروع نشود</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code"># user-name = &quot;علی&quot;    # اشتباه - خط تیره مجاز نیست</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
-</div></div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp">نام متغیر باید با حرف یا _ شروع شود و می‌تواند شامل حرف، عدد و _ باشد. از فاصله و خط تیره استفاده نکن.</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> چند متغیر با نام‌های خوانا و صحیح ساخته باشی.</div>
-<div class="sum"><b>جمع‌بندی</b><ul>
-<li>با حرف یا _ شروع کن</li>
-<li>از فاصله و - استفاده نکن</li>
-<li>نام‌های معنادار و خوانا انتخاب کن (مثل user_name)</li>
-</ul></div>
-<h3>گام عملی</h3>
-<ol class="practice-list">
-<li class="practice-item">سه متغیر با نام‌های معنادار بساز و چاپ کن.</li>
+<div class="codewrap"><div class="code">student_name = "Ali"
+score1 = 20
+print(student_name)
+print(score1)</div>
+<div class="exp line-exp">
+<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 1</span><code class="ln-code">student_name = "Ali"</code><span class="ln-exp">نام خوانا با زیرخط؛ معنی‌دار است.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">score1 = 20</code><span class="ln-exp">عدد در وسط یا آخر نام مجاز است.</span></li>
+<li><span class="ln">خط 3</span><code class="ln-code">print(student_name)</code><span class="ln-exp">چاپ نام دانش‌آموز.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">print(score1)</code><span class="ln-exp">چاپ نمره.</span></li>
 </ol>
-<div class="navbtn lesson-nav"><a href="01-متغیرها-Variables.html">← متغیرها</a></div>
+</div>
+</div>
+</div>
+<ul>
+<li>به‌جای a و b از نام‌های واضح مثل age یا total استفاده کن.</li>
+<li>نام‌هایی مثل 1name اشتباه‌اند.</li>
+<li>حروف بزرگ و کوچک فرق دارند: Age با age یکی نیست.</li>
+</ul>
+<div class="navbtn lesson-nav">
+<a href="01-متغیرها-Variables.html">← متغیرها چیست؟</a>
+<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">تخصیص چندتایی →</a>
+</div>
 </article>
-</div></div>
-
+</div>
+</div>
 </main>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/mcd-motion.js" defer></script>
-</body></html>
+</body>
+</html>
