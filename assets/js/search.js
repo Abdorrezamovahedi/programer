@@ -16,6 +16,16 @@ function escapeHtml(str) {
       .replace(/"/g, "&quot;");
   }
 
+  function norm(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/ي/g, "ی")
+      .replace(/ك/g, "ک")
+      .replace(/‌/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
   function collectFromDom() {
     var items = [];
     var root = document.getElementById("catGrid") || document.querySelector(".cat-grid") || document.querySelector(".langs");
@@ -28,7 +38,7 @@ function escapeHtml(str) {
       var cat = (a.querySelector("small") && a.querySelector("small").textContent) || "";
       cat = cat.replace(/\s+/g, " ").trim();
       if (!title) return;
-      items.push({ title: title, cat: cat, href: href });
+      items.push({ title: title, cat: cat, href: href, keys: title + " " + cat });
     });
     return items;
   }
@@ -40,11 +50,15 @@ function escapeHtml(str) {
     if (!input || !results) return;
 
     if (!items || !items.length) {
-      items = collectFromDom();
+      if (window.LANG_SEARCH_ITEMS && window.LANG_SEARCH_ITEMS.length) {
+        items = window.LANG_SEARCH_ITEMS;
+      } else {
+        items = collectFromDom();
+      }
     }
 
     function run() {
-      var q = (input.value || "").trim().toLowerCase();
+      var q = norm(input.value || "");
       if (!q) {
         results.classList.add("is-hidden");
         results.innerHTML = "";
@@ -53,11 +67,20 @@ function escapeHtml(str) {
       }
       if (grid) grid.classList.add("is-hidden");
       results.classList.remove("is-hidden");
+
+      var parts = q.split(" ").filter(Boolean);
       var html = "";
       var found = 0;
       items.forEach(function (it) {
-        var hay = ((it.title || "") + " " + (it.cat || "") + " " + (it.href || "")).toLowerCase();
-        if (hay.indexOf(q) === -1) return;
+        var hay = norm((it.title || "") + " " + (it.cat || "") + " " + (it.keys || "") + " " + (it.href || ""));
+        var ok = true;
+        for (var i = 0; i < parts.length; i++) {
+          if (hay.indexOf(parts[i]) === -1) {
+            ok = false;
+            break;
+          }
+        }
+        if (!ok) return;
         found++;
         html +=
           '<a class="lesson-list-item lang-link" href="' +
@@ -65,12 +88,12 @@ function escapeHtml(str) {
           '"><span>' +
           esc(it.title) +
           '</span><small style="color:#8b949e">' +
-          esc(it.cat) +
+          esc(it.cat || "") +
           "</small></a>";
       });
       results.innerHTML = found
         ? html
-        : '<div class="ex-empty">نتیجه‌ای پیدا نشد.</div>';
+        : '<div class="ex-empty">نتیجه‌ای پیدا نشد. کلمه دیگری مثل «متغیر» یا «regex» را امتحان کن.</div>';
     }
 
     input.addEventListener("input", run);
