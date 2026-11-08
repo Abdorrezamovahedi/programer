@@ -1,30 +1,78 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/08-بازه-Range.html">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="بازه Range | PYTHON · MCD Code Up">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/08-بازه-Range.html">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>تابع range در پایتون | MCD Code Up</title>
-<meta name="description" content="ساخت بازه عددی با range برای استفاده در حلقه for.">
-<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/08-بازه-Range.html">
+<title>تابع range در پایتون | آموزش کامل | MCD Code Up</title>
+<meta name="description" content="تابع range در پایتون برای ساخت بازه عددی در حلقه for با مثال و توضیح خط‌به‌خط.">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "بازه (Range)", "description": "مفهوم بازه (Range) را با مثال کوچک اجرا کنی و خروجی را ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<main><div class="wrap"><article class="card">
-<h1>تابع range</h1>
-<p><strong>هدف:</strong> دنباله‌ای از اعداد بسازی تا در for استفاده کنی.</p>
-<div class="code">print(list(range(5)))
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
+<h1>بازه Range</h1>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>بازه (Range)</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه</h3>
+<a href="01-if-elif-else.html">1. if / elif / else</a>
+<a href="02-حلقه-while.html">2. حلقه while</a>
+<a href="03-حلقه-for.html">3. حلقه for</a>
+<a href="08-بازه-Range.html" class="on">8. بازه (Range)</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="بازه Range" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>تابع range در پایتون</h2>
+<p><strong>هدف این درس:</strong> بتوانی با <code>range</code> دنباله‌ای از اعداد بسازی و در حلقه <code>for</code> از آن استفاده کنی.</p>
+<p><strong>پیش‌نیاز:</strong> آشنایی با حلقه for و دستور print. اگر for را نخوانده‌ای، اول <a href="03-حلقه-for.html">درس for</a> را ببین.</p>
+<p><strong>کجا به درد می‌خورد؟</strong> وقتی می‌خواهی عددی را چند بار تکرار کنی، جدول بسازی، یا از عدد شروع تا پایان با گام مشخص جلو بروی.</p>
+<h3>اجزای اصلی</h3>
+<ol>
+<li><code>range(n)</code> — از ۰ تا قبل از n</li>
+<li><code>range(start, stop)</code> — از start تا قبل از stop</li>
+<li><code>range(start, stop, step)</code> — با گام step</li>
+</ol>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(list(range(5)))
 print(list(range(2, 6)))
 print(list(range(0, 10, 2)))</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">range(5)</code><span class="ln-exp">از 0 تا قبل از 5.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">range(2, 6)</code><span class="ln-exp">از 2 تا قبل از 6.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">range(0, 10, 2)</code><span class="ln-exp">با گام 2.</span></li>
+<li><span class="ln">خط 1:</span> <code class="ln-code">range(5)</code><span class="ln-exp"> — اعداد ۰ تا ۴ را می‌سازد؛ list آن را قابل‌دیدن می‌کند.</span></li>
+<li><span class="ln">خط 2:</span> <code class="ln-code">range(2, 6)</code><span class="ln-exp"> — از ۲ تا قبل از ۶: ۲،۳،۴،۵.</span></li>
+<li><span class="ln">خط 3:</span> <code class="ln-code">range(0, 10, 2)</code><span class="ln-exp"> — با گام ۲: ۰،۲،۴،۶،۸.</span></li>
 </ol></div>
-<p><a href="03-حلقه-for.html">← قبل</a> · <a href="index.html">فهرست →</a></p>
-</article></div></main>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">توجه: عدد پایانی (stop) داخل بازه نیست. range(5) یعنی ۰ تا ۴.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی range را با سه شکل بالا بنویسی و در یک for استفاده کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>range دنباله عدد می‌سازد</li>
+<li>معمولاً با for استفاده می‌شود</li>
+<li>stop داخل بازه نیست</li>
+</ul></div>
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">اعداد ۱ تا ۵ را با range و for چاپ کن.</li>
+<li class="practice-item">اعداد زوج ۰ تا ۱۰ را با گام ۲ چاپ کن.</li>
+</ol>
+<p><strong>تمرین‌های مرتبط:</strong> <a href="../../tamrin/index.html">بانک تمرین‌ها</a> (در صورت وجود تمرین حلقه، از همان بخش استفاده کن).</p>
+<div class="navbtn lesson-nav"><a href="03-حلقه-for.html">← حلقه for</a><a href="index.html">فهرست شرط و حلقه →</a></div>
+</article></div></div>
+</main>
+<footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>
