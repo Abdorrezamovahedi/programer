@@ -6,67 +6,68 @@
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
 <title>شرط if elif else در پایتون | آموزش کامل | MCD Code Up</title>
-<meta name="description" content="تصمیم‌گیری با if و elif و else در پایتون؛ مثال کاربردی و توضیح خط‌به‌خط.">
+<meta name="description" content="تصمیم‌گیری با if و elif و else در پایتون؛ با لینک مستقیم به درس هر مفهوم.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/01-if-elif-else.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+.learn-more-links{list-style:none;padding:0;margin:1rem 0}
+.learn-more-links li{margin:.55rem 0}
+.learn-more-links a.learn-link{
+  display:block;
+  padding:.75rem 1rem;
+  border-radius:12px;
+  border:1px solid rgba(0,230,118,.35);
+  background:#07140f;
+  color:#b9f6ca;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  line-height:1.7;
+}
+.learn-more-links a.learn-link:hover{
+  border-color:#00e676;
+  color:#00e676;
+  background:#0a1f16;
+}
+</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
 <nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
 </header>
 <main id="main-content">
+<div class="wrap"><article class="card">
 <h1>if elif else</h1>
-<div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><span>شرط و حلقه</span><span class="sep">/</span><span>if</span></div>
-<div class="layout">
-<aside class="side"><h3>شرط و حلقه</h3>
-<a href="01-if-elif-else.html" class="on">1. if elif else</a>
-<a href="02-حلقه-while.html">2. حلقه while</a>
-<a href="03-حلقه-for.html">3. حلقه for</a>
-</aside>
-<article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="if" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
-<h2>شرط if در پایتون</h2>
-<p><strong>هدف این درس:</strong> بتوانی با if بین چند مسیر یکی را انتخاب کنی.</p>
-<div class="example-unit">
-<div class="codewrap"><div class="code">age = 18
+<p><strong>هدف:</strong> با شرط بین چند مسیر یکی را انتخاب کنی.</p>
+<div class="code">age = 18
 if age >= 18:
     print("بالغ هستی")
 elif age >= 13:
     print("نوجوان هستی")
 else:
     print("کودک هستی")</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1:</span> <code class="ln-code">age = 18</code><span class="ln-exp"> — مقدار سن را در متغیر age می‌گذارد.</span></li>
-<li><span class="ln">خط 2:</span> <code class="ln-code">if age &gt;= 18:</code><span class="ln-exp"> — شرط را بررسی می‌کند.</span></li>
-<li><span class="ln">خط 3:</span> <code class="ln-code">print("بالغ هستی")</code><span class="ln-exp"> — اگر شرط درست باشد این پیام چاپ می‌شود.</span></li>
-<li><span class="ln">خط 4:</span> <code class="ln-code">elif age &gt;= 13:</code><span class="ln-exp"> — اگر شرط قبلی نه، این را چک می‌کند.</span></li>
-<li><span class="ln">خط 6:</span> <code class="ln-code">else:</code><span class="ln-exp"> — اگر هیچ‌کدام نبود، این بخش اجرا می‌شود.</span></li>
+<li><span class="ln">خط 1</span><code class="ln-code">age = 18</code><span class="ln-exp">متغیر سن.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">if age &gt;= 18</code><span class="ln-exp">شرط اصلی.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">elif</code><span class="ln-exp">شرط بعدی.</span></li>
+<li><span class="ln">خط 6</span><code class="ln-code">else</code><span class="ln-exp">حالت باقی‌مانده.</span></li>
 </ol></div>
-</div></div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="sum"><b>جمع‌بندی</b><ul><li>if شرط اصلی</li><li>elif شرط بعدی</li><li>else بقیه حالت‌ها</li></ul></div>
 
 <h2 id="learn-more">یادگیری بیشتر</h2>
-<p>هر بخش مهم مثال را جدا یاد بگیر؛ با کلیک مستقیم به همان درس می‌روی:</p>
+<p>روی هر مورد کلیک کن تا همان درس باز شود:</p>
 <ul class="learn-more-links">
-<li><strong>متغیر <code>age</code></strong> — <a href="../02-متغیرها/01-متغیرها-Variables.html">رفتن به درس متغیرها</a></li>
-<li><strong>عدد و نوع داده</strong> — <a href="../04-انواع-داده-و-اعداد/01-نوع-داده-ها-Data-Types.html">رفتن به درس انواع داده</a></li>
-<li><strong>عملگر مقایسه <code>&gt;=</code></strong> — <a href="../06-بولین-و-عملگرها/05-عملگرهای-مقایسه-ای-Comparison-Operators.html">رفتن به درس عملگرهای مقایسه‌ای</a></li>
-<li><strong>چاپ با <code>print</code></strong> — <a href="../01-شروع-و-مبانی/06-خروجی-Output.html">رفتن به درس خروجی</a></li>
-<li><strong>رشته متنی داخل print</strong> — <a href="../05-رشتهها/01-رشته-ها-Strings.html">رفتن به درس رشته‌ها</a></li>
-<li><strong>ساختار شرطی if / elif / else</strong> — همین صفحه · ادامه: <a href="02-حلقه-while.html">رفتن به درس while</a></li>
+<li><a class="learn-link" href="../02-متغیرها/01-متغیرها-Variables.html">متغیر age — رفتن به درس متغیرها</a></li>
+<li><a class="learn-link" href="../04-انواع-داده-و-اعداد/01-نوع-داده-ها-Data-Types.html">عدد و نوع داده — رفتن به درس انواع داده</a></li>
+<li><a class="learn-link" href="../06-بولین-و-عملگرها/05-عملگرهای-مقایسه-ای-Comparison-Operators.html">عملگر مقایسه &gt;= — رفتن به درس عملگرهای مقایسه‌ای</a></li>
+<li><a class="learn-link" href="../01-شروع-و-مبانی/06-خروجی-Output.html">چاپ با print — رفتن به درس خروجی</a></li>
+<li><a class="learn-link" href="../05-رشتهها/01-رشته-ها-Strings.html">رشته متنی داخل print — رفتن به درس رشته‌ها</a></li>
+<li><a class="learn-link" href="02-حلقه-while.html">ادامه مسیر یادگیری — رفتن به درس while</a></li>
 </ul>
-
-<div class="navbtn lesson-nav"><a href="../index.html">← فهرست Python</a><a href="02-حلقه-while.html">while →</a></div>
-</article>
-</div></div>
+<p><a href="../index.html">← فهرست Python</a></p>
+</article></div>
 </main>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

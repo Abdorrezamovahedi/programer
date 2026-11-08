@@ -6,50 +6,40 @@
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
 <title>حلقه while در پایتون | آموزش کامل | MCD Code Up</title>
-<meta name="description" content="تکرار با while در پایتون، کنترل شرط و جلوگیری از حلقه بی‌نهایت با مثال.">
+<meta name="description" content="تکرار با while در پایتون؛ هر مفهوم به درس خودش لینک دارد.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/02-حلقه-while.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+.learn-more-links{list-style:none;padding:0;margin:1rem 0}
+.learn-more-links li{margin:.55rem 0}
+.learn-more-links a.learn-link{
+  display:block;padding:.75rem 1rem;border-radius:12px;
+  border:1px solid rgba(0,230,118,.35);background:#07140f;
+  color:#b9f6ca;text-decoration:underline;text-underline-offset:3px;line-height:1.7;
+}
+.learn-more-links a.learn-link:hover{border-color:#00e676;color:#00e676;background:#0a1f16}
+</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
-</header>
-<main id="main-content">
+<main><div class="wrap"><article class="card">
 <h1>حلقه while</h1>
-<div class="wrap"><article class="card">
-<h2>حلقه while در پایتون</h2>
-<p><strong>هدف این درس:</strong> کاری را تا وقتی شرط برقرار است تکرار کنی.</p>
-<div class="example-unit">
-<div class="codewrap"><div class="code">count = 1
+<p><strong>هدف:</strong> تا وقتی شرط برقرار است کار را تکرار کنی.</p>
+<div class="code">count = 1
 while count <= 5:
     print(count)
     count = count + 1</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1:</span> <code class="ln-code">count = 1</code><span class="ln-exp"> — شمارنده را از ۱ شروع می‌کند.</span></li>
-<li><span class="ln">خط 2:</span> <code class="ln-code">while count &lt;= 5:</code><span class="ln-exp"> — تا وقتی count حداکثر ۵ است تکرار کن.</span></li>
-<li><span class="ln">خط 3:</span> <code class="ln-code">print(count)</code><span class="ln-exp"> — عدد فعلی را چاپ می‌کند.</span></li>
-<li><span class="ln">خط 4:</span> <code class="ln-code">count = count + 1</code><span class="ln-exp"> — شمارنده را یکی زیاد می‌کند تا حلقه تمام شود.</span></li>
-</ol></div>
-</div></div>
-<div class="warn">اگر شرط هیچ‌وقت غلط نشود، حلقه بی‌نهایت می‌شود.</div>
 
 <h2 id="learn-more">یادگیری بیشتر</h2>
-<p>اگر جزئی از مثال را بلد نیستی، همان موضوع را باز کن:</p>
+<p>روی هر مورد کلیک کن تا همان درس باز شود:</p>
 <ul class="learn-more-links">
-<li><strong>متغیر شمارنده</strong> — <a href="../02-متغیرها/01-متغیرها-Variables.html">رفتن به درس متغیرها</a></li>
-<li><strong>مقایسه <code>&lt;=</code></strong> — <a href="../06-بولین-و-عملگرها/05-عملگرهای-مقایسه-ای-Comparison-Operators.html">رفتن به درس عملگرهای مقایسه‌ای</a></li>
-<li><strong>افزایش با <code>+</code></strong> — <a href="../06-بولین-و-عملگرها/03-عملگرهای-حسابی-Arithmetic-Operators.html">رفتن به درس عملگرهای حسابی</a></li>
-<li><strong>print</strong> — <a href="../01-شروع-و-مبانی/06-خروجی-Output.html">رفتن به درس خروجی</a></li>
-<li><strong>شرط if</strong> — <a href="01-if-elif-else.html">رفتن به درس if</a></li>
-<li><strong>حلقه for</strong> — <a href="03-حلقه-for.html">رفتن به درس for</a></li>
+<li><a class="learn-link" href="../02-متغیرها/01-متغیرها-Variables.html">متغیر شمارنده count — رفتن به درس متغیرها</a></li>
+<li><a class="learn-link" href="../06-بولین-و-عملگرها/05-عملگرهای-مقایسه-ای-Comparison-Operators.html">مقایسه &lt;= — رفتن به درس عملگرهای مقایسه‌ای</a></li>
+<li><a class="learn-link" href="../06-بولین-و-عملگرها/03-عملگرهای-حسابی-Arithmetic-Operators.html">افزایش با + — رفتن به درس عملگرهای حسابی</a></li>
+<li><a class="learn-link" href="../01-شروع-و-مبانی/06-خروجی-Output.html">چاپ با print — رفتن به درس خروجی</a></li>
+<li><a class="learn-link" href="01-if-elif-else.html">شرط if — رفتن به درس if</a></li>
+<li><a class="learn-link" href="03-حلقه-for.html">حلقه for — رفتن به درس for</a></li>
 </ul>
-
-<div class="navbtn lesson-nav"><a href="01-if-elif-else.html">← if</a><a href="03-حلقه-for.html">for →</a></div>
-</article></div>
-</main>
-<footer class="site-footer">MCD Code Up</footer>
+</article></div></main>
 <script src="../../assets/js/app.js"></script>
 </body></html>
