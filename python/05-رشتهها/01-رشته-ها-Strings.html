@@ -8,104 +8,36 @@
 <title>رشته در پایتون از صفر | Strings | MCD Code Up</title>
 <meta name="description" content="رشته در پایتون: ساخت متن، اندیس، طول و مثال عملی با توضیح خط‌به‌خط در MCD Code Up.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/05-رشتهها/01-رشته-ها-Strings.html">
-<meta property="og:title" content="رشته در پایتون | Strings">
-<meta property="og:locale" content="fa_IR">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"رشته‌ها","description":"آموزش رشته در پایتون","inLanguage":"fa","learningResourceType":"Lesson"}</script>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-<header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
-</header>
-<main id="main-content">
+<main><div class="wrap"><article class="card">
 <h1>رشته‌ها (Strings)</h1>
-<div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">رشته‌ها</a><span class="sep">/</span><span>رشته‌ها</span></div>
-<div class="layout">
-<aside class="side"><h3>رشته‌ها</h3>
-<a href="01-رشته-ها-Strings.html" class="on">1. رشته‌ها</a>
-<a href="03-برش-رشته-Slicing-Strings.html">3. برش رشته</a>
-<a href="05-تغییر-رشته-Modify-Strings.html">5. تغییر رشته</a>
-<a href="07-ترکیب-رشته-ها-Concatenate-Strings.html">7. ترکیب رشته‌ها</a>
-</aside>
-<article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="رشته‌ها" data-cat="رشته‌ها">📌 پین کردن این درس</button>
-
-<h2>هدف درس؛ در پایان چه چیزی یاد می‌گیریم؟</h2>
-<p>در این درس یاد می‌گیری متن را در پایتون به‌صورت <strong>رشته (String)</strong> ذخیره کنی، چاپ کنی و طول آن را بگیری. در پایان می‌توانی یک متغیر متنی بسازی، آن را چاپ کنی و با <code>len</code> تعداد کاراکترها را ببینی.</p>
-
-<h2>پیش‌نیازها</h2>
-<ul>
-<li>آشنایی با <a href="../01-شروع-و-مبانی/06-خروجی-Output.html">دستور print</a></li>
-<li>آشنایی با <a href="../02-متغیرها/01-متغیرها-Variables.html">متغیرها</a></li>
-</ul>
-
-<h2>این مفهوم کجا به درد می‌خورد؟</h2>
-<p>تقریباً هر برنامه‌ای با متن سروکار دارد: نام کاربر، پیام خوش‌آمد، آدرس، عنوان فایل. بدون رشته نمی‌توانی این داده‌ها را نگه داری یا نمایش بدهی.</p>
-
-<h2>اجزا و آیتم‌های اصلی</h2>
-<ol>
-<li><strong>رشته با نقل‌قول دوتایی</strong> — مثل <code>"سلام"</code></li>
-<li><strong>رشته با نقل‌قول تکی</strong> — مثل <code>'Sara'</code></li>
-<li><strong>len</strong> — تعداد کاراکترهای رشته را برمی‌گرداند</li>
-</ol>
-
-<h2>مثال کامل</h2>
-<div class="example-unit">
-<div class="codewrap"><div class="code">msg = "سلام"
+<p><strong>هدف:</strong> متن را ذخیره، چاپ و طولش را بگیری.</p>
+<div class="code">msg = "سلام"
 name = 'Sara'
 print(msg)
 print(name)
 print(len(msg))</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1:</span> <code class="ln-code">msg = "سلام"</code><span class="ln-exp"> — متن سلام را در متغیر msg ذخیره می‌کند.</span></li>
-<li><span class="ln">خط 2:</span> <code class="ln-code">name = 'Sara'</code><span class="ln-exp"> — رشته با نقل‌قول تکی؛ نتیجه مثل دوتایی است.</span></li>
-<li><span class="ln">خط 3:</span> <code class="ln-code">print(msg)</code><span class="ln-exp"> — مقدار msg را چاپ می‌کند.</span></li>
-<li><span class="ln">خط 4:</span> <code class="ln-code">print(name)</code><span class="ln-exp"> — مقدار name را چاپ می‌کند.</span></li>
-<li><span class="ln">خط 5:</span> <code class="ln-code">print(len(msg))</code><span class="ln-exp"> — طول رشته msg را چاپ می‌کند.</span></li>
+<li><span class="ln">خط 1-2</span><code class="ln-code">msg / name</code><span class="ln-exp">دو رشته با " یا '.</span></li>
+<li><span class="ln">خط 5</span><code class="ln-code">len(msg)</code><span class="ln-exp">تعداد کاراکترها.</span></li>
 </ol></div>
-</div></div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
 
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک رشته بسازی، چاپ کنی و طولش را با len بگیری.</div>
-
-<div class="sum"><b>جمع‌بندی</b>
-<ul>
-<li>رشته یعنی متن داخل " یا '</li>
-<li>می‌توانی رشته را در متغیر بگذاری</li>
-<li>len تعداد کاراکترها را می‌دهد</li>
-</ul></div>
-
-<h2>تمرین عملی</h2>
-<ol class="practice-list">
-<li class="practice-item">متغیر city با مقدار یک نام شهر بساز و چاپ کن.</li>
-<li class="practice-item">طول همان رشته را با len چاپ کن.</li>
-</ol>
-
-<p><strong>تمرین‌های مرتبط:</strong> <a href="../../tamrin/index.html">بانک تمرین برنامه‌نویسی</a></p>
-
-<h2>یادگیری بیشتر</h2>
-<p>برای فهم عمیق‌تر اجزای مثال بالا:</p>
-<ul>
-<li><code>msg</code> و <code>name</code> — نام متغیر؛ درس <a href="../02-متغیرها/01-متغیرها-Variables.html">متغیرها</a></li>
-<li><code>=</code> — انتساب مقدار به متغیر؛ همان درس متغیرها</li>
-<li><code>"سلام"</code> — مقدار رشته‌ای</li>
-<li><code>print</code> — نمایش خروجی؛ درس <a href="../01-شروع-و-مبانی/06-خروجی-Output.html">خروجی</a></li>
-<li><code>len</code> — طول رشته؛ در همین درس و درس‌های بعدی رشته</li>
+<h2 id="learn-more">یادگیری بیشتر</h2>
+<p>اگر بخشی از مثال ناآشناست، مستقیم برو به درس همان موضوع:</p>
+<ul class="learn-more-links">
+<li><strong>متغیر مثل <code>msg</code></strong> — <a href="../02-متغیرها/01-متغیرها-Variables.html">رفتن به درس متغیرها</a></li>
+<li><strong>نام‌گذاری متغیر</strong> — <a href="../02-متغیرها/02-نامگذاری-متغیر-Variable-Names.html">رفتن به درس نام‌گذاری متغیر</a></li>
+<li><strong>انتساب با <code>=</code></strong> — <a href="../06-بولین-و-عملگرها/04-عملگرهای-انتسابی-Assignment-Operators.html">رفتن به درس عملگرهای انتسابی</a></li>
+<li><strong>print</strong> — <a href="../01-شروع-و-مبانی/06-خروجی-Output.html">رفتن به درس خروجی</a></li>
+<li><strong>نمایش متغیر</strong> — <a href="../01-شروع-و-مبانی/09-نمایش-متغیرها-Output-Variables.html">رفتن به درس نمایش متغیرها</a></li>
+<li><strong>برش و کار بیشتر با متن</strong> — <a href="03-برش-رشته-Slicing-Strings.html">رفتن به درس برش رشته</a></li>
 </ul>
 
-<div class="navbtn lesson-nav">
-<a href="index.html">← فهرست رشته‌ها</a>
-<a href="03-برش-رشته-Slicing-Strings.html">برش رشته →</a>
-</div>
-</article>
-</div></div>
-</main>
-<footer class="site-footer">MCD Code Up</footer>
+<p><a href="03-برش-رشته-Slicing-Strings.html">برش رشته →</a></p>
+</article></div></main>
 <script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>
