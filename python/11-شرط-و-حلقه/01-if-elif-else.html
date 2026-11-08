@@ -1,86 +1,36 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/01-if-elif-else.html">
-<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<title>if elif else | PYTHON · MCD Code Up</title>
-<meta name="description" content="آموزش if elif else در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
-<meta name="keywords" content="if در پایتون, شرط پایتون, if elif else">
+<meta name="robots" content="index, follow">
+<title>شرط if elif else در پایتون | MCD Code Up</title>
+<meta name="description" content="تصمیم‌گیری با if و elif و else در پایتون با مثال و توضیح خط‌به‌خط.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/01-if-elif-else.html">
-<meta property="og:title" content="شرط if در پایتون">
-<meta property="og:description" content="تصمیم‌گیری با if را یاد بگیر.">
-<meta property="og:type" content="article">
-<meta property="og:locale" content="fa_IR">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"شرط if","description":"آموزش if elif else.","inLanguage":"fa","learningResourceType":"Lesson"}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
-<header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
-</header>
-<main id="main-content">
-<h1>if elif else</h1>
-
-<div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><span>شرط و حلقه</span><span class="sep">/</span><span>if</span></div>
-<div class="layout">
-<aside class="side"><h3>شرط و حلقه</h3>
-<a href="01-if-elif-else.html" class="on">1. if elif else</a>
-</aside>
-<article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="if" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
-<h2>شرط if در پایتون</h2>
-<p><strong>هدف این درس:</strong> بتوانی با if بین چند مسیر یکی را انتخاب کنی.</p>
-<div class="example-unit">
-<div class="codewrap"><div class="code">age = 18
-if age >= 18:
-    print("بالغ هستی")
-elif age >= 13:
-    print("نوجوان هستی")
+<main><div class="wrap"><article class="card">
+<h1>شرط if / elif / else</h1>
+<p><strong>هدف:</strong> بر اساس یک شرط، مسیر اجرای برنامه را عوض کنی.</p>
+<div class="code">score = 17
+if score >= 18:
+    print("عالی")
+elif score >= 10:
+    print("قبول")
 else:
-    print("کودک هستی")</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">age = 18</code><span class="ln-exp"> — یک مقدار را داخل «age» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">if age &gt;= 18:</code><span class="ln-exp"> — شرط را بررسی می‌کند؛ اگر درست باشد وارد این بخش می‌شود.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(&quot;بالغ هستی&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">elif age &gt;= 13:</code><span class="ln-exp"> — اگر شرط قبلی برقرار نبود، این شرط را چک می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(&quot;نوجوان هستی&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 6:</span> <code class="ln-code">else:</code><span class="ln-exp"> — اگر هیچ‌کدام از شرط‌های قبلی برقرار نبود، این بخش اجرا می‌شود.</span></li><li><span class="ln">خط 7:</span> <code class="ln-code">print(&quot;کودک هستی&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
-</div></div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
-<div class="exp">تورفتگی بعد از : بسیار مهم است. شرط درست باشد، بلوک داخل if اجرا می‌شود.</div>
-<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک شرط ساده با if و else نوشته باشی.</div>
-<div class="sum"><b>جمع‌بندی</b><ul>
-<li>if برای شرط اصلی</li>
-<li>elif برای شرط‌های بعدی</li>
-<li>else برای حالت باقی‌مانده</li>
-</ul></div>
-<h3>گام عملی</h3>
-<ol class="practice-list"><li class="practice-item">یک شرط بر اساس نمره بنویس (قبول / مشروط / مردود).</li></ol>
-<div class="navbtn lesson-nav"><a href="../index.html">← فهرست Python</a></div>
-</article>
-</div></div>
-
-
-
-
-<article class="card" style="margin-top:1rem">
-<h2>خلاصه درس: if elif else</h2>
-<p>
-این صفحه برای یادگیری <strong>if elif else</strong> در مسیر پایتون نوشته شده است.
-ابتدا تعریف و کاربرد را بخوان، سپس مثال را اجرا کن و در پایان یک تغییر کوچک در کد بده تا مطمئن شوی مفهوم را فهمیده‌ای.
-</p>
-<h3>گام‌های یادگیری</h3>
-<ol>
-<li>موضوع درس را در یک جمله برای خودت توضیح بده.</li>
-<li>مثال را بدون کپی، خودت تایپ کن.</li>
-<li>خروجی را با انتظار خودت مقایسه کن.</li>
-<li>یک تمرین مشابه با دادهٔ جدید بساز.</li>
-</ol>
-</article>
-
-</main>
-<footer class="site-footer">MCD Code Up</footer>
+    print("نیاز به تلاش بیشتر")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<ol class="line-exp-list">
+<li><span class="ln">خط 1</span><code class="ln-code">score = 17</code><span class="ln-exp">نمره نمونه.</span></li>
+<li><span class="ln">خط 2</span><code class="ln-code">if score &gt;= 18</code><span class="ln-exp">اگر نمره ۱۸ یا بیشتر.</span></li>
+<li><span class="ln">خط 4</span><code class="ln-code">elif score &gt;= 10</code><span class="ln-exp">وگرنه اگر حداقل ۱۰.</span></li>
+<li><span class="ln">خط 6</span><code class="ln-code">else</code><span class="ln-exp">در غیر این صورت.</span></li>
+</ol></div>
+<div class="sum"><b>جمع‌بندی</b><ul><li>if شرط اول</li><li>elif شرط‌های بعدی</li><li>else بقیه حالت‌ها</li></ul></div>
+<p><a href="02-حلقه-while.html">بعد →</a></p>
+</article></div></main>
 <script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>
