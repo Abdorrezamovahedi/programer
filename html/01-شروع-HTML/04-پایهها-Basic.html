@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/04-پایهها-Basic.html">
+<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>ساختار پایه HTML | html head body | آموزش از صفر | MCD Code Up</title>
-<meta name="description" content="ساختار پایه صفحه HTML را یاد بگیر: DOCTYPE، html، head و body با مثال ساده و توضیح خط‌به‌خط برای مبتدیان.">
-<meta name="keywords" content="ساختار HTML, تگ html, head body, آموزش HTML از صفر, آموزش html رایگان">
+<title>پایهها Basic | HTML · MCD Code Up</title>
+<meta name="description" content="آموزش پایهها Basic در HTML از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
+<meta name="keywords" content="ساختار HTML, DOCTYPE, head و body, آموزش HTML پایه">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/04-پایهها-Basic.html">
-<meta property="og:title" content="ساختار پایه HTML | html head body">
-<meta property="og:description" content="اسکلت استاندارد یک صفحه HTML را قدم‌به‌قدم یاد بگیر.">
+<meta property="og:title" content="ساختار پایه یک صفحه HTML">
+<meta property="og:description" content="اجزای اصلی یک سند HTML را با زبان ساده یاد بگیر.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"ساختار پایه HTML","description":"آموزش اسکلت اصلی صفحه HTML.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع HTML","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
@@ -20,69 +22,80 @@
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
 <div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../index.html">HTML</a><a href="../../tamrin/index.html">تمرین</a></nav>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
 </header>
 <main id="main-content">
+<h1>پایهها Basic</h1>
+
 <div class="wrap">
 <div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">شروع HTML</a><span class="sep">/</span><span>پایه‌ها</span></div>
+<div class="layout">
+<aside class="side">
+<h3>شروع HTML</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-مقدمه-Introduction.html">2. مقدمه</a>
+<a href="03-ویرایشگرها-Editors.html">3. ویرایشگرها</a>
+<a href="04-پایهها-Basic.html" class="on">4. پایه‌ها</a>
+<a href="05-المانها-Elements.html">5. المان‌ها</a>
+<a href="06-ویژگیها-Attributes.html">6. ویژگی‌ها</a>
+<a href="07-سرفصلها-Headings.html">7. سرفصل‌ها</a>
+<a href="08-پاراگرافها-Paragraphs.html">8. پاراگراف‌ها</a>
+<a href="09-توضیحات-Comments.html">9. توضیحات</a>
+</aside>
 <article class="card">
-<h1>ساختار پایه یک صفحه HTML</h1>
-<p><strong>هدف درس:</strong> بفهمی هر صفحه استاندارد از چه بخش‌هایی ساخته می‌شود و هر بخش چه نقشی دارد.</p>
-<h2>مفهوم ساده</h2>
-<p>یک فایل HTML مثل یک گزارش رسمی است: اول مشخص می‌کنی نوع سند چیست، بعد اطلاعات کلی (عنوان تب)، و در نهایت محتوای دیدنی صفحه. اگر این اسکلت را درست بگذاری، مرورگر صفحه را درست می‌فهمد.</p>
-<h2>مثال کامل</h2>
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="پایه‌ها" data-cat="شروع HTML">📌 پین کردن این درس</button>
+<h2>ساختار پایه یک صفحه HTML</h2>
+<p><strong>هدف این درس:</strong> اسکلت استاندارد هر صفحه HTML را کامل بشناسی.</p>
+
 <div class="example-unit">
 <div class="codewrap"><div class="code">&lt;!DOCTYPE html&gt;
-&lt;html lang="fa"&gt;
+&lt;html lang="fa" dir="rtl"&gt;
   &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;صفحه من&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;عنوان صفحه&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;سلام&lt;/h1&gt;
-    &lt;p&gt;این اولین صفحه من است.&lt;/p&gt;
+    &lt;!-- محتوای صفحه اینجا قرار می‌گیرد --&gt;
   &lt;/body&gt;
 &lt;/html&gt;</div>
-<div class="exp line-exp">
-<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">&lt;!DOCTYPE html&gt;</code><span class="ln-exp">به مرورگر می‌گوید سند از نوع HTML5 است.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">&lt;html lang="fa"&gt;</code><span class="ln-exp">ریشه صفحه؛ lang="fa" زبان فارسی را مشخص می‌کند.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">&lt;head&gt;</code><span class="ln-exp">اطلاعات صفحه مثل عنوان تب اینجا قرار می‌گیرد.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">&lt;meta charset="UTF-8"&gt;</code><span class="ln-exp">کدگذاری حروف؛ برای نمایش درست فارسی ضروری است.</span></li>
-<li><span class="ln">خط 5</span><code class="ln-code">&lt;title&gt;صفحه من&lt;/title&gt;</code><span class="ln-exp">متن تب مرورگر و عنوان نتایج جست‌وجو.</span></li>
-<li><span class="ln">خط 6</span><code class="ln-code">&lt;/head&gt;</code><span class="ln-exp">پایان بخش head.</span></li>
-<li><span class="ln">خط 7</span><code class="ln-code">&lt;body&gt;</code><span class="ln-exp">شروع محتوای قابل مشاهده.</span></li>
-<li><span class="ln">خط 8</span><code class="ln-code">&lt;h1&gt;سلام&lt;/h1&gt;</code><span class="ln-exp">عنوان اصلی صفحه.</span></li>
-<li><span class="ln">خط 9</span><code class="ln-code">&lt;p&gt;این اولین صفحه من است.&lt;/p&gt;</code><span class="ln-exp">یک بند متن برای کاربر.</span></li>
-<li><span class="ln">خط 10</span><code class="ln-code">&lt;/body&gt;</code><span class="ln-exp">پایان محتوا.</span></li>
-<li><span class="ln">خط 11</span><code class="ln-code">&lt;/html&gt;</code><span class="ln-exp">پایان کل سند.</span></li>
-</ol>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;!DOCTYPE html&gt;</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">&lt;html lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ html در ساختار صفحه.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">&lt;head&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ head در ساختار صفحه.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">&lt;meta charset=&quot;UTF-8&quot;&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ meta در ساختار صفحه.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ meta در ساختار صفحه.</span></li><li><span class="ln">خط 6:</span> <code class="ln-code">&lt;title&gt;عنوان صفحه&lt;/title&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ title در ساختار صفحه.</span></li><li><span class="ln">خط 7:</span> <code class="ln-code">&lt;/head&gt;</code><span class="ln-exp"> — پایان تگ head.</span></li><li><span class="ln">خط 8:</span> <code class="ln-code">&lt;body&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ body در ساختار صفحه.</span></li><li><span class="ln">خط 9:</span> <code class="ln-code">&lt;!-- محتوای صفحه اینجا قرار می‌گیرد --&gt;</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 10:</span> <code class="ln-code">&lt;/body&gt;</code><span class="ln-exp"> — پایان تگ body.</span></li><li><span class="ln">خط 11:</span> <code class="ln-code">&lt;/html&gt;</code><span class="ln-exp"> — پایان تگ html.</span></li></ol></div>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="exp">
+<strong>DOCTYPE</strong> نوع سند را مشخص می‌کند.<br>
+<strong>html</strong> ریشه کل صفحه است.<br>
+<strong>head</strong> اطلاعات صفحه (عنوان، کدگذاری، ...)<br>
+<strong>body</strong> محتوای قابل مشاهده
 </div>
-</div>
-</div>
-<h2>اشتباه‌های رایج</h2>
-<ul>
-<li>فراموش کردن meta charset و به‌هم‌ریختن حروف فارسی</li>
-<li>گذاشتن متن اصلی بیرون از body</li>
-<li>چندین h1 بی‌دلیل در یک صفحه</li>
-</ul>
-<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی یک فایل HTML با head و body درست بسازی و در مرورگر باز کنی.</div>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی اسکلت کامل یک صفحه HTML را از حفظ بنویسی.</div>
+
 <div class="sum"><b>جمع‌بندی</b>
 <ul>
-<li>DOCTYPE نوع سند را مشخص می‌کند.</li>
-<li>head اطلاعات صفحه است؛ body محتوای دیدنی است.</li>
-<li>title برای تب و سئو مهم است.</li>
+<li>هر صفحه HTML این اسکلت را دارد</li>
+<li>lang و dir برای زبان و جهت متن مهم هستند</li>
+<li>meta charset و viewport را فراموش نکن</li>
 </ul></div>
+
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">یک فایل HTML جدید با اسکلت کامل بساز.</li>
+<li class="practice-item">یک عنوان و یک بند داخل body اضافه کن و در مرورگر باز کن.</li>
+</ol>
 <div class="navbtn lesson-nav">
-<a href="02-مقدمه-Introduction.html">← مقدمه</a>
+<a href="03-ویرایشگرها-Editors.html">← ویرایشگرها</a>
 <a href="05-المانها-Elements.html">المان‌ها →</a>
 </div>
 </article>
-</div>
+</div></div>
+
 </main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+</body></html>

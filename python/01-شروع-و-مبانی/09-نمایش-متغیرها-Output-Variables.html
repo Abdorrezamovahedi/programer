@@ -1,89 +1,109 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/01-شروع-و-مبانی/09-نمایش-متغیرها-Output-Variables.html">
+<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>نمایش متغیرها در پایتون | آموزش کامل | MCD Code Up</title>
-<meta name="description" content="نمایش مقدار متغیر با print و ترکیب متن و عدد در پایتون؛ مثال خط‌به‌خط.">
+<title>نمایش متغیرها Output Variables | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش نمایش متغیرها Output Variables در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
+<meta name="keywords" content="نمایش متغیر پایتون, print متغیر, خروجی متغیر در پایتون">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/01-شروع-و-مبانی/09-نمایش-متغیرها-Output-Variables.html">
+<meta property="og:title" content="نمایش متغیرها در پایتون">
+<meta property="og:description" content="چطور مقدار متغیرها را با print نشان بدهی.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"نمایش متغیرها در پایتون","description":"آموزش چاپ مقدار متغیرها برای مبتدیان.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع و مبانی پایتون","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>
-.learn-more-links{list-style:none;padding:0;margin:1.25rem 0;display:flex;flex-direction:column;gap:.65rem}
-.learn-more-links li{margin:0}
-.learn-more-links a.learn-link{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;box-sizing:border-box;padding:.85rem 1.15rem;border-radius:999px;border:2px solid #00e676;background:linear-gradient(180deg,#0d2818 0%,#07140f 100%);color:#e8ffe8 !important;text-decoration:none !important;font-weight:700;cursor:pointer}
-.learn-more-links a.learn-link::after{content:"←";color:#00e676}
-.learn-more-links a.learn-link:hover{border-color:#69f0ae;transform:translateY(-1px);color:#fff !important}
-</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
-<div class="logo"><a href="../../index.html">MCD Code Up</a></div>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
 <nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
 </header>
 <main id="main-content">
-<h1>نمایش متغیرها</h1>
+<h1>نمایش متغیرها Output Variables</h1>
+
 <div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><span>نمایش متغیرها</span></div>
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شروع و مبانی</a><span class="sep">/</span><span>نمایش متغیرها</span></div>
 <div class="layout">
-<aside class="side"><h3>شروع و مبانی</h3>
-<a href="06-خروجی-Output.html">خروجی</a>
-<a href="07-چاپ-اعداد-Print-Numbers.html">چاپ اعداد</a>
-<a href="09-نمایش-متغیرها-Output-Variables.html" class="on">نمایش متغیرها</a>
+<aside class="side">
+<h3>شروع و مبانی</h3>
+<a href="01-خانه-HOME.html">1. خانه</a>
+<a href="02-مقدمه-Intro.html">2. مقدمه</a>
+<a href="03-شروع-کار-Get-Started.html">3. شروع کار</a>
+<a href="04-ساختار-نوشتاری-Syntax.html">4. ساختار نوشتاری</a>
+<a href="05-دستورات-Statements.html">5. دستورات</a>
+<a href="06-خروجی-Output.html">6. خروجی</a>
+<a href="07-چاپ-اعداد-Print-Numbers.html">7. چاپ اعداد</a>
+<a href="08-توضیحات-Comments.html">8. توضیحات</a>
+<a href="09-نمایش-متغیرها-Output-Variables.html" class="on">9. نمایش متغیرها</a>
 </aside>
 <article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="نمایش متغیرها" data-cat="شروع">📌 پین</button>
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="نمایش متغیرها" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
+<h2>نمایش متغیرها در پایتون</h2>
+<p><strong>هدف این درس:</strong> بتوانی مقدار یک یا چند متغیر را به شکل خوانا روی صفحه نشان بدهی.</p>
 
-<h2>هدف درس</h2>
-<p>در پایان این درس می‌توانی مقدار ذخیره‌شده در متغیر را با <code>print</code> ببینی و متن و عدد را کنار هم چاپ کنی.</p>
+<h3>مفهوم به زبان ساده</h3>
+<p>متغیر مثل جعبه‌ای است که چیزی داخلش گذاشته‌ای. برای دیدن محتویات جعبه از print استفاده می‌کنیم.</p>
 
-<h2>پیش‌نیازها</h2>
-<ul>
-<li><a href="../02-متغیرها/01-متغیرها-Variables.html">متغیرها</a></li>
-<li><a href="06-خروجی-Output.html">خروجی با print</a></li>
-</ul>
-
+<h3>چاپ یک متغیر</h3>
 <div class="example-unit">
-<div class="codewrap"><div class="code">name = "Sara"
-age = 20
-print(name)
-print("سن:", age)</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1:</span> <code class="ln-code">name = "Sara"</code><span class="ln-exp"> — رشته را در متغیر name می‌گذارد.</span></li>
-<li><span class="ln">خط 2:</span> <code class="ln-code">age = 20</code><span class="ln-exp"> — عدد را در age می‌گذارد.</span></li>
-<li><span class="ln">خط 3:</span> <code class="ln-code">print(name)</code><span class="ln-exp"> — مقدار name را چاپ می‌کند.</span></li>
-<li><span class="ln">خط 4:</span> <code class="ln-code">print("سن:", age)</code><span class="ln-exp"> — متن و مقدار age را کنار هم چاپ می‌کند.</span></li>
-</ol></div>
+<div class="codewrap"><div class="code">name = "مینا"
+print(name)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">name = &quot;مینا&quot;</code><span class="ln-exp"> — یک مقدار را داخل «name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
 </div></div>
 <button type="button" class="trybtn">مشاهده در ادیتور</button>
 
-<div class="sum"><b>جمع‌بندی</b><ul>
+<h3>چاپ چند متغیر با متن</h3>
+<div class="example-unit">
+<div class="codewrap"><div class="code">name = "مینا"
+age = 22
+city = "اصفهان"
+print("نام:", name)
+print("سن:", age)
+print("شهر:", city)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">name = &quot;مینا&quot;</code><span class="ln-exp"> — یک مقدار را داخل «name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">age = 22</code><span class="ln-exp"> — یک مقدار را داخل «age» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">city = &quot;اصفهان&quot;</code><span class="ln-exp"> — یک مقدار را داخل «city» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(&quot;نام:&quot;, name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(&quot;سن:&quot;, age)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 6:</span> <code class="ln-code">print(&quot;شهر:&quot;, city)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">با گذاشتن متن قبل از متغیر، خروجی خواناتر می‌شود.</div>
+
+<h3>همه در یک خط</h3>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(name, "در", city, "زندگی می‌کند و", age, "ساله است")</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(name, &quot;در&quot;, city, &quot;زندگی می‌کند و&quot;, age, &quot;ساله است&quot;)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی اطلاعات چند متغیر را به شکل مرتب و خوانا چاپ کنی.</div>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
 <li>برای دیدن مقدار متغیر از print استفاده کن</li>
-<li>می‌توانی چند چیز را با کاما در print جدا کنی</li>
+<li>متن و متغیر را می‌توانی با کاما کنار هم بگذاری</li>
+<li>ترتیب آرگومان‌ها در خروجی حفظ می‌شود</li>
 </ul></div>
 
+<h3>گام عملی</h3>
 <ol class="practice-list">
-<li class="practice-item">متغیر city بساز و چاپ کن.</li>
-<li class="practice-item">متن «سن من» و یک عدد را با هم چاپ کن.</li>
+<li class="practice-item">نام، سن و علاقه خودت را در سه متغیر ذخیره کن و مرتب چاپ کن.</li>
+<li class="practice-item">همه را در یک print پشت سر هم نشان بده.</li>
 </ol>
-
-<div class="navbtn lesson-nav"><a href="08-توضیحات-Comments.html">← توضیحات</a><a href="index.html">فهرست →</a></div>
+<div class="navbtn lesson-nav">
+<a href="08-توضیحات-Comments.html">← توضیحات</a>
+<a href="01-خانه-HOME.html">بازگشت به خانه این بخش</a>
+</div>
 </article>
 </div></div>
 
-<section id="learn-more" class="card" style="margin-top:1.25rem">
-<h2>یادگیری عمیق‌تر درباره کد مثال</h2>
-<p>اگر می‌خواهید کد این درس را جزءبه‌جزء یاد بگیرید، روی هر دکمه کلیک کنید:</p>
-<ul class="learn-more-links">
-<li><a class="learn-link" href="../02-متغیرها/01-متغیرها-Variables.html">متغیر — رفتن به درس متغیرها</a></li>
-<li><a class="learn-link" href="06-خروجی-Output.html">print — رفتن به درس خروجی</a></li>
-</ul>
-</section>
-
 </main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

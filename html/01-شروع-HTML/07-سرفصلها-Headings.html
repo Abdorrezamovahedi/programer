@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/07-سرفصلها-Headings.html">
+<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>سرفصل‌ها در HTML | تگ h1 تا h6 | MCD Code Up</title>
-<meta name="description" content="آموزش سرفصل‌ها در HTML: تگ‌های h1 تا h6 چیست و چطور عنوان صفحه و بخش‌ها را درست بنویسی.">
-<meta name="keywords" content="سرفصل در HTML, تگ h1, آموزش HTML از صفر, عنوان در HTML, آموزش html رایگان">
+<title>سرفصلها Headings | HTML · MCD Code Up</title>
+<meta name="description" content="آموزش سرفصلها Headings در HTML از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
+<meta name="keywords" content="سرفصل HTML, h1 تا h6, عنوان در HTML, آموزش heading">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/html/01-شروع-HTML/07-سرفصلها-Headings.html">
+<meta property="og:title" content="سرفصل‌ها (Headings) در HTML">
+<meta property="og:description" content="چطور از عناوین h1 تا h6 درست استفاده کنی.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"سرفصل‌ها در HTML","description":"آموزش headings از h1 تا h6.","inLanguage":"fa","learningResourceType":"Lesson","isPartOf":{"@type":"Course","name":"شروع HTML","provider":{"@type":"Organization","name":"MCD Code Up"}}}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
@@ -19,6 +25,8 @@
 <nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
 </header>
 <main id="main-content">
+<h1>سرفصلها Headings</h1>
+
 <div class="wrap">
 <div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">HTML</a><span class="sep">/</span><a href="index.html">شروع HTML</a><span class="sep">/</span><span>سرفصل‌ها</span></div>
 <div class="layout">
@@ -26,53 +34,63 @@
 <h3>شروع HTML</h3>
 <a href="01-خانه-HOME.html">1. خانه</a>
 <a href="02-مقدمه-Introduction.html">2. مقدمه</a>
+<a href="03-ویرایشگرها-Editors.html">3. ویرایشگرها</a>
+<a href="04-پایهها-Basic.html">4. پایه‌ها</a>
+<a href="05-المانها-Elements.html">5. المان‌ها</a>
 <a href="06-ویژگیها-Attributes.html">6. ویژگی‌ها</a>
 <a href="07-سرفصلها-Headings.html" class="on">7. سرفصل‌ها</a>
 <a href="08-پاراگرافها-Paragraphs.html">8. پاراگراف‌ها</a>
+<a href="09-توضیحات-Comments.html">9. توضیحات</a>
 </aside>
 <article class="card">
-<h1>سرفصل‌ها در HTML (h1 تا h6)</h1>
-<p><strong>هدف:</strong> بدانی از چه تگی برای عنوان اصلی و عنوان‌های فرعی استفاده کنی.</p>
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="سرفصل‌ها" data-cat="شروع HTML">📌 پین کردن این درس</button>
+<h2>سرفصل‌ها در HTML</h2>
+<p><strong>هدف این درس:</strong> از h1 تا h6 درست استفاده کنی و سلسله‌مراتب عناوین را رعایت کنی.</p>
 
-<h2>مفهوم ساده</h2>
-<p>سرفصل‌ها عنوان بخش‌های صفحه هستند. <code>h1</code> مهم‌ترین عنوان صفحه است؛ <code>h2</code> تا <code>h6</code> برای زیرعنوان‌ها. معمولاً در هر صفحه یک <code>h1</code> کافی است.</p>
+<h3>مفهوم به زبان ساده</h3>
+<p>سرفصل‌ها عناوین صفحه هستند. h1 مهم‌ترین عنوان است و h6 کوچک‌ترین. مثل عنوان کتاب و عنوان فصل‌ها.</p>
 
 <div class="example-unit">
 <div class="codewrap"><div class="code">&lt;h1&gt;عنوان اصلی صفحه&lt;/h1&gt;
-&lt;h2&gt;بخش اول&lt;/h2&gt;
-&lt;p&gt;توضیح بخش اول.&lt;/p&gt;
-&lt;h2&gt;بخش دوم&lt;/h2&gt;
-&lt;h3&gt;زیربخش&lt;/h3&gt;</div>
-<div class="exp line-exp">
-<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">&lt;h1&gt;عنوان اصلی صفحه&lt;/h1&gt;</code><span class="ln-exp">بزرگ‌ترین عنوان صفحه؛ موضوع اصلی را نشان می‌دهد.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">&lt;h2&gt;بخش اول&lt;/h2&gt;</code><span class="ln-exp">عنوان یک بخش فرعی زیر h1.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">&lt;p&gt;توضیح بخش اول.&lt;/p&gt;</code><span class="ln-exp">متن توضیحی همان بخش داخل پاراگراف.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">&lt;h2&gt;بخش دوم&lt;/h2&gt;</code><span class="ln-exp">عنوان بخش بعدی هم‌سطح با بخش اول.</span></li>
-<li><span class="ln">خط 5</span><code class="ln-code">&lt;h3&gt;زیربخش&lt;/h3&gt;</code><span class="ln-exp">عنوان جزئی‌تر زیر یک h2.</span></li>
-</ol>
-</div>
-</div>
-</div>
+&lt;h2&gt;عنوان بخش&lt;/h2&gt;
+&lt;h3&gt;عنوان زیربخش&lt;/h3&gt;</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">&lt;h1&gt;عنوان اصلی صفحه&lt;/h1&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ h1 در ساختار صفحه.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">&lt;h2&gt;عنوان بخش&lt;/h2&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ h2 در ساختار صفحه.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">&lt;h3&gt;عنوان زیربخش&lt;/h3&gt;</code><span class="ln-exp"> — شروع یا استفاده از تگ h3 در ساختار صفحه.</span></li></ol></div>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<h3>نکته مهم سئو و خوانایی</h3>
+<ul>
+<li>در هر صفحه معمولاً فقط یک h1 داشته باش</li>
+<li>ترتیب را رعایت کن (h1 بعد h2 بعد h3)</li>
+<li>از سرفصل فقط برای عنوان استفاده کن، نه برای بزرگ کردن متن</li>
+</ul>
+
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> بتوانی یک ساختار عنوان‌بندی مرتب با h1 و h2 و h3 بنویسی.</div>
 
 <div class="sum"><b>جمع‌بندی</b>
 <ul>
-<li>از h1 برای موضوع اصلی صفحه استفاده کن.</li>
-<li>h2 و h3 را برای ساختار منطقی بخش‌ها به کار ببر.</li>
-<li>سرفصل فقط برای «بزرگ‌کردن متن» نیست؛ معنا و ساختار دارد.</li>
+<li>h1 تا h6 شش سطح عنوان هستند</li>
+<li>h1 مهم‌ترین عنوان صفحه است</li>
+<li>سلسله‌مراتب را رعایت کن</li>
 </ul></div>
 
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">یک صفحه با یک h1 و دو h2 بساز.</li>
+<li class="practice-item">زیر هر h2 یک بند متن کوتاه بنویس.</li>
+</ol>
 <div class="navbtn lesson-nav">
 <a href="06-ویژگیها-Attributes.html">← ویژگی‌ها</a>
 <a href="08-پاراگرافها-Paragraphs.html">پاراگراف‌ها →</a>
 </div>
 </article>
-</div>
-</div>
+</div></div>
+
 </main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+</body></html>

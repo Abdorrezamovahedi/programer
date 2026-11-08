@@ -1,32 +1,87 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/03-تخصیص-چندتایی-Multiple-Assignment.html">
+<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>تخصیص چندتایی در پایتون | MCD Code Up</title>
-<meta name="description" content="چند متغیر را در یک خط مقداردهی کن؛ مثال و آزمون.">
+<title>تخصیص چندتایی Multiple Assignment | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش تخصیص چندتایی Multiple Assignment در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
+<meta name="keywords" content="تخصیص چندتایی پایتون, multiple assignment, مقداردهی همزمان">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/03-تخصیص-چندتایی-Multiple-Assignment.html">
+<meta property="og:title" content="تخصیص چندتایی در پایتون">
+<meta property="og:description" content="مقداردهی همزمان چند متغیر.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"تخصیص چندتایی","description":"آموزش multiple assignment.","inLanguage":"fa","learningResourceType":"Lesson"}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<main><div class="wrap"><article class="card">
-<h1>تخصیص چندتایی</h1>
-<div class="code">a, b, c = 1, 2, 3
-print(a)
-print(b)
-print(c)</div>
-<div class="note">تعداد نام‌ها و مقدارها باید برابر باشد.</div>
-<section class="mcd-quiz" id="v3"><h3>آزمون</h3>
-<div class="q" data-answer="1"><p>در a,b=1,2 مقدار b؟</p>
-<label><input type="radio" name="a" value="0"> 1</label>
-<label><input type="radio" name="a" value="1"> 2</label>
-<label><input type="radio" name="a" value="2"> a</label>
-<div class="result" hidden></div></div>
-<button type="button" data-check="v3">نتیجه</button></section>
-<p><a href="02-نامگذاری-متغیر-Variable-Names.html">← قبل</a> · <a href="04-انواع-داده-ساده-Data-Types.html">بعد →</a></p>
-</article></div></main>
-<script src="../../assets/js/lesson-quiz.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<h1>تخصیص چندتایی Multiple Assignment</h1>
+
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>تخصیص چندتایی</span></div>
+<div class="layout">
+<aside class="side"><h3>متغیرها</h3>
+<a href="01-متغیرها-Variables.html">1. متغیرها</a>
+<a href="02-نامگذاری-متغیر-Variable-Names.html">2. نام‌گذاری</a>
+<a href="03-تخصیص-چندتایی-Multiple-Assignment.html" class="on">3. تخصیص چندتایی</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="تخصیص چندتایی" data-cat="متغیرها">📌 پین کردن این درس</button>
+<h2>تخصیص چندتایی</h2>
+<p><strong>هدف این درس:</strong> بتوانی چند متغیر را در یک خط مقداردهی کنی.</p>
+<div class="example-unit">
+<div class="codewrap"><div class="code">x, y, z = 10, 20, 30
+print(x, y, z)
+
+name, age = "سارا", 22
+print(name, age)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">x, y, z = 10, 20, 30</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(x, y, z)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">name, age = &quot;سارا&quot;, 22</code><span class="ln-exp"> — این خط بخشی از منطق مثال را انجام می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(name, age)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">تعداد متغیرها و مقادیر باید برابر باشد.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> حداقل یک تخصیص چندتایی نوشته و اجرا کرده باشی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>می‌توان چند متغیر را همزمان مقدار داد</li>
+<li>تعداد دو طرف = باید یکی باشد</li>
+</ul></div>
+<h3>گام عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">نام، سن و شهر را با تخصیص چندتایی مقدار بده و چاپ کن.</li>
+</ol>
+<div class="navbtn lesson-nav"><a href="02-نامگذاری-متغیر-Variable-Names.html">← نام‌گذاری</a></div>
+</article>
+</div></div>
+
+
+
+
+<article class="card" style="margin-top:1rem">
+<h2>خلاصه درس: تخصیص چندتایی Multiple Assignment</h2>
+<p>
+این صفحه برای یادگیری <strong>تخصیص چندتایی Multiple Assignment</strong> در مسیر پایتون نوشته شده است.
+ابتدا تعریف و کاربرد را بخوان، سپس مثال را اجرا کن و در پایان یک تغییر کوچک در کد بده تا مطمئن شوی مفهوم را فهمیده‌ای.
+</p>
+<h3>گام‌های یادگیری</h3>
+<ol>
+<li>موضوع درس را در یک جمله برای خودت توضیح بده.</li>
+<li>مثال را بدون کپی، خودت تایپ کن.</li>
+<li>خروجی را با انتظار خودت مقایسه کن.</li>
+<li>یک تمرین مشابه با دادهٔ جدید بساز.</li>
+</ol>
+</article>
+
+</main>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

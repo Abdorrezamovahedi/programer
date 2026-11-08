@@ -1,69 +1,56 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/">
+<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>متغیرها در پایتون | مسیر یادگیری | MCD Code Up</title>
-<meta name="description" content="مسیر یادگیری مرتب و جذاب متغیرها در پایتون از صفر تا تمرین.">
+<title>متغیرها در پایتون | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش کامل متغیرها در پایتون از پایه. تعریف، نام‌گذاری، تغییر مقدار و انواع داده ساده.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/">
+<meta property="og:title" content="متغیرها در پایتون">
+<meta property="og:description" content="یادگیری متغیرها در پایتون از صفر.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"متغیرها در پایتون","description":"مجموعه درس‌های متغیرها","inLanguage":"fa"}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>
-.learning-path{list-style:none;margin:1.35rem 0 .5rem;padding:0;position:relative}
-.learning-path::before{content:"";position:absolute;top:12px;bottom:12px;right:19px;width:2px;background:linear-gradient(180deg,rgba(0,230,118,.55),rgba(0,230,118,.08));border-radius:2px}
-.learning-path li{position:relative;margin:0 0 .85rem}
-.learning-path a{display:grid;grid-template-columns:42px 1fr auto;gap:.85rem;align-items:start;text-decoration:none;color:inherit;padding:.95rem 1rem;border-radius:14px;border:1px solid #1a3328;background:linear-gradient(180deg,#081610,#06120c);transition:.15s ease}
-.learning-path a:hover{border-color:#00e676;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25),0 0 0 1px rgba(0,230,118,.12)}
-.learning-path .step-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;color:#04140c;background:#00e676;box-shadow:0 0 0 4px rgba(0,230,118,.12);position:relative;z-index:1}
-.learning-path .step-title{display:block;font-weight:700;color:#e8f5e9;margin:.15rem 0 .25rem;line-height:1.5}
-.learning-path .step-desc{display:block;color:#a5d6a7;font-size:.9rem;line-height:1.7}
-.learning-path .step-go{align-self:center;color:#00e676;font-size:.85rem;white-space:nowrap}
-.learning-path-head{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center;justify-content:space-between;margin:.4rem 0 .2rem}
-.path-badge{display:inline-flex;padding:.35rem .75rem;border-radius:999px;border:1px solid rgba(0,230,118,.35);color:#00e676;font-size:.82rem;background:rgba(0,230,118,.06)}
-@media (max-width:640px){.learning-path a{grid-template-columns:36px 1fr}.learning-path .step-go{display:none}.learning-path .step-num{width:32px;height:32px}}
-</style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "LearningResource", "name": "متغیرها در پایتون", "inLanguage": "fa", "url": "https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/", "isAccessibleForFree": true, "learningResourceType": "Lesson", "provider": {"@type": "Organization", "name": "MCD Code Up"}}
+</script>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
 <header>
 <div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav>
-<a href="../../index.html">خانه</a>
-<a href="../index.html">Python</a>
-<a href="../../tamrin/index.html">تمرین</a>
-</nav>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
 </header>
 <main id="main-content">
 <div class="wrap">
-<div class="breadcrumb">
-<a href="../../index.html">خانه</a><span class="sep">/</span>
-<a href="../index.html">Python</a><span class="sep">/</span>
-<span>متغیرها</span>
-</div>
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><span>متغیرها</span></div>
 <div class="hero category-page-header">
-<h1>مسیر یادگیری متغیرها در پایتون</h1>
-<p class="section-help">شش قدم کوتاه از مفهوم تا تمرین</p>
+<h1>متغیرها در پایتون</h1>
+<p style="max-width:720px;margin:0.75rem auto 0;line-height:1.8;opacity:0.9">
+متغیر یکی از پایه‌ای‌ترین مفاهیم برنامه‌نویسی است. در این بخش یاد می‌گیری چطور داده را ذخیره کنی، نام‌گذاری کنی و از آن استفاده کنی.
+</p>
 </div>
+<div class="cat-grid">
+<a class="cat-card lang-link" href="01-متغیرها-Variables.html"><b>۱. متغیرها</b><small>مفهوم و تعریف</small></a>
 </div>
-<section class="card" style="margin:1.25rem auto;max-width:920px">
-<div class="learning-path-head">
-<p style="margin:0;line-height:1.8;color:#c8e6c9">متغیر پایه تقریباً هر برنامه است. قدم‌به‌قدم جلو برو و هر مثال را خودت تایپ کن.</p>
-<span class="path-badge">۶ قدم · مسیر کامل</span>
+<a href="../index.html" class="category-back">← بازگشت به Python</a>
 </div>
-<ol class="learning-path">
-<li><a href="01-متغیرها-Variables.html"><span class="step-num">۱</span><span class="step-body"><span class="step-title">متغیرها چیست؟</span><span class="step-desc">مفهوم جعبه نام‌دار برای نگه‌داشتن مقدار</span></span><span class="step-go">شروع ←</span></a></li>
-<li><a href="02-نامگذاری-متغیر-Variable-Names.html"><span class="step-num">۲</span><span class="step-body"><span class="step-title">نام‌گذاری متغیر</span><span class="step-desc">قوانین نام و انتخاب نام خوانا</span></span><span class="step-go">ادامه ←</span></a></li>
-<li><a href="03-تخصیص-چندتایی-Multiple-Assignment.html"><span class="step-num">۳</span><span class="step-body"><span class="step-title">تخصیص چندتایی</span><span class="step-desc">چند متغیر در یک خط</span></span><span class="step-go">ادامه ←</span></a></li>
-<li><a href="04-انواع-داده-ساده-Data-Types.html"><span class="step-num">۴</span><span class="step-body"><span class="step-title">انواع داده ساده</span><span class="step-desc">int، float، str و bool</span></span><span class="step-go">ادامه ←</span></a></li>
-<li><a href="05-تبدیل-نوع-Type-Conversion.html"><span class="step-num">۵</span><span class="step-body"><span class="step-title">تبدیل نوع</span><span class="step-desc">تبدیل متن به عدد و برعکس</span></span><span class="step-go">ادامه ←</span></a></li>
-<li><a href="06-تمرین-متغیرها-Variable-Exercises.html"><span class="step-num">۶</span><span class="step-body"><span class="step-title">تمرین متغیرها</span><span class="step-desc">تثبیت با چند تمرین کوتاه</span></span><span class="step-go">پایان ←</span></a></li>
-</ol>
-<p style="margin-top:1.35rem"><a class="category-back-link" href="../index.html">← فهرست Python</a></p>
+
+<section class="card deep-content" style="margin-top:1rem">
+<h2>چطور از این بخش استفاده کنی؟</h2>
+<p>
+بخش <strong>متغیرها</strong> مجموعه‌ای از درس‌های مرتبط در مسیر پایتون است.
+درس‌ها را به ترتیب بخوان، هر مثال را اجرا کن و قبل از رفتن به درس بعد یک تمرین کوچک انجام بده.
+</p>
 </section>
+
 </main>
 <footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+</body></html>

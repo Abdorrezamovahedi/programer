@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/05-تبدیل-نوع-Type-Conversion.html">
+<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>تبدیل نوع در پایتون | MCD Code Up</title>
-<meta name="description" content="تبدیل نوع: آموزش پایتون به زبان ساده با مثال عملی در MCD Code Up.">
+<title>تبدیل نوع Type Conversion | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش تبدیل نوع Type Conversion در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
+<meta name="keywords" content="تبدیل نوع پایتون, int float str, type conversion">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/05-تبدیل-نوع-Type-Conversion.html">
+<meta property="og:title" content="تبدیل نوع داده در پایتون">
+<meta property="og:description" content="تبدیل بین int، float و str را یاد بگیر.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fa_IR">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"تبدیل نوع داده","description":"آموزش type conversion.","inLanguage":"fa","learningResourceType":"Lesson"}</script>
 <link rel="stylesheet" href="../../assets/css/main.css">
-<style>.mcd-quiz{margin:1.5rem 0;padding:1.1rem;border-radius:14px;border:1px solid rgba(0,230,118,.28);background:#07140f}.mcd-quiz .q{margin:.75rem 0;padding:.8rem;border-radius:12px;background:#040c09;border:1px solid #163326}.mcd-quiz label{display:block;margin:.3rem 0;cursor:pointer}.mcd-quiz .ok{color:#00e676;font-weight:700}.mcd-quiz .bad{color:#ff8a80;font-weight:700}.mcd-quiz button{margin-top:.5rem;padding:.5rem 1.1rem;border-radius:999px;border:1px solid #00e676;background:transparent;color:#00e676;cursor:pointer;font-family:inherit}</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<main><div class="wrap"><article class="card">
-<h1>تبدیل نوع</h1>
-<div class="code">print(int("12") + 3)
-print(str(20) + "1")</div>
-<section class="mcd-quiz" id="v5"><h3>آزمون</h3>
-<div class="q" data-answer="1"><p>int("5")+2 ؟</p>
-<label><input type="radio" name="a" value="0"> "52"</label>
-<label><input type="radio" name="a" value="1"> 7</label>
-<label><input type="radio" name="a" value="2"> خطا همیشه</label>
-<div class="result" hidden></div></div>
-<button type="button" data-check="v5">نتیجه</button></section>
-</article></div></main>
-<script src="../../assets/js/lesson-quiz.js"></script>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
+<h1>تبدیل نوع Type Conversion</h1>
+
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>تبدیل نوع</span></div>
+<div class="layout">
+<aside class="side"><h3>متغیرها</h3>
+<a href="04-انواع-داده-ساده-Data-Types.html">4. انواع داده</a>
+<a href="05-تبدیل-نوع-Type-Conversion.html" class="on">5. تبدیل نوع</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="تبدیل نوع" data-cat="متغیرها">📌 پین کردن این درس</button>
+<h2>تبدیل نوع داده در پایتون</h2>
+<p><strong>هدف این درس:</strong> بتوانی نوع داده را با int()، float() و str() عوض کنی.</p>
+<div class="example-unit">
+<div class="codewrap"><div class="code">x = "25"
+y = int(x)      # تبدیل به عدد صحیح
+z = float(y)    # تبدیل به اعشاری
+s = str(z)      # تبدیل به متن
+print(y, z, s)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">x = &quot;25&quot;</code><span class="ln-exp"> — یک مقدار را داخل «x» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">y = int(x)      # تبدیل به عدد صحیح</code><span class="ln-exp"> — یک مقدار را داخل «y» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">z = float(y)    # تبدیل به اعشاری</code><span class="ln-exp"> — یک مقدار را داخل «z» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">s = str(z)      # تبدیل به متن</code><span class="ln-exp"> — یک مقدار را داخل «s» ذخیره می‌کند.</span></li><li><span class="ln">خط 5:</span> <code class="ln-code">print(y, z, s)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp">وقتی از کاربر ورودی می‌گیری، معمولاً متن است و باید به عدد تبدیل شود.</div>
+<div class="good"><strong>معیار تمام‌شدن درس:</strong> یک تبدیل از متن به عدد و برعکس انجام داده باشی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>int() به عدد صحیح</li>
+<li>float() به اعشاری</li>
+<li>str() به متن</li>
+</ul></div>
+<h3>گام عملی</h3>
+<ol class="practice-list"><li class="practice-item">یک عدد را به متن و یک متن عددی را به عدد تبدیل کن.</li></ol>
+<div class="navbtn lesson-nav"><a href="04-انواع-داده-ساده-Data-Types.html">← انواع داده</a></div>
+</article>
+</div></div>
+
+
+
+
+<article class="card" style="margin-top:1rem">
+<h2>خلاصه درس: تبدیل نوع Type Conversion</h2>
+<p>
+این صفحه برای یادگیری <strong>تبدیل نوع Type Conversion</strong> در مسیر پایتون نوشته شده است.
+ابتدا تعریف و کاربرد را بخوان، سپس مثال را اجرا کن و در پایان یک تغییر کوچک در کد بده تا مطمئن شوی مفهوم را فهمیده‌ای.
+</p>
+<h3>گام‌های یادگیری</h3>
+<ol>
+<li>موضوع درس را در یک جمله برای خودت توضیح بده.</li>
+<li>مثال را بدون کپی، خودت تایپ کن.</li>
+<li>خروجی را با انتظار خودت مقایسه کن.</li>
+<li>یک تمرین مشابه با دادهٔ جدید بساز.</li>
+</ol>
+</article>
+
+</main>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

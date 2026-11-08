@@ -1,87 +1,100 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/03-نام-متغیرها-Variable-Names.html">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="نام متغیرها Variable Names | PYTHON · MCD Code Up">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/03-نام-متغیرها-Variable-Names.html">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>نام متغیرها در پایتون | قواعد نام‌گذاری | MCD Code Up</title>
-<meta name="description" content="قواعد نام‌گذاری متغیر در پایتون: چه نام‌هایی مجازند، چرا بعضی SyntaxError می‌دهند و چطور نام خوانا بنویسی.">
-<meta name="keywords" content="نام متغیر در پایتون, قواعد نام‌گذاری Python, SyntaxError متغیر">
-<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/02-متغیرها/03-نام-متغیرها-Variable-Names.html">
+<title>نام متغیرها Variable Names | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش نام متغیرها Variable Names در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "نام متغیرها (Variable Names)", "description": "بتوانی نام معتبر بسازی و بفهمی چرا بعضی نام‌ها SyntaxError می‌دهند", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
 <a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
 <header>
 <div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
-<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
 </header>
 <main id="main-content">
-<div class="wrap">
-<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>نام متغیرها</span></div>
-<div class="layout">
-<aside class="side">
-<h3>متغیرها</h3>
-<a href="01-متغیرها-Variables.html">1. متغیرها</a>
-<a href="03-نام-متغیرها-Variable-Names.html" class="on">2. نام متغیرها</a>
-<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">3. تخصیص چندتایی</a>
-<a href="04-متغیرهای-سراسری-Global-Variables.html">4. متغیرهای سراسری</a>
-<a href="05-تبدیل-نوع-Type-Conversion.html">5. تبدیل نوع</a>
-<a href="05-تمرین-متغیرها-Variable-Exercises.html">6. تمرین متغیرها</a>
+<h1>نام متغیرها Variable Names</h1>
+
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">متغیرها</a><span class="sep">/</span><span>نام متغیرها (Variable Names)</span></div><div class="layout"><aside class="side"><h3>متغیرها (6)</h3>
+<a href="01-متغیرها-Variables.html">1. متغیرها (Variables)</a>
+<a href="02-آزمون-متغیرها.html">2. آزمون (متغیرها)</a>
+<a href="03-نام-متغیرها-Variable-Names.html" class="on">3. نام متغیرها (Variable Names)</a>
+<a href="04-متغیرهای-سراسری-Global-Variables.html">4. متغیرهای سراسری (Global Variables)</a>
+<a href="05-تمرین-متغیرها-Variable-Exercises.html">5. تمرین متغیرها (Variable Exercises)</a>
+<a href="06-رگرسیون-چندمتغیره-Multiple-Regression.html">6. رگرسیون چندمتغیره (Multiple Regression)</a>
 </aside>
-<article class="card">
-<button type="button" class="btn-pin" id="btnPinLesson" data-title="نام متغیرها" data-cat="متغیرها">📌 پین کردن این درس</button>
-<h1>نام متغیرها در پایتون</h1>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="نام متغیرها (Variable Names)" data-cat="متغیرها">📌 پین کردن این درس</button>
+<h2>نام متغیرها (Variable Names)</h2>
 <p><strong>هدف:</strong> بتوانی نام معتبر بسازی و بفهمی چرا بعضی نام‌ها SyntaxError می‌دهند.</p>
-
-<h2>مفهوم</h2>
-<p>نام متغیر شناسه‌ای است که پایتون با آن مقدار را پیدا می‌کند. باید با حرف یا <code>_</code> شروع شود، فاصله و <code>-</code> نداشته باشد، و کلمهٔ کلیدی (مثل <code>for</code> یا <code>class</code>) نباشد. خوانایی مهم است: <code>total_price</code> بهتر از <code>tp</code> است.</p>
-
-<h2>مثال ۱: نام‌های درست</h2>
+<div class="note"><strong>درس معرفی «متغیرها»:</strong> اگر هنوز فهرست کامل این مبحث را نخوانده‌ای، اول برو به <strong>متغیرها (Variables)</strong> (همین پوشه — معمولاً اولین درس). آنجا همهٔ انواع/علامت‌ها یک‌جا معرفی شده‌اند.</div>
+<div class="note"><strong>پوشه:</strong> متغیرها &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «متغیرها».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «متغیرها» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>نام متغیر شناسه‌ای است که پایتون با آن مقدار را پیدا می‌کند. باید با حرف یا _ شروع شود، فاصله و - نداشته باشد، و کلمهٔ کلیدی (مثل for یا class) نباشد. خوانایی مهم است: total_price بهتر از tp است.</p>
+<h3>ساختار</h3><div class="code">user_name = &quot;...&quot;   # حروف، عدد، _
+# 2x = 1      # غیرمجاز
+# my-name = 1  # غیرمجاز</div>
+<h3>مثال 1: نام‌های درست</h3>
 <div class="example-unit">
-<div class="codewrap"><div class="code">user_name = "سارا"
+<div class="codewrap"><div class="code">user_name = &quot;سارا&quot;
 total_price = 150000
 is_active = True
 print(user_name, total_price, is_active)</div>
-<div class="exp line-exp">
-<div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">user_name = "سارا"</code><span class="ln-exp">متغیر با نام خوانا ساخته می‌شود و متن «سارا» داخل آن قرار می‌گیرد.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">total_price = 150000</code><span class="ln-exp">عدد صحیح قیمت کل در متغیری با نام توصیفی ذخیره می‌شود.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">is_active = True</code><span class="ln-exp">مقدار منطقی True بدون گیومه در متغیر بولین ذخیره می‌شود.</span></li>
-<li><span class="ln">خط 4</span><code class="ln-code">print(user_name, total_price, is_active)</code><span class="ln-exp">سه مقدار را کنار هم در خروجی چاپ می‌کند تا انتساب را ببینی.</span></li>
-</ol>
-</div>
-</div>
-</div>
-<button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">user_name = &quot;سارا&quot;</code><span class="ln-exp"> — یک مقدار را داخل «user_name» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">total_price = 150000</code><span class="ln-exp"> — یک مقدار را داخل «total_price» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">is_active = True</code><span class="ln-exp"> — یک مقدار را داخل «is_active» ذخیره می‌کند.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(user_name, total_price, is_active)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> user_name با حرف شروع شده و کلمات با _ جدا شده‌اند (سبک رایج پایتون).<br>
+<strong>خط ۲:</strong> total_price معنی دارد: خواننده می‌فهمد این قیمت کل است.<br>
+<strong>خط ۳:</strong> is_active برای بولین رایج است؛ True/False بدون " (دابل‌کوتیشن) نوشته می‌شوند.<br>
+<strong>خط ۴:</strong> سه مقدار چاپ می‌شوند تا ببینی انتساب درست بوده.</div>
+<h3>مثال 2: نام‌های غیرمجاز (اجرا نکن؛ فقط برای فهم خطا)</h3>
+<div class="example-unit">
+<div class="codewrap"><div class="code"># 2name = &quot;بد&quot;     # شروع با عدد
+# my-name = &quot;بد&quot;   # خط تیره
+# class = 1        # کلمهٔ کلیدی</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code"># 2name = &quot;بد&quot;     # شروع با عدد</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code"># my-name = &quot;بد&quot;   # خط تیره</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code"># class = 1        # کلمهٔ کلیدی</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>توضیح:</strong> هر کدام اگر از حالت کامنت خارج شوند SyntaxError می‌دهند. class برای تعریف کلاس رزرو شده است.</div>
+<h3>اشتباه رایج</h3>
+<div class="example-unit">
+<div class="codewrap"><div class="code">for = 10
+print(for)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">for = 10</code><span class="ln-exp"> — یک مقدار را داخل «for» ذخیره می‌کند.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">print(for)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
-<h2>اشتباه رایج</h2>
-<div class="warn">
-<strong>چرا اشتباه است؟</strong> <code>for = 10</code> — چون <code>for</code> کلمهٔ کلیدی حلقه است.<br>
-<strong>درست:</strong> <code>for_count = 10</code>
-</div>
-
-<div class="sum"><b>جمع‌بندی</b>
-<ul>
-<li>شروع با حرف یا <code>_</code>؛ عدد فقط بعد از آن.</li>
-<li>فاصله و <code>-</code> ممنوع؛ از <code>_</code> استفاده کن.</li>
+<div class="warn"><strong>چرا اشتباه است؟</strong> for کلمهٔ کلیدی حلقه است؛ نمی‌تواند نام متغیر باشد.<br><strong>چه می‌بینی؟</strong> SyntaxError: invalid syntax<br><strong>درست:</strong> for_count = 10
+print(for_count)</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «نام متغیرها» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>شروع با حرف یا _؛ عدد فقط بعد از آن.</li>
+<li>فاصله و - ممنوع؛ از _ استفاده کن.</li>
 <li>کلمات کلیدی را نام متغیر نگذار.</li>
 <li>نام معنی‌دار بنویس تا کد خوانا بماند.</li>
 </ul></div>
+<h3>گام عملی</h3><ol class="practice-list">
+<li class="practice-item">سه متغیر با نام خوانا برای سن، قد و شهر بساز و چاپ کن.</li>
+<li class="practice-item">عمداً نامی با عدد اول بساز و پیام SyntaxError را بخوان.</li>
+<li class="practice-item">یک نام تک‌حرفی را با نام توصیفی عوض کن و ببین خوانایی چه فرقی کرد.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn lesson-nav"><a href="02-آزمون-متغیرها.html">← آزمون (متغیرها)</a><a href="04-متغیرهای-سراسری-Global-Variables.html">متغیرهای سراسری (Global Variables) →</a></div></article></div></div>
 
-<div class="navbtn lesson-nav">
-<a href="01-متغیرها-Variables.html">← متغیرها</a>
-<a href="03-تخصیص-چندتایی-Multiple-Assignment.html">تخصیص چندتایی →</a>
-</div>
-</article>
-</div>
-</div>
 </main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
 <footer class="site-footer">MCD Code Up</footer>
-<script src="../../assets/js/app.js"></script>
-<script src="../../assets/js/mcd-motion.js" defer></script>
-</body>
-</html>
+<script src="../../assets/js/app.js"></script><script src="../../assets/js/mcd-motion.js" defer></script>
+</body></html>

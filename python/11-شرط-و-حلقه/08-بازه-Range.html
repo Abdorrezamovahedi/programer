@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+<meta property="og:url" content="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/08-بازه-Range.html">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="بازه Range | PYTHON · MCD Code Up">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/08-بازه-Range.html">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
-<meta name="robots" content="index, follow">
-<title>تابع range در پایتون | آموزش کامل | MCD Code Up</title>
-<meta name="description" content="تابع range در پایتون برای ساخت بازه عددی در حلقه for با مثال و توضیح خط‌به‌خط.">
-<link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/08-بازه-Range.html">
+<title>بازه Range | PYTHON · MCD Code Up</title>
+<meta name="description" content="آموزش بازه Range در پایتون از صفر؛ توضیح مفهوم، کاربرد، روش تمرین و اشتباه‌های رایج | MCD Code Up">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "بازه (Range)", "description": "مفهوم «بازه (Range)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی", "inLanguage": "fa", "learningResourceType": "Lesson"}</script>
+
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<main><div class="wrap"><article class="card">
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav>
+<a href="../../index.html" class="active">خانه</a>
+<a href="../../tamrin/index.html">تمرین</a>
+</nav>
+</header>
+<main id="main-content">
 <h1>بازه Range</h1>
-<p><strong>هدف:</strong> با range دنباله عدد بسازی و در for استفاده کنی.</p>
-<div class="code">print(list(range(5)))
-print(list(range(2, 6)))
-print(list(range(0, 10, 2)))</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
-<ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">range(5)</code><span class="ln-exp">از ۰ تا قبل از ۵.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">range(2, 6)</code><span class="ln-exp">از ۲ تا قبل از ۶.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">range(0, 10, 2)</code><span class="ln-exp">با گام ۲.</span></li>
-</ol></div>
 
-<h2 id="learn-more">یادگیری بیشتر</h2>
-<p>برای فهم کامل مثال range این درس‌ها را باز کن:</p>
-<ul class="learn-more-links">
-<li><strong>عدد و نوع داده</strong> — <a href="../04-انواع-داده-و-اعداد/01-نوع-داده-ها-Data-Types.html">رفتن به درس انواع داده</a></li>
-<li><strong>print</strong> — <a href="../01-شروع-و-مبانی/06-خروجی-Output.html">رفتن به درس خروجی</a></li>
-<li><strong>list</strong> — <a href="../07-لیستها/01-لیست-ها-Lists.html">رفتن به درس لیست‌ها</a></li>
-<li><strong>حلقه for</strong> — <a href="03-حلقه-for.html">رفتن به درس for</a></li>
-</ul>
+<div class="wrap"><div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><a href="index.html">شرط و حلقه</a><span class="sep">/</span><span>بازه (Range)</span></div><div class="layout"><aside class="side"><h3>شرط و حلقه (9)</h3>
+<a href="01-if-elif-else.html">1. if / elif / else</a>
+<a href="02-شرط-کوتاه-Shorthand-If.html">2. شرط کوتاه (Shorthand If)</a>
+<a href="03-شرط-تو-در-تو-Nested-If.html">3. شرط تو در تو (Nested If)</a>
+<a href="04-pass-Pass-Statement.html">4. pass (Pass Statement)</a>
+<a href="05-match-Match.html">5. match (Match)</a>
+<a href="06-حلقه-while-While-Loops.html">6. حلقه while (While Loops)</a>
+<a href="07-حلقه-for-For-Loops.html">7. حلقه for (For Loops)</a>
+<a href="08-بازه-Range.html" class="on">8. بازه (Range)</a>
+<a href="09-شرط-Where.html">9. شرط Where</a>
+</aside>
+<article class="card"><button type="button" class="btn-pin" id="btnPinLesson" data-title="بازه (Range)" data-cat="شرط و حلقه">📌 پین کردن این درس</button>
+<h2>بازه (Range)</h2>
+<p><strong>هدف:</strong> مفهوم «بازه (Range)» را با یک مثال کوچک اجرا کنی و خروجی را ببینی.</p>
+<div class="note"><strong>پوشه:</strong> شرط و حلقه &nbsp;|&nbsp; <strong>پیش‌نیاز:</strong> درس‌های قبلی «شرط و حلقه».</div>
+<div class="good"><strong>ارتباط با قبل:</strong> این مبحث در پوشهٔ «شرط و حلقه» بعد از مفاهیم قبلی همان موضوع می‌آید؛ قبل از پرش به درس بعدی، مثال را خودت یک‌بار تایپ کن.</div>
+<h3>مفهوم</h3><p>این صفحه روی «بازه (Range)» متمرکز است. مثال را خط‌به‌خط بخوان، بعد خودت یک مقدار را عوض کن.</p>
+<h3>مثال 1: شروع</h3>
+<div class="example-unit">
+<div class="codewrap"><div class="code"># مبحث: بازه (Range)
+value = 10
+print(value)
+print(type(value))</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code"># مبحث: بازه (Range)</code><span class="ln-exp"> — این خط توضیح (کامنت) است و اجرا نمی‌شود.</span></li><li><span class="ln">خط 2:</span> <code class="ln-code">value = 10</code><span class="ln-exp"> — یک مقدار را داخل «value» ذخیره می‌کند.</span></li><li><span class="ln">خط 3:</span> <code class="ln-code">print(value)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li><li><span class="ln">خط 4:</span> <code class="ln-code">print(type(value))</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
+<div class="exp"><strong>خط ۱:</strong> کامنت موضوع؛ اجرا نمی‌شود.<br>
+<strong>خط ۲:</strong> یک مقدار نمونه در متغیر.<br>
+<strong>خط ۳:</strong> چاپ مقدار.<br>
+<strong>خط ۴:</strong> چاپ نوع تا ببینی با چه داده‌ای طرفی.</div>
+<h3>اشتباه رایج</h3>
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(undefined_name)</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div><ol class="line-exp-list"><li><span class="ln">خط 1:</span> <code class="ln-code">print(undefined_name)</code><span class="ln-exp"> — مقدار یا متن داخل print را در خروجی نشان می‌دهد.</span></li></ol></div>
+</div></div><button type="button" class="trybtn">مشاهده در ادیتور</button>
 
-<p><a href="03-حلقه-for.html">← for</a></p>
-</article></div></main>
-<script src="../../assets/js/app.js"></script>
+<div class="warn"><strong>چرا اشتباه است؟</strong> نامی که تعریف نشده.<br><strong>چه می‌بینی؟</strong> NameError<br><strong>درست:</strong> اول متغیر را تعریف کن یا نام را درست بنویس.</div>
+<div class="good"><strong>معیار تمام‌شدن:</strong> بتوانی بدون نگاه به متن، یک مثال سه‌خطی دربارهٔ «بازه» بنویسی و اجرا کنی.</div>
+<div class="sum"><b>جمع‌بندی</b><ul>
+<li>موضوع: بازه (Range)</li>
+<li>مثال را خودت تایپ کن.</li>
+<li>یک مقدار را عوض کن.</li>
+<li>پیام خطا را از پایین بخوان.</li>
+</ul></div>
+<h3>گام عملی</h3><ol class="practice-list">
+<li class="practice-item">مثال را با مقدار دیگری اجرا کن.</li>
+<li class="practice-item">یک خطا بساز و اصلاح کن.</li>
+<li class="practice-item">برو درس بعدی همین پوشه.</li>
+</ol>
+<p class="rel">اگر گیر کردی: فقط همان خط خطا را با بخش «اشتباه رایج» و توضیح خط‌به‌خط مقایسه کن؛ کل درس را از صفر حفظ نکن.</p>
+<div class="navbtn lesson-nav"><a href="07-حلقه-for-For-Loops.html">← حلقه for (For Loops)</a><a href="09-شرط-Where.html">شرط Where →</a></div></article></div></div>
+
+</main>
+<button type="button" class="pin-fab" id="pinFab" aria-label="درس‌های پین‌شده">📌 پین‌شده‌ها <span class="badge" id="pinBadge">0</span></button>
+<div class="pin-panel" id="pinPanel"><header><b>📌 درس‌های پین‌شده</b><button type="button" id="pinPanelClose" aria-label="بستن">×</button></header><div class="pin-list" id="pinList"></div></div>
+<div id="edBack"><div id="edBox"><h3>مشاهده در ادیتور</h3><pre id="edCode"></pre><div class="navbtn"><button type="button" id="edCopy">کپی</button><button type="button" id="edClose">بستن</button></div></div></div>
+<footer class="site-footer">MCD Code Up</footer>
+<script src="../../assets/js/app.js"></script><script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>

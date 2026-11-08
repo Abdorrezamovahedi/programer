@@ -1,3 +1,4 @@
+
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -15,72 +16,27 @@ function escapeHtml(str) {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
-
-  function norm(s) {
-    return String(s || "")
-      .toLowerCase()
-      .replace(/ي/g, "ی")
-      .replace(/ك/g, "ک")
-      .replace(/‌/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function collectFromDom() {
-    var items = [];
-    var root = document.getElementById("catGrid") || document.querySelector(".cat-grid") || document.querySelector(".langs");
-    if (!root) return items;
-    root.querySelectorAll("a").forEach(function (a) {
-      var href = a.getAttribute("href") || "";
-      if (!href || href === "#" || href.indexOf("javascript:") === 0) return;
-      var title = (a.querySelector("b") && a.querySelector("b").textContent) || a.textContent || "";
-      title = title.replace(/\s+/g, " ").trim();
-      var cat = (a.querySelector("small") && a.querySelector("small").textContent) || "";
-      cat = cat.replace(/\s+/g, " ").trim();
-      if (!title) return;
-      items.push({ title: title, cat: cat, href: href, keys: title + " " + cat });
-    });
-    return items;
-  }
-
   function bindLangSearch(items) {
     var input = document.getElementById("catSearch");
-    var grid = document.getElementById("catGrid") || document.querySelector(".cat-grid");
+    var grid = document.getElementById("catGrid");
     var results = document.getElementById("catSearchResults");
-    if (!input || !results) return;
+    if (!input || !grid || !results) return;
 
-    if (!items || !items.length) {
-      if (window.LANG_SEARCH_ITEMS && window.LANG_SEARCH_ITEMS.length) {
-        items = window.LANG_SEARCH_ITEMS;
-      } else {
-        items = collectFromDom();
-      }
-    }
-
-    function run() {
-      var q = norm(input.value || "");
+    input.addEventListener("input", function () {
+      var q = (this.value || "").trim().toLowerCase();
       if (!q) {
         results.classList.add("is-hidden");
         results.innerHTML = "";
-        if (grid) grid.classList.remove("is-hidden");
+        grid.classList.remove("is-hidden");
         return;
       }
-      if (grid) grid.classList.add("is-hidden");
-      results.classList.remove("is-hidden");
 
-      var parts = q.split(" ").filter(Boolean);
-      var html = "";
-      var found = 0;
+      grid.classList.add("is-hidden");
+      results.classList.remove("is-hidden");
+      var html = "",
+        found = 0;
       items.forEach(function (it) {
-        var hay = norm((it.title || "") + " " + (it.cat || "") + " " + (it.keys || "") + " " + (it.href || ""));
-        var ok = true;
-        for (var i = 0; i < parts.length; i++) {
-          if (hay.indexOf(parts[i]) === -1) {
-            ok = false;
-            break;
-          }
-        }
-        if (!ok) return;
+        if ((it.title + " " + it.cat).toLowerCase().indexOf(q) === -1) return;
         found++;
         html +=
           '<a class="lesson-list-item lang-link" href="' +
@@ -88,23 +44,13 @@ function escapeHtml(str) {
           '"><span>' +
           esc(it.title) +
           '</span><small style="color:#8b949e">' +
-          esc(it.cat || "") +
+          esc(it.cat) +
           "</small></a>";
       });
       results.innerHTML = found
         ? html
-        : '<div class="ex-empty">نتیجه‌ای پیدا نشد. کلمه دیگری مثل «متغیر» یا «regex» را امتحان کن.</div>';
-    }
-
-    input.addEventListener("input", run);
-    input.addEventListener("search", run);
+        : '<div class="ex-empty">نتیجه‌ای پیدا نشد.</div>';
+    });
   }
-
   window.bindLangSearch = bindLangSearch;
-
-  document.addEventListener("DOMContentLoaded", function () {
-    if (document.getElementById("catSearch")) {
-      bindLangSearch();
-    }
-  });
 })();
