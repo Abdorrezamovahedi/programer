@@ -5,26 +5,92 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00e676">
 <meta name="robots" content="index, follow">
-<title>چاپ اعداد در پایتون | MCD Code Up</title>
-<meta name="description" content="چاپ اعداد در پایتون با print و عملیات ساده ریاضی در MCD Code Up.">
+<title>چاپ اعداد در پایتون | آموزش کامل | MCD Code Up</title>
+<meta name="description" content="چاپ اعداد و محاسبات ساده در پایتون با print؛ مثال خط‌به‌خط و لینک به درس مرتبط.">
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/01-شروع-و-مبانی/07-چاپ-اعداد-Print-Numbers.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+.learn-more-links{list-style:none;padding:0;margin:1.25rem 0;display:flex;flex-direction:column;gap:.65rem}
+.learn-more-links li{margin:0}
+.learn-more-links a.learn-link{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;box-sizing:border-box;padding:.85rem 1.15rem;border-radius:999px;border:2px solid #00e676;background:linear-gradient(180deg,#0d2818 0%,#07140f 100%);color:#e8ffe8 !important;text-decoration:none !important;font-weight:700;font-size:.95rem;line-height:1.5;cursor:pointer}
+.learn-more-links a.learn-link::after{content:"←";color:#00e676}
+.learn-more-links a.learn-link:hover{background:linear-gradient(180deg,#124d2a 0%,#0a2416 100%);border-color:#69f0ae;transform:translateY(-1px);color:#fff !important}
+</style>
 </head>
 <body>
 <script src="../../assets/js/boot-loader.js"></script>
-<main><div class="wrap"><article class="card">
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+<header>
+<div class="logo"><a href="../../index.html">MCD Code Up</a> <span>یادگیری واقعی · تمرین با راهنمای انسانی</span></div>
+<nav><a href="../../index.html">خانه</a><a href="../../tamrin/index.html">تمرین</a></nav>
+</header>
+<main id="main-content">
 <h1>چاپ اعداد</h1>
-<p><strong>هدف:</strong> عدد و نتیجه محاسبه را چاپ کنی.</p>
-<div class="code">print(7)
+<div class="wrap">
+<div class="breadcrumb"><a href="../../index.html">خانه</a><span class="sep">/</span><a href="../index.html">Python</a><span class="sep">/</span><span>شروع و مبانی</span><span class="sep">/</span><span>چاپ اعداد</span></div>
+<div class="layout">
+<aside class="side"><h3>شروع و مبانی</h3>
+<a href="06-خروجی-Output.html">خروجی</a>
+<a href="07-چاپ-اعداد-Print-Numbers.html" class="on">چاپ اعداد</a>
+<a href="08-توضیحات-Comments.html">توضیحات</a>
+<a href="09-نمایش-متغیرها-Output-Variables.html">نمایش متغیرها</a>
+</aside>
+<article class="card">
+<button type="button" class="btn-pin" id="btnPinLesson" data-title="چاپ اعداد" data-cat="شروع و مبانی">📌 پین کردن این درس</button>
+
+<h2>هدف درس</h2>
+<p>در پایان این درس می‌توانی عدد و نتیجهٔ محاسبهٔ ساده را با <code>print</code> در خروجی ببینی.</p>
+
+<h2>پیش‌نیازها</h2>
+<ul>
+<li><a href="06-خروجی-Output.html">خروجی با print</a> — آشنایی با دستور چاپ</li>
+</ul>
+
+<h2>این مفهوم در دنیای واقعی کجا کاربرد دارد؟</h2>
+<p>نمایش قیمت، سن، تعداد کالا یا نتیجهٔ محاسبه در برنامه — هر جا عدد باید روی صفحه دیده شود.</p>
+
+<div class="example-unit">
+<div class="codewrap"><div class="code">print(7)
 print(3 * 4)
 print(10 / 2)</div>
-<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط</div>
+<div class="exp line-exp"><div class="exp-title">توضیح خط‌به‌خط همین مثال</div>
 <ol class="line-exp-list">
-<li><span class="ln">خط 1</span><code class="ln-code">print(7)</code><span class="ln-exp">عدد 7.</span></li>
-<li><span class="ln">خط 2</span><code class="ln-code">3 * 4</code><span class="ln-exp">ضرب؛ خروجی 12.</span></li>
-<li><span class="ln">خط 3</span><code class="ln-code">10 / 2</code><span class="ln-exp">تقسیم؛ خروجی 5.0.</span></li>
+<li><span class="ln">خط 1:</span> <code class="ln-code">print(7)</code><span class="ln-exp"> — عدد ۷ را چاپ می‌کند.</span></li>
+<li><span class="ln">خط 2:</span> <code class="ln-code">print(3 * 4)</code><span class="ln-exp"> — ضرب را حساب و ۱۲ را چاپ می‌کند.</span></li>
+<li><span class="ln">خط 3:</span> <code class="ln-code">print(10 / 2)</code><span class="ln-exp"> — تقسیم را حساب و ۵٫۰ را چاپ می‌کند.</span></li>
 </ol></div>
-<p><a href="06-خروجی-Output.html">← قبل</a> · <a href="08-توضیحات-Comments.html">بعد →</a></p>
-</article></div></main>
+</div></div>
+<button type="button" class="trybtn">مشاهده در ادیتور</button>
+
+<div class="sum"><b>جمع‌بندی</b>
+<ul>
+<li>print هم متن و هم عدد را چاپ می‌کند</li>
+<li>می‌توانی داخل print محاسبه بنویسی</li>
+<li>در پایتون ۳، تقسیم / معمولاً عدد اعشاری می‌دهد</li>
+</ul></div>
+
+<h3>تمرین‌های عملی</h3>
+<ol class="practice-list">
+<li class="practice-item">عدد ۱۰۰ را چاپ کن.</li>
+<li class="practice-item">نتیجهٔ ۵ + ۷ را چاپ کن.</li>
+<li class="practice-item">نتیجهٔ ۸ * ۳ را چاپ کن.</li>
+</ol>
+
+<div class="navbtn lesson-nav"><a href="06-خروجی-Output.html">← خروجی</a><a href="08-توضیحات-Comments.html">توضیحات →</a></div>
+</article>
+</div></div>
+
+<section id="learn-more" class="card" style="margin-top:1.25rem">
+<h2>یادگیری عمیق‌تر درباره کد مثال</h2>
+<p>اگر می‌خواهید کد این درس را به‌صورت دقیق‌تر و جزءبه‌جزء یاد بگیرید، روی هر دکمه کلیک کنید تا به درس همان مفهوم بروید.</p>
+<ul class="learn-more-links">
+<li><a class="learn-link" href="06-خروجی-Output.html">print — رفتن به درس خروجی</a></li>
+<li><a class="learn-link" href="../04-انواع-داده-و-اعداد/01-نوع-داده-ها-Data-Types.html">اعداد و نوع داده — رفتن به درس انواع داده</a></li>
+</ul>
+</section>
+
+</main>
+<footer class="site-footer">MCD Code Up</footer>
 <script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/mcd-motion.js" defer></script>
 </body></html>
