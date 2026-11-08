@@ -10,24 +10,23 @@
 <link rel="canonical" href="https://abdorrezamovahedi.github.io/programer/python/11-شرط-و-حلقه/01-if-elif-else.html">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <style>
-.learn-more-links{list-style:none;padding:0;margin:1rem 0}
-.learn-more-links li{margin:.55rem 0}
+.learn-more-links{list-style:none;padding:0;margin:1.25rem 0;display:flex;flex-direction:column;gap:.65rem}
+.learn-more-links li{margin:0}
 .learn-more-links a.learn-link{
-  display:block;
-  padding:.75rem 1rem;
-  border-radius:12px;
-  border:1px solid rgba(0,230,118,.35);
-  background:#07140f;
-  color:#b9f6ca;
-  text-decoration:underline;
-  text-underline-offset:3px;
-  line-height:1.7;
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  width:100%;box-sizing:border-box;padding:.85rem 1.15rem;border-radius:999px;
+  border:2px solid #00e676;background:linear-gradient(180deg,#0d2818 0%,#07140f 100%);
+  color:#e8ffe8 !important;text-decoration:none !important;font-weight:700;font-size:.95rem;line-height:1.5;
+  box-shadow:0 0 0 1px rgba(0,230,118,.15), 0 6px 18px rgba(0,0,0,.25);
+  transition:transform .15s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;cursor:pointer;
 }
+.learn-more-links a.learn-link::after{content:"←";flex:0 0 auto;color:#00e676;font-size:1.1rem}
 .learn-more-links a.learn-link:hover{
-  border-color:#00e676;
-  color:#00e676;
-  background:#0a1f16;
+  background:linear-gradient(180deg,#124d2a 0%,#0a2416 100%);border-color:#69f0ae;
+  box-shadow:0 0 0 2px rgba(0,230,118,.25), 0 8px 22px rgba(0,230,118,.12);
+  transform:translateY(-1px);color:#ffffff !important;
 }
+.learn-more-links a.learn-link:active{transform:translateY(0);box-shadow:0 0 0 2px rgba(0,230,118,.35)}
 </style>
 </head>
 <body>
@@ -56,7 +55,7 @@ else:
 </ol></div>
 
 <h2 id="learn-more">یادگیری بیشتر</h2>
-<p>روی هر مورد کلیک کن تا همان درس باز شود:</p>
+<p>روی هر دکمه کلیک کن تا همان درس باز شود:</p>
 <ul class="learn-more-links">
 <li><a class="learn-link" href="../02-متغیرها/01-متغیرها-Variables.html">متغیر age — رفتن به درس متغیرها</a></li>
 <li><a class="learn-link" href="../04-انواع-داده-و-اعداد/01-نوع-داده-ها-Data-Types.html">عدد و نوع داده — رفتن به درس انواع داده</a></li>
