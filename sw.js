@@ -1,8 +1,6 @@
-/* MCD Code Up — seamless full-site offline
- * When online: network first, update cache
- * When offline: cache first — site works as if still online
- * Full site is prefetched on first visit of the session
- * Cache cleared only when every site tab is closed
+/* MCD Code Up — offline shell
+ * Serves mcd-offline-v3 cache when network is down.
+ * Full site is written into this cache by offline-session.js (all sitemap pages).
  */
 var CACHE = "mcd-offline-v3";
 var CORE = [
@@ -15,13 +13,8 @@ var CORE = [
   "./assets/js/mcd-motion.js",
   "./assets/js/offline-session.js",
   "./assets/js/search.js",
-  "./assets/js/exercises.js",
-  "./assets/js/tamrin-filter.js",
   "./assets/img/favicon.svg",
-  "./assets/img/og-default.svg",
-  "./404.html",
-  "./robots.txt",
-  "./sitemap.xml"
+  "./404.html"
 ];
 
 var leaveTimer = null;
@@ -42,7 +35,6 @@ function clientsCount() {
   });
 }
 
-/* Only clear after all windows are gone (not on app switch) */
 function scheduleClearIfEmpty() {
   if (leaveTimer) clearTimeout(leaveTimer);
   leaveTimer = setTimeout(function () {
@@ -78,9 +70,7 @@ self.addEventListener("activate", function (event) {
     caches.keys().then(function (keys) {
       return Promise.all(
         keys.map(function (key) {
-          if (key !== CACHE && key.indexOf("mcd-offline") === 0) {
-            return caches.delete(key);
-          }
+          if (key !== CACHE && key.indexOf("mcd-offline") === 0) return caches.delete(key);
         })
       );
     }).then(function () {
@@ -97,14 +87,6 @@ function sameOrigin(url) {
   }
 }
 
-function isCacheableRequest(request) {
-  if (request.method !== "GET") return false;
-  if (!sameOrigin(request.url)) return false;
-  if (request.url.indexOf("chrome-extension") !== -1) return false;
-  return true;
-}
-
-/* Try several URL shapes so offline links always hit cache */
 function matchInCache(cache, request) {
   return cache.match(request).then(function (hit) {
     if (hit) return hit;
@@ -125,7 +107,6 @@ function matchInCache(cache, request) {
     }
     if (path.endsWith("/index.html")) {
       candidates.push(url.origin + path.replace(/\/index\.html$/, "/"));
-      candidates.push(url.origin + path.replace(/\/index\.html$/, ""));
     }
     var chain = Promise.resolve(null);
     candidates.forEach(function (c) {
@@ -140,12 +121,12 @@ function matchInCache(cache, request) {
 
 self.addEventListener("fetch", function (event) {
   var request = event.request;
-  if (!isCacheableRequest(request)) return;
+  if (request.method !== "GET") return;
+  if (!sameOrigin(request.url)) return;
 
   event.respondWith(
     caches.open(CACHE).then(function (cache) {
       return matchInCache(cache, request).then(function (cached) {
-        /* Offline → always prefer cache (feels like internet is still on) */
         if (!self.navigator.onLine) {
           if (cached) return cached;
           if (request.mode === "navigate") {
@@ -156,7 +137,6 @@ self.addEventListener("fetch", function (event) {
           return cached || Response.error();
         }
 
-        /* Online → network first, keep cache fresh */
         return fetch(request)
           .then(function (response) {
             if (response && response.ok && (response.type === "basic" || response.type === "cors")) {
@@ -182,66 +162,9 @@ self.addEventListener("fetch", function (event) {
 
 self.addEventListener("message", function (event) {
   var data = event.data || {};
-
-  if (data.type === "PAGE_SHOW") {
-    cancelClear();
-  }
-
-  if (data.type === "PAGE_HIDE" || data.type === "LEAVE_SITE") {
-    scheduleClearIfEmpty();
-  }
-
+  if (data.type === "PAGE_SHOW") cancelClear();
+  if (data.type === "PAGE_HIDE" || data.type === "LEAVE_SITE") scheduleClearIfEmpty();
   if (data.type === "CLEAR_CACHE") {
-    event.waitUntil(
-      clearAllMcdCaches().then(function () {
-        if (event.ports && event.ports[0]) event.ports[0].postMessage({ ok: true });
-      })
-    );
-  }
-
-  if (data.type === "CACHE_URLS" && Array.isArray(data.urls)) {
-    event.waitUntil(
-      caches.open(CACHE).then(function (cache) {
-        var urls = data.urls.slice(0, 2500);
-        var i = 0;
-        var concurrency = 8;
-
-        function next() {
-          if (i >= urls.length) return Promise.resolve();
-          var batch = [];
-          for (var c = 0; c < concurrency && i < urls.length; c++, i++) {
-            (function (url) {
-              batch.push(
-                fetch(url, { credentials: "same-origin" })
-                  .then(function (res) {
-                    if (res && res.ok) {
-                      return cache.put(url, res).then(function () {
-                        /* also store slash / index variants for navigations */
-                        try {
-                          var u = new URL(url);
-                          if (u.pathname.endsWith("/index.html")) {
-                            var dir = u.origin + u.pathname.replace(/\/index\.html$/, "/");
-                            return fetch(url, { credentials: "same-origin" }).then(function (r2) {
-                              if (r2 && r2.ok) return cache.put(dir, r2);
-                            });
-                          }
-                        } catch (e) {}
-                      });
-                    }
-                  })
-                  .catch(function () {})
-              );
-            })(urls[i]);
-          }
-          return Promise.all(batch).then(next);
-        }
-
-        return next();
-      }).then(function () {
-        if (event.ports && event.ports[0]) {
-          event.ports[0].postMessage({ ok: true, count: data.urls.length });
-        }
-      })
-    );
+    event.waitUntil(clearAllMcdCaches());
   }
 });
