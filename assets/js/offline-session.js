@@ -1,9 +1,11 @@
 /**
- * MCD Code Up — ذخیره کامل کل سایت (۱۷۰۰+ صفحه) روی دستگاه کاربر
+ * MCD Code Up — آنلاین کامل + ذخیره پس‌زمینه خیلی سریع
  *
- * - با ورود: همه URLهای sitemap + فایل‌های ضروری در Cache Storage ذخیره می‌شوند
- * - آفلاین: Service Worker همان فایل‌ها را مثل حالت آنلاین سرو می‌کند
- * - با بستن همه تب‌های سایت: کش پاک می‌شود
+ * وقتی اینترنت هست:
+ *   - کاربر سایت را عادی و آنلاین می‌بیند (بدون تأخیر)
+ *   - همزمان در پس‌زمینه همه ۱۷۰۰+ صفحه با اولویت پایین ذخیره می‌شوند
+ * وقتی اینترنت قطع شد:
+ *   - همان صفحات ذخیره‌شده از دستگاه سرو می‌شوند
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -59,9 +61,7 @@
     try {
       if (navigator.serviceWorker && navigator.serviceWorker.controller) {
         var msg = { type: type };
-        if (extra) {
-          for (var k in extra) msg[k] = extra[k];
-        }
+        if (extra) for (var k in extra) msg[k] = extra[k];
         navigator.serviceWorker.controller.postMessage(msg);
       }
     } catch (e) {}
@@ -86,16 +86,19 @@
       .then(function () {
         return navigator.serviceWorker.ready;
       })
-      .catch(function (err) {
-        console.warn("[MCD offline] SW register failed", err);
+      .catch(function () {
         return null;
       });
   }
 
   function loadSitemapUrls() {
-    return fetch(absoluteUrl("sitemap.xml"), { credentials: "same-origin", cache: "no-cache" })
+    return fetch(absoluteUrl("sitemap.xml"), {
+      credentials: "same-origin",
+      cache: "no-cache",
+      priority: "low"
+    })
       .then(function (r) {
-        if (!r.ok) throw new Error("sitemap " + r.status);
+        if (!r.ok) throw new Error("sitemap");
         return r.text();
       })
       .then(function (xml) {
@@ -131,7 +134,6 @@
       absoluteUrl("assets/img/favicon.svg"),
       absoluteUrl("assets/img/og-default.svg"),
       absoluteUrl("sitemap.xml"),
-      absoluteUrl("robots.txt"),
       absoluteUrl("python/"),
       absoluteUrl("html/"),
       absoluteUrl("css/"),
@@ -141,7 +143,6 @@
     ];
   }
 
-  /* ---------- UI progress ---------- */
   function ensureBar() {
     var el = document.getElementById("mcd-offline-progress");
     if (el) return el;
@@ -150,93 +151,96 @@
     el.setAttribute("role", "status");
     el.style.cssText = [
       "position:fixed",
-      "bottom:16px",
+      "bottom:12px",
       "left:50%",
       "transform:translateX(-50%)",
-      "z-index:100000",
-      "width:min(420px,92vw)",
-      "padding:12px 14px",
-      "border-radius:12px",
-      "background:#0d1117",
-      "color:#e6edf3",
+      "z-index:99990",
+      "width:min(360px,90vw)",
+      "padding:8px 12px",
+      "border-radius:10px",
+      "background:rgba(13,17,23,.92)",
+      "color:#8b949e",
       "border:1px solid #30363d",
-      "font:13px/1.5 sans-serif",
-      "box-shadow:0 10px 28px rgba(0,0,0,.4)",
+      "font:12px/1.4 sans-serif",
       "text-align:center",
-      "direction:rtl"
+      "direction:rtl",
+      "pointer-events:none",
+      "opacity:.92"
     ].join(";");
     el.innerHTML =
-      '<div id="mcd-off-text">آماده‌سازی حالت آفلاین…</div>' +
-      '<div style="margin-top:8px;height:6px;background:#21262d;border-radius:99px;overflow:hidden">' +
-      '<div id="mcd-off-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>';
+      '<div id="mcd-off-text">آماده‌سازی پس‌زمینه…</div>' +
+      '<div style="margin-top:6px;height:4px;background:#21262d;border-radius:99px;overflow:hidden">' +
+      '<div id="mcd-off-bar" style="height:100%;width:0%;background:#00e676;transition:width .15s"></div></div>';
     (document.body || document.documentElement).appendChild(el);
     return el;
   }
 
-  function setProgress(done, total, label) {
+  function setProgress(done, total) {
     try {
       var wrap = ensureBar();
       var text = document.getElementById("mcd-off-text");
       var bar = document.getElementById("mcd-off-bar");
       var pct = total ? Math.min(100, Math.round((done / total) * 100)) : 0;
-      if (text) {
+      if (text)
         text.textContent =
-          (label || "در حال ذخیره کل سایت") +
-          " — " +
-          done +
-          " از " +
-          total +
-          " (" +
-          pct +
-          "٪)";
-      }
+          "ذخیره پس‌زمینه (سایت آنلاین است) — " + done + "/" + total + " — " + pct + "٪";
       if (bar) bar.style.width = pct + "%";
-      wrap.style.display = "block";
     } catch (e) {}
   }
 
-  function hideProgress(finalMsg, ok) {
+  function hideProgress(msg, ok) {
     try {
       var wrap = ensureBar();
       var text = document.getElementById("mcd-off-text");
       var bar = document.getElementById("mcd-off-bar");
-      if (text) text.textContent = finalMsg;
+      if (text) {
+        text.textContent = msg;
+        text.style.color = ok ? "#00e676" : "#f85149";
+      }
       if (bar) {
         bar.style.width = "100%";
         bar.style.background = ok ? "#00e676" : "#f85149";
       }
       setTimeout(function () {
         wrap.style.opacity = "0";
-        wrap.style.transition = "opacity .4s";
+        wrap.style.transition = "opacity .35s";
         setTimeout(function () {
           if (wrap.parentNode) wrap.parentNode.removeChild(wrap);
-        }, 450);
-      }, 3500);
+        }, 400);
+      }, 2800);
     } catch (e) {}
   }
 
+  /** fetch با اولویت پایین تا مرور کاربر آنلاین گیر نکند */
+  function lowFetch(url) {
+    var opts = { credentials: "same-origin", cache: "no-cache", priority: "low" };
+    try {
+      return fetch(url, opts);
+    } catch (e) {
+      return fetch(url, { credentials: "same-origin", cache: "no-cache" });
+    }
+  }
+
   /**
-   * ذخیره واقعی همه URLها داخل Cache Storage
-   * مستقیم از صفحه (قابل اعتمادتر از فقط پیام به SW)
+   * ذخیره سریع موازی — روی UI اثر نمی‌گذارد
+   * concurrency بالا = سرعت بیشتر
    */
   function cacheAllUrls(urls) {
-    if (!window.caches) {
-      return Promise.reject(new Error("Cache API unsupported"));
-    }
+    if (!window.caches) return Promise.reject(new Error("no cache"));
 
     var total = urls.length;
     var done = 0;
     var failed = [];
-    var concurrency = 10;
+    var concurrency = 20;
     var index = 0;
+    var lastUi = 0;
 
     return caches.open(CACHE_NAME).then(function (cache) {
       function putOne(url) {
-        return fetch(url, { credentials: "same-origin", cache: "no-cache" })
+        return lowFetch(url)
           .then(function (res) {
-            if (!res || !res.ok) throw new Error("bad status");
+            if (!res || !res.ok) throw new Error("bad");
             return cache.put(url, res).then(function () {
-              /* نسخه با / و index.html برای لینک‌های داخلی */
               try {
                 var u = new URL(url);
                 if (u.pathname.endsWith("/index.html")) {
@@ -250,12 +254,20 @@
           })
           .then(function () {
             done += 1;
-            if (done % 15 === 0 || done === total) setProgress(done, total);
+            var now = Date.now();
+            if (now - lastUi > 200 || done === total) {
+              lastUi = now;
+              setProgress(done, total);
+            }
           })
           .catch(function () {
             failed.push(url);
             done += 1;
-            if (done % 15 === 0 || done === total) setProgress(done, total);
+            var now = Date.now();
+            if (now - lastUi > 200 || done === total) {
+              lastUi = now;
+              setProgress(done, total);
+            }
           });
       }
 
@@ -269,30 +281,29 @@
       for (var w = 0; w < concurrency; w++) workers.push(worker());
 
       return Promise.all(workers).then(function () {
-        /* یک دور تلاش مجدد برای ناموفق‌ها */
         if (!failed.length) return { total: total, ok: total, fail: 0 };
 
-        setProgress(0, failed.length, "تلاش مجدد فایل‌های باقی‌مانده");
         var retryList = failed.slice();
         failed = [];
         done = 0;
         total = retryList.length;
         index = 0;
+        lastUi = 0;
 
         function putRetry(url) {
-          return fetch(url, { credentials: "same-origin", cache: "no-cache" })
+          return lowFetch(url)
             .then(function (res) {
               if (!res || !res.ok) throw new Error("bad");
               return cache.put(url, res);
             })
             .then(function () {
               done += 1;
-              setProgress(done, total, "تلاش مجدد");
+              setProgress(done, total);
             })
             .catch(function () {
               failed.push(url);
               done += 1;
-              setProgress(done, total, "تلاش مجدد");
+              setProgress(done, total);
             });
         }
 
@@ -303,7 +314,7 @@
         }
 
         var workers2 = [];
-        for (var w2 = 0; w2 < 6; w2++) workers2.push(worker2());
+        for (var w2 = 0; w2 < 12; w2++) workers2.push(worker2());
         return Promise.all(workers2).then(function () {
           return {
             total: urls.length,
@@ -329,55 +340,37 @@
   }
 
   function prefetchEntireSite() {
-    if (fullPrefetchDone()) {
-      hideProgress("سایت از قبل برای حالت آفلاین آماده است", true);
-      return Promise.resolve();
-    }
-    if (!navigator.onLine) {
-      hideProgress("آفلاین هستید — ابتدا با اینترنت وارد شوید تا کل سایت ذخیره شود", false);
-      return Promise.resolve();
-    }
+    if (fullPrefetchDone()) return Promise.resolve();
+    if (!navigator.onLine) return Promise.resolve();
 
-    setProgress(0, 1, "خواندن فهرست تمام صفحات");
-
+    /* کاملاً غیرمسدودکننده — کاربر همزمان آنلاین کار می‌کند */
     return loadSitemapUrls()
       .catch(function () {
         return [];
       })
       .then(function (sitemapUrls) {
         var all = uniqueUrls(coreAssetUrls().concat(sitemapUrls));
-        setProgress(0, all.length, "ذخیره " + all.length + " فایل روی دستگاه");
-
+        setProgress(0, all.length);
         return cacheAllUrls(all).then(function (stats) {
           markFullPrefetchDone();
-          /* به SW هم خبر بده که از همین کش استفاده کند */
           notifySW("CACHE_READY", { total: stats.total, ok: stats.ok });
-
           if (stats.fail === 0) {
-            hideProgress(
-              "تمام " + stats.ok + " صفحه ذخیره شد — بدون اینترنت هم کامل کار می‌کند",
-              true
-            );
+            hideProgress("آماده‌سازی کامل شد — " + stats.ok + " صفحه ذخیره شد", true);
           } else {
             hideProgress(
-              stats.ok +
-                " صفحه ذخیره شد (" +
-                stats.fail +
-                " مورد رد شد) — بخش اصلی آفلاین آماده است",
+              "آماده‌سازی انجام شد — " + stats.ok + " صفحه (" + stats.fail + " رد شد)",
               true
             );
           }
         });
       })
       .catch(function (err) {
-        console.warn("[MCD offline] prefetch failed", err);
-        hideProgress("خطا در ذخیره کامل سایت — صفحه را یک‌بار رفرش کنید", false);
+        console.warn("[MCD offline]", err);
       });
   }
 
   function bindLeaveHandlers() {
     notifySW("PAGE_SHOW");
-
     window.addEventListener(
       "pagehide",
       function () {
@@ -385,7 +378,6 @@
       },
       { capture: true }
     );
-
     window.addEventListener(
       "pageshow",
       function () {
@@ -393,42 +385,53 @@
       },
       { capture: true }
     );
-
-    window.addEventListener("offline", function () {
-      try {
-        var t = document.createElement("div");
-        t.textContent = "بدون اینترنت — سایت از حافظه دستگاه اجرا می‌شود";
-        t.style.cssText =
-          "position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:100001;padding:10px 14px;border-radius:10px;background:#0d1117;color:#00e676;border:1px solid #00e676;font:13px sans-serif;direction:rtl";
-        document.body.appendChild(t);
-        setTimeout(function () {
-          if (t.parentNode) t.parentNode.removeChild(t);
-        }, 4000);
-      } catch (e) {}
-    });
   }
 
   function init() {
-    var boot = Promise.resolve();
+    /* ثبت SW و شروع پس‌زمینه — بدون بلوکه کردن صفحه */
+    markSession();
 
-    if (!sessionActive()) {
-      boot = clearOfflineCaches().then(function () {
-        markSession();
-      });
-    } else {
-      markSession();
-    }
+    registerSW().then(function () {
+      bindLeaveHandlers();
 
-    boot
-      .then(function () {
-        return registerSW();
-      })
-      .then(function () {
-        bindLeaveHandlers();
+      /* اگر نشست جدید است، کش قدیمی را در پس‌زمینه پاک کن؛ صفحه را معطل نکن */
+      if (!sessionActive()) {
+        /* session flag already set above for this visit after clear path */
+      }
+
+      /* شروع فوری ذخیره پس‌زمینه — موازی با استفاده آنلاین کاربر */
+      if (typeof requestIdleCallback === "function") {
+        requestIdleCallback(
+          function () {
+            prefetchEntireSite();
+          },
+          { timeout: 800 }
+        );
+      } else {
         setTimeout(function () {
           prefetchEntireSite();
-        }, 400);
-      });
+        }, 300);
+      }
+    });
+
+    /* پاک‌سازی نشست قبلی بدون مسدود کردن UI */
+    try {
+      if (!sessionStorage.getItem(SESSION_KEY + "_booted")) {
+        sessionStorage.setItem(SESSION_KEY + "_booted", "1");
+        /* first page of this browser session */
+        if (!sessionStorage.getItem(SESSION_KEY + "_cleared")) {
+          sessionStorage.setItem(SESSION_KEY + "_cleared", "1");
+          clearOfflineCaches().then(function () {
+            /* allow fresh full download */
+            try {
+              sessionStorage.removeItem(FULL_DONE_KEY);
+            } catch (e) {}
+            prefetchEntireSite();
+          });
+          return;
+        }
+      }
+    } catch (e) {}
   }
 
   if (document.readyState === "loading") {
