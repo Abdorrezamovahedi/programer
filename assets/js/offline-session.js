@@ -1,27 +1,22 @@
 /**
- * MCD Code Up — Offline session cache
+ * MCD Code Up — full-site offline for current visit
  *
- * - Registers Service Worker for offline use
- * - Caches pages as the user browses
- * - When user enters a language section, prefetches that language's pages
- * - On a NEW browser session (user left site and came back), clears offline cache
- *   so device storage does not grow indefinitely
+ * 1) User opens the site → whole site is downloaded into Cache Storage
+ * 2) User can browse every page offline until they leave
+ * 3) When all tabs of the site are closed / user leaves → cache is deleted
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
 
-  var SESSION_KEY = "mcd_offline_session_v1";
-  var PREFETCHED_KEY = "mcd_lang_prefetched_v1";
+  var SESSION_KEY = "mcd_full_offline_session_v2";
+  var FULL_DONE_KEY = "mcd_full_prefetch_done_v2";
+
   var SCOPE_BASE = (function () {
     var p = location.pathname || "/";
-    var idx = p.indexOf("/programer");
-    if (idx === 0) return "/programer/";
-    // local server or custom domain at root
+    if (p.indexOf("/programer") === 0) return "/programer/";
     return "/";
   })();
-
-  var LANGS = ["python", "html", "css", "javascript", "php", "tamrin"];
 
   function sessionActive() {
     try {
@@ -32,36 +27,69 @@
   }
 
   function markSession() {
-    try { sessionStorage.setItem(SESSION_KEY, "1"); } catch (e) {}
+    try {
+      sessionStorage.setItem(SESSION_KEY, "1");
+    } catch (e) {}
   }
 
-  function getPrefetched() {
+  function fullPrefetchDone() {
     try {
-      return JSON.parse(sessionStorage.getItem(PREFETCHED_KEY) || "{}");
+      return sessionStorage.getItem(FULL_DONE_KEY) === "1";
     } catch (e) {
-      return {};
+      return false;
     }
   }
 
-  function setPrefetched(map) {
-    try { sessionStorage.setItem(PREFETCHED_KEY, JSON.stringify(map)); } catch (e) {}
+  function markFullPrefetchDone() {
+    try {
+      sessionStorage.setItem(FULL_DONE_KEY, "1");
+    } catch (e) {}
   }
 
   function postToSW(msg) {
     return new Promise(function (resolve) {
-      if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
+      if (!navigator.serviceWorker) {
         resolve(null);
         return;
       }
-      var ch = new MessageChannel();
-      ch.port1.onmessage = function (ev) { resolve(ev.data); };
-      try {
-        navigator.serviceWorker.controller.postMessage(msg, [ch.port2]);
-      } catch (e) {
-        resolve(null);
+
+      function send(controller) {
+        if (!controller) {
+          resolve(null);
+          return;
+        }
+        var ch = new MessageChannel();
+        ch.port1.onmessage = function (ev) {
+          resolve(ev.data);
+        };
+        try {
+          controller.postMessage(msg, [ch.port2]);
+        } catch (e) {
+          resolve(null);
+        }
+        setTimeout(function () {
+          resolve(null);
+        }, 120000);
       }
-      setTimeout(function () { resolve(null); }, 8000);
+
+      if (navigator.serviceWorker.controller) {
+        send(navigator.serviceWorker.controller);
+      } else {
+        navigator.serviceWorker.ready.then(function (reg) {
+          send(reg.active || navigator.serviceWorker.controller);
+        }).catch(function () {
+          resolve(null);
+        });
+      }
     });
+  }
+
+  function notifySW(type) {
+    try {
+      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({ type: type });
+      }
+    } catch (e) {}
   }
 
   function clearOfflineCaches() {
@@ -69,9 +97,11 @@
     if (window.caches && caches.keys) {
       tasks.push(
         caches.keys().then(function (keys) {
-          return Promise.all(keys.map(function (k) {
-            if (k.indexOf("mcd-offline") === 0) return caches.delete(k);
-          }));
+          return Promise.all(
+            keys.map(function (k) {
+              if (k.indexOf("mcd-offline") === 0) return caches.delete(k);
+            })
+          );
         }).catch(function () {})
       );
     }
@@ -81,24 +111,18 @@
 
   function registerSW() {
     if (!("serviceWorker" in navigator)) return Promise.resolve(null);
-    var swUrl = SCOPE_BASE.replace(/\/$/, "/") + "sw.js";
-    // fix double slash
-    swUrl = swUrl.replace(/([^:]\/)\//g, "$1");
-    return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function (err) {
-      console.warn("[MCD offline] SW register failed", err);
-      return null;
-    });
-  }
-
-  function currentLanguage() {
-    var path = (location.pathname || "").toLowerCase();
-    for (var i = 0; i < LANGS.length; i++) {
-      var lang = LANGS[i];
-      if (path.indexOf("/" + lang + "/") !== -1 || path.endsWith("/" + lang) || path.indexOf("/" + lang + "/index") !== -1) {
-        return lang;
-      }
-    }
-    return null;
+    var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\//g, "$1");
+    return navigator.serviceWorker
+      .register(swUrl, { scope: SCOPE_BASE })
+      .then(function (reg) {
+        return navigator.serviceWorker.ready.then(function () {
+          return reg;
+        });
+      })
+      .catch(function (err) {
+        console.warn("[MCD offline] SW register failed", err);
+        return null;
+      });
   }
 
   function absoluteUrl(path) {
@@ -110,8 +134,7 @@
   }
 
   function loadSitemapUrls() {
-    var sitemapUrl = absoluteUrl("sitemap.xml");
-    return fetch(sitemapUrl, { credentials: "same-origin" })
+    return fetch(absoluteUrl("sitemap.xml"), { credentials: "same-origin" })
       .then(function (r) {
         if (!r.ok) throw new Error("sitemap");
         return r.text();
@@ -125,55 +148,9 @@
         }
         return urls;
       })
-      .catch(function () { return []; });
-  }
-
-  function filterLanguageUrls(allUrls, lang) {
-    var needle = "/" + lang + "/";
-    var out = [];
-    for (var i = 0; i < allUrls.length; i++) {
-      var u = allUrls[i];
-      if (u.indexOf(needle) !== -1) out.push(u);
-    }
-    // also include language index
-    var idx = absoluteUrl(lang + "/");
-    if (out.indexOf(idx) === -1) out.unshift(idx);
-    return out;
-  }
-
-  function prefetchLanguage(lang) {
-    if (!lang) return Promise.resolve();
-    var done = getPrefetched();
-    if (done[lang]) return Promise.resolve();
-
-    done[lang] = 1;
-    setPrefetched(done);
-
-    return loadSitemapUrls().then(function (all) {
-      var urls = filterLanguageUrls(all, lang);
-      if (!urls.length) {
-        // fallback: at least cache current page & language index
-        urls = [location.href, absoluteUrl(lang + "/"), absoluteUrl(lang + "/index.html")];
-      }
-      // Cap extreme sizes (php has many pages)
-      if (urls.length > 350) urls = urls.slice(0, 350);
-
-      showToast("در حال ذخیره‌سازی آفلاین بخش «" + lang + "»…");
-
-      return postToSW({ type: "CACHE_URLS", urls: urls }).then(function () {
-        showToast("بخش «" + lang + "» برای استفاده آفلاین آماده شد", true);
+      .catch(function () {
+        return [];
       });
-    });
-  }
-
-  function cacheCurrentPage() {
-    if (!window.caches) return;
-    var req = location.href;
-    caches.open("mcd-offline-v1").then(function (cache) {
-      return fetch(req, { credentials: "same-origin" }).then(function (res) {
-        if (res && res.ok) return cache.put(req, res);
-      });
-    }).catch(function () {});
   }
 
   var toastTimer = null;
@@ -185,11 +162,23 @@
         el.id = "mcd-offline-toast";
         el.setAttribute("role", "status");
         el.style.cssText = [
-          "position:fixed", "bottom:18px", "left:50%", "transform:translateX(-50%)",
-          "z-index:100000", "max-width:92vw", "padding:10px 16px", "border-radius:10px",
-          "background:#0d1117", "color:#e6edf3", "border:1px solid #30363d",
-          "font:13px/1.5 sans-serif", "box-shadow:0 8px 24px rgba(0,0,0,.35)",
-          "opacity:0", "transition:opacity .25s", "pointer-events:none", "text-align:center"
+          "position:fixed",
+          "bottom:18px",
+          "left:50%",
+          "transform:translateX(-50%)",
+          "z-index:100000",
+          "max-width:92vw",
+          "padding:10px 16px",
+          "border-radius:10px",
+          "background:#0d1117",
+          "color:#e6edf3",
+          "border:1px solid #30363d",
+          "font:13px/1.5 sans-serif",
+          "box-shadow:0 8px 24px rgba(0,0,0,.35)",
+          "opacity:0",
+          "transition:opacity .25s",
+          "pointer-events:none",
+          "text-align:center"
         ].join(";");
         (document.body || document.documentElement).appendChild(el);
       }
@@ -197,21 +186,93 @@
       el.textContent = text;
       el.style.opacity = "1";
       if (toastTimer) clearTimeout(toastTimer);
-      toastTimer = setTimeout(function () { el.style.opacity = "0"; }, 3200);
+      toastTimer = setTimeout(function () {
+        el.style.opacity = "0";
+      }, 4000);
     } catch (e) {}
   }
 
-  function onOnline() {
-    showToast("اتصال اینترنت برقرار شد", true);
+  function prefetchEntireSite() {
+    if (fullPrefetchDone()) return Promise.resolve();
+
+    showToast("در حال ذخیره‌سازی کل سایت برای استفاده آفلاین…");
+
+    return loadSitemapUrls().then(function (urls) {
+      if (!urls.length) {
+        urls = [
+          absoluteUrl(""),
+          absoluteUrl("index.html"),
+          absoluteUrl("python/"),
+          absoluteUrl("html/"),
+          absoluteUrl("css/"),
+          absoluteUrl("javascript/"),
+          absoluteUrl("php/"),
+          absoluteUrl("tamrin/")
+        ];
+      }
+
+      // Always include core assets explicitly
+      var extras = [
+        absoluteUrl("assets/css/main.css"),
+        absoluteUrl("assets/js/boot-loader.js"),
+        absoluteUrl("assets/js/app.js"),
+        absoluteUrl("assets/js/home.js"),
+        absoluteUrl("assets/js/mcd-motion.js"),
+        absoluteUrl("assets/js/offline-session.js"),
+        absoluteUrl("assets/js/search.js"),
+        absoluteUrl("assets/img/favicon.svg"),
+        absoluteUrl("assets/img/og-default.svg")
+      ];
+      for (var i = 0; i < extras.length; i++) {
+        if (urls.indexOf(extras[i]) === -1) urls.push(extras[i]);
+      }
+
+      return postToSW({ type: "CACHE_URLS", urls: urls }).then(function () {
+        markFullPrefetchDone();
+        showToast("کل سایت ذخیره شد — در قطع اینترنت هم می‌توانید جابه‌جا شوید", true);
+      });
+    });
   }
-  function onOffline() {
-    showToast("اینترنت قطع است — ادامه با نسخه ذخیره‌شده");
+
+  function bindLeaveHandlers() {
+    notifySW("PAGE_SHOW");
+
+    window.addEventListener(
+      "pagehide",
+      function () {
+        notifySW("PAGE_HIDE");
+      },
+      { capture: true }
+    );
+
+    window.addEventListener(
+      "pageshow",
+      function () {
+        notifySW("PAGE_SHOW");
+      },
+      { capture: true }
+    );
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") {
+        notifySW("PAGE_HIDE");
+      } else if (document.visibilityState === "visible") {
+        notifySW("PAGE_SHOW");
+      }
+    });
+
+    window.addEventListener("online", function () {
+      showToast("اتصال اینترنت برقرار شد", true);
+    });
+    window.addEventListener("offline", function () {
+      showToast("اینترنت قطع است — ادامه با نسخه ذخیره‌شده سایت");
+    });
   }
 
   function init() {
     var boot = Promise.resolve();
 
-    // New browser session? Clear previous offline cache to free storage.
+    // New visit (no session flag) → wipe any leftover cache from previous visit
     if (!sessionActive()) {
       boot = clearOfflineCaches().then(function () {
         markSession();
@@ -220,23 +281,17 @@
       markSession();
     }
 
-    boot.then(function () {
-      return registerSW();
-    }).then(function () {
-      cacheCurrentPage();
-
-      var lang = currentLanguage();
-      if (lang) {
-        // slight delay so first paint isn't blocked
-        setTimeout(function () { prefetchLanguage(lang); }, 1200);
-      }
-
-      window.addEventListener("online", onOnline);
-      window.addEventListener("offline", onOffline);
-
-      // Soft hint when user hides tab for a long time is NOT clearing —
-      // clearing happens on next session start (sessionStorage gone).
-    });
+    boot
+      .then(function () {
+        return registerSW();
+      })
+      .then(function () {
+        bindLeaveHandlers();
+        // Start full-site download shortly after first paint
+        setTimeout(function () {
+          prefetchEntireSite();
+        }, 800);
+      });
   }
 
   if (document.readyState === "loading") {
