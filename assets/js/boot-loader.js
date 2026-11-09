@@ -1,63 +1,71 @@
 /**
- * MCD programmers – boot loader
- * First home visit: full (~2.2s). Lesson files: always ~0.25s.
- * One particle MCD only — no second logo/text.
- * Also loads offline-session.js for session offline caching.
+ * MCD boot loader — lightweight, especially on mobile
+ * Must never block the page for long (was causing black screen lag).
  */
 (function () {
   if (window.__MCD_BOOT_DONE__) return;
   window.__MCD_BOOT_DONE__ = true;
 
-  
-  var mcdBootTier = "high";
+  var isMobile = false;
   try {
-    var __c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    if (__c) {
-      if (__c.saveData) mcdBootTier = "low";
-      else {
-        var __t = String(__c.effectiveType || "").toLowerCase();
-        if (__t === "slow-2g" || __t === "2g") mcdBootTier = "low";
-        else if (__t === "3g") mcdBootTier = "mid";
-      }
-    }
+    isMobile =
+      window.matchMedia("(max-width:900px)").matches ||
+      navigator.maxTouchPoints > 1 ||
+      /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent || "");
   } catch (e) {}
 
-  var FULL_MS = 1800;
-  var LESSON_MS = 350;
-  var FLAG = "mcd_boot_seen";
-
-  function isLessonPage() {
-    var path = (location.pathname || "").replace(/\\/g, "/");
-    if (/\/index\.html?$/i.test(path) || /\/$/.test(path)) return false;
-    if (/\/(python|html|css|javascript|php|tamrin)\//i.test(path)) {
-      if (/\/index\.html?$/i.test(path)) return false;
-      return true;
+  var tier = "high";
+  try {
+    var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (c) {
+      if (c.saveData) tier = "low";
+      else {
+        var t = String(c.effectiveType || "").toLowerCase();
+        if (t === "slow-2g" || t === "2g") tier = "low";
+        else if (t === "3g") tier = "mid";
+      }
     }
-    return false;
-  }
+  } catch (e2) {}
+  if (isMobile && tier === "high") tier = "mid";
 
-  var isLesson = isLessonPage();
-  var isShort = isLesson;
-  if (!isLesson) {
-    try { isShort = sessionStorage.getItem(FLAG) === "1"; } catch (e) {}
-  }
+  var FLAG = "mcd_boot_seen";
+  var seen = false;
+  try {
+    seen = sessionStorage.getItem(FLAG) === "1";
+  } catch (e3) {}
 
-  var DUR = isShort ? (mcdBootTier==="low"?200:LESSON_MS) : (mcdBootTier==="low"?900:mcdBootTier==="mid"?1400:FULL_MS);
-  var CHARS = "01<>{}[]/+*=#";
+  /* Mobile / weak net: almost no splash. Desktop first visit: short only. */
+  var DUR = 0;
+  if (seen || tier === "low" || isMobile) {
+    DUR = tier === "low" ? 120 : 220;
+  } else if (tier === "mid") {
+    DUR = 450;
+  } else {
+    DUR = 700;
+  }
 
   var css = document.createElement("style");
   css.id = "boot-loader-css";
   css.textContent =
-    "#boot-loader{position:fixed;inset:0;background:#050505;z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease,visibility .35s}" +
+    "#boot-loader{position:fixed;inset:0;background:#050505;z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .28s ease,visibility .28s}" +
     "#boot-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}" +
-    "#boot-loader canvas{position:absolute;inset:0;width:100%;height:100%}";
+    "#boot-loader .boot-mark{color:#00e676;font:700 28px/1 system-ui,sans-serif;letter-spacing:.06em;opacity:.9}";
   document.head.appendChild(css);
-
-  
 
   var loader = document.createElement("div");
   loader.id = "boot-loader";
-  loader.innerHTML = '<canvas id="boot-c"></canvas>';
+  loader.innerHTML = '<div class="boot-mark">MCD</div>';
+
+  function finish() {
+    try {
+      sessionStorage.setItem(FLAG, "1");
+    } catch (e4) {}
+    if (!loader || loader.classList.contains("hidden")) return;
+    loader.classList.add("hidden");
+    setTimeout(function () {
+      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 300);
+  }
 
   function mount() {
     if (!document.body) {
@@ -65,132 +73,46 @@
       return;
     }
     document.body.insertBefore(loader, document.body.firstChild);
-    start();
-  }
-
-  function finish() {
-    if (!isLesson) {
-      try { sessionStorage.setItem(FLAG, "1"); } catch (e) {}
-    }
-    if (!loader || loader.classList.contains("hidden")) return;
-    loader.classList.add("hidden");
-    setTimeout(function () {
-      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
-    }, isShort ? 200 : 400);
-  }
-
-  function start() {
-    var canvas = document.getElementById("boot-c");
-    if (!canvas) { finish(); return; }
-    var ctx = canvas.getContext("2d", { alpha: false });
-    var W = 0, H = 0, dpr = 1, parts = null, t0 = 0;
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = window.innerWidth;
-      H = window.innerHeight;
-      canvas.width = (W * dpr) | 0;
-      canvas.height = (H * dpr) | 0;
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    function buildPoints() {
-      var off = document.createElement("canvas");
-      var ow = 520, oh = 180;
-      off.width = ow; off.height = oh;
-      var o = off.getContext("2d");
-      o.fillStyle = "#000";
-      o.fillRect(0, 0, ow, oh);
-      o.fillStyle = "#fff";
-      o.textAlign = "center";
-      o.textBaseline = "middle";
-      o.font = "bold 120px Arial Black, Arial, sans-serif";
-      o.fillText("MCD", ow / 2, oh * 0.5);
-      var data = o.getImageData(0, 0, ow, oh).data;
-      var pts = [], step = isShort ? 8 : 5;
-      for (var y = 0; y < oh; y += step) {
-        for (var x = 0; x < ow; x += step) {
-          if (data[(y * ow + x) * 4] > 140) pts.push({ nx: x / ow - 0.5, ny: y / oh - 0.5 });
-        }
-      }
-      return pts;
-    }
-
-    function init() {
-      var pts = buildPoints();
-      var scaleX = Math.min(W * 0.75, 480);
-      var scaleY = scaleX * 0.38;
-      var cy = H * 0.48;
-      parts = pts.map(function (p) {
-        var ang = Math.random() * 6.2832;
-        var dist = Math.max(W, H) * (0.22 + Math.random() * (isShort ? 0.18 : 0.5));
-        return {
-          x: W * 0.5 + Math.cos(ang) * dist,
-          y: H * 0.5 + Math.sin(ang) * dist,
-          tx: W * 0.5 + p.nx * scaleX,
-          ty: cy + p.ny * scaleY,
-          ch: CHARS[(Math.random() * CHARS.length) | 0],
-          a: 0.5 + Math.random() * 0.4,
-          d: Math.random() * (isShort ? 0.04 : 0.18)
-        };
-      });
-    }
-
-    function ease(t) { return t * (2 - t); }
-
-    function frame(now) {
-      if (!t0) t0 = now;
-      var p = Math.min(1, (now - t0) / DUR);
-      ctx.fillStyle = "#050505";
-      ctx.fillRect(0, 0, W, H);
-      ctx.font = '11px monospace';
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      for (var i = 0; i < parts.length; i++) {
-        var pt = parts[i];
-        var t = (p - pt.d) / (1 - pt.d);
-        if (t < 0) t = 0; else if (t > 1) t = 1;
-        t = ease(t);
-        ctx.globalAlpha = pt.a * (0.2 + 0.8 * t);
-        ctx.fillStyle = t > 0.82 ? "#00e676" : "#00c853";
-        ctx.fillText(pt.ch, pt.x + (pt.tx - pt.x) * t, pt.y + (pt.ty - pt.y) * t);
-      }
-      ctx.globalAlpha = 1;
-      if (p < 1) requestAnimationFrame(frame);
-      else setTimeout(finish, isShort ? 60 : 250);
-    }
-
-    try {
-      init();
-      requestAnimationFrame(frame);
-    } catch (e) {
-      finish();
-    }
-    setTimeout(finish, DUR + (isShort ? 500 : 3500));
+    setTimeout(finish, DUR);
+    /* hard safety: never stay black more than 1s */
+    setTimeout(finish, 1000);
   }
 
   mount();
 
-  // Load offline session cache (language prefetch + clear on new session)
-  try {
-    var s = document.createElement("script");
-    s.src = (function () {
-      var scripts = document.getElementsByTagName("script");
-      for (var i = 0; i < scripts.length; i++) {
-        var src = scripts[i].src || "";
-        if (src.indexOf("boot-loader.js") !== -1) {
-          return src.replace(/boot-loader\.js.*$/, "offline-session.js");
+  /* Offline script: only AFTER page is usable — never compete with first paint */
+  function loadOffline() {
+    try {
+      if (window.__MCD_OFFLINE_SCRIPT__) return;
+      window.__MCD_OFFLINE_SCRIPT__ = true;
+      var s = document.createElement("script");
+      s.src = (function () {
+        var scripts = document.getElementsByTagName("script");
+        for (var i = 0; i < scripts.length; i++) {
+          var src = scripts[i].src || "";
+          if (src.indexOf("boot-loader.js") !== -1) {
+            return src.replace(/boot-loader\.js.*$/, "offline-session.js");
+          }
         }
-      }
-      var p = location.pathname || "/";
-      if (p.indexOf("/programer") === 0) return "/programer/assets/js/offline-session.js";
-      return "assets/js/offline-session.js";
-    })();
-    s.defer = true;
-    document.head.appendChild(s);
-  } catch (eLoad) {}
+        var p = location.pathname || "/";
+        if (p.indexOf("/programer") === 0) return "/programer/assets/js/offline-session.js";
+        return "assets/js/offline-session.js";
+      })();
+      s.defer = true;
+      s.async = true;
+      document.head.appendChild(s);
+    } catch (e5) {}
+  }
+
+  function scheduleOffline() {
+    var delay = isMobile ? 6000 : 3500;
+    if (document.readyState === "complete") {
+      setTimeout(loadOffline, delay);
+    } else {
+      window.addEventListener("load", function () {
+        setTimeout(loadOffline, delay);
+      });
+    }
+  }
+  scheduleOffline();
 })();
