@@ -1,15 +1,18 @@
 /**
- * MCD offline — background only, never slow the live site
- * - Site stays online and fast for the user
- * - After a delay, quietly caches pages with LOW concurrency on mobile
+ * MCD permanent offline pack — gentle background fill
+ *
+ * - First successful full download is remembered in localStorage (stays forever)
+ * - Online: user uses live site; background fills missing pages slowly
+ * - Offline: Service Worker serves the saved pack
+ * - No aggressive mass-download that freezes mobile Chrome
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
 
-  var CACHE_NAME = "mcd-offline-v3";
-  var SESSION_KEY = "mcd_full_offline_session_v3";
-  var FULL_DONE_KEY = "mcd_full_prefetch_done_v3";
+  var CACHE_NAME = "mcd-offline-v4";
+  var DONE_KEY = "mcd_offline_pack_done_v4";
+  var CURSOR_KEY = "mcd_offline_pack_cursor_v4";
 
   var isMobile = false;
   try {
@@ -25,20 +28,6 @@
     return "/";
   })();
 
-  function fullPrefetchDone() {
-    try {
-      return sessionStorage.getItem(FULL_DONE_KEY) === "1";
-    } catch (e) {
-      return false;
-    }
-  }
-
-  function markFullPrefetchDone() {
-    try {
-      sessionStorage.setItem(FULL_DONE_KEY, "1");
-    } catch (e) {}
-  }
-
   function absoluteUrl(path) {
     try {
       return new URL(path, location.origin + SCOPE_BASE).href;
@@ -47,11 +36,32 @@
     }
   }
 
-  function notifySW(type) {
+  function isDone() {
     try {
-      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({ type: type });
-      }
+      return localStorage.getItem(DONE_KEY) === "1";
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markDone() {
+    try {
+      localStorage.setItem(DONE_KEY, "1");
+      localStorage.removeItem(CURSOR_KEY);
+    } catch (e) {}
+  }
+
+  function getCursor() {
+    try {
+      return parseInt(localStorage.getItem(CURSOR_KEY) || "0", 10) || 0;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  function setCursor(n) {
+    try {
+      localStorage.setItem(CURSOR_KEY, String(n));
     } catch (e) {}
   }
 
@@ -89,7 +99,7 @@
       });
   }
 
-  function coreAssetUrls() {
+  function coreUrls() {
     return [
       absoluteUrl(""),
       absoluteUrl("index.html"),
@@ -111,33 +121,16 @@
     ];
   }
 
-  var toastEl = null;
-  function showMini(msg) {
-    try {
-      if (!toastEl) {
-        toastEl = document.createElement("div");
-        toastEl.style.cssText =
-          "position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:99990;max-width:90vw;padding:6px 10px;border-radius:8px;background:rgba(13,17,23,.85);color:#8b949e;border:1px solid #30363d;font:11px/1.4 sans-serif;direction:rtl;pointer-events:none";
-        document.body.appendChild(toastEl);
+  function unique(list) {
+    var s = {};
+    var o = [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] && !s[list[i]]) {
+        s[list[i]] = 1;
+        o.push(list[i]);
       }
-      toastEl.textContent = msg;
-      toastEl.style.opacity = "1";
-    } catch (e) {}
-  }
-
-  function hideMini(finalMsg) {
-    try {
-      if (!toastEl) return;
-      if (finalMsg) toastEl.textContent = finalMsg;
-      setTimeout(function () {
-        if (!toastEl) return;
-        toastEl.style.opacity = "0";
-        setTimeout(function () {
-          if (toastEl && toastEl.parentNode) toastEl.parentNode.removeChild(toastEl);
-          toastEl = null;
-        }, 400);
-      }, 2500);
-    } catch (e) {}
+    }
+    return o;
   }
 
   function lowFetch(url) {
@@ -148,109 +141,93 @@
     }
   }
 
-  function cacheAllUrls(urls) {
-    if (!window.caches) return Promise.resolve({ total: 0, ok: 0, fail: 0 });
+  /**
+   * Gentle fill: small batches + pause between batches
+   * so Chrome on mobile stays usable.
+   */
+  function gentleFill(urls) {
+    if (!window.caches || !navigator.onLine) return Promise.resolve();
 
-    var total = urls.length;
-    var done = 0;
-    var ok = 0;
-    var concurrency = isMobile ? 3 : 8;
-    var index = 0;
-    var lastUi = 0;
+    var batchSize = isMobile ? 4 : 10;
+    var pauseMs = isMobile ? 700 : 250;
+    var cursor = getCursor();
+    if (cursor >= urls.length) {
+      markDone();
+      return Promise.resolve();
+    }
 
     return caches.open(CACHE_NAME).then(function (cache) {
-      function putOne(url) {
-        return lowFetch(url)
-          .then(function (res) {
-            if (!res || !res.ok) throw new Error("bad");
-            return cache.put(url, res);
+      function runBatch() {
+        if (!navigator.onLine) return Promise.resolve();
+        if (cursor >= urls.length) {
+          markDone();
+          return Promise.resolve();
+        }
+
+        var end = Math.min(cursor + batchSize, urls.length);
+        var slice = urls.slice(cursor, end);
+
+        return Promise.all(
+          slice.map(function (url) {
+            return lowFetch(url)
+              .then(function (res) {
+                if (res && res.ok) return cache.put(url, res);
+              })
+              .catch(function () {});
           })
-          .then(function () {
-            ok += 1;
-            done += 1;
-            var now = Date.now();
-            if (now - lastUi > 800 || done === total) {
-              lastUi = now;
-              showMini("ذخیره پس‌زمینه " + done + "/" + total);
-            }
-          })
-          .catch(function () {
-            done += 1;
+        ).then(function () {
+          cursor = end;
+          setCursor(cursor);
+          if (cursor >= urls.length) {
+            markDone();
+            return;
+          }
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              runBatch().then(resolve);
+            }, pauseMs);
           });
+        });
       }
 
-      function worker() {
-        if (index >= urls.length) return Promise.resolve();
-        var url = urls[index++];
-        return putOne(url).then(worker);
-      }
-
-      var workers = [];
-      for (var w = 0; w < concurrency; w++) workers.push(worker());
-      return Promise.all(workers).then(function () {
-        return { total: total, ok: ok, fail: total - ok };
-      });
+      return runBatch();
     });
   }
 
-  function uniqueUrls(list) {
-    var seen = {};
-    var out = [];
-    for (var i = 0; i < list.length; i++) {
-      var u = list[i];
-      if (u && !seen[u]) {
-        seen[u] = 1;
-        out.push(u);
-      }
-    }
-    return out;
-  }
-
-  function prefetchEntireSite() {
-    if (fullPrefetchDone()) return;
+  function startBackgroundPack() {
+    if (isDone()) return;
     if (!navigator.onLine) return;
 
     loadSitemapUrls()
       .catch(function () {
         return [];
       })
-      .then(function (sitemapUrls) {
-        var all = uniqueUrls(coreAssetUrls().concat(sitemapUrls));
-        showMini("شروع ذخیره پس‌زمینه " + all.length + " صفحه…");
-        return cacheAllUrls(all).then(function (stats) {
-          markFullPrefetchDone();
-          hideMini("ذخیره شد: " + stats.ok + " صفحه");
-        });
+      .then(function (map) {
+        var all = unique(coreUrls().concat(map));
+        return gentleFill(all);
       })
       .catch(function () {});
   }
 
   function init() {
     registerSW().then(function () {
-      notifySW("PAGE_SHOW");
-      window.addEventListener(
-        "pagehide",
-        function () {
-          notifySW("PAGE_HIDE");
-        },
-        { capture: true }
-      );
-
-      /* Start caching only when browser is idle-ish */
-      var start = function () {
-        prefetchEntireSite();
-      };
-      if (typeof requestIdleCallback === "function") {
-        requestIdleCallback(start, { timeout: 4000 });
-      } else {
-        setTimeout(start, 2000);
-      }
+      /* wait until page is calm */
+      var delay = isMobile ? 8000 : 5000;
+      setTimeout(function () {
+        if (typeof requestIdleCallback === "function") {
+          requestIdleCallback(
+            function () {
+              startBackgroundPack();
+            },
+            { timeout: 5000 }
+          );
+        } else {
+          startBackgroundPack();
+        }
+      }, delay);
     });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  if (document.readyState === "complete") init();
+  else window.addEventListener("load", init);
 })();
