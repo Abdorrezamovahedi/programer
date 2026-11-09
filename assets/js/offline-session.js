@@ -1,16 +1,16 @@
 /**
- * MCD Code Up — full-site offline for current visit
+ * MCD Code Up — seamless offline for the whole site
  *
- * 1) User opens the site → whole site is downloaded into Cache Storage
- * 2) User can browse every page offline until they leave
- * 3) When all tabs of the site are closed / user leaves → cache is deleted
+ * On enter: download every page + assets into browser cache
+ * While offline: site keeps working (Service Worker serves cache)
+ * When all tabs closed: cache is removed to free storage
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
 
-  var SESSION_KEY = "mcd_full_offline_session_v2";
-  var FULL_DONE_KEY = "mcd_full_prefetch_done_v2";
+  var SESSION_KEY = "mcd_full_offline_session_v3";
+  var FULL_DONE_KEY = "mcd_full_prefetch_done_v3";
 
   var SCOPE_BASE = (function () {
     var p = location.pathname || "/";
@@ -59,27 +59,35 @@
           return;
         }
         var ch = new MessageChannel();
+        var settled = false;
+        function done(v) {
+          if (settled) return;
+          settled = true;
+          resolve(v);
+        }
         ch.port1.onmessage = function (ev) {
-          resolve(ev.data);
+          done(ev.data);
         };
         try {
           controller.postMessage(msg, [ch.port2]);
         } catch (e) {
-          resolve(null);
+          done(null);
         }
         setTimeout(function () {
-          resolve(null);
-        }, 120000);
+          done(null);
+        }, 180000);
       }
 
       if (navigator.serviceWorker.controller) {
         send(navigator.serviceWorker.controller);
       } else {
-        navigator.serviceWorker.ready.then(function (reg) {
-          send(reg.active || navigator.serviceWorker.controller);
-        }).catch(function () {
-          resolve(null);
-        });
+        navigator.serviceWorker.ready
+          .then(function (reg) {
+            send((reg && reg.active) || navigator.serviceWorker.controller);
+          })
+          .catch(function () {
+            resolve(null);
+          });
       }
     });
   }
@@ -96,13 +104,16 @@
     var tasks = [];
     if (window.caches && caches.keys) {
       tasks.push(
-        caches.keys().then(function (keys) {
-          return Promise.all(
-            keys.map(function (k) {
-              if (k.indexOf("mcd-offline") === 0) return caches.delete(k);
-            })
-          );
-        }).catch(function () {})
+        caches
+          .keys()
+          .then(function (keys) {
+            return Promise.all(
+              keys.map(function (k) {
+                if (k.indexOf("mcd-offline") === 0) return caches.delete(k);
+              })
+            );
+          })
+          .catch(function () {})
       );
     }
     tasks.push(postToSW({ type: "CLEAR_CACHE" }));
@@ -114,10 +125,8 @@
     var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\//g, "$1");
     return navigator.serviceWorker
       .register(swUrl, { scope: SCOPE_BASE })
-      .then(function (reg) {
-        return navigator.serviceWorker.ready.then(function () {
-          return reg;
-        });
+      .then(function () {
+        return navigator.serviceWorker.ready;
       })
       .catch(function (err) {
         console.warn("[MCD offline] SW register failed", err);
@@ -188,14 +197,14 @@
       if (toastTimer) clearTimeout(toastTimer);
       toastTimer = setTimeout(function () {
         el.style.opacity = "0";
-      }, 4000);
+      }, 4500);
     } catch (e) {}
   }
 
   function prefetchEntireSite() {
     if (fullPrefetchDone()) return Promise.resolve();
 
-    showToast("در حال ذخیره‌سازی کل سایت برای استفاده آفلاین…");
+    showToast("در حال آماده‌سازی کل سایت برای حالت آفلاین…");
 
     return loadSitemapUrls().then(function (urls) {
       if (!urls.length) {
@@ -211,7 +220,6 @@
         ];
       }
 
-      // Always include core assets explicitly
       var extras = [
         absoluteUrl("assets/css/main.css"),
         absoluteUrl("assets/js/boot-loader.js"),
@@ -220,16 +228,20 @@
         absoluteUrl("assets/js/mcd-motion.js"),
         absoluteUrl("assets/js/offline-session.js"),
         absoluteUrl("assets/js/search.js"),
+        absoluteUrl("assets/js/exercises.js"),
+        absoluteUrl("assets/js/tamrin-filter.js"),
         absoluteUrl("assets/img/favicon.svg"),
-        absoluteUrl("assets/img/og-default.svg")
+        absoluteUrl("assets/img/og-default.svg"),
+        absoluteUrl("404.html")
       ];
       for (var i = 0; i < extras.length; i++) {
         if (urls.indexOf(extras[i]) === -1) urls.push(extras[i]);
       }
 
-      return postToSW({ type: "CACHE_URLS", urls: urls }).then(function () {
+      return postToSW({ type: "CACHE_URLS", urls: urls }).then(function (res) {
         markFullPrefetchDone();
-        showToast("کل سایت ذخیره شد — در قطع اینترنت هم می‌توانید جابه‌جا شوید", true);
+        showToast("سایت آماده است — حتی بدون اینترنت کامل کار می‌کند", true);
+        return res;
       });
     });
   }
@@ -237,9 +249,11 @@
   function bindLeaveHandlers() {
     notifySW("PAGE_SHOW");
 
+    /* Only signal leave when the page is really unloading — not on app switch alone */
     window.addEventListener(
       "pagehide",
-      function () {
+      function (ev) {
+        /* persisted = back-forward cache; still treat as possible leave */
         notifySW("PAGE_HIDE");
       },
       { capture: true }
@@ -253,26 +267,17 @@
       { capture: true }
     );
 
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "hidden") {
-        notifySW("PAGE_HIDE");
-      } else if (document.visibilityState === "visible") {
-        notifySW("PAGE_SHOW");
-      }
-    });
-
     window.addEventListener("online", function () {
       showToast("اتصال اینترنت برقرار شد", true);
     });
     window.addEventListener("offline", function () {
-      showToast("اینترنت قطع است — ادامه با نسخه ذخیره‌شده سایت");
+      showToast("بدون اینترنت — سایت از حافظه دستگاه اجرا می‌شود", true);
     });
   }
 
   function init() {
     var boot = Promise.resolve();
 
-    // New visit (no session flag) → wipe any leftover cache from previous visit
     if (!sessionActive()) {
       boot = clearOfflineCaches().then(function () {
         markSession();
@@ -287,10 +292,9 @@
       })
       .then(function () {
         bindLeaveHandlers();
-        // Start full-site download shortly after first paint
         setTimeout(function () {
           prefetchEntireSite();
-        }, 800);
+        }, 500);
       });
   }
 

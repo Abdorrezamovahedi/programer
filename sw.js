@@ -1,10 +1,10 @@
-/* MCD Code Up — full-site session offline cache
- * - Caches core assets on install
- * - Caches all pages when asked (CACHE_URLS)
- * - Serves from cache when offline
- * - Clears mcd-offline* caches when last tab leaves the site
+/* MCD Code Up — seamless full-site offline
+ * When online: network first, update cache
+ * When offline: cache first — site works as if still online
+ * Full site is prefetched on first visit of the session
+ * Cache cleared only when every site tab is closed
  */
-var CACHE = "mcd-offline-v2";
+var CACHE = "mcd-offline-v3";
 var CORE = [
   "./",
   "./index.html",
@@ -25,7 +25,6 @@ var CORE = [
 ];
 
 var leaveTimer = null;
-var openPages = 0;
 
 function clearAllMcdCaches() {
   return caches.keys().then(function (keys) {
@@ -43,16 +42,21 @@ function clientsCount() {
   });
 }
 
+/* Only clear after all windows are gone (not on app switch) */
 function scheduleClearIfEmpty() {
   if (leaveTimer) clearTimeout(leaveTimer);
   leaveTimer = setTimeout(function () {
     clientsCount().then(function (n) {
-      if (n === 0) {
-        clearAllMcdCaches();
-        openPages = 0;
-      }
+      if (n === 0) clearAllMcdCaches();
     });
-  }, 1500);
+  }, 2500);
+}
+
+function cancelClear() {
+  if (leaveTimer) {
+    clearTimeout(leaveTimer);
+    leaveTimer = null;
+  }
 }
 
 self.addEventListener("install", function (event) {
@@ -100,14 +104,60 @@ function isCacheableRequest(request) {
   return true;
 }
 
+/* Try several URL shapes so offline links always hit cache */
+function matchInCache(cache, request) {
+  return cache.match(request).then(function (hit) {
+    if (hit) return hit;
+    var url;
+    try {
+      url = new URL(request.url);
+    } catch (e) {
+      return null;
+    }
+    var candidates = [];
+    var path = url.pathname;
+    candidates.push(url.origin + path);
+    if (path.endsWith("/")) {
+      candidates.push(url.origin + path + "index.html");
+    } else if (!/\.\w+$/.test(path)) {
+      candidates.push(url.origin + path + "/");
+      candidates.push(url.origin + path + "/index.html");
+    }
+    if (path.endsWith("/index.html")) {
+      candidates.push(url.origin + path.replace(/\/index\.html$/, "/"));
+      candidates.push(url.origin + path.replace(/\/index\.html$/, ""));
+    }
+    var chain = Promise.resolve(null);
+    candidates.forEach(function (c) {
+      chain = chain.then(function (prev) {
+        if (prev) return prev;
+        return cache.match(c);
+      });
+    });
+    return chain;
+  });
+}
+
 self.addEventListener("fetch", function (event) {
   var request = event.request;
   if (!isCacheableRequest(request)) return;
 
   event.respondWith(
     caches.open(CACHE).then(function (cache) {
-      return cache.match(request).then(function (cached) {
-        var networkFetch = fetch(request)
+      return matchInCache(cache, request).then(function (cached) {
+        /* Offline → always prefer cache (feels like internet is still on) */
+        if (!self.navigator.onLine) {
+          if (cached) return cached;
+          if (request.mode === "navigate") {
+            return matchInCache(cache, new Request("./index.html")).then(function (home) {
+              return home || cache.match("./404.html");
+            });
+          }
+          return cached || Response.error();
+        }
+
+        /* Online → network first, keep cache fresh */
+        return fetch(request)
           .then(function (response) {
             if (response && response.ok && (response.type === "basic" || response.type === "cors")) {
               try {
@@ -119,15 +169,12 @@ self.addEventListener("fetch", function (event) {
           .catch(function () {
             if (cached) return cached;
             if (request.mode === "navigate") {
-              return cache.match("./index.html").then(function (home) {
+              return matchInCache(cache, new Request("./index.html")).then(function (home) {
                 return home || cache.match("./404.html");
               });
             }
-            return cached;
+            return cached || Response.error();
           });
-
-        if (cached) return cached;
-        return networkFetch;
       });
     })
   );
@@ -137,15 +184,10 @@ self.addEventListener("message", function (event) {
   var data = event.data || {};
 
   if (data.type === "PAGE_SHOW") {
-    openPages += 1;
-    if (leaveTimer) {
-      clearTimeout(leaveTimer);
-      leaveTimer = null;
-    }
+    cancelClear();
   }
 
   if (data.type === "PAGE_HIDE" || data.type === "LEAVE_SITE") {
-    openPages = Math.max(0, openPages - 1);
     scheduleClearIfEmpty();
   }
 
@@ -162,7 +204,7 @@ self.addEventListener("message", function (event) {
       caches.open(CACHE).then(function (cache) {
         var urls = data.urls.slice(0, 2500);
         var i = 0;
-        var concurrency = 6;
+        var concurrency = 8;
 
         function next() {
           if (i >= urls.length) return Promise.resolve();
@@ -172,7 +214,20 @@ self.addEventListener("message", function (event) {
               batch.push(
                 fetch(url, { credentials: "same-origin" })
                   .then(function (res) {
-                    if (res && res.ok) return cache.put(url, res);
+                    if (res && res.ok) {
+                      return cache.put(url, res).then(function () {
+                        /* also store slash / index variants for navigations */
+                        try {
+                          var u = new URL(url);
+                          if (u.pathname.endsWith("/index.html")) {
+                            var dir = u.origin + u.pathname.replace(/\/index\.html$/, "/");
+                            return fetch(url, { credentials: "same-origin" }).then(function (r2) {
+                              if (r2 && r2.ok) return cache.put(dir, r2);
+                            });
+                          }
+                        } catch (e) {}
+                      });
+                    }
                   })
                   .catch(function () {})
               );
