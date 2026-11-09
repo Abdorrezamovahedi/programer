@@ -2,6 +2,7 @@
  * MCD programmers – boot loader
  * First home visit: full (~2.2s). Lesson files: always ~0.25s.
  * One particle MCD only — no second logo/text.
+ * Also loads offline-session.js for session offline caching.
  */
 (function () {
   if (window.__MCD_BOOT_DONE__) return;
@@ -173,4 +174,23 @@
   }
 
   mount();
+
+  // Load offline session cache (language prefetch + clear on new session)
+  try {
+    var s = document.createElement("script");
+    s.src = (function () {
+      var scripts = document.getElementsByTagName("script");
+      for (var i = 0; i < scripts.length; i++) {
+        var src = scripts[i].src || "";
+        if (src.indexOf("boot-loader.js") !== -1) {
+          return src.replace(/boot-loader\.js.*$/, "offline-session.js");
+        }
+      }
+      var p = location.pathname || "/";
+      if (p.indexOf("/programer") === 0) return "/programer/assets/js/offline-session.js";
+      return "assets/js/offline-session.js";
+    })();
+    s.defer = true;
+    document.head.appendChild(s);
+  } catch (eLoad) {}
 })();
