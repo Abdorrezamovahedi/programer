@@ -1,10 +1,14 @@
 /**
- * MCD permanent offline pack — gentle background fill
+ * MCD permanent offline pack — adaptive to real network quality
  *
- * - First successful full download is remembered in localStorage (stays forever)
- * - Online: user uses live site; background fills missing pages slowly
- * - Offline: Service Worker serves the saved pack
- * - No aggressive mass-download that freezes mobile Chrome
+ * Measures connection (API + small probe) and chooses batch size / pause:
+ *   very-slow / save-data → almost idle, tiny batches
+ *   slow                 → calm
+ *   mid                  → balanced
+ *   fast                 → quicker fill, still background priority:low
+ *
+ * Cache stays forever after first complete fill.
+ * Online = live site; Offline = saved pack.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -70,6 +74,126 @@
     var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\//g, "$1");
     return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function () {
       return null;
+    });
+  }
+
+  /**
+   * Profile network → { level, batchSize, pauseMs, startDelay }
+   * level: off | very-slow | slow | mid | fast
+   */
+  function profileNetwork() {
+    var level = "mid";
+    var downlink = null;
+    var rtt = null;
+    var effective = "";
+    var saveData = false;
+
+    try {
+      var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (c) {
+        saveData = !!c.saveData;
+        effective = String(c.effectiveType || "").toLowerCase();
+        if (typeof c.downlink === "number") downlink = c.downlink;
+        if (typeof c.rtt === "number") rtt = c.rtt;
+      }
+    } catch (e) {}
+
+    if (saveData) {
+      level = "off";
+    } else if (effective === "slow-2g" || effective === "2g") {
+      level = "very-slow";
+    } else if (effective === "3g") {
+      level = "slow";
+    } else if (effective === "4g") {
+      level = "fast";
+    }
+
+    if (downlink != null) {
+      if (downlink > 0 && downlink < 0.5) level = "very-slow";
+      else if (downlink < 1.5 && level === "fast") level = "slow";
+      else if (downlink < 3 && level === "fast") level = "mid";
+      else if (downlink >= 8) level = "fast";
+    }
+
+    if (rtt != null) {
+      if (rtt >= 800) level = level === "fast" ? "slow" : "very-slow";
+      else if (rtt >= 400 && level === "fast") level = "mid";
+    }
+
+    /* mobile is a bit more conservative */
+    if (isMobile && level === "fast") level = "mid";
+
+    var table = {
+      off: { batchSize: 0, pauseMs: 0, startDelay: 0 },
+      "very-slow": { batchSize: 1, pauseMs: 2000, startDelay: isMobile ? 12000 : 8000 },
+      slow: { batchSize: 2, pauseMs: 1200, startDelay: isMobile ? 10000 : 6000 },
+      mid: { batchSize: isMobile ? 3 : 6, pauseMs: isMobile ? 800 : 350, startDelay: isMobile ? 7000 : 4000 },
+      fast: { batchSize: isMobile ? 5 : 10, pauseMs: isMobile ? 400 : 150, startDelay: isMobile ? 5000 : 3000 }
+    };
+
+    var cfg = table[level] || table.mid;
+    return {
+      level: level,
+      batchSize: cfg.batchSize,
+      pauseMs: cfg.pauseMs,
+      startDelay: cfg.startDelay,
+      downlink: downlink,
+      rtt: rtt,
+      effective: effective
+    };
+  }
+
+  /** Optional real probe: time a small same-origin file */
+  function probeSpeed(baseProfile) {
+    return new Promise(function (resolve) {
+      var url = absoluteUrl("assets/img/favicon.svg") + "?probe=" + Date.now();
+      var t0 = performance.now ? performance.now() : Date.now();
+      var settled = false;
+      function done(p) {
+        if (settled) return;
+        settled = true;
+        resolve(p);
+      }
+      setTimeout(function () {
+        done(baseProfile);
+      }, 2500);
+
+      fetch(url, { credentials: "same-origin", cache: "no-store", priority: "low" })
+        .then(function (res) {
+          return res.arrayBuffer().then(function (buf) {
+            var t1 = performance.now ? performance.now() : Date.now();
+            var ms = Math.max(1, t1 - t0);
+            var bytes = buf ? buf.byteLength : 0;
+            var kbps = bytes > 0 ? (bytes * 8) / ms : 0; /* approx kilobits/ms → scale */
+            /* normalize: favicon is tiny; use latency mainly */
+            var p = {
+              level: baseProfile.level,
+              batchSize: baseProfile.batchSize,
+              pauseMs: baseProfile.pauseMs,
+              startDelay: baseProfile.startDelay,
+              downlink: baseProfile.downlink,
+              rtt: baseProfile.rtt,
+              effective: baseProfile.effective
+            };
+            if (ms > 1500) {
+              p.level = "very-slow";
+              p.batchSize = 1;
+              p.pauseMs = 2200;
+            } else if (ms > 800) {
+              if (p.level === "fast") p.level = "mid";
+              p.batchSize = Math.min(p.batchSize, isMobile ? 2 : 4);
+              p.pauseMs = Math.max(p.pauseMs, 900);
+            } else if (ms < 200 && p.level !== "off") {
+              p.level = isMobile ? "mid" : "fast";
+              p.batchSize = isMobile ? 5 : 10;
+              p.pauseMs = isMobile ? 400 : 150;
+            }
+            done(p);
+          });
+        })
+        .catch(function () {
+          done(baseProfile);
+        });
     });
   }
 
@@ -141,15 +265,12 @@
     }
   }
 
-  /**
-   * Gentle fill: small batches + pause between batches
-   * so Chrome on mobile stays usable.
-   */
-  function gentleFill(urls) {
+  function adaptiveFill(urls, profile) {
     if (!window.caches || !navigator.onLine) return Promise.resolve();
+    if (profile.level === "off" || profile.batchSize < 1) return Promise.resolve();
 
-    var batchSize = isMobile ? 4 : 10;
-    var pauseMs = isMobile ? 700 : 250;
+    var batchSize = profile.batchSize;
+    var pauseMs = profile.pauseMs;
     var cursor = getCursor();
     if (cursor >= urls.length) {
       markDone();
@@ -159,6 +280,18 @@
     return caches.open(CACHE_NAME).then(function (cache) {
       function runBatch() {
         if (!navigator.onLine) return Promise.resolve();
+
+        /* re-check network each batch — adapt if user moved to worse signal */
+        var live = profileNetwork();
+        if (live.level === "off") return Promise.resolve();
+        if (live.level === "very-slow") {
+          batchSize = 1;
+          pauseMs = Math.max(pauseMs, 2000);
+        } else if (live.level === "slow") {
+          batchSize = Math.min(batchSize, 2);
+          pauseMs = Math.max(pauseMs, 1000);
+        }
+
         if (cursor >= urls.length) {
           markDone();
           return Promise.resolve();
@@ -198,33 +331,55 @@
     if (isDone()) return;
     if (!navigator.onLine) return;
 
-    loadSitemapUrls()
-      .catch(function () {
-        return [];
-      })
-      .then(function (map) {
-        var all = unique(coreUrls().concat(map));
-        return gentleFill(all);
-      })
-      .catch(function () {});
+    var base = profileNetwork();
+    if (base.level === "off") return; /* Save-Data: respect user, don't bulk download */
+
+    probeSpeed(base).then(function (profile) {
+      loadSitemapUrls()
+        .catch(function () {
+          return [];
+        })
+        .then(function (map) {
+          var all = unique(coreUrls().concat(map));
+          return adaptiveFill(all, profile);
+        })
+        .catch(function () {});
+    });
   }
 
   function init() {
     registerSW().then(function () {
-      /* wait until page is calm */
-      var delay = isMobile ? 8000 : 5000;
+      var base = profileNetwork();
+      var delay = base.startDelay || (isMobile ? 8000 : 5000);
+
       setTimeout(function () {
         if (typeof requestIdleCallback === "function") {
           requestIdleCallback(
             function () {
               startBackgroundPack();
             },
-            { timeout: 5000 }
+            { timeout: 6000 }
           );
         } else {
           startBackgroundPack();
         }
       }, delay);
+
+      /* if network improves later, try continue (cursor resumes) */
+      try {
+        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (conn && conn.addEventListener) {
+          conn.addEventListener("change", function () {
+            if (!isDone() && navigator.onLine) {
+              setTimeout(startBackgroundPack, 3000);
+            }
+          });
+        }
+      } catch (e) {}
+
+      window.addEventListener("online", function () {
+        if (!isDone()) setTimeout(startBackgroundPack, 2000);
+      });
     });
   }
 
