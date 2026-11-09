@@ -1,7 +1,7 @@
-/* MCD offline — permanent cache
- * Online  → network first (fresh site)
- * Offline → cache first (saved site)
- * Cache is NOT cleared on leave; only replaced when user clears site data
+/* MCD Service Worker — strict online/offline split
+ *
+ * ONLINE  → always fetch from network (live site). Quietly update cache.
+ * OFFLINE → only serve from cache (saved site).
  */
 var CACHE = "mcd-offline-v4";
 
@@ -38,7 +38,6 @@ self.addEventListener("activate", function (event) {
     caches.keys().then(function (keys) {
       return Promise.all(
         keys.map(function (key) {
-          /* drop only old mcd versions, keep v4 forever */
           if (key.indexOf("mcd-offline") === 0 && key !== CACHE) {
             return caches.delete(key);
           }
@@ -94,39 +93,54 @@ self.addEventListener("fetch", function (event) {
   if (!sameOrigin(request.url)) return;
 
   event.respondWith(
-    caches.open(CACHE).then(function (cache) {
-      return matchInCache(cache, request).then(function (cached) {
-        /* OFFLINE → saved site only */
-        if (!self.navigator.onLine) {
-          if (cached) return cached;
-          if (request.mode === "navigate") {
-            return matchInCache(cache, new Request("./index.html")).then(function (home) {
-              return home || cache.match("./404.html");
-            });
-          }
-          return cached || Response.error();
-        }
+    (async function () {
+      var cache = await caches.open(CACHE);
+      var online = true;
+      try {
+        online = self.navigator.onLine !== false;
+      } catch (e) {
+        online = true;
+      }
 
-        /* ONLINE → real network, update cache quietly */
-        return fetch(request)
-          .then(function (response) {
-            if (response && response.ok && (response.type === "basic" || response.type === "cors")) {
-              try {
-                cache.put(request, response.clone());
-              } catch (e) {}
-            }
-            return response;
-          })
-          .catch(function () {
-            if (cached) return cached;
-            if (request.mode === "navigate") {
-              return matchInCache(cache, new Request("./index.html")).then(function (home) {
-                return home || cache.match("./404.html");
-              });
-            }
-            return cached || Response.error();
-          });
-      });
-    })
+      /* OFFLINE → only cache */
+      if (!online) {
+        var cachedOff = await matchInCache(cache, request);
+        if (cachedOff) return cachedOff;
+        if (request.mode === "navigate") {
+          return (
+            (await matchInCache(cache, new Request("./index.html"))) ||
+            (await cache.match("./404.html")) ||
+            new Response("آفلاین — این صفحه هنوز ذخیره نشده", {
+              status: 503,
+              headers: { "Content-Type": "text/plain; charset=utf-8" }
+            })
+          );
+        }
+        return new Response("", { status: 503 });
+      }
+
+      /* ONLINE → only network; also save a copy for later offline use */
+      try {
+        var response = await fetch(request);
+        if (response && response.ok && (response.type === "basic" || response.type === "cors")) {
+          try {
+            cache.put(request, response.clone());
+          } catch (e2) {}
+        }
+        return response;
+      } catch (err) {
+        /* sudden disconnect mid-request */
+        var cached = await matchInCache(cache, request);
+        if (cached) return cached;
+        if (request.mode === "navigate") {
+          return (
+            (await matchInCache(cache, new Request("./index.html"))) ||
+            (await cache.match("./404.html")) ||
+            Response.error()
+          );
+        }
+        return Response.error();
+      }
+    })()
   );
 });
