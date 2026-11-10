@@ -1,9 +1,9 @@
 function escapeHtml(str) {
   return String(str)
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
 
@@ -176,44 +176,4 @@ function escapeHtml(str) {
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
-})();
-
-/* MCD_APP_OFFLINE_LOADER_V8 — فقط اپ؛ بدون localStorage */
-(function () {
-  try {
-    var q = location.search || '';
-    var path = location.pathname || '';
-    var isApp =
-      /[?&]mcd=app\b/i.test(q) ||
-      /\/app\.html$/i.test(path) ||
-      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
-      (typeof navigator.standalone === 'boolean' && navigator.standalone === true) ||
-      (function () {
-        try { return sessionStorage.getItem('mcd_app_mode') === '1'; } catch (e) { return false; }
-      })();
-    if (!isApp) {
-      try {
-        sessionStorage.removeItem('mcd_app_mode');
-        localStorage.removeItem('mcd_app_mode');
-        localStorage.removeItem('mcd_is_app');
-      } catch (eClr) {}
-      return;
-    }
-    try { sessionStorage.setItem('mcd_app_mode', '1'); } catch (e0) {}
-    if (window.__MCD_OFFLINE_INIT__) return;
-    var s = document.createElement('script');
-    s.src = (function () {
-      var scripts = document.getElementsByTagName('script');
-      for (var i = 0; i < scripts.length; i++) {
-        var src = scripts[i].src || '';
-        if (/assets\/js\/app\.js/.test(src)) {
-          return src.replace(/app\.js.*$/, 'offline-session-v8.js');
-        }
-      }
-      if (path.indexOf('/programer') === 0) return '/programer/assets/js/offline-session-v8.js';
-      return 'assets/js/offline-session-v8.js';
-    })();
-    s.async = true;
-    document.head.appendChild(s);
-  } catch (e) {}
 })();

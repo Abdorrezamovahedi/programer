@@ -1,6 +1,5 @@
 /**
  * MCD programmers – boot loader (original particle MCD animation)
- * Offline UI loads ONLY for app entry (?mcd=app / app.html), never Google site.
  */
 (function () {
   if (window.__MCD_BOOT_DONE__) return;
@@ -124,64 +123,4 @@
 
   if (document.body) mount();
   else document.addEventListener("DOMContentLoaded", mount);
-
-  /* Offline ONLY for app — NEVER on Google site */
-  function isMcdAppEntry() {
-    try {
-      var q = location.search || "";
-      var path = location.pathname || "";
-      if (/[?&]mcd=app\b/i.test(q) || /\/app\.html$/i.test(path)) return true;
-      if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
-      if (typeof navigator.standalone === "boolean" && navigator.standalone === true) return true;
-      try {
-        if (sessionStorage.getItem("mcd_app_mode") === "1") return true;
-      } catch (e0) {}
-    } catch (e) {}
-    return false;
-  }
-
-  function loadOffline() {
-    if (!isMcdAppEntry()) {
-      try {
-        sessionStorage.removeItem("mcd_app_mode");
-        localStorage.removeItem("mcd_app_mode");
-        localStorage.removeItem("mcd_is_app");
-      } catch (eClr) {}
-      return;
-    }
-    if (window.__MCD_OFFLINE_SCRIPT__) return;
-    window.__MCD_OFFLINE_SCRIPT__ = true;
-    try {
-      sessionStorage.setItem("mcd_app_mode", "1");
-    } catch (e1) {}
-    try {
-      var s = document.createElement("script");
-      s.async = true;
-      s.defer = true;
-      s.src = (function () {
-        var scripts = document.getElementsByTagName("script");
-        for (var i = 0; i < scripts.length; i++) {
-          var src = scripts[i].src || "";
-          if (src.indexOf("boot-loader.js") !== -1) {
-            return src.replace(/boot-loader\.js.*$/, "offline-session-v8.js");
-          }
-        }
-        if ((location.pathname || "").indexOf("/programer") === 0) {
-          return "/programer/assets/js/offline-session-v8.js";
-        }
-        return "assets/js/offline-session-v8.js";
-      })();
-      document.head.appendChild(s);
-    } catch (eLoad) {}
-  }
-
-  function scheduleOffline() {
-    var delay = 1500;
-    if (document.readyState === "complete") setTimeout(loadOffline, delay);
-    else
-      window.addEventListener("load", function () {
-        setTimeout(loadOffline, delay);
-      });
-  }
-  scheduleOffline();
 })();
