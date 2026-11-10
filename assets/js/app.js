@@ -1,10 +1,9 @@
-
 function escapeHtml(str) {
   return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
     .replace(/'/g, '&#39;');
 }
 
@@ -28,131 +27,14 @@ function escapeHtml(str) {
 
   function saveCompletedLessons(items) {
     try {
-      localStorage.setItem(COMPLETED_KEY, JSON.stringify(items));
-    } catch (error) {
-      // Ignore storage issues gracefully.
-    }
-  }
-
-  function bindLessonProgress() {
-    const lessonPinButton = document.getElementById('btnPinLesson');
-    if (!lessonPinButton) return;
-
-    const lessonUrl = location.pathname + location.search;
-    const heading = document.querySelector('main h1');
-    const lessonTitle = lessonPinButton.getAttribute('data-title') || (heading ? heading.textContent.trim() : document.title);
-    const completeButton = document.createElement('button');
-    completeButton.type = 'button';
-    completeButton.className = 'btn-complete';
-    completeButton.setAttribute('aria-pressed', 'false');
-    lessonPinButton.insertAdjacentElement('afterend', completeButton);
-
-    try {
-      localStorage.setItem(LAST_LESSON_KEY, JSON.stringify({ url: lessonUrl, title: lessonTitle }));
-    } catch (error) {
-      // Progress remains available when storage is enabled.
-    }
-
-    function refreshCompletionState() {
-      const isComplete = loadCompletedLessons().some(function (lesson) {
-        return lesson.url === lessonUrl;
-      });
-      completeButton.setAttribute('aria-pressed', String(isComplete));
-      completeButton.classList.toggle('is-complete', isComplete);
-      completeButton.textContent = isComplete ? '✓ درس تکمیل شد' : 'علامت‌گذاری به‌عنوان تکمیل‌شده';
-    }
-
-    completeButton.onclick = function () {
-      const completed = loadCompletedLessons();
-      const lessonIndex = completed.findIndex(function (lesson) {
-        return lesson.url === lessonUrl;
-      });
-
-      if (lessonIndex >= 0) {
-        completed.splice(lessonIndex, 1);
-      } else {
-        completed.push({ url: lessonUrl, title: lessonTitle });
-      }
-
-      saveCompletedLessons(completed);
-      refreshCompletionState();
-    };
-
-    refreshCompletionState();
-  }
-
-  function bindCodeCopyButtons() {
-    document.querySelectorAll('.code').forEach(function (codeBlock) {
-      const wrapper = codeBlock.closest('.codewrap');
-      if (!wrapper || wrapper.querySelector('.code-copy')) return;
-
-      const copyButton = document.createElement('button');
-      copyButton.type = 'button';
-      copyButton.className = 'code-copy';
-      copyButton.textContent = 'کپی کد';
-      copyButton.setAttribute('aria-label', 'کپی کد نمونه');
-      copyButton.onclick = function () {
-        const codeText = codeBlock.textContent;
-        if (!navigator.clipboard) {
-          copyButton.textContent = 'کپی در دسترس نیست';
-          return;
-        }
-
-        navigator.clipboard.writeText(codeText).then(function () {
-          copyButton.textContent = 'کپی شد';
-          window.setTimeout(function () {
-            copyButton.textContent = 'کپی کد';
-          }, 1600);
-        }).catch(function () {
-          copyButton.textContent = 'کپی انجام نشد';
-        });
-      };
-      wrapper.appendChild(copyButton);
-    });
-  }
-
-  function bindLessonActions() {
-    const lessonPinButton = document.getElementById('btnPinLesson');
-    if (!lessonPinButton) return;
-
-    const actions = document.createElement('div');
-    actions.className = 'lesson-utility-actions';
-
-    const printButton = document.createElement('button');
-    printButton.type = 'button';
-    printButton.textContent = 'چاپ درس';
-    printButton.onclick = function () {
-      window.print();
-    };
-
-    const shareButton = document.createElement('button');
-    shareButton.type = 'button';
-    shareButton.textContent = 'اشتراک‌گذاری';
-    shareButton.onclick = function () {
-      const shareData = { title: document.title, url: location.href };
-      if (navigator.share) {
-        navigator.share(shareData).catch(function () {});
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(location.href).then(function () {
-          shareButton.textContent = 'پیوند کپی شد';
-        });
-      }
-    };
-
-    actions.append(printButton, shareButton);
-    lessonPinButton.insertAdjacentElement('afterend', actions);
+      localStorage.setItem(COMPLETED_KEY, JSON.stringify(items.slice(0, 200)));
+    } catch (error) {}
   }
 
   function loadPins() {
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      return Array.isArray(stored)
-        ? stored.filter(function (pin) {
-            return pin && typeof pin === 'object' &&
-              typeof pin.k === 'string' && typeof pin.url === 'string' &&
-              typeof pin.title === 'string';
-          })
-        : [];
+      return Array.isArray(stored) ? stored : [];
     } catch (error) {
       return [];
     }
@@ -160,218 +42,104 @@ function escapeHtml(str) {
 
   function savePins(items) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    } catch (error) {
-      // Ignore storage issues gracefully.
-    }
-  }
-
-  function isPinned(url) {
-    return loadPins().some(function (pin) {
-      return pin.k === url;
-    });
-  }
-
-  function togglePin(url, title, category) {
-    const pins = loadPins();
-    const pinIndex = pins.findIndex(function (pin) {
-      return pin.k === url;
-    });
-
-    if (pinIndex >= 0) {
-      pins.splice(pinIndex, 1);
-    } else {
-      pins.unshift({
-        k: url,
-        url: url,
-        title: title,
-        cat: category || '',
-        at: Date.now(),
-      });
-
-      if (pins.length > 50) {
-        pins.length = 50;
-      }
-    }
-
-    savePins(pins);
-    updatePinBadge();
-
-    return pinIndex < 0;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, 100)));
+    } catch (error) {}
   }
 
   function updatePinBadge() {
     const badge = document.getElementById('pinBadge');
-    if (badge) {
-      badge.textContent = String(loadPins().length);
-    }
+    if (!badge) return;
+    const pins = loadPins();
+    badge.textContent = String(pins.length);
   }
 
-  function renderPinnedList() {
-    const panelList = document.getElementById('pinList');
-    if (!panelList) return;
-
+  function renderPinList() {
+    const list = document.getElementById('pinList');
+    if (!list) return;
     const pins = loadPins();
     if (!pins.length) {
-      panelList.innerHTML = '<div class=pin-empty>خالی</div>';
+      list.innerHTML = '<p style="padding:12px;color:#8b949e">هنوز درسی پین نشده است.</p>';
       return;
     }
-
-    panelList.innerHTML = '';
-    pins.forEach(function (pin) {
-      const item = document.createElement('div');
-      item.className = 'pin-item';
-      item.innerHTML = '<div class=meta><b></b><small></small></div><button type=button class=unpin>برداشتن</button>';
-
-      item.querySelector('b').textContent = pin.title;
-      item.querySelector('small').textContent = pin.cat || '';
-
-      item.querySelector('.meta').onclick = function () {
-        location.href = pin.url;
-      };
-
-      item.querySelector('.unpin').onclick = function (event) {
-        event.stopPropagation();
-        togglePin(pin.k, pin.title, pin.cat);
-        renderPinnedList();
-      };
-
-      panelList.appendChild(item);
-    });
+    list.innerHTML = pins
+      .map(function (pin) {
+        return (
+          '<a href="' +
+          escapeHtml(pin.url) +
+          '" style="display:block;padding:10px 12px;border-bottom:1px solid #21262d;color:#e6edf3;text-decoration:none">' +
+          escapeHtml(pin.title || pin.url) +
+          '</a>'
+        );
+      })
+      .join('');
   }
 
-  function bindLessonPinButton() {
-    const lessonPinButton = document.getElementById('btnPinLesson');
-    if (!lessonPinButton) return;
-
-    const lessonUrl = location.pathname + location.search;
-    const lessonTitle = lessonPinButton.getAttribute('data-title') || document.title;
-    const lessonCategory = lessonPinButton.getAttribute('data-cat') || '';
-
-    function refreshLessonPinState() {
-      const isSelected = isPinned(lessonUrl);
-      lessonPinButton.classList.toggle('on', isSelected);
-      lessonPinButton.textContent = isSelected ? '📌 پین‌شده' : '📌 پین کردن این درس';
-    }
-
-    lessonPinButton.onclick = function () {
-      togglePin(lessonUrl, lessonTitle, lessonCategory);
-      refreshLessonPinState();
-    };
-
-    refreshLessonPinState();
-  }
-
-  function bindEditorButtons() {
-    document.querySelectorAll('.trybtn').forEach(function (button) {
-      button.onclick = function () {
-        const codeBlock = button.previousElementSibling;
-        const codeElement = codeBlock && codeBlock.querySelector ? codeBlock.querySelector('.code') : codeBlock;
-        const editorOverlay = document.getElementById('edBack');
-        const editorCode = document.getElementById('edCode');
-
-        if (editorOverlay && editorCode) {
-          editorCode.textContent = codeElement ? codeElement.textContent : '';
-          editorOverlay.style.display = 'flex';
-        }
-      };
-    });
-  }
-
-  function bindEditorCloseActions() {
-    const closeButton = document.getElementById('edClose');
-    const editorOverlay = document.getElementById('edBack');
-    const copyButton = document.getElementById('edCopy');
-
-    if (closeButton) {
-      closeButton.onclick = function () {
-        if (editorOverlay) editorOverlay.style.display = 'none';
-      };
-    }
-
-    if (editorOverlay) {
-      editorOverlay.onclick = function (event) {
-        if (event.target.id === 'edBack') {
-          editorOverlay.style.display = 'none';
-        }
-      };
-    }
-
-    if (copyButton && editorOverlay) {
-      copyButton.onclick = function () {
-        const codeText = document.getElementById('edCode')?.textContent || '';
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(codeText).catch(function () {});
-        }
-      };
-    }
-  }
-
-  function bindQuizCards() {
-    document.querySelectorAll('.qcard[data-quiz]').forEach(function (card) {
-      if (card.getAttribute('data-bound')) return;
-      card.setAttribute('data-bound', '1');
-
-      const feedbackBox = card.querySelector('.qfb');
-      card.querySelectorAll('.qopt').forEach(function (optionButton) {
-        optionButton.onclick = function () {
-          if (card.getAttribute('data-done')) return;
-          card.setAttribute('data-done', '1');
-
-          const isCorrect = optionButton.getAttribute('data-correct') === '1';
-          card.querySelectorAll('.qopt').forEach(function (button) {
-            button.disabled = true;
-            if (button.getAttribute('data-correct') === '1') {
-              button.classList.add('ok');
-            }
-          });
-
-          if (!isCorrect) optionButton.classList.add('bad');
-
-          if (feedbackBox) {
-            feedbackBox.textContent = optionButton.getAttribute('data-exp') || '';
-            feedbackBox.classList.add('on');
-            feedbackBox.classList.add(isCorrect ? 'ok-msg' : 'bad-msg');
-          }
-        };
+  function initPins() {
+    const fab = document.getElementById('pinFab');
+    const panel = document.getElementById('pinPanel');
+    const closeBtn = document.getElementById('pinPanelClose');
+    if (fab && panel) {
+      fab.addEventListener('click', function () {
+        panel.classList.toggle('open');
+        renderPinList();
       });
-    });
-  }
-
-  function startApp() {
-    const pinFab = document.getElementById('pinFab');
-    const pinPanel = document.getElementById('pinPanel');
-
-    if (pinFab && pinPanel) {
-      pinFab.onclick = function () {
-        pinPanel.classList.toggle('on');
-        if (pinPanel.classList.contains('on')) {
-          renderPinnedList();
-        }
-      };
-
-      const closeButton = document.getElementById('pinPanelClose');
-      if (closeButton) {
-        closeButton.onclick = function () {
-          pinPanel.classList.remove('on');
-        };
-      }
-
-      updatePinBadge();
     }
-
-    bindLessonPinButton();
-    bindLessonProgress();
-    bindCodeCopyButtons();
-    bindLessonActions();
-    bindEditorButtons();
-    bindEditorCloseActions();
-    bindQuizCards();
+    if (closeBtn && panel) {
+      closeBtn.addEventListener('click', function () {
+        panel.classList.remove('open');
+      });
+    }
+    updatePinBadge();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startApp);
+    document.addEventListener('DOMContentLoaded', initPins);
   } else {
-    startApp();
+    initPins();
   }
+
+  window.MCD = window.MCD || {};
+  window.MCD.loadPins = loadPins;
+  window.MCD.savePins = savePins;
+  window.MCD.updatePinBadge = updatePinBadge;
+})();
+
+/* MCD_APP_OFFLINE_LOADER_V8 — loads download UI only in app mode, all pages */
+(function () {
+  try {
+    var q = location.search || '';
+    var path = location.pathname || '';
+    var isApp =
+      /[?&]mcd=app\b/i.test(q) ||
+      /\/app\.html$/i.test(path) ||
+      (function () {
+        try {
+          return sessionStorage.getItem('mcd_app_mode') === '1' || localStorage.getItem('mcd_app_mode') === '1';
+        } catch (e) {
+          return false;
+        }
+      })() ||
+      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+      (typeof navigator.standalone === 'boolean' && navigator.standalone === true);
+    if (!isApp) return;
+    try {
+      sessionStorage.setItem('mcd_app_mode', '1');
+      localStorage.setItem('mcd_app_mode', '1');
+    } catch (e0) {}
+    if (window.__MCD_OFFLINE_INIT__) return;
+    var s = document.createElement('script');
+    s.src = (function () {
+      var scripts = document.getElementsByTagName('script');
+      for (var i = 0; i < scripts.length; i++) {
+        var src = scripts[i].src || '';
+        if (/assets\/js\/app\.js/.test(src)) {
+          return src.replace(/app\.js.*$/, 'offline-session-v8.js');
+        }
+      }
+      if (path.indexOf('/programer') === 0) return '/programer/assets/js/offline-session-v8.js';
+      return 'assets/js/offline-session-v8.js';
+    })();
+    s.async = true;
+    document.head.appendChild(s);
+  } catch (e) {}
 })();
