@@ -1,47 +1,57 @@
 /**
- * MCD Offline Mode v7
- * Enabled only for:
- *  - app entry: /programer/app.html or ?mcd=app (for APK WebView)
- *  - real installed PWA (display-mode: standalone / iOS standalone)
- * Hidden on normal Google/browser URL without app flag.
+ * MCD Offline Mode v8
+ * App download UI when:
+ *  - opened via /app.html or ?mcd=app (APK)
+ *  - or real PWA standalone
+ * Hidden on normal Google/browser URL.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
+
+  function markAppMode() {
+    try {
+      sessionStorage.setItem("mcd_app_mode", "1");
+      localStorage.setItem("mcd_app_mode", "1");
+    } catch (e) {}
+  }
 
   function isAppMode() {
     try {
       var q = location.search || "";
       var path = location.pathname || "";
       if (/[?&]mcd=app\b/i.test(q) || /\/app\.html$/i.test(path)) {
-        try { sessionStorage.setItem("mcd_app_mode", "1"); } catch (e0) {}
+        markAppMode();
         return true;
       }
       try {
         if (sessionStorage.getItem("mcd_app_mode") === "1") return true;
+        if (localStorage.getItem("mcd_app_mode") === "1") return true;
       } catch (e1) {}
       if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
       if (typeof navigator.standalone === "boolean" && navigator.standalone === true) return true;
     } catch (e) {}
     return false;
   }
-  function isStandaloneWebApp() { return isAppMode(); }
 
   function stripOfflineUI() {
     ["mcd-offline-nav", "mcd-offline-modal", "mcd-offline-fab", "mcd-page-save"].forEach(function (id) {
       var el = document.getElementById(id);
-      if (el && el.parentNode) el.parentNode.removeChild(el);
+      if (el && el.parentNode) try { el.parentNode.removeChild(el); } catch (e) {}
     });
   }
 
-  if (!isStandaloneWebApp()) {
+  /* Google / normal browser without app flag */
+  if (!isAppMode()) {
     try {
+      sessionStorage.removeItem("mcd_app_mode");
       localStorage.removeItem("mcd_app_mode");
       localStorage.removeItem("mcd_is_app");
     } catch (eClr) {}
     stripOfflineUI();
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", stripOfflineUI);
-    setTimeout(stripOfflineUI, 800);
+    setTimeout(stripOfflineUI, 500);
+    setTimeout(stripOfflineUI, 2000);
     return;
   }
 
@@ -77,9 +87,8 @@
 
   var state = {
     total: 0, cached: 0, failed: 0, pending: 0,
-    running: false, paused: false, resources: [], byPath: {},
-    stopFlag: false, packReady: false,
-    online: true, bytesDone: 0, startedAt: 0, lastSpeed: 0
+    running: false, resources: [], byPath: {},
+    stopFlag: false, packReady: false, lastSpeed: 0
   };
 
   function absUrl(rel) {
@@ -168,24 +177,36 @@
     if (document.getElementById("mcd-offline-nav")) return true;
     var host = document.querySelector("header nav") || document.querySelector("header") || document.body;
     if (!host) return false;
+
     var wrap = document.createElement("div");
     wrap.id = "mcd-offline-nav";
     wrap.setAttribute("dir", "rtl");
     wrap.style.cssText =
       "display:inline-flex;align-items:center;gap:6px;margin:4px;padding:4px 10px;border-radius:999px;" +
       "border:1px solid #238636;background:#0d1117;font-family:system-ui,sans-serif;z-index:99990;white-space:nowrap";
+
     var title = document.createElement("span");
     title.textContent = "حالت آفلاین";
     title.style.cssText = "font-size:11px;font-weight:700;color:#00e676";
+
     var status = document.createElement("span");
     status.id = "mcd-offline-status";
     status.style.cssText = "font-size:10px;color:#8b949e";
-    status.textContent = "…";
+    status.textContent = "آماده";
+
     var btn = document.createElement("button");
-    btn.type = "button"; btn.id = "mcd-offline-open"; btn.textContent = "مدیریت";
-    btn.style.cssText = "background:#238636;color:#fff;border:0;border-radius:8px;padding:3px 10px;font-size:11px;cursor:pointer;font-weight:600";
-    wrap.appendChild(title); wrap.appendChild(status); wrap.appendChild(btn);
+    btn.type = "button";
+    btn.id = "mcd-offline-open";
+    btn.textContent = "دانلود";
+    btn.style.cssText =
+      "background:#238636;color:#fff;border:0;border-radius:8px;padding:4px 12px;" +
+      "font-size:11px;cursor:pointer;font-weight:700";
+
+    wrap.appendChild(title);
+    wrap.appendChild(status);
+    wrap.appendChild(btn);
     host.appendChild(wrap);
+
     btn.onclick = function () { openModal(); };
     updateStatusBadge();
     return true;
@@ -194,7 +215,10 @@
   function ensureUI() {
     if (injectUI()) return;
     var n = 0;
-    var t = setInterval(function () { n++; if (injectUI() || n > 40) clearInterval(t); }, 250);
+    var t = setInterval(function () {
+      n++;
+      if (injectUI() || n > 50) clearInterval(t);
+    }, 200);
   }
 
   function updateStatusBadge() {
@@ -213,35 +237,42 @@
     modal = document.createElement("div");
     modal.id = "mcd-offline-modal";
     modal.setAttribute("dir", "rtl");
-    modal.style.cssText = "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:14px;font-family:system-ui,sans-serif";
+    modal.style.cssText =
+      "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.8);display:none;" +
+      "align-items:center;justify-content:center;padding:14px;font-family:system-ui,sans-serif";
     modal.innerHTML =
       '<div style="width:min(460px,100%);max-height:92vh;overflow:auto;background:#0d1117;border:1px solid #238636;border-radius:16px;padding:16px;color:#e6edf3">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
       '<b style="color:#00e676;font-size:16px">دانلود کامل سایت برای استفاده آفلاین</b>' +
       '<button type="button" id="mcd-modal-x" style="background:transparent;border:0;color:#8b949e;font-size:20px;cursor:pointer">×</button></div>' +
-      '<p style="margin:0 0 10px;line-height:1.75;color:#c9d1d9;font-size:12.5px">با ذخیره‌سازی آفلاین می‌توانید درس‌ها را بدون اینترنت بخوانید. در حالت آنلاین همیشه نسخه به‌روز از شبکه می‌آید.</p>' +
+      '<p style="margin:0 0 10px;line-height:1.75;color:#c9d1d9;font-size:12.5px">با ذخیره آفلاین می‌توانید درس‌ها را بدون اینترنت بخوانید. وقتی آنلاین هستید سایت از نسخه به‌روز شبکه بارگذاری می‌شود.</p>' +
       '<div id="mcd-modal-meta" style="font-size:11px;color:#8b949e;margin-bottom:8px">…</div>' +
       '<div id="mcd-modal-status" style="color:#00e676;font-size:12px;margin-bottom:6px">آماده</div>' +
-      '<div style="height:10px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px"><div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676"></div></div>' +
+      '<div style="height:10px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px">' +
+      '<div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>' +
       '<div id="mcd-modal-nums" style="color:#8b949e;font-size:11px;margin-bottom:12px">۰ / ۰</div>' +
       '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
-      '<button type="button" id="mcd-modal-start" style="flex:1;min-width:110px;background:#238636;color:#fff;border:0;border-radius:10px;padding:9px;cursor:pointer;font-weight:600">شروع دانلود</button>' +
-      '<button type="button" id="mcd-modal-pause" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:9px 12px;cursor:pointer">توقف</button>' +
-      '<button type="button" id="mcd-modal-resume" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:9px 12px;cursor:pointer">ادامه</button>' +
-      '<button type="button" id="mcd-modal-retry" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:9px 12px;cursor:pointer">تلاش مجدد</button></div></div>';
+      '<button type="button" id="mcd-modal-start" style="flex:1;min-width:110px;background:#238636;color:#fff;border:0;border-radius:10px;padding:10px;cursor:pointer;font-weight:700">شروع دانلود</button>' +
+      '<button type="button" id="mcd-modal-pause" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px 12px;cursor:pointer">توقف</button>' +
+      '<button type="button" id="mcd-modal-resume" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px 12px;cursor:pointer">ادامه</button>' +
+      '<button type="button" id="mcd-modal-retry" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px 12px;cursor:pointer">تلاش مجدد</button></div></div>';
     document.body.appendChild(modal);
     document.getElementById("mcd-modal-x").onclick = function () { modal.style.display = "none"; };
     document.getElementById("mcd-modal-start").onclick = function () { lsSet(CONSENT_KEY, "yes"); startDownload(false); };
     document.getElementById("mcd-modal-pause").onclick = function () {
-      state.stopFlag = true; state.paused = true; state.running = false;
-      renderProgress("متوقف شد — می‌توانید ادامه دهید");
+      state.stopFlag = true; state.running = false; renderProgress("متوقف شد");
     };
     document.getElementById("mcd-modal-resume").onclick = function () { startDownload(false); };
     document.getElementById("mcd-modal-retry").onclick = function () { startDownload(true); };
     return modal;
   }
 
-  function openModal() { ensureModal(); modal.style.display = "flex"; preparePack(false); renderProgress(); }
+  function openModal() {
+    ensureModal();
+    modal.style.display = "flex";
+    preparePack(false);
+    renderProgress();
+  }
 
   function renderProgress(statusText) {
     ensureModal();
@@ -252,12 +283,12 @@
     var meta = document.getElementById("mcd-modal-meta");
     if (bar) bar.style.width = pct + "%";
     if (nums) nums.textContent = "ذخیره‌شده: " + state.cached + " / " + state.total + " (" + pct + "٪) · ناموفق: " + state.failed + " · مانده: " + state.pending;
-    if (meta) meta.textContent = "نسخه: " + MANIFEST_VERSION + " · فایل‌ها: " + state.total;
+    if (meta) meta.textContent = "نسخه: " + MANIFEST_VERSION + " · فایل‌های شناسایی‌شده: " + state.total;
     if (st) {
       if (statusText) st.textContent = statusText;
-      else if (state.running) st.textContent = "در حال دانلود و تأیید ذخیره‌سازی…";
-      else if (state.packReady && state.failed === 0) st.textContent = "دانلود شد — آماده استفاده آفلاین";
-      else if (state.failed > 0 && state.pending === 0) st.textContent = "دانلود ناقص — تلاش مجدد را بزنید";
+      else if (state.running) st.textContent = "در حال دانلود…";
+      else if (state.packReady && state.failed === 0) st.textContent = "دانلود شد";
+      else if (state.failed > 0) st.textContent = "دانلود ناقص — تلاش مجدد";
       else st.textContent = "آماده برای شروع";
     }
     updateStatusBadge();
@@ -274,21 +305,20 @@
 
   function cacheOneVerified(path) {
     var url = absUrl(path);
-    return fetch(url, { credentials: "same-origin", cache: "no-cache" })
-      .then(function (res) {
-        if (!res || !res.ok || res.type === "opaque" || res.status === 206) throw { code: "http", message: "bad" };
-        return res.blob().then(function (blob) {
-          var putRes = new Response(blob, { status: res.status, statusText: res.statusText, headers: res.headers });
-          return caches.open(CACHE_NAME).then(function (cache) {
-            return cache.put(url, putRes).then(function () {
-              return cache.match(url).then(function (matched) {
-                if (!matched) throw { code: "verify", message: "fail" };
-                return true;
-              });
+    return fetch(url, { credentials: "same-origin", cache: "no-cache" }).then(function (res) {
+      if (!res || !res.ok || res.type === "opaque") throw new Error("http");
+      return res.blob().then(function (blob) {
+        var putRes = new Response(blob, { status: res.status, statusText: res.statusText, headers: res.headers });
+        return caches.open(CACHE_NAME).then(function (cache) {
+          return cache.put(url, putRes).then(function () {
+            return cache.match(url).then(function (m) {
+              if (!m) throw new Error("verify");
+              return true;
             });
           });
         });
       });
+    });
   }
 
   function pathFromLoc(loc) {
@@ -327,30 +357,20 @@
     });
     state.resources = list; state.total = list.length; state.byPath = {};
     list.forEach(function (it) { state.byPath[it.path] = it; });
-    return idbGetMeta("manifestVersion").then(function (prevVer) {
-      var versionChanged = prevVer && prevVer !== MANIFEST_VERSION;
-      return idbGetAll("files").then(function (rows) {
-        if (!versionChanged && rows && rows.length) {
-          rows.forEach(function (row) {
-            var item = state.byPath[row.path];
-            if (item) {
-              item.status = row.status || "pending";
-              item.attempts = row.attempts || 0;
-              if (item.status === "downloading" || item.status === "retrying") item.status = "pending";
-            }
-          });
-        } else if (versionChanged) {
-          list.forEach(function (it) { it.status = "pending"; it.attempts = 0; });
+    return idbGetAll("files").then(function (rows) {
+      (rows || []).forEach(function (row) {
+        var item = state.byPath[row.path];
+        if (item) {
+          item.status = row.status || "pending";
+          item.attempts = row.attempts || 0;
+          if (item.status === "downloading" || item.status === "retrying") item.status = "pending";
         }
-        return idbSetMeta("manifestVersion", MANIFEST_VERSION).then(function () {
-          recount();
-          if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
-            state.packReady = true; lsSet(DONE_KEY, "1");
-            renderProgress("دانلود شد — آماده استفاده آفلاین");
-          } else if (versionChanged) renderProgress("نسخه سایت تغییر کرده — همگام‌سازی لازم است");
-          return versionChanged;
-        });
       });
+      recount();
+      if (state.cached === state.total && state.total > 0 && state.failed === 0) {
+        state.packReady = true; lsSet(DONE_KEY, "1");
+      }
+      return false;
     });
   }
 
@@ -368,10 +388,9 @@
 
   function startDownload(retryOnly) {
     if (state.running) return;
-    if (!navigator.onLine) { renderProgress("اینترنت ندارید — فقط صفحات ذخیره‌شده قابل استفاده‌اند"); return; }
-    state.stopFlag = false; state.paused = false; state.running = true;
-    lsSet(CONSENT_KEY, "yes");
-    renderProgress("در حال دانلود و تأیید ذخیره‌سازی…");
+    if (!navigator.onLine) { renderProgress("اینترنت ندارید"); return; }
+    state.stopFlag = false; state.running = true; lsSet(CONSENT_KEY, "yes");
+    renderProgress("در حال دانلود…");
     var profile = profileNetwork();
     if (!state.resources.length) {
       preparePack(false).then(function () { state.running = false; startDownload(retryOnly); });
@@ -379,44 +398,35 @@
     }
     var active = 0, concurrency = profile.concurrency;
     function pump() {
-      if (state.stopFlag) { state.running = false; renderProgress("متوقف شد — می‌توانید ادامه دهید"); return; }
+      if (state.stopFlag) { state.running = false; renderProgress("متوقف شد"); return; }
       while (active < concurrency) {
         var item = pickNext(retryOnly);
         if (!item) break;
         active++; item.status = "downloading"; item.attempts += 1; persistItem(item); recount(); renderProgress();
         (function (current) {
           cacheOneVerified(current.path)
-            .then(function () { current.status = "cached"; current.error = null; return persistItem(current); })
-            .catch(function (err) {
-              current.error = String((err && err.message) || err || "error");
-              current.status = "failed"; return persistItem(current);
-            })
+            .then(function () { current.status = "cached"; return persistItem(current); })
+            .catch(function () { current.status = "failed"; return persistItem(current); })
             .then(function () { active--; recount(); renderProgress(); setTimeout(pump, profile.pauseMs || 0); });
         })(item);
       }
       if (active === 0) {
         state.running = false; recount();
         if (state.cached === state.total && state.failed === 0) {
-          state.packReady = true; lsSet(DONE_KEY, "1"); idbSetMeta("complete", true);
+          state.packReady = true; lsSet(DONE_KEY, "1");
           try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (eP) {}
-          renderProgress("دانلود شد — آماده استفاده آفلاین");
-        } else if (state.failed > 0) renderProgress("دانلود ناقص — " + state.failed + " فایل ناموفق");
+          renderProgress("دانلود شد");
+        } else if (state.failed > 0) renderProgress("دانلود ناقص — " + state.failed + " ناموفق");
         else renderProgress("آماده");
       }
     }
     pump();
   }
 
-  function preparePack(openUi) {
+  function preparePack() {
     return loadManifest().then(function (manifest) {
-      return hydrate(manifest).then(function () {
-        if (openUi) openModal();
-        recount(); renderProgress();
-      });
-    }).catch(function (err) {
-      console.warn("[MCD Offline]", err);
-      renderProgress("خطا در آماده‌سازی فهرست");
-    });
+      return hydrate(manifest).then(function () { recount(); renderProgress(); });
+    }).catch(function () { renderProgress("خطا در فهرست فایل‌ها"); });
   }
 
   function injectPageSave() {
@@ -428,15 +438,15 @@
     path = path.replace(/^\//, "");
     var btn = document.createElement("button");
     btn.type = "button"; btn.id = "mcd-page-save";
-    btn.textContent = "ذخیره این صفحه برای آفلاین";
+    btn.textContent = "ذخیره این صفحه";
     btn.style.cssText = "position:fixed;bottom:16px;left:16px;z-index:99980;background:#238636;color:#fff;border:0;border-radius:12px;padding:10px 14px;font-size:12px;cursor:pointer;font-family:system-ui,sans-serif";
     btn.onclick = function () {
-      if (!navigator.onLine) { alert("برای دانلود این صفحه باید به اینترنت متصل شوید."); return; }
+      if (!navigator.onLine) { alert("برای دانلود باید اینترنت داشته باشید"); return; }
       btn.disabled = true; btn.textContent = "در حال ذخیره…";
       cacheOneVerified(path).then(function () {
-        btn.textContent = "این صفحه ذخیره شد";
-        setTimeout(function () { btn.style.display = "none"; }, 1600);
-      }).catch(function () { btn.disabled = false; btn.textContent = "خطا — دوباره تلاش کنید"; });
+        btn.textContent = "ذخیره شد";
+        setTimeout(function () { btn.style.display = "none"; }, 1500);
+      }).catch(function () { btn.disabled = false; btn.textContent = "خطا — دوباره"; });
     };
     document.body.appendChild(btn);
   }
@@ -448,13 +458,13 @@
   }
 
   function init() {
+    markAppMode();
     ensureUI();
     injectPageSave();
-    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e0) {}
     registerSW().then(function () {
       state.packReady = lsGet(DONE_KEY) === "1";
       updateStatusBadge();
-      if (navigator.onLine) preparePack(false);
+      if (navigator.onLine) preparePack();
     });
   }
 
