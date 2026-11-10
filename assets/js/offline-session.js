@@ -1,6 +1,5 @@
 /**
- * MCD offline — ONLY inside installed Web App (PWA standalone).
- * Normal browser / Google results: no offline UI.
+ * MCD offline — in APK WebView / PWA only. Not in normal Google/browser tabs.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -8,9 +7,21 @@
 
   function isWebAppMode() {
     try {
-      /* only true installed app modes */
+      /* 1) لینک اختصاصی APK: .../programer/?mcdapp=1 */
+      var q = location.search || "";
+      if (/[?&](mcdapp|app)=1\b/i.test(q)) {
+        try { localStorage.setItem("mcd_is_app", "1"); } catch (e0) {}
+        return true;
+      }
+      try { if (localStorage.getItem("mcd_is_app") === "1") return true; } catch (e1) {}
+
+      /* 2) Android WebView داخل APKهای لینک‌محور */
+      var ua = navigator.userAgent || "";
+      if (/;\s*wv\)/i.test(ua) || /\bwv\b/i.test(ua)) return true;
+
+      /* 3) PWA واقعی نصب‌شده */
       if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
-      if (typeof navigator.standalone === "boolean" && navigator.standalone) return true; /* iOS Add to Home Screen */
+      if (typeof navigator.standalone === "boolean" && navigator.standalone) return true;
       if (document.referrer && document.referrer.indexOf("android-app://") === 0) return true;
     } catch (e) {}
     return false;
@@ -25,12 +36,9 @@
     } catch (e) {}
   }
 
-  /* Browser tab / Google visit → remove any leftover UI and stop */
   if (!isWebAppMode()) {
     stripOfflineUI();
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", stripOfflineUI);
-    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", stripOfflineUI);
     setTimeout(stripOfflineUI, 500);
     setTimeout(stripOfflineUI, 2000);
     return;
