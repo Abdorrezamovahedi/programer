@@ -1,10 +1,11 @@
 {
   "name": "MCD Code Up",
   "short_name": "MCD",
-  "description": "آموزش برنامه‌نویسی فارسی",
+  "description": "آموزش برنامه‌نویسی فارسی — MCD Code Up",
   "start_url": "/programer/",
   "scope": "/programer/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#0d1117",
   "theme_color": "#00e676",
   "lang": "fa",
@@ -12,6 +13,12 @@
   "icons": [
     {
       "src": "/programer/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/programer/assets/img/og-default.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
