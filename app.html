@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#00e676" />
+  <title>MCD Code Up — نسخه اپلیکیشن</title>
+  <link rel="manifest" href="site.webmanifest" />
+  <style>
+    html, body {
+      margin: 0; height: 100%;
+      background: #0d1117; color: #e6edf3;
+      font-family: system-ui, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .box { text-align: center; padding: 24px; }
+    .g { color: #00e676; font-weight: 700; }
+  </style>
+  <script>
+    (function () {
+      try {
+        sessionStorage.setItem("mcd_app_mode", "1");
+        localStorage.setItem("mcd_app_mode", "1");
+      } catch (e) {}
+      /* ورود مخصوص APK / وب‌اپ — به صفحه اصلی با پرچم اپ */
+      location.replace("./index.html?mcd=app");
+    })();
+  </script>
+</head>
+<body>
+  <div class="box">
+    <p class="g">در حال ورود به نسخه اپلیکیشن MCD…</p>
+    <p><a href="./index.html?mcd=app" style="color:#00e676">اگر منتقل نشدید اینجا را بزنید</a></p>
+  </div>
+</body>
+</html>
