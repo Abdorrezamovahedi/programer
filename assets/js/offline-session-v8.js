@@ -1,19 +1,14 @@
 /**
- * MCD Offline Mode v8
- * App download UI when:
- *  - opened via /app.html or ?mcd=app (APK)
- *  - or real PWA standalone
- * Hidden on normal Google/browser URL.
+ * MCD Offline Mode v8.1
+ * ONLY: app.html / ?mcd=app / session after app entry / real PWA standalone
+ * NEVER on normal Google browser URL (no localStorage leak)
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
 
   function markAppMode() {
-    try {
-      sessionStorage.setItem("mcd_app_mode", "1");
-      localStorage.setItem("mcd_app_mode", "1");
-    } catch (e) {}
+    try { sessionStorage.setItem("mcd_app_mode", "1"); } catch (e) {}
   }
 
   function isAppMode() {
@@ -24,12 +19,11 @@
         markAppMode();
         return true;
       }
-      try {
-        if (sessionStorage.getItem("mcd_app_mode") === "1") return true;
-        if (localStorage.getItem("mcd_app_mode") === "1") return true;
-      } catch (e1) {}
       if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
       if (typeof navigator.standalone === "boolean" && navigator.standalone === true) return true;
+      try {
+        if (sessionStorage.getItem("mcd_app_mode") === "1") return true;
+      } catch (e1) {}
     } catch (e) {}
     return false;
   }
@@ -48,6 +42,9 @@
       localStorage.removeItem("mcd_is_app");
     } catch (eClr) {}
     stripOfflineUI();
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", stripOfflineUI);
+    setTimeout(stripOfflineUI, 300);
+    setTimeout(stripOfflineUI, 1500);
     return;
   }
 
@@ -138,7 +135,6 @@
       });
     });
   }
-  function idbSetMeta(key, value) { return idbPut("meta", { key: key, value: value }); }
 
   function profileNetwork() {
     var level = "mid";
