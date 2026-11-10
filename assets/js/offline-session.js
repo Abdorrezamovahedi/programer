@@ -1,8 +1,7 @@
 /**
  * MCD Code Up — verified offline pack manager
- * Manifest = sitemap pages + real static assets (from repo inventory)
- * cached ONLY after fetch OK + cache.put + cache.match verify
- * Progress = verifiedCached / total ; IndexedDB resume
+ * First visit: ask user consent with benefits explanation.
+ * Download starts ONLY after explicit acceptance.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -13,6 +12,7 @@
   var DB_VER = 1;
   var MANIFEST_VERSION = "2026-11-10-v1";
   var MAX_ATTEMPTS = 3;
+  var CONSENT_KEY = "mcd_offline_consent_v1";
 
   var SCOPE_BASE = (function () {
     var p = location.pathname || "/";
@@ -57,7 +57,8 @@
     running: false,
     resources: [],
     byPath: {},
-    stopFlag: false
+    stopFlag: false,
+    consented: false
   };
 
   function absUrl(rel) {
@@ -79,6 +80,76 @@
     return "other";
   }
 
+  function getConsent() {
+    try {
+      return localStorage.getItem(CONSENT_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setConsent(value) {
+    try {
+      localStorage.setItem(CONSENT_KEY, value);
+    } catch (e) {}
+  }
+
+  /* ---------- Consent modal (first visit) ---------- */
+  function showConsentModal() {
+    return new Promise(function (resolve) {
+      var existing = document.getElementById("mcd-offline-consent");
+      if (existing) existing.parentNode.removeChild(existing);
+
+      var overlay = document.createElement("div");
+      overlay.id = "mcd-offline-consent";
+      overlay.setAttribute("dir", "rtl");
+      overlay.style.cssText =
+        "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.72);" +
+        "display:flex;align-items:center;justify-content:center;padding:16px;" +
+        "font-family:system-ui,sans-serif";
+
+      var box = document.createElement("div");
+      box.style.cssText =
+        "width:min(420px,100%);background:#0d1117;border:1px solid #238636;" +
+        "border-radius:16px;padding:20px 18px;color:#e6edf3;box-shadow:0 16px 48px rgba(0,0,0,.5)";
+
+      box.innerHTML =
+        '<div style="color:#00e676;font-weight:700;font-size:18px;margin-bottom:10px">ذخیره سایت برای استفاده آفلاین</div>' +
+        '<p style="margin:0 0 12px;line-height:1.7;color:#c9d1d9;font-size:14px">' +
+        "می‌توانید یک‌بار درس‌ها را روی همین دستگاه ذخیره کنید تا بعداً <b style=\"color:#00e676\">بدون اینترنت</b> هم مطالعه کنید." +
+        "</p>" +
+        '<ul style="margin:0 0 14px;padding:0 18px 0 0;line-height:1.8;color:#8b949e;font-size:13px">' +
+        "<li>دسترسی به صفحات ذخیره‌شده وقتی اینترنت قطع است</li>" +
+        "<li>صرفه‌جویی در اینترنت برای بازدیدهای بعدی</li>" +
+        "<li>ادامه یادگیری در مترو، سفر یا آنتن ضعیف</li>" +
+        "<li>دانلود در پس‌زمینه و با سرعت متناسب با اینترنت شما</li>" +
+        "</ul>" +
+        '<p style="margin:0 0 16px;line-height:1.6;color:#8b949e;font-size:12px">' +
+        "اگر موافق نباشید، سایت فقط آنلاین کار می‌کند و چیزی به‌صورت خودکار دانلود نمی‌شود. می‌توانید بعداً از دکمه آفلاین دوباره فعال کنید." +
+        "</p>" +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<button type="button" id="mcd-consent-yes" style="flex:1;min-width:140px;background:#238636;color:#fff;border:0;border-radius:10px;padding:10px 12px;font-size:14px;cursor:pointer;font-weight:600">بله، ذخیره آفلاین</button>' +
+        '<button type="button" id="mcd-consent-no" style="flex:1;min-width:120px;background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:10px 12px;font-size:14px;cursor:pointer">فعلاً نه</button>' +
+        "</div>";
+
+      overlay.appendChild(box);
+      (document.body || document.documentElement).appendChild(overlay);
+
+      function close(accepted) {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        resolve(!!accepted);
+      }
+
+      document.getElementById("mcd-consent-yes").onclick = function () {
+        close(true);
+      };
+      document.getElementById("mcd-consent-no").onclick = function () {
+        close(false);
+      };
+    });
+  }
+
+  /* ---------- IndexedDB ---------- */
   function openDb() {
     return new Promise(function (resolve, reject) {
       if (!window.indexedDB) {
@@ -178,6 +249,8 @@
   }
 
   var ui = null;
+  var fab = null;
+
   function ensureUI() {
     if (ui) return ui;
     ui = document.createElement("div");
@@ -201,13 +274,13 @@
       '<button type="button" id="mcd-off-retry" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:6px 10px;cursor:pointer">تلاش مجدد ناموفق‌ها</button></div>';
     (document.body || document.documentElement).appendChild(ui);
 
-    var fab = document.createElement("button");
+    fab = document.createElement("button");
     fab.id = "mcd-offline-fab";
     fab.type = "button";
     fab.textContent = "↓ آفلاین";
     fab.style.cssText =
       "position:fixed;bottom:12px;left:12px;z-index:99979;background:#0d1117;color:#00e676;" +
-      "border:1px solid #238636;border-radius:999px;padding:8px 12px;font:12px system-ui;cursor:pointer";
+      "border:1px solid #238636;border-radius:999px;padding:8px 12px;font:12px system-ui;cursor:pointer;display:none";
     fab.onclick = function () {
       ui.style.display = "block";
       fab.style.display = "none";
@@ -216,7 +289,7 @@
 
     document.getElementById("mcd-off-toggle").onclick = function () {
       ui.style.display = "none";
-      fab.style.display = "block";
+      if (fab) fab.style.display = "block";
     };
     document.getElementById("mcd-off-start").onclick = function () {
       startDownload(false);
@@ -230,6 +303,11 @@
       startDownload(true);
     };
     return ui;
+  }
+
+  function showOfflineControls() {
+    ensureUI();
+    if (fab) fab.style.display = "block";
   }
 
   function renderUI(statusText) {
@@ -318,7 +396,8 @@
       var u = new URL(loc);
       var path = u.pathname || "/";
       if (path.indexOf("/programer/") === 0) path = path.slice("/programer/".length);
-      else if (path.indexOf("/programer") === 0) path = path.slice("/programer".length).replace(/^\//, "");
+      else if (path.indexOf("/programer") === 0)
+        path = path.slice("/programer".length).replace(/^\//, "");
       if (!path || path === "/") return "index.html";
       return path.replace(/^\//, "");
     } catch (e) {
@@ -449,6 +528,7 @@
   }
 
   function startDownload(retryOnly) {
+    if (!state.consented) return;
     if (state.running) return;
     if (!navigator.onLine) {
       renderUI("آفلاین هستید — فقط صفحات ذخیره‌شده در دسترس‌اند");
@@ -531,26 +611,52 @@
     });
   }
 
-  function init() {
-    ensureUI();
-    registerSW()
-      .then(function () {
-        return loadManifest();
-      })
+  function enableOfflinePack() {
+    state.consented = true;
+    showOfflineControls();
+    return loadManifest()
       .then(function (manifest) {
         return hydrate(manifest);
       })
       .then(function () {
-        if (state.cached < state.total && navigator.onLine) {
-          setTimeout(function () {
-            if (!state.running && state.cached < state.total) startDownload(false);
-          }, isMobile ? 10000 : 6000);
-        }
-      })
-      .catch(function (err) {
-        console.warn("[MCD offline]", err);
-        renderUI("خطا در بارگذاری فهرست آفلاین");
+        /* start after short delay so UI is visible */
+        setTimeout(function () {
+          if (!state.running && state.cached < state.total) startDownload(false);
+        }, 800);
       });
+  }
+
+  function init() {
+    registerSW().then(function () {
+      var consent = getConsent();
+
+      if (consent === "yes") {
+        state.consented = true;
+        enableOfflinePack().catch(function (err) {
+          console.warn("[MCD offline]", err);
+        });
+        return;
+      }
+
+      if (consent === "no") {
+        /* user declined before — still register SW for future, no auto download */
+        return;
+      }
+
+      /* First visit: ask after page is calm */
+      setTimeout(function () {
+        showConsentModal().then(function (accepted) {
+          if (accepted) {
+            setConsent("yes");
+            enableOfflinePack().catch(function (err) {
+              console.warn("[MCD offline]", err);
+            });
+          } else {
+            setConsent("no");
+          }
+        });
+      }, isMobile ? 2500 : 1500);
+    });
   }
 
   if (document.readyState === "complete") init();
