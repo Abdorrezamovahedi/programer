@@ -1,5 +1,7 @@
 /**
- * MCD offline — header toggle + download modal + auto online/offline + version sync
+ * MCD offline — lever switch in header
+ * After pack is downloaded: auto ON when offline, auto OFF when online
+ * Label always shows آنلاین or آفلاین
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -12,6 +14,7 @@
   var MAX_ATTEMPTS = 3;
   var CONSENT_KEY = "mcd_offline_consent_v1";
   var ENABLED_KEY = "mcd_offline_enabled_v1";
+  var DONE_KEY = "mcd_offline_done_v1";
 
   var SCOPE_BASE = (function () {
     var p = location.pathname || "/";
@@ -37,7 +40,8 @@
   var state = {
     total: 0, cached: 0, failed: 0, pending: 0, downloading: 0,
     running: false, resources: [], byPath: {}, stopFlag: false,
-    consented: false, enabled: false, online: navigator.onLine !== false
+    consented: false, enabled: false, online: navigator.onLine !== false,
+    packReady: false, autoSync: true, userOverride: false
   };
 
   function absUrl(rel) {
@@ -128,41 +132,99 @@
     return map[level] || map.mid;
   }
 
+  /* ---------- Lever switch in header ---------- */
   function injectHeaderToggle() {
     var nav = document.querySelector("header nav");
     if (!nav || document.getElementById("mcd-offline-nav")) return;
-    var wrap = document.createElement("label");
+
+    var wrap = document.createElement("div");
     wrap.id = "mcd-offline-nav";
-    wrap.setAttribute("title", "فعال‌سازی ذخیره آفلاین سایت");
-    wrap.style.cssText = "display:inline-flex;align-items:center;gap:6px;cursor:pointer;margin-right:4px;padding:4px 8px;border-radius:8px;border:1px solid #238636;color:#00e676;font-size:12px;user-select:none;white-space:nowrap";
-    var cb = document.createElement("input");
-    cb.type = "checkbox";
-    cb.id = "mcd-offline-check";
-    cb.style.cssText = "accent-color:#00e676;width:14px;height:14px;cursor:pointer";
-    var text = document.createElement("span");
-    text.textContent = "آفلاین";
-    var badge = document.createElement("span");
-    badge.id = "mcd-net-badge";
-    badge.style.cssText = "font-size:10px;padding:1px 6px;border-radius:99px;border:1px solid #30363d;color:#8b949e";
-    wrap.appendChild(cb); wrap.appendChild(text); wrap.appendChild(badge);
+    wrap.setAttribute("dir", "rtl");
+    wrap.style.cssText =
+      "display:inline-flex;align-items:center;gap:8px;margin-right:4px;" +
+      "padding:3px 8px;border-radius:999px;border:1px solid #238636;" +
+      "background:#0d1117;user-select:none;white-space:nowrap;vertical-align:middle";
+
+    var label = document.createElement("span");
+    label.id = "mcd-mode-label";
+    label.style.cssText = "font-size:11px;font-weight:700;min-width:3.2em;text-align:center";
+
+    /* switch track */
+    var track = document.createElement("button");
+    track.type = "button";
+    track.id = "mcd-offline-lever";
+    track.setAttribute("role", "switch");
+    track.setAttribute("aria-checked", "false");
+    track.title = "اهرم حالت آفلاین / آنلاین";
+    track.style.cssText =
+      "position:relative;width:42px;height:22px;border-radius:999px;border:0;" +
+      "padding:0;cursor:pointer;background:#30363d;transition:background .2s;flex-shrink:0";
+
+    var knob = document.createElement("span");
+    knob.id = "mcd-lever-knob";
+    knob.style.cssText =
+      "position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;" +
+      "background:#e6edf3;transition:left .2s,background .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)";
+    track.appendChild(knob);
+
+    wrap.appendChild(label);
+    wrap.appendChild(track);
     nav.appendChild(wrap);
-    cb.checked = state.enabled || state.consented;
-    updateNetBadge();
-    cb.addEventListener("change", function () {
-      if (cb.checked) onUserEnableOffline(); else onUserDisableOffline();
+
+    track.addEventListener("click", function () {
+      var next = !state.enabled;
+      state.userOverride = true;
+      if (next) onUserEnableOffline();
+      else onUserDisableOffline();
+      updateLeverUI();
     });
+
+    updateLeverUI();
   }
 
-  function updateNetBadge() {
-    var badge = document.getElementById("mcd-net-badge");
-    var cb = document.getElementById("mcd-offline-check");
-    if (!badge) return;
-    if (state.online) {
-      badge.textContent = "آنلاین"; badge.style.color = "#00e676"; badge.style.borderColor = "#238636";
+  function setLeverVisual(on) {
+    var track = document.getElementById("mcd-offline-lever");
+    var knob = document.getElementById("mcd-lever-knob");
+    var label = document.getElementById("mcd-mode-label");
+    if (!track || !knob || !label) return;
+
+    track.setAttribute("aria-checked", on ? "true" : "false");
+    if (on) {
+      track.style.background = "#238636";
+      knob.style.left = "22px";
+      knob.style.background = "#00e676";
+      label.textContent = "آفلاین";
+      label.style.color = "#f0b429";
     } else {
-      badge.textContent = "آفلاین"; badge.style.color = "#f0b429"; badge.style.borderColor = "#f0b429";
-      if (cb && state.consented) cb.checked = true;
+      track.style.background = "#30363d";
+      knob.style.left = "2px";
+      knob.style.background = "#e6edf3";
+      label.textContent = "آنلاین";
+      label.style.color = "#00e676";
     }
+  }
+
+  function updateLeverUI() {
+    /* After pack ready: follow network automatically unless user is mid-download setup */
+    if (state.packReady && state.autoSync && !state.userOverride) {
+      state.enabled = !state.online;
+    }
+    /* Always show real connectivity word next to lever when pack not ready yet */
+    if (!state.packReady) {
+      setLeverVisual(!!state.enabled);
+      var label = document.getElementById("mcd-mode-label");
+      if (label) {
+        if (state.online) {
+          label.textContent = "آنلاین";
+          label.style.color = "#00e676";
+        } else {
+          label.textContent = "آفلاین";
+          label.style.color = "#f0b429";
+        }
+      }
+      return;
+    }
+    setLeverVisual(!!state.enabled);
   }
 
   var modal = null;
@@ -171,17 +233,15 @@
     modal = document.createElement("div");
     modal.id = "mcd-offline-modal";
     modal.setAttribute("dir", "rtl");
-    modal.style.cssText = "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:16px;font-family:system-ui,sans-serif";
+    modal.style.cssText =
+      "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.75);display:none;" +
+      "align-items:center;justify-content:center;padding:16px;font-family:system-ui,sans-serif";
     modal.innerHTML =
       '<div style="width:min(440px,100%);background:#0d1117;border:1px solid #238636;border-radius:16px;padding:18px 16px;color:#e6edf3;box-shadow:0 16px 48px rgba(0,0,0,.5)">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
       '<b style="color:#00e676;font-size:17px">ذخیره آفلاین سایت</b>' +
       '<button type="button" id="mcd-modal-x" style="background:transparent;border:0;color:#8b949e;font-size:18px;cursor:pointer">×</button></div>' +
-      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">با فعال‌سازی، درس‌ها روی همین دستگاه و همین مرورگر ذخیره می‌شوند تا <b style="color:#00e676">بدون اینترنت</b> هم بتوانید مطالعه کنید.</p>' +
-      '<ul style="margin:0 0 12px;padding:0 18px 0 0;line-height:1.75;color:#8b949e;font-size:12px">' +
-      '<li>در تب مرورگر و وب‌اپ (نصب‌شده) روی همین دستگاه مشترک است</li>' +
-      '<li>وقتی دانلود تمام شد پیام «دانلود شد» می‌آید</li>' +
-      '<li>اگر نسخه سایت عوض شود، در حالت آنلاین همگام می‌شود</li></ul>' +
+      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">با روشن کردن اهرم، سایت روی این دستگاه ذخیره می‌شود. بعد از <b style="color:#00e676">دانلود شد</b>، اهرم وقتی اینترنت نباشد خودکار آفلاین و وقتی اینترنت باشد آنلاین می‌شود.</p>' +
       '<div id="mcd-modal-status" style="color:#8b949e;font-size:12px;margin-bottom:6px">آماده</div>' +
       '<div style="height:8px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px">' +
       '<div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>' +
@@ -217,6 +277,17 @@
       else if (state.running) st.textContent = "در حال دانلود و تأیید فایل‌ها…";
       else st.textContent = "آماده برای شروع";
     }
+  }
+
+  function markPackReady() {
+    state.packReady = true;
+    lsSet(DONE_KEY, "1");
+    state.autoSync = true;
+    state.userOverride = false;
+    /* after download: follow network */
+    state.enabled = !state.online;
+    lsSet(ENABLED_KEY, state.enabled ? "1" : "0");
+    updateLeverUI();
   }
 
   function recount() {
@@ -315,7 +386,12 @@
         }
         return idbSetMeta("manifestVersion", MANIFEST_VERSION).then(function () {
           recount();
-          renderProgress(versionChanged ? "نسخه سایت تغییر کرده — در حال همگام‌سازی…" : null);
+          if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
+            markPackReady();
+            renderProgress("دانلود شد");
+          } else if (versionChanged) {
+            renderProgress("نسخه سایت تغییر کرده — در حال همگام‌سازی…");
+          }
           return versionChanged;
         });
       });
@@ -365,8 +441,8 @@
         if (state.cached === state.total && state.failed === 0) {
           renderProgress("دانلود شد");
           idbSetMeta("complete", true);
-          lsSet("mcd_offline_done_v1", "1");
-          try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (ePersist) {}
+          try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (eP) {}
+          markPackReady();
         } else if (state.failed > 0) renderProgress("دانلود ناقص — " + state.failed + " فایل ناموفق");
         else renderProgress("آماده");
       }
@@ -381,7 +457,7 @@
         recount();
         if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
           renderProgress("دانلود شد");
-          lsSet("mcd_offline_done_v1", "1");
+          markPackReady();
           return;
         }
         if (versionChanged || state.cached < state.total) {
@@ -395,12 +471,23 @@
   }
 
   function onUserEnableOffline() {
-    state.enabled = true; lsSet(ENABLED_KEY, "1"); lsSet(CONSENT_KEY, "yes"); state.consented = true;
-    openModal(); preparePack(false);
+    state.enabled = true;
+    lsSet(ENABLED_KEY, "1");
+    lsSet(CONSENT_KEY, "yes");
+    state.consented = true;
+    updateLeverUI();
+    if (!state.packReady) {
+      openModal();
+      preparePack(false);
+    }
   }
+
   function onUserDisableOffline() {
-    state.enabled = false; lsSet(ENABLED_KEY, "0"); state.stopFlag = true; state.running = false;
-    if (state.online) { var cb = document.getElementById("mcd-offline-check"); if (cb) cb.checked = false; }
+    state.enabled = false;
+    lsSet(ENABLED_KEY, "0");
+    state.stopFlag = true;
+    state.running = false;
+    updateLeverUI();
   }
 
   function registerSW() {
@@ -411,17 +498,28 @@
 
   function bindConnectivity() {
     function applyOnline() {
-      state.online = true; updateNetBadge();
-      if (state.consented) preparePack(false);
+      state.online = true;
+      if (state.packReady) {
+        state.userOverride = false;
+        state.enabled = false;
+        lsSet(ENABLED_KEY, "0");
+      }
+      updateLeverUI();
+      if (state.consented && state.online) preparePack(false);
     }
     function applyOffline() {
-      state.online = false; updateNetBadge();
-      var cb = document.getElementById("mcd-offline-check");
-      if (cb && state.consented) cb.checked = true;
+      state.online = false;
+      if (state.packReady) {
+        state.userOverride = false;
+        state.enabled = true;
+        lsSet(ENABLED_KEY, "1");
+      }
+      updateLeverUI();
     }
     window.addEventListener("online", applyOnline);
     window.addEventListener("offline", applyOffline);
-    if (navigator.onLine) applyOnline(); else applyOffline();
+    if (navigator.onLine) applyOnline();
+    else applyOffline();
   }
 
   function init() {
@@ -429,12 +527,14 @@
     bindConnectivity();
     try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e0) {}
     registerSW().then(function () {
-      var consent = lsGet(CONSENT_KEY);
-      var enabled = lsGet(ENABLED_KEY) === "1";
-      state.consented = consent === "yes";
-      state.enabled = enabled || state.consented;
-      var cb = document.getElementById("mcd-offline-check");
-      if (cb) cb.checked = state.enabled || !navigator.onLine;
+      state.consented = lsGet(CONSENT_KEY) === "yes";
+      state.packReady = lsGet(DONE_KEY) === "1";
+      state.enabled = lsGet(ENABLED_KEY) === "1";
+      if (state.packReady) {
+        state.enabled = !navigator.onLine;
+        state.autoSync = true;
+      }
+      updateLeverUI();
       if (state.consented && navigator.onLine) preparePack(false);
     });
   }
