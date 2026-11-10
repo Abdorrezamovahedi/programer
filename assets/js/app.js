@@ -1,9 +1,9 @@
 function escapeHtml(str) {
   return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
+    .replace(/&/g, '&')
+    .replace(/</g, '<')
+    .replace(/>/g, '>')
+    .replace(/"/g, '"')
     .replace(/'/g, '&#39;');
 }
 
@@ -34,7 +34,6 @@ function escapeHtml(str) {
   function bindLessonProgress() {
     const lessonPinButton = document.getElementById('btnPinLesson');
     if (!lessonPinButton) return;
-
     const lessonUrl = location.pathname + location.search;
     const heading = document.querySelector('main h1');
     const lessonTitle = lessonPinButton.getAttribute('data-title') || (heading ? heading.textContent.trim() : document.title);
@@ -43,11 +42,9 @@ function escapeHtml(str) {
     completeButton.className = 'btn-complete';
     completeButton.setAttribute('aria-pressed', 'false');
     lessonPinButton.insertAdjacentElement('afterend', completeButton);
-
     try {
       localStorage.setItem(LAST_LESSON_KEY, JSON.stringify({ url: lessonUrl, title: lessonTitle }));
     } catch (error) {}
-
     function refreshCompletionState() {
       const isComplete = loadCompletedLessons().some(function (lesson) {
         return lesson.url === lessonUrl;
@@ -56,7 +53,6 @@ function escapeHtml(str) {
       completeButton.classList.toggle('is-complete', isComplete);
       completeButton.textContent = isComplete ? '✓ درس تکمیل شد' : 'علامت‌گذاری به‌عنوان تکمیل‌شده';
     }
-
     completeButton.onclick = function () {
       const completed = loadCompletedLessons();
       const lessonIndex = completed.findIndex(function (lesson) {
@@ -80,12 +76,11 @@ function escapeHtml(str) {
       copyButton.textContent = 'کپی کد';
       copyButton.setAttribute('aria-label', 'کپی کد نمونه');
       copyButton.onclick = function () {
-        const codeText = codeBlock.textContent;
         if (!navigator.clipboard) {
           copyButton.textContent = 'کپی در دسترس نیست';
           return;
         }
-        navigator.clipboard.writeText(codeText).then(function () {
+        navigator.clipboard.writeText(codeBlock.textContent).then(function () {
           copyButton.textContent = 'کپی شد';
           window.setTimeout(function () { copyButton.textContent = 'کپی کد'; }, 1600);
         }).catch(function () {
@@ -117,8 +112,7 @@ function escapeHtml(str) {
 
   function updatePinBadge() {
     const badge = document.getElementById('pinBadge');
-    if (!badge) return;
-    badge.textContent = String(loadPins().length);
+    if (badge) badge.textContent = String(loadPins().length);
   }
 
   function renderPinList() {
@@ -169,7 +163,6 @@ function escapeHtml(str) {
         else pins.unshift({ url: url, title: title });
         savePins(pins);
         updatePinBadge();
-        pinBtn.textContent = idx >= 0 ? 'پین درس' : 'برداشتن پین';
       });
     }
     updatePinBadge();
@@ -185,7 +178,7 @@ function escapeHtml(str) {
   else boot();
 })();
 
-/* MCD_APP_OFFLINE_LOADER_V8 */
+/* MCD_APP_OFFLINE_LOADER_V8 — فقط اپ؛ بدون localStorage */
 (function () {
   try {
     var q = location.search || '';
@@ -193,18 +186,20 @@ function escapeHtml(str) {
     var isApp =
       /[?&]mcd=app\b/i.test(q) ||
       /\/app\.html$/i.test(path) ||
-      (function () {
-        try {
-          return sessionStorage.getItem('mcd_app_mode') === '1' || localStorage.getItem('mcd_app_mode') === '1';
-        } catch (e) { return false; }
-      })() ||
       (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
-      (typeof navigator.standalone === 'boolean' && navigator.standalone === true);
-    if (!isApp) return;
-    try {
-      sessionStorage.setItem('mcd_app_mode', '1');
-      localStorage.setItem('mcd_app_mode', '1');
-    } catch (e0) {}
+      (typeof navigator.standalone === 'boolean' && navigator.standalone === true) ||
+      (function () {
+        try { return sessionStorage.getItem('mcd_app_mode') === '1'; } catch (e) { return false; }
+      })();
+    if (!isApp) {
+      try {
+        sessionStorage.removeItem('mcd_app_mode');
+        localStorage.removeItem('mcd_app_mode');
+        localStorage.removeItem('mcd_is_app');
+      } catch (eClr) {}
+      return;
+    }
+    try { sessionStorage.setItem('mcd_app_mode', '1'); } catch (e0) {}
     if (window.__MCD_OFFLINE_INIT__) return;
     var s = document.createElement('script');
     s.src = (function () {
