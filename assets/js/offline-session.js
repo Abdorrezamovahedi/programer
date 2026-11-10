@@ -1,22 +1,26 @@
 /**
- * MCD permanent offline pack — adaptive to real network quality
- *
- * Measures connection (API + small probe) and chooses batch size / pause:
- *   very-slow / save-data → almost idle, tiny batches
- *   slow                 → calm
- *   mid                  → balanced
- *   fast                 → quicker fill, still background priority:low
- *
- * Cache stays forever after first complete fill.
- * Online = live site; Offline = saved pack.
+ * MCD Code Up — verified offline pack manager
+ * - Loads offline-manifest.json (real file list from repo)
+ * - Per-file status in IndexedDB: pending|downloading|cached|failed|retrying
+ * - cached ONLY after fetch OK + cache.put + cache.match verify
+ * - Progress = verifiedCached / total
+ * - Resume after refresh; retry failed; adaptive concurrency
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
 
-  var CACHE_NAME = "mcd-offline-v4";
-  var DONE_KEY = "mcd_offline_pack_done_v4";
-  var CURSOR_KEY = "mcd_offline_pack_cursor_v4";
+  var CACHE_NAME = "mcd-offline-v5";
+  var DB_NAME = "mcd_offline_db_v5";
+  var DB_VER = 1;
+  var MANIFEST_VERSION = null;
+  var MAX_ATTEMPTS = 3;
+
+  var SCOPE_BASE = (function () {
+    var p = location.pathname || "/";
+    if (p.indexOf("/programer") === 0) return "/programer/";
+    return "/";
+  })();
 
   var isMobile = false;
   try {
@@ -26,361 +30,387 @@
       /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent || "");
   } catch (e) {}
 
-  var SCOPE_BASE = (function () {
-    var p = location.pathname || "/";
-    if (p.indexOf("/programer") === 0) return "/programer/";
-    return "/";
-  })();
+  var state = {
+    total: 0,
+    cached: 0,
+    failed: 0,
+    pending: 0,
+    downloading: 0,
+    running: false,
+    resources: [],
+    byPath: {},
+    stopFlag: false
+  };
 
-  function absoluteUrl(path) {
+  function absUrl(rel) {
     try {
-      return new URL(path, location.origin + SCOPE_BASE).href;
+      return new URL(String(rel).replace(/^\//, ""), location.origin + SCOPE_BASE).href;
     } catch (e) {
-      return path;
+      return location.origin + SCOPE_BASE + String(rel).replace(/^\//, "");
     }
   }
 
-  function isDone() {
-    try {
-      return localStorage.getItem(DONE_KEY) === "1";
-    } catch (e) {
-      return false;
-    }
+  function openDb() {
+    return new Promise(function (resolve, reject) {
+      if (!window.indexedDB) {
+        reject(new Error("no indexedDB"));
+        return;
+      }
+      var req = indexedDB.open(DB_NAME, DB_VER);
+      req.onupgradeneeded = function () {
+        var db = req.result;
+        if (!db.objectStoreNames.contains("files")) db.createObjectStore("files", { keyPath: "path" });
+        if (!db.objectStoreNames.contains("meta")) db.createObjectStore("meta", { keyPath: "key" });
+      };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error || new Error("idb open fail")); };
+    });
   }
 
-  function markDone() {
+  function idbGetAll(store) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(store, "readonly");
+        var req = tx.objectStore(store).getAll();
+        req.onsuccess = function () { resolve(req.result || []); };
+        req.onerror = function () { reject(req.error); };
+      });
+    });
+  }
+
+  function idbPut(store, value) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(store, "readwrite");
+        tx.objectStore(store).put(value);
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  }
+
+  function idbGetMeta(key) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve) {
+        var tx = db.transaction("meta", "readonly");
+        var req = tx.objectStore("meta").get(key);
+        req.onsuccess = function () { resolve(req.result ? req.result.value : null); };
+        req.onerror = function () { resolve(null); };
+      });
+    });
+  }
+
+  function idbSetMeta(key, value) {
+    return idbPut("meta", { key: key, value: value });
+  }
+
+  function profileNetwork() {
+    var level = "mid";
     try {
-      localStorage.setItem(DONE_KEY, "1");
-      localStorage.removeItem(CURSOR_KEY);
+      var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (c) {
+        if (c.saveData) return { level: "off", concurrency: 0, pauseMs: 0 };
+        var t = String(c.effectiveType || "").toLowerCase();
+        if (t === "slow-2g" || t === "2g") level = "very-slow";
+        else if (t === "3g") level = "slow";
+        else if (t === "4g") level = "fast";
+        if (typeof c.downlink === "number") {
+          if (c.downlink > 0 && c.downlink < 0.5) level = "very-slow";
+          else if (c.downlink < 1.5 && level === "fast") level = "slow";
+          else if (c.downlink >= 8) level = "fast";
+        }
+      }
+    } catch (e) {}
+    if (isMobile && level === "fast") level = "mid";
+    var map = {
+      "very-slow": { concurrency: 1, pauseMs: 1200 },
+      slow: { concurrency: 2, pauseMs: 600 },
+      mid: { concurrency: isMobile ? 2 : 3, pauseMs: isMobile ? 400 : 200 },
+      fast: { concurrency: isMobile ? 3 : 4, pauseMs: isMobile ? 200 : 80 }
+    };
+    var cfg = map[level] || map.mid;
+    return { level: level, concurrency: cfg.concurrency, pauseMs: cfg.pauseMs };
+  }
+
+  var ui = null;
+  function ensureUI() {
+    if (ui) return ui;
+    ui = document.createElement("div");
+    ui.id = "mcd-offline-panel";
+    ui.setAttribute("dir", "rtl");
+    ui.style.cssText =
+      "position:fixed;bottom:12px;left:12px;z-index:99980;width:min(300px,92vw);" +
+      "background:#0d1117;border:1px solid #238636;border-radius:12px;padding:10px 12px;" +
+      "color:#e6edf3;font:12px/1.5 system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);display:none";
+    ui.innerHTML =
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px">' +
+      '<b style="color:#00e676">دانلود آفلاین</b>' +
+      '<button type="button" id="mcd-off-toggle" style="background:transparent;border:0;color:#8b949e;cursor:pointer;font-size:14px">×</button></div>' +
+      '<div id="mcd-off-status" style="color:#8b949e;margin-bottom:6px">آماده</div>' +
+      '<div style="height:6px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px">' +
+      '<div id="mcd-off-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>' +
+      '<div id="mcd-off-nums" style="color:#8b949e;margin-bottom:8px">۰ / ۰</div>' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap">' +
+      '<button type="button" id="mcd-off-start" style="background:#238636;color:#fff;border:0;border-radius:8px;padding:6px 10px;cursor:pointer">شروع / ادامه</button>' +
+      '<button type="button" id="mcd-off-pause" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:6px 10px;cursor:pointer">توقف</button>' +
+      '<button type="button" id="mcd-off-retry" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:8px;padding:6px 10px;cursor:pointer">تلاش مجدد ناموفق‌ها</button></div>';
+    (document.body || document.documentElement).appendChild(ui);
+
+    var fab = document.createElement("button");
+    fab.id = "mcd-offline-fab";
+    fab.type = "button";
+    fab.textContent = "↓ آفلاین";
+    fab.style.cssText =
+      "position:fixed;bottom:12px;left:12px;z-index:99979;background:#0d1117;color:#00e676;" +
+      "border:1px solid #238636;border-radius:999px;padding:8px 12px;font:12px system-ui;cursor:pointer";
+    fab.onclick = function () {
+      ui.style.display = "block";
+      fab.style.display = "none";
+    };
+    (document.body || document.documentElement).appendChild(fab);
+
+    document.getElementById("mcd-off-toggle").onclick = function () {
+      ui.style.display = "none";
+      fab.style.display = "block";
+    };
+    document.getElementById("mcd-off-start").onclick = function () { startDownload(false); };
+    document.getElementById("mcd-off-pause").onclick = function () {
+      state.stopFlag = true;
+      state.running = false;
+      renderUI("متوقف شد");
+    };
+    document.getElementById("mcd-off-retry").onclick = function () { startDownload(true); };
+    return ui;
+  }
+
+  function renderUI(statusText) {
+    try {
+      ensureUI();
+      var pct = state.total ? Math.floor((state.cached / state.total) * 100) : 0;
+      var bar = document.getElementById("mcd-off-bar");
+      var nums = document.getElementById("mcd-off-nums");
+      var st = document.getElementById("mcd-off-status");
+      if (bar) bar.style.width = pct + "%";
+      if (nums)
+        nums.textContent =
+          "تأییدشده: " + state.cached + " / " + state.total + " (" + pct + "٪) · ناموفق: " + state.failed + " · مانده: " + state.pending;
+      if (st) {
+        if (statusText) st.textContent = statusText;
+        else if (state.cached === state.total && state.total > 0 && state.failed === 0) st.textContent = "دانلود کامل و تأیید شد";
+        else if (state.failed > 0 && state.pending === 0 && !state.running) st.textContent = "دانلود ناقص — نیاز به تلاش مجدد";
+        else if (state.running) st.textContent = "در حال دانلود و تأیید…";
+        else st.textContent = "آماده";
+      }
     } catch (e) {}
   }
 
-  function getCursor() {
-    try {
-      return parseInt(localStorage.getItem(CURSOR_KEY) || "0", 10) || 0;
-    } catch (e) {
-      return 0;
+  function recount() {
+    var c = 0, f = 0, p = 0, d = 0;
+    for (var i = 0; i < state.resources.length; i++) {
+      var s = state.resources[i].status;
+      if (s === "cached") c++;
+      else if (s === "failed") f++;
+      else if (s === "downloading" || s === "retrying") d++;
+      else p++;
     }
+    state.cached = c;
+    state.failed = f;
+    state.pending = p;
+    state.downloading = d;
   }
 
-  function setCursor(n) {
-    try {
-      localStorage.setItem(CURSOR_KEY, String(n));
-    } catch (e) {}
+  function cacheOneVerified(path) {
+    var url = absUrl(path);
+    return fetch(url, { credentials: "same-origin", cache: "no-cache" })
+      .then(function (res) {
+        if (!res) throw { code: "network", message: "empty response" };
+        if (!res.ok) throw { code: "http", message: "HTTP " + res.status };
+        if (res.type === "opaque") throw { code: "opaque", message: "opaque response" };
+        if (res.status === 206) throw { code: "partial", message: "partial content not accepted" };
+        return res.blob().then(function (blob) {
+          var putRes = new Response(blob, { status: res.status, statusText: res.statusText, headers: res.headers });
+          return caches.open(CACHE_NAME).then(function (cache) {
+            return cache.put(url, putRes).then(function () {
+              return cache.match(url).then(function (matched) {
+                if (!matched) throw { code: "verify", message: "cache.match failed after put" };
+                return true;
+              });
+            });
+          });
+        });
+      })
+      .catch(function (err) {
+        if (err && err.name === "QuotaExceededError") throw { code: "quota", message: "storage full" };
+        if (err && err.code) throw err;
+        throw { code: "network", message: String((err && err.message) || err || "fetch failed") };
+      });
+  }
+
+  function loadManifest() {
+    return fetch(absUrl("offline-manifest.json"), { credentials: "same-origin", cache: "no-cache" }).then(function (r) {
+      if (!r.ok) throw new Error("manifest HTTP " + r.status);
+      return r.json();
+    });
+  }
+
+  function hydrate(manifest) {
+    MANIFEST_VERSION = manifest.version;
+    if (manifest.cacheName) CACHE_NAME = manifest.cacheName;
+    var list = (manifest.resources || []).map(function (r) {
+      return {
+        path: r.p || r.path,
+        type: r.t || r.type || "other",
+        size: r.s || r.size || 0,
+        status: "pending",
+        attempts: 0,
+        error: null
+      };
+    });
+    state.resources = list;
+    state.total = list.length;
+    state.byPath = {};
+    for (var i = 0; i < list.length; i++) state.byPath[list[i].path] = list[i];
+
+    return idbGetMeta("manifestVersion")
+      .then(function (prevVer) {
+        return idbGetAll("files").then(function (rows) {
+          if (prevVer && prevVer === MANIFEST_VERSION && rows && rows.length) {
+            for (var j = 0; j < rows.length; j++) {
+              var row = rows[j];
+              var item = state.byPath[row.path];
+              if (item) {
+                item.status = row.status || "pending";
+                item.attempts = row.attempts || 0;
+                item.error = row.error || null;
+                if (item.status === "downloading" || item.status === "retrying") item.status = "pending";
+              }
+            }
+          }
+          return idbSetMeta("manifestVersion", MANIFEST_VERSION);
+        });
+      })
+      .then(function () {
+        recount();
+        renderUI();
+      });
+  }
+
+  function persistItem(item) {
+    return idbPut("files", {
+      path: item.path,
+      status: item.status,
+      attempts: item.attempts,
+      error: item.error,
+      updatedAt: Date.now()
+    });
+  }
+
+  function pickNext(retryOnly) {
+    for (var i = 0; i < state.resources.length; i++) {
+      var it = state.resources[i];
+      if (retryOnly) {
+        if (it.status === "failed" && it.attempts < MAX_ATTEMPTS) return it;
+      } else if (it.status === "pending" || it.status === "failed") return it;
+    }
+    return null;
+  }
+
+  function startDownload(retryOnly) {
+    if (state.running) return;
+    if (!navigator.onLine) {
+      renderUI("آفلاین هستید — فقط صفحات ذخیره‌شده در دسترس‌اند");
+      return;
+    }
+    state.stopFlag = false;
+    state.running = true;
+    renderUI("در حال دانلود و تأیید…");
+
+    var profile = profileNetwork();
+    if (profile.level === "off" || profile.concurrency < 1) {
+      state.running = false;
+      renderUI("حالت صرفه‌جویی اینترنت فعال است");
+      return;
+    }
+
+    var active = 0;
+    var concurrency = profile.concurrency;
+
+    function pump() {
+      if (state.stopFlag) {
+        state.running = false;
+        renderUI("متوقف شد");
+        return;
+      }
+      while (active < concurrency) {
+        var item = pickNext(retryOnly);
+        if (!item) break;
+        active++;
+        item.status = item.attempts > 0 ? "retrying" : "downloading";
+        item.attempts += 1;
+        persistItem(item);
+        recount();
+        renderUI();
+
+        (function (current) {
+          cacheOneVerified(current.path)
+            .then(function () {
+              current.status = "cached";
+              current.error = null;
+              return persistItem(current);
+            })
+            .catch(function (err) {
+              current.error = (err && err.code ? err.code + ": " : "") + ((err && err.message) || "error");
+              current.status = "failed";
+              return persistItem(current);
+            })
+            .then(function () {
+              active--;
+              recount();
+              renderUI();
+              setTimeout(pump, profile.pauseMs || 0);
+            });
+        })(item);
+      }
+
+      if (active === 0) {
+        state.running = false;
+        recount();
+        if (state.cached === state.total && state.failed === 0) {
+          renderUI("دانلود کامل و تأیید شد");
+          idbSetMeta("complete", true);
+        } else if (state.failed > 0) {
+          renderUI("دانلود ناقص — " + state.failed + " فایل ناموفق");
+        } else {
+          renderUI("آماده");
+        }
+      }
+    }
+
+    pump();
   }
 
   function registerSW() {
     if (!("serviceWorker" in navigator)) return Promise.resolve(null);
-    var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\//g, "$1");
-    return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function () {
-      return null;
-    });
-  }
-
-  /**
-   * Profile network → { level, batchSize, pauseMs, startDelay }
-   * level: off | very-slow | slow | mid | fast
-   */
-  function profileNetwork() {
-    var level = "mid";
-    var downlink = null;
-    var rtt = null;
-    var effective = "";
-    var saveData = false;
-
-    try {
-      var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      if (c) {
-        saveData = !!c.saveData;
-        effective = String(c.effectiveType || "").toLowerCase();
-        if (typeof c.downlink === "number") downlink = c.downlink;
-        if (typeof c.rtt === "number") rtt = c.rtt;
-      }
-    } catch (e) {}
-
-    if (saveData) {
-      level = "off";
-    } else if (effective === "slow-2g" || effective === "2g") {
-      level = "very-slow";
-    } else if (effective === "3g") {
-      level = "slow";
-    } else if (effective === "4g") {
-      level = "fast";
-    }
-
-    if (downlink != null) {
-      if (downlink > 0 && downlink < 0.5) level = "very-slow";
-      else if (downlink < 1.5 && level === "fast") level = "slow";
-      else if (downlink < 3 && level === "fast") level = "mid";
-      else if (downlink >= 8) level = "fast";
-    }
-
-    if (rtt != null) {
-      if (rtt >= 800) level = level === "fast" ? "slow" : "very-slow";
-      else if (rtt >= 400 && level === "fast") level = "mid";
-    }
-
-    /* mobile is a bit more conservative */
-    if (isMobile && level === "fast") level = "mid";
-
-    var table = {
-      off: { batchSize: 0, pauseMs: 0, startDelay: 0 },
-      "very-slow": { batchSize: 1, pauseMs: 2000, startDelay: isMobile ? 12000 : 8000 },
-      slow: { batchSize: 2, pauseMs: 1200, startDelay: isMobile ? 10000 : 6000 },
-      mid: { batchSize: isMobile ? 3 : 6, pauseMs: isMobile ? 800 : 350, startDelay: isMobile ? 7000 : 4000 },
-      fast: { batchSize: isMobile ? 5 : 10, pauseMs: isMobile ? 400 : 150, startDelay: isMobile ? 5000 : 3000 }
-    };
-
-    var cfg = table[level] || table.mid;
-    return {
-      level: level,
-      batchSize: cfg.batchSize,
-      pauseMs: cfg.pauseMs,
-      startDelay: cfg.startDelay,
-      downlink: downlink,
-      rtt: rtt,
-      effective: effective
-    };
-  }
-
-  /** Optional real probe: time a small same-origin file */
-  function probeSpeed(baseProfile) {
-    return new Promise(function (resolve) {
-      var url = absoluteUrl("assets/img/favicon.svg") + "?probe=" + Date.now();
-      var t0 = performance.now ? performance.now() : Date.now();
-      var settled = false;
-      function done(p) {
-        if (settled) return;
-        settled = true;
-        resolve(p);
-      }
-      setTimeout(function () {
-        done(baseProfile);
-      }, 2500);
-
-      fetch(url, { credentials: "same-origin", cache: "no-store", priority: "low" })
-        .then(function (res) {
-          return res.arrayBuffer().then(function (buf) {
-            var t1 = performance.now ? performance.now() : Date.now();
-            var ms = Math.max(1, t1 - t0);
-            var bytes = buf ? buf.byteLength : 0;
-            var kbps = bytes > 0 ? (bytes * 8) / ms : 0; /* approx kilobits/ms → scale */
-            /* normalize: favicon is tiny; use latency mainly */
-            var p = {
-              level: baseProfile.level,
-              batchSize: baseProfile.batchSize,
-              pauseMs: baseProfile.pauseMs,
-              startDelay: baseProfile.startDelay,
-              downlink: baseProfile.downlink,
-              rtt: baseProfile.rtt,
-              effective: baseProfile.effective
-            };
-            if (ms > 1500) {
-              p.level = "very-slow";
-              p.batchSize = 1;
-              p.pauseMs = 2200;
-            } else if (ms > 800) {
-              if (p.level === "fast") p.level = "mid";
-              p.batchSize = Math.min(p.batchSize, isMobile ? 2 : 4);
-              p.pauseMs = Math.max(p.pauseMs, 900);
-            } else if (ms < 200 && p.level !== "off") {
-              p.level = isMobile ? "mid" : "fast";
-              p.batchSize = isMobile ? 5 : 10;
-              p.pauseMs = isMobile ? 400 : 150;
-            }
-            done(p);
-          });
-        })
-        .catch(function () {
-          done(baseProfile);
-        });
-    });
-  }
-
-  function loadSitemapUrls() {
-    return fetch(absoluteUrl("sitemap.xml"), {
-      credentials: "same-origin",
-      cache: "force-cache",
-      priority: "low"
-    })
-      .then(function (r) {
-        if (!r.ok) throw new Error("sitemap");
-        return r.text();
-      })
-      .then(function (xml) {
-        var urls = [];
-        var seen = {};
-        var re = /<loc>\s*([^<]+)\s*<\/loc>/gi;
-        var m;
-        while ((m = re.exec(xml))) {
-          var u = m[1].trim();
-          if (u && !seen[u]) {
-            seen[u] = 1;
-            urls.push(u);
-          }
-        }
-        return urls;
-      });
-  }
-
-  function coreUrls() {
-    return [
-      absoluteUrl(""),
-      absoluteUrl("index.html"),
-      absoluteUrl("404.html"),
-      absoluteUrl("assets/css/main.css"),
-      absoluteUrl("assets/js/boot-loader.js"),
-      absoluteUrl("assets/js/app.js"),
-      absoluteUrl("assets/js/home.js"),
-      absoluteUrl("assets/js/mcd-motion.js"),
-      absoluteUrl("assets/js/offline-session.js"),
-      absoluteUrl("assets/js/search.js"),
-      absoluteUrl("assets/img/favicon.svg"),
-      absoluteUrl("python/"),
-      absoluteUrl("html/"),
-      absoluteUrl("css/"),
-      absoluteUrl("javascript/"),
-      absoluteUrl("php/"),
-      absoluteUrl("tamrin/")
-    ];
-  }
-
-  function unique(list) {
-    var s = {};
-    var o = [];
-    for (var i = 0; i < list.length; i++) {
-      if (list[i] && !s[list[i]]) {
-        s[list[i]] = 1;
-        o.push(list[i]);
-      }
-    }
-    return o;
-  }
-
-  function lowFetch(url) {
-    try {
-      return fetch(url, { credentials: "same-origin", cache: "force-cache", priority: "low" });
-    } catch (e) {
-      return fetch(url, { credentials: "same-origin" });
-    }
-  }
-
-  function adaptiveFill(urls, profile) {
-    if (!window.caches || !navigator.onLine) return Promise.resolve();
-    if (profile.level === "off" || profile.batchSize < 1) return Promise.resolve();
-
-    var batchSize = profile.batchSize;
-    var pauseMs = profile.pauseMs;
-    var cursor = getCursor();
-    if (cursor >= urls.length) {
-      markDone();
-      return Promise.resolve();
-    }
-
-    return caches.open(CACHE_NAME).then(function (cache) {
-      function runBatch() {
-        if (!navigator.onLine) return Promise.resolve();
-
-        /* re-check network each batch — adapt if user moved to worse signal */
-        var live = profileNetwork();
-        if (live.level === "off") return Promise.resolve();
-        if (live.level === "very-slow") {
-          batchSize = 1;
-          pauseMs = Math.max(pauseMs, 2000);
-        } else if (live.level === "slow") {
-          batchSize = Math.min(batchSize, 2);
-          pauseMs = Math.max(pauseMs, 1000);
-        }
-
-        if (cursor >= urls.length) {
-          markDone();
-          return Promise.resolve();
-        }
-
-        var end = Math.min(cursor + batchSize, urls.length);
-        var slice = urls.slice(cursor, end);
-
-        return Promise.all(
-          slice.map(function (url) {
-            return lowFetch(url)
-              .then(function (res) {
-                if (res && res.ok) return cache.put(url, res);
-              })
-              .catch(function () {});
-          })
-        ).then(function () {
-          cursor = end;
-          setCursor(cursor);
-          if (cursor >= urls.length) {
-            markDone();
-            return;
-          }
-          return new Promise(function (resolve) {
-            setTimeout(function () {
-              runBatch().then(resolve);
-            }, pauseMs);
-          });
-        });
-      }
-
-      return runBatch();
-    });
-  }
-
-  function startBackgroundPack() {
-    if (isDone()) return;
-    if (!navigator.onLine) return;
-
-    var base = profileNetwork();
-    if (base.level === "off") return; /* Save-Data: respect user, don't bulk download */
-
-    probeSpeed(base).then(function (profile) {
-      loadSitemapUrls()
-        .catch(function () {
-          return [];
-        })
-        .then(function (map) {
-          var all = unique(coreUrls().concat(map));
-          return adaptiveFill(all, profile);
-        })
-        .catch(function () {});
-    });
+    var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\/+/g, "$1");
+    return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function () { return null; });
   }
 
   function init() {
-    registerSW().then(function () {
-      var base = profileNetwork();
-      var delay = base.startDelay || (isMobile ? 8000 : 5000);
-
-      setTimeout(function () {
-        if (typeof requestIdleCallback === "function") {
-          requestIdleCallback(
-            function () {
-              startBackgroundPack();
-            },
-            { timeout: 6000 }
-          );
-        } else {
-          startBackgroundPack();
+    ensureUI();
+    registerSW()
+      .then(function () { return loadManifest(); })
+      .then(function (manifest) { return hydrate(manifest); })
+      .then(function () {
+        if (state.cached < state.total && navigator.onLine) {
+          setTimeout(function () {
+            if (!state.running && state.cached < state.total) startDownload(false);
+          }, isMobile ? 10000 : 6000);
         }
-      }, delay);
-
-      /* if network improves later, try continue (cursor resumes) */
-      try {
-        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        if (conn && conn.addEventListener) {
-          conn.addEventListener("change", function () {
-            if (!isDone() && navigator.onLine) {
-              setTimeout(startBackgroundPack, 3000);
-            }
-          });
-        }
-      } catch (e) {}
-
-      window.addEventListener("online", function () {
-        if (!isDone()) setTimeout(startBackgroundPack, 2000);
+      })
+      .catch(function (err) {
+        console.warn("[MCD offline]", err);
+        renderUI("خطا در بارگذاری فهرست آفلاین");
       });
-    });
   }
 
   if (document.readyState === "complete") init();
