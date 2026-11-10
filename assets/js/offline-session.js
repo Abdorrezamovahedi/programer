@@ -1,10 +1,8 @@
 /**
  * MCD Code Up — verified offline pack manager
- * - Loads offline-manifest.json (real file list from repo)
- * - Per-file status in IndexedDB: pending|downloading|cached|failed|retrying
- * - cached ONLY after fetch OK + cache.put + cache.match verify
- * - Progress = verifiedCached / total
- * - Resume after refresh; retry failed; adaptive concurrency
+ * Manifest = sitemap pages + real static assets (from repo inventory)
+ * cached ONLY after fetch OK + cache.put + cache.match verify
+ * Progress = verifiedCached / total ; IndexedDB resume
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -13,7 +11,7 @@
   var CACHE_NAME = "mcd-offline-v5";
   var DB_NAME = "mcd_offline_db_v5";
   var DB_VER = 1;
-  var MANIFEST_VERSION = null;
+  var MANIFEST_VERSION = "2026-11-10-v1";
   var MAX_ATTEMPTS = 3;
 
   var SCOPE_BASE = (function () {
@@ -29,6 +27,26 @@
       navigator.maxTouchPoints > 1 ||
       /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent || "");
   } catch (e) {}
+
+  var STATIC_ASSETS = [
+    "index.html",
+    "404.html",
+    "sw.js",
+    "robots.txt",
+    "sitemap.xml",
+    "offline-manifest-meta.json",
+    "assets/css/main.css",
+    "assets/js/boot-loader.js",
+    "assets/js/app.js",
+    "assets/js/home.js",
+    "assets/js/mcd-motion.js",
+    "assets/js/offline-session.js",
+    "assets/js/search.js",
+    "assets/js/exercises.js",
+    "assets/js/tamrin-filter.js",
+    "assets/img/favicon.svg",
+    "assets/img/og-default.svg"
+  ];
 
   var state = {
     total: 0,
@@ -50,6 +68,17 @@
     }
   }
 
+  function classify(p) {
+    var pl = String(p).toLowerCase();
+    if (/\.html?$/.test(pl)) return "html";
+    if (/\.css$/.test(pl)) return "css";
+    if (/\.js$/.test(pl)) return "js";
+    if (/\.(png|jpe?g|webp|gif|svg|ico)$/.test(pl)) return "image";
+    if (/\.(woff2?|ttf|otf)$/.test(pl)) return "font";
+    if (/\.(xml|txt|json)$/.test(pl)) return "data";
+    return "other";
+  }
+
   function openDb() {
     return new Promise(function (resolve, reject) {
       if (!window.indexedDB) {
@@ -62,8 +91,12 @@
         if (!db.objectStoreNames.contains("files")) db.createObjectStore("files", { keyPath: "path" });
         if (!db.objectStoreNames.contains("meta")) db.createObjectStore("meta", { keyPath: "key" });
       };
-      req.onsuccess = function () { resolve(req.result); };
-      req.onerror = function () { reject(req.error || new Error("idb open fail")); };
+      req.onsuccess = function () {
+        resolve(req.result);
+      };
+      req.onerror = function () {
+        reject(req.error || new Error("idb open fail"));
+      };
     });
   }
 
@@ -72,8 +105,12 @@
       return new Promise(function (resolve, reject) {
         var tx = db.transaction(store, "readonly");
         var req = tx.objectStore(store).getAll();
-        req.onsuccess = function () { resolve(req.result || []); };
-        req.onerror = function () { reject(req.error); };
+        req.onsuccess = function () {
+          resolve(req.result || []);
+        };
+        req.onerror = function () {
+          reject(req.error);
+        };
       });
     });
   }
@@ -83,8 +120,12 @@
       return new Promise(function (resolve, reject) {
         var tx = db.transaction(store, "readwrite");
         tx.objectStore(store).put(value);
-        tx.oncomplete = function () { resolve(); };
-        tx.onerror = function () { reject(tx.error); };
+        tx.oncomplete = function () {
+          resolve();
+        };
+        tx.onerror = function () {
+          reject(tx.error);
+        };
       });
     });
   }
@@ -94,8 +135,12 @@
       return new Promise(function (resolve) {
         var tx = db.transaction("meta", "readonly");
         var req = tx.objectStore("meta").get(key);
-        req.onsuccess = function () { resolve(req.result ? req.result.value : null); };
-        req.onerror = function () { resolve(null); };
+        req.onsuccess = function () {
+          resolve(req.result ? req.result.value : null);
+        };
+        req.onerror = function () {
+          resolve(null);
+        };
       });
     });
   }
@@ -173,13 +218,17 @@
       ui.style.display = "none";
       fab.style.display = "block";
     };
-    document.getElementById("mcd-off-start").onclick = function () { startDownload(false); };
+    document.getElementById("mcd-off-start").onclick = function () {
+      startDownload(false);
+    };
     document.getElementById("mcd-off-pause").onclick = function () {
       state.stopFlag = true;
       state.running = false;
       renderUI("متوقف شد");
     };
-    document.getElementById("mcd-off-retry").onclick = function () { startDownload(true); };
+    document.getElementById("mcd-off-retry").onclick = function () {
+      startDownload(true);
+    };
     return ui;
   }
 
@@ -193,11 +242,22 @@
       if (bar) bar.style.width = pct + "%";
       if (nums)
         nums.textContent =
-          "تأییدشده: " + state.cached + " / " + state.total + " (" + pct + "٪) · ناموفق: " + state.failed + " · مانده: " + state.pending;
+          "تأییدشده: " +
+          state.cached +
+          " / " +
+          state.total +
+          " (" +
+          pct +
+          "٪) · ناموفق: " +
+          state.failed +
+          " · مانده: " +
+          state.pending;
       if (st) {
         if (statusText) st.textContent = statusText;
-        else if (state.cached === state.total && state.total > 0 && state.failed === 0) st.textContent = "دانلود کامل و تأیید شد";
-        else if (state.failed > 0 && state.pending === 0 && !state.running) st.textContent = "دانلود ناقص — نیاز به تلاش مجدد";
+        else if (state.cached === state.total && state.total > 0 && state.failed === 0)
+          st.textContent = "دانلود کامل و تأیید شد";
+        else if (state.failed > 0 && state.pending === 0 && !state.running)
+          st.textContent = "دانلود ناقص — نیاز به تلاش مجدد";
         else if (state.running) st.textContent = "در حال دانلود و تأیید…";
         else st.textContent = "آماده";
       }
@@ -205,7 +265,10 @@
   }
 
   function recount() {
-    var c = 0, f = 0, p = 0, d = 0;
+    var c = 0,
+      f = 0,
+      p = 0,
+      d = 0;
     for (var i = 0; i < state.resources.length; i++) {
       var s = state.resources[i].status;
       if (s === "cached") c++;
@@ -228,7 +291,11 @@
         if (res.type === "opaque") throw { code: "opaque", message: "opaque response" };
         if (res.status === 206) throw { code: "partial", message: "partial content not accepted" };
         return res.blob().then(function (blob) {
-          var putRes = new Response(blob, { status: res.status, statusText: res.statusText, headers: res.headers });
+          var putRes = new Response(blob, {
+            status: res.status,
+            statusText: res.statusText,
+            headers: res.headers
+          });
           return caches.open(CACHE_NAME).then(function (cache) {
             return cache.put(url, putRes).then(function () {
               return cache.match(url).then(function (matched) {
@@ -246,21 +313,87 @@
       });
   }
 
+  function pathFromLoc(loc) {
+    try {
+      var u = new URL(loc);
+      var path = u.pathname || "/";
+      if (path.indexOf("/programer/") === 0) path = path.slice("/programer/".length);
+      else if (path.indexOf("/programer") === 0) path = path.slice("/programer".length).replace(/^\//, "");
+      if (!path || path === "/") return "index.html";
+      return path.replace(/^\//, "");
+    } catch (e) {
+      return null;
+    }
+  }
+
   function loadManifest() {
-    return fetch(absUrl("offline-manifest.json"), { credentials: "same-origin", cache: "no-cache" }).then(function (r) {
-      if (!r.ok) throw new Error("manifest HTTP " + r.status);
-      return r.json();
+    var metaP = fetch(absUrl("offline-manifest-meta.json"), {
+      credentials: "same-origin",
+      cache: "no-cache"
+    })
+      .then(function (r) {
+        return r.ok ? r.json() : {};
+      })
+      .catch(function () {
+        return {};
+      });
+
+    var mapP = fetch(absUrl("sitemap.xml"), {
+      credentials: "same-origin",
+      cache: "no-cache"
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error("sitemap");
+        return r.text();
+      })
+      .then(function (xml) {
+        var urls = [];
+        var re = /<loc>\s*([^<]+)\s*<\/loc>/gi;
+        var m;
+        while ((m = re.exec(xml))) urls.push(m[1].trim());
+        return urls;
+      })
+      .catch(function () {
+        return [];
+      });
+
+    return Promise.all([metaP, mapP]).then(function (pair) {
+      var meta = pair[0] || {};
+      var locs = pair[1] || [];
+      if (meta.version) MANIFEST_VERSION = meta.version;
+      if (meta.cacheName) CACHE_NAME = meta.cacheName;
+
+      var seen = {};
+      var resources = [];
+      function add(path) {
+        if (!path || seen[path]) return;
+        seen[path] = 1;
+        resources.push({ p: path, t: classify(path) });
+      }
+
+      for (var i = 0; i < STATIC_ASSETS.length; i++) add(STATIC_ASSETS[i]);
+      for (var j = 0; j < locs.length; j++) {
+        var p = pathFromLoc(locs[j]);
+        if (p) add(p);
+      }
+
+      return {
+        version: MANIFEST_VERSION,
+        cacheName: CACHE_NAME,
+        total: resources.length,
+        resources: resources,
+        stats: meta.stats || null
+      };
     });
   }
 
   function hydrate(manifest) {
-    MANIFEST_VERSION = manifest.version;
+    MANIFEST_VERSION = manifest.version || MANIFEST_VERSION;
     if (manifest.cacheName) CACHE_NAME = manifest.cacheName;
     var list = (manifest.resources || []).map(function (r) {
       return {
         path: r.p || r.path,
         type: r.t || r.type || "other",
-        size: r.s || r.size || 0,
         status: "pending",
         attempts: 0,
         error: null
@@ -359,7 +492,8 @@
               return persistItem(current);
             })
             .catch(function (err) {
-              current.error = (err && err.code ? err.code + ": " : "") + ((err && err.message) || "error");
+              current.error =
+                (err && err.code ? err.code + ": " : "") + ((err && err.message) || "error");
               current.status = "failed";
               return persistItem(current);
             })
@@ -392,14 +526,20 @@
   function registerSW() {
     if (!("serviceWorker" in navigator)) return Promise.resolve(null);
     var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\/+/g, "$1");
-    return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function () { return null; });
+    return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function () {
+      return null;
+    });
   }
 
   function init() {
     ensureUI();
     registerSW()
-      .then(function () { return loadManifest(); })
-      .then(function (manifest) { return hydrate(manifest); })
+      .then(function () {
+        return loadManifest();
+      })
+      .then(function (manifest) {
+        return hydrate(manifest);
+      })
       .then(function () {
         if (state.cached < state.total && navigator.onLine) {
           setTimeout(function () {
