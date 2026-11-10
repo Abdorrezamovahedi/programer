@@ -1,6 +1,6 @@
 /**
- * MCD offline — header lever + separate «دانلود» button
- * Toggle does NOT open modal. Modal opens only via دانلود button.
+ * MCD offline — only inside installed Web App (PWA).
+ * Normal browser / Google search visits: no offline option.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -28,6 +28,20 @@
       navigator.maxTouchPoints > 1 ||
       /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent || "");
   } catch (e) {}
+
+  function isWebAppMode() {
+    try {
+      if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
+      if (window.matchMedia && window.matchMedia("(display-mode: fullscreen)").matches) return true;
+      if (window.matchMedia && window.matchMedia("(display-mode: minimal-ui)").matches) return true;
+      if (typeof navigator.standalone === "boolean" && navigator.standalone) return true;
+      if (document.referrer && document.referrer.indexOf("android-app://") === 0) return true;
+    } catch (e) {}
+    return false;
+  }
+
+  /* Normal Google/browser visit: stop completely — no lever, no modal */
+  if (!isWebAppMode()) return;
 
   var STATIC_ASSETS = [
     "index.html", "404.html", "sw.js", "robots.txt", "sitemap.xml", "offline-manifest-meta.json",
@@ -132,18 +146,11 @@
   }
 
   function findHeaderHost() {
-    return (
-      document.querySelector("header nav") ||
-      document.querySelector("header") ||
-      document.body
-    );
+    return document.querySelector("header nav") || document.querySelector("header") || document.body;
   }
 
   function injectHeaderToggle() {
-    if (document.getElementById("mcd-offline-nav")) {
-      updateLeverUI();
-      return true;
-    }
+    if (document.getElementById("mcd-offline-nav")) { updateLeverUI(); return true; }
     var host = findHeaderHost();
     if (!host) return false;
 
@@ -151,15 +158,11 @@
     wrap.id = "mcd-offline-nav";
     wrap.setAttribute("dir", "rtl");
     wrap.style.cssText =
-      "display:inline-flex;align-items:center;gap:6px;margin:4px;" +
-      "padding:4px 8px;border-radius:999px;border:1px solid #238636;" +
-      "background:#0d1117;user-select:none;white-space:nowrap;vertical-align:middle;" +
-      "font-family:system-ui,sans-serif;z-index:99990";
-
+      "display:inline-flex;align-items:center;gap:6px;margin:4px;padding:4px 8px;border-radius:999px;" +
+      "border:1px solid #238636;background:#0d1117;user-select:none;white-space:nowrap;" +
+      "vertical-align:middle;font-family:system-ui,sans-serif;z-index:99990";
     if (host === document.body) {
-      wrap.style.position = "fixed";
-      wrap.style.top = "10px";
-      wrap.style.left = "10px";
+      wrap.style.position = "fixed"; wrap.style.top = "10px"; wrap.style.left = "10px";
     }
 
     var label = document.createElement("span");
@@ -168,15 +171,12 @@
     label.textContent = "آنلاین";
 
     var track = document.createElement("button");
-    track.type = "button";
-    track.id = "mcd-offline-lever";
-    track.setAttribute("role", "switch");
-    track.setAttribute("aria-checked", "false");
+    track.type = "button"; track.id = "mcd-offline-lever";
+    track.setAttribute("role", "switch"); track.setAttribute("aria-checked", "false");
     track.title = "اهرم آفلاین / آنلاین";
     track.style.cssText =
-      "position:relative;width:42px;height:22px;border-radius:999px;border:0;" +
-      "padding:0;cursor:pointer;background:#30363d;transition:background .2s;flex-shrink:0";
-
+      "position:relative;width:42px;height:22px;border-radius:999px;border:0;padding:0;" +
+      "cursor:pointer;background:#30363d;transition:background .2s;flex-shrink:0";
     var knob = document.createElement("span");
     knob.id = "mcd-lever-knob";
     knob.style.cssText =
@@ -185,38 +185,27 @@
     track.appendChild(knob);
 
     var dlBtn = document.createElement("button");
-    dlBtn.type = "button";
-    dlBtn.id = "mcd-download-view-btn";
-    dlBtn.textContent = "دانلود";
-    dlBtn.title = "مشاهده وضعیت دانلود آفلاین";
+    dlBtn.type = "button"; dlBtn.id = "mcd-download-view-btn";
+    dlBtn.textContent = "دانلود"; dlBtn.title = "مشاهده وضعیت دانلود آفلاین";
     dlBtn.style.cssText =
       "background:#21262d;color:#00e676;border:1px solid #238636;border-radius:8px;" +
       "padding:3px 8px;font-size:11px;cursor:pointer;font-weight:600";
 
-    wrap.appendChild(label);
-    wrap.appendChild(track);
-    wrap.appendChild(dlBtn);
+    wrap.appendChild(label); wrap.appendChild(track); wrap.appendChild(dlBtn);
     host.appendChild(wrap);
 
     track.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault(); e.stopPropagation();
       var next = !state.enabled;
       state.userOverride = true;
-      if (next) onUserEnableOffline();
-      else onUserDisableOffline();
+      if (next) onUserEnableOffline(); else onUserDisableOffline();
       updateLeverUI();
     });
-
     dlBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault(); e.stopPropagation();
       openModal();
-      if (state.consented && !state.packReady && navigator.onLine) {
-        preparePack(false);
-      }
+      if (state.consented && !state.packReady && navigator.onLine) preparePack(false);
     });
-
     updateLeverUI();
     return true;
   }
@@ -237,35 +226,22 @@
     if (!track || !knob || !label) return;
     track.setAttribute("aria-checked", on ? "true" : "false");
     if (on) {
-      track.style.background = "#238636";
-      knob.style.left = "22px";
-      knob.style.background = "#00e676";
-      label.textContent = "آفلاین";
-      label.style.color = "#f0b429";
+      track.style.background = "#238636"; knob.style.left = "22px"; knob.style.background = "#00e676";
+      label.textContent = "آفلاین"; label.style.color = "#f0b429";
     } else {
-      track.style.background = "#30363d";
-      knob.style.left = "2px";
-      knob.style.background = "#e6edf3";
-      label.textContent = "آنلاین";
-      label.style.color = "#00e676";
+      track.style.background = "#30363d"; knob.style.left = "2px"; knob.style.background = "#e6edf3";
+      label.textContent = "آنلاین"; label.style.color = "#00e676";
     }
   }
 
   function updateLeverUI() {
-    if (state.packReady && state.autoSync && !state.userOverride) {
-      state.enabled = !state.online;
-    }
+    if (state.packReady && state.autoSync && !state.userOverride) state.enabled = !state.online;
     if (!state.packReady) {
       setLeverVisual(!!state.enabled);
       var label = document.getElementById("mcd-mode-label");
       if (label) {
-        if (state.online) {
-          label.textContent = "آنلاین";
-          label.style.color = "#00e676";
-        } else {
-          label.textContent = "آفلاین";
-          label.style.color = "#f0b429";
-        }
+        if (state.online) { label.textContent = "آنلاین"; label.style.color = "#00e676"; }
+        else { label.textContent = "آفلاین"; label.style.color = "#f0b429"; }
       }
       return;
     }
@@ -278,15 +254,13 @@
     modal = document.createElement("div");
     modal.id = "mcd-offline-modal";
     modal.setAttribute("dir", "rtl");
-    modal.style.cssText =
-      "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.75);display:none;" +
-      "align-items:center;justify-content:center;padding:16px;font-family:system-ui,sans-serif";
+    modal.style.cssText = "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:16px;font-family:system-ui,sans-serif";
     modal.innerHTML =
-      '<div style="width:min(440px,100%);background:#0d1117;border:1px solid #238636;border-radius:16px;padding:18px 16px;color:#e6edf3;box-shadow:0 16px 48px rgba(0,0,0,.5)">' +
+      '<div style="width:min(440px,100%);background:#0d1117;border:1px solid #238636;border-radius:16px;padding:18px 16px;color:#e6edf3">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
       '<b style="color:#00e676;font-size:17px">وضعیت دانلود آفلاین</b>' +
       '<button type="button" id="mcd-modal-x" style="background:transparent;border:0;color:#8b949e;font-size:18px;cursor:pointer">×</button></div>' +
-      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">از اینجا دانلود را شروع یا پیگیری کنید. اهرم منو فقط حالت آنلاین/آفلاین را عوض می‌کند.</p>' +
+      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">فقط در وب‌اپلیکیشن. اهرم حالت را عوض می‌کند؛ دانلود از این پنجره.</p>' +
       '<div id="mcd-modal-status" style="color:#8b949e;font-size:12px;margin-bottom:6px">آماده</div>' +
       '<div style="height:8px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px">' +
       '<div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>' +
@@ -299,9 +273,7 @@
     document.getElementById("mcd-modal-x").onclick = function () { modal.style.display = "none"; };
     modal.addEventListener("click", function (e) { if (e.target === modal) modal.style.display = "none"; });
     document.getElementById("mcd-modal-start").onclick = function () {
-      state.consented = true;
-      lsSet(CONSENT_KEY, "yes");
-      startDownload(false);
+      state.consented = true; lsSet(CONSENT_KEY, "yes"); startDownload(false);
     };
     document.getElementById("mcd-modal-pause").onclick = function () {
       state.stopFlag = true; state.running = false; renderProgress("متوقف شد");
@@ -329,13 +301,8 @@
   }
 
   function markPackReady() {
-    state.packReady = true;
-    lsSet(DONE_KEY, "1");
-    state.autoSync = true;
-    state.userOverride = false;
-    state.enabled = !state.online;
-    lsSet(ENABLED_KEY, state.enabled ? "1" : "0");
-    updateLeverUI();
+    state.packReady = true; lsSet(DONE_KEY, "1"); state.autoSync = true; state.userOverride = false;
+    state.enabled = !state.online; lsSet(ENABLED_KEY, state.enabled ? "1" : "0"); updateLeverUI();
   }
 
   function recount() {
@@ -352,10 +319,7 @@
     var url = absUrl(path);
     return fetch(url, { credentials: "same-origin", cache: "no-cache" })
       .then(function (res) {
-        if (!res) throw { code: "network", message: "empty" };
-        if (!res.ok) throw { code: "http", message: "HTTP " + res.status };
-        if (res.type === "opaque") throw { code: "opaque", message: "opaque" };
-        if (res.status === 206) throw { code: "partial", message: "partial" };
+        if (!res || !res.ok || res.type === "opaque" || res.status === 206) throw { code: "http", message: "bad" };
         return res.blob().then(function (blob) {
           var putRes = new Response(blob, { status: res.status, statusText: res.statusText, headers: res.headers });
           return caches.open(CACHE_NAME).then(function (cache) {
@@ -377,8 +341,7 @@
 
   function pathFromLoc(loc) {
     try {
-      var u = new URL(loc);
-      var path = u.pathname || "/";
+      var u = new URL(loc); var path = u.pathname || "/";
       if (path.indexOf("/programer/") === 0) path = path.slice("/programer/".length);
       else if (path.indexOf("/programer") === 0) path = path.slice("/programer".length).replace(/^\//, "");
       if (!path || path === "/") return "index.html";
@@ -423,9 +386,7 @@
           for (var j = 0; j < rows.length; j++) {
             var row = rows[j], item = state.byPath[row.path];
             if (item) {
-              item.status = row.status || "pending";
-              item.attempts = row.attempts || 0;
-              item.error = row.error || null;
+              item.status = row.status || "pending"; item.attempts = row.attempts || 0; item.error = row.error || null;
               if (item.status === "downloading" || item.status === "retrying") item.status = "pending";
             }
           }
@@ -435,11 +396,8 @@
         return idbSetMeta("manifestVersion", MANIFEST_VERSION).then(function () {
           recount();
           if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
-            markPackReady();
-            renderProgress("دانلود شد");
-          } else if (versionChanged) {
-            renderProgress("نسخه سایت تغییر کرده — در حال همگام‌سازی…");
-          }
+            markPackReady(); renderProgress("دانلود شد");
+          } else if (versionChanged) renderProgress("نسخه سایت تغییر کرده — در حال همگام‌سازی…");
           return versionChanged;
         });
       });
@@ -461,8 +419,7 @@
   function startDownload(retryOnly) {
     if (state.running) return;
     if (!navigator.onLine) { renderProgress("اینترنت ندارید — فقط فایل‌های قبلی قابل استفاده‌اند"); return; }
-    state.consented = true;
-    lsSet(CONSENT_KEY, "yes");
+    state.consented = true; lsSet(CONSENT_KEY, "yes");
     state.stopFlag = false; state.running = true; renderProgress("در حال دانلود و تأیید فایل‌ها…");
     var profile = profileNetwork();
     if (!profile.concurrency) { state.running = false; renderProgress("حالت صرفه‌جویی اینترنت فعال است"); return; }
@@ -492,8 +449,7 @@
       if (active === 0) {
         state.running = false; recount();
         if (state.cached === state.total && state.failed === 0) {
-          renderProgress("دانلود شد");
-          idbSetMeta("complete", true);
+          renderProgress("دانلود شد"); idbSetMeta("complete", true);
           try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (eP) {}
           markPackReady();
         } else if (state.failed > 0) renderProgress("دانلود ناقص — " + state.failed + " فایل ناموفق");
@@ -509,9 +465,7 @@
         if (openUi) openModal();
         recount();
         if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
-          renderProgress("دانلود شد");
-          markPackReady();
-          return;
+          renderProgress("دانلود شد"); markPackReady(); return;
         }
         if (versionChanged || (state.consented && state.cached < state.total)) {
           setTimeout(function () { if (!state.running) startDownload(false); }, 400);
@@ -523,21 +477,11 @@
     });
   }
 
-  /* Lever ON: enable mode only — do NOT open download UI */
   function onUserEnableOffline() {
-    state.enabled = true;
-    lsSet(ENABLED_KEY, "1");
-    lsSet(CONSENT_KEY, "yes");
-    state.consented = true;
-    updateLeverUI();
+    state.enabled = true; lsSet(ENABLED_KEY, "1"); lsSet(CONSENT_KEY, "yes"); state.consented = true; updateLeverUI();
   }
-
   function onUserDisableOffline() {
-    state.enabled = false;
-    lsSet(ENABLED_KEY, "0");
-    state.stopFlag = true;
-    state.running = false;
-    updateLeverUI();
+    state.enabled = false; lsSet(ENABLED_KEY, "0"); state.stopFlag = true; state.running = false; updateLeverUI();
   }
 
   function registerSW() {
@@ -549,26 +493,17 @@
   function bindConnectivity() {
     function applyOnline() {
       state.online = true;
-      if (state.packReady) {
-        state.userOverride = false;
-        state.enabled = false;
-        lsSet(ENABLED_KEY, "0");
-      }
+      if (state.packReady) { state.userOverride = false; state.enabled = false; lsSet(ENABLED_KEY, "0"); }
       updateLeverUI();
     }
     function applyOffline() {
       state.online = false;
-      if (state.packReady) {
-        state.userOverride = false;
-        state.enabled = true;
-        lsSet(ENABLED_KEY, "1");
-      }
+      if (state.packReady) { state.userOverride = false; state.enabled = true; lsSet(ENABLED_KEY, "1"); }
       updateLeverUI();
     }
     window.addEventListener("online", applyOnline);
     window.addEventListener("offline", applyOffline);
-    if (navigator.onLine) applyOnline();
-    else applyOffline();
+    if (navigator.onLine) applyOnline(); else applyOffline();
   }
 
   function init() {
@@ -579,10 +514,7 @@
       state.consented = lsGet(CONSENT_KEY) === "yes";
       state.packReady = lsGet(DONE_KEY) === "1";
       state.enabled = lsGet(ENABLED_KEY) === "1";
-      if (state.packReady) {
-        state.enabled = !navigator.onLine;
-        state.autoSync = true;
-      }
+      if (state.packReady) { state.enabled = !navigator.onLine; state.autoSync = true; }
       updateLeverUI();
       if (state.consented && navigator.onLine) preparePack(false);
     });
