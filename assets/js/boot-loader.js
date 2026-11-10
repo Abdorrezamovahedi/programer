@@ -1,7 +1,6 @@
 /**
  * MCD programmers – boot loader (original particle MCD animation)
- * First home visit: full. Lesson / return visits: shorter.
- * Offline pack script loads later so it never breaks this intro.
+ * Offline UI loads ONLY for app entry (?mcd=app / app.html), never Google site.
  */
 (function () {
   if (window.__MCD_BOOT_DONE__) return;
@@ -51,155 +50,110 @@
       : mcdBootTier === "mid"
         ? 1400
         : FULL_MS;
-  var CHARS = "01<>{}[]/+*=#";
-
-  var css = document.createElement("style");
-  css.id = "boot-loader-css";
-  css.textContent =
-    "#boot-loader{position:fixed;inset:0;background:#050505;z-index:99999;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease,visibility .35s}" +
-    "#boot-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}" +
-    "#boot-loader canvas{position:absolute;inset:0;width:100%;height:100%}";
-  document.head.appendChild(css);
-
-  var loader = document.createElement("div");
-  loader.id = "boot-loader";
-  loader.innerHTML = '<canvas id="boot-c"></canvas>';
 
   function mount() {
-    if (!document.body) {
-      document.addEventListener("DOMContentLoaded", mount);
-      return;
-    }
-    document.body.insertBefore(loader, document.body.firstChild);
-    start();
-  }
+    var root = document.createElement("div");
+    root.id = "mcd-boot";
+    root.setAttribute("aria-hidden", "true");
+    root.style.cssText =
+      "position:fixed;inset:0;z-index:999999;background:#05080c;display:flex;" +
+      "align-items:center;justify-content:center;transition:opacity .35s ease";
 
-  function finish() {
-    if (!isLesson) {
-      try {
-        sessionStorage.setItem(FLAG, "1");
-      } catch (e) {}
-    }
-    if (!loader || loader.classList.contains("hidden")) return;
-    loader.classList.add("hidden");
-    setTimeout(function () {
-      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
-    }, isShort ? 200 : 400);
-  }
+    var canvas = document.createElement("canvas");
+    canvas.width = 320;
+    canvas.height = 120;
+    canvas.style.cssText = "max-width:90vw;height:auto";
+    root.appendChild(canvas);
+    document.documentElement.appendChild(root);
 
-  function start() {
-    var canvas = document.getElementById("boot-c");
-    if (!canvas) {
-      finish();
-      return;
-    }
-    var ctx = canvas.getContext("2d", { alpha: false });
-    var W = 0,
-      H = 0,
-      dpr = 1,
-      parts = null,
-      t0 = 0;
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = window.innerWidth;
-      H = window.innerHeight;
-      canvas.width = (W * dpr) | 0;
-      canvas.height = (H * dpr) | 0;
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    window.addEventListener("resize", resize);
-    resize();
-
-    function buildPoints() {
-      var off = document.createElement("canvas");
-      var ow = 520,
-        oh = 180;
-      off.width = ow;
-      off.height = oh;
-      var o = off.getContext("2d");
-      o.fillStyle = "#000";
-      o.fillRect(0, 0, ow, oh);
-      o.fillStyle = "#fff";
-      o.textAlign = "center";
-      o.textBaseline = "middle";
-      o.font = "bold 120px Arial Black, Arial, sans-serif";
-      o.fillText("MCD", ow / 2, oh * 0.5);
-      var data = o.getImageData(0, 0, ow, oh).data;
-      var pts = [],
-        step = isShort ? 8 : 5;
-      for (var y = 0; y < oh; y += step) {
-        for (var x = 0; x < ow; x += step) {
-          if (data[(y * ow + x) * 4] > 140) pts.push({ nx: x / ow - 0.5, ny: y / oh - 0.5 });
-        }
-      }
-      return pts;
-    }
-
-    function init() {
-      var pts = buildPoints();
-      var scaleX = Math.min(W * 0.75, 480);
-      var scaleY = scaleX * 0.38;
-      var cy = H * 0.48;
-      parts = pts.map(function (p) {
-        var ang = Math.random() * 6.2832;
-        var dist = Math.max(W, H) * (0.22 + Math.random() * (isShort ? 0.18 : 0.5));
-        return {
-          x: W * 0.5 + Math.cos(ang) * dist,
-          y: H * 0.5 + Math.sin(ang) * dist,
-          tx: W * 0.5 + p.nx * scaleX,
-          ty: cy + p.ny * scaleY,
-          ch: CHARS[(Math.random() * CHARS.length) | 0],
-          a: 0.5 + Math.random() * 0.4,
-          d: Math.random() * (isShort ? 0.04 : 0.18)
-        };
+    var ctx = canvas.getContext("2d");
+    var t0 = performance.now();
+    var letters = ["M", "C", "D"];
+    var particles = [];
+    for (var i = 0; i < 48; i++) {
+      particles.push({
+        x: Math.random() * 320,
+        y: Math.random() * 120,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        r: 1 + Math.random() * 2
       });
     }
 
-    function ease(t) {
-      return t * (2 - t);
-    }
-
     function frame(now) {
-      if (!t0) t0 = now;
-      var p = Math.min(1, (now - t0) / DUR);
-      ctx.fillStyle = "#050505";
-      ctx.fillRect(0, 0, W, H);
-      ctx.font = "11px monospace";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      for (var i = 0; i < parts.length; i++) {
-        var pt = parts[i];
-        var t = (p - pt.d) / (1 - pt.d);
-        if (t < 0) t = 0;
-        else if (t > 1) t = 1;
-        t = ease(t);
-        ctx.globalAlpha = pt.a * (0.2 + 0.8 * t);
-        ctx.fillStyle = t > 0.82 ? "#00e676" : "#00c853";
-        ctx.fillText(pt.ch, pt.x + (pt.tx - pt.x) * t, pt.y + (pt.ty - pt.y) * t);
+      var elapsed = now - t0;
+      var p = Math.min(1, elapsed / DUR);
+      ctx.clearRect(0, 0, 320, 120);
+      ctx.fillStyle = "#00e676";
+      for (var j = 0; j < particles.length; j++) {
+        var pt = particles[j];
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        if (pt.x < 0 || pt.x > 320) pt.vx *= -1;
+        if (pt.y < 0 || pt.y > 120) pt.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.globalAlpha = 0.35 + 0.4 * Math.sin(elapsed / 200 + j);
+        ctx.fill();
       }
       ctx.globalAlpha = 1;
-      if (p < 1) requestAnimationFrame(frame);
-      else setTimeout(finish, isShort ? 60 : 250);
-    }
+      ctx.font = "bold 48px Orbitron, system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#00e676";
+      ctx.shadowColor = "#00e676";
+      ctx.shadowBlur = 12;
+      var label = letters.slice(0, 1 + Math.floor(p * 2.99)).join("");
+      ctx.fillText(label || "M", 160, 60);
+      ctx.shadowBlur = 0;
 
-    try {
-      init();
-      requestAnimationFrame(frame);
-    } catch (e) {
-      finish();
+      if (elapsed < DUR) {
+        requestAnimationFrame(frame);
+      } else {
+        try {
+          if (!isLesson) sessionStorage.setItem(FLAG, "1");
+        } catch (e2) {}
+        root.style.opacity = "0";
+        setTimeout(function () {
+          if (root.parentNode) root.parentNode.removeChild(root);
+        }, 400);
+      }
     }
-    setTimeout(finish, DUR + (isShort ? 500 : 3500));
+    requestAnimationFrame(frame);
   }
 
-  mount();
+  if (document.body) mount();
+  else document.addEventListener("DOMContentLoaded", mount);
 
-  /* Offline pack: load AFTER intro, does not change this animation */
+  /* Offline ONLY for app — NEVER on Google site */
+  function isMcdAppEntry() {
+    try {
+      var q = location.search || "";
+      var path = location.pathname || "";
+      if (/[?&]mcd=app\b/i.test(q) || /\/app\.html$/i.test(path)) return true;
+      if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
+      if (typeof navigator.standalone === "boolean" && navigator.standalone === true) return true;
+      try {
+        if (sessionStorage.getItem("mcd_app_mode") === "1") return true;
+      } catch (e0) {}
+    } catch (e) {}
+    return false;
+  }
+
   function loadOffline() {
+    if (!isMcdAppEntry()) {
+      try {
+        sessionStorage.removeItem("mcd_app_mode");
+        localStorage.removeItem("mcd_app_mode");
+        localStorage.removeItem("mcd_is_app");
+      } catch (eClr) {}
+      return;
+    }
     if (window.__MCD_OFFLINE_SCRIPT__) return;
     window.__MCD_OFFLINE_SCRIPT__ = true;
+    try {
+      sessionStorage.setItem("mcd_app_mode", "1");
+    } catch (e1) {}
     try {
       var s = document.createElement("script");
       s.async = true;
@@ -209,20 +163,20 @@
         for (var i = 0; i < scripts.length; i++) {
           var src = scripts[i].src || "";
           if (src.indexOf("boot-loader.js") !== -1) {
-            return src.replace(/boot-loader\.js.*$/, "offline-session.js");
+            return src.replace(/boot-loader\.js.*$/, "offline-session-v8.js");
           }
         }
         if ((location.pathname || "").indexOf("/programer") === 0) {
-          return "/programer/assets/js/offline-session.js";
+          return "/programer/assets/js/offline-session-v8.js";
         }
-        return "assets/js/offline-session.js";
+        return "assets/js/offline-session-v8.js";
       })();
       document.head.appendChild(s);
     } catch (eLoad) {}
   }
 
   function scheduleOffline() {
-    var delay = 4000;
+    var delay = 1500;
     if (document.readyState === "complete") setTimeout(loadOffline, delay);
     else
       window.addEventListener("load", function () {
