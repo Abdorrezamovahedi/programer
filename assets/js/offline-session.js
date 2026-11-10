@@ -1,15 +1,45 @@
 /**
- * MCD offline — only inside installed Web App (PWA).
- * Normal browser / Google search visits: no offline option.
+ * MCD offline — ONLY inside installed Web App (PWA standalone).
+ * Normal browser / Google results: no offline UI.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
   window.__MCD_OFFLINE_INIT__ = true;
 
-  var CACHE_NAME = "mcd-offline-v5";
-  var DB_NAME = "mcd_offline_db_v5";
+  function isWebAppMode() {
+    try {
+      /* only true installed app modes */
+      if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
+      if (typeof navigator.standalone === "boolean" && navigator.standalone) return true; /* iOS Add to Home Screen */
+      if (document.referrer && document.referrer.indexOf("android-app://") === 0) return true;
+    } catch (e) {}
+    return false;
+  }
+
+  function stripOfflineUI() {
+    try {
+      var a = document.getElementById("mcd-offline-nav");
+      if (a && a.parentNode) a.parentNode.removeChild(a);
+      var b = document.getElementById("mcd-offline-modal");
+      if (b && b.parentNode) b.parentNode.removeChild(b);
+    } catch (e) {}
+  }
+
+  /* Browser tab / Google visit → remove any leftover UI and stop */
+  if (!isWebAppMode()) {
+    stripOfflineUI();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", stripOfflineUI);
+    }
+    setTimeout(stripOfflineUI, 500);
+    setTimeout(stripOfflineUI, 2000);
+    return;
+  }
+
+  var CACHE_NAME = "mcd-offline-v6";
+  var DB_NAME = "mcd_offline_db_v6";
   var DB_VER = 1;
-  var MANIFEST_VERSION = "2026-11-10-v1";
+  var MANIFEST_VERSION = "2026-11-10-v6";
   var MAX_ATTEMPTS = 3;
   var CONSENT_KEY = "mcd_offline_consent_v1";
   var ENABLED_KEY = "mcd_offline_enabled_v1";
@@ -28,20 +58,6 @@
       navigator.maxTouchPoints > 1 ||
       /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent || "");
   } catch (e) {}
-
-  function isWebAppMode() {
-    try {
-      if (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) return true;
-      if (window.matchMedia && window.matchMedia("(display-mode: fullscreen)").matches) return true;
-      if (window.matchMedia && window.matchMedia("(display-mode: minimal-ui)").matches) return true;
-      if (typeof navigator.standalone === "boolean" && navigator.standalone) return true;
-      if (document.referrer && document.referrer.indexOf("android-app://") === 0) return true;
-    } catch (e) {}
-    return false;
-  }
-
-  /* Normal Google/browser visit: stop completely — no lever, no modal */
-  if (!isWebAppMode()) return;
 
   var STATIC_ASSETS = [
     "index.html", "404.html", "sw.js", "robots.txt", "sitemap.xml", "offline-manifest-meta.json",
@@ -128,11 +144,6 @@
         if (t === "slow-2g" || t === "2g") level = "very-slow";
         else if (t === "3g") level = "slow";
         else if (t === "4g") level = "fast";
-        if (typeof c.downlink === "number") {
-          if (c.downlink > 0 && c.downlink < 0.5) level = "very-slow";
-          else if (c.downlink < 1.5 && level === "fast") level = "slow";
-          else if (c.downlink >= 8) level = "fast";
-        }
       }
     } catch (e) {}
     if (isMobile && level === "fast") level = "mid";
@@ -153,56 +164,39 @@
     if (document.getElementById("mcd-offline-nav")) { updateLeverUI(); return true; }
     var host = findHeaderHost();
     if (!host) return false;
-
     var wrap = document.createElement("div");
     wrap.id = "mcd-offline-nav";
     wrap.setAttribute("dir", "rtl");
     wrap.style.cssText =
       "display:inline-flex;align-items:center;gap:6px;margin:4px;padding:4px 8px;border-radius:999px;" +
-      "border:1px solid #238636;background:#0d1117;user-select:none;white-space:nowrap;" +
-      "vertical-align:middle;font-family:system-ui,sans-serif;z-index:99990";
-    if (host === document.body) {
-      wrap.style.position = "fixed"; wrap.style.top = "10px"; wrap.style.left = "10px";
-    }
-
+      "border:1px solid #238636;background:#0d1117;user-select:none;white-space:nowrap;z-index:99990";
     var label = document.createElement("span");
     label.id = "mcd-mode-label";
     label.style.cssText = "font-size:11px;font-weight:700;min-width:3.2em;text-align:center;color:#00e676";
     label.textContent = "آنلاین";
-
     var track = document.createElement("button");
     track.type = "button"; track.id = "mcd-offline-lever";
-    track.setAttribute("role", "switch"); track.setAttribute("aria-checked", "false");
-    track.title = "اهرم آفلاین / آنلاین";
-    track.style.cssText =
-      "position:relative;width:42px;height:22px;border-radius:999px;border:0;padding:0;" +
-      "cursor:pointer;background:#30363d;transition:background .2s;flex-shrink:0";
+    track.setAttribute("role", "switch");
+    track.style.cssText = "position:relative;width:42px;height:22px;border-radius:999px;border:0;padding:0;cursor:pointer;background:#30363d";
     var knob = document.createElement("span");
     knob.id = "mcd-lever-knob";
-    knob.style.cssText =
-      "position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;" +
-      "background:#e6edf3;transition:left .2s,background .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)";
+    knob.style.cssText = "position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#e6edf3;transition:left .2s";
     track.appendChild(knob);
-
     var dlBtn = document.createElement("button");
     dlBtn.type = "button"; dlBtn.id = "mcd-download-view-btn";
-    dlBtn.textContent = "دانلود"; dlBtn.title = "مشاهده وضعیت دانلود آفلاین";
-    dlBtn.style.cssText =
-      "background:#21262d;color:#00e676;border:1px solid #238636;border-radius:8px;" +
-      "padding:3px 8px;font-size:11px;cursor:pointer;font-weight:600";
-
+    dlBtn.textContent = "دانلود";
+    dlBtn.style.cssText = "background:#21262d;color:#00e676;border:1px solid #238636;border-radius:8px;padding:3px 8px;font-size:11px;cursor:pointer;font-weight:600";
     wrap.appendChild(label); wrap.appendChild(track); wrap.appendChild(dlBtn);
     host.appendChild(wrap);
-
     track.addEventListener("click", function (e) {
-      e.preventDefault(); e.stopPropagation();
+      e.preventDefault();
       var next = !state.enabled;
       state.userOverride = true;
       if (next) onUserEnableOffline(); else onUserDisableOffline();
       updateLeverUI();
     });
     dlBtn.addEventListener("click", function (e) {
-      e.preventDefault(); e.stopPropagation();
+      e.preventDefault();
       openModal();
       if (state.consented && !state.packReady && navigator.onLine) preparePack(false);
     });
@@ -224,28 +218,25 @@
     var knob = document.getElementById("mcd-lever-knob");
     var label = document.getElementById("mcd-mode-label");
     if (!track || !knob || !label) return;
-    track.setAttribute("aria-checked", on ? "true" : "false");
     if (on) {
-      track.style.background = "#238636"; knob.style.left = "22px"; knob.style.background = "#00e676";
+      track.style.background = "#238636"; knob.style.left = "22px";
       label.textContent = "آفلاین"; label.style.color = "#f0b429";
     } else {
-      track.style.background = "#30363d"; knob.style.left = "2px"; knob.style.background = "#e6edf3";
+      track.style.background = "#30363d"; knob.style.left = "2px";
       label.textContent = "آنلاین"; label.style.color = "#00e676";
     }
   }
 
   function updateLeverUI() {
     if (state.packReady && state.autoSync && !state.userOverride) state.enabled = !state.online;
+    setLeverVisual(!!state.enabled);
     if (!state.packReady) {
-      setLeverVisual(!!state.enabled);
       var label = document.getElementById("mcd-mode-label");
       if (label) {
-        if (state.online) { label.textContent = "آنلاین"; label.style.color = "#00e676"; }
-        else { label.textContent = "آفلاین"; label.style.color = "#f0b429"; }
+        label.textContent = state.online ? "آنلاین" : "آفلاین";
+        label.style.color = state.online ? "#00e676" : "#f0b429";
       }
-      return;
     }
-    setLeverVisual(!!state.enabled);
   }
 
   var modal = null;
@@ -257,21 +248,17 @@
     modal.style.cssText = "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:16px;font-family:system-ui,sans-serif";
     modal.innerHTML =
       '<div style="width:min(440px,100%);background:#0d1117;border:1px solid #238636;border-radius:16px;padding:18px 16px;color:#e6edf3">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
-      '<b style="color:#00e676;font-size:17px">وضعیت دانلود آفلاین</b>' +
+      '<div style="display:flex;justify-content:space-between;margin-bottom:10px"><b style="color:#00e676">وضعیت دانلود آفلاین</b>' +
       '<button type="button" id="mcd-modal-x" style="background:transparent;border:0;color:#8b949e;font-size:18px;cursor:pointer">×</button></div>' +
-      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">فقط در وب‌اپلیکیشن. اهرم حالت را عوض می‌کند؛ دانلود از این پنجره.</p>' +
       '<div id="mcd-modal-status" style="color:#8b949e;font-size:12px;margin-bottom:6px">آماده</div>' +
-      '<div style="height:8px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px">' +
-      '<div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>' +
+      '<div style="height:8px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px"><div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676"></div></div>' +
       '<div id="mcd-modal-nums" style="color:#8b949e;font-size:12px;margin-bottom:12px">۰ / ۰</div>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-      '<button type="button" id="mcd-modal-start" style="flex:1;min-width:120px;background:#238636;color:#fff;border:0;border-radius:10px;padding:9px 12px;cursor:pointer;font-weight:600">شروع دانلود</button>' +
+      '<button type="button" id="mcd-modal-start" style="flex:1;background:#238636;color:#fff;border:0;border-radius:10px;padding:9px 12px;cursor:pointer">شروع دانلود</button>' +
       '<button type="button" id="mcd-modal-pause" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:9px 12px;cursor:pointer">توقف</button>' +
       '<button type="button" id="mcd-modal-retry" style="background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:10px;padding:9px 12px;cursor:pointer">تلاش مجدد</button></div></div>';
     document.body.appendChild(modal);
     document.getElementById("mcd-modal-x").onclick = function () { modal.style.display = "none"; };
-    modal.addEventListener("click", function (e) { if (e.target === modal) modal.style.display = "none"; });
     document.getElementById("mcd-modal-start").onclick = function () {
       state.consented = true; lsSet(CONSENT_KEY, "yes"); startDownload(false);
     };
@@ -290,13 +277,12 @@
     var nums = document.getElementById("mcd-modal-nums");
     var st = document.getElementById("mcd-modal-status");
     if (bar) bar.style.width = pct + "%";
-    if (nums) nums.textContent = "تأییدشده: " + state.cached + " / " + state.total + " (" + pct + "٪) · ناموفق: " + state.failed + " · مانده: " + state.pending;
+    if (nums) nums.textContent = "تأییدشده: " + state.cached + " / " + state.total + " (" + pct + "٪)";
     if (st) {
       if (statusText) st.textContent = statusText;
       else if (state.cached === state.total && state.total > 0 && state.failed === 0) st.textContent = "دانلود شد";
-      else if (state.failed > 0 && state.pending === 0 && !state.running) st.textContent = "دانلود ناقص — روی تلاش مجدد بزنید";
-      else if (state.running) st.textContent = "در حال دانلود و تأیید فایل‌ها…";
-      else st.textContent = "آماده برای شروع";
+      else if (state.running) st.textContent = "در حال دانلود…";
+      else st.textContent = "آماده";
     }
   }
 
@@ -306,36 +292,30 @@
   }
 
   function recount() {
-    var c = 0, f = 0, p = 0, d = 0;
+    var c = 0, f = 0, p = 0;
     for (var i = 0; i < state.resources.length; i++) {
       var s = state.resources[i].status;
-      if (s === "cached") c++; else if (s === "failed") f++;
-      else if (s === "downloading" || s === "retrying") d++; else p++;
+      if (s === "cached") c++; else if (s === "failed") f++; else p++;
     }
-    state.cached = c; state.failed = f; state.pending = p; state.downloading = d;
+    state.cached = c; state.failed = f; state.pending = p;
   }
 
   function cacheOneVerified(path) {
     var url = absUrl(path);
     return fetch(url, { credentials: "same-origin", cache: "no-cache" })
       .then(function (res) {
-        if (!res || !res.ok || res.type === "opaque" || res.status === 206) throw { code: "http", message: "bad" };
+        if (!res || !res.ok || res.type === "opaque") throw { code: "http", message: "bad" };
         return res.blob().then(function (blob) {
           var putRes = new Response(blob, { status: res.status, statusText: res.statusText, headers: res.headers });
           return caches.open(CACHE_NAME).then(function (cache) {
             return cache.put(url, putRes).then(function () {
-              return cache.match(url).then(function (matched) {
-                if (!matched) throw { code: "verify", message: "match failed" };
+              return cache.match(url).then(function (m) {
+                if (!m) throw { code: "verify", message: "fail" };
                 return true;
               });
             });
           });
         });
-      })
-      .catch(function (err) {
-        if (err && err.name === "QuotaExceededError") throw { code: "quota", message: "storage full" };
-        if (err && err.code) throw err;
-        throw { code: "network", message: String((err && err.message) || err || "fail") };
       });
   }
 
@@ -350,20 +330,16 @@
   }
 
   function loadManifest() {
-    var metaP = fetch(absUrl("offline-manifest-meta.json"), { credentials: "same-origin", cache: "no-cache" })
-      .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; });
-    var mapP = fetch(absUrl("sitemap.xml"), { credentials: "same-origin", cache: "no-cache" })
-      .then(function (r) { if (!r.ok) throw new Error("sitemap"); return r.text(); })
-      .then(function (xml) {
-        var urls = [], re = /<loc>\s*([^<]+)\s*<\/loc>/gi, m;
-        while ((m = re.exec(xml))) urls.push(m[1].trim());
-        return urls;
-      }).catch(function () { return []; });
+    var metaP = fetch(absUrl("offline-manifest-meta.json"), { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; });
+    var mapP = fetch(absUrl("sitemap.xml"), { cache: "no-cache" }).then(function (r) { return r.ok ? r.text() : ""; }).then(function (xml) {
+      var urls = [], re = /<loc>\s*([^<]+)\s*<\/loc>/gi, m;
+      while ((m = re.exec(xml))) urls.push(m[1].trim());
+      return urls;
+    }).catch(function () { return []; });
     return Promise.all([metaP, mapP]).then(function (pair) {
-      var meta = pair[0] || {}, locs = pair[1] || [];
+      var meta = pair[0] || {}, locs = pair[1] || [], seen = {}, resources = [];
       if (meta.version) MANIFEST_VERSION = meta.version;
       if (meta.cacheName) CACHE_NAME = meta.cacheName;
-      var seen = {}, resources = [];
       function add(path) { if (!path || seen[path]) return; seen[path] = 1; resources.push({ p: path, t: classify(path) }); }
       for (var i = 0; i < STATIC_ASSETS.length; i++) add(STATIC_ASSETS[i]);
       for (var j = 0; j < locs.length; j++) { var p = pathFromLoc(locs[j]); if (p) add(p); }
@@ -371,36 +347,25 @@
     });
   }
 
-  function hydrate(manifest, forceResync) {
+  function hydrate(manifest) {
     MANIFEST_VERSION = manifest.version || MANIFEST_VERSION;
     if (manifest.cacheName) CACHE_NAME = manifest.cacheName;
     var list = (manifest.resources || []).map(function (r) {
-      return { path: r.p || r.path, type: r.t || r.type || "other", status: "pending", attempts: 0, error: null };
+      return { path: r.p || r.path, type: r.t || "other", status: "pending", attempts: 0, error: null };
     });
     state.resources = list; state.total = list.length; state.byPath = {};
     for (var i = 0; i < list.length; i++) state.byPath[list[i].path] = list[i];
-    return idbGetMeta("manifestVersion").then(function (prevVer) {
-      var versionChanged = prevVer && prevVer !== MANIFEST_VERSION;
-      return idbGetAll("files").then(function (rows) {
-        if (!forceResync && !versionChanged && rows && rows.length) {
-          for (var j = 0; j < rows.length; j++) {
-            var row = rows[j], item = state.byPath[row.path];
-            if (item) {
-              item.status = row.status || "pending"; item.attempts = row.attempts || 0; item.error = row.error || null;
-              if (item.status === "downloading" || item.status === "retrying") item.status = "pending";
-            }
-          }
-        } else if (versionChanged) {
-          for (var k = 0; k < list.length; k++) { list[k].status = "pending"; list[k].attempts = 0; }
+    return idbGetAll("files").then(function (rows) {
+      for (var j = 0; j < (rows || []).length; j++) {
+        var row = rows[j], item = state.byPath[row.path];
+        if (item) {
+          item.status = row.status || "pending";
+          if (item.status === "downloading" || item.status === "retrying") item.status = "pending";
         }
-        return idbSetMeta("manifestVersion", MANIFEST_VERSION).then(function () {
-          recount();
-          if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
-            markPackReady(); renderProgress("دانلود شد");
-          } else if (versionChanged) renderProgress("نسخه سایت تغییر کرده — در حال همگام‌سازی…");
-          return versionChanged;
-        });
-      });
+      }
+      recount();
+      if (state.cached === state.total && state.total > 0 && state.failed === 0) markPackReady();
+      return false;
     });
   }
 
@@ -417,12 +382,11 @@
   }
 
   function startDownload(retryOnly) {
-    if (state.running) return;
-    if (!navigator.onLine) { renderProgress("اینترنت ندارید — فقط فایل‌های قبلی قابل استفاده‌اند"); return; }
+    if (state.running || !navigator.onLine) return;
     state.consented = true; lsSet(CONSENT_KEY, "yes");
-    state.stopFlag = false; state.running = true; renderProgress("در حال دانلود و تأیید فایل‌ها…");
+    state.stopFlag = false; state.running = true; renderProgress("در حال دانلود…");
     var profile = profileNetwork();
-    if (!profile.concurrency) { state.running = false; renderProgress("حالت صرفه‌جویی اینترنت فعال است"); return; }
+    if (!profile.concurrency) { state.running = false; return; }
     if (!state.resources.length) {
       preparePack(false).then(function () { state.running = false; startDownload(retryOnly); });
       return;
@@ -433,27 +397,18 @@
       while (active < concurrency) {
         var item = pickNext(retryOnly);
         if (!item) break;
-        active++;
-        item.status = item.attempts > 0 ? "retrying" : "downloading";
-        item.attempts += 1; persistItem(item); recount(); renderProgress();
+        active++; item.status = "downloading"; item.attempts += 1; persistItem(item); recount(); renderProgress();
         (function (current) {
           cacheOneVerified(current.path)
-            .then(function () { current.status = "cached"; current.error = null; return persistItem(current); })
-            .catch(function (err) {
-              current.error = (err && err.code ? err.code + ": " : "") + ((err && err.message) || "error");
-              current.status = "failed"; return persistItem(current);
-            })
+            .then(function () { current.status = "cached"; return persistItem(current); })
+            .catch(function () { current.status = "failed"; return persistItem(current); })
             .then(function () { active--; recount(); renderProgress(); setTimeout(pump, profile.pauseMs || 0); });
         })(item);
       }
       if (active === 0) {
         state.running = false; recount();
-        if (state.cached === state.total && state.failed === 0) {
-          renderProgress("دانلود شد"); idbSetMeta("complete", true);
-          try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (eP) {}
-          markPackReady();
-        } else if (state.failed > 0) renderProgress("دانلود ناقص — " + state.failed + " فایل ناموفق");
-        else renderProgress("آماده");
+        if (state.cached === state.total && state.failed === 0) { renderProgress("دانلود شد"); markPackReady(); }
+        else if (state.failed > 0) renderProgress("دانلود ناقص");
       }
     }
     pump();
@@ -461,19 +416,12 @@
 
   function preparePack(openUi) {
     return loadManifest().then(function (manifest) {
-      return hydrate(manifest, false).then(function (versionChanged) {
+      return hydrate(manifest).then(function () {
         if (openUi) openModal();
-        recount();
-        if (!versionChanged && state.cached === state.total && state.total > 0 && state.failed === 0) {
-          renderProgress("دانلود شد"); markPackReady(); return;
-        }
-        if (versionChanged || (state.consented && state.cached < state.total)) {
-          setTimeout(function () { if (!state.running) startDownload(false); }, 400);
+        if (state.consented && state.cached < state.total && navigator.onLine) {
+          setTimeout(function () { if (!state.running) startDownload(false); }, 300);
         }
       });
-    }).catch(function (err) {
-      console.warn("[MCD offline]", err);
-      renderProgress("خطا در آماده‌سازی فهرست");
     });
   }
 
@@ -486,34 +434,28 @@
 
   function registerSW() {
     if (!("serviceWorker" in navigator)) return Promise.resolve(null);
-    var swUrl = (SCOPE_BASE + "sw.js").replace(/([^:]\/)\/+/g, "$1");
-    return navigator.serviceWorker.register(swUrl, { scope: SCOPE_BASE }).catch(function () { return null; });
+    return navigator.serviceWorker.register((SCOPE_BASE + "sw.js").replace(/([^:]\/)\/+/g, "$1"), { scope: SCOPE_BASE }).catch(function () { return null; });
   }
 
   function bindConnectivity() {
-    function applyOnline() {
+    window.addEventListener("online", function () {
       state.online = true;
       if (state.packReady) { state.userOverride = false; state.enabled = false; lsSet(ENABLED_KEY, "0"); }
       updateLeverUI();
-    }
-    function applyOffline() {
+    });
+    window.addEventListener("offline", function () {
       state.online = false;
       if (state.packReady) { state.userOverride = false; state.enabled = true; lsSet(ENABLED_KEY, "1"); }
       updateLeverUI();
-    }
-    window.addEventListener("online", applyOnline);
-    window.addEventListener("offline", applyOffline);
-    if (navigator.onLine) applyOnline(); else applyOffline();
+    });
   }
 
   function init() {
     ensureToggleMounted();
     bindConnectivity();
-    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e0) {}
     registerSW().then(function () {
       state.consented = lsGet(CONSENT_KEY) === "yes";
       state.packReady = lsGet(DONE_KEY) === "1";
-      state.enabled = lsGet(ENABLED_KEY) === "1";
       if (state.packReady) { state.enabled = !navigator.onLine; state.autoSync = true; }
       updateLeverUI();
       if (state.consented && navigator.onLine) preparePack(false);
