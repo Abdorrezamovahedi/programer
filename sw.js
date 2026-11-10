@@ -1,16 +1,12 @@
-/* MCD SW v5 — online=network, offline=cache; pack filled by offline-session */
-var CACHE = "mcd-offline-v5";
+/* MCD SW v6 — drops old caches; offline-session always network when online */
+var CACHE = "mcd-offline-v6";
 var CORE = [
   "./",
   "./index.html",
-  "./offline-manifest.json",
   "./assets/css/main.css",
   "./assets/js/boot-loader.js",
   "./assets/js/app.js",
   "./assets/js/home.js",
-  "./assets/js/mcd-motion.js",
-  "./assets/js/offline-session.js",
-  "./assets/js/search.js",
   "./assets/img/favicon.svg",
   "./404.html"
 ];
@@ -27,7 +23,7 @@ self.addEventListener("activate", function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(keys.map(function (key) {
-        if (key.indexOf("mcd-offline") === 0 && key !== CACHE) return caches.delete(key);
+        if (key !== CACHE) return caches.delete(key);
       }));
     }).then(function () { return self.clients.claim(); })
   );
@@ -63,6 +59,8 @@ self.addEventListener("fetch", function (event) {
   if (request.method !== "GET") return;
   if (!sameOrigin(request.url)) return;
 
+  var isControlJs = /\/assets\/js\/(offline-session|boot-loader)\.js/.test(request.url) || /\/sw\.js/.test(request.url);
+
   event.respondWith((async function () {
     var cache = await caches.open(CACHE);
     var online = true;
@@ -80,9 +78,9 @@ self.addEventListener("fetch", function (event) {
     }
 
     try {
-      var response = await fetch(request);
+      var response = await fetch(request, isControlJs ? { cache: "no-store" } : undefined);
       if (response && response.ok && (response.type === "basic" || response.type === "cors")) {
-        try { cache.put(request, response.clone()); } catch (e2) {}
+        try { if (!isControlJs) cache.put(request, response.clone()); } catch (e2) {}
       }
       return response;
     } catch (err) {
