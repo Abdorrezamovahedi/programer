@@ -1,7 +1,6 @@
 /**
- * MCD offline — lever switch in header
- * After pack is downloaded: auto ON when offline, auto OFF when online
- * Label always shows آنلاین or آفلاین
+ * MCD offline — header lever + separate «دانلود» button
+ * Toggle does NOT open modal. Modal opens only via دانلود button.
  */
 (function () {
   if (window.__MCD_OFFLINE_INIT__) return;
@@ -132,30 +131,48 @@
     return map[level] || map.mid;
   }
 
-  /* ---------- Lever switch in header ---------- */
+  function findHeaderHost() {
+    return (
+      document.querySelector("header nav") ||
+      document.querySelector("header") ||
+      document.body
+    );
+  }
+
   function injectHeaderToggle() {
-    var nav = document.querySelector("header nav");
-    if (!nav || document.getElementById("mcd-offline-nav")) return;
+    if (document.getElementById("mcd-offline-nav")) {
+      updateLeverUI();
+      return true;
+    }
+    var host = findHeaderHost();
+    if (!host) return false;
 
     var wrap = document.createElement("div");
     wrap.id = "mcd-offline-nav";
     wrap.setAttribute("dir", "rtl");
     wrap.style.cssText =
-      "display:inline-flex;align-items:center;gap:8px;margin-right:4px;" +
-      "padding:3px 8px;border-radius:999px;border:1px solid #238636;" +
-      "background:#0d1117;user-select:none;white-space:nowrap;vertical-align:middle";
+      "display:inline-flex;align-items:center;gap:6px;margin:4px;" +
+      "padding:4px 8px;border-radius:999px;border:1px solid #238636;" +
+      "background:#0d1117;user-select:none;white-space:nowrap;vertical-align:middle;" +
+      "font-family:system-ui,sans-serif;z-index:99990";
+
+    if (host === document.body) {
+      wrap.style.position = "fixed";
+      wrap.style.top = "10px";
+      wrap.style.left = "10px";
+    }
 
     var label = document.createElement("span");
     label.id = "mcd-mode-label";
-    label.style.cssText = "font-size:11px;font-weight:700;min-width:3.2em;text-align:center";
+    label.style.cssText = "font-size:11px;font-weight:700;min-width:3.2em;text-align:center;color:#00e676";
+    label.textContent = "آنلاین";
 
-    /* switch track */
     var track = document.createElement("button");
     track.type = "button";
     track.id = "mcd-offline-lever";
     track.setAttribute("role", "switch");
     track.setAttribute("aria-checked", "false");
-    track.title = "اهرم حالت آفلاین / آنلاین";
+    track.title = "اهرم آفلاین / آنلاین";
     track.style.cssText =
       "position:relative;width:42px;height:22px;border-radius:999px;border:0;" +
       "padding:0;cursor:pointer;background:#30363d;transition:background .2s;flex-shrink:0";
@@ -167,11 +184,23 @@
       "background:#e6edf3;transition:left .2s,background .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)";
     track.appendChild(knob);
 
+    var dlBtn = document.createElement("button");
+    dlBtn.type = "button";
+    dlBtn.id = "mcd-download-view-btn";
+    dlBtn.textContent = "دانلود";
+    dlBtn.title = "مشاهده وضعیت دانلود آفلاین";
+    dlBtn.style.cssText =
+      "background:#21262d;color:#00e676;border:1px solid #238636;border-radius:8px;" +
+      "padding:3px 8px;font-size:11px;cursor:pointer;font-weight:600";
+
     wrap.appendChild(label);
     wrap.appendChild(track);
-    nav.appendChild(wrap);
+    wrap.appendChild(dlBtn);
+    host.appendChild(wrap);
 
-    track.addEventListener("click", function () {
+    track.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
       var next = !state.enabled;
       state.userOverride = true;
       if (next) onUserEnableOffline();
@@ -179,7 +208,26 @@
       updateLeverUI();
     });
 
+    dlBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal();
+      if (state.consented && !state.packReady && navigator.onLine) {
+        preparePack(false);
+      }
+    });
+
     updateLeverUI();
+    return true;
+  }
+
+  function ensureToggleMounted() {
+    if (injectHeaderToggle()) return;
+    var tries = 0;
+    var t = setInterval(function () {
+      tries++;
+      if (injectHeaderToggle() || tries > 40) clearInterval(t);
+    }, 250);
   }
 
   function setLeverVisual(on) {
@@ -187,7 +235,6 @@
     var knob = document.getElementById("mcd-lever-knob");
     var label = document.getElementById("mcd-mode-label");
     if (!track || !knob || !label) return;
-
     track.setAttribute("aria-checked", on ? "true" : "false");
     if (on) {
       track.style.background = "#238636";
@@ -205,11 +252,9 @@
   }
 
   function updateLeverUI() {
-    /* After pack ready: follow network automatically unless user is mid-download setup */
     if (state.packReady && state.autoSync && !state.userOverride) {
       state.enabled = !state.online;
     }
-    /* Always show real connectivity word next to lever when pack not ready yet */
     if (!state.packReady) {
       setLeverVisual(!!state.enabled);
       var label = document.getElementById("mcd-mode-label");
@@ -239,9 +284,9 @@
     modal.innerHTML =
       '<div style="width:min(440px,100%);background:#0d1117;border:1px solid #238636;border-radius:16px;padding:18px 16px;color:#e6edf3;box-shadow:0 16px 48px rgba(0,0,0,.5)">' +
       '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
-      '<b style="color:#00e676;font-size:17px">ذخیره آفلاین سایت</b>' +
+      '<b style="color:#00e676;font-size:17px">وضعیت دانلود آفلاین</b>' +
       '<button type="button" id="mcd-modal-x" style="background:transparent;border:0;color:#8b949e;font-size:18px;cursor:pointer">×</button></div>' +
-      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">با روشن کردن اهرم، سایت روی این دستگاه ذخیره می‌شود. بعد از <b style="color:#00e676">دانلود شد</b>، اهرم وقتی اینترنت نباشد خودکار آفلاین و وقتی اینترنت باشد آنلاین می‌شود.</p>' +
+      '<p style="margin:0 0 10px;line-height:1.7;color:#c9d1d9;font-size:13px">از اینجا دانلود را شروع یا پیگیری کنید. اهرم منو فقط حالت آنلاین/آفلاین را عوض می‌کند.</p>' +
       '<div id="mcd-modal-status" style="color:#8b949e;font-size:12px;margin-bottom:6px">آماده</div>' +
       '<div style="height:8px;background:#21262d;border-radius:99px;overflow:hidden;margin-bottom:6px">' +
       '<div id="mcd-modal-bar" style="height:100%;width:0%;background:#00e676;transition:width .2s"></div></div>' +
@@ -253,7 +298,11 @@
     document.body.appendChild(modal);
     document.getElementById("mcd-modal-x").onclick = function () { modal.style.display = "none"; };
     modal.addEventListener("click", function (e) { if (e.target === modal) modal.style.display = "none"; });
-    document.getElementById("mcd-modal-start").onclick = function () { startDownload(false); };
+    document.getElementById("mcd-modal-start").onclick = function () {
+      state.consented = true;
+      lsSet(CONSENT_KEY, "yes");
+      startDownload(false);
+    };
     document.getElementById("mcd-modal-pause").onclick = function () {
       state.stopFlag = true; state.running = false; renderProgress("متوقف شد");
     };
@@ -284,7 +333,6 @@
     lsSet(DONE_KEY, "1");
     state.autoSync = true;
     state.userOverride = false;
-    /* after download: follow network */
     state.enabled = !state.online;
     lsSet(ENABLED_KEY, state.enabled ? "1" : "0");
     updateLeverUI();
@@ -411,12 +459,17 @@
   }
 
   function startDownload(retryOnly) {
-    if (!state.consented && !state.enabled) return;
     if (state.running) return;
     if (!navigator.onLine) { renderProgress("اینترنت ندارید — فقط فایل‌های قبلی قابل استفاده‌اند"); return; }
+    state.consented = true;
+    lsSet(CONSENT_KEY, "yes");
     state.stopFlag = false; state.running = true; renderProgress("در حال دانلود و تأیید فایل‌ها…");
     var profile = profileNetwork();
     if (!profile.concurrency) { state.running = false; renderProgress("حالت صرفه‌جویی اینترنت فعال است"); return; }
+    if (!state.resources.length) {
+      preparePack(false).then(function () { state.running = false; startDownload(retryOnly); });
+      return;
+    }
     var active = 0, concurrency = profile.concurrency;
     function pump() {
       if (state.stopFlag) { state.running = false; renderProgress("متوقف شد"); return; }
@@ -460,7 +513,7 @@
           markPackReady();
           return;
         }
-        if (versionChanged || state.cached < state.total) {
+        if (versionChanged || (state.consented && state.cached < state.total)) {
           setTimeout(function () { if (!state.running) startDownload(false); }, 400);
         }
       });
@@ -470,16 +523,13 @@
     });
   }
 
+  /* Lever ON: enable mode only — do NOT open download UI */
   function onUserEnableOffline() {
     state.enabled = true;
     lsSet(ENABLED_KEY, "1");
     lsSet(CONSENT_KEY, "yes");
     state.consented = true;
     updateLeverUI();
-    if (!state.packReady) {
-      openModal();
-      preparePack(false);
-    }
   }
 
   function onUserDisableOffline() {
@@ -505,7 +555,6 @@
         lsSet(ENABLED_KEY, "0");
       }
       updateLeverUI();
-      if (state.consented && state.online) preparePack(false);
     }
     function applyOffline() {
       state.online = false;
@@ -523,7 +572,7 @@
   }
 
   function init() {
-    injectHeaderToggle();
+    ensureToggleMounted();
     bindConnectivity();
     try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e0) {}
     registerSW().then(function () {
